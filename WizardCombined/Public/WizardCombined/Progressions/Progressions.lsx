@@ -15,7 +15,7 @@
                     <attribute id="UUID" type="guid" value="c201c736-3717-4c3c-9e36-2ae7387597a3"/>
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Savant(Divination);Savant(Abjuration);Savant(Conjuration);Savant(Enchantment);Savant(Evocation);Savant(Necromancy);Savant(Illusion);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution);ActionResource(Movement,12,0);Tag(PETPAL)"/>
+                    <attribute id="Boosts" type="LSString" value="Savant(Divination);Savant(Abjuration);Savant(Conjuration);Savant(Enchantment);Savant(Evocation);Savant(Necromancy);Savant(Illusion);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution);Tag(PETPAL)"/>
                     <attribute id="Level" type="uint8" value="2"/>
                     <attribute id="Name" type="LSString" value="DivinationSchool"/>
                     <attribute id="PassivesAdded" type="LSString" value="EmpoweredSpells;Portent;ArcaneWard;DevilsSight;Halfling_Lucky;ArcaneWard_Cast;SculptSpells;GrimHarvest;ImprovedMinorIllusion;ExperimentalAlchemy;DraconicResilience;Alert;Tough;WarCaster_Bonuses;WarCaster_OpportunitySpell"/>

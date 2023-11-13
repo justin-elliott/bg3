@@ -1,0 +1,7 @@
+new entry "EmpoweredSpells"
+type "PassiveData"
+data "DisplayName" "h6d30bcc2g9058g4067g9269geb0cda9b83df"
+data "Description" "h953c6056g4076g4b7fg91a6g520a085075d5"
+data "Icon" "PassiveFeature_EmpoweredEvocation"
+data "Properties" "Highlighted"
+data "Boosts" "IF(IsSpell()):DamageBonus(ClassLevel(Wizard)/2)"

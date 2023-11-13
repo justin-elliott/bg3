@@ -1,0 +1,6 @@
+new entry "Target_MistyStep_Movement"
+type "SpellData"
+data "SpellType" "Target"
+using "Target_MistyStep"
+data "UseCosts" "Movement:Distance*0.5"
+data "SpellFlags" "HasVerbalComponent;IsSpell;HasHighGroundRangeExtension;RangeIgnoreVerticalThreshold"

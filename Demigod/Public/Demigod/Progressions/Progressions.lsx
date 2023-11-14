@@ -8,7 +8,7 @@
                     <attribute id="Boosts" type="LSString" value=""/>
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="HalfElfDemigod"/>
-                    <attribute id="PassivesAdded" type="LSString" value="Demigod_AbilityScores;Demigod_Movement;JackOfAllTrades"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Demigod_AbilityScores;Gifted_Athlete;Natural_Advantage;JackOfAllTrades"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="Selectors" type="LSString" value="AddSpells(d20303af-e1c4-4b5f-8bfd-a0765c9f76f4,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"/>
                     <attribute id="TableUUID" type="guid" value="d415f481-52f0-4c4e-bfa6-caf70c0dfe58"/>

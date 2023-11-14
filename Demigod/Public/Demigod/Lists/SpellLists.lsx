@@ -6,7 +6,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Demigod Universal Cantrips"/>
-                    <attribute id="Spells" type="LSString" value="Target_EnhanceAbility_Cantrip;Target_MistyStep_Cantrip;Projectile_FireBlast"/>
+                    <attribute id="Spells" type="LSString" value="Projectile_DivineBolt;Target_MistyStep_Cantrip"/>
                     <attribute id="UUID" type="guid" value="d20303af-e1c4-4b5f-8bfd-a0765c9f76f4"/>
                 </node>
             </children>

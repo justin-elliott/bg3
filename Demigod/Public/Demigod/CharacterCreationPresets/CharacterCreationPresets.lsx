@@ -11,7 +11,7 @@
                     <attribute id="CloseUpB" type="LSString" value="HEL_M_Camera_Closeup_B"/>
                     <attribute id="Overview" type="LSString" value="HEL_M_Camera_Overview_A"/>
                     <attribute id="RaceUUID" type="guid" value="45f4ac10-3c89-4fb2-b37d-f973bb9110c0"/>
-                    <attribute id="RootTemplate" type="guid" value="80e26779-a7a8-4ac2-a934-5616ab5db8d7"/>
+                    <attribute id="RootTemplate" type="guid" value="7640af4e-fc75-4a90-9bae-4f0a80d10b77"/>
                     <attribute id="SubRaceUUID" type="guid" value="49a772fb-d373-4996-9716-f11c343f94fe"/>
                     <attribute id="UUID" type="guid" value="539e83bf-666b-4123-b13d-2cbfbe641f95"/>
                     <attribute id="VOLinesTableUUID" type="guid" value="14df8f45-90af-4bd0-8024-42624da9976e"/>

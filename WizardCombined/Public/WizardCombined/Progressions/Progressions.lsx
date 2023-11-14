@@ -5,22 +5,12 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Intelligence);ProficiencyBonus(SavingThrow,Wisdom);Proficiency(SimpleWeapons);Proficiency(MartialWeapons);ActionResource(ArcaneRecoveryPoint,4,0);ProficiencyBonus(Skill,Arcana);ProficiencyBonus(Skill,History);ProficiencyBonus(Skill,Investigation);ProficiencyBonus(Skill,Nature);ProficiencyBonus(Skill,Religion);Ability(Strength,5);Ability(Dexterity,5);Ability(Constitution,5);Ability(Intelligence,5);Ability(Wisdom,5);Ability(Charisma,5)"/>
-                    <attribute id="Level" type="uint8" value="1"/>
-                    <attribute id="Name" type="LSString" value="Wizard"/>
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1"/>
-                    <attribute id="ProgressionType" type="uint8" value="0"/>
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,6);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,6,0);AddSpells(34c3321d-75ab-4b50-a44d-cbac8705a360,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)"/>
-                    <attribute id="TableUUID" type="guid" value="d18eda7e-4b7d-490d-9952-cd33a3c60479"/>
-                    <attribute id="UUID" type="guid" value="c201c736-3717-4c3c-9e36-2ae7387597a3"/>
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Savant(Divination);Savant(Abjuration);Savant(Conjuration);Savant(Enchantment);Savant(Evocation);Savant(Necromancy);Savant(Illusion);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution);Tag(PETPAL)"/>
+                    <attribute id="Boosts" type="LSString" value="Savant(Divination);Savant(Abjuration);Savant(Conjuration);Savant(Enchantment);Savant(Evocation);Savant(Necromancy);Savant(Illusion);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution)"/>
                     <attribute id="Level" type="uint8" value="2"/>
                     <attribute id="Name" type="LSString" value="DivinationSchool"/>
                     <attribute id="PassivesAdded" type="LSString" value="EmpoweredSpells;Portent;ArcaneWard;DevilsSight;Halfling_Lucky;ArcaneWard_Cast;SculptSpells;GrimHarvest;ImprovedMinorIllusion;ExperimentalAlchemy;DraconicResilience;Alert;Tough;WarCaster_Bonuses;WarCaster_OpportunitySpell"/>
                     <attribute id="ProgressionType" type="uint8" value="1"/>
-                    <attribute id="Selectors" type="LSString" value="AddSpells(d20303af-e1c4-4b5f-8bfd-a0765c9f76f4,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,4,0);AddSpells(13622b91-fb6d-4921-afb0-dc42da978511,,,,AlwaysPrepared);AddSpells(43fb9c43-ddfa-46ff-a64f-73406dddf4eb,,,,AlwaysPrepared)"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,4,0);AddSpells(13622b91-fb6d-4921-afb0-dc42da978511,,,,AlwaysPrepared);AddSpells(43fb9c43-ddfa-46ff-a64f-73406dddf4eb,,,,AlwaysPrepared)"/>
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6"/>
                     <attribute id="UUID" type="guid" value="79b9e743-a551-4798-970c-60615e503b1d"/>
                 </node>

@@ -327,7 +327,10 @@
                             <attribute id="Object" type="guid" value="2dea093d-1d07-4a40-9e95-646f24c8b31b"/>
                         </node>
                         <node id="Tags">
-                            <attribute id="Object" type="guid" value="8aaf6bb1-e938-4b46-9192-277d0e94d088"/>
+                            <attribute id="Object" type="guid" value="8aaf6bb1-e938-4b46-9192-277d0e94d088"/><!-- HALFELFDEMIGOD -->
+                        </node>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="dc860a81-f3c2-4c1a-ab90-e7583324845c"/><!-- PETPAL -->
                         </node>
                         <node id="TattooColors">
                             <attribute id="Object" type="guid" value="8f8019ae-4c7d-4871-8479-1219fbf6ba7e"/>

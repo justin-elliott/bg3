@@ -5,8 +5,8 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Wizard Divination Spells"/>
-                    <attribute id="Spells" type="LSString" value="Projectile_SearingEldritchBlast"/>
+                    <attribute id="Comment" type="LSString" value="Demigod Universal Cantrips"/>
+                    <attribute id="Spells" type="LSString" value="Target_MistyStep_Cantrip"/>
                     <attribute id="UUID" type="guid" value="d20303af-e1c4-4b5f-8bfd-a0765c9f76f4"/>
                 </node>
             </children>

@@ -1,0 +1,14 @@
+new entry "Demigod_AbilityScores"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Ability(Strength,5);Ability(Dexterity,5);Ability(Constitution,5);Ability(Intelligence,5);Ability(Wisdom,5);Ability(Charisma,5)"
+
+new entry "Demigod_Movement"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "ActionResource(Movement,3,0)"
+
+new entry "Demigod_Proficiencies"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "ProficiencyBonus(Skill,Perception);ExpertiseBonus(Perception);ProficiencyBonus(Skill,Insight);ExpertiseBonus(Insight)"

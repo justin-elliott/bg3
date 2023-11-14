@@ -5,7 +5,7 @@
 	<content contentuid="hf0d5f34fgcf78g4943ga3adg5843439123fe" version="1">Divine Bolt</content>
 	<content contentuid="he1fa7121g9652g455dgb01eg65261a6cc8fb" version="1">Shoot [1] bolt(s) of radiant fire.</content>
 	<content contentuid="hb36c4625g7983g4410gbb93ge06512bffaaa" version="1">Gifted Athlete</content>
-	<content contentuid="h5e2f2819g1807g463cg8ac4g1f45b18dd406" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2].</content>
+	<content contentuid="h5e2f2819g1807g463cg8ac4g1f45b18dd406" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2], and your carrying capacity is increased by a half.</content>
 	<content contentuid="hbff13459ga38dg44c5g9468ga78ebeafeb79" version="1">Natural Advantage</content>
 	<content contentuid="h0f71aa02g5238g4613g8748g2791ea850a36" version="1">You have &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on all &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt;.</content>
 </contentList>

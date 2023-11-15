@@ -23,7 +23,7 @@
                     <attribute id="CloseUpB" type="LSString" value="HUM_MB_Camera_Closeup_B"/>
                     <attribute id="Overview" type="LSString" value="HUM_MB_Camera_Overview_A"/>
                     <attribute id="RaceUUID" type="guid" value="45f4ac10-3c89-4fb2-b37d-f973bb9110c0"/>
-                    <attribute id="RootTemplate" type="guid" value="db42af19-b9c0-44f0-bba8-dd320b190492"/>
+                    <attribute id="RootTemplate" type="guid" value="355ee287-093b-4274-96ef-9de6eac30819"/>
                     <attribute id="SubRaceUUID" type="guid" value="49a772fb-d373-4996-9716-f11c343f94fe"/>
                     <attribute id="UUID" type="guid" value="a5319948-6429-4e37-97c0-162c28324022"/>
                     <attribute id="VOLinesTableUUID" type="guid" value="14df8f45-90af-4bd0-8024-42624da9976e"/>
@@ -47,7 +47,7 @@
                     <attribute id="CloseUpB" type="LSString" value="HUM_FB_Camera_Closeup_B"/>
                     <attribute id="Overview" type="LSString" value="HUM_FB_Camera_Overview_A"/>
                     <attribute id="RaceUUID" type="guid" value="45f4ac10-3c89-4fb2-b37d-f973bb9110c0"/>
-                    <attribute id="RootTemplate" type="guid" value="c09d882c-677e-4089-a810-a62f21bf0487"/>
+                    <attribute id="RootTemplate" type="guid" value="067efeee-f7ff-44c0-ac64-d21671b1120d"/>
                     <attribute id="SubRaceUUID" type="guid" value="49a772fb-d373-4996-9716-f11c343f94fe"/>
                     <attribute id="UUID" type="guid" value="fd37632b-5309-4454-b36d-0a982e068cf2"/>
                     <attribute id="VOLinesTableUUID" type="guid" value="14df8f45-90af-4bd0-8024-42624da9976e"/>

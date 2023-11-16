@@ -5,9 +5,9 @@
 		<node id="Tags">
 			<attribute id="Description" type="LSString" value="|Half-Elf Demigod|" />
 			<attribute id="DisplayDescription" type="TranslatedString" handle="h7a548593g7fe4g410bg8754gac0cc56de7bf" version="1" />
-			<attribute id="DisplayName" type="TranslatedString" handle="h1723fae5g02d1g4a12gadd7g94fdfeb137f8" version="1" />
+			<attribute id="DisplayName" type="TranslatedString" handle="h983b15c6ge6d2g4e35g8abegb37b7249f8cd" version="1" />
 			<attribute id="Icon" type="FixedString" value="" />
-			<attribute id="Name" type="FixedString" value="HALFELFDEMIGOD" />
+			<attribute id="Name" type="FixedString" value="DEMIGOD" />
 			<attribute id="UUID" type="guid" value="8aaf6bb1-e938-4b46-9192-277d0e94d088" />
 			<children>
 				<node id="Categories">

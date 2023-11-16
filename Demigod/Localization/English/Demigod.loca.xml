@@ -3,6 +3,10 @@
     <content contentuid="h983b15c6ge6d2g4e35g8abegb37b7249f8cd" version="1">Demigod</content>
     <content contentuid="h1723fae5g02d1g4a12gadd7g94fdfeb137f8" version="1">Half-Elf Demigod</content>
     <content contentuid="h7a548593g7fe4g410bg8754gac0cc56de7bf" version="1">Hailing from a divine bloodline, these beings have abilities beyond those of their mundane kin.</content>
+	<content contentuid="hc7ecc5ffg412fg44bagae58gfda7a8352924" version="1">Dimension Step</content>
+	<content contentuid="h8c0e93edg6a92g40f6g94e4g4364c7fce5ba" version="1">Teleport to an unoccupied space that you can see.</content>
+	<content contentuid="h5cae68acg7326g46begab23g8e59e27a41d6" version="1">Dimensional Attunement</content>
+	<content contentuid="h15c9cbacg32a0g4f16g950cgf1c2441613b0" version="1">Until the end of your turn, you can recast &lt;LSTag Type="Spell" Tooltip="Target_DimensionStep"&gt;Dimension Step&lt;/LSTag&gt; so long as you have &lt;LSTag Tooltip="MovementSpeed"&gt;movement&lt;/LSTag&gt; remaining.</content>
 	<content contentuid="hf0d5f34fgcf78g4943ga3adg5843439123fe" version="1">Divine Bolt</content>
 	<content contentuid="he1fa7121g9652g455dgb01eg65261a6cc8fb" version="1">Shoot [1] bolt(s) of radiant fire.</content>
 	<content contentuid="hb36c4625g7983g4410gbb93ge06512bffaaa" version="1">Gifted Athlete</content>

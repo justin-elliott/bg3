@@ -11,7 +11,7 @@
 					<attribute id="Icon" type="FixedString" value="a7739671-73cb-1005-8694-2ae556825885-_(Icon_Human_Male_Strong)" />
 					<attribute id="LevelName" type="FixedString" value="" />
 					<attribute id="MapKey" type="FixedString" value="355ee287-093b-4274-96ef-9de6eac30819" />
-					<attribute id="Name" type="LSString" value="HalfElves_Male_Demigod_Player_Strong" />
+					<attribute id="Name" type="LSString" value="HalfElves_Male_Demigod_Strong_Player" />
 					<attribute id="ParentTemplateId" type="FixedString" value="7640af4e-fc75-4a90-9bae-4f0a80d10b77" />
 					<attribute id="Type" type="FixedString" value="character" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="1" />

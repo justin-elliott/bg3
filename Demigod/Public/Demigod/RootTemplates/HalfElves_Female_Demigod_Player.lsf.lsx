@@ -5,46 +5,19 @@
 		<node id="Templates">
 			<children>
 				<node id="GameObjects">
-					<attribute id="AiHint" type="guid" value="c1b1489e-ffc5-447f-9866-53cd808e2e18" />
-					<attribute id="CharacterVisualResourceID" type="FixedString" value="d6b3078b-e4f1-ecfc-4801-b1a6da80e1be" />
-					<attribute id="Icon" type="FixedString" value="d6b3078b-e4f1-ecfc-4801-b1a6da80e1be-_(Icon_HalfElf_Female)" />
+					<attribute id="CharacterVisualResourceID" type="FixedString" value="1c36f857-0a5e-a0e2-66d9-9c5b24daf824" />
+					<attribute id="Flag" type="int32" value="0" />
+					<attribute id="Icon" type="FixedString" value="1c36f857-0a5e-a0e2-66d9-9c5b24daf824-_(Icon_HalfElf_Female)" />
 					<attribute id="LevelName" type="FixedString" value="" />
 					<attribute id="MapKey" type="FixedString" value="07220c25-5589-48ce-9891-1aed33e6198e" />
 					<attribute id="Name" type="LSString" value="HalfElves_Female_Demigod_Player" />
-					<attribute id="ParentTemplateId" type="FixedString" value="aef61116-1ee6-4928-bdef-d25c418e54b5" />
+					<attribute id="ParentTemplateId" type="FixedString" value="aef61116-1ee6-4928-bdef-d25c418e54b5" /><!-- BASE_HalfElves_Female_Demigod -->
+					<attribute id="PortraitVisualResourceID" type="FixedString" value="a58738bb-b385-080c-11da-85a2787a9b3d" />
 					<attribute id="SpellSet" type="FixedString" value="CommonPlayerActions" />
 					<attribute id="Stats" type="FixedString" value="HeroHalfElfFemale" />
 					<attribute id="Type" type="FixedString" value="character" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="1" />
 					<children>
-						<node id="Bounds">
-							<children>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.40751 1.93354 0.0630085" />
-									<attribute id="Min" type="fvec3" value="-0.40751 -0.00135875 -0.1058585" />
-									<attribute id="Radius" type="float" value="0.249" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="0" />
-								</node>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.81502 1.93354 0.126017" />
-									<attribute id="Min" type="fvec3" value="-0.81502 -0.00135875 -0.211717" />
-									<attribute id="Radius" type="float" value="0.2" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="1" />
-								</node>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.81502 1.93354 0.126017" />
-									<attribute id="Min" type="fvec3" value="-0.81502 -0.00135875 -0.211717" />
-									<attribute id="Radius" type="float" value="0.499" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="2" />
-								</node>
-							</children>
-						</node>
 						<node id="LocomotionParams" />
 						<node id="SpeakerGroupList">
 							<children>

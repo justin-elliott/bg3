@@ -5,16 +5,17 @@
 		<node id="Templates">
 			<children>
 				<node id="GameObjects">
-					<attribute id="AiHint" type="guid" value="c1b1489e-ffc5-447f-9866-53cd808e2e18" />
-					<attribute id="CharacterVisualResourceID" type="FixedString" value="0ccfb296-7f21-9281-08e0-1d75992072bb" />
-					<attribute id="Icon" type="FixedString" value="0ccfb296-7f21-9281-08e0-1d75992072bb-_(Icon_HalfElf_Male)" />
+					<attribute id="CharacterVisualResourceID" type="FixedString" value="d598ca76-ca77-2fb1-3010-ebff8dcaf3c5" />
+					<attribute id="Icon" type="FixedString" value="d598ca76-ca77-2fb1-3010-ebff8dcaf3c5-_(Icon_HalfElf_Male)" />
 					<attribute id="LevelName" type="FixedString" value="" />
 					<attribute id="MapKey" type="FixedString" value="7640af4e-fc75-4a90-9bae-4f0a80d10b77" />
 					<attribute id="Name" type="LSString" value="HalfElves_Male_Demigod_Player" />
-					<attribute id="ParentTemplateId" type="FixedString" value="6cdc96ee-adc5-46f9-8125-c19267385f7d" />
+					<attribute id="ParentTemplateId" type="FixedString" value="6cdc96ee-adc5-46f9-8125-c19267385f7d" /><!-- BASE_HalfElves_Male_Demigod -->
+					<attribute id="PortraitVisualResourceID" type="FixedString" value="345d747b-fd96-f13c-cae5-a7f750e65040" />
 					<attribute id="SpellSet" type="FixedString" value="CommonPlayerActions" />
 					<attribute id="Stats" type="FixedString" value="HeroHalfElfMale" />
 					<attribute id="Type" type="FixedString" value="character" />
+					<attribute id="VisualTemplate" type="FixedString" value="" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="144115207403209034" />
 					<children>
 						<node id="Bounds">

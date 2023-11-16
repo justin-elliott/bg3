@@ -5,45 +5,16 @@
 		<node id="Templates">
 			<children>
 				<node id="GameObjects">
-					<attribute id="AiHint" type="guid" value="c1b1489e-ffc5-447f-9866-53cd808e2e18" />
-					<attribute id="CharacterVisualResourceID" type="FixedString" value="a8f328ae-a7d1-76b1-e185-aa933b1874f6" />
-					<attribute id="Icon" type="FixedString" value="a8f328ae-a7d1-76b1-e185-aa933b1874f6-_(Icon_HalfElf_Female)" />
+					<attribute id="CharacterVisualResourceID" type="FixedString" value="92ee0e6c-939c-a1f0-cad6-95aa80a1ed5d" />
+					<attribute id="Icon" type="FixedString" value="92ee0e6c-939c-a1f0-cad6-95aa80a1ed5d-_(Icon_HalfElf_Female)" />
 					<attribute id="LevelName" type="FixedString" value="" />
 					<attribute id="MapKey" type="FixedString" value="aef61116-1ee6-4928-bdef-d25c418e54b5" />
 					<attribute id="Name" type="LSString" value="BASE_HalfElves_Female_Demigod" />
-					<attribute id="ParentTemplateId" type="FixedString" value="ebd9d3bf-9759-4244-b20a-a57c1f4bafe6" />
+					<attribute id="ParentTemplateId" type="FixedString" value="ebd9d3bf-9759-4244-b20a-a57c1f4bafe6" /><!-- BASE_HalfElves_Female -->
 					<attribute id="Race" type="guid" value="49a772fb-d373-4996-9716-f11c343f94fe" />
 					<attribute id="Type" type="FixedString" value="character" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="1" />
 					<children>
-						<node id="Bounds">
-							<children>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.40751 1.93354 0.0630085" />
-									<attribute id="Min" type="fvec3" value="-0.40751 -0.00135875 -0.1058585" />
-									<attribute id="Radius" type="float" value="0.249" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="0" />
-								</node>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.81502 1.93354 0.126017" />
-									<attribute id="Min" type="fvec3" value="-0.81502 -0.00135875 -0.211717" />
-									<attribute id="Radius" type="float" value="0.2" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="1" />
-								</node>
-								<node id="Bound">
-									<attribute id="Height" type="float" value="2" />
-									<attribute id="Max" type="fvec3" value="0.81502 1.93354 0.126017" />
-									<attribute id="Min" type="fvec3" value="-0.81502 -0.00135875 -0.211717" />
-									<attribute id="Radius" type="float" value="0.499" />
-									<attribute id="Shape" type="uint8" value="2" />
-									<attribute id="Type" type="uint8" value="2" />
-								</node>
-							</children>
-						</node>
 						<node id="GameMaster" />
 						<node id="LocomotionParams" />
 					</children>

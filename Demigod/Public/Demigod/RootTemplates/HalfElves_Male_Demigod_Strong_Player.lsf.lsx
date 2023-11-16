@@ -12,7 +12,7 @@
 					<attribute id="LevelName" type="FixedString" value="" />
 					<attribute id="MapKey" type="FixedString" value="355ee287-093b-4274-96ef-9de6eac30819" />
 					<attribute id="Name" type="LSString" value="HalfElves_Male_Demigod_Strong_Player" />
-					<attribute id="ParentTemplateId" type="FixedString" value="7640af4e-fc75-4a90-9bae-4f0a80d10b77" />
+					<attribute id="ParentTemplateId" type="FixedString" value="7640af4e-fc75-4a90-9bae-4f0a80d10b77" /><!-- HalfElves_Male_Demigod_Player -->
 					<attribute id="Type" type="FixedString" value="character" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="1" />
 					<children>
@@ -20,7 +20,7 @@
 						<node id="Tags">
 							<children>
 								<node id="Tag">
-									<attribute id="Object" type="guid" value="d3116e58-c55a-4853-a700-bee996207397" />
+									<attribute id="Object" type="guid" value="d3116e58-c55a-4853-a700-bee996207397" /><!-- BODYTYPE_STRONG -->
 								</node>
 							</children>
 						</node>

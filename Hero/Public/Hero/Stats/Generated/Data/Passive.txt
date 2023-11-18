@@ -1,8 +1,3 @@
-new entry "Heroic_Abilities"
-type "PassiveData"
-data "Properties" "IsHidden"
-data "Boosts" "Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"
-
 new entry "Heroic_Proficiencies"
 type "PassiveData"
 data "Properties" "IsHidden"

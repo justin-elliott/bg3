@@ -1,7 +1,7 @@
 new entry "Demigod_AbilityScores"
 type "PassiveData"
 data "Properties" "IsHidden"
-data "Boosts" "Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"
+data "Boosts" "Ability(Strength,4,20);Ability(Dexterity,4,20);Ability(Constitution,4,20);Ability(Intelligence,4,20);Ability(Wisdom,4,20);Ability(Charisma,4,20)"
 
 new entry "Demigod_Proficiencies"
 type "PassiveData"

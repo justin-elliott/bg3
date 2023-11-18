@@ -6,7 +6,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Hero Class Cantrips"/>
-                    <attribute id="Spells" type="LSString" value="Projectile_LightningArc"/>
+                    <attribute id="Spells" type="LSString" value="Projectile_LightningArc;Target_EnhanceAbility_Cantrip"/>
                     <attribute id="UUID" type="guid" value="346e16a4-0c30-4811-a5b2-738a98deed5a"/>
                 </node>
             </children>

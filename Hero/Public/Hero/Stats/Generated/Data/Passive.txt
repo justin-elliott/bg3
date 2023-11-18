@@ -1,0 +1,18 @@
+new entry "Heroic_Abilities"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"
+
+new entry "Heroic_Proficiencies"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)"
+
+new entry "Gifted_Athlete"
+type "PassiveData"
+data "Icon" "PassiveFeature_UnarmoredMovement"
+data "DisplayName" "hf27028c1gaaa3g4ff3g8fd2gbf219ebcf060"
+data "Description" "h6a134245gcaf9g4861ga02agf861de4965c5"
+data "DescriptionParams" "Distance(3);Distance(3)"
+data "Properties" "Highlighted"
+data "Boosts" "ActionResource(Movement,3,0);JumpMaxDistanceBonus(3);CarryCapacityMultiplier(1.5)"

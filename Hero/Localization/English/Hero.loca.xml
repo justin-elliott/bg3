@@ -2,4 +2,6 @@
 <contentList>
     <content contentuid="h65529040gb6cdg48begb61ag00e6d1b7a09f" version="1">Hero</content>
     <content contentuid="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1">You have it within you to be one of Faerûn's most renowned heroes, or one of its most notorious villains. Which path will you tread?</content>
+	<content contentuid="hf27028c1gaaa3g4ff3g8fd2gbf219ebcf060" version="1">Gifted Athlete</content>
+	<content contentuid="h6a134245gcaf9g4861ga02agf861de4965c5" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2], and your carrying capacity is increased by a half.</content>
 </contentList>

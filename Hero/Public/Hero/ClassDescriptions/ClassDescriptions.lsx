@@ -5,14 +5,14 @@
         <node id="root">
             <children>
                 <node id="ClassDescription">
-                    <attribute id="BaseHp" type="int32" value="10"/>
+                    <attribute id="BaseHp" type="int32" value="12"/>
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
-                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Fighter"/>
+                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Hero_Base"/>
                     <attribute id="ClassHotbarColumns" type="int32" value="5"/>
                     <attribute id="CommonHotbarColumns" type="int32" value="9"/>
                     <attribute id="Description" type="TranslatedString" handle="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="h65529040gb6cdg48begb61ag00e6d1b7a09f" version="1"/>
-                    <attribute id="HpPerLevel" type="int32" value="6"/>
+                    <attribute id="HpPerLevel" type="int32" value="7"/>
                     <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
                     <attribute id="LearningStrategy" type="uint8" value="1"/>
                     <attribute id="Name" type="FixedString" value="Hero"/>

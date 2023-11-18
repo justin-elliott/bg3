@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="SpellLists">
+        <node id="root">
+            <children>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Hero Class Cantrips"/>
+                    <attribute id="Spells" type="LSString" value="Projectile_LightningArc"/>
+                    <attribute id="UUID" type="guid" value="346e16a4-0c30-4811-a5b2-738a98deed5a"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -4,4 +4,6 @@
     <content contentuid="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1">You have it within you to be one of Faerûn's most renowned heroes, or one of its most notorious villains. Which path will you tread?</content>
 	<content contentuid="hf27028c1gaaa3g4ff3g8fd2gbf219ebcf060" version="1">Gifted Athlete</content>
 	<content contentuid="h6a134245gcaf9g4861ga02agf861de4965c5" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2], and your carrying capacity is increased by a half.</content>
+	<content contentuid="ha23d8bfag91adg48fcga0e5g9775bc07dfb7" version="1">Lightning Arc</content>
+	<content contentuid="h5af591cag1988g491fg8065g6d8fe7a04a06" version="1">Project an arc of lightning.</content>
 </contentList>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="DefaultValues">
+        <node id="root">
+            <children>
+                <!-- Hero Arcanist prepared spells  -->
+                <node id="DefaultValue">
+                    <attribute id="Level" type="int32" value="1"/>
+                    <attribute id="Prepare" type="LSString" value="Shout_Shield_Wizard;Projectile_MagicMissile;Zone_Thunderwave;Target_FogCloud;Target_Jump;Target_Longstrider;"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/><!-- Arcanist progression table -->
+                    <attribute id="UUID" type="guid" value="3cbff885-2604-4b8a-b193-727e676da988"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -16,11 +16,13 @@
                     <attribute id="HpPerLevel" type="int32" value="7"/>
                     <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
                     <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="Hero"/>
                     <attribute id="PrimaryAbility" type="uint8" value="1"/><!-- Strength -->
                     <attribute id="ProgressionTableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="SoundClassType" type="FixedString" value="Fighter"/>
                     <attribute id="SpellCastingAbility" type="uint8" value="3"/><!-- Constitution -->
+                    <attribute id="SpellList" type="guid" value="beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"/>
                     <attribute id="UUID" type="guid" value="0597eb63-98a6-469e-a681-caa63d93ae62"/>
                     <children>
                         <node id="Tags">
@@ -43,7 +45,7 @@
                     <attribute id="PrimaryAbility" type="uint8" value="3"/><!-- Constitution -->
                     <attribute id="ProgressionTableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
                     <attribute id="ShortName" type="TranslatedString" handle="hc0d6cdb5g1d5dg4ea6gaec3ge1325491317c" version="1"/>
-                    <attribute id="SoundClassType" type="FixedString" value="Sorcerer"/>
+                    <attribute id="SoundClassType" type="FixedString" value="Wizard"/>
                     <attribute id="SpellCastingAbility" type="uint8" value="3"/><!-- Constitution -->
                     <attribute id="SpellList" type="guid" value="beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"/>
                     <attribute id="UUID" type="guid" value="60b5f0e3-de73-4dca-8403-f5e665ff4314"/>

@@ -4,6 +4,7 @@
     <region id="DefaultValues">
         <node id="root">
             <children>
+                <!-- Hero abilities -->
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="Strength;Constitution"/>
                     <attribute id="Level" type="int32" value="1"/>

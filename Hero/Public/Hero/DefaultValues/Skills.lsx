@@ -4,6 +4,7 @@
     <region id="DefaultValues">
         <node id="root">
             <children>
+                <!-- Hero skills -->
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="Persuasion;Intimidation;Deception;Perception;Athletics;Insight;SleightOfHand;Stealth;Survival;Investigation;History;Religion;Acrobatics;Arcana;Medicine;Nature;Performance;AnimalHandling"/>
                     <attribute id="Level" type="int32" value="1"/>

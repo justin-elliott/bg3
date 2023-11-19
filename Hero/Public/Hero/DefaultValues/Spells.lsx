@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="DefaultValues">
+        <node id="root">
+            <children>
+                <!-- Hero Cantrips -->
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="Projectile_LightningArc;Target_EnhanceAbility_Cantrip;Target_MageHand;Target_MinorIllusion"/>
+                    <attribute id="Level" type="int32" value="1"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/><!-- Hero progression table -->
+                    <attribute id="UUID" type="guid" value="cf115266-b64e-41af-9a6a-16aca6bb302c"/>
+                </node>
+                <!-- Hero Arcanist prepared spells  -->
+                <node id="DefaultValue">
+                    <attribute id="Level" type="int32" value="1"/>
+                    <attribute id="Add" type="LSString" value="Shout_Shield_Wizard;Projectile_MagicMissile;Zone_Thunderwave;Target_FogCloud;Target_Jump;Target_Longstrider;"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/><!-- Arcanist progression table -->
+                    <attribute id="UUID" type="guid" value="5ec5b054-ba6d-48da-bb48-a7b898242048"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

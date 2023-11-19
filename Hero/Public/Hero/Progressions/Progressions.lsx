@@ -4,6 +4,7 @@
     <region id="Progressions">
         <node id="root">
             <children>
+                <!-- Hero base class -->
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Wisdom);Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"/>
@@ -14,6 +15,15 @@
                     <attribute id="Selectors" type="LSString" value="AddSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);;SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="45837e11-d26b-4503-aa3c-a292a8f31d60"/>
+                    <children>
+                        <node id="SubClasses">
+                            <children>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="60b5f0e3-de73-4dca-8403-f5e665ff4314"/>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true"/>
@@ -108,6 +118,15 @@
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="526347b2-a98b-4123-815b-d77ff0c285e4"/>
+                </node>
+
+                <!-- Hero Arcanist subclass -->
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="1"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="beb17f9b-6b68-42aa-95f4-b007446fcd95"/>
                 </node>
             </children>
         </node>

@@ -4,12 +4,22 @@
     <region id="ProgressionDescriptions">
         <node id="root">
             <children>
+                <!-- Hero base class -->
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="h65529040gb6cdg48begb61ag00e6d1b7a09f" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1"/>
                     <attribute id="ProgressionTableId" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="Type" type="FixedString" value="Hero"/>
                     <attribute id="UUID" type="guid" value="ea89e894-4671-41f1-8014-193ed7521fb7"/>
+                </node>
+
+                <!-- Hero Arcanist subclass -->
+                <node id="ProgressionDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hc0d6cdb5g1d5dg4ea6gaec3ge1325491317c" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="hf764d9cag7c60g4cbag9bc4g1bf4a7eb9c7b" version="1"/>
+                    <attribute id="ProgressionTableId" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="Type" type="FixedString" value="HeroArcanist"/>
+                    <attribute id="UUID" type="guid" value="8c12b3cb-b2ec-414e-9a5a-eb1421250f0c"/>
                 </node>
             </children>
         </node>

@@ -13,7 +13,7 @@
                     <attribute id="CommonHotbarColumns" type="int32" value="9"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="h65529040gb6cdg48begb61ag00e6d1b7a09f" version="1"/>
                     <attribute id="Description" type="TranslatedString" handle="h208ae2bcge44bg4205g91c7gfe7ebf6514f0" version="1"/>
-                    <attribute id="HpPerLevel" type="int32" value="7"/>
+                    <attribute id="HpPerLevel" type="int32" value="6"/>
                     <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
                     <attribute id="LearningStrategy" type="uint8" value="1"/>
                     <attribute id="MustPrepareSpells" type="bool" value="true"/>

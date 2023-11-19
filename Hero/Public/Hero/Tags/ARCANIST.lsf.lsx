@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+	<version major="4" minor="1" revision="1" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="Tags">
+		<node id="Tags">
+			<attribute id="Description" type="LSString" value="A natural spellcasters who seeks to further their abilities with the study of magic." />
+            <attribute id="DisplayName" type="TranslatedString" handle="hc0d6cdb5g1d5dg4ea6gaec3ge1325491317c" version="1"/>
+            <attribute id="DisplayDescription" type="TranslatedString" handle="hf764d9cag7c60g4cbag9bc4g1bf4a7eb9c7b" version="1"/>
+			<attribute id="Icon" type="FixedString" value="" />
+			<attribute id="Name" type="FixedString" value="ARCANIST" />
+			<attribute id="UUID" type="guid" value="3748c09c-2438-41f9-ab89-059daba99c4c" />
+			<children>
+				<node id="Categories">
+					<children>
+						<node id="Category">
+							<attribute id="Name" type="LSString" value="Code" />
+						</node>
+						<node id="Category">
+							<attribute id="Name" type="LSString" value="Dialog" />
+						</node>
+						<node id="Category">
+							<attribute id="Name" type="LSString" value="Class" />
+						</node>
+						<node id="Category">
+							<attribute id="Name" type="LSString" value="CharacterSheet" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

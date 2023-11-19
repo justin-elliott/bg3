@@ -22,6 +22,11 @@
                     <attribute id="SoundClassType" type="FixedString" value="Fighter"/>
                     <attribute id="SpellCastingAbility" type="uint8" value="3"/><!-- Constitution -->
                     <attribute id="UUID" type="guid" value="0597eb63-98a6-469e-a681-caa63d93ae62"/>
+                    <children>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="42ff11f8-fb4f-4535-ab4b-a43ad73d29b4"/><!-- HERO -->
+                        </node>
+                    </children>
                 </node>
 
                 <!-- Hero Arcanist subclass -->
@@ -35,14 +40,17 @@
                     <attribute id="MustPrepareSpells" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="HeroArcanist"/>
                     <attribute id="ParentGuid" type="guid" value="0597eb63-98a6-469e-a681-caa63d93ae62"/>
-                    <attribute id="PrimaryAbility" type="uint8" value="6"/><!-- Charisma -->
+                    <attribute id="PrimaryAbility" type="uint8" value="3"/><!-- Constitution -->
                     <attribute id="ProgressionTableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
                     <attribute id="ShortName" type="TranslatedString" handle="hc0d6cdb5g1d5dg4ea6gaec3ge1325491317c" version="1"/>
                     <attribute id="SoundClassType" type="FixedString" value="Sorcerer"/>
-                    <attribute id="SpellCastingAbility" type="uint8" value="6"/><!-- Charisma -->
+                    <attribute id="SpellCastingAbility" type="uint8" value="3"/><!-- Constitution -->
                     <attribute id="SpellList" type="guid" value="beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"/>
                     <attribute id="UUID" type="guid" value="60b5f0e3-de73-4dca-8403-f5e665ff4314"/>
                     <children>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="3748c09c-2438-41f9-ab89-059daba99c4c"/><!-- ARCANIST -->
+                        </node>
                         <node id="Tags">
                             <attribute id="Object" type="guid" value="18266c0b-efbc-4c80-8784-ada4a37218d7"/><!-- SORCERER -->
                         </node>

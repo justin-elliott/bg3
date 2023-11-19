@@ -125,11 +125,112 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)"/>
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="HeroArcanist"/>
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1"/>
+                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;UnlockedSpellSlotLevel1"/>
                     <attribute id="ProgressionType" type="uint8" value="1"/>
                     <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,6,0)"/>
                     <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
                     <attribute id="UUID" type="guid" value="beb17f9b-6b68-42aa-95f4-b007446fcd95"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,1)"/>
+                    <attribute id="Level" type="uint8" value="2"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="e78a677b-bfe5-48b4-ab7f-84796e6ba05e"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,1);ActionResource(SpellSlot,2,2)"/>
+                    <attribute id="Level" type="uint8" value="3"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="8e1b29f6-96cd-4574-a181-3561dd7b6397"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,2)"/>
+                    <attribute id="Level" type="uint8" value="4"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,1,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="dcccb603-3698-46af-896d-9badb48c25a6"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3)"/>
+                    <attribute id="Level" type="uint8" value="5"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="573f56bb-c938-46b4-874c-17436b344f20"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,3)"/>
+                    <attribute id="Level" type="uint8" value="6"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="299accfc-8768-4c48-8d4d-5406902341d5"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4)"/>
+                    <attribute id="Level" type="uint8" value="7"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="7fa24da0-abed-4170-bc6e-19fa081ba025"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4)"/>
+                    <attribute id="Level" type="uint8" value="8"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="dfcf3d1f-ca77-4b5a-a9d4-f08cb784b559"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4);ActionResource(SpellSlot,1,5)"/>
+                    <attribute id="Level" type="uint8" value="9"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="e614bafd-9be8-487c-9020-2236bef3a078"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,5)"/>
+                    <attribute id="Level" type="uint8" value="10"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="PassivesAdded" type="LSString" value="EmpoweredEvocation"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,1,0,,,,AlwaysPrepared);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="4f788e3b-9297-4ea7-affe-0929af2ba8da"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,6)"/>
+                    <attribute id="Level" type="uint8" value="11"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="1af8c59e-8240-46d3-84af-2e448b2e3400"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,6)"/>
+                    <attribute id="Level" type="uint8" value="12"/>
+                    <attribute id="Name" type="LSString" value="HeroArcanist"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)"/>
+                    <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/>
+                    <attribute id="UUID" type="guid" value="fb3bea7b-eeb9-4bf4-8f44-896afa9288d8"/>
                 </node>
             </children>
         </node>

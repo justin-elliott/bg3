@@ -6,4 +6,6 @@
 	<content contentuid="h6a134245gcaf9g4861ga02agf861de4965c5" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2], and your carrying capacity is increased by a half.</content>
 	<content contentuid="ha23d8bfag91adg48fcga0e5g9775bc07dfb7" version="1">Lightning Arc</content>
 	<content contentuid="h5af591cag1988g491fg8065g6d8fe7a04a06" version="1">Project an arc of lightning.</content>
+	<content contentuid="hef61c0fbge93cg426aga35fg45aeebc58425" version="1">Empowered Attacks</content>
+	<content contentuid="h43b62039gad6bg4abfga7deg91365d243147" version="1">When you make a melee or spell attack, add half of your Hero level to the damage it deals.</content>
 </contentList>

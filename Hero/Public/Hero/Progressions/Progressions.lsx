@@ -9,11 +9,105 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Wisdom);Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"/>
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Gifted_Athlete"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Gifted_Athlete;EmpoweredAttacks;SuperiorDarkvision;RelentlessEndurance"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="Selectors" type="LSString" value="AddSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);;SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="45837e11-d26b-4503-aa3c-a292a8f31d60"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="2"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="31a48206-9e4f-4e23-bad4-bbec2a0ca79f"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="false"/>
+                    <attribute id="Level" type="uint8" value="3"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BrutalCritical"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="52ef33e5-5c69-4dfd-a6b7-59a7211afbfc"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="4"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="af240dfc-49cc-4b2a-b939-edbb5a4025ac"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="false"/>
+                    <attribute id="Level" type="uint8" value="5"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="f82cf99a-c89f-40d2-85eb-b46d2364290e"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="6"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="0e57c21d-9737-49eb-85af-a37e998b8f08"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="false"/>
+                    <attribute id="Level" type="uint8" value="7"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="PassivesAdded" type="LSString" value="FastHands"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="8acaae75-e0da-45f2-b464-afa5ee195b4e"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="8"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="e82eea1d-3939-47ca-8eea-2b9ff645c1c4"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="false"/>
+                    <attribute id="Level" type="uint8" value="9"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="7afaa449-b187-455a-8105-0f67501898f1"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="10"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="99deaddf-24d6-41d4-959a-4d8a0232c05e"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="false"/>
+                    <attribute id="Level" type="uint8" value="11"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2"/>
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="ac62e461-606e-4937-9d0c-49711f328c21"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="12"/>
+                    <attribute id="Name" type="LSString" value="Hero"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
+                    <attribute id="UUID" type="guid" value="526347b2-a98b-4123-815b-d77ff0c285e4"/>
                 </node>
             </children>
         </node>

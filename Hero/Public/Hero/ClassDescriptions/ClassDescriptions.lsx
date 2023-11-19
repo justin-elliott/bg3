@@ -7,6 +7,7 @@
                 <!-- Hero base class -->
                 <node id="ClassDescription">
                     <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="true"/>
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Hero_Base"/>
                     <attribute id="ClassHotbarColumns" type="int32" value="5"/>
@@ -38,7 +39,6 @@
                     <attribute id="Description" type="TranslatedString" handle="hf764d9cag7c60g4cbag9bc4g1bf4a7eb9c7b" version="1"/>
                     <attribute id="IsDefaultForUseSpellAction" type="bool" value="true"/>
                     <attribute id="LearningStrategy" type="uint8" value="1"/>
-                    <attribute id="CanLearnSpells" type="bool" value="true"/>
                     <attribute id="MustPrepareSpells" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="HeroArcanist"/>
                     <attribute id="ParentGuid" type="guid" value="0597eb63-98a6-469e-a681-caa63d93ae62"/>

@@ -8,8 +8,8 @@
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="Persuasion;Intimidation;Deception;SleightOfHand;Insight;Stealth;Survival;Investigation;History;Religion;Acrobatics;Arcana;Medicine;Nature;Performance;AnimalHandling;Athletics;Perception"/>
                     <attribute id="Level" type="int32" value="1"/>
-                    <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
-                    <attribute id="UUID" type="guid" value="a02315cc-07bd-487e-91eb-05a411f885a9"/>
+                    <attribute id="TableUUID" type="guid" value="553b1949-f0cd-4ed9-a5b3-ac7984eecb70"/><!-- Battlemage progression table -->
+                    <attribute id="UUID" type="guid" value="44276627-d0b3-4cd4-9d7d-64162413a151"/>
                 </node>
             </children>
         </node>

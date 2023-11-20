@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <content contentuid="h5d832c72gd03cg40e5g8164gb51f6f526ff4" version="1">Battlemage</content>
+    <content contentuid="h644dfc13g7ca3g4a54gb1b4ga1bc4d86e091" version="1">A natural spellcaster, you seek to augment your burgeoning power with study in both the arcane and mundane.</content>
+	<content contentuid="h278f3aa4gf94cg4fe3g98ddg3915f3df3caa" version="1">Gifted Athlete</content>
+	<content contentuid="hdad33ac3g1afdg49dag817eg594cebd9e25f" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;jump&lt;/LSTag&gt; distance increases by [2], and your carrying capacity is increased by a half.</content>
+	<content contentuid="h4fe26ae6g497dg4700g9078g290b2d4fa810" version="1">Lightning Arc</content>
+	<content contentuid="h133c7d27ga900g45d3gb59ag33c331be4748" version="1">Project an arc of lightning.</content>
+	<content contentuid="h71afd540gc6adg4562g8994gd825f5173bc0" version="1">Empowered Attacks</content>
+	<content contentuid="h0d9d5645ge8cdg4ff0ga0efg411755e76064" version="1">When you make a melee or spell attack, add half of your Battlemage level to the damage it deals.</content>
+	<content contentuid="h6bb0fab4g862bg4f0ega400g64fb93eb5b6b" version="1">Empowered Spells</content>
+	<content contentuid="h3f2481d8g9e8ag4a47ga35dgf28a0639d047" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
+</contentList>

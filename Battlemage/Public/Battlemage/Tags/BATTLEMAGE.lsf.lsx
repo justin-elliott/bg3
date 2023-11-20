@@ -3,12 +3,12 @@
 	<version major="4" minor="1" revision="1" build="0" lslib_meta="v1,bswap_guids" />
 	<region id="Tags">
 		<node id="Tags">
-			<attribute id="Description" type="LSString" value="A natural spellcasters who seeks to further their abilities with the study of magic." />
-            <attribute id="DisplayName" type="TranslatedString" handle="hc0d6cdb5g1d5dg4ea6gaec3ge1325491317c" version="1"/>
-            <attribute id="DisplayDescription" type="TranslatedString" handle="hf764d9cag7c60g4cbag9bc4g1bf4a7eb9c7b" version="1"/>
+			<attribute id="Description" type="LSString" value="A natural spellcasters who studies arms and magic." />
+            <attribute id="DisplayName" type="TranslatedString" handle="h5d832c72gd03cg40e5g8164gb51f6f526ff4" version="1"/>
+            <attribute id="DisplayDescription" type="TranslatedString" handle="h644dfc13g7ca3g4a54gb1b4ga1bc4d86e091" version="1"/>
 			<attribute id="Icon" type="FixedString" value="" />
-			<attribute id="Name" type="FixedString" value="ARCANIST" />
-			<attribute id="UUID" type="guid" value="3748c09c-2438-41f9-ab89-059daba99c4c" />
+			<attribute id="Name" type="FixedString" value="BATTLEMAGE" />
+			<attribute id="UUID" type="guid" value="56615d76-749f-4a1b-bf6f-a04c52b37bf5" />
 			<children>
 				<node id="Categories">
 					<children>

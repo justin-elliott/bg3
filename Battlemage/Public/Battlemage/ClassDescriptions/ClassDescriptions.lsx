@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="ClassDescriptions">
+        <node id="root">
+            <children>
+                <!-- Battlemage class -->
+                <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="true"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Hero_Base"/>
+                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
+                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5d832c72gd03cg40e5g8164gb51f6f526ff4" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="h644dfc13g7ca3g4a54gb1b4ga1bc4d86e091" version="1"/>
+                    <attribute id="HpPerLevel" type="int32" value="6"/>
+                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Hero"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="6"/><!-- Charisma -->
+                    <attribute id="ProgressionTableUUID" type="guid" value="553b1949-f0cd-4ed9-a5b3-ac7984eecb70"/>
+                    <attribute id="SoundClassType" type="FixedString" value="Fighter"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="6"/><!-- Charisma -->
+                    <attribute id="SpellList" type="guid" value="beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"/>
+                    <attribute id="UUID" type="guid" value="528ad611-4035-4e5f-8392-89f543a500b4"/>
+                    <children>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="56615d76-749f-4a1b-bf6f-a04c52b37bf5"/><!-- BATTLEMAGE -->
+                        </node>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="18266c0b-efbc-4c80-8784-ada4a37218d7"/><!-- SORCERER -->
+                        </node>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="6fe3ae27-dc6c-4fc9-9245-710c790c396c"/><!-- WIZARD -->
+                        </node>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="dc860a81-f3c2-4c1a-ab90-e7583324845c"/><!-- PETPAL: Speak with Animals -->
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

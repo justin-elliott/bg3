@@ -8,19 +8,19 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" type="LSWString" value="BinaryPrimitive"/>
                     <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
-                    <attribute id="Description" type="LSWString" value="Adds the Hero class"/>
-                    <attribute id="Folder" type="LSWString" value="Hero"/>
+                    <attribute id="Description" type="LSWString" value="Adds the Battlemage class"/>
+                    <attribute id="Folder" type="LSWString" value="Battlemage"/>
                     <attribute id="LobbyLevelName" type="FixedString" value=""/>
                     <attribute id="MD5" type="LSString" value=""/>
                     <attribute id="MainMenuBackgroundVideo" type="FixedString" value=""/>
                     <attribute id="MenuLevelName" type="FixedString" value=""/>
-                    <attribute id="Name" type="FixedString" value="Hero"/>
+                    <attribute id="Name" type="FixedString" value="Battlemage"/>
                     <attribute id="NumPlayers" type="uint8" value="4"/>
                     <attribute id="PhotoBooth" type="FixedString" value=""/>
                     <attribute id="StartupLevelName" type="FixedString" value=""/>
                     <attribute id="Tags" type="LSString" value=""/>
                     <attribute id="Type" type="FixedString" value="Add-on"/>
-                    <attribute id="UUID" type="FixedString" value="5ee41f3b-c149-4880-9a3c-46e3be6d06d7"/>
+                    <attribute id="UUID" type="FixedString" value="6add6d6c-6aaf-4af1-9083-8110c7ac2d15"/>
                     <attribute id="Version" type="int32" value="1"/>
                     <children>
                         <node id="PublishVersion">

@@ -3,6 +3,11 @@ type "PassiveData"
 data "Properties" "IsHidden"
 data "Boosts" "Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)"
 
+new entry "Heroic_Skills"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "ProficiencyBonus(Skill,Athletics);ExpertiseBonus(Athletics);ProficiencyBonus(Skill,Perception);ExpertiseBonus(Perception)"
+
 new entry "Gifted_Athlete"
 type "PassiveData"
 data "Icon" "PassiveFeature_UnarmoredMovement"

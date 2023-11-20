@@ -32,3 +32,33 @@ data "Description" "h9319770bg3027g4a8dg977cg6a2837043bf9"
 data "Icon" "PassiveFeature_EmpoweredEvocation"
 data "Properties" "Highlighted"
 data "Boosts" "IF(IsSpell()):DamageBonus(ConstitutionModifier)"
+
+new entry "Heroic_Resistance_L1"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Slashing,Resistant);Resistance(Piercing,Resistant);Resistance(Bludgeoning,Resistant)"
+
+new entry "Heroic_Resistance_L3"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Fire,Resistant);Resistance(Cold,Resistant)"
+
+new entry "Heroic_Resistance_L5"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Thunder,Resistant);Resistance(Lightning,Resistant)"
+
+new entry "Heroic_Resistance_L7"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Necrotic,Resistant);Resistance(Radiant,Resistant)"
+
+new entry "Heroic_Resistance_L9"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Acid,Resistant);Resistance(Poison,Resistant);StatusImmunity(SG_Disease)"
+
+new entry "Heroic_Resistance_L11"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Boosts" "Resistance(Force,Resistant);Resistance(Force,Psychic)"

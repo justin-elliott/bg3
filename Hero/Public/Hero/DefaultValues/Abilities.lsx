@@ -6,7 +6,7 @@
             <children>
                 <!-- Hero abilities -->
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="Strength;Constitution"/>
+                    <attribute id="Add" type="LSString" value="Constitution;Strength"/>
                     <attribute id="Level" type="int32" value="1"/>
                     <attribute id="SelectorId" type="LSString" value="AbilityBonus"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>

@@ -29,6 +29,9 @@
                         <node id="Tags">
                             <attribute id="Object" type="guid" value="42ff11f8-fb4f-4535-ab4b-a43ad73d29b4"/><!-- HERO -->
                         </node>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="dc860a81-f3c2-4c1a-ab90-e7583324845c"/><!-- PETPAL: Speak with Animals -->
+                        </node>
                     </children>
                 </node>
 

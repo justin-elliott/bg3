@@ -14,7 +14,7 @@
                 <!-- Hero Arcanist prepared spells  -->
                 <node id="DefaultValue">
                     <attribute id="Level" type="int32" value="1"/>
-                    <attribute id="Add" type="LSString" value="Shout_Shield_Wizard;Projectile_MagicMissile;Zone_Thunderwave;Target_FogCloud;Target_Jump;Target_Longstrider;"/>
+                    <attribute id="Add" type="LSString" value="Shout_Shield_Wizard;Projectile_MagicMissile;Zone_Thunderwave;Target_FogCloud;Target_Longstrider;Target_Jump"/>
                     <attribute id="TableUUID" type="guid" value="6820df71-7d7c-4db1-a946-6aa02a7d0001"/><!-- Arcanist progression table -->
                     <attribute id="UUID" type="guid" value="5ec5b054-ba6d-48da-bb48-a7b898242048"/>
                 </node>

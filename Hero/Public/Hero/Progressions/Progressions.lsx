@@ -10,7 +10,7 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Wisdom);Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"/>
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Heroic_Skills;Gifted_Athlete;EmpoweredAttacks;SuperiorDarkvision;RelentlessEndurance;JackOfAllTrades"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Heroic_Skills;Heroic_Resistance_L1;Gifted_Athlete;EmpoweredAttacks;SuperiorDarkvision;RelentlessEndurance;JackOfAllTrades"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="Selectors" type="LSString" value="SelectSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,4,0,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
@@ -37,7 +37,7 @@
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Level" type="uint8" value="3"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BrutalCritical"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BrutalCritical;Heroic_Resistance_L3"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="52ef33e5-5c69-4dfd-a6b7-59a7211afbfc"/>
@@ -54,7 +54,7 @@
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Level" type="uint8" value="5"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack"/>
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;ExtraAttack;Heroic_Resistance_L5"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="f82cf99a-c89f-40d2-85eb-b46d2364290e"/>
@@ -71,7 +71,7 @@
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Level" type="uint8" value="7"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="FastHands"/>
+                    <attribute id="PassivesAdded" type="LSString" value="FastHands;Heroic_Resistance_L7"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="8acaae75-e0da-45f2-b464-afa5ee195b4e"/>
@@ -88,7 +88,7 @@
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Level" type="uint8" value="9"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces"/>
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;Heroic_Resistance_L9"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>
                     <attribute id="UUID" type="guid" value="7afaa449-b187-455a-8105-0f67501898f1"/>
@@ -105,7 +105,7 @@
                     <attribute id="AllowImprovement" type="bool" value="false"/>
                     <attribute id="Level" type="uint8" value="11"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2;Heroic_Resistance_L11"/>
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>

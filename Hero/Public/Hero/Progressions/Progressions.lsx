@@ -10,7 +10,7 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Wisdom);Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2)"/>
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Hero"/>
-                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Heroic_Skills;Heroic_Resistance_L1;Gifted_Athlete;EmpoweredAttacks;SuperiorDarkvision;RelentlessEndurance;JackOfAllTrades"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Heroic_Proficiencies;Heroic_Skills;Heroic_Resistance_L1;Gifted_Athlete;EmpoweredAttacks;Darkvision;RelentlessEndurance;JackOfAllTrades"/>
                     <attribute id="ProgressionType" type="uint8" value="0"/>
                     <attribute id="Selectors" type="LSString" value="SelectSpells(346e16a4-0c30-4811-a5b2-738a98deed5a,4,0,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"/>
                     <attribute id="TableUUID" type="guid" value="33049732-1f56-4674-a6e0-c8c1ac71f5ed"/>

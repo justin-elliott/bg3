@@ -6,7 +6,7 @@
             <children>
                 <!-- Battlemage abilities -->
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="Charisma;Strength"/>
+                    <attribute id="Add" type="LSString" value="Constitution;Strength"/>
                     <attribute id="Level" type="int32" value="1"/>
                     <attribute id="SelectorId" type="LSString" value="AbilityBonus"/>
                     <attribute id="TableUUID" type="guid" value="553b1949-f0cd-4ed9-a5b3-ac7984eecb70"/><!-- Battlemage progression table -->

@@ -1,4 +1,4 @@
-new equipment "EQP_CC_Hero_Base"
+new equipment "EQP_CC_Battlemage_Base"
 add initialweaponset "Melee"
 add equipmentgroup
 add equipment entry "WPN_Longsword"

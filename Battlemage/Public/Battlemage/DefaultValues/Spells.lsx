@@ -6,12 +6,12 @@
             <children>
                 <!-- Battlemage Cantrips -->
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="Projectile_LightningArc;Target_EnhanceAbility_Cantrip;Target_MageHand;Target_MinorIllusion"/>
+                    <attribute id="Add" type="LSString" value="Projectile_LightningArc;Target_MageHand;Target_MinorIllusion;Target_Friends"/>
                     <attribute id="Level" type="int32" value="1"/>
                     <attribute id="TableUUID" type="guid" value="553b1949-f0cd-4ed9-a5b3-ac7984eecb70"/><!-- Battlemage progression table -->
                     <attribute id="UUID" type="guid" value="1c6d8409-5f63-40e8-afee-7792717e83ba"/>
                 </node>
-                <!-- Battlemage prepared spells  -->
+                <!-- Battlemage prepared spells -->
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="Shout_Shield_Wizard;Projectile_MagicMissile;Zone_Thunderwave;Target_FogCloud;Target_Longstrider;Target_Jump"/>
                     <attribute id="Level" type="int32" value="1"/>

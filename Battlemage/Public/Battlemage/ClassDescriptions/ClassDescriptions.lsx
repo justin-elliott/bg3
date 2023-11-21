@@ -10,13 +10,12 @@
                     <attribute id="CanLearnSpells" type="bool" value="true"/>
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Battlemage_Base"/>
-                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
-                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="h5d832c72gd03cg40e5g8164gb51f6f526ff4" version="1"/>
                     <attribute id="Description" type="TranslatedString" handle="h644dfc13g7ca3g4a54gb1b4ga1bc4d86e091" version="1"/>
                     <attribute id="HpPerLevel" type="int32" value="6"/>
-                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="IsDefaultForUseSpellAction" type="bool" value="true"/>
                     <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MulticlassSpellcasterModifier" type="double" value="1"/>
                     <attribute id="MustPrepareSpells" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="Battlemage"/>
                     <attribute id="PrimaryAbility" type="uint8" value="3"/><!-- Constitution -->

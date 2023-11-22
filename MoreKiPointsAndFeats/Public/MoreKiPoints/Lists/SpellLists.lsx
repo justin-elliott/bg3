@@ -6,7 +6,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Monk Cantrips"/>
-                    <attribute id="Spells" type="LSString" value="Target_SpeakWithDead_Cantrip;Shout_DetectThoughts_Cantrip;Target_Guidance;Shout_Longstrider"/>
+                    <attribute id="Spells" type="LSString" value="Target_SpeakWithDead_Cantrip;Shout_DetectThoughts_Cantrip;Target_Guidance;Shout_Longstrider;Shout_FeatherFall_Cantrip;Shout_DisguiseSelf_Cantrip;Shout_Jump"/>
                     <attribute id="UUID" type="guid" value="059b93c4-c613-4906-965c-a8ee0c4b1a02"/>
                 </node>
             </children>

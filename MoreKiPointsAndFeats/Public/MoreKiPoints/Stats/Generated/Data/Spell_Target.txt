@@ -1,0 +1,6 @@
+new entry "Target_SpeakWithDead_Cantrip"
+type "SpellData"
+data "SpellType" "Target"
+using "Target_SpeakWithDead"
+data "Level" "0"
+data "UseCosts" "ActionPoint:1"

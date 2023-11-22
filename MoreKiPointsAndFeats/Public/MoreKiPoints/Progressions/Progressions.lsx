@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="334"/>
+    <region id="Progressions">
+        <node id="root">
+            <children>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(MartialWeapons);ActionResource(KiPoint,8,0);Ability(Strength,2);Ability(Dexterity,2);Ability(Constitution,2);Ability(Intelligence,2);Ability(Wisdom,2);Ability(Charisma,2);Tag(PETPAL)"/>
+                    <attribute id="Level" type="uint8" value="1"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;RelentlessEndurance;Halfling_Lucky;Knowledgeable"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="Proficiency(SimpleWeapons);Proficiency(MartialWeapons);ActionResource(KiPoint,8,0)"/>
+                    <attribute id="IsMulticlass" type="bool" value="true"/>
+                    <attribute id="Level" type="uint8" value="1"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;FastHands"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="297e0cb5-9743-4ae8-b053-b3850f0fa134"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="2"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_1"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="Selectors" type="LSString" value="AddSpells(2715246d-3375-4766-9a3e-5961efd56748)"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="c17915f1-df2b-4cce-876f-68faf153f373"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0);ActionResource(DeflectMissiles_Charge,4,0)"/>
+                    <attribute id="Level" type="uint8" value="3"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="DeflectMissiles"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="296468cb-3640-4460-9f44-b30ee820a9ed"/>
+                    <children>
+                        <node id="SubClasses">
+                            <children>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="22894c32-54cf-49ea-b366-44bfcf01bb2a"/>
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="2a5e3097-384c-4d29-8d6e-054fdfd26b80"/>
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="bf46d73f-d406-4cb8-9a1d-e6e758ca02c7"/>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="4"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="SlowFall"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="e2bd97c2-4de1-43eb-bbeb-6383c472a4a2"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="5"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="7b354b75-537f-464e-a28d-cafa72323ab9"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="6"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_2;KiEmpoweredStrikes"/>
+                    <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_1"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="9286a35f-e58b-4f56-95a4-78dfb19ed5d5"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="7"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion;StillnessOfMind"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="e715d543-451b-419f-9cf1-ed88339d9387"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="8"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="FastHands"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="584f5806-6809-4fbf-8776-843ba611a404"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="9"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_DifficultTerrain"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="62d54d84-80f8-4c89-9a1a-6b15aeaf697a"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="10"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_3;PurityOfBody"/>
+                    <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_2"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="153f55a7-4c75-4748-a9f7-a756239a3fe6"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="11"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="8aa410ea-1fe2-4f9f-ab19-b2ab87f652cb"/>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true"/>
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)"/>
+                    <attribute id="Level" type="uint8" value="12"/>
+                    <attribute id="Name" type="LSString" value="Monk"/>
+                    <attribute id="ProgressionType" type="uint8" value="0"/>
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e"/>
+                    <attribute id="UUID" type="guid" value="67747624-d156-4e2b-917f-3d795ad06e8e"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

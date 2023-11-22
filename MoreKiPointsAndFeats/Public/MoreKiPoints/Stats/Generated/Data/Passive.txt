@@ -1,0 +1,7 @@
+new entry "Knowledgeable"
+type "PassiveData"
+data "DisplayName" "he2bb2b6ag98b4g4c87g98a3g91c9f7f40ac0"
+data "Description" "h8d15a33agd53dg4436gbeceg4d0849d8f3b9"
+data "Icon" "Attribute_Wisdom"
+data "Properties" "Highlighted"
+data "Boosts" "RollBonus(SkillCheck,WisdomModifier);RollBonus(RawAbility,WisdomModifier)"

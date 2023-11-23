@@ -13,3 +13,18 @@ data "Boosts" "Ability(Strength,1,30);Ability(Dexterity,1,30);Ability(Constituti
 data "Passives" "ArcaneWard_Damage"
 data "StatusPropertyFlags" "MultiplyEffectsByDuration;FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
 data "StatusEffect" "370b3339-9668-49e8-bdc6-ff0a4444f8dd"
+
+new entry "ALLFORONE_AID"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
+
+new entry "ALLFORONE_LONGSTRIDER"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
+
+new entry "ALLFORONE_MAGEARMOR"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"

@@ -1,4 +1,4 @@
-new entry "AdventurersCompanion_AbjurersWeave"
+new entry "AdventurersCompendium_AbjurersWeave"
 type "SpellData"
 data "SpellType" "Shout"
 data "Level" "0"

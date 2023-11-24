@@ -1,0 +1,7 @@
+new entry "Tut_Book"
+type "Object"
+using "OBJ_Book_Indestructible"
+data "DefaultBoosts" "UnlockSpell(Shout_AllForOne);UnlockSpell(Shout_BoostAbilitiesUp);UnlockSpell(Shout_BoostAbilitiesDown)"
+data "PassivesOnEquip" "AllForOne_Aid;AllForOne_Longstrider;AllForOne_MageArmor;AllForOne_SpeakWithAnimals"
+data "Rarity" "Legendary"
+data "RootTemplate" "64a2cf4f-82cf-410f-a987-2c9cb9052e04"

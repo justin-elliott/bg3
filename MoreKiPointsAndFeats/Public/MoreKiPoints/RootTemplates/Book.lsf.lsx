@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+	<version major="4" minor="1" revision="1" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="Description" type="TranslatedString" handle="hd02439a7g8515g4ef8ga2c2g59b29e501150" version="1" />
+					<attribute id="DevComment" type="LSString" value="A cinematics rig has been requested for this asset to be used in the scene, GLO_BookOfRestoredGods. Please do not change the visual. " />
+					<attribute id="DisplayName" type="TranslatedString" handle="ha8d65585g27bag43d3gbf6dg302a6cb3ace1" version="1" />
+					<attribute id="Flag" type="int32" value="1" />
+					<attribute id="Key" type="FixedString" value="STORY_LOCK" />
+					<attribute id="LevelName" type="FixedString" value="WLD_Main_A" />
+					<attribute id="LockDifficultyClassID" type="guid" value="00000000-0000-0000-0000-000000000000" />
+					<attribute id="MapKey" type="FixedString" value="fd1900f7-649d-4379-b551-0c393c21121b" />
+					<attribute id="Name" type="LSString" value="BookOfCheating" />
+					<attribute id="ReadinessFlags" type="uint32" value="128" />
+					<attribute id="Stats" type="FixedString" value="OBJ_Book_Indestructible" />
+					<attribute id="TemplateName" type="FixedString" value="5806af5c-c288-4ed1-9533-beac7d05b18c" />
+					<attribute id="Type" type="FixedString" value="item" />
+					<attribute id="_OriginalFileVersion_" type="int64" value="1" />
+					<children>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="FixedString" value="WLD_Main_A" />
+											<children>
+												<node id="Layer">
+													<attribute id="Object" type="guid" value="0d1b3e0e-930a-23a0-2ad9-f0f3deba210b" />
+												</node>
+												<node id="Layer">
+													<attribute id="Object" type="guid" value="784e0a2b-908e-edcc-02dd-e6aa5c34dc6c" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnUsePeaceActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="int32" value="11" />
+									<children>
+										<node id="Attributes">
+											<attribute id="Animation" type="FixedString" value="" />
+											<attribute id="BookId" type="FixedString" value="CHA_Crypt_BookOfRestoredGods" />
+											<attribute id="Conditions" type="LSString" value="" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="guid" value="9b6f9531-c2d3-47b2-9153-861425152eb3" />
+								</node>
+							</children>
+						</node>
+						<node id="Transform">
+							<attribute id="Position" type="fvec3" value="-315.1308 18.73019 -271.8024" />
+							<attribute id="RotationQuat" type="fvec4" value="0 0.6221887 0 0.7828673" />
+							<attribute id="Scale" type="float" value="1" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

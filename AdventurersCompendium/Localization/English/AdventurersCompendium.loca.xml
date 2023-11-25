@@ -5,4 +5,6 @@
     <content contentuid="AdventurersCompendium_AbjurersWeave_DisplayName" version="1">Abjurer's Weave</content>
     <content contentuid="AdventurersCompendium_AbjurersWeave_Description" version="1">Weave together your spells to fortify your party.</content>
     <content contentuid="AdventurersCompendium_SecondChance_DisplayName" version="1">Second Chance</content>
+	<content contentuid="AdventurersCompendium_LightningArc_DisplayName" version="1">Lightning Arc</content>
+	<content contentuid="AdventurersCompendium_LightningArc_Description" version="1">Project an arc of lightning.</content>
 </contentList>

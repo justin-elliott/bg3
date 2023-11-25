@@ -4,7 +4,7 @@ data "StatusType" "BOOST"
 data "DisplayName" "AdventurersCompendium_DisplayName"
 data "Description" "AdventurersCompendium_Description"
 data "Icon" "PassiveFeature_BookOfAncientSecrets"
-data "Boosts" "UnlockSpell(AdventurersCompendium_AbjurersWeave)"
+data "Boosts" "UnlockSpell(AdventurersCompendium_AbjurersWeave);UnlockSpell(AdventurersCompendium_LightningArc)"
 data "Passives" "AdventurersCompendium_SecondChance"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
 

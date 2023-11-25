@@ -2,6 +2,7 @@
 <contentList>
     <content contentuid="AdventurersCompendium_DisplayName" version="1">The Adventurer's Compendium</content>
     <content contentuid="AdventurersCompendium_Description" version="1">A collection of tips, tricks, and cantrips for the well-prepared adventurer.</content>
+    <content contentuid="AdventurersCompendium_Book_Contents" version="1">Within its pages, this tattered, unremarkable tome might just hold the key to surviving your adventures.</content>
     <content contentuid="AdventurersCompendium_AbjurersWeave_DisplayName" version="1">Abjurer's Weave</content>
     <content contentuid="AdventurersCompendium_AbjurersWeave_Description" version="1">Weave together your spells to fortify your party.</content>
     <content contentuid="AdventurersCompendium_SecondChance_DisplayName" version="1">Second Chance</content>

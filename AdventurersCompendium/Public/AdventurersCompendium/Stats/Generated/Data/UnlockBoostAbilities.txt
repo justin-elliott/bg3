@@ -1,0 +1,7 @@
+new entry "AdventurersCompendium_UnlockBoostAbilities"
+type "PassiveData"
+data "DisplayName" "AdventurersCompendium_BoostAbilities_DisplayName"
+data "Description" "AdventurersCompendium_UnlockBoost_Description"
+data "Icon" "Spell_Transmutation_EnhanceAbility"
+data "Properties" "IsToggled;ToggledDefaultAddToHotbar;Highlighted"
+data "Boosts" "UnlockSpell(AdventurersCompendium_BoostAbilities);UnlockSpell(AdventurersCompendium_BoostStrength);UnlockSpell(AdventurersCompendium_BoostDexterity);UnlockSpell(AdventurersCompendium_BoostConstitution);UnlockSpell(AdventurersCompendium_BoostIntelligence);UnlockSpell(AdventurersCompendium_BoostWisdom);UnlockSpell(AdventurersCompendium_BoostCharisma)"

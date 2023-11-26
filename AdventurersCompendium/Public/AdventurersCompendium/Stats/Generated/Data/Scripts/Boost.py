@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import os
+import sys
 import textwrap
-
-from typing import TextIO
 
 class Boost:
     def __init__(self,
@@ -31,15 +31,19 @@ class Boost:
         self.boosts = boosts
         self.max_value = max_value
     
-    def write(self, f: TextIO):
-        f.write(self.__get_spell())
-        f.write("\n")
-        f.write(self.__get_status())
-        f.write("\n")
-        f.write(self.__get_boost_reset())
-        for value in range(1, self.max_value + 1):
+    def generate_spell_file(self):
+        scriptsDir = os.path.dirname(os.path.abspath(sys.argv[0]))
+        dataDir = os.path.normpath(os.path.join(scriptsDir, ".."))
+        spellFile = os.path.join(dataDir, f"{self.short_name}.txt")
+        with open(spellFile, "w") as f:
+            f.write(self.__get_spell())
             f.write("\n")
-            f.write(self.__get_boost_by_value(value))
+            f.write(self.__get_status())
+            f.write("\n")
+            f.write(self.__get_boost_reset())
+            for value in range(1, self.max_value + 1):
+                f.write("\n")
+                f.write(self.__get_boost_by_value(value))
     
     def __get_spell(self) -> str:
         return textwrap.dedent(f"""\

@@ -73,8 +73,9 @@ def writeEntry(f: TextIO, count: int) -> None:
     data "TooltipStatusApply" "ApplyStatus({SPELL.upper()},100,{count})"
     """))
 
-SCRIPT_DIR: str = os.path.dirname(os.path.abspath(sys.argv[0]))
-SPELL_FILE = os.path.join(SCRIPT_DIR, "BoostStrength.txt")
+SCRIPTS_DIR: str = os.path.dirname(os.path.abspath(sys.argv[0]))
+DATA_DIR: str = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
+SPELL_FILE: str = os.path.join(DATA_DIR, "BoostStrength.txt")
 
 with open(SPELL_FILE, "w") as f:
     f.write(PREAMBLE)

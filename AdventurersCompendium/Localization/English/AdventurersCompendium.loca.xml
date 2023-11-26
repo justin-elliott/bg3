@@ -8,4 +8,10 @@
     <content contentuid="AdventurersCompendium_SecondChance_DisplayName" version="1">Second Chance</content>
 	<content contentuid="AdventurersCompendium_LightningArc_DisplayName" version="1">Lightning Arc</content>
 	<content contentuid="AdventurersCompendium_LightningArc_Description" version="1">Project an arc of lightning.</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_DisplayName" version="1">Boost Strength</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Description" version="1">Boost your strength by a selected amount.</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Reset_DisplayName" version="1">Reset</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Reset_Description" version="1">Reset your strength to its unboosted value.</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Value_DisplayName" version="1">Boost</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Value_Description" version="1">Boost your strength by [1] (up to 30).</content>
 </contentList>

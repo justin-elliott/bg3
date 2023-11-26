@@ -5,7 +5,18 @@ import textwrap
 from typing import TextIO
 
 class Boost:
-    def __init__(self, short_name: str, display_name: str, description: str, icon: str, cast_sound: str, target_sound: str, boosts: str, max_value: int = 20):
+    def __init__(self,
+                 short_name: str,
+                 display_name: str,
+                 description: str,
+                 icon: str,
+                 cast_sound: str,
+                 target_sound: str,
+                 prepare_effect: str,
+                 cast_effect: str,
+                 target_effect: str,
+                 boosts: str,
+                 max_value: int = 20):
         assert 0 < max_value <= 20
         self.short_name = short_name
         self.spell_name = f"AdventurersCompendium_{self.short_name}"
@@ -14,6 +25,9 @@ class Boost:
         self.icon = icon
         self.cast_sound = cast_sound
         self.target_sound = target_sound
+        self.prepare_effect = prepare_effect
+        self.cast_effect = cast_effect
+        self.target_effect = target_effect
         self.boosts = boosts
         self.max_value = max_value
     
@@ -47,9 +61,9 @@ class Boost:
             data "CastSound" "{self.cast_sound}"
             data "TargetSound" "{self.target_sound}"
             data "VerbalIntent" "Buff"
-            data "PrepareEffect" "15908bab-2ec3-4abc-a282-c3bf5f2b1387"
-            data "CastEffect" "bcd66fb0-b0bc-41d0-abba-ad443d63dd72"
-            data "TargetEffect" "4d80e719-6b5a-4a77-829c-f9b7f38fd966"
+            data "PrepareEffect" "{self.prepare_effect}"
+            data "CastEffect" "{self.cast_effect}"
+            data "TargetEffect" "{self.target_effect}"
             """)
 
     def __get_status(self) -> str:

@@ -27,4 +27,9 @@
 	<content contentuid="AdventurersCompendium_Boost_Value_DisplayName" version="1">Boost</content>
 	<content contentuid="AdventurersCompendium_Boost_Value_Description" version="1">Boost by [1].</content>
 	<content contentuid="AdventurersCompendium_UnlockBoost_Description" version="1">Unlock the &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostAbilities"&gt;Boost Abilities&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostStrength"&gt;Boost Strength&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostDexterity"&gt;Boost Dexterity&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostConstitution"&gt;Boost Constitution&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostIntelligence"&gt;Boost Intelligence&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostWisdom"&gt;Boost Wisdom&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostCharisma"&gt;Boost Charisma&lt;/LSTag&gt; class actions.</content>
+	<content contentuid="AdventurersCompendium_LightlyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
+	<content contentuid="AdventurersCompendium_ModeratelyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light and Medium Armour.</content>
+	<content contentuid="AdventurersCompendium_HeavilyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light, Medium, and Heavy Armour.</content>
+	<content contentuid="AdventurersCompendium_ShieldTraining_DisplayName" version="1">Shield Training</content>
+	<content contentuid="AdventurersCompendium_ShieldTraining_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
 </contentList>

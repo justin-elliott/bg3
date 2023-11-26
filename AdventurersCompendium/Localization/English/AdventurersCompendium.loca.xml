@@ -9,9 +9,17 @@
 	<content contentuid="AdventurersCompendium_LightningArc_DisplayName" version="1">Lightning Arc</content>
 	<content contentuid="AdventurersCompendium_LightningArc_Description" version="1">Project an arc of lightning.</content>
 	<content contentuid="AdventurersCompendium_BoostStrength_DisplayName" version="1">Boost Strength</content>
-	<content contentuid="AdventurersCompendium_BoostStrength_Description" version="1">Boost your strength by a selected amount.</content>
+	<content contentuid="AdventurersCompendium_BoostStrength_Description" version="1">Boost your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by a selected amount (up to 30).</content>
 	<content contentuid="AdventurersCompendium_BoostDexterity_DisplayName" version="1">Boost Dexterity</content>
-	<content contentuid="AdventurersCompendium_BoostDexterity_Description" version="1">Boost your dexterity by a selected amount.</content>
+	<content contentuid="AdventurersCompendium_BoostDexterity_Description" version="1">Boost your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by a selected amount (up to 30).</content>
+	<content contentuid="AdventurersCompendium_BoostConstitution_DisplayName" version="1">Boost Constitution</content>
+	<content contentuid="AdventurersCompendium_BoostConstitution_Description" version="1">Boost your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by a selected amount (up to 30).</content>
+	<content contentuid="AdventurersCompendium_BoostIntelligence_DisplayName" version="1">Boost Intelligence</content>
+	<content contentuid="AdventurersCompendium_BoostIntelligence_Description" version="1">Boost your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by a selected amount (up to 30).</content>
+	<content contentuid="AdventurersCompendium_BoostWisdom_DisplayName" version="1">Boost Wisdom</content>
+	<content contentuid="AdventurersCompendium_BoostWisdom_Description" version="1">Boost your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by a selected amount (up to 30).</content>
+	<content contentuid="AdventurersCompendium_BoostCharisma_DisplayName" version="1">Boost Charisma</content>
+	<content contentuid="AdventurersCompendium_BoostCharisma_Description" version="1">Boost your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by a selected amount (up to 30).</content>
 	<content contentuid="AdventurersCompendium_Boost_Reset_DisplayName" version="1">Reset</content>
 	<content contentuid="AdventurersCompendium_Boost_Reset_Description" version="1">Do not apply a boost.</content>
 	<content contentuid="AdventurersCompendium_Boost_Value_DisplayName" version="1">Boost</content>

@@ -36,4 +36,6 @@
 	<content contentuid="AdventurersCompendium_SimpleWeaponsTraining_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Proficiency&lt;/LSTag&gt; with Simple Weapons.</content>
 	<content contentuid="AdventurersCompendium_MartialWeaponsTraining_DisplayName" version="1">Martial Weapons Training</content>
 	<content contentuid="AdventurersCompendium_MartialWeaponsTraining_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Proficiency&lt;/LSTag&gt; with Simple and Martial Weapons.</content>
+	<content contentuid="AdventurersCompendium_ExtraAttacks_DisplayName" version="1">Extra Attacks</content>
+	<content contentuid="AdventurersCompendium_ExtraAttacks_Description" version="1">At level 2, unlock &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt;. At level 5, unlock &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;. At level 8, unlock &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;. Finally, at level 11, unlock &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.</content>
 </contentList>

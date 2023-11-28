@@ -12,7 +12,7 @@ DATA_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
 def writeSpellFile(short_name: str, display_name: str, description: str, icon: str,
                    cast_sound: str, target_sound: str,
                    prepare_effect: str, cast_effect: str, target_effect: str,
-                   boosts: str,
+                   boostFormatStr: str,
                    first_value: int = 2,
                    last_value: int = 20,
                    step_value: int = 2):
@@ -46,7 +46,19 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
         data "CastEffect" "{cast_effect}"
         data "TargetEffect" "{target_effect}"
 
-        new entry "{spell_name.upper()}"
+        new entry "{spell_name}_00"
+        type "SpellData"
+        data "SpellType" "Shout"
+        using "{spell_name}"
+        data "SpellContainerID" "{spell_name}"
+        data "ContainerSpells" ""
+            data "SpellProperties" "ApplyStatus({spell_name.upper()}_00,100,-1)"
+        data "Icon" "PassiveFeature_Portent"
+        data "DisplayName" "AdventurersCompendium_Boost_Reset_DisplayName"
+        data "Description" "AdventurersCompendium_Boost_Reset_Description"
+        data "TooltipStatusApply" "ApplyStatus({spell_name.upper()}_00,100,-1)"
+
+        new entry "{spell_name.upper()}_00"
         type "StatusData"
         data "StatusType" "BOOST"
         data "DisplayName" "{display_name}"
@@ -54,20 +66,8 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
         data "Icon" "{icon}"
         data "StackId" "{spell_name.upper()}"
         data "StackType" "Overwrite"
-        data "Boosts" "{boosts}"
-        data "StatusPropertyFlags" "MultiplyEffectsByDuration;FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
-
-        new entry "{spell_name}_00"
-        type "SpellData"
-        data "SpellType" "Shout"
-        using "{spell_name}"
-        data "SpellContainerID" "{spell_name}"
-        data "ContainerSpells" ""
-        data "SpellProperties" "RemoveStatus({spell_name.upper()})"
-        data "Icon" "PassiveFeature_Portent"
-        data "DisplayName" "AdventurersCompendium_Boost_Reset_DisplayName"
-        data "Description" "AdventurersCompendium_Boost_Reset_Description"
-        data "TooltipStatusApply" "RemoveStatus({spell_name.upper()})"
+        data "Boosts" "{boostFormatStr.format(0)}"
+        data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
         """)
 
     for value in value_range:
@@ -79,12 +79,23 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
             using "{spell_name}"
             data "SpellContainerID" "{spell_name}"
             data "ContainerSpells" ""
-            data "SpellProperties" "ApplyStatus({spell_name.upper()},100,{value})"
+            data "SpellProperties" "ApplyStatus({spell_name.upper()}_{value:02},100,-1)"
             data "Icon" "PassiveFeature_Portent_{value}"
             data "DisplayName" "AdventurersCompendium_Boost_Value_DisplayName"
             data "Description" "AdventurersCompendium_Boost_Value_Description"
             data "DescriptionParams" "{value}"
-            data "TooltipStatusApply" "ApplyStatus({spell_name.upper()},100,{value})"
+            data "TooltipStatusApply" "ApplyStatus({spell_name.upper()}_{value:02},100,-1)"
+
+            new entry "{spell_name.upper()}_{value:02}"
+            type "StatusData"
+            data "StatusType" "BOOST"
+            data "DisplayName" "{display_name}"
+            data "Description" "{description}"
+            data "Icon" "{icon}"
+            data "StackId" "{spell_name.upper()}"
+            data "StackType" "Overwrite"
+            data "Boosts" "{boostFormatStr.format(value)}"
+            data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
             """)
 
     spell_file = os.path.join(DATA_DIR, f"{short_name}.txt")
@@ -100,7 +111,7 @@ writeSpellFile("BoostStrength",
                prepare_effect="5ea8f8f4-ba5f-4417-82f6-ed2ce4ffe264",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="fbb955f8-a644-451b-89bd-7950ad4cebad",
-               boosts="Ability(Strength,1,30)")
+               boostFormatStr="Ability(Strength,{0},30)")
 writeSpellFile("BoostDexterity",
                display_name="AdventurersCompendium_BoostDexterity_DisplayName",
                description="AdventurersCompendium_BoostDexterity_Description",
@@ -110,7 +121,7 @@ writeSpellFile("BoostDexterity",
                prepare_effect="fbce561c-fd42-4626-bf04-8461f46dfbc8",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="474d55bf-bce6-401b-872a-1922c8d54d99",
-               boosts="Ability(Dexterity,1,30)")
+               boostFormatStr="Ability(Dexterity,{0},30)")
 writeSpellFile("BoostConstitution",
                display_name="AdventurersCompendium_BoostConstitution_DisplayName",
                description="AdventurersCompendium_BoostConstitution_Description",
@@ -120,7 +131,7 @@ writeSpellFile("BoostConstitution",
                prepare_effect="15908bab-2ec3-4abc-a282-c3bf5f2b1387",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="4d80e719-6b5a-4a77-829c-f9b7f38fd966",
-               boosts="Ability(Constitution,1,30)")
+               boostFormatStr="Ability(Constitution,{0},30)")
 writeSpellFile("BoostIntelligence",
                display_name="AdventurersCompendium_BoostIntelligence_DisplayName",
                description="AdventurersCompendium_BoostIntelligence_Description",
@@ -130,7 +141,7 @@ writeSpellFile("BoostIntelligence",
                prepare_effect="1ee00587-5c1a-4068-aba3-6bfd5cb8f92f",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="587df9a6-10c6-4125-ab0a-73c477018a4b",
-               boosts="Ability(Intelligence,1,30)")
+               boostFormatStr="Ability(Intelligence,{0},30)")
 writeSpellFile("BoostWisdom",
                display_name="AdventurersCompendium_BoostWisdom_DisplayName",
                description="AdventurersCompendium_BoostWisdom_Description",
@@ -140,7 +151,7 @@ writeSpellFile("BoostWisdom",
                prepare_effect="1082b19d-920d-423f-b787-3c66da153f47",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="b01d8d96-abb3-4e88-8e41-ce12c7dbf30a",
-               boosts="Ability(Wisdom,1,30)")
+               boostFormatStr="Ability(Wisdom,{0},30)")
 writeSpellFile("BoostCharisma",
                display_name="AdventurersCompendium_BoostCharisma_DisplayName",
                description="AdventurersCompendium_BoostCharisma_Description",
@@ -150,7 +161,7 @@ writeSpellFile("BoostCharisma",
                prepare_effect="fa18f4ad-7f12-47fc-9fe7-3a157e0ee260",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="70d8d0dc-e4ff-42ed-8503-09bbf2fbbeda",
-               boosts="Ability(Charisma,1,30)")
+               boostFormatStr="Ability(Charisma,{0},30)")
 writeSpellFile("BoostAbilities",
                display_name="AdventurersCompendium_BoostAbilities_DisplayName",
                description="AdventurersCompendium_BoostAbilities_Description",
@@ -160,14 +171,14 @@ writeSpellFile("BoostAbilities",
                prepare_effect="15908bab-2ec3-4abc-a282-c3bf5f2b1387",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="4d80e719-6b5a-4a77-829c-f9b7f38fd966",
-               boosts="Ability(Strength,1,30);Ability(Dexterity,1,30);Ability(Constitution,1,30);Ability(Intelligence,1,30);Ability(Wisdom,1,30);Ability(Charisma,1,30)")
+               boostFormatStr="Ability(Strength,{0},30);Ability(Dexterity,{0},30);Ability(Constitution,{0},30);Ability(Intelligence,{0},30);Ability(Wisdom,{0},30);Ability(Charisma,{0},30)")
 writeSpellFile("BoostSkills",
                display_name="AdventurersCompendium_BoostSkills_DisplayName",
                description="AdventurersCompendium_BoostSkills_Description",
-               icon="Spell_Evocation_DivineFavor",
+               icon="PassiveFeature_JackOfAllTrades",
                cast_sound="Spell_Cast_Buff_DivineFavor_L1to3",
                target_sound="Spell_Impact_Buff_DivineFavor_L1to3",
                prepare_effect="747ac7e5-c52e-4e5a-be78-1f9de85b55ea",
                cast_effect="1516f4b2-5a53-4adf-bf85-d6e46826cffe",
                target_effect="1516f4b2-5a53-4adf-bf85-d6e46826cffe",
-               boosts="RollBonus(SkillCheck,1);RollBonus(RawAbility,1)")
+               boostFormatStr="RollBonus(SkillCheck,{0});RollBonus(RawAbility,{0})")

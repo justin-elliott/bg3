@@ -13,9 +13,9 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
                    cast_sound: str, target_sound: str,
                    prepare_effect: str, cast_effect: str, target_effect: str,
                    boosts: str,
-                   first_value: int = 1,
+                   first_value: int = 2,
                    last_value: int = 20,
-                   step_value: int = 1):
+                   step_value: int = 2):
     assert 0 < first_value <= 20
     assert 0 < last_value <= 20
     assert 0 < step_value <= 20

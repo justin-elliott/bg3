@@ -51,7 +51,7 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
         data "StatusType" "BOOST"
         data "DisplayName" "{display_name}"
         data "Description" "{description}"
-        data "Icon" "Spell_Transmutation_EnhanceAbility_BullsStrenght"
+        data "Icon" "{icon}"
         data "StackId" "{spell_name.upper()}"
         data "StackType" "Overwrite"
         data "Boosts" "{boosts}"
@@ -161,3 +161,13 @@ writeSpellFile("BoostAbilities",
                cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                target_effect="4d80e719-6b5a-4a77-829c-f9b7f38fd966",
                boosts="Ability(Strength,1,30);Ability(Dexterity,1,30);Ability(Constitution,1,30);Ability(Intelligence,1,30);Ability(Wisdom,1,30);Ability(Charisma,1,30)")
+writeSpellFile("BoostSkills",
+               display_name="AdventurersCompendium_BoostSkills_DisplayName",
+               description="AdventurersCompendium_BoostSkills_Description",
+               icon="Spell_Evocation_DivineFavor",
+               cast_sound="Spell_Cast_Buff_DivineFavor_L1to3",
+               target_sound="Spell_Impact_Buff_DivineFavor_L1to3",
+               prepare_effect="747ac7e5-c52e-4e5a-be78-1f9de85b55ea",
+               cast_effect="1516f4b2-5a53-4adf-bf85-d6e46826cffe",
+               target_effect="1516f4b2-5a53-4adf-bf85-d6e46826cffe",
+               boosts="RollBonus(SkillCheck,1);RollBonus(RawAbility,1)")

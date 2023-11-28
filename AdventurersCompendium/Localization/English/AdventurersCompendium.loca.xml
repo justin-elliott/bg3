@@ -22,6 +22,8 @@
 	<content contentuid="AdventurersCompendium_BoostCharisma_Description" version="1">Boost your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by a selected amount (up to 30).</content>
 	<content contentuid="AdventurersCompendium_BoostAbilities_DisplayName" version="1">Boost Abilities</content>
 	<content contentuid="AdventurersCompendium_BoostAbilities_Description" version="1">Boost your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;, &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt;, &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt;, &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt;, &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt;, and &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by a selected amount (up to 30).</content>
+	<content contentuid="AdventurersCompendium_BoostSkills_DisplayName" version="1">Boost Skills</content>
+	<content contentuid="AdventurersCompendium_BoostSkills_Description" version="1">Boost your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks by a selected amount.</content>
 	<content contentuid="AdventurersCompendium_Boost_Reset_DisplayName" version="1">Reset</content>
 	<content contentuid="AdventurersCompendium_Boost_Reset_Description" version="1">Do not apply a boost.</content>
 	<content contentuid="AdventurersCompendium_Boost_Value_DisplayName" version="1">Boost</content>

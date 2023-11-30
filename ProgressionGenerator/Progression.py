@@ -4,6 +4,7 @@ import argparse
 import os
 import re
 import sys
+import uuid
 
 import xml.etree.ElementTree as ElementTree
 
@@ -15,6 +16,10 @@ parser.add_argument("-f", "--feats", type=int, choices=range(1,5), default=4,
 parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
                     help="Action resource multiplier")
 args = parser.parse_args()
+
+SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
+PARENT_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
+UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(PARENT_DIR, "..", "UnpackedMods"))
 
 CLASS_NAMES: Final[set[str]] = {
     "Barbarian",
@@ -91,9 +96,6 @@ def sort_node_attributes(nodes: dict[tuple[str, int, str], ElementTree.Element])
             node.remove(children)
             node.append(children) # Move to back
 
-SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
-UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, "..", "..", "UnpackedMods"))
-
 shared_progressions_file: Final[str] = os.path.join(UNPACKED_MODS_DIR, "Shared", "Public", "Shared", "Progressions", "Progressions.lsx")
 shareddev_progressions_file: Final[str] = os.path.join(UNPACKED_MODS_DIR, "Shared", "Public", "SharedDev", "Progressions", "Progressions.lsx")
 
@@ -111,6 +113,62 @@ action_resources_multiplier(combined_nodes, args.actions)
 
 sort_node_attributes(combined_nodes)
 
+progressions_name = f"Progressions-F{args.feats}-A{args.actions}"
+
+mod_base_dir = os.path.join(PARENT_DIR, progressions_name)
+mod_meta_dir = os.path.join(mod_base_dir, "Mods", progressions_name)
+mod_progressions_dir = os.path.join(mod_base_dir, "Public", progressions_name, "Progressions")
+
+os.makedirs(mod_meta_dir, exist_ok=True)
+os.makedirs(mod_progressions_dir, exist_ok=True)
+
+meta_xml = ElementTree.fromstring(f"""\
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="Config">
+        <node id="root">
+            <children>
+                <node id="Dependencies"/>
+                <node id="ModuleInfo">
+                    <attribute id="Author" type="LSWString" value="BinaryPrimitive"/>
+                    <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
+                    <attribute id="Description" type="LSWString" value="Updated character progressions"/>
+                    <attribute id="Folder" type="LSWString" value="{progressions_name}"/>
+                    <attribute id="LobbyLevelName" type="FixedString" value=""/>
+                    <attribute id="MD5" type="LSString" value=""/>
+                    <attribute id="MainMenuBackgroundVideo" type="FixedString" value=""/>
+                    <attribute id="MenuLevelName" type="FixedString" value=""/>
+                    <attribute id="Name" type="FixedString" value="{progressions_name}"/>
+                    <attribute id="NumPlayers" type="uint8" value="4"/>
+                    <attribute id="PhotoBooth" type="FixedString" value=""/>
+                    <attribute id="StartupLevelName" type="FixedString" value=""/>
+                    <attribute id="Tags" type="LSString" value=""/>
+                    <attribute id="Type" type="FixedString" value="Add-on"/>
+                    <attribute id="UUID" type="FixedString" value="{str(uuid.uuid4())}"/>
+                    <attribute id="Version" type="int32" value="1"/>
+                    <children>
+                        <node id="PublishVersion">
+                            <attribute id="Version" type="int32" value="1"/>
+                        </node>
+                        <node id="Scripts"/>
+                        <node id="TargetModes">
+                            <children>
+                                <node id="Target">
+                                    <attribute id="Object" type="FixedString" value="Story"/>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>
+""")
+meta_file = os.path.join(mod_meta_dir, "meta.lsx")
+ElementTree.ElementTree(meta_xml).write(meta_file, encoding="UTF-8", xml_declaration=True)
+
 progressions = ElementTree.fromstring("""\
 <?xml version="1.0" encoding="UTF-8"?>
 <save>
@@ -127,5 +185,5 @@ progressions.find("./region[@id='Progressions']/node[@id='root']/children").exte
     [combined_nodes[key] for key in sorted(combined_nodes.keys())])
 ElementTree.indent(progressions, space=" "*4)
 
-progressions_file = os.path.join(SCRIPTS_DIR, f"Progressions-F{args.feats}-A{args.actions}.lsx")
+progressions_file = os.path.join(mod_progressions_dir, "Progressions.lsx")
 ElementTree.ElementTree(progressions).write(progressions_file, encoding="UTF-8", xml_declaration=True)

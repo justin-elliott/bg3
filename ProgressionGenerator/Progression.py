@@ -10,17 +10,6 @@ import xml.etree.ElementTree as ElementTree
 
 from typing import AnyStr, Final, Pattern
 
-parser = argparse.ArgumentParser(description='Combine the Progression.lsx tables, updating feat and resource definitions')
-parser.add_argument("-f", "--feats", type=int, choices=range(1,5), default=4,
-                    help="Feat progression every n levels")
-parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
-                    help="Action resource multiplier")
-args = parser.parse_args()
-
-SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
-PARENT_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
-UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(PARENT_DIR, "..", "UnpackedMods"))
-
 CLASS_NAMES: Final[set[str]] = {
     "Barbarian",
     "Bard",
@@ -35,6 +24,25 @@ CLASS_NAMES: Final[set[str]] = {
     "Warlock",
     "Wizard",
 }
+
+def class_list(s: str) -> set[str]:
+    classes = set([t.title() for t in s.split(",")])
+    if classes & CLASS_NAMES != classes:
+        raise "Invalid class names"
+    return classes if len(classes) > 0 else CLASS_NAMES
+
+parser = argparse.ArgumentParser(description='Combine the Progression.lsx tables, updating feat and resource definitions')
+parser.add_argument("-c", "--classes", type=class_list, default=set(),
+                    help="Classes to include in the progression (defaulting to all)")
+parser.add_argument("-f", "--feats", type=int, choices=range(1,5), default=4,
+                    help="Feat progression every n levels (defaulting to 4; normal progression)")
+parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
+                    help="Action resource multiplier (defaulting to 1; normal resources)")
+args = parser.parse_args()
+
+SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
+PARENT_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
+UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(PARENT_DIR, "..", "UnpackedMods"))
 
 ACTION_RESOURCES: Final[list[str]] = [
     "ArcaneRecoveryPoint",
@@ -60,7 +68,7 @@ def collect_nodes(root: ElementTree) -> dict[tuple[str, int, str], ElementTree.E
             name = name_node.get("value")
             level = level_node.get("value")
             uuid = uuid_node.get("value")
-            if name in CLASS_NAMES and level != None and uuid != None:
+            if name in args.classes and level != None and uuid != None:
                 nodes[(name, int(level), uuid)] = node
     return nodes
 
@@ -113,7 +121,7 @@ action_resources_multiplier(combined_nodes, args.actions)
 
 sort_node_attributes(combined_nodes)
 
-progressions_name = f"Progressions-F{args.feats}-A{args.actions}"
+progressions_name = f"Progressions-{"-".join(sorted([c for c in args.classes]))}-F{args.feats}-A{args.actions}"
 
 mod_base_dir = os.path.join(PARENT_DIR, progressions_name)
 mod_meta_dir = os.path.join(mod_base_dir, "Mods", progressions_name)

@@ -116,6 +116,13 @@ combined_nodes = collect_nodes(shared_progressions) | collect_nodes(shareddev_pr
 UNUSED_CLERIC_KEY: Final[tuple[str, int, str]] = ("Cleric", 1, "2b249feb-bba5-4922-8385-c2dd9baaa049")
 combined_nodes.pop(UNUSED_CLERIC_KEY, None)
 
+# Remove the erroneous Ranger level 12 spell slot
+RANGER_LEVEL_12_KEY: Final[tuple[str, int, str]] = ("Ranger", 12, "0bf247c5-2217-409e-8f88-eee095448f32")
+ranger_level_12_node = combined_nodes[RANGER_LEVEL_12_KEY]
+ranger_level_12_boosts_node = ranger_level_12_node.find("attribute[@id='Boosts'][@value='ActionResource(SpellSlot,1,3)']")
+if ranger_level_12_boosts_node != None:
+    ranger_level_12_node.remove(ranger_level_12_boosts_node)
+
 feat_every_n_levels(combined_nodes, args.feats)
 action_resources_multiplier(combined_nodes, args.actions)
 

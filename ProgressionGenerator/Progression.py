@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
 
+import argparse
 import os
 import re
 import sys
 
 import xml.etree.ElementTree as ElementTree
 
-from typing import Final
+from typing import AnyStr, Final, Pattern
+
+parser = argparse.ArgumentParser(description='Combine the Progression.lsx tables, updating feat and resource definitions')
+parser.add_argument("-f", "--feats", type=int, choices=range(1,5), default=4,
+                    help="Feat progression every n levels")
+parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
+                    help="Action resource multiplier")
+args = parser.parse_args()
 
 CLASS_NAMES: Final[set[str]] = {
     "Barbarian",
@@ -20,8 +28,22 @@ CLASS_NAMES: Final[set[str]] = {
     "Rogue",
     "Sorcerer",
     "Warlock",
-    "Wizard"
+    "Wizard",
 }
+
+ACTION_RESOURCES: Final[list[str]] = [
+    "ArcaneRecoveryPoint",
+    "BardicInspiration",
+    "ChannelDivinity",
+    "ChannelOath",
+    "KiPoint",
+    "LayOnHandsCharge",
+    "Rage",
+    "SorceryPoint",
+    "SpellSlot",
+    "WarlockSpellSlot",
+]
+SPELL_SLOT_REGEX: Final[Pattern[AnyStr]] = re.compile(f"ActionResource\\(({"|".join(ACTION_RESOURCES)}),\\s*(\\d+),\\s*(\\d+)\\)")
 
 def collect_nodes(root: ElementTree) -> dict[tuple[str, int, str], ElementTree.Element]:
     nodes: dict[tuple[str, int, bool], ElementTree.Element] = {}
@@ -38,15 +60,14 @@ def collect_nodes(root: ElementTree) -> dict[tuple[str, int, str], ElementTree.E
     return nodes
 
 def feat_every_n_levels(nodes: dict[tuple[str, int, str], ElementTree.Element], n_levels: int):
-    for key, node in nodes.items():
-        if key[1] > 1:
-            allow_improvement_node = node.find("attribute[@id='AllowImprovement']")
-            if allow_improvement_node != None:
-                node.remove(allow_improvement_node)
-            if int(key[1]) % n_levels == 0:
-                ElementTree.SubElement(node, "attribute", attrib={"id": "AllowImprovement", "type": "bool", "value": "true"})
-
-spell_slot_regex = re.compile("ActionResource\\((SpellSlot|WarlockSpellSlot|SorceryPoint|KiPoint),\\s*(\\d+),\\s*(\\d+)\\)")
+    for (_, level, _), node in nodes.items():
+        allow_improvement_node = node.find("attribute[@id='AllowImprovement']")
+        allow_improvement = (level > 1 and level % n_levels == 0) if allow_improvement_node == None else (
+            allow_improvement_node.get("value").lower() == "true")
+        if allow_improvement_node != None:
+            node.remove(allow_improvement_node)
+        if allow_improvement:
+            ElementTree.SubElement(node, "attribute", attrib={"id": "AllowImprovement", "type": "bool", "value": "true"})
 
 def action_resources_multiplier(nodes: dict[tuple[str, int, str], ElementTree.Element], multiplier: int):
     for node in nodes.values():
@@ -54,7 +75,7 @@ def action_resources_multiplier(nodes: dict[tuple[str, int, str], ElementTree.El
         if boosts_node != None:
             boosts = boosts_node.get("value")
             if boosts != None:
-                boosts = spell_slot_regex.sub(lambda match: f"ActionResource({match[1]},{int(match[2])*multiplier},{match[3]})", boosts)
+                boosts = SPELL_SLOT_REGEX.sub(lambda match: f"ActionResource({match[1]},{int(match[2])*multiplier},{match[3]})", boosts)
                 boosts_node.set("value", boosts)
 
 def sort_node_attributes(nodes: dict[tuple[str, int, str], ElementTree.Element]):
@@ -85,8 +106,8 @@ combined_nodes = collect_nodes(shared_progressions) | collect_nodes(shareddev_pr
 UNUSED_CLERIC_KEY: Final[tuple[str, int, str]] = ("Cleric", 1, "2b249feb-bba5-4922-8385-c2dd9baaa049")
 combined_nodes.pop(UNUSED_CLERIC_KEY, None)
 
-feat_every_n_levels(combined_nodes, 2)
-action_resources_multiplier(combined_nodes, 2)
+feat_every_n_levels(combined_nodes, args.feats)
+action_resources_multiplier(combined_nodes, args.actions)
 
 sort_node_attributes(combined_nodes)
 
@@ -106,5 +127,5 @@ progressions.find("./region[@id='Progressions']/node[@id='root']/children").exte
     [combined_nodes[key] for key in sorted(combined_nodes.keys())])
 ElementTree.indent(progressions, space=" "*4)
 
-progressions_file = os.path.join(SCRIPTS_DIR, "Progressions.lsx")
+progressions_file = os.path.join(SCRIPTS_DIR, f"Progressions-F{args.feats}-A{args.actions}.lsx")
 ElementTree.ElementTree(progressions).write(progressions_file, encoding="UTF-8", xml_declaration=True)

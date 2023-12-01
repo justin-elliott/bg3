@@ -120,18 +120,18 @@ def collect_progressions(progressions: ElementTree, subclass_to_class: SubclassT
                     nodes[(subclass_to_class[name], name, int(level), uuid)] = node
     return nodes
 
-def feat_every_n_levels(nodes: ProgressionsDict, n_levels: int):
-    for (_, _, level, _), node in nodes.items():
+def feat_every_n_levels(progressions: ProgressionsDict, n_levels: int):
+    for (_, _, level, _), node in progressions.items():
         allow_improvement_node = node.find("attribute[@id='AllowImprovement']")
-        allow_improvement = (level > 1 and level % n_levels == 0) if allow_improvement_node == None else (
-            allow_improvement_node.get("value").lower() == "true")
+        allow_improvement = (level > 1 and level % n_levels == 0) or (
+            allow_improvement_node != None and allow_improvement_node.get("value").lower() == "true")
         if allow_improvement_node != None:
             node.remove(allow_improvement_node)
         if allow_improvement:
             ElementTree.SubElement(node, "attribute", attrib={"id": "AllowImprovement", "type": "bool", "value": "true"})
 
-def action_resources_multiplier(nodes: ProgressionsDict, multiplier: int):
-    for node in nodes.values():
+def action_resources_multiplier(progressions: ProgressionsDict, multiplier: int):
+    for node in progressions.values():
         boosts_node = node.find("attribute[@id='Boosts']")
         if boosts_node != None:
             boosts = boosts_node.get("value")
@@ -139,8 +139,8 @@ def action_resources_multiplier(nodes: ProgressionsDict, multiplier: int):
                 boosts = SPELL_SLOT_REGEX.sub(lambda match: f"ActionResource({match[1]},{int(match[2])*multiplier},{match[3]})", boosts)
                 boosts_node.set("value", boosts)
 
-def sort_node_attributes(nodes: ProgressionsDict):
-    for node in nodes.values():
+def sort_node_attributes(progressions: ProgressionsDict):
+    for node in progressions.values():
         attributes = node.findall("attribute[@id]")
         sorted_attributes = sorted([(attribute.get("id"), attribute) for attribute in attributes])
         for attribute in attributes:

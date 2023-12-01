@@ -52,7 +52,7 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
         using "{spell_name}"
         data "SpellContainerID" "{spell_name}"
         data "ContainerSpells" ""
-            data "SpellProperties" "ApplyStatus({spell_name.upper()}_00,100,-1)"
+        data "SpellProperties" "ApplyStatus({spell_name.upper()}_00,100,-1)"
         data "Icon" "PassiveFeature_Portent"
         data "DisplayName" "AdventurersCompendium_Boost_Reset_DisplayName"
         data "Description" "AdventurersCompendium_Boost_Reset_Description"
@@ -66,7 +66,7 @@ def writeSpellFile(short_name: str, display_name: str, description: str, icon: s
         data "Icon" "{icon}"
         data "StackId" "{spell_name.upper()}"
         data "StackType" "Overwrite"
-        data "Boosts" "{boostFormatStr.format(0)}"
+        data "Boosts" ""
         data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
         """)
 

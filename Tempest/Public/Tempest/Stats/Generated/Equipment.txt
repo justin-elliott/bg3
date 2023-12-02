@@ -22,3 +22,5 @@ add equipmentgroup
 add equipment entry "ARM_Camp_Shoes_C"
 add equipmentgroup
 add equipment entry "OBJ_Backpack_CampSupplies"
+add equipmentgroup
+add equipment entry "AdventurersCompendium_Book"

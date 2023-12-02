@@ -1,0 +1,16 @@
+
+new entry "Tempest_EmpoweredSpells_Minor"
+type "PassiveData"
+data "DisplayName" "Tempest_EmpoweredSpells_DisplayName"
+data "Description" "Tempest_EmpoweredSpells_Minor_Description"
+data "Icon" "PassiveFeature_EmpoweredEvocation"
+data "Properties" "Highlighted"
+data "Boosts" "IF(IsSpell()):DamageBonus(max(0,CharismaModifier/2))"
+
+new entry "Tempest_EmpoweredSpells_Major"
+type "PassiveData"
+data "DisplayName" "Tempest_EmpoweredSpells_DisplayName"
+data "Description" "Tempest_EmpoweredSpells_Major_Description"
+data "Icon" "PassiveFeature_EmpoweredEvocation"
+data "Properties" "Highlighted"
+data "Boosts" "IF(IsSpell()):DamageBonus(max(0,CharismaModifier))"

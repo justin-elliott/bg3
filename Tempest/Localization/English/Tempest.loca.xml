@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <content contentuid="Projectile_Tempest_StormBolt_DisplayName" version="1">Storm Bolt</content>
+    <content contentuid="Projectile_Tempest_StormBolt_Description" version="1">Project a thunderous bolt of lightning.</content>
+    <content contentuid="Projectile_Tempest_StormBolt_DisplayName" version="1">Tempestuous Flight</content>
+    <content contentuid="Projectile_Tempest_StormBolt_Description" version="1">Soar on the winds of the storm. You can fly up to [1].</content>
+    <content contentuid="Tempest_EmpoweredSpells_DisplayName" version="1">Empowered Spells</content>
+    <content contentuid="Tempest_EmpoweredSpells_Minor_Description" version="1">When you cast a damaging spell, add half of your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
+    <content contentuid="Tempest_EmpoweredSpells_Major_Description" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
+</contentList>

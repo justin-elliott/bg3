@@ -10,7 +10,7 @@
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(8743f14b-64de-4858-b056-50902a00df1a,2);SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared);SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(a1c2b712-2ed6-4e5b-820f-c5db654fe006,6);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared);SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
                     <attribute id="UUID" type="guid" value="42af9bda-9ac0-4564-920b-f9ca1588d6ee" />
                     <children>
@@ -221,7 +221,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="StormSorcery" />
-                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells" />
+                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;Tempest_TempestuousMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(615ac4c1-9cee-472a-b3da-b74aa52b2ef1,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />

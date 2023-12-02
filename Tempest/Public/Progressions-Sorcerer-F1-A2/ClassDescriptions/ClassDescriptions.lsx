@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="10" build="100"/>
+    <region id="ClassDescriptions">
+        <node id="root">
+            <children>
+                <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Sorcerer_StormSorcery"/>
+                    <attribute id="Description" type="TranslatedString" handle="h6cc6b6fega327g411ag9b33g098e0c8636b1" version="3"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd862715eg884cg4039ga1a6g59c36e569ddf" version="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="Name" type="FixedString" value="StormSorcery"/>
+                    <attribute id="ParentGuid" type="guid" value="784001e2-c96d-4153-beb6-2adbef5abc92"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="6"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb"/>
+                    <attribute id="SoundClassType" type="FixedString" value="Sorcerer"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="6"/>
+                    <attribute id="SpellList" type="guid" value="c572712a-eabf-4659-8289-ea1fa4a0d234"/>
+                    <attribute id="UUID" type="guid" value="d379fdae-b401-4731-8d50-277c73919ae3"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -7,7 +7,7 @@
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h66801906gd046g4583g9c49g3f80a4531bff" version="2"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="hcbe9db62g6e81g4048gbb4fg8dc4838ad8df" version="1"/>
-                    <attribute id="SelectorId" type="FixedString" value="TempestAny"/>
+                    <attribute id="SelectorId" type="FixedString" value="TempestExtra"/>
                     <attribute id="UUID" type="guid" value="8222ba3b-97b5-47b6-b05f-0bb5f1270772"/>
                 </node>
             </children>

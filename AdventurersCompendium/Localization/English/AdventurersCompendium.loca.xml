@@ -6,40 +6,14 @@
     <content contentuid="AdventurersCompendium_AbjurersWeave_DisplayName" version="1">Abjurer's Weave</content>
     <content contentuid="AdventurersCompendium_AbjurersWeave_Description" version="1">Weave together your spells to fortify your party.</content>
     <content contentuid="AdventurersCompendium_SecondChance_DisplayName" version="1">Second Chance</content>
-	<content contentuid="AdventurersCompendium_LightningArc_DisplayName" version="1">Lightning Arc</content>
-	<content contentuid="AdventurersCompendium_LightningArc_Description" version="1">Project an arc of lightning.</content>
-	<content contentuid="AdventurersCompendium_BoostStrength_DisplayName" version="1">Boost Strength</content>
-	<content contentuid="AdventurersCompendium_BoostStrength_Description" version="1">Boost your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostDexterity_DisplayName" version="1">Boost Dexterity</content>
-	<content contentuid="AdventurersCompendium_BoostDexterity_Description" version="1">Boost your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostConstitution_DisplayName" version="1">Boost Constitution</content>
-	<content contentuid="AdventurersCompendium_BoostConstitution_Description" version="1">Boost your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostIntelligence_DisplayName" version="1">Boost Intelligence</content>
-	<content contentuid="AdventurersCompendium_BoostIntelligence_Description" version="1">Boost your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostWisdom_DisplayName" version="1">Boost Wisdom</content>
-	<content contentuid="AdventurersCompendium_BoostWisdom_Description" version="1">Boost your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostCharisma_DisplayName" version="1">Boost Charisma</content>
-	<content contentuid="AdventurersCompendium_BoostCharisma_Description" version="1">Boost your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostAbilities_DisplayName" version="1">Boost Abilities</content>
-	<content contentuid="AdventurersCompendium_BoostAbilities_Description" version="1">Boost your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;, &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt;, &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt;, &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt;, &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt;, and &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by a selected amount (up to 30).</content>
-	<content contentuid="AdventurersCompendium_BoostSkills_DisplayName" version="1">Boost Skills</content>
-	<content contentuid="AdventurersCompendium_BoostSkills_Description" version="1">Boost your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks by a selected amount.</content>
-	<content contentuid="AdventurersCompendium_Boost_Reset_DisplayName" version="1">Reset</content>
-	<content contentuid="AdventurersCompendium_Boost_Reset_Description" version="1">Do not apply a boost.</content>
-	<content contentuid="AdventurersCompendium_Boost_Value_DisplayName" version="1">Boost</content>
-	<content contentuid="AdventurersCompendium_Boost_Value_Description" version="1">Boost by [1].</content>
-	<content contentuid="AdventurersCompendium_UnlockBoost_Description" version="1">Unlock the &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostAbilities"&gt;Boost Abilities&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostStrength"&gt;Boost Strength&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostDexterity"&gt;Boost Dexterity&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostConstitution"&gt;Boost Constitution&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostIntelligence"&gt;Boost Intelligence&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostWisdom"&gt;Boost Wisdom&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="AdventurersCompendium_BoostCharisma"&gt;Boost Charisma&lt;/LSTag&gt; class actions.</content>
-	<content contentuid="AdventurersCompendium_LightlyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
-	<content contentuid="AdventurersCompendium_ModeratelyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light and Medium Armour.</content>
-	<content contentuid="AdventurersCompendium_HeavilyArmored_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light, Medium, and Heavy Armour.</content>
-	<content contentuid="AdventurersCompendium_ShieldTraining_DisplayName" version="1">Shield Training</content>
-	<content contentuid="AdventurersCompendium_ShieldTraining_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
-	<content contentuid="AdventurersCompendium_SimpleWeaponsTraining_DisplayName" version="1">Simple Weapons Training</content>
-	<content contentuid="AdventurersCompendium_SimpleWeaponsTraining_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Proficiency&lt;/LSTag&gt; with Simple Weapons.</content>
-	<content contentuid="AdventurersCompendium_MartialWeaponsTraining_DisplayName" version="1">Martial Weapons Training</content>
-	<content contentuid="AdventurersCompendium_MartialWeaponsTraining_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Proficiency&lt;/LSTag&gt; with Simple and Martial Weapons.</content>
-	<content contentuid="AdventurersCompendium_ExtraAttacks_DisplayName" version="1">Extra Attacks</content>
-	<content contentuid="AdventurersCompendium_ExtraAttacks_Description" version="1">At level 2, unlock &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt;. At level 5, unlock &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;. At level 8, unlock &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;. Finally, at level 11, unlock &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.</content>
 	<content contentuid="AdventurersCompendium_Aid_DisplayName" version="1">Aid</content>
 	<content contentuid="AdventurersCompendium_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2].</content>
+	<content contentuid="AdventurersCompendium_ASI_4_DisplayName" version="1">Ability Improvement (+4)</content>
+	<content contentuid="AdventurersCompendium_ASI_4_Description" version="1">You have 4 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="AdventurersCompendium_ASI_6_DisplayName" version="1">Ability Improvement (+6)</content>
+	<content contentuid="AdventurersCompendium_ASI_6_Description" version="1">You have 6 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="AdventurersCompendium_ASI_8_DisplayName" version="1">Ability Improvement (+8)</content>
+	<content contentuid="AdventurersCompendium_ASI_8_Description" version="1">You have 8 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="AdventurersCompendium_ASI_10_DisplayName" version="1">Ability Improvement (+10)</content>
+	<content contentuid="AdventurersCompendium_ASI_10_Description" version="1">You have 10 points to spend across your abilities, to a maximum of 20.</content>
 </contentList>

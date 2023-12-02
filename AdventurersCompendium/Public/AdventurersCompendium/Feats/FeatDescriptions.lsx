@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="FeatDescriptions">
+        <node id="root">
+            <children>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_ASI_4_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_ASI_4_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="AbilityScoreIncrease_4"/>
+                    <attribute id="FeatId" type="guid" value="42357944-9de6-4b12-90fa-101d67ffacae"/>
+                    <attribute id="UUID" type="guid" value="e2109c30-d25b-48d5-b4f3-398927c8d9cd"/>
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_ASI_6_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_ASI_6_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="AbilityScoreIncrease_6"/>
+                    <attribute id="FeatId" type="guid" value="d207f6d1-5255-4876-b2da-d91d448e948e"/>
+                    <attribute id="UUID" type="guid" value="230bc472-e60e-402c-a9a7-d9657f60f9b3"/>
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_ASI_8_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_ASI_8_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="AbilityScoreIncrease_8"/>
+                    <attribute id="FeatId" type="guid" value="6c1d68d1-ec78-4570-8895-d946412ea87c"/>
+                    <attribute id="UUID" type="guid" value="c3526e86-8499-4037-a24e-a7246842c165"/>
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_ASI_10_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_ASI_10_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="AbilityScoreIncrease_10"/>
+                    <attribute id="FeatId" type="guid" value="2d93a31c-64ea-4a5b-8c9e-2262091cae0a"/>
+                    <attribute id="UUID" type="guid" value="731dad6b-4011-4b2d-889a-1c7a7f0764f5"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

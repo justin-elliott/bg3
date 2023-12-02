@@ -8,13 +8,13 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" type="LSWString" value="BinaryPrimitive" />
                     <attribute id="CharacterCreationLevelName" type="FixedString" value="" />
-                    <attribute id="Description" type="LSWString" value="Updated character progressions" />
-                    <attribute id="Folder" type="LSWString" value="Progressions-Sorcerer-F1-A2" />
+                    <attribute id="Description" type="LSWString" value="Tempest: an upgraded Storm Sorcerer" />
+                    <attribute id="Folder" type="LSWString" value="Tempest" />
                     <attribute id="LobbyLevelName" type="FixedString" value="" />
                     <attribute id="MD5" type="LSString" value="" />
                     <attribute id="MainMenuBackgroundVideo" type="FixedString" value="" />
                     <attribute id="MenuLevelName" type="FixedString" value="" />
-                    <attribute id="Name" type="FixedString" value="Progressions-Sorcerer-F1-A2" />
+                    <attribute id="Name" type="FixedString" value="Tempest" />
                     <attribute id="NumPlayers" type="uint8" value="4" />
                     <attribute id="PhotoBooth" type="FixedString" value="" />
                     <attribute id="StartupLevelName" type="FixedString" value="" />

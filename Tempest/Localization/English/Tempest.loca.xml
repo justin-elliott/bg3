@@ -8,4 +8,5 @@
     <content contentuid="Tempest_EmpoweredSpells_Minor_Description" version="1">When you cast a damaging spell, add half of your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="Tempest_EmpoweredSpells_Major_Description" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="Tempest_TempestuousMagic_Description" version="1">You hold the power of storms in the palm of your hand.</content>
+	<content contentuid="Tempest_DestructiveWrath_Description" version="1">When you roll Thunder or Lightning damage, you can spend a &lt;LSTag Type="ActionResource" Tooltip="SorceryPoints"&gt;Sorcery Point&lt;/LSTag&gt; to deal maximum damage instead.</content>
 </contentList>

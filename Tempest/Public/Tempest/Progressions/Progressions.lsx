@@ -5,10 +5,10 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="IncreaseMaxHP(ClassLevel(Sorcerer)*2)" />
+                    <attribute id="Boosts" type="LSString" value="IncreaseMaxHP(ClassLevel(Sorcerer)*2);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="StormSorcery" />
-                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;Tempest_TempestuousMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;Tempest_DestructiveWrath;Tempest_TempestuousMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
                     <attribute id="UUID" type="guid" value="6a973653-70d4-46dc-a634-315b47ef336e" />

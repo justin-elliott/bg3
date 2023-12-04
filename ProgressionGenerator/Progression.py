@@ -36,6 +36,8 @@ parser.add_argument("-c", "--classes", type=class_list, default=CLASS_NAMES,
                     help="Classes to include in the progression (defaulting to all)")
 parser.add_argument("-f", "--feats", type=int, choices=range(1,5), default=4,
                     help="Feat progression every n levels (defaulting to 4; normal progression)")
+parser.add_argument("-s", "--spells", type=int, choices=range(1,9), default=1,
+                    help="Spell slot multiplier (defaulting to 1; normal spell slots)")
 parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
                     help="Action resource multiplier (defaulting to 1; normal resources)")
 args = parser.parse_args()
@@ -44,6 +46,10 @@ SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
 PARENT_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
 UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(PARENT_DIR, "..", "UnpackedMods"))
 
+SPELL_SLOTS: Final[list[str]] = [
+    "SpellSlot",
+    "WarlockSpellSlot",
+]
 ACTION_RESOURCES: Final[list[str]] = [
     "ArcaneRecoveryPoint",
     "BardicInspiration",
@@ -55,13 +61,12 @@ ACTION_RESOURCES: Final[list[str]] = [
     "NaturalRecoveryPoint",
     "Rage",
     "SorceryPoint",
-    "SpellSlot",
     "SuperiorityDie",
-    "WarlockSpellSlot",
     "WarPriestActionPoint",
     "WildShape",
 ]
-SPELL_SLOT_REGEX: Final[Pattern[AnyStr]] = re.compile(f"ActionResource\\(({"|".join(ACTION_RESOURCES)}),\\s*(\\d+),\\s*(\\d+)\\)")
+SPELL_SLOT_REGEX: Final[Pattern[AnyStr]] = re.compile(f"ActionResource\\(({"|".join(SPELL_SLOTS)}),\\s*(\\d+),\\s*(\\d+)\\)")
+ACTION_RESOURCE_REGEX: Final[Pattern[AnyStr]] = re.compile(f"ActionResource\\(({"|".join(ACTION_RESOURCES)}),\\s*(\\d+),\\s*(\\d+)\\)")
 
 UuidToClassDict = dict[str, str]
 SubclassToClassDict = dict[str, str]
@@ -122,21 +127,18 @@ def collect_progressions(progressions: ElementTree, subclass_to_class: SubclassT
 
 def feat_every_n_levels(progressions: ProgressionsDict, n_levels: int):
     for (_, _, level, _), node in progressions.items():
-        allow_improvement_node = node.find("attribute[@id='AllowImprovement']")
-        allow_improvement = (level > 1 and level % n_levels == 0) or (
-            allow_improvement_node != None and allow_improvement_node.get("value").lower() == "true")
-        if allow_improvement_node != None:
+        if (allow_improvement_node := node.find("attribute[@id='AllowImprovement']")) != None:
             node.remove(allow_improvement_node)
-        if allow_improvement:
+        if level > 1 and level % n_levels == 0:
             ElementTree.SubElement(node, "attribute", attrib={"id": "AllowImprovement", "type": "bool", "value": "true"})
 
-def action_resources_multiplier(progressions: ProgressionsDict, multiplier: int):
+def resources_multiplier(progressions: ProgressionsDict, resources_regex: Pattern[AnyStr], multiplier: int):
     for node in progressions.values():
         boosts_node = node.find("attribute[@id='Boosts']")
         if boosts_node != None:
             boosts = boosts_node.get("value")
             if boosts != None:
-                boosts = SPELL_SLOT_REGEX.sub(lambda match: f"ActionResource({match[1]},{int(match[2])*multiplier},{match[3]})", boosts)
+                boosts = resources_regex.sub(lambda match: f"ActionResource({match[1]},{int(match[2])*multiplier},{match[3]})", boosts)
                 boosts_node.set("value", boosts)
 
 def sort_node_attributes(progressions: ProgressionsDict):
@@ -183,14 +185,15 @@ if "Ranger" in args.classes:
         ranger_level_12_node.remove(ranger_level_12_boosts_node)
 
 feat_every_n_levels(combined_progressions, args.feats)
-action_resources_multiplier(combined_progressions, args.actions)
+resources_multiplier(combined_progressions, SPELL_SLOT_REGEX, args.spells)
+resources_multiplier(combined_progressions, ACTION_RESOURCE_REGEX, args.actions)
 
 sort_node_attributes(combined_progressions)
 
 if (args.classes == CLASS_NAMES):
-    progressions_name = f"Progressions-All-F{args.feats}-A{args.actions}"
+    progressions_name = f"Progressions-All-F{args.feats}-S{args.spells}-A{args.actions}"
 else:
-    progressions_name = f"Progressions-{"-".join(sorted([c for c in args.classes]))}-F{args.feats}-A{args.actions}"
+    progressions_name = f"Progressions-{"-".join(sorted([c for c in args.classes]))}-F{args.feats}-S{args.spells}-A{args.actions}"
 
 mod_base_dir = os.path.join(PARENT_DIR, progressions_name)
 mod_meta_dir = os.path.join(mod_base_dir, "Mods", progressions_name)

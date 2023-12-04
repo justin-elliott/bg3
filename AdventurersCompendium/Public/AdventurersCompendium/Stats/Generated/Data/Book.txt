@@ -1,6 +1,7 @@
 new entry "AdventurersCompendium_Book"
 type "Object"
 using "OBJ_Book_Indestructible"
+data "Flags" "InventoryBound"
 data "Rarity" "Legendary"
 data "RootTemplate" "99a19388-e878-4c36-9b04-6ffb0ec6905a"
 data "StatusInInventory" "ADVENTURERSCOMPENDIUM_OWNED"

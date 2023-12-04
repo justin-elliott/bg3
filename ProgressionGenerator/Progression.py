@@ -43,8 +43,7 @@ parser.add_argument("-a", "--actions", type=int, choices=range(1,9), default=1,
 args = parser.parse_args()
 
 SCRIPTS_DIR: Final[str] = os.path.dirname(os.path.abspath(sys.argv[0]))
-PARENT_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, ".."))
-UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(PARENT_DIR, "..", "UnpackedMods"))
+UNPACKED_MODS_DIR: Final[str] = os.path.normpath(os.path.join(SCRIPTS_DIR, "..", "..", "UnpackedMods"))
 
 SPELL_SLOTS: Final[list[str]] = [
     "SpellSlot",
@@ -195,7 +194,7 @@ if (args.classes == CLASS_NAMES):
 else:
     progressions_name = f"Progressions-{"-".join(sorted([c for c in args.classes]))}-F{args.feats}-S{args.spells}-A{args.actions}"
 
-mod_base_dir = os.path.join(PARENT_DIR, progressions_name)
+mod_base_dir = os.path.join(SCRIPTS_DIR, "Generated", progressions_name)
 mod_meta_dir = os.path.join(mod_base_dir, "Mods", progressions_name)
 mod_progressions_dir = os.path.join(mod_base_dir, "Public", progressions_name, "Progressions")
 

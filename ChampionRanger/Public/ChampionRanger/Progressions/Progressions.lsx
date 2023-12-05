@@ -134,7 +134,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Champion" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;HordeBreaker" />
+                    <attribute id="PassivesAdded" type="LSString" value="HordeBreaker;ImprovedCritical;RelentlessEndurance;SavageAttacks" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(a1c2b712-2ed6-4e5b-820f-c5db654fe006,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />

@@ -1,0 +1,17 @@
+function IsFirstUsedSpellSlot(spellLevel, entity)
+    local entity = entity or context.Target
+    if not (HasActionResource('SpellSlot', 100, 1, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 1)
+    elseif not (HasActionResource('SpellSlot', 100, 2, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 2)
+    elseif not (HasActionResource('SpellSlot', 100, 3, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 3)
+    elseif not (HasActionResource('SpellSlot', 100, 4, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 4)
+    elseif not (HasActionResource('SpellSlot', 100, 5, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 5)
+    elseif not (HasActionResource('SpellSlot', 100, 6, true, false, entity).Result) then
+        return ConditionResult(spellLevel == 6)
+    end
+    return ConditionResult(false)
+end

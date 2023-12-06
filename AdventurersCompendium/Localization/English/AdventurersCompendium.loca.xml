@@ -8,6 +8,8 @@
     <content contentuid="AdventurersCompendium_SecondChance_DisplayName" version="1">Second Chance</content>
 	<content contentuid="AdventurersCompendium_Aid_DisplayName" version="1">Aid</content>
 	<content contentuid="AdventurersCompendium_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2].</content>
+	<content contentuid="AdventurersCompendium_Recovery_DisplayName" version="1">Recovery</content>
+	<content contentuid="AdventurersCompendium_Recovery_Description" version="1">Spell slots recover over time.</content>
 	<content contentuid="AdventurersCompendium_ASI_4_DisplayName" version="1">Ability Improvement (+4)</content>
 	<content contentuid="AdventurersCompendium_ASI_4_Description" version="1">You have 4 points to spend across your abilities, to a maximum of 20.</content>
 	<content contentuid="AdventurersCompendium_ASI_6_DisplayName" version="1">Ability Improvement (+6)</content>

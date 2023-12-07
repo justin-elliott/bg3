@@ -1,17 +1,22 @@
-function IsFirstUsedSpellSlot(spellLevel, entity)
+function __FirstUsedSpellSlot(spellSlotType, entity)
+    local spellSlotType = spellSlotType or 'SpellSlot'
     local entity = entity or context.Target
-    if not (HasActionResource('SpellSlot', 100, 1, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 1)
-    elseif not (HasActionResource('SpellSlot', 100, 2, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 2)
-    elseif not (HasActionResource('SpellSlot', 100, 3, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 3)
-    elseif not (HasActionResource('SpellSlot', 100, 4, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 4)
-    elseif not (HasActionResource('SpellSlot', 100, 5, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 5)
-    elseif not (HasActionResource('SpellSlot', 100, 6, true, false, entity).Result) then
-        return ConditionResult(spellLevel == 6)
+    for level=1,6 do
+        if not HasActionResource('SpellSlot', 100, level, true, false, entity).Result then
+            return level
+        end
+    end
+    return 0
+end
+
+function IsFirstUsedSpellSlot(spellLevel, spellSlotType, entity)
+    return ConditionResult(__FirstUsedSpellSlot(spellSlotType, entity) == spellLevel)
+end
+
+function CanRecoverSpellSlot(spellLevel, status, spellSlotType, entity)
+    local entity = entity or context.Target
+    if __FirstUsedSpellSlot(spellSlotType, entity) == spellLevel then
+        return ~HasStatus(status, entity) | StatusDurationMoreThan(entity, status, spellLevel)
     end
     return ConditionResult(false)
 end

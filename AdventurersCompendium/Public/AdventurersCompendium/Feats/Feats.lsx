@@ -5,28 +5,11 @@
         <node id="root">
             <children>
                 <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_4"/>
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,4,FeatASI)"/>
-                    <attribute id="UUID" type="guid" value="42357944-9de6-4b12-90fa-101d67ffacae"/>
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_6"/>
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,6,FeatASI)"/>
-                    <attribute id="UUID" type="guid" value="d207f6d1-5255-4876-b2da-d91d448e948e"/>
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_8"/>
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,8,8,FeatASI)"/>
-                    <attribute id="UUID" type="guid" value="6c1d68d1-ec78-4570-8895-d946412ea87c"/>
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_10"/>
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,10,10,FeatASI)"/>
-                    <attribute id="UUID" type="guid" value="2d93a31c-64ea-4a5b-8c9e-2262091cae0a"/>
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="false"/>
+                    <attribute id="Name" type="FixedString" value="AdventurersCompendium_Gifted"/>
+                    <attribute id="PassivesAdded" type="LSString" value="AdventurersCompendium_Gifted"/>
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectPassives(522041f0-d2af-43b7-9662-f8199b0b96e5,1);SelectPassives(a81788e5-6949-474b-9700-87864c4c510c,1);SelectPassives(fb9a4b78-4964-4344-b6f7-510709ce6d76,1);SelectPassives(4fff72e3-3cc4-4208-8f08-7a73501b3a81,1);SelectPassives(47418954-13db-4017-bcca-b8ca9a109a46,1);SelectPassives(eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a,1)"/>
+                    <attribute id="UUID" type="guid" value="24b0c067-7167-4d2e-9540-2cceee3bd1e2"/>
                 </node>
             </children>
         </node>

@@ -10,97 +10,10 @@
 	<content contentuid="AdventurersCompendium_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2].</content>
 	<content contentuid="AdventurersCompendium_Recovery_DisplayName" version="1">Recovery</content>
 	<content contentuid="AdventurersCompendium_Recovery_Description" version="1">Spell slots recover over time.</content>
-
 	<content contentuid="AdventurersCompendium_Gifted_DisplayName" version="1">Gifted</content>
+	<content contentuid="AdventurersCompendium_Gifted_12_DisplayName" version="1">Gifted (+12)</content>
+	<content contentuid="AdventurersCompendium_Gifted_24_DisplayName" version="1">Gifted (+24)</content>
+	<content contentuid="AdventurersCompendium_Gifted_36_DisplayName" version="1">Gifted (+36)</content>
+	<content contentuid="AdventurersCompendium_Gifted_46_DisplayName" version="1">Gifted (+46)</content>
 	<content contentuid="AdventurersCompendium_Gifted_Description" version="1">You are gifted with exceptional abilities and skills.</content>
-
-	<content contentuid="AdventurersCompendium_Strength_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Strength_0_Description" version="1">No change to strength.</content>
-	<content contentuid="AdventurersCompendium_Strength_2_DisplayName" version="1">Strength +2</content>
-	<content contentuid="AdventurersCompendium_Strength_2_Description" version="1">Increase your strength by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Strength_4_DisplayName" version="1">Strength +4</content>
-	<content contentuid="AdventurersCompendium_Strength_4_Description" version="1">Increase your strength by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Strength_6_DisplayName" version="1">Strength +6</content>
-	<content contentuid="AdventurersCompendium_Strength_6_Description" version="1">Increase your strength by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Strength_8_DisplayName" version="1">Strength +8</content>
-	<content contentuid="AdventurersCompendium_Strength_8_Description" version="1">Increase your strength by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Strength_10_DisplayName" version="1">Strength +10</content>
-	<content contentuid="AdventurersCompendium_Strength_10_Description" version="1">Increase your strength by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Strength_12_DisplayName" version="1">Strength +12</content>
-	<content contentuid="AdventurersCompendium_Strength_12_Description" version="1">Increase your strength by 12, to a maximum of 30.</content>
-
-	<content contentuid="AdventurersCompendium_Dexterity_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Dexterity_0_Description" version="1">No change to dexterity.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_2_DisplayName" version="1">Dexterity +2</content>
-	<content contentuid="AdventurersCompendium_Dexterity_2_Description" version="1">Increase your dexterity by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_4_DisplayName" version="1">Dexterity +4</content>
-	<content contentuid="AdventurersCompendium_Dexterity_4_Description" version="1">Increase your dexterity by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_6_DisplayName" version="1">Dexterity +6</content>
-	<content contentuid="AdventurersCompendium_Dexterity_6_Description" version="1">Increase your dexterity by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_8_DisplayName" version="1">Dexterity +8</content>
-	<content contentuid="AdventurersCompendium_Dexterity_8_Description" version="1">Increase your dexterity by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_10_DisplayName" version="1">Dexterity +10</content>
-	<content contentuid="AdventurersCompendium_Dexterity_10_Description" version="1">Increase your dexterity by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Dexterity_12_DisplayName" version="1">Dexterity +12</content>
-	<content contentuid="AdventurersCompendium_Dexterity_12_Description" version="1">Increase your dexterity by 12, to a maximum of 30.</content>
-
-	<content contentuid="AdventurersCompendium_Constitution_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Constitution_0_Description" version="1">No change to constitution.</content>
-	<content contentuid="AdventurersCompendium_Constitution_2_DisplayName" version="1">Constitution +2</content>
-	<content contentuid="AdventurersCompendium_Constitution_2_Description" version="1">Increase your constitution by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Constitution_4_DisplayName" version="1">Constitution +4</content>
-	<content contentuid="AdventurersCompendium_Constitution_4_Description" version="1">Increase your constitution by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Constitution_6_DisplayName" version="1">Constitution +6</content>
-	<content contentuid="AdventurersCompendium_Constitution_6_Description" version="1">Increase your constitution by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Constitution_8_DisplayName" version="1">Constitution +8</content>
-	<content contentuid="AdventurersCompendium_Constitution_8_Description" version="1">Increase your constitution by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Constitution_10_DisplayName" version="1">Constitution +10</content>
-	<content contentuid="AdventurersCompendium_Constitution_10_Description" version="1">Increase your constitution by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Constitution_12_DisplayName" version="1">Constitution +12</content>
-	<content contentuid="AdventurersCompendium_Constitution_12_Description" version="1">Increase your constitution by 12, to a maximum of 30.</content>
-
-	<content contentuid="AdventurersCompendium_Intelligence_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Intelligence_0_Description" version="1">No change to intelligence.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_2_DisplayName" version="1">Intelligence +2</content>
-	<content contentuid="AdventurersCompendium_Intelligence_2_Description" version="1">Increase your intelligence by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_4_DisplayName" version="1">Intelligence +4</content>
-	<content contentuid="AdventurersCompendium_Intelligence_4_Description" version="1">Increase your intelligence by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_6_DisplayName" version="1">Intelligence +6</content>
-	<content contentuid="AdventurersCompendium_Intelligence_6_Description" version="1">Increase your intelligence by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_8_DisplayName" version="1">Intelligence +8</content>
-	<content contentuid="AdventurersCompendium_Intelligence_8_Description" version="1">Increase your intelligence by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_10_DisplayName" version="1">Intelligence +10</content>
-	<content contentuid="AdventurersCompendium_Intelligence_10_Description" version="1">Increase your intelligence by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Intelligence_12_DisplayName" version="1">Intelligence +12</content>
-	<content contentuid="AdventurersCompendium_Intelligence_12_Description" version="1">Increase your intelligence by 12, to a maximum of 30.</content>
-
-	<content contentuid="AdventurersCompendium_Wisdom_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Wisdom_0_Description" version="1">No change to wisdom.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_2_DisplayName" version="1">Wisdom +2</content>
-	<content contentuid="AdventurersCompendium_Wisdom_2_Description" version="1">Increase your wisdom by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_4_DisplayName" version="1">Wisdom +4</content>
-	<content contentuid="AdventurersCompendium_Wisdom_4_Description" version="1">Increase your wisdom by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_6_DisplayName" version="1">Wisdom +6</content>
-	<content contentuid="AdventurersCompendium_Wisdom_6_Description" version="1">Increase your wisdom by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_8_DisplayName" version="1">Wisdom +8</content>
-	<content contentuid="AdventurersCompendium_Wisdom_8_Description" version="1">Increase your wisdom by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_10_DisplayName" version="1">Wisdom +10</content>
-	<content contentuid="AdventurersCompendium_Wisdom_10_Description" version="1">Increase your wisdom by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Wisdom_12_DisplayName" version="1">Wisdom +12</content>
-	<content contentuid="AdventurersCompendium_Wisdom_12_Description" version="1">Increase your wisdom by 12, to a maximum of 30.</content>
-
-	<content contentuid="AdventurersCompendium_Charisma_0_DisplayName" version="1">No Change</content>
-	<content contentuid="AdventurersCompendium_Charisma_0_Description" version="1">No change to charisma.</content>
-	<content contentuid="AdventurersCompendium_Charisma_2_DisplayName" version="1">Charisma +2</content>
-	<content contentuid="AdventurersCompendium_Charisma_2_Description" version="1">Increase your charisma by 2, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Charisma_4_DisplayName" version="1">Charisma +4</content>
-	<content contentuid="AdventurersCompendium_Charisma_4_Description" version="1">Increase your charisma by 4, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Charisma_6_DisplayName" version="1">Charisma +6</content>
-	<content contentuid="AdventurersCompendium_Charisma_6_Description" version="1">Increase your charisma by 6, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Charisma_8_DisplayName" version="1">Charisma +8</content>
-	<content contentuid="AdventurersCompendium_Charisma_8_Description" version="1">Increase your charisma by 8, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Charisma_10_DisplayName" version="1">Charisma +10</content>
-	<content contentuid="AdventurersCompendium_Charisma_10_Description" version="1">Increase your charisma by 10, to a maximum of 30.</content>
-	<content contentuid="AdventurersCompendium_Charisma_12_DisplayName" version="1">Charisma +12</content>
-	<content contentuid="AdventurersCompendium_Charisma_12_Description" version="1">Increase your charisma by 12, to a maximum of 30.</content>
 </contentList>

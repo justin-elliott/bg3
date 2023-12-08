@@ -5,32 +5,11 @@
         <node id="root">
             <children>
                 <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_12_DisplayName" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_DisplayName" version="1"/>
                     <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_Gifted_Description" version="1"/>
-                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted_12"/>
-                    <attribute id="FeatId" type="guid" value="6a0eb290-0fe3-4dce-b249-ae2ed4f59da9"/>
-                    <attribute id="UUID" type="guid" value="adfdcfb1-b206-4ac7-8832-c751cf15e546"/>
-                </node>
-                <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_24_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_Gifted_Description" version="1"/>
-                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted_24"/>
-                    <attribute id="FeatId" type="guid" value="24b0c067-7167-4d2e-9540-2cceee3bd1e2"/>
-                    <attribute id="UUID" type="guid" value="2c932fdd-3173-498a-b861-30a5612635a2"/>
-                </node>
-                <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_36_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_Gifted_Description" version="1"/>
-                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted_36"/>
-                    <attribute id="FeatId" type="guid" value="76a72125-212d-4845-bf52-74efbd5486a5"/>
-                    <attribute id="UUID" type="guid" value="4a0aa1a2-ba9a-48d2-af3a-270d853d52e3"/>
-                </node>
-                <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_46_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_Gifted_Description" version="1"/>
-                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted_46"/>
-                    <attribute id="FeatId" type="guid" value="3ecd4943-6f82-41c4-a12c-d060a7b30342"/>
-                    <attribute id="UUID" type="guid" value="200e6448-db52-4c57-855c-297e7b955c43"/>
+                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted"/>
+                    <attribute id="FeatId" type="guid" value="12dd2dda-02d1-4e46-bc99-7d78c5a95e01"/>
+                    <attribute id="UUID" type="guid" value="b99b64f9-dd8b-494c-8eaa-ca2147707cfd"/>
                 </node>
             </children>
         </node>

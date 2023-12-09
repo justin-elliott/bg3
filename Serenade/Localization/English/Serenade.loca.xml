@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <contentList>
     <content contentuid="Serenade_DisplayName" version="1">Serenade</content>
-    <content contentuid="Serenade_Description" version="1">A collection of tips, tricks, and cantrips for the well-prepared adventurer.</content>
-    <content contentuid="Serenade_Book_Contents" version="1">Within its pages, this tattered, unremarkable tome might just hold the key to surviving your adventures.</content>
+    <content contentuid="Serenade_Description" version="1">Curved wood and strings of gold, a treasure to behold. Fingertips on frets alight, awaken day or starry night. Sweet notes dance and gracefully soar, through halls and chambers, evermore. A tapestry of sound so fine, the lute's melody, truly divine.</content>
 
     <content contentuid="Serenade_AbjurersWeave_DisplayName" version="1">Abjurer's Weave</content>
     <content contentuid="Serenade_AbjurersWeave_Description" version="1">Weave together your spells to fortify your party.</content>

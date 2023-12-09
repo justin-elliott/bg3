@@ -1,5 +1,4 @@
-function IsFirstUsedSpellSlot(spellLevel, spellSlotType, entity)
-    local spellSlotType = spellSlotType or 'SpellSlot'
+function IsFirstUsedSpellSlot(spellLevel, entity)
     local entity = entity or context.Target
     for level=1,(spellLevel - 1) do
         if not HasActionResource('SpellSlot', 100, level, true, false, entity).Result then
@@ -9,10 +8,23 @@ function IsFirstUsedSpellSlot(spellLevel, spellSlotType, entity)
     return ~HasActionResource('SpellSlot', 100, spellLevel, true, false, entity)
 end
 
-function CanRecoverSpellSlot(spellLevel, status, spellSlotType, entity)
+function CanRecoverSpellSlot(spellLevel, status, entity)
     local entity = entity or context.Target
-    if IsFirstUsedSpellSlot(spellLevel, spellSlotType, entity).Result then
+    if IsFirstUsedSpellSlot(spellLevel, entity).Result then
         return ~HasStatus(status, entity) | StatusDurationMoreThan(entity, status, spellLevel)
     end
     return ConditionResult(false)
+end
+
+function IsWarlockSpellLevel(spellLevel, entity)
+    local entity = entity or context.Target
+    local warlockSpellLevel = math.min(5, math.floor((entity.GetClassLevel('Warlock') + 1) / 2))
+    return ConditionResult(spellLevel == warlockSpellLevel)
+end
+
+function CanRecoverWarlockSpellSlot(spellLevel, status, entity)
+    local entity = entity or context.Target
+    return IsWarlockSpellLevel(spellLevel, entity) &
+           ~HasStatus(status, entity) &
+           ~HasActionResource('WarlockSpellSlot', 100, spellLevel, true, false, entity)
 end

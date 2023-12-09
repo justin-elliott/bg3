@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <content contentuid="Serenade_DisplayName" version="1">Serenade</content>
+    <content contentuid="Serenade_Description" version="1">A collection of tips, tricks, and cantrips for the well-prepared adventurer.</content>
+    <content contentuid="Serenade_Book_Contents" version="1">Within its pages, this tattered, unremarkable tome might just hold the key to surviving your adventures.</content>
+
+    <content contentuid="Serenade_AbjurersWeave_DisplayName" version="1">Abjurer's Weave</content>
+    <content contentuid="Serenade_AbjurersWeave_Description" version="1">Weave together your spells to fortify your party.</content>
+
+    <content contentuid="Serenade_SecondChance_DisplayName" version="1">Second Chance</content>
+
+	<content contentuid="Serenade_Aid_DisplayName" version="1">Aid</content>
+	<content contentuid="Serenade_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2].</content>
+
+	<content contentuid="Serenade_Recovery_DisplayName" version="1">Recovery</content>
+	<content contentuid="Serenade_Recovery_Description" version="1">Spell slots recover over time.</content>
+
+	<content contentuid="Serenade_Gifted_DisplayName" version="1">Gifted</content>
+	<content contentuid="Serenade_Gifted_Description" version="1">You are gifted with exceptional abilities and skills.</content>
+
+	<content contentuid="Serenade_Strength_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Strength_0_Description" version="1">No change to strength.</content>
+	<content contentuid="Serenade_Strength_2_DisplayName" version="1">Gifted Strength +2</content>
+	<content contentuid="Serenade_Strength_2_Description" version="1">Increase your strength by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Strength_4_DisplayName" version="1">Gifted Strength +4</content>
+	<content contentuid="Serenade_Strength_4_Description" version="1">Increase your strength by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Strength_6_DisplayName" version="1">Gifted Strength +6</content>
+	<content contentuid="Serenade_Strength_6_Description" version="1">Increase your strength by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Strength_8_DisplayName" version="1">Gifted Strength +8</content>
+	<content contentuid="Serenade_Strength_8_Description" version="1">Increase your strength by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Strength_10_DisplayName" version="1">Gifted Strength +10</content>
+	<content contentuid="Serenade_Strength_10_Description" version="1">Increase your strength by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Strength_12_DisplayName" version="1">Gifted Strength +12</content>
+	<content contentuid="Serenade_Strength_12_Description" version="1">Increase your strength by 12, to a maximum of 30.</content>
+
+	<content contentuid="Serenade_Dexterity_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Dexterity_0_Description" version="1">No change to dexterity.</content>
+	<content contentuid="Serenade_Dexterity_2_DisplayName" version="1">Gifted Dexterity +2</content>
+	<content contentuid="Serenade_Dexterity_2_Description" version="1">Increase your dexterity by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Dexterity_4_DisplayName" version="1">Gifted Dexterity +4</content>
+	<content contentuid="Serenade_Dexterity_4_Description" version="1">Increase your dexterity by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Dexterity_6_DisplayName" version="1">Gifted Dexterity +6</content>
+	<content contentuid="Serenade_Dexterity_6_Description" version="1">Increase your dexterity by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Dexterity_8_DisplayName" version="1">Gifted Dexterity +8</content>
+	<content contentuid="Serenade_Dexterity_8_Description" version="1">Increase your dexterity by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Dexterity_10_DisplayName" version="1">Gifted Dexterity +10</content>
+	<content contentuid="Serenade_Dexterity_10_Description" version="1">Increase your dexterity by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Dexterity_12_DisplayName" version="1">Gifted Dexterity +12</content>
+	<content contentuid="Serenade_Dexterity_12_Description" version="1">Increase your dexterity by 12, to a maximum of 30.</content>
+
+	<content contentuid="Serenade_Constitution_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Constitution_0_Description" version="1">No change to constitution.</content>
+	<content contentuid="Serenade_Constitution_2_DisplayName" version="1">Gifted Constitution +2</content>
+	<content contentuid="Serenade_Constitution_2_Description" version="1">Increase your constitution by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Constitution_4_DisplayName" version="1">Gifted Constitution +4</content>
+	<content contentuid="Serenade_Constitution_4_Description" version="1">Increase your constitution by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Constitution_6_DisplayName" version="1">Gifted Constitution +6</content>
+	<content contentuid="Serenade_Constitution_6_Description" version="1">Increase your constitution by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Constitution_8_DisplayName" version="1">Gifted Constitution +8</content>
+	<content contentuid="Serenade_Constitution_8_Description" version="1">Increase your constitution by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Constitution_10_DisplayName" version="1">Gifted Constitution +10</content>
+	<content contentuid="Serenade_Constitution_10_Description" version="1">Increase your constitution by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Constitution_12_DisplayName" version="1">Gifted Constitution +12</content>
+	<content contentuid="Serenade_Constitution_12_Description" version="1">Increase your constitution by 12, to a maximum of 30.</content>
+
+	<content contentuid="Serenade_Intelligence_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Intelligence_0_Description" version="1">No change to intelligence.</content>
+	<content contentuid="Serenade_Intelligence_2_DisplayName" version="1">Gifted Intelligence +2</content>
+	<content contentuid="Serenade_Intelligence_2_Description" version="1">Increase your intelligence by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Intelligence_4_DisplayName" version="1">Gifted Intelligence +4</content>
+	<content contentuid="Serenade_Intelligence_4_Description" version="1">Increase your intelligence by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Intelligence_6_DisplayName" version="1">Gifted Intelligence +6</content>
+	<content contentuid="Serenade_Intelligence_6_Description" version="1">Increase your intelligence by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Intelligence_8_DisplayName" version="1">Gifted Intelligence +8</content>
+	<content contentuid="Serenade_Intelligence_8_Description" version="1">Increase your intelligence by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Intelligence_10_DisplayName" version="1">Gifted Intelligence +10</content>
+	<content contentuid="Serenade_Intelligence_10_Description" version="1">Increase your intelligence by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Intelligence_12_DisplayName" version="1">Gifted Intelligence +12</content>
+	<content contentuid="Serenade_Intelligence_12_Description" version="1">Increase your intelligence by 12, to a maximum of 30.</content>
+
+	<content contentuid="Serenade_Wisdom_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Wisdom_0_Description" version="1">No change to wisdom.</content>
+	<content contentuid="Serenade_Wisdom_2_DisplayName" version="1">Gifted Wisdom +2</content>
+	<content contentuid="Serenade_Wisdom_2_Description" version="1">Increase your wisdom by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Wisdom_4_DisplayName" version="1">Gifted Wisdom +4</content>
+	<content contentuid="Serenade_Wisdom_4_Description" version="1">Increase your wisdom by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Wisdom_6_DisplayName" version="1">Gifted Wisdom +6</content>
+	<content contentuid="Serenade_Wisdom_6_Description" version="1">Increase your wisdom by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Wisdom_8_DisplayName" version="1">Gifted Wisdom +8</content>
+	<content contentuid="Serenade_Wisdom_8_Description" version="1">Increase your wisdom by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Wisdom_10_DisplayName" version="1">Gifted Wisdom +10</content>
+	<content contentuid="Serenade_Wisdom_10_Description" version="1">Increase your wisdom by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Wisdom_12_DisplayName" version="1">Gifted Wisdom +12</content>
+	<content contentuid="Serenade_Wisdom_12_Description" version="1">Increase your wisdom by 12, to a maximum of 30.</content>
+
+	<content contentuid="Serenade_Charisma_0_DisplayName" version="1">No Change</content>
+	<content contentuid="Serenade_Charisma_0_Description" version="1">No change to charisma.</content>
+	<content contentuid="Serenade_Charisma_2_DisplayName" version="1">Gifted Charisma +2</content>
+	<content contentuid="Serenade_Charisma_2_Description" version="1">Increase your charisma by 2, to a maximum of 30.</content>
+	<content contentuid="Serenade_Charisma_4_DisplayName" version="1">Gifted Charisma +4</content>
+	<content contentuid="Serenade_Charisma_4_Description" version="1">Increase your charisma by 4, to a maximum of 30.</content>
+	<content contentuid="Serenade_Charisma_6_DisplayName" version="1">Gifted Charisma +6</content>
+	<content contentuid="Serenade_Charisma_6_Description" version="1">Increase your charisma by 6, to a maximum of 30.</content>
+	<content contentuid="Serenade_Charisma_8_DisplayName" version="1">Gifted Charisma +8</content>
+	<content contentuid="Serenade_Charisma_8_Description" version="1">Increase your charisma by 8, to a maximum of 30.</content>
+	<content contentuid="Serenade_Charisma_10_DisplayName" version="1">Gifted Charisma +10</content>
+	<content contentuid="Serenade_Charisma_10_Description" version="1">Increase your charisma by 10, to a maximum of 30.</content>
+	<content contentuid="Serenade_Charisma_12_DisplayName" version="1">Gifted Charisma +12</content>
+	<content contentuid="Serenade_Charisma_12_Description" version="1">Increase your charisma by 12, to a maximum of 30.</content>
+</contentList>

@@ -5,9 +5,9 @@
         <node id="root">
             <children>
                 <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="AdventurersCompendium_Gifted_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="AdventurersCompendium_Gifted_Description" version="1"/>
-                    <attribute id="ExactMatch" type="FixedString" value="AdventurersCompendium_Gifted"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_Gifted_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_Gifted_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="Serenade_Gifted"/>
                     <attribute id="FeatId" type="guid" value="12dd2dda-02d1-4e46-bc99-7d78c5a95e01"/>
                     <attribute id="UUID" type="guid" value="b99b64f9-dd8b-494c-8eaa-ca2147707cfd"/>
                 </node>

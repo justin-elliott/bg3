@@ -25,7 +25,7 @@
                     <attribute id="Level18" type="LSString" value="45"/>
                     <attribute id="Level19" type="LSString" value="47"/>
                     <attribute id="Level20" type="LSString" value="50"/>
-                    <attribute id="Name" type="FixedString" value="AdventurersCompendium_AidValue"/>
+                    <attribute id="Name" type="FixedString" value="Serenade_AidValue"/>
                     <attribute id="UUID" type="guid" value="2ed6d212-e2f8-4094-9705-a550c912bb7f"/>
                 </node>
             </children>

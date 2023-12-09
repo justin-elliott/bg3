@@ -8,13 +8,13 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" type="LSWString" value="BinaryPrimitive"/>
                     <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
-                    <attribute id="Description" type="LSWString" value="Adds the Adventurer's Compendium"/>
-                    <attribute id="Folder" type="LSWString" value="AdventurersCompendium"/>
+                    <attribute id="Description" type="LSWString" value="Adds the lute, Serenade."/>
+                    <attribute id="Folder" type="LSWString" value="Serenade"/>
                     <attribute id="LobbyLevelName" type="FixedString" value=""/>
                     <attribute id="MD5" type="LSString" value=""/>
                     <attribute id="MainMenuBackgroundVideo" type="FixedString" value=""/>
                     <attribute id="MenuLevelName" type="FixedString" value=""/>
-                    <attribute id="Name" type="FixedString" value="AdventurersCompendium"/>
+                    <attribute id="Name" type="FixedString" value="Serenade"/>
                     <attribute id="NumPlayers" type="uint8" value="4"/>
                     <attribute id="PhotoBooth" type="FixedString" value=""/>
                     <attribute id="StartupLevelName" type="FixedString" value=""/>

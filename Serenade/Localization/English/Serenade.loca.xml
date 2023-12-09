@@ -7,7 +7,7 @@
     <content contentuid="Serenade_Virtuoso_Description" version="1">You gain &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; skills, and have &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in, and &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on, Charisma &lt;LSTag Tooltip="AbilityCheck"&gt;Checks&lt;/LSTag&gt;.</content>
 
     <content contentuid="Serenade_Medley_DisplayName" version="1">Medley</content>
-    <content contentuid="Serenade_Medley_Description" version="1">For hearts that tire, and souls that ache, let music mend the weary frame. Let worries fade, and laughter rise, as spirits soar, and hopes aflame.</content>
+    <content contentuid="Serenade_Medley_Description" version="1">Perform a medley of songs to inspire and fortify your allies.</content>
 
     <content contentuid="Serenade_SecondChance_DisplayName" version="1">Second Chance</content>
 

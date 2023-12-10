@@ -16,7 +16,6 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Description" "Serenade_Prodigy_Description"
         data "Icon" "Action_KnowledgeOfTheAges"
         data "Properties" "Highlighted"
-
         """))
 
     attribute_icon = {
@@ -30,17 +29,18 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
 
     for attribute in attributes:
         f.write(textwrap.dedent(f"""\
+
             new entry "Serenade_{attribute}_0"
             type "PassiveData"
             data "DisplayName" "Serenade_{attribute}_0_DisplayName"
             data "Description" "Serenade_{attribute}_0_Description"
             data "Icon" "{attribute_icon[attribute]}"
             data "Properties" "IsHidden"
-
             """))
 
         for boost in range(2, max_boost + 2, 2):
             f.write(textwrap.dedent(f"""\
+
                 new entry "Serenade_{attribute}_{boost}"
                 type "PassiveData"
                 data "Boosts" "Ability({attribute}, {boost}, 30)
@@ -48,7 +48,6 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
                 data "Description" "Serenade_{attribute}_{boost}_Description"
                 data "Icon" "{attribute_icon[attribute]}"
                 data "Properties" "IsHidden"
-
                 """))
 
 # Generate the passive lists
@@ -86,4 +85,29 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                 </node>
             </region>
         </save>
+        """))
+
+# Generate the English localization
+with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"), "w") as f:
+    f.write(textwrap.dedent("""\
+        <?xml version="1.0" encoding="utf-8"?>
+        <contentList>
+        """))
+
+    for attribute in attributes:
+        f.write(textwrap.indent(textwrap.dedent(f"""\
+            <content contentuid="Serenade_{attribute}_0_DisplayName" version="1">Prodigy: No Change</content>
+            <content contentuid="Serenade_{attribute}_0_Description" version="1">No change to {attribute}.</content>
+            """),
+                " " * 4 * 1))
+
+        for boost in range(2, max_boost + 2, 2):
+            f.write(textwrap.indent(textwrap.dedent(f"""\
+                <content contentuid="Serenade_{attribute}_{boost}_DisplayName" version="1">Prodigy: {attribute} +{boost}</content>
+                <content contentuid="Serenade_{attribute}_{boost}_Description" version="1">Increase your {attribute} by {boost}, to a maximum of 30.</content>
+                """),
+                    " " * 4 * 1))
+
+    f.write(textwrap.dedent("""\
+        </contentList>
         """))

@@ -430,4 +430,3 @@ data "DisplayName" "Serenade_Charisma_16_DisplayName"
 data "Description" "Serenade_Charisma_16_Description"
 data "Icon" "Spell_Transmutation_EnhanceAbility_EaglesSplendor"
 data "Properties" "IsHidden"
-

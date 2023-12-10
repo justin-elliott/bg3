@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <content contentuid="Serenade_Strength_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Strength_0_Description" version="1">No change to Strength.</content>
+    <content contentuid="Serenade_Strength_2_DisplayName" version="1">Prodigy: Strength +2</content>
+    <content contentuid="Serenade_Strength_2_Description" version="1">Increase your Strength by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_4_DisplayName" version="1">Prodigy: Strength +4</content>
+    <content contentuid="Serenade_Strength_4_Description" version="1">Increase your Strength by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_6_DisplayName" version="1">Prodigy: Strength +6</content>
+    <content contentuid="Serenade_Strength_6_Description" version="1">Increase your Strength by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_8_DisplayName" version="1">Prodigy: Strength +8</content>
+    <content contentuid="Serenade_Strength_8_Description" version="1">Increase your Strength by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_10_DisplayName" version="1">Prodigy: Strength +10</content>
+    <content contentuid="Serenade_Strength_10_Description" version="1">Increase your Strength by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_12_DisplayName" version="1">Prodigy: Strength +12</content>
+    <content contentuid="Serenade_Strength_12_Description" version="1">Increase your Strength by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_14_DisplayName" version="1">Prodigy: Strength +14</content>
+    <content contentuid="Serenade_Strength_14_Description" version="1">Increase your Strength by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Strength_16_DisplayName" version="1">Prodigy: Strength +16</content>
+    <content contentuid="Serenade_Strength_16_Description" version="1">Increase your Strength by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Dexterity_0_Description" version="1">No change to Dexterity.</content>
+    <content contentuid="Serenade_Dexterity_2_DisplayName" version="1">Prodigy: Dexterity +2</content>
+    <content contentuid="Serenade_Dexterity_2_Description" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_4_DisplayName" version="1">Prodigy: Dexterity +4</content>
+    <content contentuid="Serenade_Dexterity_4_Description" version="1">Increase your Dexterity by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_6_DisplayName" version="1">Prodigy: Dexterity +6</content>
+    <content contentuid="Serenade_Dexterity_6_Description" version="1">Increase your Dexterity by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_8_DisplayName" version="1">Prodigy: Dexterity +8</content>
+    <content contentuid="Serenade_Dexterity_8_Description" version="1">Increase your Dexterity by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_10_DisplayName" version="1">Prodigy: Dexterity +10</content>
+    <content contentuid="Serenade_Dexterity_10_Description" version="1">Increase your Dexterity by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_12_DisplayName" version="1">Prodigy: Dexterity +12</content>
+    <content contentuid="Serenade_Dexterity_12_Description" version="1">Increase your Dexterity by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_14_DisplayName" version="1">Prodigy: Dexterity +14</content>
+    <content contentuid="Serenade_Dexterity_14_Description" version="1">Increase your Dexterity by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Dexterity_16_DisplayName" version="1">Prodigy: Dexterity +16</content>
+    <content contentuid="Serenade_Dexterity_16_Description" version="1">Increase your Dexterity by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Constitution_0_Description" version="1">No change to Constitution.</content>
+    <content contentuid="Serenade_Constitution_2_DisplayName" version="1">Prodigy: Constitution +2</content>
+    <content contentuid="Serenade_Constitution_2_Description" version="1">Increase your Constitution by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_4_DisplayName" version="1">Prodigy: Constitution +4</content>
+    <content contentuid="Serenade_Constitution_4_Description" version="1">Increase your Constitution by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_6_DisplayName" version="1">Prodigy: Constitution +6</content>
+    <content contentuid="Serenade_Constitution_6_Description" version="1">Increase your Constitution by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_8_DisplayName" version="1">Prodigy: Constitution +8</content>
+    <content contentuid="Serenade_Constitution_8_Description" version="1">Increase your Constitution by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_10_DisplayName" version="1">Prodigy: Constitution +10</content>
+    <content contentuid="Serenade_Constitution_10_Description" version="1">Increase your Constitution by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_12_DisplayName" version="1">Prodigy: Constitution +12</content>
+    <content contentuid="Serenade_Constitution_12_Description" version="1">Increase your Constitution by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_14_DisplayName" version="1">Prodigy: Constitution +14</content>
+    <content contentuid="Serenade_Constitution_14_Description" version="1">Increase your Constitution by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Constitution_16_DisplayName" version="1">Prodigy: Constitution +16</content>
+    <content contentuid="Serenade_Constitution_16_Description" version="1">Increase your Constitution by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Intelligence_0_Description" version="1">No change to Intelligence.</content>
+    <content contentuid="Serenade_Intelligence_2_DisplayName" version="1">Prodigy: Intelligence +2</content>
+    <content contentuid="Serenade_Intelligence_2_Description" version="1">Increase your Intelligence by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_4_DisplayName" version="1">Prodigy: Intelligence +4</content>
+    <content contentuid="Serenade_Intelligence_4_Description" version="1">Increase your Intelligence by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_6_DisplayName" version="1">Prodigy: Intelligence +6</content>
+    <content contentuid="Serenade_Intelligence_6_Description" version="1">Increase your Intelligence by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_8_DisplayName" version="1">Prodigy: Intelligence +8</content>
+    <content contentuid="Serenade_Intelligence_8_Description" version="1">Increase your Intelligence by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_10_DisplayName" version="1">Prodigy: Intelligence +10</content>
+    <content contentuid="Serenade_Intelligence_10_Description" version="1">Increase your Intelligence by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_12_DisplayName" version="1">Prodigy: Intelligence +12</content>
+    <content contentuid="Serenade_Intelligence_12_Description" version="1">Increase your Intelligence by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_14_DisplayName" version="1">Prodigy: Intelligence +14</content>
+    <content contentuid="Serenade_Intelligence_14_Description" version="1">Increase your Intelligence by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Intelligence_16_DisplayName" version="1">Prodigy: Intelligence +16</content>
+    <content contentuid="Serenade_Intelligence_16_Description" version="1">Increase your Intelligence by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Wisdom_0_Description" version="1">No change to Wisdom.</content>
+    <content contentuid="Serenade_Wisdom_2_DisplayName" version="1">Prodigy: Wisdom +2</content>
+    <content contentuid="Serenade_Wisdom_2_Description" version="1">Increase your Wisdom by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_4_DisplayName" version="1">Prodigy: Wisdom +4</content>
+    <content contentuid="Serenade_Wisdom_4_Description" version="1">Increase your Wisdom by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_6_DisplayName" version="1">Prodigy: Wisdom +6</content>
+    <content contentuid="Serenade_Wisdom_6_Description" version="1">Increase your Wisdom by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_8_DisplayName" version="1">Prodigy: Wisdom +8</content>
+    <content contentuid="Serenade_Wisdom_8_Description" version="1">Increase your Wisdom by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_10_DisplayName" version="1">Prodigy: Wisdom +10</content>
+    <content contentuid="Serenade_Wisdom_10_Description" version="1">Increase your Wisdom by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_12_DisplayName" version="1">Prodigy: Wisdom +12</content>
+    <content contentuid="Serenade_Wisdom_12_Description" version="1">Increase your Wisdom by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_14_DisplayName" version="1">Prodigy: Wisdom +14</content>
+    <content contentuid="Serenade_Wisdom_14_Description" version="1">Increase your Wisdom by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Wisdom_16_DisplayName" version="1">Prodigy: Wisdom +16</content>
+    <content contentuid="Serenade_Wisdom_16_Description" version="1">Increase your Wisdom by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_0_DisplayName" version="1">Prodigy: No Change</content>
+    <content contentuid="Serenade_Charisma_0_Description" version="1">No change to Charisma.</content>
+    <content contentuid="Serenade_Charisma_2_DisplayName" version="1">Prodigy: Charisma +2</content>
+    <content contentuid="Serenade_Charisma_2_Description" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_4_DisplayName" version="1">Prodigy: Charisma +4</content>
+    <content contentuid="Serenade_Charisma_4_Description" version="1">Increase your Charisma by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_6_DisplayName" version="1">Prodigy: Charisma +6</content>
+    <content contentuid="Serenade_Charisma_6_Description" version="1">Increase your Charisma by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_8_DisplayName" version="1">Prodigy: Charisma +8</content>
+    <content contentuid="Serenade_Charisma_8_Description" version="1">Increase your Charisma by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_10_DisplayName" version="1">Prodigy: Charisma +10</content>
+    <content contentuid="Serenade_Charisma_10_Description" version="1">Increase your Charisma by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_12_DisplayName" version="1">Prodigy: Charisma +12</content>
+    <content contentuid="Serenade_Charisma_12_Description" version="1">Increase your Charisma by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_14_DisplayName" version="1">Prodigy: Charisma +14</content>
+    <content contentuid="Serenade_Charisma_14_Description" version="1">Increase your Charisma by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_Charisma_16_DisplayName" version="1">Prodigy: Charisma +16</content>
+    <content contentuid="Serenade_Charisma_16_Description" version="1">Increase your Charisma by 16, to a maximum of 30.</content>
+</contentList>

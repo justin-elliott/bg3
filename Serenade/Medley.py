@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+Generates the file for the "Medley" spell.
+"""
+
 import os.path
 import textwrap
 

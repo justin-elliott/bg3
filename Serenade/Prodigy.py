@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+Generates the files for the "Prodigy" ability enhancement feat.
+"""
+
 import os.path
 import textwrap
 

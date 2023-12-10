@@ -1,7 +1,7 @@
-new entry "Serenade_Gifted"
+new entry "Serenade_Prodigy"
 type "PassiveData"
-data "DisplayName" "Serenade_Gifted_DisplayName"
-data "Description" "Serenade_Gifted_Description"
+data "DisplayName" "Serenade_Prodigy_DisplayName"
+data "Description" "Serenade_Prodigy_Description"
 data "Icon" "Action_KnowledgeOfTheAges"
 data "Properties" "Highlighted"
 

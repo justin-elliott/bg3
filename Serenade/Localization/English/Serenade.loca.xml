@@ -12,10 +12,7 @@
     <content contentuid="Serenade_SecondChance_DisplayName" version="1">Second Chance</content>
 
 	<content contentuid="Serenade_Aid_DisplayName" version="1">Aid</content>
-	<content contentuid="Serenade_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2].</content>
-
-	<content contentuid="Serenade_Recovery_DisplayName" version="1">Recovery</content>
-	<content contentuid="Serenade_Recovery_Description" version="1">Spell slots recover over time.</content>
+	<content contentuid="Serenade_Aid_Description" version="1">Hit point maximum increased by [1]. Each turn, restore [2] and recover spell slots.&lt;br&gt;&lt;br&gt;Spell slots take a number of turns equal to their level to be recovered.</content>
 
 	<content contentuid="Serenade_Gifted_DisplayName" version="1">Gifted</content>
 	<content contentuid="Serenade_Gifted_Description" version="1">You are gifted with exceptional abilities and skills.</content>

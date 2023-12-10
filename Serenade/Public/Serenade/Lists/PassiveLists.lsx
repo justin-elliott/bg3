@@ -5,27 +5,27 @@
         <node id="root">
             <children>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Strength_0,Serenade_Strength_2,Serenade_Strength_4,Serenade_Strength_6,Serenade_Strength_8,Serenade_Strength_10,Serenade_Strength_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Strength_0,Serenade_Strength_2,Serenade_Strength_4,Serenade_Strength_6,Serenade_Strength_8,Serenade_Strength_10,Serenade_Strength_12,Serenade_Strength_14,Serenade_Strength_16"/>
                     <attribute id="UUID" type="guid" value="522041f0-d2af-43b7-9662-f8199b0b96e5"/>
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Dexterity_0,Serenade_Dexterity_2,Serenade_Dexterity_4,Serenade_Dexterity_6,Serenade_Dexterity_8,Serenade_Dexterity_10,Serenade_Dexterity_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Dexterity_0,Serenade_Dexterity_2,Serenade_Dexterity_4,Serenade_Dexterity_6,Serenade_Dexterity_8,Serenade_Dexterity_10,Serenade_Dexterity_12,Serenade_Dexterity_14,Serenade_Dexterity_16"/>
                     <attribute id="UUID" type="guid" value="a81788e5-6949-474b-9700-87864c4c510c"/>
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Constitution_0,Serenade_Constitution_2,Serenade_Constitution_4,Serenade_Constitution_6,Serenade_Constitution_8,Serenade_Constitution_10,Serenade_Constitution_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Constitution_0,Serenade_Constitution_2,Serenade_Constitution_4,Serenade_Constitution_6,Serenade_Constitution_8,Serenade_Constitution_10,Serenade_Constitution_12,Serenade_Constitution_14,Serenade_Constitution_16"/>
                     <attribute id="UUID" type="guid" value="fb9a4b78-4964-4344-b6f7-510709ce6d76"/>
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Intelligence_0,Serenade_Intelligence_2,Serenade_Intelligence_4,Serenade_Intelligence_6,Serenade_Intelligence_8,Serenade_Intelligence_10,Serenade_Intelligence_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Intelligence_0,Serenade_Intelligence_2,Serenade_Intelligence_4,Serenade_Intelligence_6,Serenade_Intelligence_8,Serenade_Intelligence_10,Serenade_Intelligence_12,Serenade_Intelligence_14,Serenade_Intelligence_16"/>
                     <attribute id="UUID" type="guid" value="4fff72e3-3cc4-4208-8f08-7a73501b3a81"/>
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Wisdom_0,Serenade_Wisdom_2,Serenade_Wisdom_4,Serenade_Wisdom_6,Serenade_Wisdom_8,Serenade_Wisdom_10,Serenade_Wisdom_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Wisdom_0,Serenade_Wisdom_2,Serenade_Wisdom_4,Serenade_Wisdom_6,Serenade_Wisdom_8,Serenade_Wisdom_10,Serenade_Wisdom_12,Serenade_Wisdom_14,Serenade_Wisdom_16"/>
                     <attribute id="UUID" type="guid" value="47418954-13db-4017-bcca-b8ca9a109a46"/>
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_Charisma_0,Serenade_Charisma_2,Serenade_Charisma_4,Serenade_Charisma_6,Serenade_Charisma_8,Serenade_Charisma_10,Serenade_Charisma_12"/>
+                    <attribute id="Passives" type="LSString" value="Serenade_Charisma_0,Serenade_Charisma_2,Serenade_Charisma_4,Serenade_Charisma_6,Serenade_Charisma_8,Serenade_Charisma_10,Serenade_Charisma_12,Serenade_Charisma_14,Serenade_Charisma_16"/>
                     <attribute id="UUID" type="guid" value="eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a"/>
                 </node>
             </children>

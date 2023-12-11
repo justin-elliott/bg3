@@ -8,8 +8,13 @@ import os.path
 import textwrap
 
 base_dir = os.path.dirname(__file__) or '.'
-max_boost = 16
+
+attribute_step = 2
+max_attribute_bonus = 22
 attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+
+roll_bonus_step = 2
+max_roll_bonus = 20
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -31,10 +36,11 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         "Charisma":     "Spell_Transmutation_EnhanceAbility_EaglesSplendor",
     }
 
+    # Attribute bonuses
     for attribute in attributes:
         f.write(textwrap.dedent(f"""\
 
-            new entry "Serenade_{attribute}_0"
+            new entry "Serenade_Prodigy{attribute}_0"
             type "PassiveData"
             data "DisplayName" "Serenade_Prodigy_NoBonus_DisplayName"
             data "Description" "Serenade_Prodigy{attribute}_NoBonus_Description"
@@ -42,17 +48,40 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
             data "Properties" "IsHidden"
             """))
 
-        for boost in range(2, max_boost + 2, 2):
+        for bonus in range(attribute_step, max_attribute_bonus + attribute_step, attribute_step):
             f.write(textwrap.dedent(f"""\
 
-                new entry "Serenade_{attribute}_{boost}"
+                new entry "Serenade_Prodigy{attribute}_{bonus}"
                 type "PassiveData"
-                data "Boosts" "Ability({attribute}, {boost}, 30)
-                data "DisplayName" "Serenade_Prodigy{attribute}_{boost}_DisplayName"
-                data "Description" "Serenade_Prodigy{attribute}_{boost}_Description"
+                data "Boosts" "Ability({attribute},{bonus},30)"
+                data "DisplayName" "Serenade_Prodigy{attribute}_{bonus}_DisplayName"
+                data "Description" "Serenade_Prodigy{attribute}_{bonus}_Description"
                 data "Icon" "{attribute_icon[attribute]}"
                 data "Properties" "IsHidden"
                 """))
+
+        f.write(textwrap.dedent("""\
+
+            new entry "Serenade_ProdigyRollBonus_0"
+            type "PassiveData"
+            data "DisplayName" "Serenade_Prodigy_NoBonus_DisplayName"
+            data "Description" "Serenade_ProdigyRollBonus_NoBonus_Description"
+            data "Icon" "PassiveFeature_Portent"
+            data "Properties" "IsHidden"
+            """))
+
+    # Skill and ability bonuses
+    for bonus in range(roll_bonus_step, max_roll_bonus + roll_bonus_step, roll_bonus_step):
+        f.write(textwrap.dedent(f"""\
+
+            new entry "Serenade_ProdigyRollBonus_{bonus}"
+            type "PassiveData"
+            data "Boosts" "RollBonus(SkillCheck,{bonus});RollBonus(RawAbility,{bonus})"
+            data "DisplayName" "Serenade_ProdigyRollBonus_{bonus}_DisplayName"
+            data "Description" "Serenade_ProdigyRollBonus_{bonus}_Description"
+            data "Icon" "{f"PassiveFeature_Portent_{bonus}" if bonus <= 20 else f"PassiveFeature_Portent"}"
+            data "Properties" "IsHidden"
+            """))
 
 # Generate the passive lists
 with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.lsx"), "w") as f:
@@ -75,16 +104,23 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
         """))
 
     for attribute in attributes:
-        boosts = [f"Serenade_{attribute}_{boost}" for boost in range(0, max_boost + 2, 2)]
+        attribute_bonuses = [f"Serenade_Prodigy{attribute}_{bonus}"
+                             for bonus in range(0, max_attribute_bonus + attribute_step, attribute_step)]
         f.write(textwrap.indent(textwrap.dedent(f"""\
             <node id="PassiveList">
-                <attribute id="Passives" type="LSString" value="{",".join(boosts)}"/>
+                <attribute id="Passives" type="LSString" value="{",".join(attribute_bonuses)}"/>
                 <attribute id="UUID" type="guid" value="{attribute_guid[attribute]}"/>
             </node>
             """),
                 " " * 4 * 4))
 
-    f.write(textwrap.dedent("""\
+    roll_bonuses = [f"Serenade_ProdigyRollBonus_{bonus}"
+                    for bonus in range(0, max_roll_bonus + roll_bonus_step, roll_bonus_step)]
+    f.write(textwrap.dedent(f"""\
+                        <node id="PassiveList">
+                            <attribute id="Passives" type="LSString" value="{",".join(roll_bonuses)}"/>
+                            <attribute id="UUID" type="guid" value="12b2f031-1837-46d6-ae05-50a3490b6065"/>
+                        </node>
                     </children>
                 </node>
             </region>
@@ -102,17 +138,30 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
     for attribute in attributes:
         f.write(textwrap.indent(textwrap.dedent(f"""\
             <content contentuid="Serenade_Prodigy{attribute}_DisplayName" version="1">Prodigy: {attribute}</content>
-            <content contentuid="Serenade_Prodigy{attribute}_Description" version="1">Add a bonus to your {attribute}.</content>
-            <content contentuid="Serenade_Prodigy{attribute}_NoBonus_Description" version="1">No bonus to {attribute}.</content>
+            <content contentuid="Serenade_Prodigy{attribute}_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="{attribute}"&gt;{attribute}&lt;/LSTag&gt;.</content>
+            <content contentuid="Serenade_Prodigy{attribute}_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="{attribute}"&gt;{attribute}&lt;/LSTag&gt;.</content>
             """),
                 " " * 4 * 1))
 
-        for boost in range(2, max_boost + 2, 2):
+        for bonus in range(attribute_step, max_attribute_bonus + attribute_step, attribute_step):
             f.write(textwrap.indent(textwrap.dedent(f"""\
-                <content contentuid="Serenade_Prodigy{attribute}_{boost}_DisplayName" version="1">Prodigy: {attribute} +{boost}</content>
-                <content contentuid="Serenade_Prodigy{attribute}_{boost}_Description" version="1">Increase your {attribute} by {boost}, to a maximum of 30.</content>
+                <content contentuid="Serenade_Prodigy{attribute}_{bonus}_DisplayName" version="1">Prodigy: {attribute} +{bonus}</content>
+                <content contentuid="Serenade_Prodigy{attribute}_{bonus}_Description" version="1">Increase your &lt;LSTag Tooltip="{attribute}"&gt;{attribute}&lt;/LSTag&gt; by {bonus}, to a maximum of 30.</content>
                 """),
                     " " * 4 * 1))
+
+    f.write(textwrap.indent(textwrap.dedent("""\
+        <content contentuid="Serenade_ProdigyRollBonus_DisplayName" version="1">Prodigy: Roll Bonus</content>
+        <content contentuid="Serenade_ProdigyRollBonus_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+        """),
+            " " * 4 * 1))
+
+    for bonus in range(roll_bonus_step, max_roll_bonus + roll_bonus_step, roll_bonus_step):
+        f.write(textwrap.indent(textwrap.dedent(f"""\
+            <content contentuid="Serenade_ProdigyRollBonus_{bonus}_DisplayName" version="1">Prodigy: Roll Bonus +{bonus}</content>
+            <content contentuid="Serenade_ProdigyRollBonus_{bonus}_Description" version="1">Add {bonus} to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+            """),
+                " " * 4 * 1))
 
     f.write(textwrap.dedent("""\
         </contentList>

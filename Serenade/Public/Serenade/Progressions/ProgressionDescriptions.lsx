@@ -40,6 +40,12 @@
                     <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyCharisma"/>
                     <attribute id="UUID" type="guid" value="5bdc557d-0073-4a94-8bab-c13c87465d5a"/>
                 </node>
+                <node id="ProgressionDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyRollBonus_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyRollBonus_Description" version="1"/>
+                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyRollBonus"/>
+                    <attribute id="UUID" type="guid" value="7f805d53-23ab-4c89-91b5-784a7a7edf04"/>
+                </node>
             </children>
         </node>
     </region>

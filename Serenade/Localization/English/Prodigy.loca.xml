@@ -2,117 +2,175 @@
 <contentList>
     <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
     <content contentuid="Serenade_ProdigyStrength_DisplayName" version="1">Prodigy: Strength</content>
-    <content contentuid="Serenade_ProdigyStrength_Description" version="1">Add a bonus to your Strength.</content>
-    <content contentuid="Serenade_ProdigyStrength_NoBonus_Description" version="1">No bonus to Strength.</content>
+    <content contentuid="Serenade_ProdigyStrength_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyStrength_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyStrength_2_DisplayName" version="1">Prodigy: Strength +2</content>
-    <content contentuid="Serenade_ProdigyStrength_2_Description" version="1">Increase your Strength by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_2_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_4_DisplayName" version="1">Prodigy: Strength +4</content>
-    <content contentuid="Serenade_ProdigyStrength_4_Description" version="1">Increase your Strength by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_4_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_6_DisplayName" version="1">Prodigy: Strength +6</content>
-    <content contentuid="Serenade_ProdigyStrength_6_Description" version="1">Increase your Strength by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_6_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_8_DisplayName" version="1">Prodigy: Strength +8</content>
-    <content contentuid="Serenade_ProdigyStrength_8_Description" version="1">Increase your Strength by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_8_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_10_DisplayName" version="1">Prodigy: Strength +10</content>
-    <content contentuid="Serenade_ProdigyStrength_10_Description" version="1">Increase your Strength by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_10_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_12_DisplayName" version="1">Prodigy: Strength +12</content>
-    <content contentuid="Serenade_ProdigyStrength_12_Description" version="1">Increase your Strength by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_12_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_14_DisplayName" version="1">Prodigy: Strength +14</content>
-    <content contentuid="Serenade_ProdigyStrength_14_Description" version="1">Increase your Strength by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_14_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyStrength_16_DisplayName" version="1">Prodigy: Strength +16</content>
-    <content contentuid="Serenade_ProdigyStrength_16_Description" version="1">Increase your Strength by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_16_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_18_DisplayName" version="1">Prodigy: Strength +18</content>
+    <content contentuid="Serenade_ProdigyStrength_18_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_20_DisplayName" version="1">Prodigy: Strength +20</content>
+    <content contentuid="Serenade_ProdigyStrength_20_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyStrength_22_DisplayName" version="1">Prodigy: Strength +22</content>
+    <content contentuid="Serenade_ProdigyStrength_22_Description" version="1">Increase your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_DisplayName" version="1">Prodigy: Dexterity</content>
-    <content contentuid="Serenade_ProdigyDexterity_Description" version="1">Add a bonus to your Dexterity.</content>
-    <content contentuid="Serenade_ProdigyDexterity_NoBonus_Description" version="1">No bonus to Dexterity.</content>
+    <content contentuid="Serenade_ProdigyDexterity_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyDexterity_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyDexterity_2_DisplayName" version="1">Prodigy: Dexterity +2</content>
-    <content contentuid="Serenade_ProdigyDexterity_2_Description" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_2_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_4_DisplayName" version="1">Prodigy: Dexterity +4</content>
-    <content contentuid="Serenade_ProdigyDexterity_4_Description" version="1">Increase your Dexterity by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_4_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_6_DisplayName" version="1">Prodigy: Dexterity +6</content>
-    <content contentuid="Serenade_ProdigyDexterity_6_Description" version="1">Increase your Dexterity by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_6_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_8_DisplayName" version="1">Prodigy: Dexterity +8</content>
-    <content contentuid="Serenade_ProdigyDexterity_8_Description" version="1">Increase your Dexterity by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_8_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_10_DisplayName" version="1">Prodigy: Dexterity +10</content>
-    <content contentuid="Serenade_ProdigyDexterity_10_Description" version="1">Increase your Dexterity by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_10_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_12_DisplayName" version="1">Prodigy: Dexterity +12</content>
-    <content contentuid="Serenade_ProdigyDexterity_12_Description" version="1">Increase your Dexterity by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_12_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_14_DisplayName" version="1">Prodigy: Dexterity +14</content>
-    <content contentuid="Serenade_ProdigyDexterity_14_Description" version="1">Increase your Dexterity by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_14_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyDexterity_16_DisplayName" version="1">Prodigy: Dexterity +16</content>
-    <content contentuid="Serenade_ProdigyDexterity_16_Description" version="1">Increase your Dexterity by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_16_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_18_DisplayName" version="1">Prodigy: Dexterity +18</content>
+    <content contentuid="Serenade_ProdigyDexterity_18_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_20_DisplayName" version="1">Prodigy: Dexterity +20</content>
+    <content contentuid="Serenade_ProdigyDexterity_20_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyDexterity_22_DisplayName" version="1">Prodigy: Dexterity +22</content>
+    <content contentuid="Serenade_ProdigyDexterity_22_Description" version="1">Increase your &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_DisplayName" version="1">Prodigy: Constitution</content>
-    <content contentuid="Serenade_ProdigyConstitution_Description" version="1">Add a bonus to your Constitution.</content>
-    <content contentuid="Serenade_ProdigyConstitution_NoBonus_Description" version="1">No bonus to Constitution.</content>
+    <content contentuid="Serenade_ProdigyConstitution_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyConstitution_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyConstitution_2_DisplayName" version="1">Prodigy: Constitution +2</content>
-    <content contentuid="Serenade_ProdigyConstitution_2_Description" version="1">Increase your Constitution by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_2_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_4_DisplayName" version="1">Prodigy: Constitution +4</content>
-    <content contentuid="Serenade_ProdigyConstitution_4_Description" version="1">Increase your Constitution by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_4_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_6_DisplayName" version="1">Prodigy: Constitution +6</content>
-    <content contentuid="Serenade_ProdigyConstitution_6_Description" version="1">Increase your Constitution by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_6_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_8_DisplayName" version="1">Prodigy: Constitution +8</content>
-    <content contentuid="Serenade_ProdigyConstitution_8_Description" version="1">Increase your Constitution by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_8_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_10_DisplayName" version="1">Prodigy: Constitution +10</content>
-    <content contentuid="Serenade_ProdigyConstitution_10_Description" version="1">Increase your Constitution by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_10_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_12_DisplayName" version="1">Prodigy: Constitution +12</content>
-    <content contentuid="Serenade_ProdigyConstitution_12_Description" version="1">Increase your Constitution by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_12_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_14_DisplayName" version="1">Prodigy: Constitution +14</content>
-    <content contentuid="Serenade_ProdigyConstitution_14_Description" version="1">Increase your Constitution by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_14_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyConstitution_16_DisplayName" version="1">Prodigy: Constitution +16</content>
-    <content contentuid="Serenade_ProdigyConstitution_16_Description" version="1">Increase your Constitution by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_16_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_18_DisplayName" version="1">Prodigy: Constitution +18</content>
+    <content contentuid="Serenade_ProdigyConstitution_18_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_20_DisplayName" version="1">Prodigy: Constitution +20</content>
+    <content contentuid="Serenade_ProdigyConstitution_20_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyConstitution_22_DisplayName" version="1">Prodigy: Constitution +22</content>
+    <content contentuid="Serenade_ProdigyConstitution_22_Description" version="1">Increase your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_DisplayName" version="1">Prodigy: Intelligence</content>
-    <content contentuid="Serenade_ProdigyIntelligence_Description" version="1">Add a bonus to your Intelligence.</content>
-    <content contentuid="Serenade_ProdigyIntelligence_NoBonus_Description" version="1">No bonus to Intelligence.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyIntelligence_2_DisplayName" version="1">Prodigy: Intelligence +2</content>
-    <content contentuid="Serenade_ProdigyIntelligence_2_Description" version="1">Increase your Intelligence by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_2_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_4_DisplayName" version="1">Prodigy: Intelligence +4</content>
-    <content contentuid="Serenade_ProdigyIntelligence_4_Description" version="1">Increase your Intelligence by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_4_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_6_DisplayName" version="1">Prodigy: Intelligence +6</content>
-    <content contentuid="Serenade_ProdigyIntelligence_6_Description" version="1">Increase your Intelligence by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_6_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_8_DisplayName" version="1">Prodigy: Intelligence +8</content>
-    <content contentuid="Serenade_ProdigyIntelligence_8_Description" version="1">Increase your Intelligence by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_8_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_10_DisplayName" version="1">Prodigy: Intelligence +10</content>
-    <content contentuid="Serenade_ProdigyIntelligence_10_Description" version="1">Increase your Intelligence by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_10_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_12_DisplayName" version="1">Prodigy: Intelligence +12</content>
-    <content contentuid="Serenade_ProdigyIntelligence_12_Description" version="1">Increase your Intelligence by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_12_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_14_DisplayName" version="1">Prodigy: Intelligence +14</content>
-    <content contentuid="Serenade_ProdigyIntelligence_14_Description" version="1">Increase your Intelligence by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_14_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyIntelligence_16_DisplayName" version="1">Prodigy: Intelligence +16</content>
-    <content contentuid="Serenade_ProdigyIntelligence_16_Description" version="1">Increase your Intelligence by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_16_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_18_DisplayName" version="1">Prodigy: Intelligence +18</content>
+    <content contentuid="Serenade_ProdigyIntelligence_18_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_20_DisplayName" version="1">Prodigy: Intelligence +20</content>
+    <content contentuid="Serenade_ProdigyIntelligence_20_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyIntelligence_22_DisplayName" version="1">Prodigy: Intelligence +22</content>
+    <content contentuid="Serenade_ProdigyIntelligence_22_Description" version="1">Increase your &lt;LSTag Tooltip="Intelligence"&gt;Intelligence&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_DisplayName" version="1">Prodigy: Wisdom</content>
-    <content contentuid="Serenade_ProdigyWisdom_Description" version="1">Add a bonus to your Wisdom.</content>
-    <content contentuid="Serenade_ProdigyWisdom_NoBonus_Description" version="1">No bonus to Wisdom.</content>
+    <content contentuid="Serenade_ProdigyWisdom_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyWisdom_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyWisdom_2_DisplayName" version="1">Prodigy: Wisdom +2</content>
-    <content contentuid="Serenade_ProdigyWisdom_2_Description" version="1">Increase your Wisdom by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_2_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_4_DisplayName" version="1">Prodigy: Wisdom +4</content>
-    <content contentuid="Serenade_ProdigyWisdom_4_Description" version="1">Increase your Wisdom by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_4_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_6_DisplayName" version="1">Prodigy: Wisdom +6</content>
-    <content contentuid="Serenade_ProdigyWisdom_6_Description" version="1">Increase your Wisdom by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_6_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_8_DisplayName" version="1">Prodigy: Wisdom +8</content>
-    <content contentuid="Serenade_ProdigyWisdom_8_Description" version="1">Increase your Wisdom by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_8_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_10_DisplayName" version="1">Prodigy: Wisdom +10</content>
-    <content contentuid="Serenade_ProdigyWisdom_10_Description" version="1">Increase your Wisdom by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_10_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_12_DisplayName" version="1">Prodigy: Wisdom +12</content>
-    <content contentuid="Serenade_ProdigyWisdom_12_Description" version="1">Increase your Wisdom by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_12_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_14_DisplayName" version="1">Prodigy: Wisdom +14</content>
-    <content contentuid="Serenade_ProdigyWisdom_14_Description" version="1">Increase your Wisdom by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_14_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyWisdom_16_DisplayName" version="1">Prodigy: Wisdom +16</content>
-    <content contentuid="Serenade_ProdigyWisdom_16_Description" version="1">Increase your Wisdom by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_16_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_18_DisplayName" version="1">Prodigy: Wisdom +18</content>
+    <content contentuid="Serenade_ProdigyWisdom_18_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_20_DisplayName" version="1">Prodigy: Wisdom +20</content>
+    <content contentuid="Serenade_ProdigyWisdom_20_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyWisdom_22_DisplayName" version="1">Prodigy: Wisdom +22</content>
+    <content contentuid="Serenade_ProdigyWisdom_22_Description" version="1">Increase your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_DisplayName" version="1">Prodigy: Charisma</content>
-    <content contentuid="Serenade_ProdigyCharisma_Description" version="1">Add a bonus to your Charisma.</content>
-    <content contentuid="Serenade_ProdigyCharisma_NoBonus_Description" version="1">No bonus to Charisma.</content>
+    <content contentuid="Serenade_ProdigyCharisma_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyCharisma_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyCharisma_2_DisplayName" version="1">Prodigy: Charisma +2</content>
-    <content contentuid="Serenade_ProdigyCharisma_2_Description" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_2_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 2, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_4_DisplayName" version="1">Prodigy: Charisma +4</content>
-    <content contentuid="Serenade_ProdigyCharisma_4_Description" version="1">Increase your Charisma by 4, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_4_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 4, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_6_DisplayName" version="1">Prodigy: Charisma +6</content>
-    <content contentuid="Serenade_ProdigyCharisma_6_Description" version="1">Increase your Charisma by 6, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_6_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 6, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_8_DisplayName" version="1">Prodigy: Charisma +8</content>
-    <content contentuid="Serenade_ProdigyCharisma_8_Description" version="1">Increase your Charisma by 8, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_8_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 8, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_10_DisplayName" version="1">Prodigy: Charisma +10</content>
-    <content contentuid="Serenade_ProdigyCharisma_10_Description" version="1">Increase your Charisma by 10, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_10_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 10, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_12_DisplayName" version="1">Prodigy: Charisma +12</content>
-    <content contentuid="Serenade_ProdigyCharisma_12_Description" version="1">Increase your Charisma by 12, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_12_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 12, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_14_DisplayName" version="1">Prodigy: Charisma +14</content>
-    <content contentuid="Serenade_ProdigyCharisma_14_Description" version="1">Increase your Charisma by 14, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_14_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 14, to a maximum of 30.</content>
     <content contentuid="Serenade_ProdigyCharisma_16_DisplayName" version="1">Prodigy: Charisma +16</content>
-    <content contentuid="Serenade_ProdigyCharisma_16_Description" version="1">Increase your Charisma by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_16_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 16, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_18_DisplayName" version="1">Prodigy: Charisma +18</content>
+    <content contentuid="Serenade_ProdigyCharisma_18_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 18, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_20_DisplayName" version="1">Prodigy: Charisma +20</content>
+    <content contentuid="Serenade_ProdigyCharisma_20_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 20, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyCharisma_22_DisplayName" version="1">Prodigy: Charisma +22</content>
+    <content contentuid="Serenade_ProdigyCharisma_22_Description" version="1">Increase your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; by 22, to a maximum of 30.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_DisplayName" version="1">Prodigy: Roll Bonus</content>
+    <content contentuid="Serenade_ProdigyRollBonus_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_2_DisplayName" version="1">Prodigy: Roll Bonus +2</content>
+    <content contentuid="Serenade_ProdigyRollBonus_2_Description" version="1">Add 2 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_4_DisplayName" version="1">Prodigy: Roll Bonus +4</content>
+    <content contentuid="Serenade_ProdigyRollBonus_4_Description" version="1">Add 4 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_6_DisplayName" version="1">Prodigy: Roll Bonus +6</content>
+    <content contentuid="Serenade_ProdigyRollBonus_6_Description" version="1">Add 6 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_8_DisplayName" version="1">Prodigy: Roll Bonus +8</content>
+    <content contentuid="Serenade_ProdigyRollBonus_8_Description" version="1">Add 8 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_10_DisplayName" version="1">Prodigy: Roll Bonus +10</content>
+    <content contentuid="Serenade_ProdigyRollBonus_10_Description" version="1">Add 10 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_12_DisplayName" version="1">Prodigy: Roll Bonus +12</content>
+    <content contentuid="Serenade_ProdigyRollBonus_12_Description" version="1">Add 12 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_14_DisplayName" version="1">Prodigy: Roll Bonus +14</content>
+    <content contentuid="Serenade_ProdigyRollBonus_14_Description" version="1">Add 14 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_16_DisplayName" version="1">Prodigy: Roll Bonus +16</content>
+    <content contentuid="Serenade_ProdigyRollBonus_16_Description" version="1">Add 16 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_18_DisplayName" version="1">Prodigy: Roll Bonus +18</content>
+    <content contentuid="Serenade_ProdigyRollBonus_18_Description" version="1">Add 18 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+    <content contentuid="Serenade_ProdigyRollBonus_20_DisplayName" version="1">Prodigy: Roll Bonus +20</content>
+    <content contentuid="Serenade_ProdigyRollBonus_20_Description" version="1">Add 20 to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
 </contentList>

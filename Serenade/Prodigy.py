@@ -36,8 +36,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
 
             new entry "Serenade_{attribute}_0"
             type "PassiveData"
-            data "DisplayName" "Serenade_{attribute}_0_DisplayName"
-            data "Description" "Serenade_{attribute}_0_Description"
+            data "DisplayName" "Serenade_Prodigy_NoBonus_DisplayName"
+            data "Description" "Serenade_Prodigy{attribute}_NoBonus_Description"
             data "Icon" "{attribute_icon[attribute]}"
             data "Properties" "IsHidden"
             """))
@@ -48,8 +48,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
                 new entry "Serenade_{attribute}_{boost}"
                 type "PassiveData"
                 data "Boosts" "Ability({attribute}, {boost}, 30)
-                data "DisplayName" "Serenade_{attribute}_{boost}_DisplayName"
-                data "Description" "Serenade_{attribute}_{boost}_Description"
+                data "DisplayName" "Serenade_Prodigy{attribute}_{boost}_DisplayName"
+                data "Description" "Serenade_Prodigy{attribute}_{boost}_Description"
                 data "Icon" "{attribute_icon[attribute]}"
                 data "Properties" "IsHidden"
                 """))
@@ -96,19 +96,21 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
     f.write(textwrap.dedent("""\
         <?xml version="1.0" encoding="utf-8"?>
         <contentList>
+            <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
         """))
 
     for attribute in attributes:
         f.write(textwrap.indent(textwrap.dedent(f"""\
-            <content contentuid="Serenade_{attribute}_0_DisplayName" version="1">Prodigy: No Change</content>
-            <content contentuid="Serenade_{attribute}_0_Description" version="1">No change to {attribute}.</content>
+            <content contentuid="Serenade_Prodigy{attribute}_DisplayName" version="1">Prodigy: {attribute}</content>
+            <content contentuid="Serenade_Prodigy{attribute}_Description" version="1">Add a bonus to your {attribute}.</content>
+            <content contentuid="Serenade_Prodigy{attribute}_NoBonus_Description" version="1">No bonus to {attribute}.</content>
             """),
                 " " * 4 * 1))
 
         for boost in range(2, max_boost + 2, 2):
             f.write(textwrap.indent(textwrap.dedent(f"""\
-                <content contentuid="Serenade_{attribute}_{boost}_DisplayName" version="1">Prodigy: {attribute} +{boost}</content>
-                <content contentuid="Serenade_{attribute}_{boost}_Description" version="1">Increase your {attribute} by {boost}, to a maximum of 30.</content>
+                <content contentuid="Serenade_Prodigy{attribute}_{boost}_DisplayName" version="1">Prodigy: {attribute} +{boost}</content>
+                <content contentuid="Serenade_Prodigy{attribute}_{boost}_Description" version="1">Increase your {attribute} by {boost}, to a maximum of 30.</content>
                 """),
                     " " * 4 * 1))
 

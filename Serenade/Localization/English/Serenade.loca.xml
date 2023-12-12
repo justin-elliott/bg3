@@ -11,8 +11,8 @@
 	<content contentuid="Serenade_Prodigy_Description" version="1">You are gifted with exceptional abilities and skills.</content>
 	<content contentuid="Serenade_ProdigyFeatures_DisplayName" version="1">Features</content>
 	<content contentuid="Serenade_ProdigyFeatures_Description" version="1">Select a feature.</content>
-	<content contentuid="Serenade_NoFeature_DisplayName" version="1">No Feature</content>
-	<content contentuid="Serenade_NoFeature_Description" version="1">Do not select a feature.</content>
-	<content contentuid="Serenade_ExtraAttacks_DisplayName" version="1">Extra Attacks</content>
-	<content contentuid="Serenade_ExtraAttacks_Description" version="1">On selecting this feature, you receive &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;. At level 5, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;. Finally, at level 11, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.</content>
+	<content contentuid="Serenade_ProdigyNoFeature_DisplayName" version="1">No Feature</content>
+	<content contentuid="Serenade_ProdigyNoFeature_Description" version="1">Do not select a feature.</content>
+	<content contentuid="Serenade_ProdigyMartialArtist_DisplayName" version="1">Prodigy: Martial Artist</content>
+	<content contentuid="Serenade_ProdigyMartialArtist_Description" version="1">On selecting this feature, you receive  &lt;LSTag Type="Passive" Tooltip="TavernBrawler"&gt;Tavern Brawler&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;. At level 5, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;. Finally, at level 11, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.</content>
 </contentList>

@@ -10,11 +10,12 @@ import textwrap
 base_dir = os.path.dirname(__file__) or '.'
 
 attribute_step = 2
-max_attribute_bonus = 22
-attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+max_attribute_bonus = 12
 
-roll_bonus_step = 2
+roll_bonus_step = 4
 max_roll_bonus = 20
+
+attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -153,6 +154,7 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
     f.write(textwrap.indent(textwrap.dedent("""\
         <content contentuid="Serenade_ProdigyRollBonus_DisplayName" version="1">Prodigy: Roll Bonus</content>
         <content contentuid="Serenade_ProdigyRollBonus_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+        <content contentuid="Serenade_ProdigyRollBonus_NoBonus_Description" version="1">No bonus to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
         """),
             " " * 4 * 1))
 

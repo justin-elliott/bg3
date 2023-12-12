@@ -8,7 +8,7 @@
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="false"/>
                     <attribute id="Name" type="FixedString" value="Serenade_Prodigy"/>
                     <attribute id="PassivesAdded" type="LSString" value="Serenade_Prodigy"/>
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectPassives(522041f0-d2af-43b7-9662-f8199b0b96e5,1,Serenade_ProdigyStrength);SelectPassives(a81788e5-6949-474b-9700-87864c4c510c,1,Serenade_ProdigyDexterity);SelectPassives(fb9a4b78-4964-4344-b6f7-510709ce6d76,1,Serenade_ProdigyConstitution);SelectPassives(4fff72e3-3cc4-4208-8f08-7a73501b3a81,1,Serenade_ProdigyIntelligence);SelectPassives(47418954-13db-4017-bcca-b8ca9a109a46,1,Serenade_ProdigyWisdom);SelectPassives(eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a,1,Serenade_ProdigyCharisma);SelectPassives(12b2f031-1837-46d6-ae05-50a3490b6065,1,Serenade_ProdigyRollBonus)"/>
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(522041f0-d2af-43b7-9662-f8199b0b96e5,1,Serenade_ProdigyStrength);SelectPassives(a81788e5-6949-474b-9700-87864c4c510c,1,Serenade_ProdigyDexterity);SelectPassives(fb9a4b78-4964-4344-b6f7-510709ce6d76,1,Serenade_ProdigyConstitution);SelectPassives(4fff72e3-3cc4-4208-8f08-7a73501b3a81,1,Serenade_ProdigyIntelligence);SelectPassives(47418954-13db-4017-bcca-b8ca9a109a46,1,Serenade_ProdigyWisdom);SelectPassives(eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a,1,Serenade_ProdigyCharisma);SelectPassives(12b2f031-1837-46d6-ae05-50a3490b6065,1,Serenade_ProdigyRollBonus)"/>
                     <attribute id="UUID" type="guid" value="12dd2dda-02d1-4e46-bc99-7d78c5a95e01"/>
                 </node>
             </children>

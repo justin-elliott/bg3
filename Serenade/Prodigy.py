@@ -106,7 +106,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                 <node id="root">
                     <children>
                         <node id="PassiveList">
-                            <attribute id="Passives" type="LSString" value="Serenade_ProdigyNoFeature,Serenade_ProdigyMartialArtist"/>
+                            <attribute id="Passives" type="LSString" value="Serenade_ProdigyNoFeature,Serenade_ProdigyGreatWeapons,Serenade_ProdigyMartialArtist"/>
                             <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                         </node>
         """))

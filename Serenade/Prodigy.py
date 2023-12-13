@@ -76,12 +76,60 @@ features = {
 
     "DualWielding": {
         "Name": "Prodigy: Dual Wielding",
-        "Description": "",
+        "Description": """
+            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
+            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
+            At level 9, you receive <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
+            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            """,
+        "Icon": "PassiveFeature_FightingStyle_TwoWeaponFighting",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["FightingStyle_TwoWeaponFighting",
+                             "DualWielder_BonusAC",
+                             "DualWielder_PassiveBonuses",
+                             "FastHands"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+            },
+        },
     },
 
     "Archery": {
         "Name": "Prodigy: Archery",
-        "Description": "",
+        "Description": """
+            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
+            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
+            At level 9, you receive <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
+            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            """,
+        "Icon": "PassiveFeature_FightingStyle_Archery",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["FightingStyle_Archery",
+                             "Sharpshooter_AllIn",
+                             "Sharpshooter_Bonuses",
+                             "FastHands"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Target_Volley)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+            },
+        },
     },
 
     "Magic": {

@@ -17,6 +17,79 @@ max_roll_bonus = 20
 
 attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
+features = {
+    "NoFeature": {
+        "Name": "No Feature",
+        "Description": "Do not select a feature.",
+    },
+
+    "Brawler": {
+        "Name": "Prodigy: Brawler",
+        "Description": """
+            On selecting this feature, you receive
+            &lt;LSTag Type="Passive" Tooltip="TavernBrawler"&gt;Tavern Brawler&lt;/LSTag&gt; and
+            &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;.
+            At level 5, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;.
+            Finally, at level 11, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.
+            """,
+        "Icon": "Action_Monk_FlurryOfBlows",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["TavernBrawler", "FastHands"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+            },
+        },
+    },
+
+    "GreatWeapons": {
+        "Name": "Prodigy: Great Weapons",
+        "Description": """
+            On selecting this feature, you receive &lt;LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting"&gt;Great Weapon Fighting&lt;/LSTag&gt; and
+            &lt;LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster"&gt;Great Weapon Master&lt;/LSTag&gt;.
+            At level 5, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;.
+            At level 9, you receive &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt;.
+            Finally, at level 11, you receive &lt;LSTag Type="Passive" Tooltip="ExtraAttack_2"&gt;Improved Extra Attack&lt;/LSTag&gt;.
+            """,
+        "Icon": "PassiveFeature_FightingStyle_GreatWeaponFighting",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["FightingStyle_GreatWeaponFighting",
+                             "GreatWeaponMaster_BonusAttack",
+                             "GreatWeaponMaster_BonusDamage"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+            },
+        },
+    },
+
+    "DualWielding": {
+        "Name": "Prodigy: Dual Wielding",
+        "Description": "",
+    },
+
+    "Archery": {
+        "Name": "Prodigy: Archery",
+        "Description": "",
+    },
+
+    "Magic": {
+        "Name": "Prodigy: Magic",
+        "Description": "",
+    },
+}
+
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
     f.write(textwrap.dedent(f"""\
@@ -85,6 +158,61 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
             data "Icon" "{f"PassiveFeature_Portent_{bonus}" if bonus <= 20 else f"PassiveFeature_Portent"}"
             data "Properties" "IsHidden"
             """))
+
+    # Features
+    for key, feature in features.items():
+        f.write(textwrap.dedent(f"""\
+
+            new entry "Serenade_Prodigy{key}"
+            type "PassiveData"
+            data "DisplayName" "Serenade_Prodigy{key}_DisplayName"
+            data "Description" "Serenade_Prodigy{key}_Description"
+            data "Properties" "IsHidden"
+            """))
+
+        if "Icon" in feature:
+            icon = f.write(f"""data "Icon" "{feature["Icon"]}"\n""")
+
+        levels = set()
+        if (progression := feature.get("Progression", None)):
+            f.write("""data "StatsFunctorContext" "OnCreate;OnStatusApplied;OnStatusRemoved"\n""")
+            levels = set([r.start for r in progression.keys()])
+            boosts = [f"SERENADE_PRODIGY{key.upper()}_{level}" for level in sorted(levels)]
+            f.write(f"""data "StatsFunctors" "{";".join([f"ApplyStatus({boost},100,-1)" for boost in boosts])}"\n""")
+
+        for level in sorted(levels):
+            f.write(textwrap.dedent(f"""\
+
+                new entry "SERENADE_PRODIGY{key.upper()}_{level}"
+                type "StatusData"
+                data "StatusType" "BOOST"
+                data "DisplayName" "Serenade_Prodigy{key}_DisplayName"
+                data "Description" "Serenade_Prodigy{key}_Description"
+                data "StackId" "SERENADE_PRODIGY{key.upper()}_{level}"
+                data "StackType" "Ignore"
+                data "StatusGroups" "SG_RemoveOnRespec"
+                data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+                """))
+            if "Icon" in feature:
+                icon = f.write(f"""data "Icon" "{feature["Icon"]}"\n""")
+
+            for level_range, settings in progression.items():
+                if level_range.start == level:
+                    conditions_list = []
+                    if (level_range.start > 1):
+                        conditions_list.append(f"CharacterLevelGreaterThan({level_range.start - 1})")
+                    if (level_range.stop < 21):
+                        conditions_list.append(f"not CharacterLevelGreaterThan({level_range.stop - 1})")
+                    conditions = " and ".join(conditions_list)
+                    if (passives := settings.get("Passives", None)):
+                        if len(conditions) > 0:
+                            f.write(f"""data "OnApplyConditions" "{conditions}"\n""")
+                        f.write(f"""data "Passives" "{";".join(passives)}"\n""")
+
+                    if (boosts := settings.get("Boosts", None)):
+                        f.write(f"""data "Boosts" "{";".join([
+                                    f"IF({conditions}):{boost}" for boost in boosts
+                                ] if len(conditions) > 0 else [boosts])}"\n""")
 
 # Generate the passive lists
 with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.lsx"), "w") as f:
@@ -170,6 +298,15 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
         f.write(textwrap.indent(textwrap.dedent(f"""\
             <content contentuid="Serenade_ProdigyRollBonus_{bonus}_DisplayName" version="1">Prodigy: Roll Bonus +{bonus}</content>
             <content contentuid="Serenade_ProdigyRollBonus_{bonus}_Description" version="1">Add {bonus} to your &lt;LSTag Tooltip="SkillCheck"&gt;Skill&lt;/LSTag&gt; and &lt;LSTag Tooltip="AbilityCheck"&gt;Ability&lt;/LSTag&gt; checks.</content>
+            """),
+                " " * 4 * 1))
+
+    for key, feature in features.items():
+        f.write(textwrap.indent(textwrap.dedent(f"""\
+            <content contentuid="Serenade_ProdigyRollBonus_{key}_DisplayName" version="1">{feature["Name"]}</content>
+            <content contentuid="Serenade_ProdigyRollBonus_{key}_Description" version="1">
+            {textwrap.indent(feature["Description"].strip(), " " * 4)}
+            </content>
             """),
                 " " * 4 * 1))
 

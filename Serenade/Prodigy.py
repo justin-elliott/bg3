@@ -149,6 +149,27 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Description" "Serenade_Prodigy_Description"
         data "Icon" "Action_KnowledgeOfTheAges"
         data "Properties" "Highlighted"
+
+        new entry "Serenade_ProdigyGreatWeaponMaster"
+        type "PassiveData"
+        data "DisplayName" "hf41eb2bag6496g4187g994dg62b9cb959e29;1"
+        data "Description" "hea61c527gd53fg46fega454g2bc02f65d75f;5"
+        data "Icon" "PassiveFeature_FightingStyle_GreatWeaponFighting"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyDualWielder"
+        type "PassiveData"
+        data "DisplayName" "h1d620270gba24g434egad17g5ee9b72a6e3e;1"
+        data "Description" "h1909840bg87f1g4029g9be6g974d9233f516;4"
+        data "Icon" "PassiveFeature_FightingStyle_TwoWeaponFighting"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigySharpshooter"
+        type "PassiveData"
+        data "DisplayName" "h7fd575c5g3a3ag46a8g9a40gcddf1cd2b044;1"
+        data "Description" "h0bf50988g8a65g40c1ga9e1g2ad5b6387678;3"
+        data "Icon" "PassiveFeature_FightingStyle_Archery"
+        data "Properties" "IsHidden"
         """))
 
     attribute_icon = {

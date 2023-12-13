@@ -134,7 +134,53 @@ features = {
 
     "Magic": {
         "Name": "Prodigy: Magic",
-        "Description": "",
+        "Description": """
+            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
+            <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
+            <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
+            2 additional level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>.
+
+            <br><br>Every odd level from 3 onwards, including levels already attained when you take this feature, you
+            gain an additional Spell Slot for the tier of spells that a full caster receives at that level.
+            """,
+        "Icon": "Action_KnowledgeOfTheAges",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["Alert",
+                             "WarCaster_Bonuses",
+                             "WarCaster_OpportunitySpell",
+                             "UnlockedSpellSlotLevel1"],
+                "Boosts": ["ActionResource(SpellSlot,2,1)",
+                           "ProficiencyBonus(SavingThrow,Constitution)"],
+            },
+            range(3, 21): {
+                "Passives": ["UnlockedSpellSlotLevel2"],
+                "Boosts": ["ActionResource(SpellSlot,1,2)"],
+            },
+            range(5, 21): {
+                "Passives": ["UnlockedSpellSlotLevel3"],
+                "Boosts": ["ActionResource(SpellSlot,1,3)"],
+            },
+            range(7, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,4)"],
+            },
+            range(9, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+            },
+            range(11, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,6)"],
+            },
+            range(13, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+            },
+            range(15, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,8)"],
+            },
+            range(17, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+            },
+        },
     },
 }
 
@@ -154,21 +200,24 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         type "PassiveData"
         data "DisplayName" "hf41eb2bag6496g4187g994dg62b9cb959e29;1"
         data "Description" "hea61c527gd53fg46fega454g2bc02f65d75f;5"
-        data "Icon" "PassiveFeature_FightingStyle_GreatWeaponFighting"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigyDualWielder"
         type "PassiveData"
         data "DisplayName" "h1d620270gba24g434egad17g5ee9b72a6e3e;1"
         data "Description" "h1909840bg87f1g4029g9be6g974d9233f516;4"
-        data "Icon" "PassiveFeature_FightingStyle_TwoWeaponFighting"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigySharpshooter"
         type "PassiveData"
         data "DisplayName" "h7fd575c5g3a3ag46a8g9a40gcddf1cd2b044;1"
         data "Description" "h0bf50988g8a65g40c1ga9e1g2ad5b6387678;3"
-        data "Icon" "PassiveFeature_FightingStyle_Archery"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyWarCaster"
+        type "PassiveData"
+        data "DisplayName" "haadef5acg36f8g4affg8c7bg7901735048a8;2"
+        data "Description" "h2967e308gd644g46d5g91e4g3de62873eef7;5"
         data "Properties" "IsHidden"
         """))
 
@@ -281,7 +330,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
                     if (boosts := settings.get("Boosts", None)):
                         f.write(f"""data "Boosts" "{";".join([
                                     f"IF({conditions}):{boost}" for boost in boosts
-                                ] if len(conditions) > 0 else [boosts])}"\n""")
+                                ] if len(conditions) > 0 else boosts)}"\n""")
 
 # Generate the passive lists
 with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.lsx"), "w") as f:

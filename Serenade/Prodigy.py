@@ -18,16 +18,16 @@ max_roll_bonus = 20
 
 attributes = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
-features = {
-    "NoFeature": {
-        "Name": "No Feature",
-        "Description": "Do not select a feature.",
+training = {
+    "NoTraining": {
+        "Name": "No Training",
+        "Description": "Do not select any training.",
     },
 
     "Brawler": {
         "Name": "Prodigy: Brawler",
         "Description": """
-            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>
             and <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>.
             At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
             Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
@@ -49,7 +49,7 @@ features = {
     "GreatWeapons": {
         "Name": "Prodigy: Great Weapons",
         "Description": """
-            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
             At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
             At level 9, you receive <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
@@ -77,7 +77,7 @@ features = {
     "DualWielding": {
         "Name": "Prodigy: Dual Wielding",
         "Description": """
-            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
             At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
             At level 9, you receive <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
@@ -106,7 +106,7 @@ features = {
     "Archery": {
         "Name": "Prodigy: Archery",
         "Description": """
-            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
             At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
             At level 9, you receive <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
@@ -135,12 +135,12 @@ features = {
     "Magic": {
         "Name": "Prodigy: Magic",
         "Description": """
-            On selecting this feature, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
             <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
             <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
-            already attained when you take this feature, you gain an additional spell slot of the appropriate level for
+            already attained when you take this training, you gain an additional spell slot of the appropriate level for
             a full spellcaster.
 
             <br><br>At level 4, you gain 3 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
@@ -330,22 +330,22 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
             data "Properties" "IsHidden"
             """))
 
-    # Features
-    for key, feature in features.items():
+    # Training
+    for key, train in training.items():
         f.write(textwrap.dedent(f"""\
 
             new entry "Serenade_Prodigy{key}"
             type "PassiveData"
             data "DisplayName" "Serenade_Prodigy{key}_DisplayName"
             data "Description" "Serenade_Prodigy{key}_Description"
-            data "Properties" "{"Highlighted" if "Progression" in feature else "IsHidden"}"
+            data "Properties" "{"Highlighted" if "Progression" in train else "IsHidden"}"
             """))
 
-        if "Icon" in feature:
-            icon = f.write(f"""data "Icon" "{feature["Icon"]}"\n""")
+        if (icon := train.get("Icon", None)):
+            f.write(f"""data "Icon" "{icon}"\n""")
 
         levels = set()
-        if (progression := feature.get("Progression", None)):
+        if (progression := train.get("Progression", None)):
             f.write("""data "StatsFunctorContext" "OnCreate;OnShortRest;OnLongRest;OnStatusApplied;OnStatusRemoved"\n""")
             levels = set([r.start for r in progression.keys()])
             boosts = [f"SERENADE_PRODIGY{key.upper()}_{level}" for level in sorted(levels)]
@@ -364,8 +364,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
                 data "StatusGroups" "SG_RemoveOnRespec"
                 data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
                 """))
-            if "Icon" in feature:
-                icon = f.write(f"""data "Icon" "{feature["Icon"]}"\n""")
+            if (icon := train.get("Icon", None)):
+                f.write(f"""data "Icon" "{icon}"\n""")
 
             for level_range, settings in progression.items():
                 if level_range.start == level:
@@ -396,9 +396,9 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
         "Charisma":     "eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a",
     }
 
-    # No Feature always comes first
-    feature_names = [f"Serenade_Prodigy{key}" for key in sorted(features.keys(),
-                                                                key=lambda k: (1, k) if k != "NoFeature" else (0, k))]
+    # No Training always comes first
+    training_names = [f"Serenade_Prodigy{key}" for key in sorted(training.keys(),
+                                                                 key=lambda k: (1, k) if k != "NoTraining" else (0, k))]
 
     f.write(textwrap.dedent(f"""\
         <?xml version="1.0" encoding="UTF-8"?>
@@ -409,7 +409,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                 <node id="root">
                     <children>
                         <node id="PassiveList">
-                            <attribute id="Passives" type="LSString" value="{",".join(feature_names)}"/>
+                            <attribute id="Passives" type="LSString" value="{",".join(training_names)}"/>
                             <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                         </node>
         """))
@@ -486,10 +486,10 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             """),
                 " " * 4 * 1))
 
-    for key, feature in features.items():
+    for key, train in training.items():
         f.write(textwrap.indent(textwrap.dedent(f"""\
-            <content contentuid="Serenade_Prodigy{key}_DisplayName" version="1">{feature["Name"]}</content>
-            <content contentuid="Serenade_Prodigy{key}_Description" version="1">{xmlString(feature["Description"])}</content>
+            <content contentuid="Serenade_Prodigy{key}_DisplayName" version="1">{train["Name"]}</content>
+            <content contentuid="Serenade_Prodigy{key}_Description" version="1">{xmlString(train["Description"])}</content>
             """),
                 " " * 4 * 1))
 

@@ -5,9 +5,9 @@
         <node id="root">
             <children>
                 <node id="ProgressionDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyFeatures_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyFeatures_Description" version="1"/>
-                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyFeatures"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyTraining_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyTraining_Description" version="1"/>
+                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyTraining"/>
                     <attribute id="UUID" type="guid" value="7308bbd7-bf94-47fd-aeee-94b64d6b5e2b"/>
                 </node>
                 <node id="ProgressionDescription">

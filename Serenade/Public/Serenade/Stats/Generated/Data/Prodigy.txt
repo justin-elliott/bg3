@@ -478,10 +478,10 @@ data "Description" "Serenade_ProdigyRollBonus_20_Description"
 data "Icon" "PassiveFeature_Portent_20"
 data "Properties" "IsHidden"
 
-new entry "Serenade_ProdigyNoFeature"
+new entry "Serenade_ProdigyNoTraining"
 type "PassiveData"
-data "DisplayName" "Serenade_ProdigyNoFeature_DisplayName"
-data "Description" "Serenade_ProdigyNoFeature_Description"
+data "DisplayName" "Serenade_ProdigyNoTraining_DisplayName"
+data "Description" "Serenade_ProdigyNoTraining_Description"
 data "Properties" "IsHidden"
 
 new entry "Serenade_ProdigyBrawler"

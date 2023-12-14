@@ -27,18 +27,32 @@ training = {
     "Brawler": {
         "Name": "Prodigy: Brawler",
         "Description": """
-            On selecting this training, you receive <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>
-            and <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>.
-            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
-            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
+            <LSTag Type="Passive" Tooltip="MartialArts_BonusUnarmedStrike">Bonus Unarmed Strike</LSTag>, and
+            <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
         "Icon": "Action_Monk_FlurryOfBlows",
         "Progression": {
             range(1, 21): {
-                "Passives": ["TavernBrawler", "FastHands"],
+                "Passives": ["Alert",
+                             "MartialArts_BonusUnarmedStrike",
+                             "TavernBrawler"],
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
+            },
+            range(9, 21): {
+                "Passives": ["FastHands"],
+                "Boosts": ["UnlockSpell(Serenade_ProdigySpinningKick)"],
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
@@ -51,9 +65,14 @@ training = {
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
-            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
-            At level 9, you receive <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
-            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
         "Icon": "PassiveFeature_FightingStyle_GreatWeaponFighting",
         "Progression": {
@@ -64,8 +83,10 @@ training = {
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
             },
             range(9, 21): {
+                "Passives": ["FastHands"],
                 "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
             },
             range(11, 21): {
@@ -79,22 +100,28 @@ training = {
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
-            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
-            At level 9, you receive <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
-            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
         "Icon": "PassiveFeature_FightingStyle_TwoWeaponFighting",
         "Progression": {
             range(1, 21): {
                 "Passives": ["FightingStyle_TwoWeaponFighting",
                              "DualWielder_BonusAC",
-                             "DualWielder_PassiveBonuses",
-                             "FastHands"],
+                             "DualWielder_PassiveBonuses"],
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
             },
             range(9, 21): {
+                "Passives": ["FastHands"],
                 "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
             },
             range(11, 21): {
@@ -108,22 +135,28 @@ training = {
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
-            At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
-            At level 9, you receive <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
-            Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
         "Icon": "PassiveFeature_FightingStyle_Archery",
         "Progression": {
             range(1, 21): {
                 "Passives": ["FightingStyle_Archery",
                              "Sharpshooter_AllIn",
-                             "Sharpshooter_Bonuses",
-                             "FastHands"],
+                             "Sharpshooter_Bonuses"],
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
             },
             range(9, 21): {
+                "Passives": ["FastHands"],
                 "Boosts": ["UnlockSpell(Target_Volley)"],
             },
             range(11, 21): {

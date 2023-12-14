@@ -136,27 +136,20 @@ features = {
         "Name": "Prodigy: Magic",
         "Description": """
             On selecting this feature, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
-            <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
+            <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
+            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
+            already attained when you take this feature, you gain an additional spell slot of the appropriate level for
+            a full spellcaster.
 
-            <br><br>At every level, including levels already attained when you take this feature, you gain an additional
-            spell slot of the appropriate level for a full spellcaster.
+            <br><br>At level 4, you gain 3 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
+            <LSTag Type="Passive" Tooltip="Metamagic_Twinned">Twinned Spell</LSTag> and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyRestoreSorceryPoints">Restore Sorcery Points</LSTag>.
 
-            <br><br>At level 2, you gain 2 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
-            You also gain a sorcery point every successive level.
-
-            <br><br>Additional sorcery points can be created with
-            <LSTag Type="Spell" Tooltip="Shout_CreateSorceryPoints">Create Sorcery Points</LSTag> (in your Spell Book),
-            and you can spend sorcery points on <LSTag Type="Passive" Tooltip="Metamagic_Distant">Distant Spell</LSTag>,
-            and <LSTag Type="Passive" Tooltip="Metamagic_Twinned">Twinned Spell</LSTag>.
-            
-            <br><br>You will receive further Metamagic abilities every two levels in this order:
-            <LSTag Type="Passive" Tooltip="Metamagic_Quickened">Quickened Spell</LSTag>,
-            <LSTag Type="Passive" Tooltip="Metamagic_Heightened">Heightened Spell</LSTag>,
-            <LSTag Type="Passive" Tooltip="Metamagic_Extended">Extended Spell</LSTag>,
-            <LSTag Type="Passive" Tooltip="Metamagic_Careful">Careful Spell</LSTag>, and finally
-            <LSTag Type="Passive" Tooltip="Metamagic_Subtle">Subtle Spell</LSTag>.
+            <br><br>At level 7, you gain 3 additional Sorcery Points and
+            <LSTag Type="Passive" Tooltip="Metamagic_Quickened">Quickened Spell</LSTag>. At level 11, you gain a further
+            3 Sorcery Points and <LSTag Type="Passive" Tooltip="Metamagic_Heightened">Heightened Spell</LSTag>.
             """,
         "Icon": "Action_KnowledgeOfTheAges",
         "Progression": {
@@ -165,92 +158,45 @@ features = {
                              "WarCaster_Bonuses",
                              "WarCaster_OpportunitySpell",
                              "UnlockedSpellSlotLevel1"],
-                "Boosts": ["ActionResource(SpellSlot,1,1)",
+                "Boosts": ["ActionResource(SpellSlot,2,1)",
                            "ProficiencyBonus(SavingThrow,Constitution)"],
-            },
-            range(2, 21): {
-                "Passives": ["Metamagic_Distant",
-                             "Metamagic_Twinned"],
-                "Boosts": ["ActionResource(SpellSlot,1,1)",
-                           "ActionResource(SorceryPoint,2,0)",
-                           "UnlockSpell(Shout_CreateSorceryPoints,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "Tag(SORCERER_METAMAGIC)"],
             },
             range(3, 21): {
                 "Passives": ["UnlockedSpellSlotLevel2"],
-                "Boosts": ["ActionResource(SpellSlot,1,2)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                "Boosts": ["ActionResource(SpellSlot,1,2)"],
             },
             range(4, 21): {
-                "Passives": ["Metamagic_Quickened"],
-                "Boosts": ["ActionResource(SpellSlot,1,2)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                "Passives": ["Metamagic_Twinned",
+                             "Serenade_ProdigyRestoreSorceryPoints"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)",
+                           "Tag(SORCERER_METAMAGIC)"],
             },
             range(5, 21): {
                 "Passives": ["UnlockedSpellSlotLevel3"],
-                "Boosts": ["ActionResource(SpellSlot,1,3)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(6, 21): {
-                "Passives": ["Metamagic_Heightened"],
-                "Boosts": ["ActionResource(SpellSlot,1,3)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                "Boosts": ["ActionResource(SpellSlot,1,3)"],
             },
             range(7, 21): {
+                "Passives": ["Metamagic_Quickened"],
                 "Boosts": ["ActionResource(SpellSlot,1,4)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(8, 21): {
-                "Passives": ["Metamagic_Extended"],
-                "Boosts": ["ActionResource(SpellSlot,1,4)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                           "ActionResource(SorceryPoint,3,0)"],
             },
             range(9, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,5)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(10, 21): {
-                "Passives": ["Metamagic_Careful"],
-                "Boosts": ["ActionResource(SpellSlot,1,5)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
             },
             range(11, 21): {
+                "Passives": ["Metamagic_Heightened"],
                 "Boosts": ["ActionResource(SpellSlot,1,6)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(12, 21): {
-                "Passives": ["Metamagic_Subtle"],
-                "Boosts": ["ActionResource(SpellSlot,1,6)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                           "ActionResource(SorceryPoint,3,0)"],
             },
             range(13, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,7)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(14, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,7)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
             },
             range(15, 21): {
                 "Boosts": ["ActionResource(SpellSlot,1,8)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(16, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,8)",
-                           "ActionResource(SorceryPoint,1,0)"],
+                           "ActionResource(SorceryPoint,3,0)"],
             },
             range(17, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,9)",
-                           "ActionResource(SorceryPoint,1,0)"],
-            },
-            range(18, 21): {
-                "Boosts": ["ActionResource(SorceryPoint,1,0)"],
-            },
-            range(19, 21): {
-                "Boosts": ["ActionResource(SorceryPoint,1,0)"],
-            },
-            range(20, 21): {
-                "Boosts": ["ActionResource(SorceryPoint,1,0)"],
+                "Boosts": ["ActionResource(SpellSlot,1,9)"],
             },
         },
     },
@@ -278,6 +224,28 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Icon" "Action_KnowledgeOfTheAges"
         data "StackId" "SERENADE_PRODIGY"
         data "StackType" "Ignore"
+        data "StatusGroups" "SG_RemoveOnRespec"
+        data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+
+        new entry "Serenade_ProdigyRestoreSorceryPoints"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyRestoreSorceryPoints_DisplayName"
+        data "Description" "Serenade_ProdigyRestoreSorceryPoints_Description"
+        data "Icon" "Skill_Sorcerer_CreateSorceryPoints_1"
+        data "Properties" "Highlighted"
+        data "StatsFunctorContext" "OnCreate"
+        data "StatsFunctors" "ApplyStatus(SELF,SERENADE_PRODIGYRESTORESORCERYPOINTS,100,-1)"
+
+        new entry "SERENADE_PRODIGYRESTORESORCERYPOINTS"
+        type "StatusData"
+        data "StatusType" "BOOST"
+        data "DisplayName" "Serenade_ProdigyRestoreSorceryPoints_DisplayName"
+        data "Description" "Serenade_ProdigyRestoreSorceryPoints_Description"
+        data "Icon" "Skill_Sorcerer_CreateSorceryPoints_1"
+        data "StackId" "SERENADE_PRODIGYRESTORESORCERYPOINTS"
+        data "StackType" "Overwrite"
+        data "TickType" "StartTurn"
+        data "TickFunctors" "RestoreResource(SorceryPoint,1,0)"
         data "StatusGroups" "SG_RemoveOnRespec"
         data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
@@ -485,6 +453,8 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
         <!-- DO NOT EDIT: This file was automatically generated by {os.path.basename(__file__)} -->
         <contentList>
             <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
+            <content contentuid="Serenade_ProdigyRestoreSorceryPoints_DisplayName" version="1">Prodigy: Restore Sorcery Points</content>
+            <content contentuid="Serenade_ProdigyRestoreSorceryPoints_Description" version="1">Every turn, you restore 1 &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Point&lt;/LSTag&gt;.</content>
         """))
 
     for attribute in attributes:

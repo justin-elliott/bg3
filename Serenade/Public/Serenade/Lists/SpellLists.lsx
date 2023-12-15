@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="0"/>
+    <region id="SpellLists">
+        <node id="root">
+            <children>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Prodigy Spell Selection"/>
+                    <attribute id="Spells" type="LSString" value="Target_ArcaneLock;Shout_Blur;Target_Darkness;Target_Darkvision;Target_MistyStep;Shout_PassWithoutTrace;Projectile_RayOfEnfeeblement;Projectile_ScorchingRay;Target_SpikeGrowth;Target_SpiritualWeapon;Target_Web;Shout_ArmorOfAgathys;Target_Bless;Projectile_ChromaticOrb;Target_Command_Container;Target_CreateDestroyWater;Target_Entangle;Shout_FalseLife;Projectile_GuidingBolt;Shout_HellishRebuke;Target_Hex;Target_HuntersMark;Projectile_IceKnife;Projectile_MagicMissile;Target_Sanctuary;Shout_Shield_Sorcerer;Target_Smite_Thunderous;Target_ChillTouch;Projectile_EldritchBlast;Projectile_FireBolt;Projectile_RayOfFrost;Target_SacredFlame"/>
+                    <attribute id="UUID" type="guid" value="64987244-c55e-4624-8686-5fef42603c11"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

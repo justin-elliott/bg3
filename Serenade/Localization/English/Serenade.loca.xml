@@ -11,6 +11,12 @@
 	<content contentuid="Serenade_Prodigy_Description" version="1">You are gifted with exceptional abilities and skills.</content>
 	<content contentuid="Serenade_ProdigyTraining_DisplayName" version="1">Prodigy: Training</content>
 	<content contentuid="Serenade_ProdigyTraining_Description" version="1">Select training.</content>
+	<content contentuid="Serenade_ProdigyWeapons_DisplayName" version="1">Prodigy: Weapons</content>
+	<content contentuid="Serenade_ProdigyWeapons_Description" version="1">Select weapon proficiencies.</content>
+	<content contentuid="Serenade_ProdigyArmor_DisplayName" version="1">Prodigy: Armour</content>
+	<content contentuid="Serenade_ProdigyArmor_Description" version="1">Select armour proficiencies.</content>
+	<content contentuid="Serenade_ProdigyShields_DisplayName" version="1">Prodigy: Shields</content>
+	<content contentuid="Serenade_ProdigyShields_Description" version="1">Select shield proficiency.</content>
 	<content contentuid="Serenade_ProdigySpinningKick_DisplayName" version="1">Spinning Kick</content>
 	<content contentuid="Serenade_ProdigySpinningKick_Description" version="1">Strike out with a spinning kick at all nearby foes, making separate &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; against each target.</content>
 </contentList>

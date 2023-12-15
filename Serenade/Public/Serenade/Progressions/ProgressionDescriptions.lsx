@@ -11,6 +11,24 @@
                     <attribute id="UUID" type="guid" value="7308bbd7-bf94-47fd-aeee-94b64d6b5e2b"/>
                 </node>
                 <node id="ProgressionDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyWeapons_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyWeapons_Description" version="1"/>
+                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyWeapons"/>
+                    <attribute id="UUID" type="guid" value="cc458ac6-06c2-4879-ac91-eb2eed9e3186"/>
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyArmor_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyArmor_Description" version="1"/>
+                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyArmor"/>
+                    <attribute id="UUID" type="guid" value="006db5f3-dfc6-4bd5-a6f8-e8cad73d7420"/>
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyShields_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyShields_Description" version="1"/>
+                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyShields"/>
+                    <attribute id="UUID" type="guid" value="e0cc81b8-57c1-4519-9cd0-3db7fc2937fb"/>
+                </node>
+                <node id="ProgressionDescription">
                     <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyStrength_DisplayName" version="1"/>
                     <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyStrength_Description" version="1"/>
                     <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyStrength"/>

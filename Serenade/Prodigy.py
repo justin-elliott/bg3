@@ -306,6 +306,66 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "DisplayName" "haadef5acg36f8g4affg8c7bg7901735048a8;2"
         data "Description" "h2967e308gd644g46d5g91e4g3de62873eef7;5"
         data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyDefaultWeapons"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyDefaultWeapons_DisplayName"
+        data "Description" "Serenade_ProdigyDefaultWeapons_Description"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigySimpleWeapons"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigySimpleWeapons_DisplayName"
+        data "Description" "Serenade_ProdigySimpleWeapons_Description"
+        data "Boosts" "Proficiency(SimpleWeapons)"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyMartialWeapons"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyMartialWeapons_DisplayName"
+        data "Description" "Serenade_ProdigyMartialWeapons_Description"
+        data "Boosts" "Proficiency(SimpleWeapons);Proficiency(MartialWeapons)"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyDefaultArmor"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyDefaultArmor_DisplayName"
+        data "Description" "Serenade_ProdigyDefaultArmor_Description"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyLightArmor"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyLightArmor_DisplayName"
+        data "Description" "Serenade_ProdigyLightArmor_Description"
+        data "Boosts" "Proficiency(LightArmor)"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyMediumArmor"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyMediumArmor_DisplayName"
+        data "Description" "Serenade_ProdigyMediumArmor_Description"
+        data "Boosts" "Proficiency(LightArmor);Proficiency(MediumArmor)"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyHeavyArmor"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyHeavyArmor_DisplayName"
+        data "Description" "Serenade_ProdigyHeavyArmor_Description"
+        data "Boosts" "Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor)"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyDefaultShields"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyDefaultShields_DisplayName"
+        data "Description" "Serenade_ProdigyDefaultShields_Description"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyShields"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyShields_DisplayName"
+        data "Description" "Serenade_ProdigyShields_Description"
+        data "Boosts" "Proficiency(Shields)"
+        data "Properties" "IsHidden"
         """))
 
     attribute_icon = {
@@ -450,6 +510,18 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                                 ",".join(["Serenade_ProdigyNoTraining"] + training_names)}"/>
                             <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                         </node>
+                        <node id="PassiveList">
+                            <attribute id="Passives" type="LSString" value="Serenade_ProdigyDefaultWeapons,Serenade_ProdigySimpleWeapons,Serenade_ProdigyMartialWeapons"/>
+                            <attribute id="UUID" type="guid" value="5b577b08-aec9-40f3-bac7-b189857428db"/>
+                        </node>
+                        <node id="PassiveList">
+                            <attribute id="Passives" type="LSString" value="Serenade_ProdigyDefaultArmor,Serenade_ProdigyLightArmor,Serenade_ProdigyMediumArmor,Serenade_ProdigyHeavyArmor"/>
+                            <attribute id="UUID" type="guid" value="ec4fc950-14bb-414e-bd6d-27ee32c4f700"/>
+                        </node>
+                        <node id="PassiveList">
+                            <attribute id="Passives" type="LSString" value="Serenade_ProdigyDefaultShields,Serenade_ProdigyShields"/>
+                            <attribute id="UUID" type="guid" value="1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a"/>
+                        </node>
         """))
 
     for attribute in attributes:
@@ -493,6 +565,24 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
             <content contentuid="Serenade_ProdigyRestoreSorceryPoints_DisplayName" version="1">Prodigy: Restore Sorcery Points</content>
             <content contentuid="Serenade_ProdigyRestoreSorceryPoints_Description" version="1">Every turn, you restore 1 &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Point&lt;/LSTag&gt;.</content>
+            <content contentuid="Serenade_ProdigyDefaultWeapons_DisplayName" version="1">Default</content>
+            <content contentuid="Serenade_ProdigyDefaultWeapons_Description" version="1">Default weapon proficiencies.</content>
+            <content contentuid="Serenade_ProdigySimpleWeapons_DisplayName" version="1">Prodigy: Simple Weapons</content>
+            <content contentuid="Serenade_ProdigySimpleWeapons_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Weapon Proficiency&lt;/LSTag&gt; with Simple Weapons.</content>
+            <content contentuid="Serenade_ProdigyMartialWeapons_DisplayName" version="1">Prodigy: Martial Weapons</content>
+            <content contentuid="Serenade_ProdigyMartialWeapons_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Weapon Proficiency&lt;/LSTag&gt; with Simple and Martial Weapons.</content>
+            <content contentuid="Serenade_ProdigyDefaultArmor_DisplayName" version="1">Default</content>
+            <content contentuid="Serenade_ProdigyDefaultArmor_Description" version="1">Default armor proficiencies.</content>
+            <content contentuid="Serenade_ProdigyLightArmor_DisplayName" version="1">Prodigy: Light Armour</content>
+            <content contentuid="Serenade_ProdigyLightArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
+            <content contentuid="Serenade_ProdigyMediumArmor_DisplayName" version="1">Prodigy: Medium Armour</content>
+            <content contentuid="Serenade_ProdigyMediumArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light and Medium Armour.</content>
+            <content contentuid="Serenade_ProdigyHeavyArmor_DisplayName" version="1">Prodigy: Heavy Armour</content>
+            <content contentuid="Serenade_ProdigyHeavyArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light, Medium, and Heavy Armour.</content>
+            <content contentuid="Serenade_ProdigyDefaultShields_DisplayName" version="1">Default</content>
+            <content contentuid="Serenade_ProdigyDefaultShields_Description" version="1">Default shield proficiency.</content>
+            <content contentuid="Serenade_ProdigyShields_DisplayName" version="1">Prodigy: Shields</content>
+            <content contentuid="Serenade_ProdigyShields_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
         """))
 
     for attribute in attributes:

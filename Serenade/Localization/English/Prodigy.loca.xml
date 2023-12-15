@@ -4,6 +4,24 @@
     <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
     <content contentuid="Serenade_ProdigyRestoreSorceryPoints_DisplayName" version="1">Prodigy: Restore Sorcery Points</content>
     <content contentuid="Serenade_ProdigyRestoreSorceryPoints_Description" version="1">Every turn, you restore 1 &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Point&lt;/LSTag&gt;.</content>
+    <content contentuid="Serenade_ProdigyDefaultWeapons_DisplayName" version="1">Default</content>
+    <content contentuid="Serenade_ProdigyDefaultWeapons_Description" version="1">Default weapon proficiencies.</content>
+    <content contentuid="Serenade_ProdigySimpleWeapons_DisplayName" version="1">Prodigy: Simple Weapons</content>
+    <content contentuid="Serenade_ProdigySimpleWeapons_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Weapon Proficiency&lt;/LSTag&gt; with Simple Weapons.</content>
+    <content contentuid="Serenade_ProdigyMartialWeapons_DisplayName" version="1">Prodigy: Martial Weapons</content>
+    <content contentuid="Serenade_ProdigyMartialWeapons_Description" version="1">Gain &lt;LSTag Tooltip="WeaponProficiency"&gt;Weapon Proficiency&lt;/LSTag&gt; with Simple and Martial Weapons.</content>
+    <content contentuid="Serenade_ProdigyDefaultArmor_DisplayName" version="1">Default</content>
+    <content contentuid="Serenade_ProdigyDefaultArmor_Description" version="1">Default armor proficiencies.</content>
+    <content contentuid="Serenade_ProdigyLightArmor_DisplayName" version="1">Prodigy: Light Armour</content>
+    <content contentuid="Serenade_ProdigyLightArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
+    <content contentuid="Serenade_ProdigyMediumArmor_DisplayName" version="1">Prodigy: Medium Armour</content>
+    <content contentuid="Serenade_ProdigyMediumArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light and Medium Armour.</content>
+    <content contentuid="Serenade_ProdigyHeavyArmor_DisplayName" version="1">Prodigy: Heavy Armour</content>
+    <content contentuid="Serenade_ProdigyHeavyArmor_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light, Medium, and Heavy Armour.</content>
+    <content contentuid="Serenade_ProdigyDefaultShields_DisplayName" version="1">Default</content>
+    <content contentuid="Serenade_ProdigyDefaultShields_Description" version="1">Default shield proficiency.</content>
+    <content contentuid="Serenade_ProdigyShields_DisplayName" version="1">Prodigy: Shields</content>
+    <content contentuid="Serenade_ProdigyShields_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
     <content contentuid="Serenade_ProdigyStrength_DisplayName" version="1">Prodigy: Strength</content>
     <content contentuid="Serenade_ProdigyStrength_Description" version="1">Add a bonus to your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;.</content>
     <content contentuid="Serenade_ProdigyStrength_NoBonus_Description" version="1">No bonus to &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt;.</content>

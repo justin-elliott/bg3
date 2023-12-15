@@ -837,7 +837,7 @@ data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 data "Icon" "Action_KnowledgeOfTheAges"
-data "Passives" "WarCaster_Bonuses;WarCaster_OpportunitySpell;WardingFlare;UnlockedSpellSlotLevel1"
+data "Passives" "WarCaster_Bonuses;WarCaster_OpportunitySpell;UnlockedSpellSlotLevel1"
 data "Boosts" "ActionResource(SpellSlot,2,1);ProficiencyBonus(SavingThrow,Constitution)"
 
 new entry "SERENADE_PRODIGYMAGIC_3"

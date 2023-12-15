@@ -181,7 +181,6 @@ training = {
         "Description": """
             On selecting this training, you receive
             <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
-            <LSTag Type="Passive" Tooltip="WardingFlare">Warding Flare</LSTag>,
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
             <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
@@ -201,7 +200,6 @@ training = {
             range(1, 21): {
                 "Passives": ["WarCaster_Bonuses",
                              "WarCaster_OpportunitySpell",
-                             "WardingFlare",
                              "UnlockedSpellSlotLevel1"],
                 "Boosts": ["ActionResource(SpellSlot,2,1)",
                            "ProficiencyBonus(SavingThrow,Constitution)"],

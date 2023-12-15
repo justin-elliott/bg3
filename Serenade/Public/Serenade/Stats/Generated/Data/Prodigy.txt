@@ -517,7 +517,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortr
 data "Icon" "Action_Monk_FlurryOfBlows"
 data "OnApplyConditions" "CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)"
 data "Passives" "ExtraAttack"
-data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_BonusAction)"
+data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_CunningAction)"
 
 new entry "SERENADE_PRODIGYBRAWLER_9"
 type "StatusData"
@@ -579,7 +579,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortr
 data "Icon" "PassiveFeature_FightingStyle_GreatWeaponFighting"
 data "OnApplyConditions" "CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)"
 data "Passives" "ExtraAttack"
-data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_BonusAction)"
+data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_CunningAction)"
 
 new entry "SERENADE_PRODIGYGREATWEAPONS_9"
 type "StatusData"
@@ -641,7 +641,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortr
 data "Icon" "PassiveFeature_FightingStyle_TwoWeaponFighting"
 data "OnApplyConditions" "CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)"
 data "Passives" "ExtraAttack"
-data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_BonusAction)"
+data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_CunningAction)"
 
 new entry "SERENADE_PRODIGYDUALWIELDING_9"
 type "StatusData"
@@ -703,7 +703,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortr
 data "Icon" "PassiveFeature_FightingStyle_Archery"
 data "OnApplyConditions" "CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)"
 data "Passives" "ExtraAttack"
-data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_BonusAction)"
+data "Boosts" "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(10)):UnlockSpell(Shout_Dash_CunningAction)"
 
 new entry "SERENADE_PRODIGYARCHERY_9"
 type "StatusData"
@@ -751,7 +751,7 @@ data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 data "Icon" "Action_KnowledgeOfTheAges"
-data "Passives" "Alert;WarCaster_Bonuses;WarCaster_OpportunitySpell;UnlockedSpellSlotLevel1"
+data "Passives" "WarCaster_Bonuses;WarCaster_OpportunitySpell;WardingFlare;UnlockedSpellSlotLevel1"
 data "Boosts" "ActionResource(SpellSlot,2,1);ProficiencyBonus(SavingThrow,Constitution)"
 
 new entry "SERENADE_PRODIGYMAGIC_3"

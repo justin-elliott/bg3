@@ -32,7 +32,7 @@ training = {
             <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
 
             <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
             <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>.
@@ -48,7 +48,7 @@ training = {
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
             range(9, 21): {
                 "Passives": ["FastHands"],
@@ -67,7 +67,7 @@ training = {
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
 
             <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
@@ -83,7 +83,7 @@ training = {
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
             range(9, 21): {
                 "Passives": ["FastHands"],
@@ -102,7 +102,7 @@ training = {
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
 
             <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
@@ -118,7 +118,7 @@ training = {
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
             range(9, 21): {
                 "Passives": ["FastHands"],
@@ -137,7 +137,7 @@ training = {
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_BonusAction">Dash: Bonus Action</LSTag>.
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
 
             <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
             <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
@@ -153,7 +153,7 @@ training = {
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_BonusAction)"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
             range(9, 21): {
                 "Passives": ["FastHands"],
@@ -168,8 +168,9 @@ training = {
     "Magic": {
         "Name": "Prodigy: Magic",
         "Description": """
-            On selecting this training, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
+            On selecting this training, you receive
             <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
+            <LSTag Type="Passive" Tooltip="WardingFlare">Warding Flare</LSTag>,
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
             <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
@@ -187,9 +188,9 @@ training = {
         "Icon": "Action_KnowledgeOfTheAges",
         "Progression": {
             range(1, 21): {
-                "Passives": ["Alert",
-                             "WarCaster_Bonuses",
+                "Passives": ["WarCaster_Bonuses",
                              "WarCaster_OpportunitySpell",
+                             "WardingFlare",
                              "UnlockedSpellSlotLevel1"],
                 "Boosts": ["ActionResource(SpellSlot,2,1)",
                            "ProficiencyBonus(SavingThrow,Constitution)"],
@@ -430,8 +431,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
     }
 
     # No Training always comes first
-    training_names = [f"Serenade_Prodigy{key}" for key in sorted(training.keys(),
-                                                                 key=lambda k: (1, k) if k != "NoTraining" else (0, k))]
+    training_names = [f"Serenade_Prodigy{key}" for key in sorted(training.keys()) if key != "NoTraining"]
 
     f.write(textwrap.dedent(f"""\
         <?xml version="1.0" encoding="UTF-8"?>
@@ -443,6 +443,11 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                     <children>
                         <node id="PassiveList">
                             <attribute id="Passives" type="LSString" value="{",".join(training_names)}"/>
+                            <attribute id="UUID" type="guid" value="3f273be9-a773-4473-b0d4-8f50697727a0"/>
+                        </node>
+                        <node id="PassiveList">
+                            <attribute id="Passives" type="LSString" value="{
+                                ",".join(["Serenade_ProdigyNoTraining"] + training_names)}"/>
                             <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                         </node>
         """))

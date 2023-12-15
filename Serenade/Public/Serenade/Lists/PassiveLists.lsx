@@ -6,6 +6,10 @@
         <node id="root">
             <children>
                 <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyArchery,Serenade_ProdigyBrawler,Serenade_ProdigyDualWielding,Serenade_ProdigyGreatWeapons,Serenade_ProdigyMagic"/>
+                    <attribute id="UUID" type="guid" value="3f273be9-a773-4473-b0d4-8f50697727a0"/>
+                </node>
+                <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="Serenade_ProdigyNoTraining,Serenade_ProdigyArchery,Serenade_ProdigyBrawler,Serenade_ProdigyDualWielding,Serenade_ProdigyGreatWeapons,Serenade_ProdigyMagic"/>
                     <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                 </node>

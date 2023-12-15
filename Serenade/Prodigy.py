@@ -27,35 +27,43 @@ training = {
     "Brawler": {
         "Name": "Prodigy: Brawler",
         "Description": """
-            On selecting this training, you receive <LSTag Type="Passive" Tooltip="Alert">Alert</LSTag>,
-            <LSTag Type="Passive" Tooltip="MartialArts_BonusUnarmedStrike">Bonus Unarmed Strike</LSTag>, and
-            <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>.
+            On selecting this training, you receive
+            <LSTag Type="Passive" Tooltip="MartialArts_BonusUnarmedStrike">Bonus Unarmed Strike</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyRestoreKiPoints">Restore Ki Points</LSTag>,
+            <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_StepOfTheWind">Step of the Wind: Dash</LSTag>. You also gain
+            2 <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
 
-            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
 
-            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>.
+            <br><br>At level 7, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>,
+            <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>, and a further 2
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
 
-            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            <br><br>Finally, at level 11, you receive
+            <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>, and 2
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
             """,
         "Icon": "Action_Monk_FlurryOfBlows",
         "Progression": {
             range(1, 21): {
-                "Passives": ["Alert",
-                             "MartialArts_BonusUnarmedStrike",
+                "Passives": ["MartialArts_BonusUnarmedStrike",
+                             "Serenade_ProdigyRestoreKiPoints",
                              "TavernBrawler"],
+                "Boosts": ["ActionResource(KiPoint,2,0)",
+                           "UnlockSpell(Shout_Dash_StepOfTheWind)"],
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
-            range(9, 21): {
+            range(7, 21): {
                 "Passives": ["FastHands"],
-                "Boosts": ["UnlockSpell(Serenade_ProdigySpinningKick)"],
+                "Boosts": ["ActionResource(KiPoint,2,0)",
+                           "UnlockSpell(Serenade_ProdigySpinningKick)"],
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
+                "Boosts": ["ActionResource(KiPoint,2,0)"],
             },
         },
     },
@@ -91,6 +99,7 @@ training = {
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
         },
     },
@@ -126,6 +135,7 @@ training = {
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
         },
     },
@@ -161,6 +171,7 @@ training = {
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
             },
         },
     },
@@ -280,6 +291,28 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "StackType" "Overwrite"
         data "TickType" "StartTurn"
         data "TickFunctors" "RestoreResource(SorceryPoint,1,0)"
+        data "StatusGroups" "SG_RemoveOnRespec"
+        data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+
+        new entry "Serenade_ProdigyRestoreKiPoints"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyRestoreKiPoints_DisplayName"
+        data "Description" "Serenade_ProdigyRestoreKiPoints_Description"
+        data "Icon" "Action_Mag_KiRestoration_Lesser"
+        data "Properties" "Highlighted"
+        data "StatsFunctorContext" "OnCreate"
+        data "StatsFunctors" "ApplyStatus(SELF,SERENADE_PRODIGYRESTOREKIPOINTS,100,-1)"
+
+        new entry "SERENADE_PRODIGYRESTOREKIPOINTS"
+        type "StatusData"
+        data "StatusType" "BOOST"
+        data "DisplayName" "Serenade_ProdigyRestoreKiPoints_DisplayName"
+        data "Description" "Serenade_ProdigyRestoreKiPoints_Description"
+        data "Icon" "Action_Mag_KiRestoration_Lesser"
+        data "StackId" "SERENADE_PRODIGYRESTOREKIPOINTS"
+        data "StackType" "Overwrite"
+        data "TickType" "StartTurn"
+        data "TickFunctors" "RestoreResource(KiPoint,1,0)"
         data "StatusGroups" "SG_RemoveOnRespec"
         data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
@@ -565,6 +598,8 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_Prodigy_NoBonus_DisplayName" version="1">No Bonus</content>
             <content contentuid="Serenade_ProdigyRestoreSorceryPoints_DisplayName" version="1">Prodigy: Restore Sorcery Points</content>
             <content contentuid="Serenade_ProdigyRestoreSorceryPoints_Description" version="1">Every turn, you restore 1 &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Point&lt;/LSTag&gt;.</content>
+            <content contentuid="Serenade_ProdigyRestoreKiPoints_DisplayName" version="1">Prodigy: Restore Ki Points</content>
+            <content contentuid="Serenade_ProdigyRestoreKiPoints_Description" version="1">Every turn, you restore 1 &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point&lt;/LSTag&gt;.</content>
             <content contentuid="Serenade_ProdigyDefaultWeapons_DisplayName" version="1">Default</content>
             <content contentuid="Serenade_ProdigyDefaultWeapons_Description" version="1">Default weapon proficiencies.</content>
             <content contentuid="Serenade_ProdigySimpleWeapons_DisplayName" version="1">Prodigy: Simple Weapons</content>

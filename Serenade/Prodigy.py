@@ -24,6 +24,42 @@ training = {
         "Description": "Do not select any training.",
     },
 
+    "Archery": {
+        "Name": "Prodigy: Archery",
+        "Description": """
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            """,
+        "Icon": "PassiveFeature_FightingStyle_Archery",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["FightingStyle_Archery",
+                             "Sharpshooter_AllIn",
+                             "Sharpshooter_Bonuses"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
+            },
+            range(9, 21): {
+                "Passives": ["FastHands"],
+                "Boosts": ["UnlockSpell(Target_Volley)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
+            },
+        },
+    },
+
     "Brawler": {
         "Name": "Prodigy: Brawler",
         "Description": """
@@ -68,42 +104,6 @@ training = {
         },
     },
 
-    "GreatWeapons": {
-        "Name": "Prodigy: Great Weapons",
-        "Description": """
-            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
-            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
-
-            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
-
-            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
-
-            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
-            """,
-        "Icon": "PassiveFeature_FightingStyle_GreatWeaponFighting",
-        "Progression": {
-            range(1, 21): {
-                "Passives": ["FightingStyle_GreatWeaponFighting",
-                             "GreatWeaponMaster_BonusAttack",
-                             "GreatWeaponMaster_BonusDamage"],
-            },
-            range(5, 11): {
-                "Passives": ["ExtraAttack"],
-                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
-            },
-            range(9, 21): {
-                "Passives": ["FastHands"],
-                "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
-            },
-            range(11, 21): {
-                "Passives": ["ExtraAttack_2"],
-                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
-            },
-        },
-    },
-
     "DualWielding": {
         "Name": "Prodigy: Dual Wielding",
         "Description": """
@@ -140,26 +140,26 @@ training = {
         },
     },
 
-    "Archery": {
-        "Name": "Prodigy: Archery",
+    "GreatWeapons": {
+        "Name": "Prodigy: Great Weapons",
         "Description": """
-            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
-            and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
+            On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
 
             <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag>.
+            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
 
             <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
-        "Icon": "PassiveFeature_FightingStyle_Archery",
+        "Icon": "PassiveFeature_FightingStyle_GreatWeaponFighting",
         "Progression": {
             range(1, 21): {
-                "Passives": ["FightingStyle_Archery",
-                             "Sharpshooter_AllIn",
-                             "Sharpshooter_Bonuses"],
+                "Passives": ["FightingStyle_GreatWeaponFighting",
+                             "GreatWeaponMaster_BonusAttack",
+                             "GreatWeaponMaster_BonusDamage"],
             },
             range(5, 11): {
                 "Passives": ["ExtraAttack"],
@@ -167,7 +167,7 @@ training = {
             },
             range(9, 21): {
                 "Passives": ["FastHands"],
-                "Boosts": ["UnlockSpell(Target_Volley)"],
+                "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
             },
             range(11, 21): {
                 "Passives": ["ExtraAttack_2"],
@@ -244,6 +244,9 @@ training = {
         },
     },
 }
+
+prodigy_training_keys = ["NoTraining", "Archery", "Brawler", "DualWielding", "GreatWeapons", "Magic"]
+extra_training_keys = ["Archery", "Brawler", "DualWielding", "GreatWeapons", "Magic"]
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -522,7 +525,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
     }
 
     # No Training always comes first
-    training_names = [f"Serenade_Prodigy{key}" for key in sorted(training.keys()) if key != "NoTraining"]
+    prodigy_training_names = [f"Serenade_Prodigy{key}" for key in prodigy_training_keys]
+    extra_training_names = [f"Serenade_Prodigy{key}" for key in extra_training_keys]
 
     f.write(textwrap.dedent(f"""\
         <?xml version="1.0" encoding="UTF-8"?>
@@ -533,13 +537,12 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                 <node id="root">
                     <children>
                         <node id="PassiveList">
-                            <attribute id="Passives" type="LSString" value="{",".join(training_names)}"/>
-                            <attribute id="UUID" type="guid" value="3f273be9-a773-4473-b0d4-8f50697727a0"/>
+                            <attribute id="Passives" type="LSString" value="{",".join(prodigy_training_names)}"/>
+                            <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
                         </node>
                         <node id="PassiveList">
-                            <attribute id="Passives" type="LSString" value="{
-                                ",".join(["Serenade_ProdigyNoTraining"] + training_names)}"/>
-                            <attribute id="UUID" type="guid" value="b7d72358-f348-4c78-8e42-a743b16a2c2c"/>
+                            <attribute id="Passives" type="LSString" value="{",".join(extra_training_names)}"/>
+                            <attribute id="UUID" type="guid" value="3f273be9-a773-4473-b0d4-8f50697727a0"/>
                         </node>
                         <node id="PassiveList">
                             <attribute id="Passives" type="LSString" value="Serenade_ProdigyDefaultWeapons,Serenade_ProdigySimpleWeapons,Serenade_ProdigyMartialWeapons"/>

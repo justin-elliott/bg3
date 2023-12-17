@@ -24,8 +24,8 @@ training = {
         "Description": "Do not select any training.",
     },
 
-    "Archery": {
-        "Name": "Prodigy: Archery",
+    "Archer": {
+        "Name": "Prodigy: Archer",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
@@ -60,52 +60,8 @@ training = {
         },
     },
 
-    "Brawler": {
-        "Name": "Prodigy: Brawler",
-        "Description": """
-            On selecting this training, you receive
-            <LSTag Type="Passive" Tooltip="MartialArts_BonusUnarmedStrike">Bonus Unarmed Strike</LSTag>,
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyRestoreKiPoints">Restore Ki Points</LSTag>,
-            <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>, and
-            <LSTag Type="Spell" Tooltip="Shout_Dash_StepOfTheWind">Step of the Wind: Dash</LSTag>. You also gain
-            2 <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
-
-            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
-
-            <br><br>At level 7, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>,
-            <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>, and a further 2
-            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
-
-            <br><br>Finally, at level 11, you receive
-            <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>, and 2
-            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
-            """,
-        "Icon": "Action_Monk_FlurryOfBlows",
-        "Progression": {
-            range(1, 21): {
-                "Passives": ["MartialArts_BonusUnarmedStrike",
-                             "Serenade_ProdigyRestoreKiPoints",
-                             "TavernBrawler"],
-                "Boosts": ["ActionResource(KiPoint,2,0)",
-                           "UnlockSpell(Shout_Dash_StepOfTheWind)"],
-            },
-            range(5, 11): {
-                "Passives": ["ExtraAttack"],
-            },
-            range(7, 21): {
-                "Passives": ["FastHands"],
-                "Boosts": ["ActionResource(KiPoint,2,0)",
-                           "UnlockSpell(Serenade_ProdigySpinningKick)"],
-            },
-            range(11, 21): {
-                "Passives": ["ExtraAttack_2"],
-                "Boosts": ["ActionResource(KiPoint,2,0)"],
-            },
-        },
-    },
-
-    "DualWielding": {
-        "Name": "Prodigy: Dual Wielding",
+    "DualWielder": {
+        "Name": "Prodigy: Dual Wielder",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
@@ -140,11 +96,11 @@ training = {
         },
     },
 
-    "EmpoweredMagic": {
-        "Name": "Prodigy: Empowered Magic",
+    "EmpoweredMage": {
+        "Name": "Prodigy: Empowered Mage",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagicBonus">Empowered Magic</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagic">Empowered Magic</LSTag>,
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
             <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
 
@@ -154,7 +110,7 @@ training = {
         "Icon": "PassiveFeature_EmpoweredEvocation",
         "Progression": {
             range(8, 21): {
-                "Passives": ["Serenade_ProdigyEmpoweredMagicBonus",
+                "Passives": ["Serenade_ProdigyEmpoweredMagic",
                              "UnlockedSpellSlotLevel1",
                              "UnlockedSpellSlotLevel2",
                              "UnlockedSpellSlotLevel3"],
@@ -182,8 +138,8 @@ training = {
         },
     },
 
-    "GreatWeapons": {
-        "Name": "Prodigy: Great Weapons",
+    "GreatWeaponMaster": {
+        "Name": "Prodigy: Great Weapon Master",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
             and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
@@ -218,8 +174,8 @@ training = {
         },
     },
 
-    "Magic": {
-        "Name": "Prodigy: Magic",
+    "Mage": {
+        "Name": "Prodigy: Mage",
         "Description": """
             On selecting this training, you receive
             <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
@@ -286,11 +242,55 @@ training = {
         },
     },
 
-    "MaximizeSpells": {
-        "Name": "Prodigy: Maximize Spells",
+    "MartialArtist": {
+        "Name": "Prodigy: Martial Artist",
+        "Description": """
+            On selecting this training, you receive
+            <LSTag Type="Passive" Tooltip="MartialArts_BonusUnarmedStrike">Bonus Unarmed Strike</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyRestoreKiPoints">Restore Ki Points</LSTag>,
+            <LSTag Type="Passive" Tooltip="TavernBrawler">Tavern Brawler</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_StepOfTheWind">Step of the Wind: Dash</LSTag>. You also gain
+            2 <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>.
+
+            <br><br>At level 7, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>,
+            <LSTag Type="Spell" Tooltip="Serenade_ProdigySpinningKick">Spinning Kick</LSTag>, and a further 2
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
+
+            <br><br>Finally, at level 11, you receive
+            <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>, and 2
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Points</LSTag>.
+            """,
+        "Icon": "Action_Monk_FlurryOfBlows",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["MartialArts_BonusUnarmedStrike",
+                             "Serenade_ProdigyRestoreKiPoints",
+                             "TavernBrawler"],
+                "Boosts": ["ActionResource(KiPoint,2,0)",
+                           "UnlockSpell(Shout_Dash_StepOfTheWind)"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+            },
+            range(7, 21): {
+                "Passives": ["FastHands"],
+                "Boosts": ["ActionResource(KiPoint,2,0)",
+                           "UnlockSpell(Serenade_ProdigySpinningKick)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+                "Boosts": ["ActionResource(KiPoint,2,0)"],
+            },
+        },
+    },
+
+    "MaximizedMage": {
+        "Name": "Prodigy: Maximized Mage",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMaximizeSpellsPassive">Maximize Spells</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMaximizeSpells">Maximize Spells</LSTag>,
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
             <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
 
@@ -300,7 +300,7 @@ training = {
         "Icon": "PassiveFeature_EmpoweredEvocation",
         "Progression": {
             range(8, 21): {
-                "Passives": ["Serenade_ProdigyMaximizeSpellsPassive",
+                "Passives": ["Serenade_ProdigyMaximizeSpells",
                              "UnlockedSpellSlotLevel1",
                              "UnlockedSpellSlotLevel2",
                              "UnlockedSpellSlotLevel3"],
@@ -330,18 +330,18 @@ training = {
 }
 
 prodigy_training_keys = ["NoTraining",
-                         "Archery",
-                         "Brawler",
-                         "DualWielding",
-                         "GreatWeapons",
-                         "Magic"]
-extra_training_keys = ["Archery",
-                       "Brawler",
-                       "DualWielding",
-                       "EmpoweredMagic",
-                       "GreatWeapons",
-                       "Magic",
-                       "MaximizeSpells"]
+                         "Archer",
+                         "DualWielder",
+                         "GreatWeaponMaster",
+                         "Mage",
+                         "MartialArtist"]
+extra_training_keys = ["Archer",
+                       "DualWielder",
+                       "EmpoweredMage",
+                       "GreatWeaponMaster",
+                       "Mage",
+                       "MartialArtist",
+                       "MaximizedMage"]
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -496,44 +496,44 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Boosts" "Proficiency(Shields)"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyEmpoweredMagicBonus"
+        new entry "Serenade_ProdigyEmpoweredMagic"
         type "PassiveData"
-        data "DisplayName" "Serenade_ProdigyEmpoweredMagicBonus_DisplayName"
-        data "Description" "Serenade_ProdigyEmpoweredMagicBonus_Description"
+        data "DisplayName" "Serenade_ProdigyEmpoweredMagic_DisplayName"
+        data "Description" "Serenade_ProdigyEmpoweredMagic_Description"
         data "Boosts" "IF(IsSpell() and not (HasPassive('EmpoweredEvocation',context.Source) and IsSpellSchool(SpellSchool.Evocation)) and not (HasPassive('AgonizingBlast',context.Source) and SpellId('Projectile_EldritchBlast'))):DamageBonus(max(0, SpellCastingAbilityModifier))"
         data "Icon" "PassiveFeature_EmpoweredEvocation"
         data "Properties" "Highlighted"
 
-        new entry "Serenade_ProdigyMaximizeSpellsPassive"
+        new entry "Serenade_ProdigyMaximizeSpells"
         type "PassiveData"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
-        data "Description" "Serenade_ProdigyMaximizeSpellsPassive_Description"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
+        data "Description" "Serenade_ProdigyMaximizeSpells_Description"
         data "TooltipUseCosts" "SorceryPoint:3"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
-        data "Boosts" "UnlockInterrupt(Serenade_ProdigyMaximizeSpellInterrupt)"
+        data "Boosts" "UnlockInterrupt(Serenade_ProdigyMaximizeSpellsInterrupt)"
         data "StatsFunctorContext" "OnCastResolved"
-        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYMAXIMIZESPELL)"
+        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYMAXIMIZESPELLS)"
 
-        new entry "Serenade_ProdigyMaximizeSpellInterrupt"
+        new entry "Serenade_ProdigyMaximizeSpellsInterrupt"
         type "InterruptData"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
-        data "Description" "Serenade_ProdigyMaximizeSpellsPassive_Description"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
+        data "Description" "Serenade_ProdigyMaximizeSpells_Description"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
         data "InterruptContext" "OnSpellCast"
         data "InterruptContextScope" "Self"
         data "Container" "YesNoDecision"
         data "Conditions" "Self(context.Source,context.Observer) and EmpoweredSpellCheck() and not AnyEntityIsItem()"
-        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYMAXIMIZESPELL,100,1)"
+        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYMAXIMIZESPELLS,100,1)"
         data "Cost" "SorceryPoint:3"
         data "InterruptDefaultValue" "Ask;Enabled"
         data "EnableCondition" "not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')"
         data "EnableContext" "OnStatusApplied;OnStatusRemoved"
 
-        new entry "SERENADE_PRODIGYMAXIMIZESPELL"
+        new entry "SERENADE_PRODIGYMAXIMIZESPELLS"
         type "StatusData"
         data "StatusType" "BOOST"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
-        data "StackId" "SERENADE_PRODIGYMAXIMIZESPELL"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
+        data "StackId" "SERENADE_PRODIGYMAXIMIZESPELLS"
         data "Boosts" "MinimumRollResult(Damage,20)"
         data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
         """))
@@ -755,10 +755,10 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_ProdigyDefaultShields_Description" version="1">Default shield proficiency.</content>
             <content contentuid="Serenade_ProdigyShields_DisplayName" version="1">Prodigy: Shields</content>
             <content contentuid="Serenade_ProdigyShields_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
-            <content contentuid="Serenade_ProdigyEmpoweredMagicBonus_DisplayName" version="1">Prodigy: Empowered Magic</content>
-            <content contentuid="Serenade_ProdigyEmpoweredMagicBonus_Description" version="1">You add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Ability&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your spell damage.&lt;br&gt;&lt;br&gt;This does not stack with &lt;LSTag Type="Passive" Tooltip="AgonizingBlast"&gt;Agonizing Blast&lt;/LSTag&gt; or &lt;LSTag Type="Passive" Tooltip="EmpoweredEvocation"&gt;Empowered Evocation&lt;/LSTag&gt;.</content>
-            <content contentuid="Serenade_ProdigyMaximizeSpellsPassive_DisplayName" version="1">Prodigy: Maximize Spells</content>
-            <content contentuid="Serenade_ProdigyMaximizeSpellsPassive_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
+            <content contentuid="Serenade_ProdigyEmpoweredMagic_DisplayName" version="1">Prodigy: Empowered Magic</content>
+            <content contentuid="Serenade_ProdigyEmpoweredMagic_Description" version="1">You add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Ability&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your spell damage.&lt;br&gt;&lt;br&gt;This does not stack with &lt;LSTag Type="Passive" Tooltip="AgonizingBlast"&gt;Agonizing Blast&lt;/LSTag&gt; or &lt;LSTag Type="Passive" Tooltip="EmpoweredEvocation"&gt;Empowered Evocation&lt;/LSTag&gt;.</content>
+            <content contentuid="Serenade_ProdigyMaximizeSpells_DisplayName" version="1">Prodigy: Maximize Spells</content>
+            <content contentuid="Serenade_ProdigyMaximizeSpells_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
         """))
 
     for attribute in attributes:

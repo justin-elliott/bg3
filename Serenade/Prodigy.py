@@ -388,6 +388,24 @@ training = {
             },
         },
     },
+
+    "SavageAttacker": {
+        "Name": "Prodigy: Savage Attacker",
+        "Description": """
+            At level 8, you receive
+            <LSTag Type="Passive" Tooltip="SavageAttacks">Savage Attacks</LSTag>,
+            <LSTag Type="Passive" Tooltip="SavageAttacker">Savage Attacker</LSTag>, and
+            <LSTag Type="Passive" Tooltip="ImprovedCritical">Improved Critical</LSTag>.
+            """,
+        "Icon": "PassiveFeature_SavageAttacker",
+        "Progression": {
+            range(8, 21): {
+                "Passives": ["SavageAttacks",
+                             "SavageAttacker",
+                             "ImprovedCritical"],
+            },
+        },
+    },
 }
 
 prodigy_training_keys = ["NoTraining",
@@ -405,7 +423,8 @@ extra_training_keys = ["Archer",
                        "GreatWeaponMaster",
                        "Mage",
                        "MartialArtist",
-                       "MaximizedMage"]
+                       "MaximizedMage",
+                       "SavageAttacker"]
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:

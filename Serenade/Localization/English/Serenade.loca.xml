@@ -8,9 +8,9 @@
     <content contentuid="Serenade_Medley_Description" version="1">Perform a medley of songs to inspire and fortify your allies.</content>
 	<content contentuid="Serenade_MedleyBoost_Description" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;Each turn, recover &lt;LSTag Tooltip="SpellSlot"&gt;Spell Slots&lt;/LSTag&gt;. Spell slots take a number of turns equal to their level to be recovered.&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
 	<content contentuid="Serenade_Prodigy_DisplayName" version="1">Prodigy</content>
-	<content contentuid="Serenade_Prodigy_Description" version="1">You are gifted with exceptional abilities and skills.</content>
+	<content contentuid="Serenade_Prodigy_Description" version="1">You are gifted with exceptional abilities. You have access to more spells, and in addition to any &lt;LSTag Tooltip="SpellSlot"&gt;Spell Slots&lt;/LSTag&gt; that you gain from your class, each level you also gain the number of spell slots that a full spellcaster would have.</content>
 	<content contentuid="Serenade_ProdigyTraining_DisplayName" version="1">Prodigy: Training</content>
-	<content contentuid="Serenade_ProdigyTraining_Description" version="1">Select training.</content>
+	<content contentuid="Serenade_ProdigyTraining_Description" version="1">You have access to unrivalled training.</content>
 	<content contentuid="Serenade_ProdigyWeapons_DisplayName" version="1">Prodigy: Weapons</content>
 	<content contentuid="Serenade_ProdigyWeapons_Description" version="1">Select weapon proficiencies.</content>
 	<content contentuid="Serenade_ProdigyArmor_DisplayName" version="1">Prodigy: Armour</content>

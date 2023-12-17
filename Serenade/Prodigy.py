@@ -164,40 +164,14 @@ training = {
         "Name": "Prodigy: Empowered Mage",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagic">Empowered Magic</LSTag>,
-            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagic">Empowered Magic</LSTag>, and 3
             <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
-
-            <br><br>At every successive odd level, including levels already attained when you take this training, you
-            gain an additional spell slot of the appropriate level for a full spellcaster.
             """,
         "Icon": "PassiveFeature_EmpoweredEvocation",
         "Progression": {
             range(8, 21): {
-                "Passives": ["Serenade_ProdigyEmpoweredMagic",
-                             "UnlockedSpellSlotLevel1",
-                             "UnlockedSpellSlotLevel2",
-                             "UnlockedSpellSlotLevel3"],
-                "Boosts": ["ActionResource(SpellSlot,2,1)",
-                           "ActionResource(SpellSlot,1,2)",
-                           "ActionResource(SpellSlot,1,3)",
-                           "ActionResource(SpellSlot,1,4)",
-                           "ActionResource(SorceryPoint,3,0)"],
-            },
-            range(9, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,5)"],
-            },
-            range(11, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,6)"],
-            },
-            range(13, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,7)"],
-            },
-            range(15, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,8)"],
-            },
-            range(17, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+                "Passives": ["Serenade_ProdigyEmpoweredMagic"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
             },
         },
     },
@@ -238,16 +212,13 @@ training = {
         },
     },
 
-    "Mage": {
-        "Name": "Prodigy: Mage",
+    "Metamage": {
+        "Name": "Prodigy: Metamage",
         "Description": """
             On selecting this training, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCasterFeat">War Caster</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCasterFeat">War Caster</LSTag>, and
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
-            <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
-            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
-            already attained when you take this training, you gain an additional spell slot of the appropriate level for
-            a full spellcaster.
+            <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
 
             <br><br>At level 4, you gain 3 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
             <LSTag Type="Passive" Tooltip="Metamagic_Twinned">Twinned Spell</LSTag> and
@@ -261,14 +232,8 @@ training = {
         "Progression": {
             range(1, 21): {
                 "Passives": ["WarCaster_Bonuses",
-                             "WarCaster_OpportunitySpell",
-                             "UnlockedSpellSlotLevel1"],
-                "Boosts": ["ActionResource(SpellSlot,2,1)",
-                           "ProficiencyBonus(SavingThrow,Constitution)"],
-            },
-            range(3, 21): {
-                "Passives": ["UnlockedSpellSlotLevel2"],
-                "Boosts": ["ActionResource(SpellSlot,1,2)"],
+                             "WarCaster_OpportunitySpell"],
+                "Boosts": ["ProficiencyBonus(SavingThrow,Constitution)"],
             },
             range(4, 21): {
                 "Passives": ["Metamagic_Twinned",
@@ -276,32 +241,16 @@ training = {
                 "Boosts": ["ActionResource(SorceryPoint,3,0)",
                            "Tag(SORCERER_METAMAGIC)"],
             },
-            range(5, 21): {
-                "Passives": ["UnlockedSpellSlotLevel3"],
-                "Boosts": ["ActionResource(SpellSlot,1,3)"],
-            },
             range(7, 21): {
                 "Passives": ["Metamagic_Quickened"],
-                "Boosts": ["ActionResource(SpellSlot,1,4)",
-                           "ActionResource(SorceryPoint,3,0)"],
-            },
-            range(9, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
             },
             range(11, 21): {
                 "Passives": ["Metamagic_Heightened"],
-                "Boosts": ["ActionResource(SpellSlot,1,6)",
-                           "ActionResource(SorceryPoint,3,0)"],
-            },
-            range(13, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
             },
             range(15, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,8)",
-                           "ActionResource(SorceryPoint,3,0)"],
-            },
-            range(17, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
             },
         },
     },
@@ -354,40 +303,14 @@ training = {
         "Name": "Prodigy: Intensified Mage",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyIntensifySpells">Intensify Spells</LSTag>,
-            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyIntensifySpells">Intensify Spells</LSTag>, and 3
             <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
-
-            <br><br>At every successive odd level, including levels already attained when you take this training, you
-            gain an additional spell slot of the appropriate level for a full spellcaster.
             """,
         "Icon": "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
         "Progression": {
             range(8, 21): {
-                "Passives": ["Serenade_ProdigyIntensifySpells",
-                             "UnlockedSpellSlotLevel1",
-                             "UnlockedSpellSlotLevel2",
-                             "UnlockedSpellSlotLevel3"],
-                "Boosts": ["ActionResource(SpellSlot,2,1)",
-                           "ActionResource(SpellSlot,1,2)",
-                           "ActionResource(SpellSlot,1,3)",
-                           "ActionResource(SpellSlot,1,4)",
-                           "ActionResource(SorceryPoint,3,0)"],
-            },
-            range(9, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,5)"],
-            },
-            range(11, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,6)"],
-            },
-            range(13, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,7)"],
-            },
-            range(15, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,8)"],
-            },
-            range(17, 21): {
-                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+                "Passives": ["Serenade_ProdigyIntensifySpells"],
+                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
             },
         },
     },
@@ -409,6 +332,74 @@ training = {
             },
         },
     },
+
+    "SpellSlots": {
+        "Name": "Prodigy: Spell Slots",
+        "Description": """
+            In addition to any <LSTag Tooltip="SpellSlot">Spell Slots</LSTag> that you gain from your class, each level
+            you also gain the number of spell slots that a full spellcaster would have.
+            """,
+        "Hidden": True,
+        "Icon": "Action_KnowledgeOfTheAges",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["UnlockedSpellSlotLevel1"],
+                "Boosts": ["ActionResource(SpellSlot,2,1)"],
+            },
+            range(2, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,1)"],
+            },
+            range(3, 21): {
+                "Passives": ["UnlockedSpellSlotLevel2"],
+                "Boosts": ["ActionResource(SpellSlot,1,1)",
+                           "ActionResource(SpellSlot,2,2)"],
+            },
+            range(4, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,2)"],
+            },
+            range(5, 21): {
+                "Passives": ["UnlockedSpellSlotLevel3"],
+                "Boosts": ["ActionResource(SpellSlot,2,3)"],
+            },
+            range(6, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,3)"],
+            },
+            range(7, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,4)"],
+            },
+            range(8, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,4)"],
+            },
+            range(9, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,4)",
+                           "ActionResource(SpellSlot,1,5)"],
+            },
+            range(10, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+            },
+            range(11, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,6)"],
+            },
+            range(13, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+            },
+            range(15, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,8)"],
+            },
+            range(17, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+            },
+            range(18, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+            },
+            range(19, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,6)"],
+            },
+            range(20, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+            },
+        },
+    },
 }
 
 prodigy_training_keys = ["NoTraining",
@@ -416,17 +407,17 @@ prodigy_training_keys = ["NoTraining",
                          "DualWielder",
                          "Duellist",
                          "GreatWeaponMaster",
-                         "Mage",
-                         "MartialArtist"]
+                         "MartialArtist",
+                         "Metamage"]
 extra_training_keys = ["Archer",
                        "Athlete",
                        "DualWielder",
                        "Duellist",
                        "EmpoweredMage",
                        "GreatWeaponMaster",
-                       "Mage",
-                       "MartialArtist",
                        "IntensifiedMage",
+                       "MartialArtist",
+                       "Metamage",
                        "SavageAttacker"]
 
 # Generate the passives
@@ -459,7 +450,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "DisplayName" "Serenade_ProdigyRestoreSorceryPoints_DisplayName"
         data "Description" "Serenade_ProdigyRestoreSorceryPoints_Description"
         data "Icon" "Skill_Sorcerer_CreateSorceryPoints_1"
-        data "Properties" "Highlighted"
+        data "Properties" "IsHidden"
         data "StatsFunctorContext" "OnCreate"
         data "StatsFunctors" "ApplyStatus(SELF,SERENADE_PRODIGYRESTORESORCERYPOINTS,100,-1)"
 
@@ -481,7 +472,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "DisplayName" "Serenade_ProdigyRestoreKiPoints_DisplayName"
         data "Description" "Serenade_ProdigyRestoreKiPoints_Description"
         data "Icon" "Action_Mag_KiRestoration_Lesser"
-        data "Properties" "Highlighted"
+        data "Properties" "IsHidden"
         data "StatsFunctorContext" "OnCreate"
         data "StatsFunctors" "ApplyStatus(SELF,SERENADE_PRODIGYRESTOREKIPOINTS,100,-1)"
 
@@ -606,7 +597,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Description" "Serenade_ProdigyEmpoweredMagic_Description"
         data "Boosts" "IF(IsSpell() and not (HasPassive('EmpoweredEvocation',context.Source) and IsSpellSchool(SpellSchool.Evocation)) and not (HasPassive('AgonizingBlast',context.Source) and SpellId('Projectile_EldritchBlast'))):DamageBonus(max(0, SpellCastingAbilityModifier))"
         data "Icon" "PassiveFeature_EmpoweredEvocation"
-        data "Properties" "Highlighted"
+        data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigyIntensifySpells"
         type "PassiveData"
@@ -615,6 +606,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "TooltipUseCosts" "SorceryPoint:3"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
         data "Boosts" "UnlockInterrupt(Serenade_ProdigyIntensifySpellsInterrupt)"
+        data "Properties" "IsHidden"
         data "StatsFunctorContext" "OnCastResolved"
         data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYINTENSIFYSPELLS)"
 
@@ -706,7 +698,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
             type "PassiveData"
             data "DisplayName" "Serenade_Prodigy{key}_DisplayName"
             data "Description" "Serenade_Prodigy{key}_Description"
-            data "Properties" "{"Highlighted" if "Progression" in train else "IsHidden"}"
+            data "Properties" "{"Highlighted" if ("Progression" in train and not train.get("Hidden", False)) else "IsHidden"}"
             """))
 
         if (icon := train.get("Icon", None)):

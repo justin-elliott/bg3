@@ -60,6 +60,26 @@ training = {
         },
     },
 
+    "Athlete": {
+        "Name": "Prodigy: Athlete",
+        "Description": """
+            At level 8, you receive
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyAthlete">Athlete</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMobile">Mobile</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Tough">Tough</LSTag>.
+            """,
+        "Icon": "PassiveFeature_RemarkableAthlete_Jump",
+        "Progression": {
+            range(8, 21): {
+                "Passives": ["Athlete_StandUp",
+                             "Mobile_PassiveBonuses",
+                             "Mobile_CounterAttackOfOpportunity",
+                             "Mobile_DashAcrossDifficultTerrain",
+                             "Tough"],
+            },
+        },
+    },
+
     "DualWielder": {
         "Name": "Prodigy: Dual Wielder",
         "Description": """
@@ -113,7 +133,7 @@ training = {
 
             <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
             """,
-        "Icon": "PassiveFeature_FightingStyle_TwoWeaponFighting",
+        "Icon": "PassiveFeature_FightingStyle_Duelling",
         "Progression": {
             range(1, 21): {
                 "Passives": ["FightingStyle_Dueling",
@@ -378,6 +398,7 @@ prodigy_training_keys = ["NoTraining",
                          "Mage",
                          "MartialArtist"]
 extra_training_keys = ["Archer",
+                       "Athlete",
                        "DualWielder",
                        "Duellist",
                        "EmpoweredMage",
@@ -455,16 +476,28 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "StatusGroups" "SG_RemoveOnRespec"
         data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
-        new entry "Serenade_ProdigyGreatWeaponMaster"
+        new entry "Serenade_ProdigyAthlete"
         type "PassiveData"
-        data "DisplayName" "hf41eb2bag6496g4187g994dg62b9cb959e29;1"
-        data "Description" "hea61c527gd53fg46fega454g2bc02f65d75f;5"
+        data "DisplayName" "h860bd485g72b2g45b8gbad7g02e8f5acdd3e;1"
+        data "Description" "h4b921d5bg6e70g455cga6fcg68c4e67f9067;7"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigyDualWielder"
         type "PassiveData"
         data "DisplayName" "h1d620270gba24g434egad17g5ee9b72a6e3e;1"
         data "Description" "h1909840bg87f1g4029g9be6g974d9233f516;4"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyGreatWeaponMaster"
+        type "PassiveData"
+        data "DisplayName" "hf41eb2bag6496g4187g994dg62b9cb959e29;1"
+        data "Description" "hea61c527gd53fg46fega454g2bc02f65d75f;5"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyMobile"
+        type "PassiveData"
+        data "DisplayName" "hb434e5e8g23c2g439eg9703g2ac8fc9616ea;1"
+        data "Description" "hea5b6476gaefcg412ag9d1dgb081d4e61c19;4"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigyShieldMaster"

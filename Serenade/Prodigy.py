@@ -347,21 +347,21 @@ training = {
         },
     },
 
-    "MaximizedMage": {
-        "Name": "Prodigy: Maximized Mage",
+    "IntensifiedMage": {
+        "Name": "Prodigy: Intensified Mage",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMaximizeSpells">Maximize Spells</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyIntensifySpells">Intensify Spells</LSTag>,
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
             <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
 
             <br><br>At every successive odd level, including levels already attained when you take this training, you
             gain an additional spell slot of the appropriate level for a full spellcaster.
             """,
-        "Icon": "PassiveFeature_EmpoweredEvocation",
+        "Icon": "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
         "Progression": {
             range(8, 21): {
-                "Passives": ["Serenade_ProdigyMaximizeSpells",
+                "Passives": ["Serenade_ProdigyIntensifySpells",
                              "UnlockedSpellSlotLevel1",
                              "UnlockedSpellSlotLevel2",
                              "UnlockedSpellSlotLevel3"],
@@ -423,7 +423,7 @@ extra_training_keys = ["Archer",
                        "GreatWeaponMaster",
                        "Mage",
                        "MartialArtist",
-                       "MaximizedMage",
+                       "IntensifiedMage",
                        "SavageAttacker"]
 
 # Generate the passives
@@ -605,36 +605,36 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Icon" "PassiveFeature_EmpoweredEvocation"
         data "Properties" "Highlighted"
 
-        new entry "Serenade_ProdigyMaximizeSpells"
+        new entry "Serenade_ProdigyIntensifySpells"
         type "PassiveData"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
-        data "Description" "Serenade_ProdigyMaximizeSpells_Description"
+        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
+        data "Description" "Serenade_ProdigyIntensifySpells_Description"
         data "TooltipUseCosts" "SorceryPoint:3"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
-        data "Boosts" "UnlockInterrupt(Serenade_ProdigyMaximizeSpellsInterrupt)"
+        data "Boosts" "UnlockInterrupt(Serenade_ProdigyIntensifySpellsInterrupt)"
         data "StatsFunctorContext" "OnCastResolved"
-        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYMAXIMIZESPELLS)"
+        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYINTENSIFYSPELLS)"
 
-        new entry "Serenade_ProdigyMaximizeSpellsInterrupt"
+        new entry "Serenade_ProdigyIntensifySpellsInterrupt"
         type "InterruptData"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
-        data "Description" "Serenade_ProdigyMaximizeSpells_Description"
+        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
+        data "Description" "Serenade_ProdigyIntensifySpells_Description"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
         data "InterruptContext" "OnSpellCast"
         data "InterruptContextScope" "Self"
         data "Container" "YesNoDecision"
-        data "Conditions" "Self(context.Source,context.Observer) and EmpoweredSpellCheck() and not AnyEntityIsItem()"
-        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYMAXIMIZESPELLS,100,1)"
+        data "Conditions" "Self(context.Source,context.Observer) and IntensifiedSpellCheck() and not AnyEntityIsItem()"
+        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYINTENSIFYSPELLS,100,1)"
         data "Cost" "SorceryPoint:3"
         data "InterruptDefaultValue" "Ask;Enabled"
         data "EnableCondition" "not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')"
         data "EnableContext" "OnStatusApplied;OnStatusRemoved"
 
-        new entry "SERENADE_PRODIGYMAXIMIZESPELLS"
+        new entry "SERENADE_PRODIGYINTENSIFYSPELLS"
         type "StatusData"
         data "StatusType" "BOOST"
-        data "DisplayName" "Serenade_ProdigyMaximizeSpells_DisplayName"
-        data "StackId" "SERENADE_PRODIGYMAXIMIZESPELLS"
+        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
+        data "StackId" "SERENADE_PRODIGYINTENSIFYSPELLS"
         data "Boosts" "MinimumRollResult(Damage,20)"
         data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
         """))
@@ -858,8 +858,8 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_ProdigyShields_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
             <content contentuid="Serenade_ProdigyEmpoweredMagic_DisplayName" version="1">Prodigy: Empowered Magic</content>
             <content contentuid="Serenade_ProdigyEmpoweredMagic_Description" version="1">You add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Ability&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your spell damage.&lt;br&gt;&lt;br&gt;This does not stack with &lt;LSTag Type="Passive" Tooltip="AgonizingBlast"&gt;Agonizing Blast&lt;/LSTag&gt; or &lt;LSTag Type="Passive" Tooltip="EmpoweredEvocation"&gt;Empowered Evocation&lt;/LSTag&gt;.</content>
-            <content contentuid="Serenade_ProdigyMaximizeSpells_DisplayName" version="1">Prodigy: Maximize Spells</content>
-            <content contentuid="Serenade_ProdigyMaximizeSpells_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
+            <content contentuid="Serenade_ProdigyIntensifySpells_DisplayName" version="1">Prodigy: Intensify Spells</content>
+            <content contentuid="Serenade_ProdigyIntensifySpells_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
             <content contentuid="Serenade_ProdigyAthleteFeat_Description" version="1">When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
         """))
 

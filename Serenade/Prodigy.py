@@ -140,6 +140,48 @@ training = {
         },
     },
 
+    "EmpoweredMagic": {
+        "Name": "Prodigy: Empowered Magic",
+        "Description": """
+            At level 8, you receive
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagicBonus">Empowered Magic</LSTag>,
+            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
+            <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
+
+            <br><br>At every successive odd level, including levels already attained when you take this training, you
+            gain an additional spell slot of the appropriate level for a full spellcaster.
+            """,
+        "Icon": "PassiveFeature_EmpoweredEvocation",
+        "Progression": {
+            range(8, 21): {
+                "Passives": ["Serenade_ProdigyEmpoweredMagicBonus",
+                             "UnlockedSpellSlotLevel1",
+                             "UnlockedSpellSlotLevel2",
+                             "UnlockedSpellSlotLevel3"],
+                "Boosts": ["ActionResource(SpellSlot,2,1)",
+                           "ActionResource(SpellSlot,1,2)",
+                           "ActionResource(SpellSlot,1,3)",
+                           "ActionResource(SpellSlot,1,4)",
+                           "ActionResource(SorceryPoint,3,0)"],
+            },
+            range(9, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+            },
+            range(11, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,6)"],
+            },
+            range(13, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+            },
+            range(15, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,8)"],
+            },
+            range(17, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+            },
+        },
+    },
+
     "GreatWeapons": {
         "Name": "Prodigy: Great Weapons",
         "Description": """
@@ -243,10 +285,63 @@ training = {
             },
         },
     },
+
+    "MaximizeSpells": {
+        "Name": "Prodigy: Maximize Spells",
+        "Description": """
+            At level 8, you receive
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMaximizeSpellsPassive">Maximize Spells</LSTag>,
+            2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>, 1 level 2, 3, and 4 spell slot, and 3
+            <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
+
+            <br><br>At every successive odd level, including levels already attained when you take this training, you
+            gain an additional spell slot of the appropriate level for a full spellcaster.
+            """,
+        "Icon": "PassiveFeature_EmpoweredEvocation",
+        "Progression": {
+            range(8, 21): {
+                "Passives": ["Serenade_ProdigyMaximizeSpellsPassive",
+                             "UnlockedSpellSlotLevel1",
+                             "UnlockedSpellSlotLevel2",
+                             "UnlockedSpellSlotLevel3"],
+                "Boosts": ["ActionResource(SpellSlot,2,1)",
+                           "ActionResource(SpellSlot,1,2)",
+                           "ActionResource(SpellSlot,1,3)",
+                           "ActionResource(SpellSlot,1,4)",
+                           "ActionResource(SorceryPoint,3,0)"],
+            },
+            range(9, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,5)"],
+            },
+            range(11, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,6)"],
+            },
+            range(13, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,7)"],
+            },
+            range(15, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,8)"],
+            },
+            range(17, 21): {
+                "Boosts": ["ActionResource(SpellSlot,1,9)"],
+            },
+        },
+    },
 }
 
-prodigy_training_keys = ["NoTraining", "Archery", "Brawler", "DualWielding", "GreatWeapons", "Magic"]
-extra_training_keys = ["Archery", "Brawler", "DualWielding", "GreatWeapons", "Magic"]
+prodigy_training_keys = ["NoTraining",
+                         "Archery",
+                         "Brawler",
+                         "DualWielding",
+                         "GreatWeapons",
+                         "Magic"]
+extra_training_keys = ["Archery",
+                       "Brawler",
+                       "DualWielding",
+                       "EmpoweredMagic",
+                       "GreatWeapons",
+                       "Magic",
+                       "MaximizeSpells"]
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -400,6 +495,47 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Description" "Serenade_ProdigyShields_Description"
         data "Boosts" "Proficiency(Shields)"
         data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyEmpoweredMagicBonus"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyEmpoweredMagicBonus_DisplayName"
+        data "Description" "Serenade_ProdigyEmpoweredMagicBonus_Description"
+        data "Boosts" "IF(IsSpell() and not (HasPassive('EmpoweredEvocation',context.Source) and IsSpellSchool(SpellSchool.Evocation)) and not (HasPassive('AgonizingBlast',context.Source) and SpellId('Projectile_EldritchBlast'))):DamageBonus(max(0, SpellCastingAbilityModifier))"
+        data "Icon" "PassiveFeature_EmpoweredEvocation"
+        data "Properties" "Highlighted"
+
+        new entry "Serenade_ProdigyMaximizeSpellsPassive"
+        type "PassiveData"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
+        data "Description" "Serenade_ProdigyMaximizeSpellsPassive_Description"
+        data "TooltipUseCosts" "SorceryPoint:3"
+        data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
+        data "Boosts" "UnlockInterrupt(Serenade_ProdigyMaximizeSpellInterrupt)"
+        data "StatsFunctorContext" "OnCastResolved"
+        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYMAXIMIZESPELL)"
+
+        new entry "Serenade_ProdigyMaximizeSpellInterrupt"
+        type "InterruptData"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
+        data "Description" "Serenade_ProdigyMaximizeSpellsPassive_Description"
+        data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
+        data "InterruptContext" "OnSpellCast"
+        data "InterruptContextScope" "Self"
+        data "Container" "YesNoDecision"
+        data "Conditions" "Self(context.Source,context.Observer) and EmpoweredSpellCheck() and not AnyEntityIsItem()"
+        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYMAXIMIZESPELL,100,1)"
+        data "Cost" "SorceryPoint:3"
+        data "InterruptDefaultValue" "Ask;Enabled"
+        data "EnableCondition" "not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')"
+        data "EnableContext" "OnStatusApplied;OnStatusRemoved"
+
+        new entry "SERENADE_PRODIGYMAXIMIZESPELL"
+        type "StatusData"
+        data "StatusType" "BOOST"
+        data "DisplayName" "Serenade_ProdigyMaximizeSpellsPassive_DisplayName"
+        data "StackId" "SERENADE_PRODIGYMAXIMIZESPELL"
+        data "Boosts" "MinimumRollResult(Damage,20)"
+        data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
         """))
 
     attribute_icon = {
@@ -619,6 +755,10 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_ProdigyDefaultShields_Description" version="1">Default shield proficiency.</content>
             <content contentuid="Serenade_ProdigyShields_DisplayName" version="1">Prodigy: Shields</content>
             <content contentuid="Serenade_ProdigyShields_Description" version="1">Gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Shields.</content>
+            <content contentuid="Serenade_ProdigyEmpoweredMagicBonus_DisplayName" version="1">Prodigy: Empowered Magic</content>
+            <content contentuid="Serenade_ProdigyEmpoweredMagicBonus_Description" version="1">You add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Ability&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your spell damage.&lt;br&gt;&lt;br&gt;This does not stack with &lt;LSTag Type="Passive" Tooltip="AgonizingBlast"&gt;Agonizing Blast&lt;/LSTag&gt; or &lt;LSTag Type="Passive" Tooltip="EmpoweredEvocation"&gt;Empowered Evocation&lt;/LSTag&gt;.</content>
+            <content contentuid="Serenade_ProdigyMaximizeSpellsPassive_DisplayName" version="1">Prodigy: Maximize Spells</content>
+            <content contentuid="Serenade_ProdigyMaximizeSpellsPassive_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
         """))
 
     for attribute in attributes:

@@ -26,27 +26,27 @@
                     <attribute id="UUID" type="guid" value="1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyStrength_0,Serenade_ProdigyStrength_2,Serenade_ProdigyStrength_4,Serenade_ProdigyStrength_6,Serenade_ProdigyStrength_8,Serenade_ProdigyStrength_10,Serenade_ProdigyStrength_12,Serenade_ProdigyStrength_14,Serenade_ProdigyStrength_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyStrength_0,Serenade_ProdigyStrength_2,Serenade_ProdigyStrength_4,Serenade_ProdigyStrength_6,Serenade_ProdigyStrength_8,Serenade_ProdigyStrength_10,Serenade_ProdigyStrength_12,Serenade_ProdigyStrength_14,Serenade_ProdigyStrength_16,Serenade_ProdigyStrength_18,Serenade_ProdigyStrength_20,Serenade_ProdigyStrength_22" />
                     <attribute id="UUID" type="guid" value="522041f0-d2af-43b7-9662-f8199b0b96e5" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyDexterity_0,Serenade_ProdigyDexterity_2,Serenade_ProdigyDexterity_4,Serenade_ProdigyDexterity_6,Serenade_ProdigyDexterity_8,Serenade_ProdigyDexterity_10,Serenade_ProdigyDexterity_12,Serenade_ProdigyDexterity_14,Serenade_ProdigyDexterity_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyDexterity_0,Serenade_ProdigyDexterity_2,Serenade_ProdigyDexterity_4,Serenade_ProdigyDexterity_6,Serenade_ProdigyDexterity_8,Serenade_ProdigyDexterity_10,Serenade_ProdigyDexterity_12,Serenade_ProdigyDexterity_14,Serenade_ProdigyDexterity_16,Serenade_ProdigyDexterity_18,Serenade_ProdigyDexterity_20,Serenade_ProdigyDexterity_22" />
                     <attribute id="UUID" type="guid" value="a81788e5-6949-474b-9700-87864c4c510c" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyConstitution_0,Serenade_ProdigyConstitution_2,Serenade_ProdigyConstitution_4,Serenade_ProdigyConstitution_6,Serenade_ProdigyConstitution_8,Serenade_ProdigyConstitution_10,Serenade_ProdigyConstitution_12,Serenade_ProdigyConstitution_14,Serenade_ProdigyConstitution_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyConstitution_0,Serenade_ProdigyConstitution_2,Serenade_ProdigyConstitution_4,Serenade_ProdigyConstitution_6,Serenade_ProdigyConstitution_8,Serenade_ProdigyConstitution_10,Serenade_ProdigyConstitution_12,Serenade_ProdigyConstitution_14,Serenade_ProdigyConstitution_16,Serenade_ProdigyConstitution_18,Serenade_ProdigyConstitution_20,Serenade_ProdigyConstitution_22" />
                     <attribute id="UUID" type="guid" value="fb9a4b78-4964-4344-b6f7-510709ce6d76" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyIntelligence_0,Serenade_ProdigyIntelligence_2,Serenade_ProdigyIntelligence_4,Serenade_ProdigyIntelligence_6,Serenade_ProdigyIntelligence_8,Serenade_ProdigyIntelligence_10,Serenade_ProdigyIntelligence_12,Serenade_ProdigyIntelligence_14,Serenade_ProdigyIntelligence_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyIntelligence_0,Serenade_ProdigyIntelligence_2,Serenade_ProdigyIntelligence_4,Serenade_ProdigyIntelligence_6,Serenade_ProdigyIntelligence_8,Serenade_ProdigyIntelligence_10,Serenade_ProdigyIntelligence_12,Serenade_ProdigyIntelligence_14,Serenade_ProdigyIntelligence_16,Serenade_ProdigyIntelligence_18,Serenade_ProdigyIntelligence_20,Serenade_ProdigyIntelligence_22" />
                     <attribute id="UUID" type="guid" value="4fff72e3-3cc4-4208-8f08-7a73501b3a81" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyWisdom_0,Serenade_ProdigyWisdom_2,Serenade_ProdigyWisdom_4,Serenade_ProdigyWisdom_6,Serenade_ProdigyWisdom_8,Serenade_ProdigyWisdom_10,Serenade_ProdigyWisdom_12,Serenade_ProdigyWisdom_14,Serenade_ProdigyWisdom_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyWisdom_0,Serenade_ProdigyWisdom_2,Serenade_ProdigyWisdom_4,Serenade_ProdigyWisdom_6,Serenade_ProdigyWisdom_8,Serenade_ProdigyWisdom_10,Serenade_ProdigyWisdom_12,Serenade_ProdigyWisdom_14,Serenade_ProdigyWisdom_16,Serenade_ProdigyWisdom_18,Serenade_ProdigyWisdom_20,Serenade_ProdigyWisdom_22" />
                     <attribute id="UUID" type="guid" value="47418954-13db-4017-bcca-b8ca9a109a46" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyCharisma_0,Serenade_ProdigyCharisma_2,Serenade_ProdigyCharisma_4,Serenade_ProdigyCharisma_6,Serenade_ProdigyCharisma_8,Serenade_ProdigyCharisma_10,Serenade_ProdigyCharisma_12,Serenade_ProdigyCharisma_14,Serenade_ProdigyCharisma_16" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigyCharisma_0,Serenade_ProdigyCharisma_2,Serenade_ProdigyCharisma_4,Serenade_ProdigyCharisma_6,Serenade_ProdigyCharisma_8,Serenade_ProdigyCharisma_10,Serenade_ProdigyCharisma_12,Serenade_ProdigyCharisma_14,Serenade_ProdigyCharisma_16,Serenade_ProdigyCharisma_18,Serenade_ProdigyCharisma_20,Serenade_ProdigyCharisma_22" />
                     <attribute id="UUID" type="guid" value="eb2ac0f3-1abf-43ac-aa51-afbfdc32b06a" />
                 </node>
                 <node id="PassiveList">

@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ElementTree
 base_dir = os.path.dirname(__file__) or '.'
 
 attribute_step = 2
-max_attribute_bonus = 16
+max_attribute_bonus = 22
 
 roll_bonus_step = 4
 max_roll_bonus = 20

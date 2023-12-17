@@ -395,7 +395,7 @@ training = {
             At level 8, you receive
             <LSTag Type="Passive" Tooltip="SavageAttacks">Savage Attacks</LSTag>,
             <LSTag Type="Passive" Tooltip="SavageAttacker">Savage Attacker</LSTag>, and
-            <LSTag Type="Passive" Tooltip="ImprovedCritical">Improved Critical</LSTag>.
+            <LSTag Type="Passive" Tooltip="ImprovedCritical">Improved Critical Hit</LSTag>.
             """,
         "Icon": "PassiveFeature_SavageAttacker",
         "Progression": {
@@ -498,7 +498,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         new entry "Serenade_ProdigyAthleteFeat"
         type "PassiveData"
         data "DisplayName" "h860bd485g72b2g45b8gbad7g02e8f5acdd3e;1"
-        data "Description" "h4b921d5bg6e70g455cga6fcg68c4e67f9067;7"
+        data "Description" "Serenade_ProdigyAthleteFeat_Description"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigyDualWielderFeat"
@@ -860,6 +860,7 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
             <content contentuid="Serenade_ProdigyEmpoweredMagic_Description" version="1">You add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Ability&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your spell damage.&lt;br&gt;&lt;br&gt;This does not stack with &lt;LSTag Type="Passive" Tooltip="AgonizingBlast"&gt;Agonizing Blast&lt;/LSTag&gt; or &lt;LSTag Type="Passive" Tooltip="EmpoweredEvocation"&gt;Empowered Evocation&lt;/LSTag&gt;.</content>
             <content contentuid="Serenade_ProdigyMaximizeSpells_DisplayName" version="1">Prodigy: Maximize Spells</content>
             <content contentuid="Serenade_ProdigyMaximizeSpells_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
+            <content contentuid="Serenade_ProdigyAthleteFeat_Description" version="1">When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
         """))
 
     for attribute in attributes:

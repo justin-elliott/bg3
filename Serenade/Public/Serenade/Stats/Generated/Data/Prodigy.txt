@@ -67,7 +67,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortr
 new entry "Serenade_ProdigyAthleteFeat"
 type "PassiveData"
 data "DisplayName" "h860bd485g72b2g45b8gbad7g02e8f5acdd3e;1"
-data "Description" "h4b921d5bg6e70g455cga6fcg68c4e67f9067;7"
+data "Description" "Serenade_ProdigyAthleteFeat_Description"
 data "Properties" "IsHidden"
 
 new entry "Serenade_ProdigyDualWielderFeat"

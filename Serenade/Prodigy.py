@@ -96,6 +96,47 @@ training = {
         },
     },
 
+    "Duellist": {
+        "Name": "Prodigy: Duellist",
+        "Description": """
+            On selecting this training, you receive
+            <LSTag Type="Passive" Tooltip="FightingStyle_Dueling">Duelling</LSTag>,
+            <LSTag Type="Passive" Tooltip="FightingStyle_Protection">Protection</LSTag>,
+            <LSTag Type="Passive" Tooltip="DefensiveDuelist">Defensive Duellist</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyShieldMaster">Shield Master</LSTag>.
+
+            <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
+
+            <br><br>At level 9, you receive <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>.
+
+            <br><br>Finally, at level 11, you receive <LSTag Type="Passive" Tooltip="ExtraAttack_2">Improved Extra Attack</LSTag>.
+            """,
+        "Icon": "PassiveFeature_FightingStyle_TwoWeaponFighting",
+        "Progression": {
+            range(1, 21): {
+                "Passives": ["FightingStyle_Dueling",
+                             "FightingStyle_Protection",
+                             "DefensiveDuelist",
+                             "ShieldMaster_PassiveBonuses",
+                             "ShieldMaster_Block"],
+            },
+            range(5, 11): {
+                "Passives": ["ExtraAttack"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
+            },
+            range(9, 21): {
+                "Passives": ["FastHands"],
+                "Boosts": ["UnlockSpell(Shout_Whirlwind)"],
+            },
+            range(11, 21): {
+                "Passives": ["ExtraAttack_2"],
+                "Boosts": ["UnlockSpell(Shout_Dash_CunningAction)"],
+            },
+        },
+    },
+
     "EmpoweredMage": {
         "Name": "Prodigy: Empowered Mage",
         "Description": """
@@ -332,11 +373,13 @@ training = {
 prodigy_training_keys = ["NoTraining",
                          "Archer",
                          "DualWielder",
+                         "Duellist",
                          "GreatWeaponMaster",
                          "Mage",
                          "MartialArtist"]
 extra_training_keys = ["Archer",
                        "DualWielder",
+                       "Duellist",
                        "EmpoweredMage",
                        "GreatWeaponMaster",
                        "Mage",
@@ -422,6 +465,12 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         type "PassiveData"
         data "DisplayName" "h1d620270gba24g434egad17g5ee9b72a6e3e;1"
         data "Description" "h1909840bg87f1g4029g9be6g974d9233f516;4"
+        data "Properties" "IsHidden"
+
+        new entry "Serenade_ProdigyShieldMaster"
+        type "PassiveData"
+        data "DisplayName" "h8d63974fgdcb8g463fg8bedg7e8f1ceb9722;1"
+        data "Description" "h7d3721fbg8c06g47ceg8584g3b7b26d94174;3"
         data "Properties" "IsHidden"
 
         new entry "Serenade_ProdigySharpshooter"

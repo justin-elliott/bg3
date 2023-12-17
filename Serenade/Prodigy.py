@@ -28,7 +28,7 @@ training = {
         "Name": "Prodigy: Archer",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_Archery">Archery</LSTag>
-            and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooter">Sharpshooter</LSTag>.
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigySharpshooterFeat">Sharpshooter</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
@@ -64,8 +64,8 @@ training = {
         "Name": "Prodigy: Athlete",
         "Description": """
             At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyAthlete">Athlete</LSTag>,
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMobile">Mobile</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyAthleteFeat">Athlete</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyMobileFeat">Mobile</LSTag>, and
             <LSTag Type="Passive" Tooltip="Tough">Tough</LSTag>.
             """,
         "Icon": "PassiveFeature_RemarkableAthlete_Jump",
@@ -84,7 +84,7 @@ training = {
         "Name": "Prodigy: Dual Wielder",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_TwoWeaponFighting">Two-Weapon Fighting</LSTag>
-            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielder">Dual Wielder</LSTag>.
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyDualWielderFeat">Dual Wielder</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
@@ -123,7 +123,7 @@ training = {
             <LSTag Type="Passive" Tooltip="FightingStyle_Dueling">Duelling</LSTag>,
             <LSTag Type="Passive" Tooltip="FightingStyle_Protection">Protection</LSTag>,
             <LSTag Type="Passive" Tooltip="DefensiveDuelist">Defensive Duellist</LSTag>, and
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyShieldMaster">Shield Master</LSTag>.
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyShieldMasterFeat">Shield Master</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
@@ -203,7 +203,7 @@ training = {
         "Name": "Prodigy: Great Weapon Master",
         "Description": """
             On selecting this training, you receive <LSTag Type="Passive" Tooltip="FightingStyle_GreatWeaponFighting">Great Weapon Fighting</LSTag>
-            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMaster">Great Weapon Master</LSTag>.
+            and <LSTag Type="Passive" Tooltip="Serenade_ProdigyGreatWeaponMasterFeat">Great Weapon Master</LSTag>.
 
             <br><br>At level 5, you receive <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>, and
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>.
@@ -239,7 +239,7 @@ training = {
         "Name": "Prodigy: Mage",
         "Description": """
             On selecting this training, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCaster">War Caster</LSTag>,
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyWarCasterFeat">War Caster</LSTag>,
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
             <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and
             2 level 1 <LSTag Tooltip="SpellSlot">Spell Slots</LSTag>. At every successive odd level, including levels
@@ -495,43 +495,43 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "StatusGroups" "SG_RemoveOnRespec"
         data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
-        new entry "Serenade_ProdigyAthlete"
+        new entry "Serenade_ProdigyAthleteFeat"
         type "PassiveData"
         data "DisplayName" "h860bd485g72b2g45b8gbad7g02e8f5acdd3e;1"
         data "Description" "h4b921d5bg6e70g455cga6fcg68c4e67f9067;7"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyDualWielder"
+        new entry "Serenade_ProdigyDualWielderFeat"
         type "PassiveData"
         data "DisplayName" "h1d620270gba24g434egad17g5ee9b72a6e3e;1"
         data "Description" "h1909840bg87f1g4029g9be6g974d9233f516;4"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyGreatWeaponMaster"
+        new entry "Serenade_ProdigyGreatWeaponMasterFeat"
         type "PassiveData"
         data "DisplayName" "hf41eb2bag6496g4187g994dg62b9cb959e29;1"
         data "Description" "hea61c527gd53fg46fega454g2bc02f65d75f;5"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyMobile"
+        new entry "Serenade_ProdigyMobileFeat"
         type "PassiveData"
         data "DisplayName" "hb434e5e8g23c2g439eg9703g2ac8fc9616ea;1"
         data "Description" "hea5b6476gaefcg412ag9d1dgb081d4e61c19;4"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyShieldMaster"
+        new entry "Serenade_ProdigyShieldMasterFeat"
         type "PassiveData"
         data "DisplayName" "h8d63974fgdcb8g463fg8bedg7e8f1ceb9722;1"
         data "Description" "h7d3721fbg8c06g47ceg8584g3b7b26d94174;3"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigySharpshooter"
+        new entry "Serenade_ProdigySharpshooterFeat"
         type "PassiveData"
         data "DisplayName" "h7fd575c5g3a3ag46a8g9a40gcddf1cd2b044;1"
         data "Description" "h0bf50988g8a65g40c1ga9e1g2ad5b6387678;3"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyWarCaster"
+        new entry "Serenade_ProdigyWarCasterFeat"
         type "PassiveData"
         data "DisplayName" "haadef5acg36f8g4affg8c7bg7901735048a8;2"
         data "Description" "h2967e308gd644g46d5g91e4g3de62873eef7;5"

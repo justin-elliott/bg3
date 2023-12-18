@@ -339,7 +339,6 @@ training = {
             In addition to any <LSTag Tooltip="SpellSlot">Spell Slots</LSTag> that you gain from your class, each level
             you also gain the number of spell slots that a full spellcaster would have.
             """,
-        "Hidden": True,
         "Icon": "Action_KnowledgeOfTheAges",
         "Progression": {
             range(1, 21): {
@@ -399,6 +398,7 @@ training = {
                 "Boosts": ["ActionResource(SpellSlot,1,7)"],
             },
         },
+        "Properties": "IsHidden",
     },
 }
 
@@ -698,7 +698,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
             type "PassiveData"
             data "DisplayName" "Serenade_Prodigy{key}_DisplayName"
             data "Description" "Serenade_Prodigy{key}_Description"
-            data "Properties" "{"Highlighted" if ("Progression" in train and not train.get("Hidden", False)) else "IsHidden"}"
+            data "Properties" "{train.get("Properties", "Highlighted" if "Progression" in train else "IsHidden")}"
             """))
 
         if (icon := train.get("Icon", None)):

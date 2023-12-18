@@ -4,7 +4,6 @@
 Generates the files for the "Prodigy" ability enhancement feat.
 """
 
-import io
 import os.path
 import re
 import textwrap

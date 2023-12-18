@@ -345,6 +345,73 @@ training = {
         },
     },
 
+    "SpellListMovement": {
+        "Name": "Prodigy: Movement Spells",
+        "Description": """
+            """,
+        "Icon": "Spell_Transmutation_WindWalk",
+        "Progression": {
+            range(1, 21): {
+                "Boosts": ["UnlockSpell(Target_ThornWhip)",
+                           "UnlockSpell(Target_Jump,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_ExpeditiousRetreat,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_FeatherFall,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_Longstrider,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(3, 21): {
+                "Boosts": ["UnlockSpell(Target_MistyStep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(5, 21): {
+                "Boosts": ["UnlockSpell(Target_GaseousForm,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_Fly,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(7, 21): {
+                "Boosts": ["UnlockSpell(Target_FreedomOfMovement,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Projectile_Fly)"],
+            },
+            range(11, 21): {
+                "Boosts": ["UnlockSpell(Shout_WindWalk,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            }
+        },
+    },
+
+    "SpellListNecromancy": {
+        "Name": "Prodigy: Necromancy Spells",
+        "Description": """
+            """,
+        "Icon": "Spell_Necromancy_AnimateDead",
+        "Progression": {
+            range(1, 21): {
+                "Boosts": ["UnlockSpell(Target_ChillTouch)",
+                           "UnlockSpell(Projectile_PoisonSpray)",
+                           "UnlockSpell(Shout_ArmsOfHadar,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_FalseLife,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_InflictWounds,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Projectile_RayOfSickness,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(3, 21): {
+                "Boosts": ["UnlockSpell(Target_Blindness,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(5, 21): {
+                "Boosts": ["UnlockSpell(Target_AnimateDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_SpeakWithDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_VampiricTouch,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(7, 21): {
+                "Boosts": ["UnlockSpell(Target_Blight,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Target_Contagion,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(11, 21): {
+                "Boosts": ["UnlockSpell(Target_CreateUndead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_CircleOfDeath,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            }
+        },
+    },
+
     "SpellListStorm": {
         "Name": "Prodigy: Storm Spells",
         "Description": """
@@ -373,39 +440,6 @@ training = {
             },
             range(11, 21): {
                 "Boosts": ["UnlockSpell(Projectile_ChainLightning,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            }
-        },
-    },
-
-    "SpellListUtility": {
-        "Name": "Prodigy: Utility Spells",
-        "Description": """
-            """,
-        "Icon": "Spell_Transmutation_WindWalk",
-        "Progression": {
-            range(1, 21): {
-                "Boosts": ["UnlockSpell(Target_Guidance)",
-                           "UnlockSpell(Target_Resistance)",
-                           "UnlockSpell(Shout_DisguiseSelf,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_Jump,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_ExpeditiousRetreat,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_FeatherFall,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(3, 21): {
-                "Boosts": ["UnlockSpell(Shout_DetectThoughts,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_MistyStep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(5, 21): {
-                "Boosts": ["UnlockSpell(Target_SpeakWithDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(7, 21): {
-                "Boosts": ["UnlockSpell(Target_FreedomOfMovement,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(9, 21): {
-                "Boosts": ["UnlockSpell(Target_Seeming,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(11, 21): {
-                "Boosts": ["UnlockSpell(Shout_WindWalk,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
             }
         },
     },
@@ -876,12 +910,14 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                  "1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a")
     passive_list(["Serenade_ProdigySpellListNone",
                   "Serenade_ProdigySpellListDefense",
-                  "Serenade_ProdigySpellListStorm",
-                  "Serenade_ProdigySpellListUtility"],
+                  "Serenade_ProdigySpellListMovement",
+                  "Serenade_ProdigySpellListNecromancy",
+                  "Serenade_ProdigySpellListStorm"],
                  "a3bfea46-6fa4-4930-b7c9-098edac06fd4")
     passive_list(["Serenade_ProdigySpellListDefense",
-                  "Serenade_ProdigySpellListStorm",
-                  "Serenade_ProdigySpellListUtility"],
+                  "Serenade_ProdigySpellListMovement",
+                  "Serenade_ProdigySpellListNecromancy",
+                  "Serenade_ProdigySpellListStorm"],
                  "3b3991c0-5e89-4dd0-8d21-3481ea149606")
 
     for attribute in attributes:

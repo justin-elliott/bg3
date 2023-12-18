@@ -154,10 +154,12 @@
     <content contentuid="Serenade_ProdigySpellListNone_Description" version="1" />
     <content contentuid="Serenade_ProdigySpellListDefense_DisplayName" version="1">Prodigy: Defensive Spells</content>
     <content contentuid="Serenade_ProdigySpellListDefense_Description" version="1" />
+    <content contentuid="Serenade_ProdigySpellListMovement_DisplayName" version="1">Prodigy: Movement Spells</content>
+    <content contentuid="Serenade_ProdigySpellListMovement_Description" version="1" />
+    <content contentuid="Serenade_ProdigySpellListNecromancy_DisplayName" version="1">Prodigy: Necromancy Spells</content>
+    <content contentuid="Serenade_ProdigySpellListNecromancy_Description" version="1" />
     <content contentuid="Serenade_ProdigySpellListStorm_DisplayName" version="1">Prodigy: Storm Spells</content>
     <content contentuid="Serenade_ProdigySpellListStorm_Description" version="1" />
-    <content contentuid="Serenade_ProdigySpellListUtility_DisplayName" version="1">Prodigy: Utility Spells</content>
-    <content contentuid="Serenade_ProdigySpellListUtility_Description" version="1" />
     <content contentuid="Serenade_ProdigySpellSlots_DisplayName" version="1">Prodigy: Spell Slots</content>
     <content contentuid="Serenade_ProdigySpellSlots_Description" version="1">In addition to any &lt;LSTag Tooltip="SpellSlot"&gt;Spell Slots&lt;/LSTag&gt; that you gain from your class, each level you also gain the number of spell slots that a full spellcaster would have.</content>
 </contentList>

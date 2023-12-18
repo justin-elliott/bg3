@@ -12,6 +12,13 @@
                     <attribute id="UUID" type="guid" value="b99b64f9-dd8b-494c-8eaa-ca2147707cfd"/>
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigySpells_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigySpells_Description" version="1"/>
+                    <attribute id="ExactMatch" type="FixedString" value="Serenade_ProdigySpells"/>
+                    <attribute id="FeatId" type="guid" value="67093eee-e53e-46bb-b356-6418bac1936a"/>
+                    <attribute id="UUID" type="guid" value="b8b350b6-67f3-4288-baef-6b1c01bf6235"/>
+                </node>
+                <node id="FeatDescription">
                     <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigyTraining_DisplayName" version="1"/>
                     <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigyTraining_Description" version="1"/>
                     <attribute id="ExactMatch" type="FixedString" value="Serenade_ProdigyTraining"/>

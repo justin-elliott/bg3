@@ -879,6 +879,10 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
                   "Serenade_ProdigySpellListStorm",
                   "Serenade_ProdigySpellListUtility"],
                  "a3bfea46-6fa4-4930-b7c9-098edac06fd4")
+    passive_list(["Serenade_ProdigySpellListDefense",
+                  "Serenade_ProdigySpellListStorm",
+                  "Serenade_ProdigySpellListUtility"],
+                 "3b3991c0-5e89-4dd0-8d21-3481ea149606")
 
     for attribute in attributes:
         attribute_bonuses = [f"Serenade_Prodigy{attribute}_{bonus}"

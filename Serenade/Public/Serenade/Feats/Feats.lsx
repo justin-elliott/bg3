@@ -13,6 +13,13 @@
                 </node>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Serenade_ProdigySpells"/>
+                    <attribute id="PassivesAdded" type="LSString" value="Serenade_Prodigy;Serenade_ProdigySpellSlots"/>
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(3b3991c0-5e89-4dd0-8d21-3481ea149606,1,Serenade_ProdigySpells)"/>
+                    <attribute id="UUID" type="guid" value="67093eee-e53e-46bb-b356-6418bac1936a"/>
+                </node>
+                <node id="Feat">
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="Serenade_ProdigyTraining"/>
                     <attribute id="PassivesAdded" type="LSString" value="Serenade_Prodigy"/>
                     <attribute id="Selectors" type="LSString" value="SelectPassives(3f273be9-a773-4473-b0d4-8f50697727a0,1,Serenade_ProdigyTraining)"/>
@@ -22,7 +29,7 @@
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="Serenade_ProdigyTrainingAndSpells"/>
                     <attribute id="PassivesAdded" type="LSString" value="Serenade_Prodigy;Serenade_ProdigySpellSlots"/>
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(3f273be9-a773-4473-b0d4-8f50697727a0,1,Serenade_ProdigyTraining);SelectPassives(a3bfea46-6fa4-4930-b7c9-098edac06fd4,1,Serenade_ProdigySpells)"/>
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(3f273be9-a773-4473-b0d4-8f50697727a0,1,Serenade_ProdigyTraining);SelectPassives(3b3991c0-5e89-4dd0-8d21-3481ea149606,1,Serenade_ProdigySpells)"/>
                     <attribute id="UUID" type="guid" value="c412a627-e185-46d5-ba67-c9665a600787"/>
                 </node>
             </children>

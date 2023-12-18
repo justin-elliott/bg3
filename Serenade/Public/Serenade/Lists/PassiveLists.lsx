@@ -26,11 +26,11 @@
                     <attribute id="UUID" type="guid" value="1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigySpellListNone,Serenade_ProdigySpellListDefense,Serenade_ProdigySpellListMovement,Serenade_ProdigySpellListNecromancy,Serenade_ProdigySpellListStorm" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigySpellListNoSpells,Serenade_ProdigySpellListCold,Serenade_ProdigySpellListDefensive,Serenade_ProdigySpellListFire,Serenade_ProdigySpellListMovement,Serenade_ProdigySpellListNecromancy,Serenade_ProdigySpellListStorm,Serenade_ProdigySpellListSubterfuge" />
                     <attribute id="UUID" type="guid" value="a3bfea46-6fa4-4930-b7c9-098edac06fd4" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="Serenade_ProdigySpellListDefense,Serenade_ProdigySpellListMovement,Serenade_ProdigySpellListNecromancy,Serenade_ProdigySpellListStorm" />
+                    <attribute id="Passives" type="LSString" value="Serenade_ProdigySpellListCold,Serenade_ProdigySpellListDefensive,Serenade_ProdigySpellListFire,Serenade_ProdigySpellListMovement,Serenade_ProdigySpellListNecromancy,Serenade_ProdigySpellListStorm,Serenade_ProdigySpellListSubterfuge" />
                     <attribute id="UUID" type="guid" value="3b3991c0-5e89-4dd0-8d21-3481ea149606" />
                 </node>
                 <node id="PassiveList">

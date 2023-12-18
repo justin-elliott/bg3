@@ -71,14 +71,8 @@
                     <attribute id="UUID" type="guid" value="7f805d53-23ab-4c89-91b5-784a7a7edf04"/>
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h030672c5ga470g4bb2gaaf6g8892cd2758d1" version="2"/>
-                    <attribute id="DisplayName" type="TranslatedString" handle="h17467e4fg3fd6g49e4g949fg7a37eea6b7c1" version="1"/>
-                    <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigyMagicalSecrets"/>
-                    <attribute id="UUID" type="guid" value="9d9044e6-4ffb-44b4-9bba-677b94870b80"/>
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigySpells_DisplayName" version="1"/>
-                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigySpells_Description" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="Serenade_ProdigySpells_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="Serenade_ProdigySpells_Description" version="1"/>
                     <attribute id="SelectorId" type="FixedString" value="Serenade_ProdigySpells"/>
                     <attribute id="UUID" type="guid" value="215689c2-9ec4-4f70-b971-cdf36e32107e"/>
                 </node>

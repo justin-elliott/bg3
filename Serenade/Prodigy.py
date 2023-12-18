@@ -307,143 +307,6 @@ training = {
         },
     },
 
-    "SpellListNone": {
-        "Name": "Prodigy: No Spells",
-        "Description": """
-            """,
-    },
-
-    "SpellListDefense": {
-        "Name": "Prodigy: Defensive Spells",
-        "Description": """
-            """,
-        "Icon": "Spell_Shield",
-        "Progression": {
-            range(1, 21): {
-                "Boosts": ["UnlockSpell(Shout_BladeWard)",
-                           "UnlockSpell(Target_Resistance)",
-                           "UnlockSpell(Shout_ArmorOfAgathys,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_HealingWord,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_ProtectionFromEvilAndGood,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_Shield_Wizard,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(3, 21): {
-                "Boosts": ["UnlockSpell(Shout_MirrorImage,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(5, 21): {
-                "Boosts": ["UnlockSpell(Target_Counterspell,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(7, 21): {
-                "Boosts": ["UnlockSpell(Shout_FireShield,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(9, 21): {
-                "Boosts": ["UnlockSpell(Shout_DispelEvilAndGood,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(11, 21): {
-                "Boosts": ["UnlockSpell(Target_GlobeOfInvulnerability,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            }
-        },
-    },
-
-    "SpellListMovement": {
-        "Name": "Prodigy: Movement Spells",
-        "Description": """
-            """,
-        "Icon": "Spell_Transmutation_WindWalk",
-        "Progression": {
-            range(1, 21): {
-                "Boosts": ["UnlockSpell(Target_ThornWhip)",
-                           "UnlockSpell(Target_Jump,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_ExpeditiousRetreat,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_FeatherFall,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_Longstrider,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(3, 21): {
-                "Boosts": ["UnlockSpell(Target_MistyStep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(5, 21): {
-                "Boosts": ["UnlockSpell(Target_GaseousForm,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_Fly,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(7, 21): {
-                "Boosts": ["UnlockSpell(Target_FreedomOfMovement,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(9, 21): {
-                "Boosts": ["UnlockSpell(Projectile_Fly)"],
-            },
-            range(11, 21): {
-                "Boosts": ["UnlockSpell(Shout_WindWalk,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            }
-        },
-    },
-
-    "SpellListNecromancy": {
-        "Name": "Prodigy: Necromancy Spells",
-        "Description": """
-            """,
-        "Icon": "Spell_Necromancy_AnimateDead",
-        "Progression": {
-            range(1, 21): {
-                "Boosts": ["UnlockSpell(Target_ChillTouch)",
-                           "UnlockSpell(Projectile_PoisonSpray)",
-                           "UnlockSpell(Shout_ArmsOfHadar,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Shout_FalseLife,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_InflictWounds,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Projectile_RayOfSickness,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(3, 21): {
-                "Boosts": ["UnlockSpell(Target_Blindness,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(5, 21): {
-                "Boosts": ["UnlockSpell(Target_AnimateDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_SpeakWithDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_VampiricTouch,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(7, 21): {
-                "Boosts": ["UnlockSpell(Target_Blight,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(9, 21): {
-                "Boosts": ["UnlockSpell(Target_Contagion,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(11, 21): {
-                "Boosts": ["UnlockSpell(Target_CreateUndead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_CircleOfDeath,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            }
-        },
-    },
-
-    "SpellListStorm": {
-        "Name": "Prodigy: Storm Spells",
-        "Description": """
-            """,
-        "Icon": "Spell_Evocation_LightningBolt",
-        "Progression": {
-            range(1, 21): {
-                "Boosts": ["UnlockSpell(Serenade_ProdigyStormBolt)",
-                           "UnlockSpell(Target_ShockingGrasp)",
-                           "UnlockSpell(Projectile_ChromaticOrb,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_CreateDestroyWater,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Target_Smite_Thunderous,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
-                           "UnlockSpell(Zone_Thunderwave,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(3, 21): {
-                "Boosts": ["UnlockSpell(Target_Shatter,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(5, 21): {
-                "Boosts": ["UnlockSpell(Zone_LightningBolt,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(7, 21): {
-                "Boosts": ["UnlockSpell(Target_IceStorm,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(9, 21): {
-                "Boosts": ["UnlockSpell(Shout_DestructiveWave,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            },
-            range(11, 21): {
-                "Boosts": ["UnlockSpell(Projectile_ChainLightning,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
-            }
-        },
-    },
-
     "SpellSlots": {
         "Name": "Prodigy: Spell Slots",
         "Description": """
@@ -528,6 +391,206 @@ extra_training_keys = ["Archer",
                        "MartialArtist",
                        "Metamage",
                        "SavageAttacker"]
+
+spell_lists = {
+    "NoSpells": {
+        "Name": "Prodigy: No Spells",
+        "Description": "No spell list selected.",
+    },
+
+    "Cold": {
+        "Name": "Prodigy: Cold Spells",
+        "Icon": "",
+        "Spells": {
+            0: [("Projectile_RayOfFrost", "Ray of Frost")],
+            1: [("Shout_ArmorOfAgathys", "Armour of Agathys"),
+                ("Target_CreateDestroyWater", "Create or Destroy Water"),
+                ("Target_FogCloud", "Fog Cloud"),
+                ("Projectile_IceKnife", "Ice Knife")],
+            2: [("Zone_GustOfWind", "Gust of Wind")],
+            3: [("Target_HungerOfHadar", "Hunger of Hadar"),
+                ("Target_SleetStorm", "Sleet Storm")],
+            4: [("Target_IceStorm", "Ice Storm")],
+            5: [("Zone_ConeOfCold", "Cone of Cold")],
+            6: [("Target_FreezingSphere", "Otiluke's Freezing Sphere"),
+                ("Wall_WallOfIce", "Wall of Ice")],
+        },
+    },
+
+    "Defensive": {
+        "Name": "Prodigy: Defensive Spells",
+        "Icon": "Spell_Shield",
+        "Spells": {
+            0: [("Shout_BladeWard", "Blade Ward"),
+                ("Target_Resistance", "Resistance")],
+            1: [("Shout_ArmorOfAgathys", "Armour of Agathys"),
+                ("Target_HealingWord", "Healing Word"),
+                ("Target_ProtectionFromEvilAndGood", "Protection from Evil and Good"),
+                ("Shout_Shield_Wizard", "Shield")],
+            2: [("Shout_MirrorImage", "Mirror Image")],
+            3: [("Target_Counterspell", "Counterspell")],
+            4: [("Shout_FireShield", "Fire Shield")],
+            5: [("Shout_DispelEvilAndGood", "Dispell Evil and Good")],
+            6: [("Target_GlobeOfInvulnerability", "Globe of Invulnerability")],
+        },
+    },
+
+    "Fire": {
+        "Name": "Prodigy: Fire Spells",
+        "Icon": "",
+        "Spells": {
+            0: [("Projectile_FireBolt", "Fire Bolt"),
+                ("Shout_ProduceFlame", "Produce Flame")],
+            1: [("Zone_BurningHands", "Burning Hands"),
+                ("Target_Grease", "Grease"),
+                ("Shout_HellishRebuke", "Hellish Rebuke"),
+                ("Target_Smite_Searing", "Searing Smite")],
+            2: [("Shout_FlameBlade", "Flame Blade"),
+                ("Target_FlamingSphere", "Flaming Sphere"),
+                ("Projectile_ScorchingRay", "Scorching Ray")],
+            3: [("Projectile_Fireball", "Fireball")],
+            4: [("Shout_FireShield", "Fire Shield"),
+                ("Wall_WallOfFire", "Wall of Fire")],
+            5: [("Target_FlameStrike", "Flame Strike")],
+        },
+    },
+
+    "Movement": {
+        "Name": "Prodigy: Movement Spells",
+        "Icon": "Spell_Conjuration_MistyStep",
+        "Spells": {
+            1: [("Target_Jump", "Enhance Leap"),
+                ("Shout_ExpeditiousRetreat", "Expeditious Retreat"),
+                ("Shout_FeatherFall", "Feather Fall"),
+                ("Target_Longstrider", "Longstrider")],
+            2: [("Target_MistyStep", "Misty Step")],
+            3: [("Target_GaseousForm", "Gaseous Form"),
+                ("Target_Fly", "Grant Flight")],
+            4: [("Teleportation_DimensionDoor", "Dimension Door"),
+                ("Target_FreedomOfMovement", "Freedom of Movement")],
+            5: [("Projectile_Fly", "Fly")],
+            6: [("Teleportation_ArcaneGate", "Arcane Gate"),
+                ("Shout_WindWalk", "Wind Walk")],
+        },
+    },
+
+    "Necromancy": {
+        "Name": "Prodigy: Necromancy Spells",
+        "Icon": "Spell_Necromancy_AnimateDead",
+        "Spells": {
+            0: [("Target_ChillTouch", "Bone Chill"),
+                ("Projectile_EldritchBlast", "Eldritch Blast")],
+            1: [("Shout_ArmorOfAgathys", "Armour of Agathys"),
+                ("Shout_ArmsOfHadar", "Arms of Hadar"),
+                ("Target_InflictWounds", "Inflict Wounds"),
+                ("Projectile_RayOfSickness", "Ray of Sickness")],
+            2: [("Target_Blindness", "Blindness")],
+            3: [("Target_AnimateDead", "Animate Dead"),
+                ("Target_SpeakWithDead", "Speak with Dead"),
+                ("Target_VampiricTouch", "Vampiric Touch")],
+            4: [("Target_Blight", "Blight")],
+            5: [("Target_Contagion", "Contagion")],
+            6: [("Target_CircleOfDeath", "Circle of Death"),
+                ("Target_CreateUndead", "Create Undead"),
+                ("Target_Harm", "Harm")],
+        },
+    },
+
+    "Storm": {
+        "Name": "Prodigy: Storm Spells",
+        "Icon": "Spell_Evocation_LightningBolt",
+        "Spells": {
+            0: [("Serenade_ProdigyStormBolt", "Storm Bolt"),
+                ("Target_ShockingGrasp", "Shocking Grasp")],
+            1: [("Projectile_ChromaticOrb", "Chromatic Orb"),
+                ("Target_CreateDestroyWater", "Create or Destroy Water"),
+                ("Target_Smite_Thunderous", "Thunderous Smite"),
+                ("Zone_Thunderwave", "Thunderwave")],
+            2: [("Target_Shatter", "Shatter")],
+            3: [("Zone_LightningBolt", "Lightning Bolt")],
+            5: [("Shout_DestructiveWave", "Destructive Wave")],
+            6: [("Projectile_ChainLightning", "Chain Lightning")],
+        },
+    },
+
+    "Subterfuge": {
+        "Name": "Prodigy: Subterfuge Spells",
+        "Icon": "Spell_Illusion_DisguiseSelf",
+        "Spells": {
+            0: [("Target_MageHand", "Mage Hand"),
+                ("Target_MinorIllusion", "Minor Illusion")],
+            1: [("Shout_DisguiseSelf", "Disguise Self")],
+            2: [("Target_Invisibility", "Invisibility"),
+                ("Shout_PassWithoutTrace", "Pass Without Trace"),
+                ("Shout_SeeInvisibility", "See Invisibility")],
+            3: [("Target_FeignDeath", "Feign Death")],
+            4: [("Target_Invisibility_Greater", "Greater Invisibility")],
+            5: [("Target_Seeming", "Seeming")],
+        },
+    },
+}
+
+spell_lists_spell_keys = [f"Serenade_ProdigySpellList{key}" for key in sorted(spell_lists.keys())
+                          if key != "NoSpells"]
+spell_lists_all_keys = ["Serenade_ProdigySpellListNoSpells"] + spell_lists_spell_keys
+
+
+def spell_lists_to_training(lists):
+    training_dict = {}
+
+    for key, spell_list in lists.items():
+        training = {
+            "Name": spell_list["Name"],
+            "Progression": {},
+        }
+        if (icon := spell_list.get("Icon", None)):
+            training["Icon"] = icon
+        if (description := spell_list.get("Description")):
+            training["Description"] = description
+
+        progression = training["Progression"]
+
+        if (spells := spell_list.get("Spells", None)):
+            cantrips = spells.get(0, [])
+            level_1_spells = spells.get(1, [])
+            progression[range(1, 21)] = {
+                "Boosts": [f"UnlockSpell({cantrip[0]})" for cantrip in cantrips] +
+                          [f"UnlockSpell({level_1_spell[0]},AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"
+                           for level_1_spell in level_1_spells]
+            }
+            for level in range(2, 7):
+                if (leveled_spells := spells.get(level, None)):
+                    progression[range((level - 1) * 2 + 1, 21)] = {
+                        "Boosts": [f"UnlockSpell({leveled_spell[0]},AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"
+                                   for leveled_spell in leveled_spells]
+                    }
+            if "Description" not in spell_list:
+                spell_descriptions = []
+                for level in range(0, 7):
+                    if (leveled_spells := spells.get(level, None)):
+                        spell_descriptions += [
+                            f"""<LSTag Type="Spell" Tooltip="{leveled_spell[0]}">{leveled_spell[1]}</LSTag>"""
+                            for leveled_spell in leveled_spells]
+
+                last_spell_description = None
+                if len(spell_descriptions) > 1:
+                    last_spell_description = spell_descriptions.pop()
+                    
+                description = ("Gain the following spells at the appropriate level: " +
+                               ", ".join(spell_descriptions))
+                if last_spell_description:
+                    description += ", and " + last_spell_description
+                description += "."
+
+                training["Description"] = description
+
+        training_dict[f"SpellList{key}"] = training
+
+    return training_dict
+
+
+training |= spell_lists_to_training(spell_lists)
+
 
 # Generate the passives
 with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Data", "Prodigy.txt"), "w") as f:
@@ -908,17 +971,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
     passive_list(["Serenade_ProdigyDefaultShields",
                   "Serenade_ProdigyShields"],
                  "1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a")
-    passive_list(["Serenade_ProdigySpellListNone",
-                  "Serenade_ProdigySpellListDefense",
-                  "Serenade_ProdigySpellListMovement",
-                  "Serenade_ProdigySpellListNecromancy",
-                  "Serenade_ProdigySpellListStorm"],
-                 "a3bfea46-6fa4-4930-b7c9-098edac06fd4")
-    passive_list(["Serenade_ProdigySpellListDefense",
-                  "Serenade_ProdigySpellListMovement",
-                  "Serenade_ProdigySpellListNecromancy",
-                  "Serenade_ProdigySpellListStorm"],
-                 "3b3991c0-5e89-4dd0-8d21-3481ea149606")
+    passive_list(spell_lists_all_keys, "a3bfea46-6fa4-4930-b7c9-098edac06fd4")
+    passive_list(spell_lists_spell_keys, "3b3991c0-5e89-4dd0-8d21-3481ea149606")
 
     for attribute in attributes:
         attribute_bonuses = [f"Serenade_Prodigy{attribute}_{bonus}"

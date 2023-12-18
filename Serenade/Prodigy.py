@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ElementTree
 base_dir = os.path.dirname(__file__) or '.'
 
 attribute_step = 2
-max_attribute_bonus = 22
+max_attribute_bonus = 12
 
 roll_bonus_step = 4
 max_roll_bonus = 20
@@ -160,22 +160,6 @@ training = {
         },
     },
 
-    "EmpoweredMage": {
-        "Name": "Prodigy: Empowered Mage",
-        "Description": """
-            At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagic">Empowered Magic</LSTag>, and 3
-            <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
-            """,
-        "Icon": "PassiveFeature_EmpoweredEvocation",
-        "Progression": {
-            range(8, 21): {
-                "Passives": ["Serenade_ProdigyEmpoweredMagic"],
-                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
-            },
-        },
-    },
-
     "GreatWeaponMaster": {
         "Name": "Prodigy: Great Weapon Master",
         "Description": """
@@ -220,13 +204,17 @@ training = {
             <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> on
             <LSTag Tooltip="Constitution">Constitution</LSTag> <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
 
-            <br><br>At level 4, you gain 3 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
-            <LSTag Type="Passive" Tooltip="Metamagic_Twinned">Twinned Spell</LSTag> and
+            <br><br>At level 4, you gain 5 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
+            <LSTag Type="Passive" Tooltip="Metamagic_Twinned">Twinned Spell</LSTag>, and
             <LSTag Type="Passive" Tooltip="Serenade_ProdigyRestoreSorceryPoints">Restore Sorcery Points</LSTag>.
 
-            <br><br>At level 7, you gain 3 additional Sorcery Points and
-            <LSTag Type="Passive" Tooltip="Metamagic_Quickened">Quickened Spell</LSTag>. At level 11, you gain a further
-            3 Sorcery Points and <LSTag Type="Passive" Tooltip="Metamagic_Heightened">Heightened Spell</LSTag>.
+            <br><br>At level 7, you gain 5 additional Sorcery Points,
+            <LSTag Type="Passive" Tooltip="Metamagic_Quickened">Quickened Spell</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyEmpoweredMagic">Empowered Magic</LSTag>.
+
+            <br><br>At level 11, you gain a further 5 Sorcery Points,
+            <LSTag Type="Passive" Tooltip="Metamagic_Heightened">Heightened Spell</LSTag>, and
+            <LSTag Type="Passive" Tooltip="Serenade_ProdigyIntensifySpell">Intensify Spell</LSTag>.
             """,
         "Icon": "Action_KnowledgeOfTheAges",
         "Progression": {
@@ -238,16 +226,18 @@ training = {
             range(4, 21): {
                 "Passives": ["Metamagic_Twinned",
                              "Serenade_ProdigyRestoreSorceryPoints"],
-                "Boosts": ["ActionResource(SorceryPoint,3,0)",
+                "Boosts": ["ActionResource(SorceryPoint,5,0)",
                            "Tag(SORCERER_METAMAGIC)"],
             },
             range(7, 21): {
-                "Passives": ["Metamagic_Quickened"],
-                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
+                "Passives": ["Metamagic_Quickened",
+                             "Serenade_ProdigyEmpoweredMagic"],
+                "Boosts": ["ActionResource(SorceryPoint,5,0)"],
             },
             range(11, 21): {
-                "Passives": ["Metamagic_Heightened"],
-                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
+                "Passives": ["Metamagic_Heightened",
+                             "Serenade_ProdigyIntensifySpell"],
+                "Boosts": ["ActionResource(SorceryPoint,5,0)"],
             },
             range(15, 21): {
                 "Boosts": ["ActionResource(SorceryPoint,3,0)"],
@@ -299,22 +289,6 @@ training = {
         },
     },
 
-    "IntensifiedMage": {
-        "Name": "Prodigy: Intensified Mage",
-        "Description": """
-            At level 8, you receive
-            <LSTag Type="Passive" Tooltip="Serenade_ProdigyIntensifySpells">Intensify Spells</LSTag>, and 3
-            <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>.
-            """,
-        "Icon": "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
-        "Progression": {
-            range(8, 21): {
-                "Passives": ["Serenade_ProdigyIntensifySpells"],
-                "Boosts": ["ActionResource(SorceryPoint,3,0)"],
-            },
-        },
-    },
-
     "SavageAttacker": {
         "Name": "Prodigy: Savage Attacker",
         "Description": """
@@ -330,6 +304,109 @@ training = {
                              "SavageAttacker",
                              "ImprovedCritical"],
             },
+        },
+    },
+
+    "SpellListNone": {
+        "Name": "Prodigy: No Spells",
+        "Description": """
+            """,
+    },
+
+    "SpellListDefense": {
+        "Name": "Prodigy: Defensive Spells",
+        "Description": """
+            """,
+        "Icon": "Spell_Shield",
+        "Progression": {
+            range(1, 21): {
+                "Boosts": ["UnlockSpell(Shout_BladeWard)",
+                           "UnlockSpell(Target_Resistance)",
+                           "UnlockSpell(Shout_ArmorOfAgathys,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_HealingWord,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_ProtectionFromEvilAndGood,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_Shield_Wizard,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(3, 21): {
+                "Boosts": ["UnlockSpell(Shout_MirrorImage,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(5, 21): {
+                "Boosts": ["UnlockSpell(Target_Counterspell,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(7, 21): {
+                "Boosts": ["UnlockSpell(Shout_FireShield,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Shout_DispelEvilAndGood,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(11, 21): {
+                "Boosts": ["UnlockSpell(Target_GlobeOfInvulnerability,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            }
+        },
+    },
+
+    "SpellListStorm": {
+        "Name": "Prodigy: Storm Spells",
+        "Description": """
+            """,
+        "Icon": "Spell_Evocation_LightningBolt",
+        "Progression": {
+            range(1, 21): {
+                "Boosts": ["UnlockSpell(Serenade_ProdigyStormBolt)",
+                           "UnlockSpell(Target_ShockingGrasp)",
+                           "UnlockSpell(Projectile_ChromaticOrb,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_CreateDestroyWater,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_Smite_Thunderous,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Zone_Thunderwave,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(3, 21): {
+                "Boosts": ["UnlockSpell(Target_Shatter,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(5, 21): {
+                "Boosts": ["UnlockSpell(Zone_LightningBolt,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(7, 21): {
+                "Boosts": ["UnlockSpell(Target_IceStorm,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Shout_DestructiveWave,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(11, 21): {
+                "Boosts": ["UnlockSpell(Projectile_ChainLightning,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            }
+        },
+    },
+
+    "SpellListUtility": {
+        "Name": "Prodigy: Utility Spells",
+        "Description": """
+            """,
+        "Icon": "Spell_Transmutation_WindWalk",
+        "Progression": {
+            range(1, 21): {
+                "Boosts": ["UnlockSpell(Target_Guidance)",
+                           "UnlockSpell(Target_Resistance)",
+                           "UnlockSpell(Shout_DisguiseSelf,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_Jump,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_ExpeditiousRetreat,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Shout_FeatherFall,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(3, 21): {
+                "Boosts": ["UnlockSpell(Shout_DetectThoughts,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)",
+                           "UnlockSpell(Target_MistyStep,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(5, 21): {
+                "Boosts": ["UnlockSpell(Target_SpeakWithDead,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(7, 21): {
+                "Boosts": ["UnlockSpell(Target_FreedomOfMovement,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(9, 21): {
+                "Boosts": ["UnlockSpell(Target_Seeming,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            },
+            range(11, 21): {
+                "Boosts": ["UnlockSpell(Shout_WindWalk,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"],
+            }
         },
     },
 
@@ -413,9 +490,7 @@ extra_training_keys = ["Archer",
                        "Athlete",
                        "DualWielder",
                        "Duellist",
-                       "EmpoweredMage",
                        "GreatWeaponMaster",
-                       "IntensifiedMage",
                        "MartialArtist",
                        "Metamage",
                        "SavageAttacker"]
@@ -599,37 +674,37 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Icon" "PassiveFeature_EmpoweredEvocation"
         data "Properties" "IsHidden"
 
-        new entry "Serenade_ProdigyIntensifySpells"
+        new entry "Serenade_ProdigyIntensifySpell"
         type "PassiveData"
-        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
-        data "Description" "Serenade_ProdigyIntensifySpells_Description"
+        data "DisplayName" "Serenade_ProdigyIntensifySpell_DisplayName"
+        data "Description" "Serenade_ProdigyIntensifySpell_Description"
         data "TooltipUseCosts" "SorceryPoint:3"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
-        data "Boosts" "UnlockInterrupt(Serenade_ProdigyIntensifySpellsInterrupt)"
+        data "Boosts" "UnlockInterrupt(Serenade_ProdigyIntensifySpellInterrupt)"
         data "Properties" "IsHidden"
         data "StatsFunctorContext" "OnCastResolved"
-        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYINTENSIFYSPELLS)"
+        data "StatsFunctors" "RemoveStatus(SERENADE_PRODIGYINTENSIFYSPELL)"
 
-        new entry "Serenade_ProdigyIntensifySpellsInterrupt"
+        new entry "Serenade_ProdigyIntensifySpellInterrupt"
         type "InterruptData"
-        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
-        data "Description" "Serenade_ProdigyIntensifySpells_Description"
+        data "DisplayName" "Serenade_ProdigyIntensifySpell_DisplayName"
+        data "Description" "Serenade_ProdigyIntensifySpell_Description"
         data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
         data "InterruptContext" "OnSpellCast"
         data "InterruptContextScope" "Self"
         data "Container" "YesNoDecision"
         data "Conditions" "Self(context.Source,context.Observer) and IntensifiedSpellCheck() and not AnyEntityIsItem()"
-        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYINTENSIFYSPELLS,100,1)"
+        data "Properties" "ApplyStatus(OBSERVER_OBSERVER,SERENADE_PRODIGYINTENSIFYSPELL,100,1)"
         data "Cost" "SorceryPoint:3"
         data "InterruptDefaultValue" "Ask;Enabled"
         data "EnableCondition" "not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')"
         data "EnableContext" "OnStatusApplied;OnStatusRemoved"
 
-        new entry "SERENADE_PRODIGYINTENSIFYSPELLS"
+        new entry "SERENADE_PRODIGYINTENSIFYSPELL"
         type "StatusData"
         data "StatusType" "BOOST"
-        data "DisplayName" "Serenade_ProdigyIntensifySpells_DisplayName"
-        data "StackId" "SERENADE_PRODIGYINTENSIFYSPELLS"
+        data "DisplayName" "Serenade_ProdigyIntensifySpell_DisplayName"
+        data "StackId" "SERENADE_PRODIGYINTENSIFYSPELL"
         data "Boosts" "MinimumRollResult(Damage,20)"
         data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
         """))
@@ -799,6 +874,11 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Lists", "PassiveLists.ls
     passive_list(["Serenade_ProdigyDefaultShields",
                   "Serenade_ProdigyShields"],
                  "1436faeb-4fb9-4bc3-a5cc-bd96a4e0509a")
+    passive_list(["Serenade_ProdigySpellListNone",
+                  "Serenade_ProdigySpellListDefense",
+                  "Serenade_ProdigySpellListStorm",
+                  "Serenade_ProdigySpellListUtility"],
+                 "a3bfea46-6fa4-4930-b7c9-098edac06fd4")
 
     for attribute in attributes:
         attribute_bonuses = [f"Serenade_Prodigy{attribute}_{bonus}"
@@ -853,8 +933,8 @@ with open(os.path.join(base_dir, "Localization", "English", "Prodigy.loca.xml"),
     content("Serenade_ProdigyShields_Description", """Gain <LSTag Tooltip="ArmourProficiency">Armour Proficiency</LSTag> with Shields.""")
     content("Serenade_ProdigyEmpoweredMagic_DisplayName", """Prodigy: Empowered Magic""")
     content("Serenade_ProdigyEmpoweredMagic_Description", """You add your <LSTag Tooltip="SpellcastingAbilityModifier">Spellcasting Ability</LSTag> <LSTag Tooltip="AbilityModifier">Modifier</LSTag> to your spell damage.<br><br>This does not stack with <LSTag Type="Passive" Tooltip="AgonizingBlast">Agonizing Blast</LSTag> or <LSTag Type="Passive" Tooltip="EmpoweredEvocation">Empowered Evocation</LSTag>.""")
-    content("Serenade_ProdigyIntensifySpells_DisplayName", """Prodigy: Intensify Spells""")
-    content("Serenade_ProdigyIntensifySpells_Description", """When you deal spell damage, you can use your <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag> to deal maximum damage instead.""")
+    content("Serenade_ProdigyIntensifySpell_DisplayName", """Prodigy: Intensify Spell""")
+    content("Serenade_ProdigyIntensifySpell_Description", """When you deal spell damage, you can use your <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag> to deal maximum damage instead.""")
     content("Serenade_ProdigyAthleteFeat_Description", """When you are Prone, standing up uses significantly less movement. Your <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance also increases by 50%.""")
 
     for attribute in attributes:

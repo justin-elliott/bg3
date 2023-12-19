@@ -515,6 +515,7 @@ spell_lists = {
     "Subterfuge": {
         "Name": "Prodigy: Subterfuge Spells",
         "Icon": "Spell_Illusion_DisguiseSelf",
+        "Passives": [("DevilsSight", "Devil's Sight")],
         "Spells": {
             0: [("Target_MageHand", "Mage Hand"),
                 ("Target_MinorIllusion", "Minor Illusion")],
@@ -535,8 +536,21 @@ spell_lists_spell_keys = [f"Serenade_ProdigySpellList{key}" for key in sorted(sp
 spell_lists_all_keys = ["Serenade_ProdigySpellListNoSpells"] + spell_lists_spell_keys
 
 
+def list_to_comma_separated_str(str_list):
+    last_entry = None
+    if len(str_list) > 1:
+        last_entry = str_list[-1]
+
+    comma_str = ", ".join(str_list[0:-1] if len(str_list) > 1 else str_list)
+    if last_entry:
+        comma_str += ", and " + last_entry
+
+    return comma_str
+
+
 def spell_lists_to_training(lists):
     training_dict = {}
+    level_1 = range(1, 21)
 
     for key, spell_list in lists.items():
         train = {
@@ -550,10 +564,15 @@ def spell_lists_to_training(lists):
 
         progression = train["Progression"]
 
+        if (passives := spell_list.get("Passives", None)):
+            progression[level_1] = {
+                "Passives": [passive[0] for passive in passives],
+            }
+
         if (spells := spell_list.get("Spells", None)):
             cantrips = spells.get(0, [])
             level_1_spells = spells.get(1, [])
-            progression[range(1, 21)] = {
+            progression[level_1] = progression.get(level_1, {}) | {
                 "Boosts": [f"UnlockSpell({cantrip[0]})" for cantrip in cantrips] +
                           [f"UnlockSpell({level_1_spell[0]},AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf)"
                            for level_1_spell in level_1_spells]
@@ -572,16 +591,16 @@ def spell_lists_to_training(lists):
                             f"""<LSTag Type="Spell" Tooltip="{leveled_spell[0]}">{leveled_spell[1]}</LSTag>"""
                             for leveled_spell in leveled_spells]
 
-                last_spell_description = None
-                if len(spell_descriptions) > 1:
-                    last_spell_description = spell_descriptions.pop()
-                    
-                description = ("Gain the following spells at the appropriate level: " +
-                               ", ".join(spell_descriptions))
-                if last_spell_description:
-                    description += ", and " + last_spell_description
-                description += "."
+                description = ""
+                if (passives := spell_list.get("Passives", None)):
+                    passive_descriptions = [
+                        f"""<LSTag Type="Passive" Tooltip="{passive[0]}">{passive[1]}</LSTag>"""
+                        for passive in passives]
+                    description += f"Taking this spell list grants {
+                        list_to_comma_separated_str(passive_descriptions)}.<br><br>"
 
+                description += f"Gain the following spells at the appropriate level: {
+                    list_to_comma_separated_str(spell_descriptions)}."
                 train["Description"] = description
 
         training_dict[f"SpellList{key}"] = train
@@ -590,13 +609,6 @@ def spell_lists_to_training(lists):
 
 
 training |= spell_lists_to_training(spell_lists)
-
-# Add the Devil's Sight passive to the Subterfuge spell list
-subterfuge_spell_list = training["SpellListSubterfuge"]
-subterfuge_spell_list["Progression"][range(1, 21)]["Passives"] = ["DevilsSight"]
-subterfuge_spell_list["Description"] = """
-    Taking this spell list grants <LSTag Type="Passive" Tooltip="DevilsSight">Devil's Sight</LSTag>.
-    <br><br>""" + subterfuge_spell_list["Description"]
 
 
 # Generate the passives

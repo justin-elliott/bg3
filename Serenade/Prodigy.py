@@ -519,7 +519,8 @@ spell_lists = {
             0: [("Target_MageHand", "Mage Hand"),
                 ("Target_MinorIllusion", "Minor Illusion")],
             1: [("Shout_DisguiseSelf", "Disguise Self")],
-            2: [("Target_Invisibility", "Invisibility"),
+            2: [("Target_Darkness", "Darkness"),
+                ("Target_Invisibility", "Invisibility"),
                 ("Shout_PassWithoutTrace", "Pass Without Trace"),
                 ("Shout_SeeInvisibility", "See Invisibility")],
             3: [("Target_FeignDeath", "Feign Death")],
@@ -538,16 +539,16 @@ def spell_lists_to_training(lists):
     training_dict = {}
 
     for key, spell_list in lists.items():
-        training = {
+        train = {
             "Name": spell_list["Name"],
             "Progression": {},
         }
         if (icon := spell_list.get("Icon", None)):
-            training["Icon"] = icon
+            train["Icon"] = icon
         if (description := spell_list.get("Description")):
-            training["Description"] = description
+            train["Description"] = description
 
-        progression = training["Progression"]
+        progression = train["Progression"]
 
         if (spells := spell_list.get("Spells", None)):
             cantrips = spells.get(0, [])
@@ -581,14 +582,17 @@ def spell_lists_to_training(lists):
                     description += ", and " + last_spell_description
                 description += "."
 
-                training["Description"] = description
+                train["Description"] = description
 
-        training_dict[f"SpellList{key}"] = training
+        training_dict[f"SpellList{key}"] = train
 
     return training_dict
 
 
 training |= spell_lists_to_training(spell_lists)
+
+# Add the Devil's Sight passive to the Subterfuge spell list
+training["SpellListSubterfuge"]["Progression"][range(1, 21)]["Passives"] = ["DevilsSight"]
 
 
 # Generate the passives

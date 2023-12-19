@@ -592,7 +592,11 @@ def spell_lists_to_training(lists):
 training |= spell_lists_to_training(spell_lists)
 
 # Add the Devil's Sight passive to the Subterfuge spell list
-training["SpellListSubterfuge"]["Progression"][range(1, 21)]["Passives"] = ["DevilsSight"]
+subterfuge_spell_list = training["SpellListSubterfuge"]
+subterfuge_spell_list["Progression"][range(1, 21)]["Passives"] = ["DevilsSight"]
+subterfuge_spell_list["Description"] = """
+    Taking this spell list grants <LSTag Type="Passive" Tooltip="DevilsSight">Devil's Sight</LSTag>.
+    <br><br>""" + subterfuge_spell_list["Description"]
 
 
 # Generate the passives

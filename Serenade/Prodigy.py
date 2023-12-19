@@ -400,6 +400,7 @@ spell_lists = {
     "Cold": {
         "Name": "Prodigy: Cold Spells",
         "Icon": "",
+        "Passives": [("ElementalAdept_Cold", "Elemental Adept: Cold")],
         "Spells": {
             0: [("Projectile_RayOfFrost", "Ray of Frost")],
             1: [("Shout_ArmorOfAgathys", "Armour of Agathys"),
@@ -437,6 +438,7 @@ spell_lists = {
     "Fire": {
         "Name": "Prodigy: Fire Spells",
         "Icon": "",
+        "Passives": [("ElementalAdept_Fire", "Elemental Adept: Fire")],
         "Spells": {
             0: [("Projectile_FireBolt", "Fire Bolt"),
                 ("Shout_ProduceFlame", "Produce Flame")],
@@ -498,6 +500,8 @@ spell_lists = {
     "Storm": {
         "Name": "Prodigy: Storm Spells",
         "Icon": "Spell_Evocation_LightningBolt",
+        "Passives": [("ElementalAdept_Lightning", "Elemental Adept: Lightning"),
+                     ("ElementalAdept_Thunder", "Elemental Adept: Thunder")],
         "Spells": {
             0: [("Serenade_ProdigyStormBolt", "Storm Bolt"),
                 ("Target_ShockingGrasp", "Shocking Grasp")],

@@ -29,26 +29,18 @@
                     <attribute id="UUID" type="guid" value="2ed6d212-e2f8-4094-9705-a550c912bb7f"/>
                 </node>
                 <node id="LevelMapSeries">
-                    <attribute id="Level1" type="LSString" value="1d8"/>
-                    <attribute id="Level2" type="LSString" value="1d8"/>
-                    <attribute id="Level3" type="LSString" value="2d8"/>
-                    <attribute id="Level4" type="LSString" value="2d8"/>
-                    <attribute id="Level5" type="LSString" value="3d8"/>
-                    <attribute id="Level6" type="LSString" value="3d8"/>
-                    <attribute id="Level7" type="LSString" value="4d8"/>
-                    <attribute id="Level8" type="LSString" value="4d8"/>
-                    <attribute id="Level9" type="LSString" value="5d8"/>
-                    <attribute id="Level10" type="LSString" value="5d8"/>
-                    <attribute id="Level11" type="LSString" value="6d8"/>
-                    <attribute id="Level12" type="LSString" value="6d8"/>
-                    <attribute id="Level13" type="LSString" value="7d8"/>
-                    <attribute id="Level14" type="LSString" value="7d8"/>
-                    <attribute id="Level15" type="LSString" value="8d8"/>
-                    <attribute id="Level16" type="LSString" value="8d8"/>
-                    <attribute id="Level17" type="LSString" value="9d8"/>
-                    <attribute id="Level18" type="LSString" value="9d8"/>
-                    <attribute id="Level19" type="LSString" value="10d8"/>
-                    <attribute id="Level20" type="LSString" value="10d8"/>
+                    <attribute id="Level1" type="LSString" value="1d4"/>
+                    <attribute id="Level2" type="LSString" value="1d4"/>
+                    <attribute id="Level3" type="LSString" value="1d4"/>
+                    <attribute id="Level4" type="LSString" value="1d4"/>
+                    <attribute id="Level5" type="LSString" value="1d6"/>
+                    <attribute id="Level6" type="LSString" value="1d6"/>
+                    <attribute id="Level7" type="LSString" value="1d6"/>
+                    <attribute id="Level8" type="LSString" value="1d6"/>
+                    <attribute id="Level9" type="LSString" value="1d8"/>
+                    <attribute id="Level10" type="LSString" value="1d8"/>
+                    <attribute id="Level11" type="LSString" value="1d8"/>
+                    <attribute id="Level12" type="LSString" value="1d8"/>
                     <attribute id="Name" type="FixedString" value="Serenade_HealValue"/>
                     <attribute id="UUID" type="guid" value="d6846e5d-3fec-49ac-9e1b-e391a88a8bbc"/>
                 </node>

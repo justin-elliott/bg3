@@ -16,14 +16,14 @@ class ValueLists:
     __valuelist_regex = re.compile("""\\s*valuelist\\s*"([^"]+)"\\s*""")
     __value_regex = re.compile("""\\s*value\\s*"([^"]+)"\\s*""")
 
-    __validators: {str, Callable[[str | Iterable], None]}
+    __validators: {str, Callable[[str | Iterable], bool]}
 
     def __init__(self):
         self.__validators = {}
         with open(os.path.join(os.path.dirname(__file__), "gamedata", "ValueLists.txt"), "r") as f:
             self._parse(f)
 
-    def get_validator(self, valuelist: str) -> Callable[[str | Iterable], None]:
+    def get_validator(self, valuelist: str) -> Callable[[str | Iterable], bool]:
         """Return the validator for the given valuelist."""
         return self.__validators[valuelist]
 
@@ -46,7 +46,7 @@ class ValueLists:
 
     def _complete_valuelist(self, valuelist: str, allowed_contents: set) -> None:
         """Add a validator for the given valuelist and allowed_contents."""
-        def validator(values: str | Iterable) -> None:
+        def validator(values: str | Iterable) -> bool:
             """Raise an exception if the values are not allowed in the valuelist."""
             if isinstance(values, str):
                 values = [values]
@@ -54,6 +54,7 @@ class ValueLists:
                 for value in values:
                     if value not in allowed_contents:
                         raise KeyError(f"Value '{value}' is not allowed in '{valuelist}'")
+            return True
 
         if valuelist:
             self.__validators[valuelist] = validator

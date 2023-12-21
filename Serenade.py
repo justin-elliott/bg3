@@ -52,4 +52,27 @@ loca["Medley_Boost_Description"] = {"en": """
 
 modifiers = Modifiers()
 
+modifiers.SpellData(
+    "Medley",
+    SpellType="Shout",
+    using="Shout_SongOfRest",
+    AreaRadius="9",
+    Cooldown="None",
+    DisplayName=loca["Medley_DisplayName"],
+    Description=loca["Medley_Description"],
+    Icon="Action_Song_SingForMe",
+    Level="0",
+    RequirementConditions="",
+    SpellProperties=["ApplyStatus(SERENADE_MEDLEY,100,-1)",
+                     "ApplyStatus(LONGSTRIDER,100,-1)",
+                     "ApplyStatus(PETPAL,100,-1)",
+                     "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)"],
+    TargetConditions="Party() and not Dead()",
+    TooltipStatusApply=["ApplyStatus(SERENADE_MEDLEY,100,-1)",
+                        "ApplyStatus(LONGSTRIDER,100,-1)",
+                        "ApplyStatus(PETPAL,100,-1)",
+                        "ApplyStatus(MAGE_ARMOR,100,-1)"],
+    VerbalIntent="Buff",
+)
+
 serenade.build()

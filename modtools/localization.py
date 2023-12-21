@@ -24,16 +24,17 @@ def _strip_whitespace(s):
 class Translation:
     """A single entry in the localization dictionary."""
 
-    __handle: str
+    handle: str
+
     __translations: {str, str}
 
     def __init__(self, handle: str, translations: {str: str}) -> None:
-        self.__handle = handle
+        self.handle = handle
         self.__translations = {short_lang_name: _strip_whitespace(text)
                                for short_lang_name, text in translations.items()}
 
     def add_content(self, content_list: ElementTree.Element, short_lang_name: str) -> None:
-        content = ElementTree.SubElement(content_list, "content", contentuid=self.__handle, version="1")
+        content = ElementTree.SubElement(content_list, "content", contentuid=self.handle, version="1")
         content.text = self.__translations[short_lang_name]
 
 

@@ -6,7 +6,6 @@ Generates files for the "Serenade" mod.
 import os
 
 from modtools.mod import Mod
-from modtools.modifiers import Modifiers
 from uuid import UUID
 
 serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"),
@@ -50,10 +49,12 @@ loca["Medley_Boost_Description"] = {"en": """
     You can see in the dark up to [3].
     """}
 
-modifiers = Modifiers()
+# Regex for data match:
+# data "([^"]+)"\s*("[^"]+")
+# $1=$2,
 
-modifiers.SpellData(
-    "Medley",
+serenade.SpellData(
+    "Serenade_Medley",
     SpellType="Shout",
     using="Shout_SongOfRest",
     AreaRadius="9",
@@ -63,16 +64,47 @@ modifiers.SpellData(
     Icon="Action_Song_SingForMe",
     Level="0",
     RequirementConditions="",
-    SpellProperties=["ApplyStatus(SERENADE_MEDLEY,100,-1)",
-                     "ApplyStatus(LONGSTRIDER,100,-1)",
-                     "ApplyStatus(PETPAL,100,-1)",
-                     "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)"],
+    SpellProperties=[
+        "ApplyStatus(SERENADE_MEDLEY,100,-1)",
+        "ApplyStatus(LONGSTRIDER,100,-1)",
+        "ApplyStatus(PETPAL,100,-1)",
+        "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)",
+    ],
     TargetConditions="Party() and not Dead()",
-    TooltipStatusApply=["ApplyStatus(SERENADE_MEDLEY,100,-1)",
-                        "ApplyStatus(LONGSTRIDER,100,-1)",
-                        "ApplyStatus(PETPAL,100,-1)",
-                        "ApplyStatus(MAGE_ARMOR,100,-1)"],
+    TooltipStatusApply=[
+        "ApplyStatus(SERENADE_MEDLEY,100,-1)",
+        "ApplyStatus(LONGSTRIDER,100,-1)",
+        "ApplyStatus(PETPAL,100,-1)",
+        "ApplyStatus(MAGE_ARMOR,100,-1)",
+    ],
     VerbalIntent="Buff",
+)
+
+serenade.StatusData(
+    "SERENADE_MEDLEY",
+    StatusType="BOOST",
+    DisplayName="Serenade_Medley_DisplayName",
+    Description="Serenade_MedleyBoost_Description",
+    DescriptionParams=[
+        "LevelMapValue(Serenade_AidValue)",
+        "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
+        "Distance(18)",
+    ],
+    Icon="Action_Song_SingForMe",
+    StackId="AID",  # Mutually exclusive with AID stacks
+    Boosts=[
+        "IncreaseMaxHP(LevelMapValue(Serenade_AidValue))",
+        "Reroll(Attack,1,true)",
+        "Reroll(SkillCheck,1,true)",
+        "Reroll(RawAbility,1,true)",
+        "Reroll(SavingThrow,1,true)",
+        "DarkvisionRangeMin(18)",
+        "ActiveCharacterLight(c46e7ba8-e746-7020-5146-287474d7b9f7)",
+    ],
+    TickType="StartTurn",
+    TickFunctors="IF(HasHPPercentageLessThan(100) and not IsDowned() and not Dead()):" +
+                 "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
+    StatusGroups="SG_RemoveOnRespec",
 )
 
 serenade.build()

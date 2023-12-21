@@ -8,6 +8,7 @@ import os
 import xml.etree.ElementTree as ElementTree
 
 from .localization import Localization
+from .modifiers import Modifiers
 from .prologue import XML_PROLOGUE
 from uuid import UUID
 
@@ -23,13 +24,14 @@ class Mod:
     __uuid: UUID
     __version: (int, int, int, int)
 
+    __modifiers: Modifiers
+
     localization: Localization
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 0, 0, 1)):
         """Define a mod.
 
-        Keyword arguments:
         base_dir -- the base directory of the mod
         author -- the mod's author
         name -- the name of the mod (not localized)
@@ -45,6 +47,7 @@ class Mod:
         self.__folder = folder or name
         self.__uuid = mod_uuid
         self.__version = version
+        self.__modifiers = Modifiers(self)
         self.localization = Localization(mod_uuid)
 
     def _build_meta(self, mod_dir):
@@ -107,4 +110,5 @@ class Mod:
         mod_dir = os.path.join(self.__base_dir, self.__folder)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
+        self.__modifiers.build(mod_dir, self.__folder)
         self.localization.build(mod_dir)

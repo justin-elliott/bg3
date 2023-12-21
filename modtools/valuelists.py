@@ -33,11 +33,11 @@ class ValueLists:
         allowed_contents = set()
 
         for line in f:
-            if (match := ValueLists.__valuelist_regex.match(line)):
+            if match := ValueLists.__valuelist_regex.match(line):
                 self._complete_valuelist(valuelist, allowed_contents)
                 valuelist = match[1]
                 allowed_contents = set()
-            elif (match := ValueLists.__value_regex.match(line)):
+            elif match := ValueLists.__value_regex.match(line):
                 allowed_contents.add(match[1])
             elif line.strip():
                 raise RuntimeError(f"Unknown line in ValueLists.txt: {line}")

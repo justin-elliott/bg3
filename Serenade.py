@@ -4,9 +4,10 @@ Generates files for the "Serenade" mod.
 """
 
 import os
-from uuid import UUID
 
 from modtools.mod import Mod
+from modtools.modifiers import Modifiers
+from uuid import UUID
 
 serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"),
                description="Adds the lute, Serenade.")
@@ -48,5 +49,7 @@ loca["Medley_Boost_Description"] = {"en": """
 
     You can see in the dark up to [3].
     """}
+
+modifiers = Modifiers()
 
 serenade.build()

@@ -626,8 +626,8 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "Description" "Serenade_Prodigy_Description"
         data "Icon" "Action_KnowledgeOfTheAges"
         data "Properties" "Highlighted"
-        data "StatsFunctorContext" "OnCreate;OnShortRest;OnLongRest;OnStatusApplied;OnStatusRemoved"
-        data "StatsFunctors" "ApplyStatus(SERENADE_PRODIGY,100,1)"
+        data "StatsFunctorContext" "OnCreate;OnShortRest;OnLongRest;OnStatusRemoved"
+        data "_StatsFunctors" "ApplyStatus(SERENADE_PRODIGY,100,1)"
 
         new entry "SERENADE_PRODIGY"
         type "StatusData"
@@ -638,7 +638,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "StackId" "SERENADE_PRODIGY"
         data "StackType" "Ignore"
         data "StatusGroups" "SG_RemoveOnRespec"
-        data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+        data "_StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
         new entry "Serenade_ProdigyRestoreSorceryPoints"
         type "PassiveData"
@@ -658,9 +658,9 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "StackId" "SERENADE_PRODIGYRESTORESORCERYPOINTS"
         data "StackType" "Overwrite"
         data "TickType" "StartTurn"
-        data "TickFunctors" "RestoreResource(SorceryPoint,1,0)"
+        data "TickFunctors" "IF(not HasActionResource('SorceryPoint',100,0,true)):RestoreResource(SorceryPoint,1,0)"
         data "StatusGroups" "SG_RemoveOnRespec"
-        data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+        data "_StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
         new entry "Serenade_ProdigyRestoreKiPoints"
         type "PassiveData"
@@ -682,7 +682,7 @@ with open(os.path.join(base_dir, "Public", "Serenade", "Stats", "Generated", "Da
         data "TickType" "StartTurn"
         data "TickFunctors" "RestoreResource(KiPoint,1,0)"
         data "StatusGroups" "SG_RemoveOnRespec"
-        data "StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
+        data "_StatusPropertyFlags" "DisableOverhead;DisableImmunityOverhead;DisablePortraitIndicator;DisableCombatlog;IgnoreResting"
 
         new entry "Serenade_ProdigyAthleteFeat"
         type "PassiveData"

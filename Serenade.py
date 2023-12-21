@@ -26,14 +26,6 @@ loca["Serenade_Description"] = {"en": """
     the lute's melody, truly divine.
     """}
 
-loca["Virtuoso_DisplayName"] = {"en": "Virtuoso"}
-loca["Virtuoso_Description"] = {"en": """
-    You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
-    <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and have
-    <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
-    <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
-    """}
-
 loca["Medley_DisplayName"] = {"en": "Medley"}
 loca["Medley_Description"] = {"en": "Perform a medley of songs to inspire and fortify your allies."}
 loca["Medley_Boost_Description"] = {"en": """
@@ -47,6 +39,14 @@ loca["Medley_Boost_Description"] = {"en": """
     you can reroll the die and must use the new roll.
 
     You can see in the dark up to [3].
+    """}
+
+loca["Virtuoso_DisplayName"] = {"en": "Virtuoso"}
+loca["Virtuoso_Description"] = {"en": """
+    You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
+    <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and have
+    <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
+    <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
     """}
 
 # Regex for data match:
@@ -83,8 +83,8 @@ serenade.SpellData(
 serenade.StatusData(
     "SERENADE_MEDLEY",
     StatusType="BOOST",
-    DisplayName="Serenade_Medley_DisplayName",
-    Description="Serenade_MedleyBoost_Description",
+    DisplayName=loca["Medley_DisplayName"],
+    Description=loca["Medley_Boost_Description"],
     DescriptionParams=[
         "LevelMapValue(Serenade_AidValue)",
         "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
@@ -105,6 +105,41 @@ serenade.StatusData(
     TickFunctors="IF(HasHPPercentageLessThan(100) and not IsDowned() and not Dead()):" +
                  "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
     StatusGroups="SG_RemoveOnRespec",
+)
+
+serenade.Armor(
+    "ARM_Instrument_Lute_Serenade",
+    using="ARM_Instrument_Lute_B",
+    Flags="Unbreakable",
+    Rarity="Legendary",
+    RootTemplate="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5",
+    Boosts=[
+        "UnlockSpell(Serenade_Medley)",
+        "UnlockSpell(Shout_Bard_Perform_Lute)",
+    ],
+    PassivesOnEquip="Serenade_Virtuoso",
+    Weight="0.01",
+)
+
+serenade.PassiveData(
+    "Serenade_Virtuoso",
+    DisplayName=loca["Virtuoso_DisplayName"],
+    Description=loca["Virtuoso_Description"],
+    Icon="Action_Song_SingForMe",
+    Properties="Highlighted",
+    Boosts=[
+        "Proficiency(MusicalInstrument)",
+        "ProficiencyBonus(SavingThrow,Charisma)",
+        "Advantage(Ability,Charisma)",
+        "ProficiencyBonus(Skill,Deception)",
+        "ExpertiseBonus(Deception)",
+        "ProficiencyBonus(Skill,Intimidation)",
+        "ExpertiseBonus(Intimidation)",
+        "ProficiencyBonus(Skill,Performance)",
+        "ExpertiseBonus(Performance)",
+        "ProficiencyBonus(Skill,Persuasion)",
+        "ExpertiseBonus(Persuasion)",
+    ],
 )
 
 serenade.build()

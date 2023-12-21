@@ -48,7 +48,7 @@ class Localization():
 
     def __init__(self, modUuid: UUID):
         self.__modUuid = modUuid
-        self.__languages = {"en": "English"}
+        self.__languages = {}
         self.__translations = {}
 
     def add_language(self, short_lang_name: str, full_lang_name: str) -> None:
@@ -57,14 +57,11 @@ class Localization():
     def __getitem__(self, key: str) -> str:
         return self.__translations[key].handle
 
-    def __setitem__(self, key: str, translations: str | dict) -> None:
+    def __setitem__(self, key: str, translations: {str: str}) -> None:
         m = hashlib.sha256()
         m.update(self.__modUuid.bytes)
         m.update(bytes(key, "UTF-8"))
         handle = f"h{str(UUID(m.hexdigest()[0:32])).replace("-", "g")}"
-
-        if isinstance(translations, str):
-            translations = {"en": translations}
 
         for short_lang_name in translations.keys():
             if short_lang_name not in self.__languages:

@@ -9,9 +9,10 @@ from uuid import UUID
 from modtools.localization import Localization
 
 loca = Localization(UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"))
+loca.add_language("en", "English")
 
-loca["Serenade_DisplayName"] = "Serenade"
-loca["Serenade_Description"] = """
+loca["Serenade_DisplayName"] = {"en": "Serenade"}
+loca["Serenade_Description"] = {"en": """
     Curved wood and strings of gold,
     a treasure to behold.
     Fingertips on frets alight,
@@ -20,19 +21,19 @@ loca["Serenade_Description"] = """
     through halls and chambers, evermore.
     A tapestry of sound so fine,
     the lute's melody, truly divine.
-    """
+    """}
 
-loca["Virtuoso_DisplayName"] = "Virtuoso"
-loca["Virtuoso_Description"] = """
+loca["Virtuoso_DisplayName"] = {"en": "Virtuoso"}
+loca["Virtuoso_Description"] = {"en": """
     You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
     <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and have
     <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
     <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
-    """
+    """}
 
-loca["Medley_DisplayName"] = "Medley"
-loca["Medley_Description"] = "Perform a medley of songs to inspire and fortify your allies."
-loca["Medley_Boost_Description"] = """
+loca["Medley_DisplayName"] = {"en": "Medley"}
+loca["Medley_Description"] = {"en": "Perform a medley of songs to inspire and fortify your allies."}
+loca["Medley_Boost_Description"] = {"en": """
     Hit point maximum increased by [1].
 
     Each turn, restore [2].
@@ -43,7 +44,7 @@ loca["Medley_Boost_Description"] = """
     you can reroll the die and must use the new roll.
 
     You can see in the dark up to [3].
-    """
+    """}
 
 
 serenade_dir = os.path.join(os.path.dirname(__file__), "Serenade")

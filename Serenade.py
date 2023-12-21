@@ -4,14 +4,14 @@ Generates files for the "Serenade" mod.
 """
 
 import os
+from uuid import UUID
 
 from modtools.localization import Localization
 
-localization = Localization()
-en = localization.language("English")
+loca = Localization(UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"))
 
-en["Serenade_DisplayName"] = "Serenade"
-en["Serenade_Description"] = """
+loca["Serenade_DisplayName"] = "Serenade"
+loca["Serenade_Description"] = """
     Curved wood and strings of gold,
     a treasure to behold.
     Fingertips on frets alight,
@@ -22,17 +22,17 @@ en["Serenade_Description"] = """
     the lute's melody, truly divine.
     """
 
-en["Serenade_Virtuoso_DisplayName"] = "Virtuoso"
-en["Serenade_Virtuoso_Description"] = """
+loca["Virtuoso_DisplayName"] = "Virtuoso"
+loca["Virtuoso_Description"] = """
     You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
     <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and have
     <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
     <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
     """
 
-en["Serenade_Medley_DisplayName"] = "Medley"
-en["Serenade_Medley_Description"] = "Perform a medley of songs to inspire and fortify your allies."
-en["Serenade_MedleyBoost_Description"] = """
+loca["Medley_DisplayName"] = "Medley"
+loca["Medley_Description"] = "Perform a medley of songs to inspire and fortify your allies."
+loca["Medley_Boost_Description"] = """
     Hit point maximum increased by [1].
 
     Each turn, restore [2].
@@ -48,4 +48,4 @@ en["Serenade_MedleyBoost_Description"] = """
 
 serenade_dir = os.path.join(os.path.dirname(__file__), "Serenade")
 os.makedirs(serenade_dir, exist_ok=True)
-localization.write(serenade_dir)
+loca.build(serenade_dir)

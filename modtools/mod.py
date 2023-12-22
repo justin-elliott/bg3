@@ -5,12 +5,9 @@ The main mod definition for Baldur's Gate 3 mods.
 
 import os
 
-import xml.etree.ElementTree as ElementTree
-
 from .localization import Localization
 from .lsx import Lsx
 from .modifiers import Modifiers
-from .prologue import XML_PROLOGUE
 from uuid import UUID
 
 
@@ -26,8 +23,7 @@ class Mod:
     __version: (int, int, int, int)
 
     __modifiers: Modifiers
-
-    localization: Localization
+    __localization: Localization
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 0, 0, 1)):
@@ -49,7 +45,34 @@ class Mod:
         self.__uuid = mod_uuid
         self.__version = version
         self.__modifiers = Modifiers(self)
-        self.localization = Localization(mod_uuid)
+        self.__localization = Localization(mod_uuid)
+
+    def get_author(self) -> str:
+        return self.__author
+
+    def get_base_dir(self) -> str:
+        return self.__base_dir
+
+    def get_name(self) -> str:
+        return self.__name
+
+    def get_description(self) -> str:
+        return self.__description
+
+    def get_folder(self) -> str:
+        return self.__folder
+
+    def get_uuid(self) -> UUID:
+        return self.__uuid
+
+    def get_version(self) -> (int, int, int, int):
+        return self.__version
+
+    def get_modifiers(self) -> Modifiers:
+        return self.__modifiers
+
+    def get_localization(self) -> Localization:
+        return self.__localization
 
     def _build_meta(self, mod_dir: str):
         """Build the meta.lsx underneath the given mod_dir."""
@@ -97,4 +120,4 @@ class Mod:
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self.__modifiers.build(mod_dir, self.__folder)
-        self.localization.build(mod_dir)
+        self.__localization.build(mod_dir)

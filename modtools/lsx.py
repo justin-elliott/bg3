@@ -5,7 +5,6 @@ Representation of an .lsx file.
 
 from __future__ import annotations
 
-import io
 import os
 
 import xml.etree.ElementTree as ElementTree

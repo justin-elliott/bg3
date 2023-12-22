@@ -11,7 +11,7 @@ from uuid import UUID
 serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"),
                description="Adds the lute, Serenade.")
 
-loca = serenade.localization
+loca = serenade.get_localization()
 loca.add_language("en", "English")
 
 loca["Serenade_DisplayName"] = {"en": "Serenade"}

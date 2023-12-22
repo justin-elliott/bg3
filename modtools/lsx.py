@@ -26,13 +26,19 @@ class Lsx:
             self.__version = version
             self.__region = region
 
-        def version(self, version_: (int, int, int, int)) -> None:
-            assert self.__version is None
-            self.__version = version_
+        def get_version(self) -> (int, int, int, int):
+            return self.__version
 
-        def region(self, region_: Lsx.Region) -> None:
+        def get_region(self) -> Lsx.Region:
+            return self.__region
+
+        def set_version(self, version: (int, int, int, int)) -> None:
+            assert self.__version is None
+            self.__version = version
+
+        def set_region(self, region: Lsx.Region) -> None:
             assert self.__region is None
-            self.__region = region_
+            self.__region = region
 
         def xml(self) -> ElementTree.ElementTree:
             document = ElementTree.Element("save")
@@ -58,7 +64,13 @@ class Lsx:
             self.__id = id
             self.__node = node
 
-        def node(self, node: Lsx.Node) -> None:
+        def get_id(self) -> str:
+            return self.__id
+
+        def get_node(self) -> Lsx.Node:
+            return self.__node
+
+        def set_node(self, node: Lsx.Node) -> None:
             assert self.__node is None
             self.__node = node
 
@@ -82,12 +94,23 @@ class Lsx:
             else:
                 self.__children = Lsx.Children(children)
 
-        def attributes(self, attributes_: [Lsx.Attribute]) -> None:
-            self.__attributes += attributes_
+        def get_id(self) -> str:
+            return self.__id
 
-        def children(self, children_: Lsx.Children | [Lsx.Node]) -> None:
-            assert self.__children is None
-            self.__children = children_ if isinstance(children_, Lsx.Children) else Lsx.Children(children_)
+        def get_attributes(self) -> [Lsx.Attribute]:
+            return self.__attributes
+
+        def get_children(self) -> Lsx.Children:
+            return self.__children
+
+        def add_attributes(self, attributes: [Lsx.Attribute]) -> None:
+            self.__attributes += attributes
+
+        def add_children(self, nodes: [Lsx.Node]) -> None:
+            if self.__children is None:
+                self.__children = Lsx.Children(nodes)
+            else:
+                self.__children.add_nodes(nodes)
 
         def xml(self, parent: ElementTree.Element) -> None:
             node = ElementTree.SubElement(parent, "node", id=self.__id)
@@ -104,8 +127,11 @@ class Lsx:
         def __init__(self, nodes: [Lsx.Node] = []):
             self.__nodes = nodes
 
-        def node(self, node_: Lsx.Node) -> None:
-            self.__nodes.append(node_)
+        def get_nodes(self) -> [Lsx.Node]:
+            return self.__nodes
+
+        def add_nodes(self, nodes: [Lsx.Node]) -> None:
+            self.__nodes += nodes
 
         def xml(self, parent: ElementTree.Element) -> None:
             children = ElementTree.SubElement(parent, "children")
@@ -119,21 +145,36 @@ class Lsx:
         __type: str
         __value: str
         __handle: str
-        __version: int
+        __version: str
 
-        def __init__(self, id: str, type: str, value: str = None, handle: str = None, version: int = 0):
+        def __init__(self, id: str, type: str, value: str = None, handle: str = None, version: int | str = 0):
             if value is not None:
                 assert handle is None
-                assert version == 0
+                assert int(version) == 0
             else:
                 assert handle is not None
-                assert version > 0
+                assert int(version) > 0
 
             self.__id = id
             self.__type = type
             self.__value = value
             self.__handle = handle
-            self.__version = version
+            self.__version = str(version)
+
+        def get_id(self) -> str:
+            return self.__id
+
+        def get_type(self) -> str:
+            return self.__type
+
+        def get_value(self) -> str:
+            return self.__value
+
+        def get_handle(self) -> str:
+            return self.__handle
+
+        def get_version(self) -> str:
+            return self.__version
 
         def xml(self, parent: ElementTree.Element) -> None:
             attrib = {
@@ -144,22 +185,48 @@ class Lsx:
                 attrib["value"] = self.__value
             else:
                 attrib["handle"] = self.__handle
-                attrib["version"] = str(self.__version)
+                attrib["version"] = self.__version
 
             ElementTree.SubElement(parent, "attribute", attrib=attrib)
 
     __document: Lsx.Document
+    __region: Lsx.Region
+    __root: Lsx.Node
 
-    def __init__(self, relative_path: str, version: (int, int, int, int) = None, region: Lsx.Region = None):
-        self.__document = Lsx.Document(version, region)
+    def __init__(self, version: (int, int, int, int) = None, region_id: str = None,
+                 root_id: str = None):
+        self.__region = None
+        self.__root = None
 
-    def version(self, version_: (int, int, int, int)) -> None:
-        self.__document.version(version_)
+        if root_id:
+            assert region_id
+            self.__root = Lsx.Node(root_id)
+        if region_id:
+            self.__region = Lsx.Region(region_id, self.__root)
 
-    def region(self, region_: Lsx.Region) -> None:
-        self.__document.region(region_)
+        self.__document = Lsx.Document(version, self.__region)
 
-    def build(self, mod_dir: str) -> None:
+    def set_version(self, version: (int, int, int, int)) -> None:
+        self.__document.set_version(version)
+
+    def set_region(self, region: Lsx.Region) -> None:
+        self.__document.set_region(region)
+        self.__region = region
+        self.__root = region.get_node()
+
+    def set_root(self, root: Lsx.Node) -> None:
+        assert self.__region
+        assert not self.__root
+        self.__root = root
+
+    def add_children(self, nodes: [Lsx.Node]) -> None:
+        assert self.__root
+        self.__root.add_children(nodes)
+
+    def build(self, path: str) -> None:
         document = self.__document.xml()
         ElementTree.indent(document, space=" "*4)
-        ElementTree.dump(document)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "wb") as f:
+            f.write(XML_PROLOGUE)
+            document.write(f, encoding="UTF-8", xml_declaration=False)

@@ -8,6 +8,7 @@ import os
 import xml.etree.ElementTree as ElementTree
 
 from .localization import Localization
+from .lsx import Lsx
 from .modifiers import Modifiers
 from .prologue import XML_PROLOGUE
 from uuid import UUID
@@ -50,60 +51,45 @@ class Mod:
         self.__modifiers = Modifiers(self)
         self.localization = Localization(mod_uuid)
 
-    def _build_meta(self, mod_dir):
+    def _build_meta(self, mod_dir: str):
         """Build the meta.lsx underneath the given mod_dir."""
         major, minor, revision, build = self.__version
-        version = (((major * 100) + minor) * 100 + revision) * 10_000 + build
-        xml_element = ElementTree.fromstring(f"""
-            <save>
-                <version major="{major}" minor="{minor}" revision="{revision}" build="{build}"/>
-                <region id="Config">
-                    <node id="root">
-                        <children>
-                            <node id="Dependencies"/>
-                            <node id="ModuleInfo">
-                                <attribute id="Author" type="LSWString" value="{self.__author}"/>
-                                <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
-                                <attribute id="Description" type="LSWString" value="{self.__description}"/>
-                                <attribute id="Folder" type="LSWString" value="{self.__folder}"/>
-                                <attribute id="LobbyLevelName" type="FixedString" value=""/>
-                                <attribute id="MD5" type="LSString" value=""/>
-                                <attribute id="MainMenuBackgroundVideo" type="FixedString" value=""/>
-                                <attribute id="MenuLevelName" type="FixedString" value=""/>
-                                <attribute id="Name" type="FixedString" value="{self.__name}"/>
-                                <attribute id="NumPlayers" type="uint8" value="4"/>
-                                <attribute id="PhotoBooth" type="FixedString" value=""/>
-                                <attribute id="StartupLevelName" type="FixedString" value=""/>
-                                <attribute id="Tags" type="LSString" value=""/>
-                                <attribute id="Type" type="FixedString" value="Add-on"/>
-                                <attribute id="UUID" type="FixedString" value="{self.__uuid}"/>
-                                <attribute id="Version" type="int64" value="{version}"/>
-                                <children>
-                                    <node id="PublishVersion">
-                                        <attribute id="Version" type="int64" value="{version}"/>
-                                    </node>
-                                    <node id="Scripts"/>
-                                    <node id="TargetModes">
-                                        <children>
-                                            <node id="Target">
-                                                <attribute id="Object" type="FixedString" value="Story"/>
-                                            </node>
-                                        </children>
-                                    </node>
-                                </children>
-                            </node>
-                        </children>
-                    </node>
-                </region>
-            </save>
-            """)
-        meta_dir = os.path.join(mod_dir, "Mods", self.__folder)
-        os.makedirs(meta_dir, exist_ok=True)
-        with open(os.path.join(meta_dir, "meta.lsx"), "wb") as f:
-            f.write(XML_PROLOGUE)
-            xml_document = ElementTree.ElementTree(xml_element)
-            ElementTree.indent(xml_document, space=" "*4)
-            xml_document.write(f, encoding="UTF-8", xml_declaration=False)
+        version_str = str((((major * 100) + minor) * 100 + revision) * 10_000 + build)
+
+        lsx = Lsx(self.__version, "Config", "root")
+        lsx.add_children([
+            Lsx.Node("Dependencies"),
+            Lsx.Node("ModuleInfo", attributes=[
+                    Lsx.Attribute("Author", "LSWString", value=self.__author),
+                    Lsx.Attribute("CharacterCreationLevelName", "FixedString", value=""),
+                    Lsx.Attribute("Description", "LSWString", value=self.__description),
+                    Lsx.Attribute("Folder", "LSWString", value=self.__folder),
+                    Lsx.Attribute("LobbyLevelName", "FixedString", value=""),
+                    Lsx.Attribute("MD5", "LSString", value=""),
+                    Lsx.Attribute("MainMenuBackgroundVideo", "FixedString", value=""),
+                    Lsx.Attribute("MenuLevelName", "FixedString", value=""),
+                    Lsx.Attribute("Name", "FixedString", value=self.__name),
+                    Lsx.Attribute("NumPlayers", "uint8", value="4"),
+                    Lsx.Attribute("PhotoBooth", "FixedString", value=""),
+                    Lsx.Attribute("StartupLevelName", "FixedString", value=""),
+                    Lsx.Attribute("Tags", "LSString", value=""),
+                    Lsx.Attribute("Type", "FixedString", value="Add-on"),
+                    Lsx.Attribute("UUID", "FixedString", value=str(self.__uuid)),
+                    Lsx.Attribute("Version", "int64", value=version_str),
+                ],
+                children=[
+                    Lsx.Node("PublishVersion", [
+                        Lsx.Attribute("Version", "int64", value=version_str)
+                    ]),
+                    Lsx.Node("Scripts"),
+                    Lsx.Node("TargetModes", children=[
+                        Lsx.Node("Target", [
+                            Lsx.Attribute("Object", "FixedString", value="Story")
+                        ])
+                    ]),
+                ])
+        ])
+        lsx.build(os.path.join(mod_dir, "Mods", self.__folder, "meta.lsx"))
 
     def build(self):
         """Build the mod files underneath the __base_dir."""

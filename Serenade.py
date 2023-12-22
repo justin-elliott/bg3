@@ -9,7 +9,7 @@ from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID
 
-serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("a1c3d65c-3c00-4c7e-8aab-3ef7dd1593f1"),
+serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("fd8733d8-e1bd-4a41-9a54-40bc97ea99f0"),
                description="Adds the lute, Serenade.")
 
 loca = serenade.get_localization()
@@ -142,6 +142,20 @@ serenade.add_passive_data(
         "ExpertiseBonus(Persuasion)",
     ],
 )
+
+serenade.add_level_maps([
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int(level * 2.5)}") for level in range(1, 21)],
+        Lsx.Attribute("Name", "FixedString", value="Serenade_AidValue"),
+        Lsx.Attribute("UUID", "guid", value="c0f41731-9b3b-4828-9092-3e104096938a"),
+    ]),
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"1d{int((level + 3) / 4) * 2 + 2}")
+            for level in range(1, 21)],
+        Lsx.Attribute("Name", "FixedString", value="Serenade_HealValue"),
+        Lsx.Attribute("UUID", "guid", value="803d7210-940d-4692-8178-436e3d711818"),
+    ]),
+])
 
 serenade.add_root_templates([
     Lsx.Node("GameObjects", [

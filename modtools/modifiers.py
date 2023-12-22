@@ -113,7 +113,8 @@ class Modifiers:
             self.__modifiers[name] = {"type": modifier, "using": using, **kwargs}
 
         if modifier:
-            setattr(self.__method_target, modifier, impl)
+            add_modifier = "add_" + "".join(["_" + c.lower() if c.isupper() else c for c in modifier]).lstrip("_")
+            setattr(self.__method_target, add_modifier, impl)
 
     def _modifier_filename(self, name: str) -> str:
         """Get the filename corresponding to the given name."""

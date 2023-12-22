@@ -25,6 +25,8 @@ class Mod:
     __modifiers: Modifiers
     __localization: Localization
 
+    __root_templates: Lsx
+
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 0, 0, 1)):
         """Define a mod.
@@ -46,6 +48,7 @@ class Mod:
         self.__version = version
         self.__modifiers = Modifiers(self)
         self.__localization = Localization(mod_uuid)
+        self.__root_templates = None
 
     def get_author(self) -> str:
         return self.__author
@@ -73,6 +76,11 @@ class Mod:
 
     def get_localization(self) -> Localization:
         return self.__localization
+
+    def add_root_templates(self, nodes: [Lsx.Node]) -> None:
+        if not self.__root_templates:
+            self.__root_templates = Lsx(self.__version, "Templates", "Templates")
+        self.__root_templates.add_children(nodes)
 
     def _build_meta(self, mod_dir: str):
         """Build the meta.lsx underneath the given mod_dir."""
@@ -121,3 +129,5 @@ class Mod:
         self._build_meta(mod_dir)
         self.__modifiers.build(mod_dir, self.__folder)
         self.__localization.build(mod_dir)
+        if self.__root_templates:
+            self.__root_templates.build(os.path.join(mod_dir, "Public", self.__folder, "RootTemplates", "_merged.lsx"))

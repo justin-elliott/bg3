@@ -5,6 +5,7 @@ Generates files for the "Serenade" mod.
 
 import os
 
+from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -53,7 +54,7 @@ loca["Virtuoso_Description"] = {"en": """
 # data "([^"]+)"\s*("[^"]+")
 # $1=$2,
 
-serenade.SpellData(
+serenade.add_spell_data(
     "Serenade_Medley",
     SpellType="Shout",
     using="Shout_SongOfRest",
@@ -80,7 +81,7 @@ serenade.SpellData(
     VerbalIntent="Buff",
 )
 
-serenade.StatusData(
+serenade.add_status_data(
     "SERENADE_MEDLEY",
     StatusType="BOOST",
     DisplayName=loca["Medley_DisplayName"],
@@ -107,7 +108,7 @@ serenade.StatusData(
     StatusGroups="SG_RemoveOnRespec",
 )
 
-serenade.Armor(
+serenade.add_armor(
     "ARM_Instrument_Lute_Serenade",
     using="ARM_Instrument_Lute_B",
     Flags="Unbreakable",
@@ -121,7 +122,7 @@ serenade.Armor(
     Weight="0.01",
 )
 
-serenade.PassiveData(
+serenade.add_passive_data(
     "Serenade_Virtuoso",
     DisplayName=loca["Virtuoso_DisplayName"],
     Description=loca["Virtuoso_Description"],
@@ -141,5 +142,20 @@ serenade.PassiveData(
         "ExpertiseBonus(Persuasion)",
     ],
 )
+
+serenade.add_root_templates([
+    Lsx.Node("GameObjects", [
+        Lsx.Attribute("DisplayName", "TranslatedString", handle="Serenade_DisplayName", version="1"),
+        Lsx.Attribute("Description", "TranslatedString", handle="Serenade_Description", version="1"),
+        Lsx.Attribute("LevelName", "FixedString", value=""),
+        Lsx.Attribute("MapKey", "FixedString", value="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5"),
+        Lsx.Attribute("Name", "LSString", value="ARM_Instrument_Lute_Serenade"),
+        Lsx.Attribute("ParentTemplateId", "FixedString", value="f2487101-548f-4494-9ec8-b20fa3ad6f7b"),
+        Lsx.Attribute("PhysicsTemplate", "FixedString", value="5d5007e5-cb6f-30ad-3d20-f762ea437673"),
+        Lsx.Attribute("Type", "FixedString", value="item"),
+        Lsx.Attribute("VisualTemplate", "FixedString", value="cfae4ff4-56ac-7bb8-9073-d732ef510c05"),
+        Lsx.Attribute("_OriginalFileVersion_", "int64", value="1"),
+    ])
+])
 
 serenade.build()

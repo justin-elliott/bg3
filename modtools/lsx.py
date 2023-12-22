@@ -141,6 +141,25 @@ class Lsx:
     class Attribute:
         """Class representing an .lsx <attribute>."""
 
+        __valid_types = set([
+            "bool",
+            "FixedString",
+            "float",
+            "fvec3",
+            "guid",
+            "int8",
+            "int16",
+            "int32",
+            "int64",
+            "LSString",
+            "LSWString",
+            "TranslatedString",
+            "uint8",
+            "uint16",
+            "uint32",
+            "uint64",
+        ])
+
         __id: str
         __type: str
         __value: str
@@ -148,10 +167,14 @@ class Lsx:
         __version: str
 
         def __init__(self, id: str, type: str, value: str = None, handle: str = None, version: int | str = 0):
+            assert type in Lsx.Attribute.__valid_types
+
             if value is not None:
+                assert type != "TranslatedString"
                 assert handle is None
                 assert int(version) == 0
             else:
+                assert type == "TranslatedString"
                 assert handle is not None
                 assert int(version) > 0
 

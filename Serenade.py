@@ -145,8 +145,8 @@ serenade.add_passive_data(
 
 serenade.add_root_templates([
     Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle="Serenade_DisplayName", version="1"),
-        Lsx.Attribute("Description", "TranslatedString", handle="Serenade_Description", version="1"),
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["Serenade_DisplayName"], version="1"),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["Serenade_Description"], version="1"),
         Lsx.Attribute("LevelName", "FixedString", value=""),
         Lsx.Attribute("MapKey", "FixedString", value="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5"),
         Lsx.Attribute("Name", "LSString", value="ARM_Instrument_Lute_Serenade"),
@@ -157,5 +157,12 @@ serenade.add_root_templates([
         Lsx.Attribute("_OriginalFileVersion_", "int64", value="1"),
     ])
 ])
+
+serenade.set_treasure_table("""\
+new treasuretable "TUT_Chest_Potions"
+CanMerge 1
+new subtable "1,1"
+object category "I_ARM_Instrument_Lute_Serenade",1,0,0,0,0,0,0,0
+""")
 
 serenade.build()

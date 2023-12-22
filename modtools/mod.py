@@ -8,6 +8,7 @@ import os
 from .localization import Localization
 from .lsx import Lsx
 from .modifiers import Modifiers
+from .prologue import TXT_PROLOGUE
 from uuid import UUID
 
 
@@ -26,6 +27,7 @@ class Mod:
     __localization: Localization
 
     __root_templates: Lsx
+    __treasure_table: str
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 0, 0, 1)):
@@ -49,6 +51,7 @@ class Mod:
         self.__modifiers = Modifiers(self)
         self.__localization = Localization(mod_uuid)
         self.__root_templates = None
+        self.__treasure_table = None
 
     def get_author(self) -> str:
         return self.__author
@@ -81,6 +84,9 @@ class Mod:
         if not self.__root_templates:
             self.__root_templates = Lsx(self.__version, "Templates", "Templates")
         self.__root_templates.add_children(nodes)
+
+    def set_treasure_table(self, text: str) -> None:
+        self.__treasure_table = text
 
     def _build_meta(self, mod_dir: str):
         """Build the meta.lsx underneath the given mod_dir."""
@@ -131,3 +137,9 @@ class Mod:
         self.__localization.build(mod_dir)
         if self.__root_templates:
             self.__root_templates.build(os.path.join(mod_dir, "Public", self.__folder, "RootTemplates", "_merged.lsx"))
+        if self.__treasure_table:
+            treasure_table_dir = os.path.join(mod_dir, "Public", self.__folder, "Stats", "Generated")
+            os.makedirs(treasure_table_dir, exist_ok=True)
+            with open(os.path.join(treasure_table_dir, "TreasureTable.txt"), "w") as f:
+                f.write(TXT_PROLOGUE)
+                f.write(self.__treasure_table)

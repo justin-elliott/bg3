@@ -154,7 +154,9 @@ def spell_boost_ability(ability: str, icon: str, cast_sound: str, target_sound: 
         "en": f"""Increase your <LSTag Tooltip="{ability}">{ability}</LSTag> by a selected amount."""
     }
     loca[f"Serenade_Boost_{ability}_00_DisplayName"] = {"en": f"Reset {ability}"}
-    loca[f"Serenade_Boost_{ability}_00_Description"] = {"en": f"Reset your {ability} to its unboosted value."}
+    loca[f"Serenade_Boost_{ability}_00_Description"] = {
+        "en": f"""Reset your <LSTag Tooltip="{ability}">{ability}</LSTag> to its unboosted value."""
+    }
 
     serenade.add_spell_data(
         f"Serenade_Boost_{ability}",
@@ -200,28 +202,30 @@ def spell_boost_ability(ability: str, icon: str, cast_sound: str, target_sound: 
         f"Serenade_Boost_{ability}_00",
         SpellType="Shout",
         using=f"Serenade_Boost_{ability}",
-        SpellContainerID=f"Serenade_Boost_{ability}",
-        ContainerSpells="",
-        SpellProperties=f"RemoveStatus(SERENADE_BOOST_{ability.upper()})",
-        Icon="PassiveFeature_Portent",
         DisplayName=loca[f"Serenade_Boost_{ability}_00_DisplayName"],
         Description=loca[f"Serenade_Boost_{ability}_00_Description"],
+        Icon="PassiveFeature_Portent",
+        ContainerSpells="",
+        SpellContainerID=f"Serenade_Boost_{ability}",
+        SpellProperties=f"RemoveStatus(SERENADE_BOOST_{ability.upper()})",
     )
 
     for boost in boost_range:
         loca[f"Serenade_Boost_{ability}_{boost:02}_DisplayName"] = {"en": f"Boost {ability} by {boost}"}
-        loca[f"Serenade_Boost_{ability}_{boost:02}_Description"] = {"en": f"Increase your {ability} by {boost}."}
+        loca[f"Serenade_Boost_{ability}_{boost:02}_Description"] = {
+            "en": f"""Increase your <LSTag Tooltip="{ability}">{ability}</LSTag> by {boost}."""
+        }
 
         serenade.add_spell_data(
             f"Serenade_Boost_{ability}_{boost:02}",
             SpellType="Shout",
             using=f"Serenade_Boost_{ability}",
-            SpellContainerID=f"Serenade_Boost_{ability}",
-            ContainerSpells="",
-            SpellProperties=f"ApplyStatus(SERENADE_BOOST_{ability.upper()},100,{boost})",
-            Icon=f"PassiveFeature_Portent_{boost}",
             DisplayName=loca[f"Serenade_Boost_{ability}_{boost:02}_DisplayName"],
             Description=loca[f"Serenade_Boost_{ability}_{boost:02}_Description"],
+            Icon=f"PassiveFeature_Portent_{boost}",
+            ContainerSpells="",
+            SpellContainerID=f"Serenade_Boost_{ability}",
+            SpellProperties=f"ApplyStatus(SERENADE_BOOST_{ability.upper()},100,{boost})",
         )
 
     serenade.add_status_data(

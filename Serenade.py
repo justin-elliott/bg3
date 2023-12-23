@@ -65,6 +65,7 @@ serenade.add_spell_data(
     Icon="Action_Song_SingForMe",
     Level="0",
     RequirementConditions="",
+    Requirements="!Combat",
     SpellProperties=[
         "ApplyStatus(SERENADE_MEDLEY,100,-1)",
         "ApplyStatus(LONGSTRIDER,100,-1)",
@@ -80,6 +81,8 @@ serenade.add_spell_data(
     ],
     VerbalIntent="Buff",
 )
+
+extra_spellslot_range = range(2, 10, 2)
 
 serenade.add_status_data(
     "SERENADE_MEDLEY",
@@ -102,11 +105,149 @@ serenade.add_status_data(
         "DarkvisionRangeMin(18)",
         "ActiveCharacterLight(c46e7ba8-e746-7020-5146-287474d7b9f7)",
     ],
+    Passives=[
+        *[f"Serenade_Extra_SpellSlots_{extra:02}" for extra in extra_spellslot_range],
+    ],
     TickType="StartTurn",
     TickFunctors="IF(HasHPPercentageLessThan(100) and not IsDowned() and not Dead()):" +
                  "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
     StatusGroups="SG_RemoveOnRespec",
 )
+
+loca["Serenade_Shout_Extra_SpellSlots_DisplayName"] = {"en": "Multiply Spell Slots"}
+loca["Serenade_Shout_Extra_SpellSlots_Description"] = {"en": "Multiply Spell Slots"}
+
+serenade.add_spell_data(
+    "Serenade_Shout_Extra_SpellSlots",
+    SpellType="Shout",
+    ContainerSpells=[
+        "Serenade_Shout_Extra_SpellSlots_00",
+        *[f"Serenade_Shout_Extra_SpellSlots_{extra:02}" for extra in extra_spellslot_range],
+    ],
+    TargetConditions="Self()",
+    DisplayName=loca["Serenade_Shout_Extra_SpellSlots_DisplayName"],
+    Description=loca["Serenade_Shout_Extra_SpellSlots_Description"],
+    Icon="Action_Song_SingForMe",
+    CastTextEvent="Cast",
+    SpellAnimation=[
+        "03496c4a-49e0-4132-b585-3e5ecd1ad8e5,,",
+        ",,",
+        "8252328a-66dd-4dc0-bbe0-00eea3204922,,",
+        "982d842b-5d44-4ef6-ab33-14d5ae514a50,,",
+        "a9682ef9-5d9e-4ac0-8144-2c7fe6eb868c,,",
+        ",,",
+        "32fb4d91-7fde-4b05-9144-ea87b9a4284a,,",
+        "dada6495-752c-4f30-a503-f05b8c811e2b,,",
+        "8ce53f9b-b559-49cd-9607-1991545060d7,,",
+    ],
+    SpellFlags=[
+        "IgnorePreviouslyPickedEntities",
+        "IsLinkedSpellContainer",
+        "Temporary",
+        "UnavailableInDialogs",
+    ],
+    HitAnimationType="MagicalNonDamage",
+    CastSound="Spell_Cast_Buff_EnhanceAbilityBearsEndurance_L1to3",
+    TargetSound="Spell_Impact_Buff_EnhanceAbilityBearsEndurance_L1to3",
+    PrepareEffect="15908bab-2ec3-4abc-a282-c3bf5f2b1387",
+    CastEffect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
+    TargetEffect="4d80e719-6b5a-4a77-829c-f9b7f38fd966",
+    UseCosts="",
+    VerbalIntent="Buff",
+)
+
+loca["Serenade_Shout_Extra_SpellSlots_00_DisplayName"] = {"en": "Reset Spell Slots"}
+loca["Serenade_Shout_Extra_SpellSlots_00_Description"] = {
+    "en": """Reset your <LSTag Tooltip="SpellSlot">Spell Slots</LSTag> to the normal number."""
+}
+
+serenade.add_spell_data(
+    "Serenade_Shout_Extra_SpellSlots_00",
+    SpellType="Shout",
+    using="Serenade_Shout_Extra_SpellSlots",
+    DisplayName=loca["Serenade_Shout_Extra_SpellSlots_00_DisplayName"],
+    Description=loca["Serenade_Shout_Extra_SpellSlots_00_Description"],
+    Icon="PassiveFeature_Portent",
+    ContainerSpells="",
+    SpellContainerID="Serenade_Shout_Extra_SpellSlots",
+    SpellProperties=[
+        *[f"RemoveStatus(SERENADE_AURA_EXTRA_SPELLSLOTS_{extra:02})" for extra in extra_spellslot_range],
+    ],
+)
+
+for extra in extra_spellslot_range:
+    additional = extra - 1  # Deduct existing spell slots
+
+    loca[f"Serenade_Shout_Extra_SpellSlots_{extra:02}_DisplayName"] = {"en": f"Multiply Spell Slots by {extra}"}
+    loca[f"Serenade_Shout_Extra_SpellSlots_{extra:02}_Description"] = {
+        "en": f"""Multiply your <LSTag Tooltip="SpellSlot">Spell Slots</LSTag> by {extra}."""
+    }
+
+    serenade.add_spell_data(
+        f"Serenade_Shout_Extra_SpellSlots_{extra:02}",
+        SpellType="Shout",
+        using="Serenade_Shout_Extra_SpellSlots",
+        DisplayName=loca[f"Serenade_Shout_Extra_SpellSlots_{extra:02}_DisplayName"],
+        Description=loca[f"Serenade_Shout_Extra_SpellSlots_{extra:02}_Description"],
+        Icon=f"PassiveFeature_Portent_{extra}",
+        ContainerSpells="",
+        SpellContainerID="Serenade_Shout_Extra_SpellSlots",
+        SpellProperties=f"ApplyStatus(SERENADE_AURA_EXTRA_SPELLSLOTS_{extra:02},100,-1)",
+    )
+
+    serenade.add_passive_data(
+        f"Serenade_Extra_SpellSlots_{extra:02}",
+        Properties="IsHidden",
+        Boosts=[
+            f"ActionResource(SpellSlot,{2*additional},1)",
+            f"IF(CharacterLevelGreaterThan(1)):ActionResource(SpellSlot,{1*additional},1)",
+            f"IF(CharacterLevelGreaterThan(2)):ActionResource(SpellSlot,{1*additional},1)",
+            f"IF(CharacterLevelGreaterThan(2)):ActionResource(SpellSlot,{2*additional},2)",
+            f"IF(CharacterLevelGreaterThan(3)):ActionResource(SpellSlot,{1*additional},2)",
+            f"IF(CharacterLevelGreaterThan(4)):ActionResource(SpellSlot,{2*additional},3)",
+            f"IF(CharacterLevelGreaterThan(5)):ActionResource(SpellSlot,{1*additional},3)",
+            f"IF(CharacterLevelGreaterThan(6)):ActionResource(SpellSlot,{1*additional},4)",
+            f"IF(CharacterLevelGreaterThan(7)):ActionResource(SpellSlot,{1*additional},4)",
+            f"IF(CharacterLevelGreaterThan(8)):ActionResource(SpellSlot,{1*additional},4)",
+            f"IF(CharacterLevelGreaterThan(8)):ActionResource(SpellSlot,{1*additional},5)",
+            f"IF(CharacterLevelGreaterThan(9)):ActionResource(SpellSlot,{1*additional},5)",
+            f"IF(CharacterLevelGreaterThan(10)):ActionResource(SpellSlot,{1*additional},6)",
+        ],
+        BoostConditions=[
+            f"HasStatus('SERENADE_AURA_EXTRA_SPELLSLOTS_{extra:02}') or "
+            f"HasStatus('SERENADE_EXTRA_SPELLSLOTS_{extra:02}')",
+        ],
+    )
+
+    serenade.add_status_data(
+        f"SERENADE_AURA_EXTRA_SPELLSLOTS_{extra:02}",
+        StatusType="BOOST",
+        AuraRadius="36",
+        AuraStatuses=f"IF(Party()):ApplyStatus(SERENADE_EXTRA_SPELLSLOTS_{extra:02})",
+        StackId="SERENADE_AURA_EXTRA_SPELLSLOTS",
+        StackType="Overwrite",
+        StatusPropertyFlags=[
+            "DisableCombatlog",
+            "DisableImmunityOverhead",
+            "DisableOverhead",
+            "DisablePortraitIndicator",
+            "IgnoreResting",
+        ],
+    )
+
+    serenade.add_status_data(
+        f"SERENADE_EXTRA_SPELLSLOTS_{extra:02}",
+        StatusType="BOOST",
+        StackId="SERENADE_EXTRA_SPELLSLOTS",
+        StackType="Overwrite",
+        StatusPropertyFlags=[
+            "DisableCombatlog",
+            "DisableImmunityOverhead",
+            "DisableOverhead",
+            "DisablePortraitIndicator",
+        ],
+        StatusGroups="SG_RemoveOnRespec",
+    )
 
 serenade.add_armor(
     "ARM_Instrument_Lute_Serenade",
@@ -312,6 +453,7 @@ serenade.add_passive_data(
         "UnlockSpell(Serenade_Boost_Intelligence)",
         "UnlockSpell(Serenade_Boost_Wisdom)",
         "UnlockSpell(Serenade_Boost_Charisma)",
+        "UnlockSpell(Serenade_Shout_Extra_SpellSlots)",
     ],
     ToggleGroup="Serenade_Retune",
 )

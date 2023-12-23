@@ -50,15 +50,15 @@ class ClassProgression:
     def parse(progression: ElementTree.Element):
         self = ClassProgression(level=None, name=None, progression_type=None, table_uuid=None, our_uuid=None)
         self.__validate_nodes(progression)
-        if self.level == None:
+        if self.level is None:
             raise AttributeError(f"Missing Progression attribute id='Level': {self}")
-        if self.name == None:
+        if self.name is None:
             raise AttributeError(f"Missing Progression attribute id='Name': {self}")
-        if self.progression_type == None:
+        if self.progression_type is None:
             raise AttributeError(f"Missing Progression attribute id='ProgressionType': {self}")
-        if self.table_uuid == None:
+        if self.table_uuid is None:
             raise AttributeError(f"Missing Progression attribute id='TableUUID': {self}")
-        if self.our_uuid == None:
+        if self.our_uuid is None:
             raise AttributeError(f"Missing Progression attribute id='UUID': {self}")
         print(self)
         return self
@@ -71,7 +71,7 @@ class ClassProgression:
                 self.__parse_children(node)
             else:
                 raise AttributeError(f"Unknown Progression tag: {node.tag}")
-    
+
     def __parse_attribute(self, attribute: ElementTree.Element):
         id = attribute.get("id")
         value = attribute.get("value")

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+	<content contentuid="WizardMetamagic_ASI_4_DisplayName" version="1">Ability Improvement (+4)</content>
+	<content contentuid="WizardMetamagic_ASI_4_Description" version="1">You have 4 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="WizardMetamagic_ASI_6_DisplayName" version="1">Ability Improvement (+6)</content>
+	<content contentuid="WizardMetamagic_ASI_6_Description" version="1">You have 6 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="WizardMetamagic_ASI_8_DisplayName" version="1">Ability Improvement (+8)</content>
+	<content contentuid="WizardMetamagic_ASI_8_Description" version="1">You have 8 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="WizardMetamagic_ASI_10_DisplayName" version="1">Ability Improvement (+10)</content>
+	<content contentuid="WizardMetamagic_ASI_10_Description" version="1">You have 10 points to spend across your abilities, to a maximum of 20.</content>
+	<content contentuid="WizardMetamagic_ASI_12_DisplayName" version="1">Ability Improvement (+12)</content>
+	<content contentuid="WizardMetamagic_ASI_12_Description" version="1">You have 12 points to spend across your abilities, to a maximum of 20.</content>
+</contentList>

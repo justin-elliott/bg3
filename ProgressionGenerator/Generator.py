@@ -140,7 +140,7 @@ def collect_progressions(progressions: ElementTree, subclass_to_class: SubclassT
 
 def feat_every_n_levels(progressions: ProgressionsDict, n_levels: int):
     for (_, _, level, _), node in progressions.items():
-        if allow_improvement_node := node.find("attribute[@id='AllowImprovement']"):
+        if (allow_improvement_node := node.find("attribute[@id='AllowImprovement']")) is not None:
             node.remove(allow_improvement_node)
         if level > 1 and level % n_levels == 0:
             ElementTree.SubElement(node, "attribute",

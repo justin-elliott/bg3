@@ -109,7 +109,10 @@ class Modifiers:
     def _complete_modifier(self, modifier: str, members: {str: Callable[[str | Iterable], None]}) -> None:
         """Add a function implementing the given modifier and members."""
         def impl(name: str, using: str = None, **kwargs):
-            assert all([key in members and members[key](value) for key, value in kwargs.items()])
+            for key, value in kwargs.items():
+                assert key in members, f"{name}: {key} is not defined for {modifier}"
+                invalid_values = members[key](value)
+                assert not invalid_values, f"{name}: Invalid values for {modifier}.{key}: {", ".join(invalid_values)}"
             self.__modifiers[name] = {"type": modifier, "using": using, **kwargs}
 
         if modifier:

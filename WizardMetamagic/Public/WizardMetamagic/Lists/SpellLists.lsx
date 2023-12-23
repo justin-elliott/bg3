@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="1" revision="1" build="1"/>
+    <region id="SpellLists">
+        <node id="root">
+            <children>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Wizard Metamagic"/>
+                    <attribute id="Spells" type="LSString" value="WizardMetamagic_StormBolt;WizardMetamagic_Fly"/>
+                    <attribute id="UUID" type="guid" value="f21c09b9-cdf7-4b79-9206-d7a4c9e003bb"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

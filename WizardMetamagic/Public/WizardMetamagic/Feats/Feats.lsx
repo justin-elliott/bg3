@@ -31,7 +31,7 @@
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true"/>
                     <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_12"/>
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,10,10,FeatASI)"/>
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,12,12,FeatASI)"/>
                     <attribute id="UUID" type="guid" value="c613d64b-d692-4b2b-9e00-983b3f3511d7"/>
                 </node>
             </children>

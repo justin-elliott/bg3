@@ -33,8 +33,8 @@
                     <attribute id="UUID" type="guid" value="731dad6b-4011-4b2d-889a-1c7a7f0764f5"/>
                 </node>
                 <node id="FeatDescription">
-                    <attribute id="DisplayName" type="TranslatedString" handle="WizardMetamagic_ASI_10_DisplayName" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="WizardMetamagic_ASI_10_Description" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="WizardMetamagic_ASI_12_DisplayName" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="WizardMetamagic_ASI_12_Description" version="1"/>
                     <attribute id="ExactMatch" type="FixedString" value="AbilityScoreIncrease_12"/>
                     <attribute id="FeatId" type="guid" value="c613d64b-d692-4b2b-9e00-983b3f3511d7"/>
                     <attribute id="UUID" type="guid" value="8ada916f-7972-4f0b-8636-d8501dfe9143"/>

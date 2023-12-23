@@ -119,7 +119,7 @@ serenade.add_armor(
         "UnlockSpell(Shout_Bard_Perform_Lute)",
     ],
     PassivesOnEquip=[
-        "Serenade_Boost_Abilities",
+        "Serenade_Retune",
         "Serenade_Virtuoso",
     ],
     Weight="0.01",
@@ -292,14 +292,14 @@ spell_boost_ability("Charisma",
                     cast_effect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
                     target_effect="70d8d0dc-e4ff-42ed-8503-09bbf2fbbeda")
 
-loca["Serenade_Boost_Abilities_DisplayName"] = {"en": "Serenade: Boost Abilities"}
-loca["Serenade_Boost_Abilities_Description"] = {"en": "Unlock the boost ability spells."}
+loca["Serenade_Retune_DisplayName"] = {"en": "Serenade: Retune"}
+loca["Serenade_Retune_Description"] = {"en": "Unlock spells to retune your abilities."}
 
 serenade.add_passive_data(
-    "Serenade_Boost_Abilities",
-    DisplayName=loca["Serenade_Boost_Abilities_DisplayName"],
-    Description=loca["Serenade_Boost_Abilities_Description"],
-    Icon="Spell_Transmutation_EnhanceAbility",
+    "Serenade_Retune",
+    DisplayName=loca["Serenade_Retune_DisplayName"],
+    Description=loca["Serenade_Retune_Description"],
+    Icon="Action_Perform_Lute",
     Properties=[
         "IsToggled",
         "ToggledDefaultAddToHotbar",
@@ -313,7 +313,7 @@ serenade.add_passive_data(
         "UnlockSpell(Serenade_Boost_Wisdom)",
         "UnlockSpell(Serenade_Boost_Charisma)",
     ],
-    ToggleGroup="Serenade_Boost_Abilities",
+    ToggleGroup="Serenade_Retune",
 )
 
 serenade.add_level_maps([

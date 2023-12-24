@@ -6,7 +6,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Wizard Metamagic cantrips"/>
-                    <attribute id="Spells" type="LSString" value="WizardMetamagic_StormBolt;WizardMetamagic_Fly;Target_Guidance"/>
+                    <attribute id="Spells" type="LSString" value="WizardMetamagic_StormBolt;WizardMetamagic_Fly;Target_Guidance;Projectile_EldritchBlast"/>
                     <attribute id="UUID" type="guid" value="f21c09b9-cdf7-4b79-9206-d7a4c9e003bb"/>
                 </node>
                 <node id="SpellList">

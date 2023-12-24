@@ -4132,7 +4132,7 @@
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="ArcaneWard;ArcaneWard_Cast;DevilsSight;ExperimentalAlchemy;GrimHarvest;ImprovedMinorIllusion;JackOfAllTrades;Portent;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);AddSpells(13622b91-fb6d-4921-afb0-dc42da978511,,,,AlwaysPrepared);AddSpells(43fb9c43-ddfa-46ff-a64f-73406dddf4eb,,,,AlwaysPrepared);AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared);AddSpells(f21c09b9-cdf7-4b79-9206-d7a4c9e003bb,,,,AlwaysPrepared);SelectPassives(49704931-e47b-4ce6-abc6-dfa7ba640752,2,Metamagic)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);AddSpells(13622b91-fb6d-4921-afb0-dc42da978511,,,,AlwaysPrepared);AddSpells(43fb9c43-ddfa-46ff-a64f-73406dddf4eb,,,,AlwaysPrepared);AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared);AddSpells(f21c09b9-cdf7-4b79-9206-d7a4c9e003bb,,,,AlwaysPrepared);AddSpells(a7c571cd-a853-48dd-8f78-4db6662ade83,,,,AlwaysPrepared);SelectPassives(49704931-e47b-4ce6-abc6-dfa7ba640752,2,Metamagic)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
                     <attribute id="UUID" type="guid" value="79b9e743-a551-4798-970c-60615e503b1d" />
                 </node>

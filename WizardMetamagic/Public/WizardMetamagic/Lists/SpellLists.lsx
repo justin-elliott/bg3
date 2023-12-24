@@ -10,6 +10,11 @@
                     <attribute id="UUID" type="guid" value="f21c09b9-cdf7-4b79-9206-d7a4c9e003bb"/>
                 </node>
                 <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Wizard Metamagic L1 spell list"/>
+                    <attribute id="Spells" type="LSString" value="WizardMetamagic_CloakOfFlames"/>
+                    <attribute id="UUID" type="guid" value="a7c571cd-a853-48dd-8f78-4db6662ade83"/>
+                </node>
+                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Wizard Metamagic L2 spell list"/>
                     <attribute id="Spells" type="LSString" value="Target_EnhanceAbility"/>
                     <attribute id="UUID" type="guid" value="a266c03a-7450-4c7b-861c-efd449161b82"/>

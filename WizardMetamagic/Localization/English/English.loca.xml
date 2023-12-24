@@ -17,5 +17,5 @@
     <content contentuid="WizardMetamagic_Fly_DisplayName" version="1">Wings of the Weave</content>
     <content contentuid="WizardMetamagic_Fly_Description" version="1">Soar on the wings of the weave.</content>
     <content contentuid="WizardMetamagic_CloakOfFlames_DisplayName" version="1">Cloak of Flames</content>
-    <content contentuid="WizardMetamagic_CloakOfFlames_Description" version="1">Gain [1] and deal [2] to any creature that hits you.</content>
+    <content contentuid="WizardMetamagic_CloakOfFlames_Description" version="1">Gain [1] and deal [2] to any creature that hits you with a melee attack.</content>
 </contentList>

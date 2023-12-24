@@ -11,7 +11,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Wizard Metamagic L1 spell list"/>
-                    <attribute id="Spells" type="LSString" value="WizardMetamagic_CloakOfFlames"/>
+                    <attribute id="Spells" type="LSString" value="WizardMetamagic_CloakOfFlames;Target_CreateDestroyWater"/>
                     <attribute id="UUID" type="guid" value="a7c571cd-a853-48dd-8f78-4db6662ade83"/>
                 </node>
                 <node id="SpellList">

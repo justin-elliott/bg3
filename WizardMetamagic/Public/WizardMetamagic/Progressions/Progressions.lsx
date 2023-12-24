@@ -4127,7 +4127,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="Savant(Abjuration);Savant(Conjuration);Savant(Divination);Savant(Enchantment);Savant(Evocation);Savant(Illusion);Savant(Necromancy);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution);Proficiency(SimpleWeapons);Proficiency(MartialWeapons);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);ActionResource(SorceryPoint,8,0);Tag(SORCERER_METAMAGIC)" />
+                    <attribute id="Boosts" type="LSString" value="Savant(Abjuration);Savant(Conjuration);Savant(Divination);Savant(Enchantment);Savant(Evocation);Savant(Illusion);Savant(Necromancy);Savant(Transmutation);ProficiencyBonus(SavingThrow,Constitution);Proficiency(SimpleWeapons);Proficiency(MartialWeapons);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);IncreaseMaxHP(ClassLevel(Wizard)*2);ActionResource(SorceryPoint,8,0);Tag(SORCERER_METAMAGIC)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="ArcaneWard;ArcaneWard_Cast;ExperimentalAlchemy;GrimHarvest;ImprovedMinorIllusion;JackOfAllTrades;Portent;SculptSpells" />

@@ -5,9 +5,19 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Wizard Metamagic"/>
+                    <attribute id="Comment" type="LSString" value="Wizard Metamagic cantrips"/>
                     <attribute id="Spells" type="LSString" value="WizardMetamagic_StormBolt;WizardMetamagic_Fly;Target_Guidance"/>
                     <attribute id="UUID" type="guid" value="f21c09b9-cdf7-4b79-9206-d7a4c9e003bb"/>
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Wizard Metamagic L2 spell list"/>
+                    <attribute id="Spells" type="LSString" value="Target_EnhanceAbility"/>
+                    <attribute id="UUID" type="guid" value="a266c03a-7450-4c7b-861c-efd449161b82"/>
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Wizard Metamagic L3 spell list"/>
+                    <attribute id="Spells" type="LSString" value="Target_SpeakWithDead_FreeRecast"/>
+                    <attribute id="UUID" type="guid" value="c7c122b4-6a88-4329-8297-b33488c50405"/>
                 </node>
             </children>
         </node>

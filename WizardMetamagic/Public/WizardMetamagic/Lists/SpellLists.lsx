@@ -21,7 +21,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Wizard Metamagic L3 spell list"/>
-                    <attribute id="Spells" type="LSString" value="Target_SpeakWithDead_FreeRecast"/>
+                    <attribute id="Spells" type="LSString" value="Target_SpeakWithDead"/>
                     <attribute id="UUID" type="guid" value="c7c122b4-6a88-4329-8297-b33488c50405"/>
                 </node>
             </children>

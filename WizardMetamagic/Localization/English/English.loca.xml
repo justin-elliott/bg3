@@ -10,7 +10,7 @@
 	<content contentuid="WizardMetamagic_ASI_10_Description" version="1">You have 10 points to spend across your abilities, to a maximum of 20.</content>
 	<content contentuid="WizardMetamagic_ASI_12_DisplayName" version="1">Ability Improvement (+12)</content>
 	<content contentuid="WizardMetamagic_ASI_12_Description" version="1">You have 12 points to spend across your abilities, to a maximum of 20.</content>
-    <content contentuid="WizardMetamagic_Intensified_DisplayName" version="1">Intensified Spell</content>
+    <content contentuid="WizardMetamagic_Intensified_DisplayName" version="1">Metamagic: Intensified Spell</content>
     <content contentuid="WizardMetamagic_Intensified_Description" version="1">When you deal spell damage, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.</content>
     <content contentuid="WizardMetamagic_StormBolt_DisplayName" version="1">Storm Bolt</content>
     <content contentuid="WizardMetamagic_StormBolt_Description" version="1">Project a thunderous bolt of lightning.</content>

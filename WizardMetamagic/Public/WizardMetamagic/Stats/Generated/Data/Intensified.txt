@@ -7,7 +7,7 @@ data "Icon" "Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell"
 data "Boosts" "UnlockInterrupt(WizardMetamagic_IntensifiedInterrupt)"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnCastResolved"
-data "StatsFunctors" "RemoveStatus(WizardMetamagic_INTENSIFIED)"
+data "StatsFunctors" "RemoveStatus(WIZARD_METAMAGIC_INTENSIFIED)"
 
 new entry "WizardMetamagic_IntensifiedInterrupt"
 type "InterruptData"

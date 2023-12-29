@@ -32,6 +32,7 @@ loca["AbyssalTiefling_Description"] = {"en": """
 
 progression_table_id = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
 abyssal_tiefling_spells_level_1_uuid = UUID("15cf6370-2079-4afe-ab46-bc173f6c555d")
+abyssal_tiefling_spells_level_5_uuid = UUID("969a3605-ff33-46b5-9501-fb06f53ff4df")
 abyssal_tiefling_spells_level_7_uuid = UUID("3eba0261-7d82-4100-99a8-c234b204b43a")
 
 abyssal_tiefling.add_progression_descriptions([
@@ -56,7 +57,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("PassivesAdded", "LSString", value=["AbyssalTiefling_Blindsight"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
         Lsx.Attribute("Selectors", "LSString", value=[
-            f"AddSpells({str(abyssal_tiefling_spells_level_1_uuid)},,,,AlwaysPrepared)",
+            f"AddSpells({str(abyssal_tiefling_spells_level_1_uuid)})",
         ]),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
         Lsx.Attribute("UUID", "guid", value="e7111142-9200-4b09-88cf-8faf4d3ff17f"),
@@ -74,6 +75,9 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
         Lsx.Attribute("PassivesAdded", "LSString", value=["ExtraAttack"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("Selectors", "LSString", value=[
+            f"AddSpells({str(abyssal_tiefling_spells_level_5_uuid)})",
+        ]),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
         Lsx.Attribute("UUID", "guid", value="30a1f5ab-1fe3-48a7-bff3-4cef3acf6b9f"),
     ]),
@@ -82,7 +86,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
         Lsx.Attribute("Selectors", "LSString", value=[
-            f"AddSpells({str(abyssal_tiefling_spells_level_7_uuid)},,,,AlwaysPrepared)",
+            f"AddSpells({str(abyssal_tiefling_spells_level_7_uuid)})",
         ]),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
         Lsx.Attribute("UUID", "guid", value="76f287d4-2387-46b9-94cd-aec7c9bfa21a"),
@@ -148,6 +152,27 @@ abyssal_tiefling.add_spell_data(
     Sheathing="Sheathed",
 )
 
+loca["AbyssalTiefling_AbyssalStep_DisplayName"] = {"en": "Abyssal Step"}
+loca["AbyssalTiefling_AbyssalStep_Description"] = {"en": """
+    Stepping between planes, you teleport to an unoccupied space you can see.
+    """}
+
+abyssal_tiefling.add_spell_data(
+    "AbyssalTiefling_AbyssalStep",
+    using="Target_MistyStep",
+    SpellType="Target",
+    DisplayName=loca["AbyssalTiefling_AbyssalStep_DisplayName"],
+    Description=loca["AbyssalTiefling_AbyssalStep_Description"],
+    Icon="Action_Warlock_OneWithShadows",
+    Level="",
+    SpellSchool="None",
+    Sheathing="Sheathed",
+    SpellStyleGroup="Class",
+    UseCosts="Movement:Distance*0.5",
+    PrepareEffect="a0458d31-f8ef-419a-8708-5715c81e91d3",
+    CastEffect="52af7a1d-d5d9-4506-85ce-d124f1ef9ea5",
+)
+
 loca["AbyssalTiefling_Swipe_DisplayName"] = {"en": "Swipe"}
 loca["AbyssalTiefling_Swipe_Description"] = {"en": """
     Lash out with your claws to strike up to [1] enemies at once and make them
@@ -193,6 +218,13 @@ abyssal_tiefling.add_spell_lists([
             "AbyssalTiefling_Claws",
         ]),
         Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_spells_level_1_uuid)),
+    ]),
+    Lsx.Node("SpellList", [
+        Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling spells granted at level 5"),
+        Lsx.Attribute("Spells", "LSString", value=[
+            "AbyssalTiefling_AbyssalStep",
+        ]),
+        Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_spells_level_5_uuid)),
     ]),
     Lsx.Node("SpellList", [
         Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling spells granted at level 7"),

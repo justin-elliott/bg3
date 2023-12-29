@@ -30,7 +30,15 @@ loca["AbyssalTiefling_Description"] = {"en": """
     Abyss.
     """}
 
-progression_table_id = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
+loca["AbyssalTiefling_DemonicResilience_DisplayName"] = {"en": "Demonic Resilience"}
+loca["AbyssalTiefling_DemonicResilience_Description"] = {"en": """
+    Your <LSTag Tooltip="ArmorClass">Armour Class</LSTag> increases by 1.
+    Your <LSTag Tooltip="HitPoints">hit point</LSTag> maximum increases by 2 for each level.
+    """}
+
+progression_table_uuid = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
+progression_table_level_1_uuid = UUID("e7111142-9200-4b09-88cf-8faf4d3ff17f")
+
 abyssal_tiefling_spells_level_1_uuid = UUID("15cf6370-2079-4afe-ab46-bc173f6c555d")
 abyssal_tiefling_spells_level_5_uuid = UUID("969a3605-ff33-46b5-9501-fb06f53ff4df")
 abyssal_tiefling_spells_level_7_uuid = UUID("3eba0261-7d82-4100-99a8-c234b204b43a")
@@ -39,9 +47,17 @@ abyssal_tiefling.add_progression_descriptions([
     Lsx.Node("ProgressionDescription", [
         Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["AbyssalTiefling_DisplayName"], version=1),
         Lsx.Attribute("Description", "TranslatedString", handle=loca["AbyssalTiefling_Description"], version=1),
-        Lsx.Attribute("ProgressionTableId", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("ProgressionTableId", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("Type", "FixedString", value="AbyssalTiefling"),
         Lsx.Attribute("UUID", "guid", "f7de8c05-f4b4-4c26-b944-a073c6155386"),
+    ]),
+    Lsx.Node("ProgressionDescription", [
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["AbyssalTiefling_DemonicResilience_DisplayName"], version=1),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["AbyssalTiefling_DemonicResilience_Description"], version=1),
+        Lsx.Attribute("ExactMatch", "FixedString", value="IncreaseMaxHP(Level*2)"),
+        Lsx.Attribute("ProgressionId", "guid", value=str(progression_table_level_1_uuid)),
+        Lsx.Attribute("Type", "FixedString", value="AbyssalTiefling"),
+        Lsx.Attribute("UUID", "guid", "a70f3a8a-fa30-4f02-8114-da7605a855b2"),
     ]),
 ])
 
@@ -59,15 +75,15 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Selectors", "LSString", value=[
             f"AddSpells({str(abyssal_tiefling_spells_level_1_uuid)})",
         ]),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
-        Lsx.Attribute("UUID", "guid", value="e7111142-9200-4b09-88cf-8faf4d3ff17f"),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
+        Lsx.Attribute("UUID", "guid", value=str(progression_table_level_1_uuid)),
     ]),
     Lsx.Node("Progression", [
         Lsx.Attribute("Level", "uint8", value="3"),
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
         Lsx.Attribute("PassivesAdded", "LSString", value=["FastHands"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="3e7d1f8a-0c4c-49fd-bcc4-45d5369bbf2f"),
     ]),
     Lsx.Node("Progression", [
@@ -78,7 +94,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Selectors", "LSString", value=[
             f"AddSpells({str(abyssal_tiefling_spells_level_5_uuid)})",
         ]),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="30a1f5ab-1fe3-48a7-bff3-4cef3acf6b9f"),
     ]),
     Lsx.Node("Progression", [
@@ -88,7 +104,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Selectors", "LSString", value=[
             f"AddSpells({str(abyssal_tiefling_spells_level_7_uuid)})",
         ]),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="76f287d4-2387-46b9-94cd-aec7c9bfa21a"),
     ]),
     Lsx.Node("Progression", [
@@ -96,7 +112,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
         Lsx.Attribute("PassivesAdded", "LSString", value=["ImprovedCritical"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="a21e3cfe-b2f5-42aa-a612-c1764f15c06c"),
     ]),
     Lsx.Node("Progression", [
@@ -105,7 +121,7 @@ abyssal_tiefling.add_progressions([
         Lsx.Attribute("PassivesAdded", "LSString", value=["ExtraAttack_2"]),
         Lsx.Attribute("PassivesRemoved", "LSString", value=["ExtraAttack"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
-        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="91a1b0f9-831f-4b40-9446-b95387e94899"),
     ]),
 ])
@@ -245,7 +261,7 @@ abyssal_tiefling.add_races([
         Lsx.Attribute("DisplayTypeUUID", "guid", value="899d275e-9893-490a-9cd5-be856794929f"),
         Lsx.Attribute("Name", "FixedString", value="AbyssalTiefling"),
         Lsx.Attribute("ParentGuid", "guid", value="b6dccbed-30f3-424b-a181-c4540cf38197"),
-        Lsx.Attribute("ProgressionTableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("ProgressionTableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("RaceSoundSwitch", "FixedString", value="Tiefling"),
         Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_race_uuid)),
     ], children=[

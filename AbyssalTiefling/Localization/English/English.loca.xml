@@ -3,6 +3,8 @@
 <contentList>
     <content contentuid="h59fe9bf1g9178g0eb8g8556g7dec2db10335" version="1">Abyssal Tiefling</content>
     <content contentuid="h3ac9adbeg73acg461ag833ag1bd4ccb0b914" version="1">You are an outcast among outcasts; your bloodline hails not from the Nine Hells, but from the Infinite Layers of the Abyss.</content>
+    <content contentuid="h00be1ed5g1464g61f2ga238g0ea3ce186a84" version="1">Demonic Resilience</content>
+    <content contentuid="hd93b389cg2378g4587gd6dcgd9a4d1cb17a2" version="1">Your &lt;LSTag Tooltip="ArmorClass"&gt;Armour Class&lt;/LSTag&gt; increases by 1. Your &lt;LSTag Tooltip="HitPoints"&gt;hit point&lt;/LSTag&gt; maximum increases by 2 for each level.</content>
     <content contentuid="hb9c06c8cg045bgc73fg8d83g4a11c55fe5b3" version="1">You can perceive your surroundings without relying on sight.</content>
     <content contentuid="hea62db78g1a05g56d9g5797g80c47b19e385" version="1">Claws</content>
     <content contentuid="h2d87c86cgca73g3a43g97d5g7217dcc20330" version="1">Lash out with deadly claws and make your enemy &lt;LSTag Type="Status" Tooltip="BLEEDING"&gt;Bleed&lt;/LSTag&gt;.</content>

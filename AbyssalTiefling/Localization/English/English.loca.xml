@@ -6,4 +6,6 @@
     <content contentuid="hb9c06c8cg045bgc73fg8d83g4a11c55fe5b3" version="1">You can perceive your surroundings without relying on sight.</content>
     <content contentuid="h0cfdfe6cgb937g72e4g16d1g3b1e26106a50" version="1">Demonic Power</content>
     <content contentuid="hf48536efgd379ga56eg893eg0deb286e7bab" version="1">Your attacks deal an additional [1].</content>
+    <content contentuid="ha00f3d16g6bd6g8ba7g9190g0481ce68bc68" version="1">Abyssal Blast</content>
+    <content contentuid="h35cd4f4dgcc5dgc414g4573ga341be9384e0" version="1">Shoot [1] beam(s) of abyssal energy. If a target is reduced to 0 &lt;LSTag Tooltip="HitPoints"&gt;hit points&lt;/LSTag&gt;, it disintegrates into a crumbly ash.</content>
 </contentList>

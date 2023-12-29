@@ -28,6 +28,7 @@ loca["AbyssalTiefling_Description"] = {"en": """
     """}
 
 progression_table_id = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
+abyssal_tiefling_cantrips_uuid = UUID("15cf6370-2079-4afe-ab46-bc173f6c555d")
 
 abyssal_tiefling.add_progression_descriptions([
     Lsx.Node("ProgressionDescription", [
@@ -51,6 +52,9 @@ abyssal_tiefling.add_progressions([
             "AbyssalTiefling_DamageBonus",
         ]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("Selectors", "LSString", value=[
+            f"AddSpells({str(abyssal_tiefling_cantrips_uuid)},,,,AlwaysPrepared)",
+        ]),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
         Lsx.Attribute("UUID", "guid", value="e7111142-9200-4b09-88cf-8faf4d3ff17f"),
     ]),
@@ -90,6 +94,70 @@ abyssal_tiefling.add_passive_data(
     Properties="Highlighted",
     Boosts=["DamageBonus(LevelMapValue(AbyssalTiefling_DamageBonus_Value),Force)"],
 )
+
+loca["AbyssalTiefling_AbyssalBlast_DisplayName"] = {"en": "Abyssal Blast"}
+loca["AbyssalTiefling_AbyssalBlast_Description"] = {"en": """
+    Shoot [1] beam(s) of abyssal energy. If a target is reduced to 0 <LSTag Tooltip="HitPoints">hit points</LSTag>,
+    it disintegrates into a crumbly ash.
+    """}
+
+abyssal_tiefling.add_spell_data(
+    "AbyssalTiefling_AbyssalBlast",
+    SpellType="Projectile",
+    DisplayName=loca["AbyssalTiefling_AbyssalBlast_DisplayName"],
+    Description=loca["AbyssalTiefling_AbyssalBlast_Description"],
+    Icon="Spell_Transmutation_Disintegrate",
+    Level="0",
+    SpellSchool="Evocation",
+    TargetFloor="-1",
+    TargetRadius="18",
+    AmountOfTargets="LevelMapValue(EldritchBlast)",
+    DeathType="Disintegrate",
+    SpellRoll="Attack(AttackType.RangedSpellAttack)",
+    SpellSuccess="DealDamage(1d10,Force,Magical)",
+    TargetConditions="not Self() and not Dead()",
+    ProjectileCount="1",
+    CastTargetHitDelay="100",
+    Trajectories="499eff0a-d2d5-4ab0-aeff-96c08283ca99",
+    DescriptionParams="LevelMapValue(EldritchBlast)",
+    TooltipDamageList="DealDamage(1d10,Force,Magical)",
+    TooltipAttackSave="RangedSpellAttack",
+    PrepareSound="Spell_Prepare_Damage_Disintegrate",
+    CastSound="Spell_Cast_Damage_Disintegrate",
+    CastTextEvent="Cast",
+    UseCosts="ActionPoint:1",
+    SpellAnimation=[
+        "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,",
+        ",,",
+        "1063ac71-be5e-435e-875d-78718d123a1f,,",
+        "d0b99285-a55a-44e6-9e46-b30daac9569c,,",
+        "d8925ce4-d6d9-400c-92f5-ad772ef7f178,,",
+        ",,",
+        "eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,",
+        ",,",
+        ",,",
+    ],
+    VerbalIntent="Damage",
+    SpellFlags=[
+        "HasVerbalComponent",
+        "HasSomaticComponent",
+        "IsHarmful",
+        "IsSpell",
+    ],
+    PrepareEffect="5a90f50d-c9ae-47f3-8dd3-3054ee4a410a",
+    CastEffect="ced71f50-d27c-47c2-b816-5a3ed78607fe",
+    DamageType="Force",
+)
+
+abyssal_tiefling.add_spell_lists([
+    Lsx.Node("SpellList", [
+        Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling Cantrips"),
+        Lsx.Attribute("Spells", "LSString", value=[
+            "AbyssalTiefling_AbyssalBlast",
+        ]),
+        Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_cantrips_uuid)),
+    ])
+])
 
 abyssal_tiefling_race_uuid = UUID("89e36a3c-6249-48fd-af3d-31e7a9a99406")
 abyssal_tiefling_tag_uuid = UUID("e8185e91-8340-42f1-81ca-92adb140d637")

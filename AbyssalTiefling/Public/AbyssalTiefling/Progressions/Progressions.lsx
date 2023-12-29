@@ -11,6 +11,7 @@
                     <attribute id="Name" type="LSString" value="AbyssalTiefling" />
                     <attribute id="PassivesAdded" type="LSString" value="AbyssalTiefling_Blindsight;AbyssalTiefling_DamageBonus" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(15cf6370-2079-4afe-ab46-bc173f6c555d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fca5d92b-b012-4d99-880c-776c1028fa66" />
                     <attribute id="UUID" type="guid" value="e7111142-9200-4b09-88cf-8faf4d3ff17f" />
                 </node>

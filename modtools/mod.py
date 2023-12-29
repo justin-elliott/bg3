@@ -33,6 +33,7 @@ class Mod:
     __progression_descriptions: Lsx
     __races: Lsx
     __root_templates: Lsx
+    __spell_lists: Lsx
     __tags: Lsx
     __treasure_table: [str]
 
@@ -65,6 +66,7 @@ class Mod:
         self.__progression_descriptions = None
         self.__races = None
         self.__root_templates = None
+        self.__spell_lists = None
         self.__tags = None
         self.__treasure_table = None
 
@@ -124,6 +126,11 @@ class Mod:
         if not self.__root_templates:
             self.__root_templates = Lsx(self.__version, "Templates", "Templates")
         self.__root_templates.add_children(nodes)
+
+    def add_spell_lists(self, nodes: [Lsx.Node]) -> None:
+        if not self.__spell_lists:
+            self.__spell_lists = Lsx(self.__version, "SpellLists", "root")
+        self.__spell_lists.add_children(nodes)
 
     def add_tags(self, nodes: [Lsx.Node]) -> None:
         if not self.__tags:
@@ -199,6 +206,10 @@ class Mod:
         if self.__root_templates:
             self.__root_templates.build(os.path.join(public_dir, "RootTemplates", "_merged.lsx"))
 
+    def _build_spell_lists(self, public_dir: str) -> None:
+        if self.__spell_lists:
+            self.__spell_lists.build(os.path.join(public_dir, "Lists", "SpellLists.lsx"))
+
     def _build_tags(self, public_dir: str) -> None:
         if self.__tags:
             for tag in self.__tags:
@@ -230,5 +241,6 @@ class Mod:
         self._build_progression_descriptions(public_dir)
         self._build_races(public_dir)
         self._build_root_templates(public_dir)
+        self._build_spell_lists(public_dir)
         self._build_tags(public_dir)
         self._build_treasure_table(public_dir)

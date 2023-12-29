@@ -204,7 +204,7 @@ class Lsx:
                 "type": self.__type
             }
             if self.__value is not None:
-                attrib["value"] = self.__value
+                attrib["value"] = self.__value if isinstance(self.__value, str) else ";".join(self.__value)
             else:
                 attrib["handle"] = self.__handle
                 attrib["version"] = self.__version
@@ -239,6 +239,7 @@ class Lsx:
     def set_root(self, root: Lsx.Node) -> None:
         assert self.__region
         assert not self.__root
+        self.__region.set_node(root)
         self.__root = root
 
     def add_children(self, nodes: [Lsx.Node]) -> None:

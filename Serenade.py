@@ -42,7 +42,7 @@ serenade.add_root_templates([
     ])
 ])
 
-serenade.set_treasure_table("""\
+serenade.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"

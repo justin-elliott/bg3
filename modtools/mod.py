@@ -27,9 +27,14 @@ class Mod:
     __modifiers: Modifiers
     __localization: Localization
 
+    __character_creation_presets: Lsx
     __level_maps: Lsx
+    __progressions: Lsx
+    __progression_descriptions: Lsx
+    __races: Lsx
     __root_templates: Lsx
-    __treasure_table: str
+    __tags: Lsx
+    __treasure_table: [str]
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 1, 1, 1)):
@@ -54,8 +59,13 @@ class Mod:
         self.__modifiers = Modifiers(self)
         self.__localization = Localization(mod_uuid)
 
+        self.__character_creation_presets = None
         self.__level_maps = None
+        self.__progressions = None
+        self.__progression_descriptions = None
+        self.__races = None
         self.__root_templates = None
+        self.__tags = None
         self.__treasure_table = None
 
     def get_author(self) -> str:
@@ -85,20 +95,46 @@ class Mod:
     def get_localization(self) -> Localization:
         return self.__localization
 
+    def add_character_creation_presets(self, nodes: [Lsx.Node]) -> None:
+        if not self.__character_creation_presets:
+            self.__character_creation_presets = Lsx(self.__version, "CharacterCreationPresets", "root")
+        self.__character_creation_presets.add_children(nodes)
+
     def add_level_maps(self, nodes: [Lsx.Node]) -> None:
         if not self.__level_maps:
             self.__level_maps = Lsx(self.__version, "LevelMapValues", "root")
         self.__level_maps.add_children(nodes)
+
+    def add_progressions(self, nodes: [Lsx.Node]) -> None:
+        if not self.__progressions:
+            self.__progressions = Lsx(self.__version, "Progressions", "root")
+        self.__progressions.add_children(nodes)
+
+    def add_progression_descriptions(self, nodes: [Lsx.Node]) -> None:
+        if not self.__progression_descriptions:
+            self.__progression_descriptions = Lsx(self.__version, "ProgressionDescriptions", "root")
+        self.__progression_descriptions.add_children(nodes)
+
+    def add_races(self, nodes: [Lsx.Node]) -> None:
+        if not self.__races:
+            self.__races = Lsx(self.__version, "Races", "root")
+        self.__races.add_children(nodes)
 
     def add_root_templates(self, nodes: [Lsx.Node]) -> None:
         if not self.__root_templates:
             self.__root_templates = Lsx(self.__version, "Templates", "Templates")
         self.__root_templates.add_children(nodes)
 
-    def set_treasure_table(self, text: str) -> None:
-        self.__treasure_table = text
+    def add_tags(self, nodes: [Lsx.Node]) -> None:
+        if not self.__tags:
+            self.__tags = []
+        self.__tags.extend(nodes)
 
-    def _build_meta(self, mod_dir: str):
+    def add_treasure_table(self, text: str) -> None:
+        self.__treasure_table = self.__treasure_table or []
+        self.__treasure_table.append(text)
+
+    def _build_meta(self, mod_dir: str) -> None:
         """Build the meta.lsx underneath the given mod_dir."""
         build_version = str(time.time_ns())
 
@@ -137,20 +173,62 @@ class Mod:
         ])
         lsx.build(os.path.join(mod_dir, "Mods", self.__folder, "meta.lsx"))
 
-    def build(self):
+    def _build_character_creation_presets(self, public_dir: str) -> None:
+        if self.__character_creation_presets:
+            self.__character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
+                                                                 "CharacterCreationPresets.lsx"))
+
+    def _build_level_maps(self, public_dir: str) -> None:
+        if self.__level_maps:
+            self.__level_maps.build(os.path.join(public_dir, "Levelmaps", "LevelMapValues.lsx"))
+
+    def _build_progressions(self, public_dir: str) -> None:
+        if self.__progressions:
+            self.__progressions.build(os.path.join(public_dir, "Progressions", "Progressions.lsx"))
+
+    def _build_progression_descriptions(self, public_dir: str) -> None:
+        if self.__progression_descriptions:
+            self.__progression_descriptions.build(
+                os.path.join(public_dir, "Progressions", "ProgressionDescriptions.lsx"))
+
+    def _build_races(self, public_dir: str) -> None:
+        if self.__races:
+            self.__races.build(os.path.join(public_dir, "Races", "Races.lsx"))
+
+    def _build_root_templates(self, public_dir: str) -> None:
+        if self.__root_templates:
+            self.__root_templates.build(os.path.join(public_dir, "RootTemplates", "_merged.lsx"))
+
+    def _build_tags(self, public_dir: str) -> None:
+        if self.__tags:
+            for tag in self.__tags:
+                lsx = Lsx(self.__version, "Tags")
+                lsx.set_root(tag)
+                tag_uuid = next(attr.get_value() for attr in tag.get_attributes() if attr.get_id() == "UUID")
+                tag_file = f"{tag_uuid}.lsx"
+                lsx.build(os.path.join(public_dir, "Tags", tag_file))
+
+    def _build_treasure_table(self, public_dir: str) -> None:
+        if self.__treasure_table:
+            treasure_table_dir = os.path.join(public_dir, "Stats", "Generated")
+            os.makedirs(treasure_table_dir, exist_ok=True)
+            with open(os.path.join(treasure_table_dir, "TreasureTable.txt"), "w") as f:
+                f.write(TXT_PROLOGUE)
+                f.write("\n".join(self.__treasure_table))
+
+    def build(self) -> None:
         """Build the mod files underneath the __base_dir."""
         mod_dir = os.path.join(self.__base_dir, self.__folder)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self.__modifiers.build(mod_dir, self.__folder)
         self.__localization.build(mod_dir)
-        if self.__level_maps:
-            self.__level_maps.build(os.path.join(mod_dir, "Public", self.__folder, "Levelmaps", "LevelMapValues.lsx"))
-        if self.__root_templates:
-            self.__root_templates.build(os.path.join(mod_dir, "Public", self.__folder, "RootTemplates", "_merged.lsx"))
-        if self.__treasure_table:
-            treasure_table_dir = os.path.join(mod_dir, "Public", self.__folder, "Stats", "Generated")
-            os.makedirs(treasure_table_dir, exist_ok=True)
-            with open(os.path.join(treasure_table_dir, "TreasureTable.txt"), "w") as f:
-                f.write(TXT_PROLOGUE)
-                f.write(self.__treasure_table)
+        public_dir = os.path.join(mod_dir, "Public", self.__folder)
+        self._build_character_creation_presets(public_dir)
+        self._build_level_maps(public_dir)
+        self._build_progressions(public_dir)
+        self._build_progression_descriptions(public_dir)
+        self._build_races(public_dir)
+        self._build_root_templates(public_dir)
+        self._build_tags(public_dir)
+        self._build_treasure_table(public_dir)

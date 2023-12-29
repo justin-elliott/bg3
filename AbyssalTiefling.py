@@ -12,6 +12,9 @@ from uuid import UUID
 # <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
 # Lsx.Attribute("$1", "$2", value="$3"),
 
+# data\s*"([^"]*)"\s*"([^"]*)"
+# $1="$2",
+
 abyssal_tiefling = Mod(os.path.dirname(__file__),
                        author="justin-elliott",
                        name="AbyssalTiefling",
@@ -28,7 +31,8 @@ loca["AbyssalTiefling_Description"] = {"en": """
     """}
 
 progression_table_id = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
-abyssal_tiefling_cantrips_uuid = UUID("15cf6370-2079-4afe-ab46-bc173f6c555d")
+abyssal_tiefling_spells_level_1_uuid = UUID("15cf6370-2079-4afe-ab46-bc173f6c555d")
+abyssal_tiefling_spells_level_7_uuid = UUID("3eba0261-7d82-4100-99a8-c234b204b43a")
 
 abyssal_tiefling.add_progression_descriptions([
     Lsx.Node("ProgressionDescription", [
@@ -43,20 +47,62 @@ abyssal_tiefling.add_progression_descriptions([
 abyssal_tiefling.add_progressions([
     Lsx.Node("Progression", [
         Lsx.Attribute("Boosts", "LSString", value=[
+            "AC(1)",
             "ActionResource(Movement,1.5,0)",
+            "IncreaseMaxHP(Level*2)",
         ]),
         Lsx.Attribute("Level", "uint8", value="1"),
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
-        Lsx.Attribute("PassivesAdded", "LSString", value=[
-            "AbyssalTiefling_Blindsight",
-            "AbyssalTiefling_DamageBonus",
-        ]),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["AbyssalTiefling_Blindsight"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
         Lsx.Attribute("Selectors", "LSString", value=[
-            f"AddSpells({str(abyssal_tiefling_cantrips_uuid)},,,,AlwaysPrepared)",
+            f"AddSpells({str(abyssal_tiefling_spells_level_1_uuid)},,,,AlwaysPrepared)",
         ]),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
         Lsx.Attribute("UUID", "guid", value="e7111142-9200-4b09-88cf-8faf4d3ff17f"),
+    ]),
+    Lsx.Node("Progression", [
+        Lsx.Attribute("Level", "uint8", value="3"),
+        Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["FastHands"]),
+        Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("UUID", "guid", value="3e7d1f8a-0c4c-49fd-bcc4-45d5369bbf2f"),
+    ]),
+    Lsx.Node("Progression", [
+        Lsx.Attribute("Level", "uint8", value="5"),
+        Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["ExtraAttack"]),
+        Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("UUID", "guid", value="30a1f5ab-1fe3-48a7-bff3-4cef3acf6b9f"),
+    ]),
+    Lsx.Node("Progression", [
+        Lsx.Attribute("Level", "uint8", value="7"),
+        Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
+        Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("Selectors", "LSString", value=[
+            f"AddSpells({str(abyssal_tiefling_spells_level_7_uuid)},,,,AlwaysPrepared)",
+        ]),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("UUID", "guid", value="76f287d4-2387-46b9-94cd-aec7c9bfa21a"),
+    ]),
+    Lsx.Node("Progression", [
+        Lsx.Attribute("Level", "uint8", value="9"),
+        Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["ImprovedCritical"]),
+        Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("UUID", "guid", value="a21e3cfe-b2f5-42aa-a612-c1764f15c06c"),
+    ]),
+    Lsx.Node("Progression", [
+        Lsx.Attribute("Level", "uint8", value="11"),
+        Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["ExtraAttack_2"]),
+        Lsx.Attribute("PassivesRemoved", "LSString", value=["ExtraAttack"]),
+        Lsx.Attribute("ProgressionType", "uint8", value="2"),
+        Lsx.Attribute("TableUUID", "guid", value=str(progression_table_id)),
+        Lsx.Attribute("UUID", "guid", value="91a1b0f9-831f-4b40-9446-b95387e94899"),
     ]),
 ])
 
@@ -64,8 +110,8 @@ abyssal_tiefling.add_level_maps([
     Lsx.Node("LevelMapSeries", [
         *[Lsx.Attribute(f"Level{level}", "LSString", value=f"1d{int((level + 3) / 4) * 2 + 2}")
             for level in range(1, 21)],
-        Lsx.Attribute("Name", "FixedString", value="AbyssalTiefling_DamageBonus_Value"),
-        Lsx.Attribute("UUID", "guid", value="3613e308-4e1d-4b2d-b0cb-b8882af1bff4"),
+        Lsx.Attribute("Name", "FixedString", value="AbyssalTiefling_Claws_Value"),
+        Lsx.Attribute("UUID", "guid", value="89918fbb-1395-46b8-b764-3ef5b56a4ea2"),
     ]),
 ])
 
@@ -80,83 +126,81 @@ abyssal_tiefling.add_passive_data(
     Properties="Highlighted",
 )
 
-loca["AbyssalTiefling_DamageBonus_DisplayName"] = {"en": "Demonic Power"}
-loca["AbyssalTiefling_DamageBonus_Description"] = {"en": """
-    Your attacks deal an additional [1].
-    """}
-
-abyssal_tiefling.add_passive_data(
-    "AbyssalTiefling_DamageBonus",
-    DisplayName=loca["AbyssalTiefling_DamageBonus_DisplayName"],
-    Description=loca["AbyssalTiefling_DamageBonus_Description"],
-    DescriptionParams="DealDamage(LevelMapValue(AbyssalTiefling_DamageBonus_Value),Force)",
-    Icon="Spell_Abjuration_MagicCircle_Fiend",
-    Properties="Highlighted",
-    Boosts=["DamageBonus(LevelMapValue(AbyssalTiefling_DamageBonus_Value),Force)"],
-)
-
-loca["AbyssalTiefling_AbyssalBlast_DisplayName"] = {"en": "Abyssal Blast"}
-loca["AbyssalTiefling_AbyssalBlast_Description"] = {"en": """
-    Shoot [1] beam(s) of abyssal energy. If a target is reduced to 0 <LSTag Tooltip="HitPoints">hit points</LSTag>,
-    it disintegrates into a crumbly ash.
+loca["AbyssalTiefling_Claws_DisplayName"] = {"en": "Claws"}
+loca["AbyssalTiefling_Claws_Description"] = {"en": """
+    Lash out with deadly claws and make your enemy <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
     """}
 
 abyssal_tiefling.add_spell_data(
-    "AbyssalTiefling_AbyssalBlast",
-    SpellType="Projectile",
-    DisplayName=loca["AbyssalTiefling_AbyssalBlast_DisplayName"],
-    Description=loca["AbyssalTiefling_AbyssalBlast_Description"],
-    Icon="Spell_Transmutation_Disintegrate",
-    Level="0",
-    SpellSchool="Evocation",
-    TargetFloor="-1",
-    TargetRadius="18",
-    AmountOfTargets="LevelMapValue(EldritchBlast)",
-    DeathType="Disintegrate",
-    SpellRoll="Attack(AttackType.RangedSpellAttack)",
-    SpellSuccess="DealDamage(1d10,Force,Magical)",
-    TargetConditions="not Self() and not Dead()",
-    ProjectileCount="1",
-    CastTargetHitDelay="100",
-    Trajectories="499eff0a-d2d5-4ab0-aeff-96c08283ca99",
-    DescriptionParams="LevelMapValue(EldritchBlast)",
-    TooltipDamageList="DealDamage(1d10,Force,Magical)",
-    TooltipAttackSave="RangedSpellAttack",
-    PrepareSound="Spell_Prepare_Damage_Disintegrate",
-    CastSound="Spell_Cast_Damage_Disintegrate",
-    CastTextEvent="Cast",
-    UseCosts="ActionPoint:1",
-    SpellAnimation=[
-        "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,",
-        ",,",
-        "1063ac71-be5e-435e-875d-78718d123a1f,,",
-        "d0b99285-a55a-44e6-9e46-b30daac9569c,,",
-        "d8925ce4-d6d9-400c-92f5-ad772ef7f178,,",
-        ",,",
-        "eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,",
-        ",,",
-        ",,",
+    "AbyssalTiefling_Claws",
+    using="Target_Claws_Imp",
+    SpellType="Target",
+    DisplayName=loca["AbyssalTiefling_Claws_DisplayName"],
+    Description=loca["AbyssalTiefling_Claws_Description"],
+    SpellSuccess=[
+        "DealDamage(max(1,LevelMapValue(AbyssalTiefling_Claws_Value)+UnarmedMeleeAbilityModifier),Slashing,Magical)",
+        "IF(Character()):ApplyStatus(BLEEDING,100,2)",
     ],
-    VerbalIntent="Damage",
+    TooltipDamageList=[
+        "DealDamage(LevelMapValue(AbyssalTiefling_Claws_Value)+UnarmedMeleeAbilityModifier,Slashing)"
+    ],
+    TooltipStatusApply="ApplyStatus(BLEEDING,100,2)",
+    Sheathing="Sheathed",
+)
+
+loca["AbyssalTiefling_Swipe_DisplayName"] = {"en": "Swipe"}
+loca["AbyssalTiefling_Swipe_Description"] = {"en": """
+    Lash out with your claws to strike up to [1] enemies at once and make them
+    <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
+    """}
+
+abyssal_tiefling.add_spell_data(
+    "AbyssalTiefling_Swipe",
+    using="Zone_Cleave",
+    SpellType="Zone",
+    DisplayName=loca["AbyssalTiefling_Swipe_DisplayName"],
+    Description=loca["AbyssalTiefling_Swipe_Description"],
+    DescriptionParams="3",
+    Icon="Action_Monster_ElementalEarth_MultiAttack",
+    Cooldown="None",
+    RequirementConditions="",
+    SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
+    SpellSuccess=[
+        "DealDamage(max(1,(LevelMapValue(AbyssalTiefling_Claws_Value)+UnarmedMeleeAbilityModifier)/2),Slashing,Magical)",
+        "IF(Character()):ApplyStatus(BLEEDING,100,2)",
+    ],
+    TooltipAttackSave="MeleeUnarmedAttack",
+    TooltipDamageList=[
+        "DealDamage((LevelMapValue(AbyssalTiefling_Claws_Value)+UnarmedMeleeAbilityModifier)/2,Slashing)",
+    ],
+    TooltipStatusApply="ApplyStatus(BLEEDING,100,2)",
+    PrepareSound="CrSpell_Prepare_Claw",
+    CastSound="CrSpell_Cast_Claw",
+    TargetSound="CrSpell_Impact_Claw",
     SpellFlags=[
-        "HasVerbalComponent",
-        "HasSomaticComponent",
+        "IsMelee",
         "IsHarmful",
-        "IsSpell",
     ],
-    PrepareEffect="5a90f50d-c9ae-47f3-8dd3-3054ee4a410a",
-    CastEffect="ced71f50-d27c-47c2-b816-5a3ed78607fe",
-    DamageType="Force",
+    CastEffect="456c19a5-ca43-4f93-b5a7-bb01fa8d1240",
+    Sheathing="Sheathed",
+    WeaponTypes="None",
 )
 
 abyssal_tiefling.add_spell_lists([
     Lsx.Node("SpellList", [
-        Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling Cantrips"),
+        Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling spells granted at level 1"),
         Lsx.Attribute("Spells", "LSString", value=[
-            "AbyssalTiefling_AbyssalBlast",
+            "AbyssalTiefling_Claws",
         ]),
-        Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_cantrips_uuid)),
-    ])
+        Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_spells_level_1_uuid)),
+    ]),
+    Lsx.Node("SpellList", [
+        Lsx.Attribute("Comment", "LSString", value="Abyssal Tiefling spells granted at level 7"),
+        Lsx.Attribute("Spells", "LSString", value=[
+            "AbyssalTiefling_Swipe",
+        ]),
+        Lsx.Attribute("UUID", "guid", value=str(abyssal_tiefling_spells_level_7_uuid)),
+    ]),
 ])
 
 abyssal_tiefling_race_uuid = UUID("89e36a3c-6249-48fd-af3d-31e7a9a99406")

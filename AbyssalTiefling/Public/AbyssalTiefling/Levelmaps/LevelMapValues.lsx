@@ -26,8 +26,8 @@
                     <attribute id="Level18" type="LSString" value="1d12" />
                     <attribute id="Level19" type="LSString" value="1d12" />
                     <attribute id="Level20" type="LSString" value="1d12" />
-                    <attribute id="Name" type="FixedString" value="AbyssalTiefling_DamageBonus_Value" />
-                    <attribute id="UUID" type="guid" value="3613e308-4e1d-4b2d-b0cb-b8882af1bff4" />
+                    <attribute id="Name" type="FixedString" value="AbyssalTiefling_Claws_Value" />
+                    <attribute id="UUID" type="guid" value="89918fbb-1395-46b8-b764-3ef5b56a4ea2" />
                 </node>
             </children>
         </node>

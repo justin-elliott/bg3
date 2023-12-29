@@ -4,8 +4,8 @@
     <content contentuid="h59fe9bf1g9178g0eb8g8556g7dec2db10335" version="1">Abyssal Tiefling</content>
     <content contentuid="h3ac9adbeg73acg461ag833ag1bd4ccb0b914" version="1">You are an outcast among outcasts; your bloodline hails not from the Nine Hells, but from the Infinite Layers of the Abyss.</content>
     <content contentuid="hb9c06c8cg045bgc73fg8d83g4a11c55fe5b3" version="1">You can perceive your surroundings without relying on sight.</content>
-    <content contentuid="h0cfdfe6cgb937g72e4g16d1g3b1e26106a50" version="1">Demonic Power</content>
-    <content contentuid="hf48536efgd379ga56eg893eg0deb286e7bab" version="1">Your attacks deal an additional [1].</content>
-    <content contentuid="ha00f3d16g6bd6g8ba7g9190g0481ce68bc68" version="1">Abyssal Blast</content>
-    <content contentuid="h35cd4f4dgcc5dgc414g4573ga341be9384e0" version="1">Shoot [1] beam(s) of abyssal energy. If a target is reduced to 0 &lt;LSTag Tooltip="HitPoints"&gt;hit points&lt;/LSTag&gt;, it disintegrates into a crumbly ash.</content>
+    <content contentuid="hea62db78g1a05g56d9g5797g80c47b19e385" version="1">Claws</content>
+    <content contentuid="h2d87c86cgca73g3a43g97d5g7217dcc20330" version="1">Lash out with deadly claws and make your enemy &lt;LSTag Type="Status" Tooltip="BLEEDING"&gt;Bleed&lt;/LSTag&gt;.</content>
+    <content contentuid="hd1fa1440g74b9gc739g7345gd94f309c932d" version="1">Swipe</content>
+    <content contentuid="hfa1c59a7g917fg8e58g51a8g09f6a8b54e70" version="1">Lash out with your claws to strike up to [1] enemies at once and make them &lt;LSTag Type="Status" Tooltip="BLEEDING"&gt;Bleed&lt;/LSTag&gt;.</content>
 </contentList>

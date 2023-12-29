@@ -4,6 +4,7 @@ The main mod definition for Baldur's Gate 3 mods.
 """
 
 import os
+import shutil
 import time
 
 from .localization import Localization
@@ -230,6 +231,7 @@ class Mod:
     def build(self) -> None:
         """Build the mod files underneath the __base_dir."""
         mod_dir = os.path.join(self.__base_dir, self.__folder)
+        shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self.__modifiers.build(mod_dir, self.__folder)

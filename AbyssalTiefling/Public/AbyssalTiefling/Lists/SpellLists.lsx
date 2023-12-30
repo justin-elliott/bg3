@@ -6,19 +6,9 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Abyssal Tiefling spells granted at level 1" />
-                    <attribute id="Spells" type="LSString" value="AbyssalTiefling_Claws" />
-                    <attribute id="UUID" type="guid" value="15cf6370-2079-4afe-ab46-bc173f6c555d" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Abyssal Tiefling spells granted at level 5" />
                     <attribute id="Spells" type="LSString" value="AbyssalTiefling_AbyssalStep" />
                     <attribute id="UUID" type="guid" value="969a3605-ff33-46b5-9501-fb06f53ff4df" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Abyssal Tiefling spells granted at level 7" />
-                    <attribute id="Spells" type="LSString" value="AbyssalTiefling_Swipe" />
-                    <attribute id="UUID" type="guid" value="3eba0261-7d82-4100-99a8-c234b204b43a" />
                 </node>
             </children>
         </node>

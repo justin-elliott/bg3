@@ -32,8 +32,8 @@ loca["AbyssalTiefling_Description"] = {"en": """
 
 loca["AbyssalTiefling_DemonicResilience_DisplayName"] = {"en": "Demonic Resilience"}
 loca["AbyssalTiefling_DemonicResilience_Description"] = {"en": """
-    Your <LSTag Tooltip="ArmorClass">Armour Class</LSTag> increases by 1.
-    Your <LSTag Tooltip="HitPoints">hit point</LSTag> maximum increases by 2 for each level.
+    Your <LSTag Tooltip="HitPoints">hit point</LSTag> maximum increases by 1 for each level. Additionally, all incoming
+    damage is reduced by 1.
     """}
 
 progression_table_uuid = UUID("fca5d92b-b012-4d99-880c-776c1028fa66")
@@ -54,7 +54,7 @@ abyssal_tiefling.add_progression_descriptions([
     Lsx.Node("ProgressionDescription", [
         Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["AbyssalTiefling_DemonicResilience_DisplayName"], version=1),
         Lsx.Attribute("Description", "TranslatedString", handle=loca["AbyssalTiefling_DemonicResilience_Description"], version=1),
-        Lsx.Attribute("ExactMatch", "FixedString", value="IncreaseMaxHP(Level*2)"),
+        Lsx.Attribute("ExactMatch", "FixedString", value="IncreaseMaxHP(Level)"),
         Lsx.Attribute("ProgressionId", "guid", value=str(progression_table_level_1_uuid)),
         Lsx.Attribute("Type", "FixedString", value="AbyssalTiefling"),
         Lsx.Attribute("UUID", "guid", "a70f3a8a-fa30-4f02-8114-da7605a855b2"),
@@ -64,9 +64,9 @@ abyssal_tiefling.add_progression_descriptions([
 abyssal_tiefling.add_progressions([
     Lsx.Node("Progression", [
         Lsx.Attribute("Boosts", "LSString", value=[
-            "AC(1)",
             "ActionResource(Movement,1.5,0)",
-            "IncreaseMaxHP(Level*2)",
+            "DamageReduction(All,Flat,1)",
+            "IncreaseMaxHP(Level)",
         ]),
         Lsx.Attribute("Level", "uint8", value="1"),
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
@@ -81,7 +81,7 @@ abyssal_tiefling.add_progressions([
     Lsx.Node("Progression", [
         Lsx.Attribute("Level", "uint8", value="3"),
         Lsx.Attribute("Name", "LSString", value="AbyssalTiefling"),
-        Lsx.Attribute("PassivesAdded", "LSString", value=["FastHands"]),
+        Lsx.Attribute("PassivesAdded", "LSString", value=["FastHands", "AbyssalTiefling_Maim"]),
         Lsx.Attribute("ProgressionType", "uint8", value="2"),
         Lsx.Attribute("TableUUID", "guid", value=str(progression_table_uuid)),
         Lsx.Attribute("UUID", "guid", value="3e7d1f8a-0c4c-49fd-bcc4-45d5369bbf2f"),
@@ -144,6 +144,23 @@ abyssal_tiefling.add_passive_data(
     using="Blindsight",
     Description=loca["AbyssalTiefling_Blindsight_Description"],
     Properties="Highlighted",
+)
+
+loca["AbyssalTiefling_Maim_DisplayName"] = {"en": "Maim"}
+loca["AbyssalTiefling_Maim_Description"] = {"en": """
+    When you attack a <LSTag Type="Status" Tooltip="BLEEDING">Bleeding</LSTag> target, you also
+    <LSTag Type="Status" Tooltip="CRIPPLED">Maim</LSTag> it for 1 turn.
+    """}
+
+abyssal_tiefling.add_passive_data(
+    "AbyssalTiefling_Maim",
+    DisplayName=loca["AbyssalTiefling_Maim_DisplayName"],
+    Description=loca["AbyssalTiefling_Maim_Description"],
+    Icon="statIcons_Crippled",
+    Properties=["Highlighted"],
+    StatsFunctorContext=["OnAttack"],
+    Conditions=["HasStatus('BLEEDING',context.Target)"],
+    StatsFunctors=["ApplyStatus(CRIPPLED,100,1)"],
 )
 
 loca["AbyssalTiefling_Claws_DisplayName"] = {"en": "Claws"}

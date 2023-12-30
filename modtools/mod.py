@@ -29,6 +29,8 @@ class Mod:
     __localization: Localization
 
     __character_creation_presets: Lsx
+    __feat_descriptions: Lsx
+    __feats: Lsx
     __level_maps: Lsx
     __progressions: Lsx
     __progression_descriptions: Lsx
@@ -62,6 +64,8 @@ class Mod:
         self.__localization = Localization(mod_uuid)
 
         self.__character_creation_presets = None
+        self.__feat_descriptions = None
+        self.__feats = None
         self.__level_maps = None
         self.__progressions = None
         self.__progression_descriptions = None
@@ -102,6 +106,16 @@ class Mod:
         if not self.__character_creation_presets:
             self.__character_creation_presets = Lsx(self.__version, "CharacterCreationPresets", "root")
         self.__character_creation_presets.add_children(nodes)
+
+    def add_feat_descriptions(self, nodes: [Lsx.Node]) -> None:
+        if not self.__feat_descriptions:
+            self.__feat_descriptions = Lsx(self.__version, "FeatDescriptions", "root")
+        self.__feat_descriptions.add_children(nodes)
+
+    def add_feats(self, nodes: [Lsx.Node]) -> None:
+        if not self.__feats:
+            self.__feats = Lsx(self.__version, "Feats", "root")
+        self.__feats.add_children(nodes)
 
     def add_level_maps(self, nodes: [Lsx.Node]) -> None:
         if not self.__level_maps:
@@ -186,6 +200,14 @@ class Mod:
             self.__character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
                                                                  "CharacterCreationPresets.lsx"))
 
+    def _build_feat_descriptions(self, public_dir: str) -> None:
+        if self.__feat_descriptions:
+            self.__feat_descriptions.build(os.path.join(public_dir, "Feats", "FeatDescriptions.lsx"))
+
+    def _build_feats(self, public_dir: str) -> None:
+        if self.__feats:
+            self.__feats.build(os.path.join(public_dir, "Feats", "Feats.lsx"))
+
     def _build_level_maps(self, public_dir: str) -> None:
         if self.__level_maps:
             self.__level_maps.build(os.path.join(public_dir, "Levelmaps", "LevelMapValues.lsx"))
@@ -238,6 +260,8 @@ class Mod:
         self.__localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self.__folder)
         self._build_character_creation_presets(public_dir)
+        self._build_feat_descriptions(public_dir)
+        self._build_feats(public_dir)
         self._build_level_maps(public_dir)
         self._build_progressions(public_dir)
         self._build_progression_descriptions(public_dir)

@@ -54,14 +54,12 @@ loca["Medley_Description"] = {"en": "Perform a medley of songs to inspire and fo
 loca["MEDLEY_Description"] = {"en": """
     Hit point maximum increased by [1].
 
-    Each turn, restore [2].
-
     When you roll a 1 on an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>,
     <LSTag Tooltip="AbilityCheck">Ability Check</LSTag>, or
     <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>,
     you can reroll the die and must use the new roll.
 
-    You can see in the dark up to [3].
+    You can see in the dark up to [2].
     """}
 
 serenade.add_spell_data(
@@ -99,7 +97,6 @@ serenade.add_status_data(
     Description=loca["MEDLEY_Description"],
     DescriptionParams=[
         "LevelMapValue(Serenade_AidValue)",
-        "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
         "Distance(18)",
     ],
     Icon="Action_Song_SingForMe",
@@ -113,9 +110,6 @@ serenade.add_status_data(
         "DarkvisionRangeMin(18)",
         "ActiveCharacterLight(c46e7ba8-e746-7020-5146-287474d7b9f7)",
     ],
-    TickType="StartTurn",
-    TickFunctors="IF(HasHPPercentageLessThan(100) and not IsDowned() and not Dead()):" +
-                 "RegainHitPoints(LevelMapValue(Serenade_HealValue))",
     StatusGroups="SG_RemoveOnRespec",
 )
 
@@ -170,12 +164,6 @@ serenade.add_level_maps([
         *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int(level * 2.5)}") for level in range(1, 21)],
         Lsx.Attribute("Name", "FixedString", value="Serenade_AidValue"),
         Lsx.Attribute("UUID", "guid", value="c0f41731-9b3b-4828-9092-3e104096938a"),
-    ]),
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"1d{int((level + 3) / 4) * 2 + 2}")
-            for level in range(1, 21)],
-        Lsx.Attribute("Name", "FixedString", value="Serenade_HealValue"),
-        Lsx.Attribute("UUID", "guid", value="803d7210-940d-4692-8178-436e3d711818"),
     ]),
 ])
 

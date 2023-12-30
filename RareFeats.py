@@ -24,7 +24,7 @@ rare_feats = Mod(os.path.dirname(__file__),
 loca = rare_feats.get_localization()
 loca.add_language("en", "English")
 
-# Add Ability Score Improvement (ASI) feats
+# Ability Score Improvement (ASI) feats
 for asi in range(4, 14, 2):
     feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
     feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
@@ -38,7 +38,7 @@ for asi in range(4, 14, 2):
         Lsx.Node("FeatDescription", [
             Lsx.Attribute("DisplayName", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_DisplayName"], version="1"),
             Lsx.Attribute("Description", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_Description"], version="1"),
-            Lsx.Attribute("ExactMatch", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("ExactMatch", "FixedString", value=f"RareFeats_ASI_{asi}"),
             Lsx.Attribute("FeatId", "guid", value=str(feat_uuid)),
             Lsx.Attribute("UUID", "guid", value=str(feat_description_uuid)),
         ]),
@@ -47,7 +47,7 @@ for asi in range(4, 14, 2):
     rare_feats.add_feats([
         Lsx.Node("Feat", [
             Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
-            Lsx.Attribute("Name", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("Name", "FixedString", value=f"RareFeats_ASI_{asi}"),
             Lsx.Attribute("Selectors", "LSString", value=f"SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,{asi},{asi},FeatASI)"),
             Lsx.Attribute("UUID", "guid", value=str(feat_uuid)),
         ]),

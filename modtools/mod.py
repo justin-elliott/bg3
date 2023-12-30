@@ -3,6 +3,7 @@
 The main mod definition for Baldur's Gate 3 mods.
 """
 
+import hashlib
 import os
 import shutil
 import time
@@ -74,6 +75,12 @@ class Mod:
         self.__spell_lists = None
         self.__tags = None
         self.__treasure_table = None
+
+    def make_uuid(self, key: str) -> UUID:
+        m = hashlib.sha256()
+        m.update(self.__uuid.bytes)
+        m.update(bytes(key, "UTF-8"))
+        return UUID(m.hexdigest()[0:32])
 
     def get_author(self) -> str:
         return self.__author
@@ -253,7 +260,8 @@ class Mod:
     def build(self) -> None:
         """Build the mod files underneath the __base_dir."""
         mod_dir = os.path.join(self.__base_dir, self.__folder)
-        shutil.rmtree(mod_dir)
+        if os.path.exists(mod_dir):
+            shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self.__modifiers.build(mod_dir, self.__folder)

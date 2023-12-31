@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<save>
+    <version major="4" minor="1" revision="1" build="0" />
+    <region id="Progressions">
+        <node id="root">
+            <children>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,8,0)" />
+                    <attribute id="IsMulticlass" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="297e0cb5-9743-4ae8-b053-b3850f0fa134" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(MartialWeapons);ActionResource(KiPoint,8,0);DamageReduction(All,Flat,2);IncreaseMaxHP(ClassLevel(Monk)*2)" />
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;DevilsSight" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(5f1c7177-6e28-4a42-a7a5-cfaf4c31519c,2);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="2" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_1" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(2715246d-3375-4766-9a3e-5961efd56748)" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="c17915f1-df2b-4cce-876f-68faf153f373" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0);ActionResource(DeflectMissiles_Charge,1,0)" />
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="DeflectMissiles;FastHands" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="296468cb-3640-4460-9f44-b30ee820a9ed" />
+                    <children>
+                        <node id="SubClasses">
+                            <children>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="22894c32-54cf-49ea-b366-44bfcf01bb2a" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="2a5e3097-384c-4d29-8d6e-054fdfd26b80" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="bf46d73f-d406-4cb8-9a1d-e6e758ca02c7" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="4" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="SlowFall" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="e2bd97c2-4de1-43eb-bbeb-6383c472a4a2" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441);AddSpells(5801b99e-6784-45e1-97aa-723c8665986f)" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="7b354b75-537f-464e-a28d-cafa72323ab9" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="6" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_2;KiEmpoweredStrikes" />
+                    <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_1" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="9286a35f-e58b-4f56-95a4-78dfb19ed5d5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion;StillnessOfMind" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(1afa3649-051e-4ba6-916a-e099b3df01a9)" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="e715d543-451b-419f-9cf1-ed88339d9387" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="8" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="584f5806-6809-4fbf-8776-843ba611a404" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_DifficultTerrain;ImprovedCritical" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="62d54d84-80f8-4c89-9a1a-6b15aeaf697a" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="10" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_3;PurityOfBody" />
+                    <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_2" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="153f55a7-4c75-4748-a9f7-a756239a3fe6" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="8aa410ea-1fe2-4f9f-ab19-b2ab87f652cb" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,4,0)" />
+                    <attribute id="Level" type="uint8" value="12" />
+                    <attribute id="Name" type="LSString" value="Monk" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
+                    <attribute id="UUID" type="guid" value="67747624-d156-4e2b-917f-3d795ad06e8e" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(de3d347b-69f4-43ac-915d-26e7cbb912bc);SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,3,0,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="cae2ce43-a1b8-473a-b163-c961d0048bd6" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="4" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="4d2390c9-e95a-4b3d-bc22-22ac680e0393" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="64e4f191-186b-4cc9-9e3d-9374d2670ec3" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="6" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,1,0,FourElements,,,AlwaysPrepared);SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="78b2ac1f-38c7-4da8-b233-c0cb0a0c65a1" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="4ad9ff21-d003-4194-a04b-04b2a5c8780f" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="8" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="667c7882-0d2c-43fc-99b8-6b8289eb65f5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedElementalCasting" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,1,0,FourElements,,,AlwaysPrepared);SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="a846bdfe-75e9-44b8-978a-864227b5caf8" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="10" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="0089d463-3aa3-49de-95d5-4e9f5c47f9d7" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,1,0,FourElements,,,AlwaysPrepared);SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="f71e5d22-b830-42dd-ba88-a91ad6d95ec6" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="12" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,0,1,FourElements,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="d61acf79-7437-49e1-a003-2426049ef323" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="OpenHand" />
+                    <attribute id="PassivesRemoved" type="LSString" value="FlurryOfBlowsUnlock" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(6566d841-ef96-4e13-ac40-c40f44c5e08b)" />
+                    <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
+                    <attribute id="UUID" type="guid" value="e126f91a-faae-4b12-8dfd-5e385e68c659" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="6" />
+                    <attribute id="Name" type="LSString" value="OpenHand" />
+                    <attribute id="PassivesAdded" type="LSString" value="Manifestation_of_Body;Manifestation_of_Mind;Manifestation_of_Soul" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5)" />
+                    <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
+                    <attribute id="UUID" type="guid" value="fd86d0cd-791d-49a1-8d99-402c15f5f77d" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="OpenHand" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(0ffe7be9-d826-42d7-b59e-d1924ad28ffc)" />
+                    <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
+                    <attribute id="UUID" type="guid" value="2c9045a3-0d3b-4daf-b3b3-7e0518ba4ee5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="OpenHand" />
+                    <attribute id="PassivesAdded" type="LSString" value="Tranquility" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
+                    <attribute id="UUID" type="guid" value="7bbc316f-d60a-4e80-a371-247dcca83685" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Shadow" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(e050fe59-a8f0-4c03-a7f4-569ac747c80e)" />
+                    <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
+                    <attribute id="UUID" type="guid" value="077e6458-3b93-4820-88a7-bd7c9babbeae" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="Shadow" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(e1f0e927-0711-4644-8745-af2b02434cfd)" />
+                    <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
+                    <attribute id="UUID" type="guid" value="62fa2d62-9cc9-4642-9d11-121ac5188875" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="6" />
+                    <attribute id="Name" type="LSString" value="Shadow" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(cbb43ac1-afae-40f0-a2f7-0116e8bf53f8)" />
+                    <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
+                    <attribute id="UUID" type="guid" value="2843ad66-a79d-4357-9c34-877e443f9701" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Shadow" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(6c0c93e7-d43a-43ca-8f36-43eff7a5ccdb)" />
+                    <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
+                    <attribute id="UUID" type="guid" value="9d7ed30f-fd99-4d5d-b190-8f781f9cb6a9" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

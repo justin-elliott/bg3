@@ -7,6 +7,11 @@
             <children>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_NoFeat" />
+                    <attribute id="UUID" type="guid" value="f933f19f-6196-7c5e-ee79-a16b318f24ba" />
+                </node>
+                <node id="Feat">
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_ASI_4" />
                     <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,4,FeatASI)" />
                     <attribute id="UUID" type="guid" value="e595e985-42ad-908a-152b-7d03e4986512" />

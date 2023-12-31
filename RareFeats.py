@@ -24,8 +24,8 @@ rare_feats = Mod(os.path.dirname(__file__),
 loca = rare_feats.get_localization()
 loca.add_language("en", "English")
 
-# Ability Score Improvement (ASI) feats
-for asi in range(4, 14, 2):
+
+def add_asi(asi: int) -> None:
     feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
     feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
 
@@ -52,5 +52,34 @@ for asi in range(4, 14, 2):
             Lsx.Attribute("UUID", "guid", value=str(feat_uuid)),
         ]),
     ])
+
+
+# A feat for when you don't wish to select a feat
+no_feat_uuid = rare_feats.make_uuid("RareFeats_Feat_NoFeat")
+
+loca["RareFeats_NoFeat_DisplayName"] = {"en": "No Feat"}
+loca["RareFeats_NoFeat_Description"] = {"en": "Do not select a feat."}
+
+rare_feats.add_feat_descriptions([
+    Lsx.Node("FeatDescription", [
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["RareFeats_NoFeat_DisplayName"], version="1"),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["RareFeats_NoFeat_Description"], version="1"),
+        Lsx.Attribute("ExactMatch", "FixedString", value="RareFeats_NoFeat"),
+        Lsx.Attribute("FeatId", "guid", value=str(no_feat_uuid)),
+        Lsx.Attribute("UUID", "guid", value=str(rare_feats.make_uuid("RareFeats_FeatDescription_NoFeat"))),
+    ]),
+])
+
+rare_feats.add_feats([
+    Lsx.Node("Feat", [
+        Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
+        Lsx.Attribute("Name", "FixedString", value="RareFeats_NoFeat"),
+        Lsx.Attribute("UUID", "guid", value=str(no_feat_uuid)),
+    ]),
+])
+
+# Ability Score Improvement (ASI) feats
+for asi in range(4, 14, 2):
+    add_asi(asi)
 
 rare_feats.build()

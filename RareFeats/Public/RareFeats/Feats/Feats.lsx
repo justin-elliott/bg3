@@ -13,7 +13,7 @@
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_AbilityImprovement" />
-                    <attribute id="Selectors" type="LSString" value="RareFeats_AbilityImprovement_Strength;RareFeats_AbilityImprovement_Dexterity;RareFeats_AbilityImprovement_Constitution;RareFeats_AbilityImprovement_Intelligence;RareFeats_AbilityImprovement_Wisdom;RareFeats_AbilityImprovement_Charisma" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(fe8d9b48-c160-7f93-f70b-27bc4bed53b0,1,RareFeats_AbilityImprovement);SelectPassives(9f696ae6-3f6c-0295-1c0c-bb3d8f2b2c58,1,RareFeats_AbilityImprovement);SelectPassives(c1687b3c-ef25-05b7-ecf1-189ffb19b146,1,RareFeats_AbilityImprovement);SelectPassives(870f257e-c492-c0da-be67-a1c233e449a8,1,RareFeats_AbilityImprovement);SelectPassives(0917ff27-c58a-9fa1-21ef-c8a43b8e1390,1,RareFeats_AbilityImprovement);SelectPassives(fbc9b8e6-703d-6f11-b579-c14fb7eed4b4,1,RareFeats_AbilityImprovement)" />
                     <attribute id="UUID" type="guid" value="c688487b-3539-4a00-51e0-0aa35db751e8" />
                 </node>
             </children>

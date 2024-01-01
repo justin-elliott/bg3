@@ -76,12 +76,12 @@ rare_feats.add_feat_descriptions([
     ]),
 ])
 
+passive_selectors = Lsx.Attribute("Selectors", "LSString", value=[])
 rare_feats.add_feats([
     Lsx.Node("Feat", [
         Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
         Lsx.Attribute("Name", "FixedString", value="RareFeats_AbilityImprovement"),
-        Lsx.Attribute("Selectors", "LSString",
-                      value=[f"RareFeats_AbilityImprovement_{attribute}" for attribute, _ in attributes]),
+        passive_selectors,
         Lsx.Attribute("UUID", "guid", value=str(ability_improvement_feat_uuid)),
     ]),
 ])
@@ -95,12 +95,15 @@ for attribute, attribute_icon in attributes:
         """}
 
     passive_list = Lsx.Attribute("Passives", "LSString", value=[], list_joiner=",")
+    passive_list_uuid = str(rare_feats.make_uuid(f"AbilityImprovement_{attribute}"))
     rare_feats.add_passive_lists([
         Lsx.Node("PassiveList", [
             passive_list,
-            Lsx.Attribute("UUID", "guid", value=str(rare_feats.make_uuid(f"AbilityImprovement_{attribute}")))
+            Lsx.Attribute("UUID", "guid", value=passive_list_uuid)
         ]),
     ])
+    passive_selectors.get_value().append(f"SelectPassives({passive_list_uuid},1,RareFeats_AbilityImprovement)")
+
     loca[f"RareFeats_{attribute}_NoBonus_Description"] = {"en": f"""
         No bonus to your <LSTag Tooltip="{attribute}">{attribute}</LSTag>.
         """}

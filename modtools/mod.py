@@ -33,6 +33,7 @@ class Mod:
     __feat_descriptions: Lsx
     __feats: Lsx
     __level_maps: Lsx
+    __passive_lists: Lsx
     __progressions: Lsx
     __progression_descriptions: Lsx
     __races: Lsx
@@ -68,6 +69,7 @@ class Mod:
         self.__feat_descriptions = None
         self.__feats = None
         self.__level_maps = None
+        self.__passive_lists = None
         self.__progressions = None
         self.__progression_descriptions = None
         self.__races = None
@@ -128,6 +130,11 @@ class Mod:
         if not self.__level_maps:
             self.__level_maps = Lsx(self.__version, "LevelMapValues", "root")
         self.__level_maps.add_children(nodes)
+
+    def add_passive_lists(self, nodes: [Lsx.Node]) -> None:
+        if not self.__passive_lists:
+            self.__passive_lists = Lsx(self.__version, "PassiveLists", "root")
+        self.__passive_lists.add_children(nodes)
 
     def add_progressions(self, nodes: [Lsx.Node]) -> None:
         if not self.__progressions:
@@ -223,6 +230,10 @@ class Mod:
         if self.__progressions:
             self.__progressions.build(os.path.join(public_dir, "Progressions", "Progressions.lsx"))
 
+    def _build_passive_lists(self, public_dir: str) -> None:
+        if self.__passive_lists:
+            self.__passive_lists.build(os.path.join(public_dir, "Lists", "PassiveLists.lsx"))
+
     def _build_progression_descriptions(self, public_dir: str) -> None:
         if self.__progression_descriptions:
             self.__progression_descriptions.build(
@@ -271,6 +282,7 @@ class Mod:
         self._build_feat_descriptions(public_dir)
         self._build_feats(public_dir)
         self._build_level_maps(public_dir)
+        self._build_passive_lists(public_dir)
         self._build_progressions(public_dir)
         self._build_progression_descriptions(public_dir)
         self._build_races(public_dir)

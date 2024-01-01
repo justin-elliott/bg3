@@ -161,11 +161,13 @@ class Lsx:
 
         __id: str
         __type: str
-        __value: str
+        __value: str | [str]
         __handle: str
         __version: str
+        __list_joiner: str
 
-        def __init__(self, id: str, type: str, value: str = None, handle: str = None, version: int | str = 0):
+        def __init__(self, id: str, type: str, value: str | [str] = None, handle: str = None, version: int | str = 0,
+                     list_joiner=";"):
             assert type in Lsx.Attribute.__valid_types
 
             if value is not None:
@@ -182,6 +184,7 @@ class Lsx:
             self.__value = value
             self.__handle = handle
             self.__version = str(version)
+            self.__list_joiner = list_joiner
 
         def get_id(self) -> str:
             return self.__id
@@ -189,7 +192,7 @@ class Lsx:
         def get_type(self) -> str:
             return self.__type
 
-        def get_value(self) -> str:
+        def get_value(self) -> str | [str]:
             return self.__value
 
         def get_handle(self) -> str:
@@ -204,7 +207,8 @@ class Lsx:
                 "type": self.__type
             }
             if self.__value is not None:
-                attrib["value"] = self.__value if isinstance(self.__value, str) else ";".join(self.__value)
+                attrib["value"] = self.__value if isinstance(self.__value, str) else (
+                                  self.__list_joiner.join(self.__value))
             else:
                 attrib["handle"] = self.__handle
                 attrib["version"] = self.__version

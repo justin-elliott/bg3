@@ -12,33 +12,9 @@
                 </node>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_4" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,4,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="e595e985-42ad-908a-152b-7d03e4986512" />
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_6" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,6,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="9bf1120b-db18-0b70-2aca-f0c1e44cf073" />
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_8" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,8,8,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="d39052c2-ad2f-8725-0586-8a8d41922326" />
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_10" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,10,10,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="4fc7e3ff-3cad-0a1e-19fe-66ddfe82ed7d" />
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_12" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,12,12,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="aebd82d1-759b-4c4e-b513-d50db9a7c99c" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_AbilityImprovement" />
+                    <attribute id="Selectors" type="LSString" value="RareFeats_AbilityImprovement_Strength;RareFeats_AbilityImprovement_Dexterity;RareFeats_AbilityImprovement_Constitution;RareFeats_AbilityImprovement_Intelligence;RareFeats_AbilityImprovement_Wisdom;RareFeats_AbilityImprovement_Charisma" />
+                    <attribute id="UUID" type="guid" value="c688487b-3539-4a00-51e0-0aa35db751e8" />
                 </node>
             </children>
         </node>

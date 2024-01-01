@@ -4,4 +4,7 @@
 	<content contentuid="MonkPlus_SpinningKick_Description" version="1">Strike out with a spinning kick at all nearby foes, making separate &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; against each target.</content>
     <content contentuid="MonkPlus_ShadowStep_DisplayName" version="1">Shadow Step</content>
     <content contentuid="MonkPlus_ShadowStep_Description" version="1">Step through the shadows, teleporting to an unoccupied space you can see.</content>
+    <content contentuid="MonkPlus_ManifestationOfWill_DisplayName" version="1">Manifestation of Will</content>
+    <content contentuid="MonkPlus_ManifestationOfWill_Description" version="1">Your force of will is unwavering. Your unarmed attacks deal an additional [1].</content>
+    <content contentuid="MonkPlus_ManifestationOfWill_ExtraDescription" version="1">Can't be used at the same time as &lt;LSTag Type="Passive" Tooltip="Manifestation_of_Body"&gt;Manifestation of Body&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="Manifestation_of_Mind"&gt;Manifestation of Mind&lt;/LSTag&gt;, or &lt;LSTag Type="Passive" Tooltip="Manifestation_of_Soul"&gt;Manifestation of Soul&lt;/LSTag&gt;.</content>
 </contentList>

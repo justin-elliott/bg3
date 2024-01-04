@@ -7,6 +7,7 @@ import io
 import os
 import re
 
+from .gamedata import GameData
 from .prologue import TXT_PROLOGUE
 from .valuelists import ValueLists
 from collections.abc import Callable, Iterable
@@ -43,7 +44,9 @@ class Modifiers:
         self.__modifiers = {}
         self.__valuelists = ValueLists()
 
-        with open(os.path.join(os.path.dirname(__file__), "gamedata", "Modifiers.txt"), "r") as f:
+        modifiers_path = GameData.get_file_path("Shared", os.path.join(
+            "Public", "Shared", "Stats", "Generated", "Structure", "Modifiers.txt"))
+        with open(modifiers_path, "r") as f:
             self._parse(f)
 
     def build(self, mod_dir: str, folder: str) -> None:

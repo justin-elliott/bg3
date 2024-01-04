@@ -1,0 +1,5 @@
+# Requirements for the modtools library
+# Install with: pip install -r requirements.txt
+
+pythonnet
+requests

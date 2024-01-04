@@ -7,6 +7,7 @@ import io
 import os
 import re
 
+from .gamedata import GameData
 from collections.abc import Callable, Iterable
 
 
@@ -20,19 +21,21 @@ class ValueLists:
 
     def __init__(self):
         self.__validators = {}
-        with open(os.path.join(os.path.dirname(__file__), "gamedata", "ValueLists.txt"), "r") as f:
-            self._parse(f)
+        value_lists_path = GameData.get_file_path("Shared", os.path.join(
+            "Public", "Shared", "Stats", "Generated", "Structure", "Base", "ValueLists.txt"))
+        with open(value_lists_path, "r") as value_lists_file:
+            self._parse(value_lists_file)
 
     def get_validator(self, valuelist: str) -> Callable[[str | Iterable], Iterable]:
         """Return the validator for the given valuelist."""
         return self.__validators[valuelist]
 
-    def _parse(self, f: io.TextIOWrapper) -> None:
+    def _parse(self, value_lists_file: io.TextIOWrapper) -> None:
         """Parse the gamedata/ValueLists.txt file, building our __validators."""
         valuelist: str = None
         allowed_contents = set()
 
-        for line in f:
+        for line in value_lists_file:
             if match := ValueLists.__valuelist_regex.match(line):
                 self._complete_valuelist(valuelist, allowed_contents)
                 valuelist = match[1]

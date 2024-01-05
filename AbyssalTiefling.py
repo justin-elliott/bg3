@@ -5,6 +5,7 @@ Generates files for the "AbyssalTiefling" mod.
 
 import os
 
+from modtools.entity import passive_data, spell_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID
@@ -141,12 +142,12 @@ loca["AbyssalTiefling_Blindsight_Description"] = {"en": """
     You can perceive your surroundings without relying on sight.
     """}
 
-abyssal_tiefling.passive_data.add(
+abyssal_tiefling.add(passive_data(
     "AbyssalTiefling_Blindsight",
     using="Blindsight",
     Description=loca["AbyssalTiefling_Blindsight_Description"],
     Properties="Highlighted",
-)
+))
 
 loca["AbyssalTiefling_Maim_DisplayName"] = {"en": "Maim"}
 loca["AbyssalTiefling_Maim_Description"] = {"en": """
@@ -154,7 +155,7 @@ loca["AbyssalTiefling_Maim_Description"] = {"en": """
     <LSTag Type="Status" Tooltip="CRIPPLED">Maim</LSTag> it for 1 turn.
     """}
 
-abyssal_tiefling.passive_data.add(
+abyssal_tiefling.add(passive_data(
     "AbyssalTiefling_Maim",
     DisplayName=loca["AbyssalTiefling_Maim_DisplayName"],
     Description=loca["AbyssalTiefling_Maim_Description"],
@@ -163,7 +164,7 @@ abyssal_tiefling.passive_data.add(
     StatsFunctorContext=["OnAttack"],
     Conditions=["HasStatus('BLEEDING',context.Target)"],
     StatsFunctors=["ApplyStatus(CRIPPLED,100,1)"],
-)
+))
 
 loca["AbyssalTiefling_ManifestationOfDread_DisplayName"] = {"en": "Manifestation of Dread"}
 loca["AbyssalTiefling_ManifestationOfDread_Description"] = {"en": """
@@ -176,7 +177,7 @@ loca["AbyssalTiefling_ManifestationOfDread_ExtraDescription"] = {"en": """
     <LSTag Type="Passive" Tooltip="Manifestation_of_Soul">Manifestation of Soul</LSTag>.
     """}
 
-abyssal_tiefling.passive_data.add(
+abyssal_tiefling.add(passive_data(
     "AbyssalTiefling_ManifestationOfDread",
     DisplayName=loca["AbyssalTiefling_ManifestationOfDread_DisplayName"],
     Description=loca["AbyssalTiefling_ManifestationOfDread_Description"],
@@ -194,20 +195,20 @@ abyssal_tiefling.passive_data.add(
         "UnlockSpellVariant(MeleeUnarmedAttackCheck(),ModifyTargetRadius(Multiplicative,1))",
     ],
     ToggleGroup="Manifestation",
-)
+))
 
-abyssal_tiefling.passive_data.add(
+abyssal_tiefling.add(passive_data(
     "AbyssalTiefling_Claws_Unlock",
     Properties="IsHidden",
     Boosts=["UnlockSpell(AbyssalTiefling_Claws)"],
-)
+))
 
 loca["AbyssalTiefling_Claws_DisplayName"] = {"en": "Claws"}
 loca["AbyssalTiefling_Claws_Description"] = {"en": """
     Lash out with deadly claws and make your enemy <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
     """}
 
-abyssal_tiefling.spell_data.add(
+abyssal_tiefling.add(spell_data(
     "AbyssalTiefling_Claws",
     using="Target_Claws_Imp",
     SpellType="Target",
@@ -222,13 +223,13 @@ abyssal_tiefling.spell_data.add(
     ],
     TooltipStatusApply="ApplyStatus(BLEEDING,100,2)",
     Sheathing="Sheathed",
-)
+))
 
-abyssal_tiefling.passive_data.add(
+abyssal_tiefling.add(passive_data(
     "AbyssalTiefling_FrenziedClaws_Unlock",
     Properties="IsHidden",
     Boosts=["UnlockSpell(AbyssalTiefling_FrenziedClaws)"],
-)
+))
 
 loca["AbyssalTiefling_FrenziedClaws_DisplayName"] = {"en": "Frenzied Claws"}
 loca["AbyssalTiefling_FrenziedClaws_Description"] = {"en": """
@@ -236,7 +237,7 @@ loca["AbyssalTiefling_FrenziedClaws_Description"] = {"en": """
     <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
     """}
 
-abyssal_tiefling.spell_data.add(
+abyssal_tiefling.add(spell_data(
     "AbyssalTiefling_FrenziedClaws",
     using="AbyssalTiefling_Claws",
     SpellType="Target",
@@ -244,14 +245,14 @@ abyssal_tiefling.spell_data.add(
     Description=loca["AbyssalTiefling_FrenziedClaws_Description"],
     AreaRadius="2",
     CastEffect="456c19a5-ca43-4f93-b5a7-bb01fa8d1240",
-)
+))
 
 loca["AbyssalTiefling_AbyssalStep_DisplayName"] = {"en": "Abyssal Step"}
 loca["AbyssalTiefling_AbyssalStep_Description"] = {"en": """
     Stepping between planes, you teleport to an unoccupied space you can see.
     """}
 
-abyssal_tiefling.spell_data.add(
+abyssal_tiefling.add(spell_data(
     "AbyssalTiefling_AbyssalStep",
     using="Target_MistyStep",
     SpellType="Target",
@@ -265,7 +266,7 @@ abyssal_tiefling.spell_data.add(
     UseCosts="Movement:Distance*0.5",
     PrepareEffect="a0458d31-f8ef-419a-8708-5715c81e91d3",
     CastEffect="52af7a1d-d5d9-4506-85ce-d124f1ef9ea5",
-)
+))
 
 abyssal_tiefling.add_spell_lists([
     Lsx.Node("SpellList", [

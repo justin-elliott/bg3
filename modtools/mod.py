@@ -8,7 +8,7 @@ import os
 import shutil
 import time
 
-from .entity import Entity
+from .entity import Entities, Entity
 from .gamedata import GameData
 from .localization import Localization
 from .lsx import Lsx
@@ -20,16 +20,6 @@ from uuid import UUID
 
 class Mod:
     """Baldur's Gate 3 mod definition."""
-
-    armor_data: Entity
-    character_data: Entity
-    critical_hit_type_data: Entity
-    interrupt_data: Entity
-    object_data: Entity
-    passive_data: Entity
-    spell_data: Entity
-    status_data: Entity
-    weapon_data: Entity
 
     __author: str
     __base_dir: str
@@ -45,6 +35,8 @@ class Mod:
 
     __localization: Localization
 
+    __entities: Entities
+
     __character_creation_presets: Lsx
     __feat_descriptions: Lsx
     __feats: Lsx
@@ -56,6 +48,7 @@ class Mod:
     __root_templates: Lsx
     __spell_lists: Lsx
     __tags: Lsx
+
     __treasure_table: [str]
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
@@ -82,17 +75,9 @@ class Mod:
         self.__modifiers = Modifiers(self.__gamedata)
         self.__valuelists = ValueLists(self.__gamedata)
 
-        self.armor_data = Entity("Armor", self.__modifiers, self.__valuelists)
-        self.character_data = Entity("Character", self.__modifiers, self.__valuelists)
-        self.critical_hit_type_data = Entity("CriticalHitTypeData", self.__modifiers, self.__valuelists)
-        self.interrupt_data = Entity("InterruptData", self.__modifiers, self.__valuelists)
-        self.object_data = Entity("Object", self.__modifiers, self.__valuelists)
-        self.passive_data = Entity("PassiveData", self.__modifiers, self.__valuelists)
-        self.spell_data = Entity("SpellData", self.__modifiers, self.__valuelists)
-        self.status_data = Entity("StatusData", self.__modifiers, self.__valuelists)
-        self.weapon_data = Entity("Weapon", self.__modifiers, self.__valuelists)
-
         self.__localization = Localization(mod_uuid)
+
+        self.__entities = Entities(self.__modifiers, self.__valuelists)
 
         self.__character_creation_presets = None
         self.__feat_descriptions = None
@@ -105,6 +90,7 @@ class Mod:
         self.__root_templates = None
         self.__spell_lists = None
         self.__tags = None
+
         self.__treasure_table = None
 
     def make_uuid(self, key: str) -> UUID:
@@ -139,6 +125,13 @@ class Mod:
 
     def get_localization(self) -> Localization:
         return self.__localization
+
+    def add(self, data: any) -> None:
+        """Add an entity to the Entities collection."""
+        if isinstance(data, Entity):
+            self.__entities.add(data)
+        else:
+            raise TypeError("add: Invalid data type")
 
     def add_character_creation_presets(self, nodes: [Lsx.Node]) -> None:
         if not self.__character_creation_presets:
@@ -304,15 +297,7 @@ class Mod:
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
-        self.armor_data.build(mod_dir, self.__folder)
-        self.character_data.build(mod_dir, self.__folder)
-        self.critical_hit_type_data.build(mod_dir, self.__folder)
-        self.interrupt_data.build(mod_dir, self.__folder)
-        self.object_data.build(mod_dir, self.__folder)
-        self.passive_data.build(mod_dir, self.__folder)
-        self.spell_data.build(mod_dir, self.__folder)
-        self.status_data.build(mod_dir, self.__folder)
-        self.weapon_data.build(mod_dir, self.__folder)
+        self.__entities.build(mod_dir, self.__folder)
         self.__localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self.__folder)
         self._build_character_creation_presets(public_dir)

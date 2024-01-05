@@ -104,7 +104,7 @@ class GameData:
     __modifiers: Modifiers
     __valuelists: ValueLists
 
-    __data: [GameDatum]
+    __data: Iterable[GameDatum]
 
     def __init__(self, modifiers: Modifiers, valuelists: ValueLists):
         """Create an instance."""
@@ -112,10 +112,12 @@ class GameData:
         self.__valuelists = valuelists
         self.__data = []
 
-    def add(self, datum: GameDatum) -> None:
-        """Add a GameDatum to the collection."""
-        datum.validate(self.__modifiers, self.__valuelists)
-        self.__data.append(datum)
+    def add(self, data: GameDatum | Iterable[GameDatum]) -> None:
+        """Add GameDatum to the collection."""
+        data = [data] if isinstance(data, GameDatum) else data
+        for datum in data:
+            datum.validate(self.__modifiers, self.__valuelists)
+        self.__data.extend(data)
 
     def build(self, mod_dir: str, folder: str) -> None:
         """Build all data files in the given mod_dir, folder."""
@@ -130,13 +132,13 @@ class GameData:
             with open(os.path.join(data_dir, filename), "w") as f:
                 self._write_data(f, data)
 
-    def _write_data(self, f: io.TextIOWrapper, data: [GameDatum]) -> None:
-        """Write the entities specific to a file."""
+    def _write_data(self, f: io.TextIOWrapper, data: Iterable[GameDatum]) -> None:
+        """Write the entries specific to a file."""
         f.write(TXT_PROLOGUE)
         data[0].write(f)
-        for entity in data[1:]:
+        for datum in data[1:]:
             f.write("\n")
-            entity.write(f)
+            datum.write(f)
 
     def _datum_filename(self, datum: GameDatum) -> str:
         """Get the filename corresponding to the given modifier_name."""

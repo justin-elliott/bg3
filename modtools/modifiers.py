@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-Parser and code generator for gamedata/Modifiers.txt.
+Parser and code generator for Shared.pak Modifiers.txt.
 """
 
 import io
 import os
 import re
 
-from .gamedata import GameData
-from collections.abc import Iterable, Mapping
+from .unpak import Unpak
+from collections.abc import Mapping
 
 
 class Modifiers:
-    """Parser and code generator for gamedata/Modifiers.txt."""
+    """Parser and code generator for Shared.pak Modifiers.txt."""
 
     type Modifier = Mapping[str, str]  # {member_name: valuelist}
 
@@ -21,14 +21,14 @@ class Modifiers:
 
     __modifiers: Mapping[str, Modifier]  # {modifier_name: Modifier}
 
-    def __init__(self, gamedata: GameData):
+    def __init__(self, unpak: Unpak):
         """Create a Modifier instance.
 
         method_target -- the object in which to create functions implementing the modifiers
         """
         self.__modifiers = {}
 
-        modifiers_path = gamedata.get_file_path("Shared", os.path.join(
+        modifiers_path = unpak.get_file_path("Shared", os.path.join(
             "Public", "Shared", "Stats", "Generated", "Structure", "Modifiers.txt"))
         with open(modifiers_path, "r") as f:
             self._parse(f)

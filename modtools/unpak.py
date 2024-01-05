@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Management of BG3 game data files.
+Management of BG3 .pak files.
 This makes use of LSLib: https://github.com/Norbyte/lslib
 """
 
@@ -14,20 +14,19 @@ import sys
 from zipfile import ZipFile
 
 EXPORT_TOOL_VERSION = "1.18.7"
-BG3_DATA_DIR = R"C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data"
 
 
-class GameData:
-    """Management of game data files."""
+class Unpak:
+    """Management of BG3 .pak files."""
 
     __cache_dir: os.PathLike
     __export_tool_dir: os.PathLike
-    __gamedata_dir: os.PathLike
+    __unpak_dir: os.PathLike
 
     def __init__(self, cache_dir: os.PathLike | None):
         self.__cache_dir = cache_dir or os.path.join(os.path.dirname(__file__), ".cache")
         self.__export_tool_dir = os.path.join(self.__cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
-        self.__gamedata_dir = os.path.join(self.__cache_dir, "gamedata")
+        self.__unpak_dir = os.path.join(self.__cache_dir, "unpak")
         self._cache_export_tool()
 
     def get_file_path(self, pak_name: str, relative_path: str) -> str:
@@ -61,8 +60,8 @@ class GameData:
     def _get_cached_pak_dir(self, pak_name: str) -> str:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
 
-        cached_pak_dir = os.path.join(self.__gamedata_dir, pak_name)
-        pak_filename = os.path.join(BG3_DATA_DIR, f"{pak_name}.pak")
+        cached_pak_dir = os.path.join(self.__unpak_dir, pak_name)
+        pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
 
         if os.path.exists(cached_pak_dir):
             with open(pak_filename, "rb") as pak_file, open(os.path.join(cached_pak_dir, ".sha256"), "r") as hash_file:
@@ -72,7 +71,7 @@ class GameData:
                     shutil.rmtree(cached_pak_dir)
 
         if not os.path.exists(cached_pak_dir):
-            os.makedirs(self.__gamedata_dir, exist_ok=True)
+            os.makedirs(self.__unpak_dir, exist_ok=True)
 
             if self.__export_tool_dir not in sys.path:
                 sys.path.append(self.__export_tool_dir)
@@ -86,3 +85,7 @@ class GameData:
                 hash_file.write(digest.hexdigest())
 
         return cached_pak_dir
+
+    def _get_bg3_data_dir(self) -> os.PathLike:
+        """Get the BG3 install path."""
+        return R"C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data"

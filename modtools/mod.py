@@ -9,7 +9,7 @@ import shutil
 import time
 
 from .entity import Entities, Entity
-from .gamedata import GameData
+from .unpak import Unpak
 from .localization import Localization
 from .lsx import Lsx
 from .modifiers import Modifiers
@@ -29,7 +29,7 @@ class Mod:
     __uuid: UUID
     __version: (int, int, int, int)
 
-    __gamedata: GameData
+    __unpak: Unpak
     __modifiers: Modifiers
     __valuelists: ValueLists
 
@@ -71,9 +71,9 @@ class Mod:
         self.__uuid = mod_uuid
         self.__version = version
 
-        self.__gamedata = GameData(cache_dir)
-        self.__modifiers = Modifiers(self.__gamedata)
-        self.__valuelists = ValueLists(self.__gamedata)
+        self._unpak = Unpak(cache_dir)
+        self.__modifiers = Modifiers(self._unpak)
+        self.__valuelists = ValueLists(self._unpak)
 
         self.__localization = Localization(mod_uuid)
 

@@ -1,27 +1,27 @@
 #!/usr/bin/env python3
 """
-Parser and code generator for gamedata/ValueLists.txt.
+Parser and code generator for Shared.pak ValueLists.txt.
 """
 
 import io
 import os
 import re
 
-from .gamedata import GameData
+from .unpak import Unpak
 from collections.abc import Mapping, Set
 
 
 class ValueLists:
-    """Parser and code generator for gamedata/ValueLists.txt."""
+    """Parser and code generator for Shared.pak ValueLists.txt."""
 
     __valuelist_regex = re.compile("""\\s*valuelist\\s*"([^"]+)"\\s*""")
     __value_regex = re.compile("""\\s*value\\s*"([^"]+)"\\s*""")
 
     __valuelists: Mapping[str, Set[str]]
 
-    def __init__(self, gamedata: GameData):
+    def __init__(self, unpak: Unpak):
         self.__valuelists = {}
-        value_lists_path = gamedata.get_file_path("Shared", os.path.join(
+        value_lists_path = unpak.get_file_path("Shared", os.path.join(
             "Public", "Shared", "Stats", "Generated", "Structure", "Base", "ValueLists.txt"))
         with open(value_lists_path, "r") as value_lists_file:
             self._parse(value_lists_file)

@@ -20,26 +20,30 @@ BG3_DATA_DIR = R"C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Da
 class GameData:
     """Management of game data files."""
 
-    cache_dir = os.path.join(os.path.dirname(__file__), ".cache")
-    export_tool_dir = os.path.join(cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
-    gamedata_dir = os.path.join(cache_dir, "gamedata")
+    __cache_dir: os.PathLike
+    __export_tool_dir: os.PathLike
+    __gamedata_dir: os.PathLike
 
-    @staticmethod
-    def get_file_path(pak_name: str, relative_path: str) -> str:
+    def __init__(self, cache_dir: os.PathLike | None):
+        self.__cache_dir = cache_dir or os.path.join(os.path.dirname(__file__), ".cache")
+        self.__export_tool_dir = os.path.join(self.__cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
+        self.__gamedata_dir = os.path.join(self.__cache_dir, "gamedata")
+        self._cache_export_tool()
+
+    def get_file_path(self, pak_name: str, relative_path: str) -> str:
         """Get the path of the named file, unpacking the .pak file into the cache if necessary.
 
         pak_name -- The name of the .pak file, without its extension.
         relative_path -- The path of the file within the .pak.
         """
-        cached_pak_dir = GameData._get_cached_pak_dir(pak_name)
+        cached_pak_dir = self._get_cached_pak_dir(pak_name)
         return os.path.join(cached_pak_dir, relative_path)
 
-    @staticmethod
-    def _cache_export_tool() -> None:
+    def _cache_export_tool(self) -> None:
         """Download the LSLib export tool into the cache, if it is not already present."""
-        os.makedirs(GameData.cache_dir, exist_ok=True)
+        os.makedirs(self.__cache_dir, exist_ok=True)
 
-        cache_export_tool_zip = GameData.export_tool_dir + ".zip"
+        cache_export_tool_zip = self.__export_tool_dir + ".zip"
         export_tool_zip = os.path.basename(cache_export_tool_zip)
 
         if not os.path.exists(cache_export_tool_zip):
@@ -50,15 +54,14 @@ class GameData:
                 for chunk in export_tool.iter_content(chunk_size=4096):
                     export_tool_zip_file.write(chunk)
 
-        if not os.path.exists(GameData.export_tool_dir):
+        if not os.path.exists(self.__export_tool_dir):
             with ZipFile(cache_export_tool_zip, "r") as cache_export_tool_zip:
-                cache_export_tool_zip.extractall(path=GameData.cache_dir)
+                cache_export_tool_zip.extractall(path=self.__cache_dir)
 
-    @staticmethod
-    def _get_cached_pak_dir(pak_name: str) -> str:
+    def _get_cached_pak_dir(self, pak_name: str) -> str:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
 
-        cached_pak_dir = os.path.join(GameData.gamedata_dir, pak_name)
+        cached_pak_dir = os.path.join(self.__gamedata_dir, pak_name)
         pak_filename = os.path.join(BG3_DATA_DIR, f"{pak_name}.pak")
 
         if os.path.exists(cached_pak_dir):
@@ -69,10 +72,10 @@ class GameData:
                     shutil.rmtree(cached_pak_dir)
 
         if not os.path.exists(cached_pak_dir):
-            os.makedirs(GameData.gamedata_dir, exist_ok=True)
+            os.makedirs(self.__gamedata_dir, exist_ok=True)
 
-            if GameData.export_tool_dir not in sys.path:
-                sys.path.append(GameData.export_tool_dir)
+            if self.__export_tool_dir not in sys.path:
+                sys.path.append(self.__export_tool_dir)
             clr.AddReference("LSLib")
             from LSLib.LS import Packager
 
@@ -83,6 +86,3 @@ class GameData:
                 hash_file.write(digest.hexdigest())
 
         return cached_pak_dir
-
-
-GameData._cache_export_tool()

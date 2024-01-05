@@ -141,7 +141,7 @@ loca["AbyssalTiefling_Blindsight_Description"] = {"en": """
     You can perceive your surroundings without relying on sight.
     """}
 
-abyssal_tiefling.add_passive_data(
+abyssal_tiefling.passive_data.add(
     "AbyssalTiefling_Blindsight",
     using="Blindsight",
     Description=loca["AbyssalTiefling_Blindsight_Description"],
@@ -154,7 +154,7 @@ loca["AbyssalTiefling_Maim_Description"] = {"en": """
     <LSTag Type="Status" Tooltip="CRIPPLED">Maim</LSTag> it for 1 turn.
     """}
 
-abyssal_tiefling.add_passive_data(
+abyssal_tiefling.passive_data.add(
     "AbyssalTiefling_Maim",
     DisplayName=loca["AbyssalTiefling_Maim_DisplayName"],
     Description=loca["AbyssalTiefling_Maim_Description"],
@@ -176,7 +176,7 @@ loca["AbyssalTiefling_ManifestationOfDread_ExtraDescription"] = {"en": """
     <LSTag Type="Passive" Tooltip="Manifestation_of_Soul">Manifestation of Soul</LSTag>.
     """}
 
-abyssal_tiefling.add_passive_data(
+abyssal_tiefling.passive_data.add(
     "AbyssalTiefling_ManifestationOfDread",
     DisplayName=loca["AbyssalTiefling_ManifestationOfDread_DisplayName"],
     Description=loca["AbyssalTiefling_ManifestationOfDread_Description"],
@@ -196,7 +196,7 @@ abyssal_tiefling.add_passive_data(
     ToggleGroup="Manifestation",
 )
 
-abyssal_tiefling.add_passive_data(
+abyssal_tiefling.passive_data.add(
     "AbyssalTiefling_Claws_Unlock",
     Properties="IsHidden",
     Boosts=["UnlockSpell(AbyssalTiefling_Claws)"],
@@ -207,7 +207,7 @@ loca["AbyssalTiefling_Claws_Description"] = {"en": """
     Lash out with deadly claws and make your enemy <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
     """}
 
-abyssal_tiefling.add_spell_data(
+abyssal_tiefling.spell_data.add(
     "AbyssalTiefling_Claws",
     using="Target_Claws_Imp",
     SpellType="Target",
@@ -224,7 +224,7 @@ abyssal_tiefling.add_spell_data(
     Sheathing="Sheathed",
 )
 
-abyssal_tiefling.add_passive_data(
+abyssal_tiefling.passive_data.add(
     "AbyssalTiefling_FrenziedClaws_Unlock",
     Properties="IsHidden",
     Boosts=["UnlockSpell(AbyssalTiefling_FrenziedClaws)"],
@@ -236,7 +236,7 @@ loca["AbyssalTiefling_FrenziedClaws_Description"] = {"en": """
     <LSTag Type="Status" Tooltip="BLEEDING">Bleed</LSTag>.
     """}
 
-abyssal_tiefling.add_spell_data(
+abyssal_tiefling.spell_data.add(
     "AbyssalTiefling_FrenziedClaws",
     using="AbyssalTiefling_Claws",
     SpellType="Target",
@@ -251,7 +251,7 @@ loca["AbyssalTiefling_AbyssalStep_Description"] = {"en": """
     Stepping between planes, you teleport to an unoccupied space you can see.
     """}
 
-abyssal_tiefling.add_spell_data(
+abyssal_tiefling.spell_data.add(
     "AbyssalTiefling_AbyssalStep",
     using="Target_MistyStep",
     SpellType="Target",

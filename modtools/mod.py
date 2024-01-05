@@ -8,15 +8,28 @@ import os
 import shutil
 import time
 
+from .entity import Entity
+from .gamedata import GameData
 from .localization import Localization
 from .lsx import Lsx
 from .modifiers import Modifiers
 from .prologue import TXT_PROLOGUE
+from .valuelists import ValueLists
 from uuid import UUID
 
 
 class Mod:
     """Baldur's Gate 3 mod definition."""
+
+    armor_data: Entity
+    character_data: Entity
+    critical_hit_type_data: Entity
+    interrupt_data: Entity
+    object_data: Entity
+    passive_data: Entity
+    spell_data: Entity
+    status_data: Entity
+    weapon_data: Entity
 
     __author: str
     __base_dir: str
@@ -26,7 +39,10 @@ class Mod:
     __uuid: UUID
     __version: (int, int, int, int)
 
+    __gamedata: GameData
     __modifiers: Modifiers
+    __valuelists: ValueLists
+
     __localization: Localization
 
     __character_creation_presets: Lsx
@@ -43,7 +59,7 @@ class Mod:
     __treasure_table: [str]
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
-                 version: (int, int, int, int) = (4, 1, 1, 1)):
+                 version: (int, int, int, int) = (4, 1, 1, 1), cache_dir: os.PathLike | None = None):
         """Define a mod.
 
         base_dir -- the base directory of the mod
@@ -62,7 +78,20 @@ class Mod:
         self.__uuid = mod_uuid
         self.__version = version
 
-        self.__modifiers = Modifiers(self)
+        self.__gamedata = GameData(cache_dir)
+        self.__modifiers = Modifiers(self.__gamedata)
+        self.__valuelists = ValueLists(self.__gamedata)
+
+        self.armor_data = Entity("Armor", self.__modifiers, self.__valuelists)
+        self.character_data = Entity("Character", self.__modifiers, self.__valuelists)
+        self.critical_hit_type_data = Entity("CriticalHitTypeData", self.__modifiers, self.__valuelists)
+        self.interrupt_data = Entity("InterruptData", self.__modifiers, self.__valuelists)
+        self.object_data = Entity("Object", self.__modifiers, self.__valuelists)
+        self.passive_data = Entity("PassiveData", self.__modifiers, self.__valuelists)
+        self.spell_data = Entity("SpellData", self.__modifiers, self.__valuelists)
+        self.status_data = Entity("StatusData", self.__modifiers, self.__valuelists)
+        self.weapon_data = Entity("Weapon", self.__modifiers, self.__valuelists)
+
         self.__localization = Localization(mod_uuid)
 
         self.__character_creation_presets = None
@@ -275,7 +304,15 @@ class Mod:
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
-        self.__modifiers.build(mod_dir, self.__folder)
+        self.armor_data.build(mod_dir, self.__folder)
+        self.character_data.build(mod_dir, self.__folder)
+        self.critical_hit_type_data.build(mod_dir, self.__folder)
+        self.interrupt_data.build(mod_dir, self.__folder)
+        self.object_data.build(mod_dir, self.__folder)
+        self.passive_data.build(mod_dir, self.__folder)
+        self.spell_data.build(mod_dir, self.__folder)
+        self.status_data.build(mod_dir, self.__folder)
+        self.weapon_data.build(mod_dir, self.__folder)
         self.__localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self.__folder)
         self._build_character_creation_presets(public_dir)

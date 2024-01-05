@@ -8,126 +8,50 @@ import os
 import re
 
 from .gamedata import GameData
-from .prologue import TXT_PROLOGUE
-from .valuelists import ValueLists
-from collections.abc import Callable, Iterable
+from collections.abc import Iterable, Mapping
 
 
 class Modifiers:
     """Parser and code generator for gamedata/Modifiers.txt."""
 
+    type Modifier = Mapping[str, str]  # {member_name: valuelist}
+
     __modifier_regex = re.compile("""\\s*modifier\\s+type\\s*"([^"]+)"\\s*""")
     __member_regex = re.compile("""\\s*modifier\\s*"([^"]+)"\\s*,\\s*"([^"]+)"\\s*""")
 
-    __modifier_filename = {
-        "Character": "Character.txt",
-        "Armor": "Armor.txt",
-        "Object": "Object.txt",
-        "Weapon": "Weapon.txt",
-        "SpellData": ("SpellType", lambda key: f"Spell_{key}.txt"),
-        "StatusData": ("StatusType", lambda key: f"Status_{key}.txt"),
-        "PassiveData": "Passive.txt",
-        "InterruptData": "Interrupt.txt",
-        "CriticalHitTypeData": "CriticalHitTypes.txt",
-    }
+    __modifiers: Mapping[str, Modifier]  # {modifier_name: Modifier}
 
-    __method_target: type[any]
-    __modifiers: {str: {str: str | Iterable}}
-    __valuelists: ValueLists
-
-    def __init__(self, method_target: type[any]):
+    def __init__(self, gamedata: GameData):
         """Create a Modifier instance.
 
         method_target -- the object in which to create functions implementing the modifiers
         """
-        self.__method_target = method_target
         self.__modifiers = {}
-        self.__valuelists = ValueLists()
 
-        modifiers_path = GameData.get_file_path("Shared", os.path.join(
+        modifiers_path = gamedata.get_file_path("Shared", os.path.join(
             "Public", "Shared", "Stats", "Generated", "Structure", "Modifiers.txt"))
         with open(modifiers_path, "r") as f:
             self._parse(f)
 
-    def build(self, mod_dir: str, folder: str) -> None:
-        """Build all modifier files in the given mod_dir, folder."""
-        files = {}
-        for name in self.__modifiers.keys():
-            files.setdefault(self._modifier_filename(name), []).append(name)
-
-        data_dir = os.path.join(mod_dir, "Public", folder, "Stats", "Generated", "Data")
-        os.makedirs(data_dir, exist_ok=True)
-
-        for filename, modifier_names in files.items():
-            with open(os.path.join(data_dir, filename), "w") as f:
-                self._write_modifiers(f, modifier_names)
-
-    def _write_modifiers(self, f: io.TextIOWrapper, modifier_names: [str]) -> None:
-        """Build the modifiers specific to a file."""
-        f.write(TXT_PROLOGUE)
-        self._write_modifier(f, modifier_names[0])
-        for name in modifier_names[1:]:
-            f.write("\n")
-            self._write_modifier(f, name)
-
-    def _write_modifier(self, f: io.TextIOWrapper, name: str) -> None:
-        """Write a single modifier to a file."""
-        modifier = self.__modifiers[name].copy()
-
-        # Output the prologue in a fixed order
-        f.write(f"""new entry "{name}"\n""")
-        type = modifier.pop("type")
-        f.write(f"""type "{type}"\n""")
-        if spell_type := modifier.pop("SpellType", None):
-            f.write(f"""data "SpellType" "{spell_type}"\n""")
-        if status_type := modifier.pop("StatusType", None):
-            f.write(f"""data "StatusType" "{status_type}"\n""")
-        if using := modifier.pop("using", None):
-            f.write(f"""using "{using}"\n""")
-
-        # Output the remaining members in sorted order
-        for member in sorted(modifier.keys()):
-            value = modifier[member]
-            if not isinstance(value, str):
-                value = ";".join(value)
-            f.write(f"""data "{member}" "{value}"\n""")
+    def get_modifier(self, modifier_name: str) -> Modifier:
+        """Get a modifier."""
+        return self.__modifiers[modifier_name]
 
     def _parse(self, f: io.TextIOWrapper) -> None:
-        """Parse the gamedata/ValueLists.txt file, building our __validators."""
+        """Parse the Modifiers.txt file, building our __modifiers."""
         modifier: str = None
-        members: {str: Callable[[str | Iterable], bool]} = {}
+        members: {str: str} = {}
 
         for line in f:
             if match := Modifiers.__modifier_regex.match(line):
-                self._complete_modifier(modifier, members)
+                if modifier is not None:
+                    self.__modifiers[modifier] = members
                 modifier = match[1]
                 members = {}
             elif match := Modifiers.__member_regex.match(line):
-                members[match[1]] = self.__valuelists.get_validator(match[2])
+                members[match[1]] = match[2]
             elif line.strip():
                 raise RuntimeError(f"Unknown line in Modifiers.txt: {line}")
 
-        self._complete_modifier(modifier, members)
-
-    def _complete_modifier(self, modifier: str, members: {str: Callable[[str | Iterable], None]}) -> None:
-        """Add a function implementing the given modifier and members."""
-        def impl(name: str, using: str = None, **kwargs):
-            for key, value in kwargs.items():
-                assert key in members, f"{name}: {key} is not defined for {modifier}"
-                invalid_values = members[key](value)
-                assert not invalid_values, f"{name}: Invalid values for {modifier}.{key}: {", ".join(invalid_values)}"
-            self.__modifiers[name] = {"type": modifier, "using": using, **kwargs}
-
-        if modifier:
-            add_modifier = "add_" + "".join(["_" + c.lower() if c.isupper() else c for c in modifier]).lstrip("_")
-            setattr(self.__method_target, add_modifier, impl)
-
-    def _modifier_filename(self, name: str) -> str:
-        """Get the filename corresponding to the given name."""
-        modifier = self.__modifiers[name]
-        filename = self.__modifier_filename[modifier["type"]]
-        if isinstance(filename, str):
-            return filename
-        key, make = filename
-        sub_type = modifier[key]
-        return make(sub_type)
+        if modifier is not None:
+            self.__modifiers[modifier] = members

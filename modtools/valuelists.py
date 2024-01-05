@@ -8,7 +8,7 @@ import os
 import re
 
 from .gamedata import GameData
-from collections.abc import Callable, Iterable
+from collections.abc import Mapping, Set
 
 
 class ValueLists:
@@ -17,27 +17,28 @@ class ValueLists:
     __valuelist_regex = re.compile("""\\s*valuelist\\s*"([^"]+)"\\s*""")
     __value_regex = re.compile("""\\s*value\\s*"([^"]+)"\\s*""")
 
-    __validators: {str, Callable[[str | Iterable], Iterable]}
+    __valuelists: Mapping[str, Set[str]]
 
-    def __init__(self):
-        self.__validators = {}
-        value_lists_path = GameData.get_file_path("Shared", os.path.join(
+    def __init__(self, gamedata: GameData):
+        self.__valuelists = {}
+        value_lists_path = gamedata.get_file_path("Shared", os.path.join(
             "Public", "Shared", "Stats", "Generated", "Structure", "Base", "ValueLists.txt"))
         with open(value_lists_path, "r") as value_lists_file:
             self._parse(value_lists_file)
 
-    def get_validator(self, valuelist: str) -> Callable[[str | Iterable], Iterable]:
-        """Return the validator for the given valuelist."""
-        return self.__validators[valuelist]
+    def get_valid_values(self, valuelist: str) -> Set[str]:
+        """Return the set of valid values in a valuelist. An empty set indicates that any value is acceptable."""
+        return self.__valuelists[valuelist]
 
     def _parse(self, value_lists_file: io.TextIOWrapper) -> None:
-        """Parse the gamedata/ValueLists.txt file, building our __validators."""
+        """Parse the ValueLists.txt file, building our __valuelists."""
         valuelist: str = None
         allowed_contents = set()
 
         for line in value_lists_file:
             if match := ValueLists.__valuelist_regex.match(line):
-                self._complete_valuelist(valuelist, allowed_contents)
+                if valuelist:
+                    self.__valuelists[valuelist] = allowed_contents
                 valuelist = match[1]
                 allowed_contents = set()
             elif match := ValueLists.__value_regex.match(line):
@@ -45,14 +46,7 @@ class ValueLists:
             elif line.strip():
                 raise RuntimeError(f"Unknown line in ValueLists.txt: {line}")
 
-        self._complete_valuelist(valuelist, allowed_contents)
-
-    def _complete_valuelist(self, valuelist: str, allowed_contents: set) -> None:
-        """Add a validator for the given valuelist and allowed_contents."""
-        def validator(values: str | Iterable) -> [str]:
-            """Return a list of the values that fail validation."""
-            return [value for value in ([values] if isinstance(values, str) else values)
-                    if allowed_contents and value not in allowed_contents]
-
-        if valuelist:
-            self.__validators[valuelist] = validator
+        if valuelist is not None:
+            if "None" in allowed_contents:
+                allowed_contents.add("")  # An empty string is synonymous with "None"
+            self.__valuelists[valuelist] = allowed_contents

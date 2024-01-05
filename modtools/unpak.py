@@ -7,9 +7,11 @@ This makes use of LSLib: https://github.com/Norbyte/lslib
 import clr
 import hashlib
 import os
+import re
 import requests
 import shutil
 import sys
+import winreg
 
 from zipfile import ZipFile
 
@@ -18,6 +20,8 @@ EXPORT_TOOL_VERSION = "1.18.7"
 
 class Unpak:
     """Management of BG3 .pak files."""
+
+    __installdir_regex = re.compile(R"""\s*"installdir"\s*"([^"]*)"\s*""")
 
     __cache_dir: os.PathLike
     __export_tool_dir: os.PathLike
@@ -87,5 +91,23 @@ class Unpak:
         return cached_pak_dir
 
     def _get_bg3_data_dir(self) -> os.PathLike:
-        """Get the BG3 install path."""
-        return R"C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data"
+        """Get the BG3 data directory."""
+        try:
+            hkey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, R"SOFTWARE\WOW6432Node\Valve\Steam")
+            steam_install_path, _ = winreg.QueryValueEx(hkey, "InstallPath")
+            steamapps_path = os.path.join(steam_install_path, "steamapps")
+            manifest_path = self._get_bg3_dir_from_manifest(steamapps_path)
+            if os.path.isabs(manifest_path):
+                return os.path.join(manifest_path, "Data")
+            return os.path.join(steamapps_path, "common", manifest_path, "Data")
+        except (KeyError, OSError) as e:
+            print(f"Unable to lookup the BG3 Data directory; falling back on default.\n{e}")
+            return R"C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data"
+
+    def _get_bg3_dir_from_manifest(self, steamapps_path: os.PathLike) -> os.PathLike:
+        """Given the steamapps_path, parse the BG3 manifest, and determine the game's install location."""
+        with open(os.path.join(steamapps_path, "appmanifest_1086940.acf"), "r") as manifest_file:
+            for line in manifest_file:
+                if (match := self.__installdir_regex.match(line)):
+                    return match[1]
+        raise KeyError("Installdir not found in manifest")

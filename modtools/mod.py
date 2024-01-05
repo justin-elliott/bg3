@@ -8,7 +8,7 @@ import os
 import shutil
 import time
 
-from .entity import Entities, Entity
+from .gamedata import GameData, GameDatum
 from .unpak import Unpak
 from .localization import Localization
 from .lsx import Lsx
@@ -35,7 +35,7 @@ class Mod:
 
     __localization: Localization
 
-    __entities: Entities
+    __gamedata: GameData
 
     __character_creation_presets: Lsx
     __feat_descriptions: Lsx
@@ -77,7 +77,7 @@ class Mod:
 
         self.__localization = Localization(mod_uuid)
 
-        self.__entities = Entities(self.__modifiers, self.__valuelists)
+        self.__gamedata = GameData(self.__modifiers, self.__valuelists)
 
         self.__character_creation_presets = None
         self.__feat_descriptions = None
@@ -126,10 +126,10 @@ class Mod:
     def get_localization(self) -> Localization:
         return self.__localization
 
-    def add(self, data: any) -> None:
-        """Add an entity to the Entities collection."""
-        if isinstance(data, Entity):
-            self.__entities.add(data)
+    def add(self, datum: any) -> None:
+        """Add a datum to the GameData collection."""
+        if isinstance(datum, GameDatum):
+            self.__gamedata.add(datum)
         else:
             raise TypeError("add: Invalid data type")
 
@@ -297,7 +297,7 @@ class Mod:
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
-        self.__entities.build(mod_dir, self.__folder)
+        self.__gamedata.build(mod_dir, self.__folder)
         self.__localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self.__folder)
         self._build_character_creation_presets(public_dir)

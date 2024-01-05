@@ -5,7 +5,7 @@ Generates files for the "AbyssalTiefling" mod.
 
 import os
 
-from modtools.entity import passive_data, spell_data
+from modtools.gamedata import passive_data, spell_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID

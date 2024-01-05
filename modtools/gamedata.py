@@ -12,7 +12,7 @@ from .valuelists import ValueLists
 from collections.abc import Iterable, Mapping
 
 
-class Entity:
+class GameDatum:
     """Spell and Item data representation."""
 
     type Members = Mapping[str, str | Iterable[str]]  # {member_name: value | [values]}
@@ -28,24 +28,24 @@ class Entity:
         return self.__members[member_name]
 
     def validate(self, modifiers: Modifiers, valuelists: ValueLists) -> None:
-        """Validate the entity against the modifiers and valuelists, raising an exception on a mismatch."""
-        entity_name = self.__members[".name"]
-        entity_type = self.__members[".type"]
+        """Validate the GameDatum against the modifiers and valuelists, raising an exception on a mismatch."""
+        my_name = self.__members[".name"]
+        my_type = self.__members[".type"]
 
-        modifier = modifiers.get_modifier(entity_type)
+        modifier = modifiers.get_modifier(my_type)
 
         for member_name, values in self.__members.items():
             if not member_name.startswith("."):
                 valuelist = modifier.get(member_name, None)
                 if valuelist is None:
-                    raise KeyError(f"{entity_name}: {member_name} is not a member of {entity_type}")
+                    raise KeyError(f"{my_name}: {member_name} is not a member of {my_type}")
 
                 valid_values = valuelists.get_valid_values(valuelist)
                 if len(valid_values) > 0:
                     values = [values] if isinstance(values, str) else values
                     for value in values:
                         if value not in valid_values:
-                            raise KeyError(f"""{entity_name}: "{value}" is not a valid value for {entity_type}."""
+                            raise KeyError(f"""{my_name}: "{value}" is not a valid value for {my_type}."""
                                            f"""{member_name}""")
 
     def write(self, f: io.TextIOWrapper) -> None:
@@ -69,7 +69,7 @@ class Entity:
                 f.write(f"""data "{member_name}" "{value}"\n""")
 
 
-class EntityFactory:
+class GameDatumFactory:
     """Spell and Item data representation."""
 
     __modifier_name: str
@@ -77,8 +77,8 @@ class EntityFactory:
     def __init__(self, modifier_name: str):
         self.__modifier_name = modifier_name
 
-    def __call__(self, name: str, using: str | None = None, **members: Entity.Members) -> Entity:
-        return Entity({
+    def __call__(self, name: str, using: str | None = None, **members: GameDatum.Members) -> GameDatum:
+        return GameDatum({
             ".name": name,
             ".type": self.__modifier_name,
             ".using": using,
@@ -86,8 +86,8 @@ class EntityFactory:
         })
 
 
-class Entities:
-    """A collection of entities."""
+class GameData:
+    """A collection of GameDatum."""
 
     __modifier_to_filename = {
         "Character": "Character.txt",
@@ -104,56 +104,56 @@ class Entities:
     __modifiers: Modifiers
     __valuelists: ValueLists
 
-    __entities: [Entity]
+    __data: [GameDatum]
 
     def __init__(self, modifiers: Modifiers, valuelists: ValueLists):
-        """Create an entity."""
+        """Create an instance."""
         self.__modifiers = modifiers
         self.__valuelists = valuelists
-        self.__entities = []
+        self.__data = []
 
-    def add(self, entity: Entity) -> None:
-        """Add an entity to the collection."""
-        entity.validate(self.__modifiers, self.__valuelists)
-        self.__entities.append(entity)
+    def add(self, datum: GameDatum) -> None:
+        """Add a GameDatum to the collection."""
+        datum.validate(self.__modifiers, self.__valuelists)
+        self.__data.append(datum)
 
     def build(self, mod_dir: str, folder: str) -> None:
-        """Build all entity files in the given mod_dir, folder."""
+        """Build all data files in the given mod_dir, folder."""
         files = {}
-        for entity in self.__entities:
-            files.setdefault(self._entity_filename(entity), []).append(entity)
+        for datum in self.__data:
+            files.setdefault(self._datum_filename(datum), []).append(datum)
 
         data_dir = os.path.join(mod_dir, "Public", folder, "Stats", "Generated", "Data")
         os.makedirs(data_dir, exist_ok=True)
 
-        for filename, entities in files.items():
+        for filename, data in files.items():
             with open(os.path.join(data_dir, filename), "w") as f:
-                self._write_entities(f, entities)
+                self._write_data(f, data)
 
-    def _write_entities(self, f: io.TextIOWrapper, entities: [Entity]) -> None:
+    def _write_data(self, f: io.TextIOWrapper, data: [GameDatum]) -> None:
         """Write the entities specific to a file."""
         f.write(TXT_PROLOGUE)
-        entities[0].write(f)
-        for entity in entities[1:]:
+        data[0].write(f)
+        for entity in data[1:]:
             f.write("\n")
             entity.write(f)
 
-    def _entity_filename(self, entity: Entity) -> str:
+    def _datum_filename(self, datum: GameDatum) -> str:
         """Get the filename corresponding to the given modifier_name."""
-        filename = self.__modifier_to_filename[entity[".type"]]
+        filename = self.__modifier_to_filename[datum[".type"]]
         if isinstance(filename, str):
             return filename
         key, make = filename
-        sub_type = entity[key]
+        sub_type = datum[key]
         return make(sub_type)
 
 
-armor_data = EntityFactory("Armor")
-character_data = EntityFactory("Character")
-critical_hit_type_data = EntityFactory("CriticalHitTypeData")
-interrupt_data = EntityFactory("InterruptData")
-object_data = EntityFactory("Object")
-passive_data = EntityFactory("PassiveData")
-spell_data = EntityFactory("SpellData")
-status_data = EntityFactory("StatusData")
-weapon_data = EntityFactory("Weapon")
+armor_data = GameDatumFactory("Armor")
+character_data = GameDatumFactory("Character")
+critical_hit_type_data = GameDatumFactory("CriticalHitTypeData")
+interrupt_data = GameDatumFactory("InterruptData")
+object_data = GameDatumFactory("Object")
+passive_data = GameDatumFactory("PassiveData")
+spell_data = GameDatumFactory("SpellData")
+status_data = GameDatumFactory("StatusData")
+weapon_data = GameDatumFactory("Weapon")

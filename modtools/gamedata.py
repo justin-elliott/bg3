@@ -66,7 +66,7 @@ class GameDatum:
                 value = self.__members[member_name]
                 if not isinstance(value, str):
                     value = ";".join(value)
-                f.write(f"""data "{member_name}" "{value}"\n""")
+                f.write(f"""data "{member_name.replace("_", " ")}" "{value}"\n""")
 
 
 class GameDatumFactory:

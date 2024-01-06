@@ -49,7 +49,7 @@ class Modifiers:
                 modifier = match[1]
                 members = {}
             elif match := Modifiers.__member_regex.match(line):
-                members[match[1]] = match[2]
+                members[match[1].replace(" ", "_")] = match[2]
             elif line.strip():
                 raise RuntimeError(f"Unknown line in Modifiers.txt: {line}")
 

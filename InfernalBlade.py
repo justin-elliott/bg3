@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""
+Generates files for the "InfernalBlade" mod.
+"""
+
+import os
+
+from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
+from modtools.lsx import Lsx
+from modtools.mod import Mod
+from uuid import UUID
+
+# <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
+# Lsx.Attribute("$1", "$2", value="$3"),
+
+# data\s*"([^"]*)"\s*"([^"]*)"
+# $1="$2",
+
+infernal_blade = Mod(os.path.dirname(__file__),
+                     author="justin-elliott",
+                     name="InfernalBlade",
+                     mod_uuid=UUID("ff0cba8e-a7f4-41f3-b836-0f0364b76f26"),
+                     description="Adds the sword, the Infernal Blade.")
+
+loca = infernal_blade.get_localization()
+loca.add_language("en", "English")
+
+loca["InfernalBlade_DisplayName"] = {"en": "Infernal Blade"}
+loca["InfernalBlade_Description"] = {"en": """
+    This blade burns with the heat of the Nine Hells.
+    """}
+
+infernal_blade_game_objects_uuid = UUID("5166e9d7-fbad-4406-a544-211a8eb3f151")
+infernal_blade.add_root_templates([
+    Lsx.Node("GameObjects", [
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["InfernalBlade_DisplayName"], version=1),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["InfernalBlade_Description"], version=1),
+        Lsx.Attribute("LevelName", "FixedString", value=""),
+        Lsx.Attribute("MapKey", "FixedString", value=str(infernal_blade_game_objects_uuid)),
+        Lsx.Attribute("Name", "LSString", value="InfernalBlade_GreatSword"),
+        Lsx.Attribute("ParentTemplateId", "FixedString", value="81a83529-5bb6-4c72-b1af-6fc8f45c5706"),
+        Lsx.Attribute("Stats", "FixedString", value="InfernalBlade_GreatSword"),
+        Lsx.Attribute("Type", "FixedString", value="item"),
+    ], children=[
+        Lsx.Node("StatusList", children=[
+            Lsx.Node("Status", [
+                Lsx.Attribute("Object", "FixedString", value="InfernalBlade_EverBurning"),
+            ]),
+        ]),
+    ])
+])
+
+infernal_blade.add(weapon_data(
+    "InfernalBlade_GreatSword",
+    using="WPN_Greatsword_1",
+    RootTemplate=str(infernal_blade_game_objects_uuid),
+    ItemGroup="",
+    ValueUUID="86e7e503-a225-4b48-819e-2e24de1f904a",
+    Rarity="Legendary",
+    Boosts=[
+        "UnlockSpell(InfernalBlade_MiasmalStep)",
+        "UnlockSpell(Projectile_FireBolt)",
+    ],
+    BoostsOnEquipMainHand=[
+        "UnlockSpell(Target_PommelStrike)",
+        "UnlockSpell(Target_Slash_New)",
+        "UnlockSpell(InfernalBlade_Cleave)",
+    ],
+    DefaultBoosts=[
+        "WeaponProperty(Magical)",
+        "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
+        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):WeaponEnchantment(2)",
+        "IF(CharacterLevelGreaterThan(9)):WeaponEnchantment(3)",
+        "IF(not CharacterLevelGreaterThan(4)):WeaponDamage(1d4, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponDamage(1d6, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(8)):WeaponDamage(1d8, Fire, Magical)",
+    ],
+    PassivesOnEquip=[
+        "InfernalBlade_InfernalMight",
+        "Blindsight",
+        "DevilsSight",
+        "ElementalAdept_Fire",
+        "RecklessAttack",
+    ],
+    Unique="1",
+))
+
+loca["InfernalBlade_InfernalMight_DisplayName"] = {"en": "Infernal Might"}
+loca["InfernalBlade_InfernalMight_Description"] = {"en": """
+    Increases <LSTag Tooltip="Strength">Strength</LSTag> to [1].
+    """}
+
+infernal_blade.add(passive_data(
+    "InfernalBlade_InfernalMight",
+    DisplayName=loca["InfernalBlade_InfernalMight_DisplayName"],
+    Description=loca["InfernalBlade_InfernalMight_Description"],
+    DescriptionParams="LevelMapValue(InfernalBlade_StrengthValue)",
+    Icon="PassiveFeature_MindlessRage",
+    Boosts=[
+        # LevelMapValue() does not work for AbilityOverrideMinimum()
+        "IF(not CharacterLevelGreaterThan(3)):AbilityOverrideMinimum(Strength, 18)",
+        "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):AbilityOverrideMinimum(Strength, 20)",
+        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 22)",
+        "IF(CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 24)",
+    ],
+))
+
+infernal_blade.add(spell_data(
+    "InfernalBlade_Cleave",
+    SpellType="Zone",
+    using="Zone_Cleave",
+    Cooldown="None",
+))
+
+loca["InfernalBlade_MiasmalStep_DisplayName"] = {"en": "Miasmal Step"}
+loca["InfernalBlade_MiasmalStep_Description"] = {"en": """
+    Wreathed in an infernal miasma, you teleport to an unoccupied space you can see.
+    """}
+
+infernal_blade.add(spell_data(
+    "InfernalBlade_MiasmalStep",
+    using="Target_MistyStep",
+    SpellType="Target",
+    DisplayName=loca["InfernalBlade_MiasmalStep_DisplayName"],
+    Description=loca["InfernalBlade_MiasmalStep_Description"],
+    Icon="Action_Monk_ShadowStep",
+    Level="",
+    SpellSchool="None",
+    Sheathing="Sheathed",
+    SpellStyleGroup="Class",
+    UseCosts="Movement:Distance*0.5",
+    PrepareEffect="a0458d31-f8ef-419a-8708-5715c81e91d3",
+    CastEffect="52af7a1d-d5d9-4506-85ce-d124f1ef9ea5",
+))
+
+infernal_blade.add(status_data(
+    "InfernalBlade_EverBurning",
+    StatusType="BOOST",
+    DisplayName=loca["InfernalBlade_DisplayName"],
+    Description=loca["InfernalBlade_Description"],
+    Icon="statIcons_EverBurning",
+    StatusEffectOverrideForItems="44d77ebf-fc9e-407d-b20f-257019351f2a",
+    StatusPropertyFlags=[
+        "DisableOverhead",
+        "IgnoreResting",
+        "DisableCombatlog",
+        "DisablePortraitIndicator"
+    ],
+))
+
+infernal_blade.add_level_maps([
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{16 + int((level + 2) / 3) * 2}")
+            for level in range(1, 13)],
+        Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
+        Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),
+    ]),
+])
+
+infernal_blade.add_treasure_table("""\
+new treasuretable "TUT_Chest_Potions"
+CanMerge 1
+new subtable "1,1"
+object category "I_InfernalBlade_GreatSword",1,0,0,0,0,0,0,0
+""")
+
+infernal_blade.build()

@@ -58,6 +58,7 @@ infernal_blade.add(weapon_data(
     ValueUUID="86e7e503-a225-4b48-819e-2e24de1f904a",
     Rarity="Legendary",
     Boosts=[
+        "Proficiency(Greatswords)",
         "UnlockSpell(InfernalBlade_MiasmalStep)",
         "UnlockSpell(Projectile_FireBolt)",
     ],
@@ -67,6 +68,9 @@ infernal_blade.add(weapon_data(
         "UnlockSpell(InfernalBlade_Cleave)",
     ],
     DefaultBoosts=[
+        "IgnoreResistance(Slashing, Resistant)",
+        "IgnoreResistance(Fire, Immune)"
+        "IgnoreResistance(Fire, Resistant)",
         "WeaponProperty(Magical)",
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
         "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):WeaponEnchantment(2)",
@@ -74,12 +78,13 @@ infernal_blade.add(weapon_data(
         "IF(not CharacterLevelGreaterThan(4)):WeaponDamage(1d4, Fire, Magical)",
         "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponDamage(1d6, Fire, Magical)",
         "IF(CharacterLevelGreaterThan(8)):WeaponDamage(1d8, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(5) and not CharacterLevelGreaterThan(11)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelGreaterThan(11)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
         "InfernalBlade_InfernalMight",
+        "InfernalBlade_InfernalResilience",
         "Blindsight",
-        "DevilsSight",
-        "ElementalAdept_Fire",
         "RecklessAttack",
     ],
     Unique="1",
@@ -102,6 +107,22 @@ infernal_blade.add(passive_data(
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):AbilityOverrideMinimum(Strength, 20)",
         "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 22)",
         "IF(CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 24)",
+    ],
+))
+
+loca["InfernalBlade_InfernalResilience_DisplayName"] = {"en": "Infernal Resilience"}
+loca["InfernalBlade_InfernalResilience_Description"] = {"en": """
+    All incoming damage is reduced by [1].
+    """}
+
+infernal_blade.add(passive_data(
+    "InfernalBlade_InfernalResilience",
+    DisplayName=loca["InfernalBlade_InfernalResilience_DisplayName"],
+    Description=loca["InfernalBlade_InfernalResilience_Description"],
+    DescriptionParams="LevelMapValue(InfernalBlade_DamageReductionValue)",
+    Icon="PassiveFeature_Tough",
+    Boosts=[
+        "DamageReduction(All, Flat, LevelMapValue(InfernalBlade_DamageReductionValue))",
     ],
 ))
 
@@ -154,6 +175,12 @@ infernal_blade.add_level_maps([
             for level in range(1, 13)],
         Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
         Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),
+    ]),
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 2) / 3)}")
+            for level in range(1, 13)],
+        Lsx.Attribute("Name", "FixedString", value="InfernalBlade_DamageReductionValue"),
+        Lsx.Attribute("UUID", "guid", value="56c0db94-9826-4646-a966-e8a1165319b4"),
     ]),
 ])
 

@@ -59,6 +59,8 @@ infernal_blade.add(weapon_data(
     Rarity="Legendary",
     Boosts=[
         "Proficiency(Greatswords)",
+        "IgnoreResistance(Slashing, Resistant)",
+        "IgnoreResistance(Fire, Resistant)",
         "UnlockSpell(InfernalBlade_MiasmalStep)",
         "UnlockSpell(Projectile_FireBolt)",
     ],
@@ -68,9 +70,6 @@ infernal_blade.add(weapon_data(
         "UnlockSpell(InfernalBlade_Cleave)",
     ],
     DefaultBoosts=[
-        "IgnoreResistance(Slashing, Resistant)",
-        "IgnoreResistance(Fire, Immune)"
-        "IgnoreResistance(Fire, Resistant)",
         "WeaponProperty(Magical)",
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
         "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):WeaponEnchantment(2)",

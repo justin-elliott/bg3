@@ -49,6 +49,7 @@ class Mod:
     __spell_lists: Lsx
     __tags: Lsx
 
+    __scripts: [str]
     __treasure_table: [str]
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
@@ -71,9 +72,9 @@ class Mod:
         self.__uuid = mod_uuid
         self.__version = version
 
-        self._unpak = Unpak(cache_dir)
-        self.__modifiers = Modifiers(self._unpak)
-        self.__valuelists = ValueLists(self._unpak)
+        self.__unpak = Unpak(cache_dir)
+        self.__modifiers = Modifiers(self.__unpak)
+        self.__valuelists = ValueLists(self.__unpak)
 
         self.__localization = Localization(mod_uuid)
 
@@ -91,6 +92,7 @@ class Mod:
         self.__spell_lists = None
         self.__tags = None
 
+        self.__scripts = None
         self.__treasure_table = None
 
     def make_uuid(self, key: str) -> UUID:
@@ -188,6 +190,10 @@ class Mod:
             self.__tags = []
         self.__tags.extend(nodes)
 
+    def add_script(self, text: str) -> None:
+        self.__scripts = self.__scripts or []
+        self.__scripts.append(text)
+
     def add_treasure_table(self, text: str) -> None:
         self.__treasure_table = self.__treasure_table or []
         self.__treasure_table.append(text)
@@ -282,6 +288,14 @@ class Mod:
                 tag_file = f"{tag_uuid}.lsx"
                 lsx.build(os.path.join(public_dir, "Tags", tag_file))
 
+    def _build_scripts(self) -> None:
+        if self.__scripts:
+            scripts_dir = os.path.join(self.__base_dir, "Scripts", "thoth", "helpers")
+            os.makedirs(scripts_dir, exist_ok=True)
+            with open(os.path.join(scripts_dir, "Scripts.khn"), "w") as f:
+                f.write(TXT_PROLOGUE)
+                f.write("\n".join(self.__scripts))
+
     def _build_treasure_table(self, public_dir: str) -> None:
         if self.__treasure_table:
             treasure_table_dir = os.path.join(public_dir, "Stats", "Generated")
@@ -311,4 +325,5 @@ class Mod:
         self._build_root_templates(public_dir)
         self._build_spell_lists(public_dir)
         self._build_tags(public_dir)
+        self._build_scripts()
         self._build_treasure_table(public_dir)

@@ -3,10 +3,14 @@
 <contentList>
     <content contentuid="he84f0ea1ga71ag4575g5700gc5064464ebeb" version="1">Infernal Blade</content>
     <content contentuid="hed72ff6bg8d2fg3ca8gf38egcb3b8ae2797f" version="1">This blade burns with the heat of the Nine Hells.</content>
+    <content contentuid="h3eab2604g8168gef24g3cd8gce3129661ddb" version="1">Infernal Corrupter</content>
+    <content contentuid="h58cf471bgb06bg9780g3cd6gcea126203f3e" version="1">Your attacks with the Infernal Blade ignore &lt;LSTag Tooltip="Resistant"&gt;Resistance&lt;/LSTag&gt; to Slashing and Fire damage.</content>
+    <content contentuid="h173841f0gab54gc53fg7de0gd1bdef457a62" version="1">Infernal Dash</content>
+    <content contentuid="h6cc6e8bbg54dfga3c5g4471ga690cfaadca6" version="1">Double your &lt;LSTag Tooltip="MovementSpeed"&gt;Movement Speed&lt;/LSTag&gt;. Jump no longer requires a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;Bonus Action&lt;/LSTag&gt;.</content>
+    <content contentuid="hb72581b5g6f82g8a1bg504dg848bdd87ba9d" version="1">Jump</content>
+    <content contentuid="h5a553539g9217gf1cbga8dbged7558714809" version="1">Jump no longer requires a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;Bonus Action&lt;/LSTag&gt;.</content>
     <content contentuid="h12d565ebg5e87g7b5cg8035g7d4a29f880c0" version="1">Infernal Might</content>
-    <content contentuid="hf8b4b495gb8e1ge820g1650g8e5126781e58" version="1">Increases &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; to [1].</content>
+    <content contentuid="hf8b4b495gb8e1ge820g1650g8e5126781e58" version="1">Increases your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; to [1], and your jump distance by [2].</content>
     <content contentuid="hc72a30e8g6dafgd64bg8d28gf637c2f9402b" version="1">Infernal Resilience</content>
-    <content contentuid="he7d16c49g6efeg456bgd1f2gdb64c4202f7d" version="1">All incoming damage is reduced by [1].</content>
-    <content contentuid="h7edf9088g5622g133bg47bbg300278fc5d34" version="1">Miasmal Step</content>
-    <content contentuid="h5a3260d0g500cgaf34g0d87g8062e3405435" version="1">Wreathed in an infernal miasma, you teleport to an unoccupied space you can see.</content>
+    <content contentuid="he7d16c49g6efeg456bgd1f2gdb64c4202f7d" version="1">You are &lt;LSTag Tooltip="Resistant"&gt;Resistant&lt;/LSTag&gt; to Fire damage, and all incoming damage is reduced by [1].</content>
 </contentList>

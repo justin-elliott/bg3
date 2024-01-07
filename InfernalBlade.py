@@ -59,9 +59,7 @@ infernal_blade.add(weapon_data(
     Rarity="Legendary",
     Boosts=[
         "Proficiency(Greatswords)",
-        "IgnoreResistance(Slashing, Resistant)",
-        "IgnoreResistance(Fire, Resistant)",
-        "UnlockSpell(InfernalBlade_MiasmalStep)",
+        "UnlockSpell(InfernalBlade_InfernalDash)",
         "UnlockSpell(Projectile_FireBolt)",
     ],
     BoostsOnEquipMainHand=[
@@ -81,6 +79,7 @@ infernal_blade.add(weapon_data(
         "IF(CharacterLevelGreaterThan(11)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
+        "InfernalBlade_InfernalCorrupter",
         "InfernalBlade_InfernalMight",
         "InfernalBlade_InfernalResilience",
         "Blindsight",
@@ -89,18 +88,85 @@ infernal_blade.add(weapon_data(
     Unique="1",
 ))
 
+loca["InfernalBlade_InfernalCorrupter_DisplayName"] = {"en": "Infernal Corrupter"}
+loca["InfernalBlade_InfernalCorrupter_Description"] = {"en": """
+    Your attacks with the Infernal Blade ignore <LSTag Tooltip="Resistant">Resistance</LSTag> to Slashing and Fire
+    damage.
+    """}
+
+infernal_blade.add(passive_data(
+    "InfernalBlade_InfernalCorrupter",
+    DisplayName=loca["InfernalBlade_InfernalCorrupter_DisplayName"],
+    Description=loca["InfernalBlade_InfernalCorrupter_Description"],
+    Icon="PassiveFeature_DraconicAncestry_Black",
+    Boosts=[
+        "IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Slashing, Resistant)",
+        "IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Fire, Resistant)",
+    ],
+))
+
+loca["InfernalBlade_InfernalDash_DisplayName"] = {"en": "Infernal Dash"}
+loca["InfernalBlade_InfernalDash_Description"] = {"en": """
+    Double your <LSTag Tooltip="MovementSpeed">Movement Speed</LSTag>. Jump no longer requires a
+    <LSTag Type="ActionResource" Tooltip="BonusActionPoint">Bonus Action</LSTag>.
+    """}
+
+infernal_blade.add(spell_data(
+    "InfernalBlade_InfernalDash",
+    SpellType="Shout",
+    using="Shout_Dash_BonusAction",
+    DisplayName=loca["InfernalBlade_InfernalDash_DisplayName"],
+    Description=loca["InfernalBlade_InfernalDash_Description"],
+    TooltipStatusApply=[
+        "ApplyStatus(DASH, 100, 1)",
+        "ApplyStatus(InfernalBlade_FreeJump, 100, 1)",
+    ],
+    SpellFlags=[
+        "IgnoreSilence",
+        "Stealth",
+        "Invisible",
+        "NoCameraMove",
+    ],
+    SpellStyleGroup="Class",
+))
+
+loca["InfernalBlade_FreeJump_DisplayName"] = {"en": "Jump"}
+loca["InfernalBlade_FreeJump_Description"] = {"en": """
+    Jump no longer requires a <LSTag Type="ActionResource" Tooltip="BonusActionPoint">Bonus Action</LSTag>.
+    """}
+
+infernal_blade.add(status_data(
+    "InfernalBlade_FreeJump",
+    StatusType="BOOST",
+    DisplayName=loca["InfernalBlade_FreeJump_DisplayName"],
+    Description=loca["InfernalBlade_FreeJump_Description"],
+    Icon="Action_Jump",
+    StackId="InfernalBlade_FreeJump",
+    TickType="EndTurn",
+    Boosts=[
+        "UnlockSpellVariant("
+        + "SpellId('Projectile_Jump'), "
+        + "ModifyUseCosts(Replace, BonusActionPoint, 0, 0, BonusActionPoint))",
+    ],
+    StatusGroups="SG_RemoveOnRespec",
+))
+
 loca["InfernalBlade_InfernalMight_DisplayName"] = {"en": "Infernal Might"}
 loca["InfernalBlade_InfernalMight_Description"] = {"en": """
-    Increases <LSTag Tooltip="Strength">Strength</LSTag> to [1].
+    Increases your <LSTag Tooltip="Strength">Strength</LSTag> to [1], and your jump distance by [2].
     """}
 
 infernal_blade.add(passive_data(
     "InfernalBlade_InfernalMight",
     DisplayName=loca["InfernalBlade_InfernalMight_DisplayName"],
     Description=loca["InfernalBlade_InfernalMight_Description"],
-    DescriptionParams="LevelMapValue(InfernalBlade_StrengthValue)",
+    DescriptionParams=[
+        "LevelMapValue(InfernalBlade_StrengthValue)",
+        "Distance(4.5)",
+    ],
     Icon="PassiveFeature_MindlessRage",
     Boosts=[
+        "JumpMaxDistanceMultiplier(1.5)",
         # LevelMapValue() does not work for AbilityOverrideMinimum()
         "IF(not CharacterLevelGreaterThan(3)):AbilityOverrideMinimum(Strength, 18)",
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):AbilityOverrideMinimum(Strength, 20)",
@@ -111,16 +177,17 @@ infernal_blade.add(passive_data(
 
 loca["InfernalBlade_InfernalResilience_DisplayName"] = {"en": "Infernal Resilience"}
 loca["InfernalBlade_InfernalResilience_Description"] = {"en": """
-    All incoming damage is reduced by [1].
+    You are <LSTag Tooltip="Resistant">Resistant</LSTag> to Fire damage, and all incoming damage is reduced by [1].
     """}
 
 infernal_blade.add(passive_data(
     "InfernalBlade_InfernalResilience",
     DisplayName=loca["InfernalBlade_InfernalResilience_DisplayName"],
     Description=loca["InfernalBlade_InfernalResilience_Description"],
-    DescriptionParams="LevelMapValue(InfernalBlade_DamageReductionValue)",
+    DescriptionParams=["LevelMapValue(InfernalBlade_DamageReductionValue)"],
     Icon="PassiveFeature_Tough",
     Boosts=[
+        "Resistance(Fire, Resistant)",
         "DamageReduction(All, Flat, LevelMapValue(InfernalBlade_DamageReductionValue))",
     ],
 ))
@@ -130,27 +197,6 @@ infernal_blade.add(spell_data(
     SpellType="Zone",
     using="Zone_Cleave",
     Cooldown="None",
-))
-
-loca["InfernalBlade_MiasmalStep_DisplayName"] = {"en": "Miasmal Step"}
-loca["InfernalBlade_MiasmalStep_Description"] = {"en": """
-    Wreathed in an infernal miasma, you teleport to an unoccupied space you can see.
-    """}
-
-infernal_blade.add(spell_data(
-    "InfernalBlade_MiasmalStep",
-    using="Target_MistyStep",
-    SpellType="Target",
-    DisplayName=loca["InfernalBlade_MiasmalStep_DisplayName"],
-    Description=loca["InfernalBlade_MiasmalStep_Description"],
-    Icon="Action_Monk_ShadowStep",
-    Level="",
-    SpellSchool="None",
-    Sheathing="Sheathed",
-    SpellStyleGroup="Class",
-    UseCosts="Movement:Distance*0.5",
-    PrepareEffect="a0458d31-f8ef-419a-8708-5715c81e91d3",
-    CastEffect="52af7a1d-d5d9-4506-85ce-d124f1ef9ea5",
 ))
 
 infernal_blade.add(status_data(

@@ -126,6 +126,10 @@ infernal_blade.add(spell_data(
         "ApplyStatus(DASH, 100, 1)",
         "ApplyStatus(InfernalBlade_FreeJump, 100, 1)",
     ],
+    SpellProperties=[
+        "ApplyStatus(DASH, 100, 1)",
+        "ApplyStatus(InfernalBlade_FreeJump, 100, 1)",
+    ],
     SpellFlags=[
         "IgnoreSilence",
         "Stealth",
@@ -170,6 +174,13 @@ infernal_blade.add(passive_data(
         "Distance(4.5)",
     ],
     Icon="PassiveFeature_MindlessRage",
+    BoostContext=[
+        "OnCreate",
+        "OnEquip",
+        "OnInventoryChanged",
+        "OnLongRest",
+        "OnShortRest",
+    ],
     Boosts=[
         "JumpMaxDistanceMultiplier(1.5)",
         # LevelMapValue() does not work for AbilityOverrideMinimum()
@@ -191,6 +202,13 @@ infernal_blade.add(passive_data(
     Description=loca["InfernalBlade_InfernalResilience_Description"],
     DescriptionParams=["LevelMapValue(InfernalBlade_DamageReductionValue)"],
     Icon="PassiveFeature_Tough",
+    BoostContext=[
+        "OnCreate",
+        "OnEquip",
+        "OnInventoryChanged",
+        "OnLongRest",
+        "OnShortRest",
+    ],
     Boosts=[
         "Resistance(Fire, Resistant)",
         "DamageReduction(All, Flat, LevelMapValue(InfernalBlade_DamageReductionValue))",

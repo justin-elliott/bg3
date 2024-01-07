@@ -187,7 +187,10 @@ infernal_blade.add(passive_data(
         "IF(not CharacterLevelGreaterThan(3)):AbilityOverrideMinimum(Strength, 18)",
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):AbilityOverrideMinimum(Strength, 20)",
         "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 22)",
-        "IF(CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 24)",
+        "IF(CharacterLevelGreaterThan(9) and not CharacterLevelGreaterThan(12)):AbilityOverrideMinimum(Strength, 24)",
+        "IF(CharacterLevelGreaterThan(12) and not CharacterLevelGreaterThan(15)):AbilityOverrideMinimum(Strength, 26)",
+        "IF(CharacterLevelGreaterThan(15) and not CharacterLevelGreaterThan(18)):AbilityOverrideMinimum(Strength, 28)",
+        "IF(CharacterLevelGreaterThan(18)):AbilityOverrideMinimum(Strength, 30)",
     ],
 ))
 

@@ -48,98 +48,33 @@ rare_feats.add_feats([
     ]),
 ])
 
-# Attribute bonuses
-attributes = [
-    ("Strength",     "Spell_Transmutation_EnhanceAbility_BullsStrenght"),
-    ("Dexterity",    "Spell_Transmutation_EnhanceAbility_CatsGrace"),
-    ("Constitution", "Spell_Transmutation_EnhanceAbility_BearsEndurance"),
-    ("Intelligence", "Spell_Transmutation_EnhanceAbility_FoxsCunning"),
-    ("Wisdom",       "Spell_Transmutation_EnhanceAbility_OwlsWisdom"),
-    ("Charisma",     "Spell_Transmutation_EnhanceAbility_EaglesSplendor"),
-]
+# Add Ability Score Improvement (ASI) feats
+for asi in range(4, 14, 2):
+    feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
+    feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
 
-ability_improvement_feat_uuid = rare_feats.make_uuid("AbilityImprovementFeat")
-ability_improvement_feat_description_uuid = rare_feats.make_uuid("AbilityImprovementFeatDescription")
-
-loca["RareFeats_AbilityImprovement_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
-loca["RareFeats_AbilityImprovement_Description"] = {"en": """
-    Add a bonus to each of your abilities, to a maximum of 30.
-    """}
-
-rare_feats.add_feat_descriptions([
-    Lsx.Node("FeatDescription", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["RareFeats_AbilityImprovement_DisplayName"], version="1"),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["RareFeats_AbilityImprovement_Description"], version="1"),
-        Lsx.Attribute("ExactMatch", "FixedString", value="RareFeats_AbilityImprovement"),
-        Lsx.Attribute("FeatId", "guid", value=str(ability_improvement_feat_uuid)),
-        Lsx.Attribute("UUID", "guid", value=str(ability_improvement_feat_description_uuid)),
-    ]),
-])
-
-passive_selectors = Lsx.Attribute("Selectors", "LSString", value=[])
-rare_feats.add_feats([
-    Lsx.Node("Feat", [
-        Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="false"),
-        Lsx.Attribute("Name", "FixedString", value="RareFeats_AbilityImprovement"),
-        passive_selectors,
-        Lsx.Attribute("UUID", "guid", value=str(ability_improvement_feat_uuid)),
-    ]),
-])
-
-loca["RareFeats_NoBonus_DisplayName"] = {"en": "No Bonus"}
-
-for attribute, attribute_icon in attributes:
-    loca[f"RareFeats_AbilityImprovement_{attribute}_DisplayName"] = {"en": attribute}
-    loca[f"RareFeats_AbilityImprovement_{attribute}_Description"] = {"en": f"""
-        Add a bonus to your <LSTag Tooltip="{attribute}">{attribute}</LSTag>.
+    loca[f"RareFeats_ASI_{asi}_DisplayName"] = {"en": f"Ability Improvement (+{asi})"}
+    loca[f"RareFeats_ASI_{asi}_Description"] = {"en": f"""
+        You have {asi} points to spend across your abilities, to a maximum of 20.
         """}
 
-    rare_feats.add_progression_descriptions([
-        Lsx.Node("ProgressionDescription", [
-            Lsx.Attribute("DisplayName", "TranslatedString", handle=loca[f"RareFeats_AbilityImprovement_{attribute}_DisplayName"], version=1),
-            Lsx.Attribute("Description", "TranslatedString", handle=loca[f"RareFeats_AbilityImprovement_{attribute}_Description"], version=1),
-            Lsx.Attribute("SelectorId", "FixedString", value=f"RareFeats_AbilityImprovement_{attribute}"),
-            Lsx.Attribute("UUID", "guid", value=str(rare_feats.make_uuid(f"AbilityImprovement_{attribute}_Description"))),
+    rare_feats.add_feat_descriptions([
+        Lsx.Node("FeatDescription", [
+            Lsx.Attribute("DisplayName", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_DisplayName"], version="1"),
+            Lsx.Attribute("Description", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_Description"], version="1"),
+            Lsx.Attribute("ExactMatch", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("FeatId", "guid", value=str(feat_uuid)),
+            Lsx.Attribute("UUID", "guid", value=str(feat_description_uuid)),
         ]),
     ])
 
-    passive_list = Lsx.Attribute("Passives", "LSString", value=[], list_joiner=",")
-    passive_list_uuid = str(rare_feats.make_uuid(f"AbilityImprovement_{attribute}"))
-    rare_feats.add_passive_lists([
-        Lsx.Node("PassiveList", [
-            passive_list,
-            Lsx.Attribute("UUID", "guid", value=passive_list_uuid)
+    rare_feats.add_feats([
+        Lsx.Node("Feat", [
+            Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
+            Lsx.Attribute("Name", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("Selectors", "LSString", value=f"SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,{asi},{asi},FeatASI)"),
+            Lsx.Attribute("UUID", "guid", value=str(feat_uuid)),
         ]),
     ])
-    passive_selectors.get_value().append(f"SelectPassives({passive_list_uuid},1,RareFeats_AbilityImprovement_{attribute})")
-
-    loca[f"RareFeats_{attribute}_NoBonus_Description"] = {"en": f"""
-        No bonus to your <LSTag Tooltip="{attribute}">{attribute}</LSTag>.
-        """}
-
-    rare_feats.add_passive_data(
-        f"RareFeats_{attribute}_0",
-        DisplayName=loca["RareFeats_NoBonus_DisplayName"],
-        Description=loca[f"RareFeats_{attribute}_NoBonus_Description"],
-        Icon=attribute_icon,
-        Properties=["IsHidden"],
-    )
-    passive_list.get_value().append(f"RareFeats_{attribute}_0")
-
-    for bonus in range(2, 22, 2):
-        loca[f"RareFeats_{attribute}_{bonus}_DisplayName"] = {"en": f"{attribute} +{bonus}"}
-        loca[f"RareFeats_{attribute}_{bonus}_Description"] = {"en": f"""
-            Increase your <LSTag Tooltip="{attribute}">{attribute}</LSTag> by {bonus}, to a maximum of 30.
-            """}
-
-        rare_feats.add_passive_data(
-            f"RareFeats_{attribute}_{bonus}",
-            DisplayName=loca[f"RareFeats_{attribute}_{bonus}_DisplayName"],
-            Description=loca[f"RareFeats_{attribute}_{bonus}_Description"],
-            Icon=attribute_icon,
-            Boosts=[f"Ability({attribute},{bonus},30)"],
-            Properties=["IsHidden"],
-        )
-        passive_list.get_value().append(f"RareFeats_{attribute}_{bonus}")
 
 rare_feats.build()

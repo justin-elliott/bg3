@@ -5,6 +5,7 @@ Generates files for the "InfernalBlade" mod.
 
 import os
 
+from collections.abc import Callable
 from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
@@ -15,6 +16,39 @@ from uuid import UUID
 
 # data\s*"([^"]*)"\s*"([^"]*)"
 # $1="$2",
+
+
+def boosts_by_level(boost_fn: Callable[[int], str]) -> [str]:
+    """Generate a list of boost values."""
+    range_and_boost = [(1, 1, boost_fn(1))]
+
+    for level in range(1, 21):
+        boost = boost_fn(level)
+        if boost != range_and_boost[-1][2]:
+            range_and_boost.append((level, level, boost))
+        else:
+            range_and_boost[-1] = (range_and_boost[-1][0], level, boost)
+
+    boosts = []
+
+    for first, last, boost in range_and_boost:
+        boost_condition = ""
+        if first == 1:
+            boost_condition = f"not CharacterLevelGreaterThan({last})"
+        elif last == 20:
+            boost_condition = f"CharacterLevelGreaterThan({first - 1})"
+        else:
+            boost_condition = f"CharacterLevelGreaterThan({first - 1}) and not CharacterLevelGreaterThan({last})"
+
+        boosts.append(f"IF({boost_condition}):{boost}")
+
+    return boosts
+
+
+def strength_increase(level) -> int:
+    """Return the strength increase for the given level."""
+    return int((level + 2) / 3) + 1
+
 
 infernal_blade = Mod(os.path.dirname(__file__),
                      author="justin-elliott",
@@ -162,7 +196,7 @@ infernal_blade.add(status_data(
 
 loca["InfernalBlade_InfernalMight_DisplayName"] = {"en": "Infernal Might"}
 loca["InfernalBlade_InfernalMight_Description"] = {"en": """
-    Increases your <LSTag Tooltip="Strength">Strength</LSTag> to [1], and your jump distance by [2].
+    Increases your <LSTag Tooltip="Strength">Strength</LSTag> by [1], and your jump distance by [2].
     """}
 
 infernal_blade.add(passive_data(
@@ -182,15 +216,8 @@ infernal_blade.add(passive_data(
         "OnShortRest",
     ],
     Boosts=[
+        *boosts_by_level(lambda level: f"Ability(Strength, {strength_increase(level)}, 30)"),
         "JumpMaxDistanceMultiplier(1.5)",
-        # LevelMapValue() does not work for AbilityOverrideMinimum()
-        "IF(not CharacterLevelGreaterThan(3)):AbilityOverrideMinimum(Strength, 18)",
-        "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):AbilityOverrideMinimum(Strength, 20)",
-        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):AbilityOverrideMinimum(Strength, 22)",
-        "IF(CharacterLevelGreaterThan(9) and not CharacterLevelGreaterThan(12)):AbilityOverrideMinimum(Strength, 24)",
-        "IF(CharacterLevelGreaterThan(12) and not CharacterLevelGreaterThan(15)):AbilityOverrideMinimum(Strength, 26)",
-        "IF(CharacterLevelGreaterThan(15) and not CharacterLevelGreaterThan(18)):AbilityOverrideMinimum(Strength, 28)",
-        "IF(CharacterLevelGreaterThan(18)):AbilityOverrideMinimum(Strength, 30)",
     ],
 ))
 
@@ -242,7 +269,7 @@ infernal_blade.add(status_data(
 
 infernal_blade.add_level_maps([
     Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{16 + int((level + 2) / 3) * 2}")
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{strength_increase(level)}")
             for level in range(1, 21)],
         Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
         Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),

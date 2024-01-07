@@ -11,7 +11,7 @@
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="5166e9d7-fbad-4406-a544-211a8eb3f151" />
                     <attribute id="Name" type="LSString" value="InfernalBlade_GreatSword" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="81a83529-5bb6-4c72-b1af-6fc8f45c5706" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
                     <attribute id="Stats" type="FixedString" value="InfernalBlade_GreatSword" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>

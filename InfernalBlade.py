@@ -30,6 +30,10 @@ loca["InfernalBlade_Description"] = {"en": """
     This blade burns with the heat of the Nine Hells.
     """}
 
+everburn_blade_uuid = UUID("81a83529-5bb6-4c72-b1af-6fc8f45c5706")
+katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+phalar_aluve_uuid = UUID("6d0d3206-50b5-48ed-af92-a146ed6b98f2")
+
 infernal_blade_game_objects_uuid = UUID("5166e9d7-fbad-4406-a544-211a8eb3f151")
 infernal_blade.add_root_templates([
     Lsx.Node("GameObjects", [
@@ -38,7 +42,7 @@ infernal_blade.add_root_templates([
         Lsx.Attribute("LevelName", "FixedString", value=""),
         Lsx.Attribute("MapKey", "FixedString", value=str(infernal_blade_game_objects_uuid)),
         Lsx.Attribute("Name", "LSString", value="InfernalBlade_GreatSword"),
-        Lsx.Attribute("ParentTemplateId", "FixedString", value="81a83529-5bb6-4c72-b1af-6fc8f45c5706"),
+        Lsx.Attribute("ParentTemplateId", "FixedString", value=str(katana_uuid)),
         Lsx.Attribute("Stats", "FixedString", value="InfernalBlade_GreatSword"),
         Lsx.Attribute("Type", "FixedString", value="item"),
     ], children=[

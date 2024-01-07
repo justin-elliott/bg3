@@ -67,6 +67,7 @@ infernal_blade.add(weapon_data(
         "UnlockSpell(Projectile_FireBolt)",
     ],
     BoostsOnEquipMainHand=[
+        "CannotBeDisarmed()",
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(InfernalBlade_Cleave)",

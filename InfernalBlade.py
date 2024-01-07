@@ -77,11 +77,11 @@ infernal_blade.add(weapon_data(
         "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
         "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):WeaponEnchantment(2)",
         "IF(CharacterLevelGreaterThan(9)):WeaponEnchantment(3)",
-        "IF(not CharacterLevelGreaterThan(4)):WeaponDamage(1d4, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponDamage(1d6, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(8)):WeaponDamage(1d8, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(5) and not CharacterLevelGreaterThan(11)):ReduceCriticalAttackThreshold(1)",
-        "IF(CharacterLevelGreaterThan(11)):ReduceCriticalAttackThreshold(2)",
+        "IF(not CharacterLevelGreaterThan(6)):WeaponDamage(1d4, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(12)):WeaponDamage(2d4, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(12)):WeaponDamage(3d4, Fire, Magical)",
+        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(12)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelGreaterThan(12)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
         "InfernalBlade_InfernalCorrupter",
@@ -240,13 +240,13 @@ infernal_blade.add(status_data(
 infernal_blade.add_level_maps([
     Lsx.Node("LevelMapSeries", [
         *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{16 + int((level + 2) / 3) * 2}")
-            for level in range(1, 13)],
+            for level in range(1, 21)],
         Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
         Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),
     ]),
     Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 2) / 3)}")
-            for level in range(1, 13)],
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 1) / 2)}")
+            for level in range(1, 21)],
         Lsx.Attribute("Name", "FixedString", value="InfernalBlade_DamageReductionValue"),
         Lsx.Attribute("UUID", "guid", value="56c0db94-9826-4646-a966-e8a1165319b4"),
     ]),

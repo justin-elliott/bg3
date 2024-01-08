@@ -38,6 +38,7 @@ class Mod:
     __gamedata: GameData
 
     __character_creation_presets: Lsx
+    __class_descriptions: Lsx
     __feat_descriptions: Lsx
     __feats: Lsx
     __level_maps: Lsx
@@ -81,6 +82,7 @@ class Mod:
         self.__gamedata = GameData(self.__modifiers, self.__valuelists)
 
         self.__character_creation_presets = None
+        self.__class_descriptions = None
         self.__feat_descriptions = None
         self.__feats = None
         self.__level_maps = None
@@ -139,6 +141,11 @@ class Mod:
         if not self.__character_creation_presets:
             self.__character_creation_presets = Lsx(self.__version, "CharacterCreationPresets", "root")
         self.__character_creation_presets.add_children(nodes)
+
+    def add_class_descriptions(self, nodes: [Lsx.Node]) -> None:
+        if not self.__class_descriptions:
+            self.__class_descriptions = Lsx(self.__version, "ClassDescriptions", "root")
+        self.__class_descriptions.add_children(nodes)
 
     def add_feat_descriptions(self, nodes: [Lsx.Node]) -> None:
         if not self.__feat_descriptions:
@@ -242,6 +249,10 @@ class Mod:
             self.__character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
                                                                  "CharacterCreationPresets.lsx"))
 
+    def _build_class_descriptions(self, public_dir: str) -> None:
+        if self.__class_descriptions:
+            self.__class_descriptions.build(os.path.join(public_dir, "ClassDescriptions", "ClassDescriptions.lsx"))
+
     def _build_feat_descriptions(self, public_dir: str) -> None:
         if self.__feat_descriptions:
             self.__feat_descriptions.build(os.path.join(public_dir, "Feats", "FeatDescriptions.lsx"))
@@ -315,6 +326,7 @@ class Mod:
         self.__localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self.__folder)
         self._build_character_creation_presets(public_dir)
+        self._build_class_descriptions(public_dir)
         self._build_feat_descriptions(public_dir)
         self._build_feats(public_dir)
         self._build_level_maps(public_dir)

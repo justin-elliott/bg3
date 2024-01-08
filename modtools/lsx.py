@@ -143,6 +143,7 @@ class Lsx:
         __valid_types = set([
             "bool",
             "FixedString",
+            "double",
             "float",
             "fvec3",
             "guid",

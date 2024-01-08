@@ -95,13 +95,11 @@ infernal_blade.add(weapon_data(
     ItemGroup="",
     ValueUUID="86e7e503-a225-4b48-819e-2e24de1f904a",
     Rarity="Legendary",
-    Boosts=[
+    BoostsOnEquipMainHand=[
+        "CannotBeDisarmed()",
         "Proficiency(Greatswords)",
         "UnlockSpell(InfernalBlade_InfernalDash)",
         "UnlockSpell(Projectile_FireBolt)",
-    ],
-    BoostsOnEquipMainHand=[
-        "CannotBeDisarmed()",
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(InfernalBlade_Cleave)",

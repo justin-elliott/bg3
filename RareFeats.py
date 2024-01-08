@@ -53,7 +53,7 @@ for asi in range(4, 14, 2):
     feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
     feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
 
-    loca[f"RareFeats_ASI_{asi}_DisplayName"] = {"en": f"Ability Improvement (+{asi})"}
+    loca[f"RareFeats_ASI_{asi}_DisplayName"] = {"en": f"Rare Feats: Ability Improvement (+{asi})"}
     loca[f"RareFeats_ASI_{asi}_Description"] = {"en": f"""
         You have {asi} points to spend across your abilities, to a maximum of 20.
         """}

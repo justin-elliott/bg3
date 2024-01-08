@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentList>
+    <content contentuid="SorcererBattlemage_BattleMagic_DisplayName" version="1">Battle Magic</content>
+    <content contentuid="SorcererBattlemage_BattleMagic_Description" version="1">After making a melee attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+</contentList>

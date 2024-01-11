@@ -7,7 +7,7 @@ import hashlib
 import os
 import re
 
-from .prologue import XML_PROLOGUE
+from modtools.prologue import XML_PROLOGUE
 from uuid import UUID
 
 import xml.etree.ElementTree as ElementTree

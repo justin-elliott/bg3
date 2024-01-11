@@ -7,7 +7,7 @@ import io
 import os
 import re
 
-from .unpak import Unpak
+from modtools.unpak import Unpak
 from collections.abc import Mapping, Set
 
 

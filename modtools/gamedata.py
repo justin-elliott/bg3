@@ -6,9 +6,9 @@ Representation of spell and item data.
 import io
 import os
 
-from .modifiers import Modifiers
-from .prologue import TXT_PROLOGUE
-from .valuelists import ValueLists
+from modtools.modifiers import Modifiers
+from modtools.prologue import TXT_PROLOGUE
+from modtools.valuelists import ValueLists
 from collections.abc import Iterable, Mapping
 
 

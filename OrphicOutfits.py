@@ -32,6 +32,7 @@ loca["OrphicOutfits_Camp_ComfortableBoots_Description"] = {"en": """
 
 boots_of_aid_and_comfort_uuid = UUID("bc090f4e-ff74-49f6-a3f2-7eb561f57436")
 comfortable_boots_game_objects_uuid = UUID("09228143-3367-435d-acbb-a65a8e5255b1")
+
 orphic_outfits.add_root_templates([
     Lsx.Node("GameObjects", [
         Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["OrphicOutfits_Camp_ComfortableBoots_DisplayName"], version=1),

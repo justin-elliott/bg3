@@ -5,7 +5,7 @@ Generates files for the "InfernalBlade" mod.
 
 import os
 
-from collections.abc import Callable
+from moddb.boosts import boosts_by_level_for
 from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
@@ -18,36 +18,9 @@ from uuid import UUID
 # $1="$2",
 
 
-def boosts_by_level(boost_fn: Callable[[int], str]) -> [str]:
-    """Generate a list of boost values."""
-    range_and_boost = [(1, 1, boost_fn(1))]
-
-    for level in range(1, 21):
-        boost = boost_fn(level)
-        if boost != range_and_boost[-1][2]:
-            range_and_boost.append((level, level, boost))
-        else:
-            range_and_boost[-1] = (range_and_boost[-1][0], level, boost)
-
-    boosts = []
-
-    for first, last, boost in range_and_boost:
-        boost_condition = ""
-        if first == 1:
-            boost_condition = f"not CharacterLevelGreaterThan({last})"
-        elif last == 20:
-            boost_condition = f"CharacterLevelGreaterThan({first - 1})"
-        else:
-            boost_condition = f"CharacterLevelGreaterThan({first - 1}) and not CharacterLevelGreaterThan({last})"
-
-        boosts.append(f"IF({boost_condition}):{boost}")
-
-    return boosts
-
-
 def strength_increase(level) -> int:
-    """Return the strength increase for the given level."""
-    return int((level + 2) / 3) + 1
+    """Return the strength increase for a given level."""
+    return int((level + 1) / 2)
 
 
 infernal_blade = Mod(os.path.dirname(__file__),
@@ -58,6 +31,8 @@ infernal_blade = Mod(os.path.dirname(__file__),
 
 loca = infernal_blade.get_localization()
 loca.add_language("en", "English")
+
+boosts_by_level = boosts_by_level_for(infernal_blade)
 
 loca["InfernalBlade_DisplayName"] = {"en": "Infernal Blade"}
 loca["InfernalBlade_Description"] = {"en": """
@@ -106,14 +81,14 @@ infernal_blade.add(weapon_data(
     ],
     DefaultBoosts=[
         "WeaponProperty(Magical)",
-        "IF(CharacterLevelGreaterThan(3) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
-        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(9)):WeaponEnchantment(2)",
-        "IF(CharacterLevelGreaterThan(9)):WeaponEnchantment(3)",
-        "IF(not CharacterLevelGreaterThan(6)):WeaponDamage(1d4, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(12)):WeaponDamage(2d4, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(12)):WeaponDamage(3d4, Fire, Magical)",
-        "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(12)):ReduceCriticalAttackThreshold(1)",
-        "IF(CharacterLevelGreaterThan(12)):ReduceCriticalAttackThreshold(2)",
+        "IF(CharacterLevelRange(4,6)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(7,9)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(10,20)):WeaponEnchantment(3)",
+        "IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,Fire,Magical)",
+        "IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,Fire,Magical)",
+        "IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,Fire,Magical)",
+        "IF(CharacterLevelRange(7,11)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
         "InfernalBlade_InfernalCorrupter",
@@ -214,7 +189,7 @@ infernal_blade.add(passive_data(
         "OnShortRest",
     ],
     Boosts=[
-        *boosts_by_level(lambda level: f"Ability(Strength, {strength_increase(level)}, 30)"),
+        *boosts_by_level(lambda level: f"Ability(Strength,{strength_increase(level)},30)"),
         "JumpMaxDistanceMultiplier(1.5)",
     ],
 ))

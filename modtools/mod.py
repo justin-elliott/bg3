@@ -8,13 +8,13 @@ import os
 import shutil
 import time
 
-from .gamedata import GameData, GameDatum
-from .unpak import Unpak
-from .localization import Localization
-from .lsx import Lsx
-from .modifiers import Modifiers
-from .prologue import TXT_PROLOGUE
-from .valuelists import ValueLists
+from modtools.gamedata import GameData, GameDatum
+from modtools.unpak import Unpak
+from modtools.localization import Localization
+from modtools.lsx import Lsx
+from modtools.modifiers import Modifiers
+from modtools.prologue import TXT_PROLOGUE
+from modtools.valuelists import ValueLists
 from uuid import UUID
 
 
@@ -199,7 +199,8 @@ class Mod:
 
     def add_script(self, text: str) -> None:
         self.__scripts = self.__scripts or []
-        self.__scripts.append(text)
+        if text not in self.__scripts:
+            self.__scripts.append(text)
 
     def add_treasure_table(self, text: str) -> None:
         self.__treasure_table = self.__treasure_table or []
@@ -299,9 +300,9 @@ class Mod:
                 tag_file = f"{tag_uuid}.lsx"
                 lsx.build(os.path.join(public_dir, "Tags", tag_file))
 
-    def _build_scripts(self) -> None:
+    def _build_scripts(self, mod_dir: str) -> None:
         if self.__scripts:
-            scripts_dir = os.path.join(self.__base_dir, "Scripts", "thoth", "helpers")
+            scripts_dir = os.path.join(mod_dir, "Scripts", "thoth", "helpers")
             os.makedirs(scripts_dir, exist_ok=True)
             with open(os.path.join(scripts_dir, "Scripts.khn"), "w") as f:
                 f.write(TXT_PROLOGUE)
@@ -337,5 +338,5 @@ class Mod:
         self._build_root_templates(public_dir)
         self._build_spell_lists(public_dir)
         self._build_tags(public_dir)
-        self._build_scripts()
+        self._build_scripts(mod_dir)
         self._build_treasure_table(public_dir)

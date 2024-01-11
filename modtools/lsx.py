@@ -9,7 +9,7 @@ import os
 
 import xml.etree.ElementTree as ElementTree
 
-from .prologue import XML_PROLOGUE
+from modtools.prologue import XML_PROLOGUE
 
 
 class Lsx:

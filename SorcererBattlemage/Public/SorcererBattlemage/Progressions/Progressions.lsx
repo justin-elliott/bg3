@@ -91,7 +91,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,3);ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3;ExtraAttack" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3;ExtraAttack;SorcererBattlemage_FastMovement" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(dcbaf2ae-1f45-453e-ab83-cd154f8277a4,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
@@ -112,6 +112,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,4);ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage"/>
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(5fe40622-1d3e-4cc1-8d89-e66fe51d8c5c,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />

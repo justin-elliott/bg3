@@ -5,7 +5,7 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OrphicOutfits_Camp_BlackFlareLeatherOutfit",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_OrphicOutfits_Camp_ComfortableBoots",1,0,0,0,0,0,0,0
+object category "I_OrphicOutfits_Camp_TrespassersTreads",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OrphicOutfits_Underwear_HalfOrc",1,0,0,0,0,0,0,0
 new subtable "1,1"

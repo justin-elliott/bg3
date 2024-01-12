@@ -25,9 +25,9 @@ orphic_outfits = Mod(os.path.dirname(__file__),
 loca = orphic_outfits.get_localization()
 loca.add_language("en", "English")
 
-loca["OrphicOutfits_Camp_ComfortableBoots_DisplayName"] = {"en": "Comfortable Boots"}
-loca["OrphicOutfits_Camp_ComfortableBoots_Description"] = {"en": """
-    Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.
+loca["OrphicOutfits_Camp_TrespassersTreads_DisplayName"] = {"en": "Trespasser's Treads"}
+loca["OrphicOutfits_Camp_TrespassersTreads_Description"] = {"en": """
+    The perfect boots to be wearing when you're someplace that you're not welcome.
     """}
 
 boots_of_aid_and_comfort_uuid = UUID("bc090f4e-ff74-49f6-a3f2-7eb561f57436")
@@ -35,13 +35,13 @@ comfortable_boots_game_objects_uuid = UUID("09228143-3367-435d-acbb-a65a8e5255b1
 
 orphic_outfits.add_root_templates([
     Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["OrphicOutfits_Camp_ComfortableBoots_DisplayName"], version=1),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["OrphicOutfits_Camp_ComfortableBoots_Description"], version=1),
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["OrphicOutfits_Camp_TrespassersTreads_DisplayName"], version=1),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["OrphicOutfits_Camp_TrespassersTreads_Description"], version=1),
         Lsx.Attribute("LevelName", "FixedString", value=""),
         Lsx.Attribute("MapKey", "FixedString", value=str(comfortable_boots_game_objects_uuid)),
-        Lsx.Attribute("Name", "LSString", value="OrphicOutfits_Camp_ComfortableBoots"),
+        Lsx.Attribute("Name", "LSString", value="OrphicOutfits_Camp_TrespassersTreads"),
         Lsx.Attribute("ParentTemplateId", "FixedString", value=str(boots_of_aid_and_comfort_uuid)),
-        Lsx.Attribute("Stats", "FixedString", value="OrphicOutfits_Camp_ComfortableBoots"),
+        Lsx.Attribute("Stats", "FixedString", value="OrphicOutfits_Camp_TrespassersTreads"),
         Lsx.Attribute("Type", "FixedString", value="item"),
     ]),
 ])
@@ -52,7 +52,7 @@ orphic_outfits.add(armor_data(
 ))
 
 orphic_outfits.add(armor_data(
-    "OrphicOutfits_Camp_ComfortableBoots",
+    "OrphicOutfits_Camp_TrespassersTreads",
     using="ARM_Camp_Shoes",
     RootTemplate=str(comfortable_boots_game_objects_uuid),
     ValueLevel="3",
@@ -61,53 +61,56 @@ orphic_outfits.add(armor_data(
     MaxAmount="1",
     Priority="0",
     Rarity="Legendary",
-    PassivesOnEquip=["OrphicOutfits_FleetOfFoot"],
+    PassivesOnEquip=["OrphicOutfits_Transgressor"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_HalfOrc",
     using="ARM_Underwear_HalfOrcs",
     Rarity="Legendary",
-    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
+    PassivesOnEquip=["OrphicOutfits_Dependable"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_Incubus",
     using="ARM_Underwear_Incubus",
     Rarity="Legendary",
-    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
+    PassivesOnEquip=["OrphicOutfits_Dependable"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_Tiefling",
     using="ARM_Underwear_Tieflings",
     Rarity="Legendary",
-    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
+    PassivesOnEquip=["OrphicOutfits_Dependable"],
 ))
 
-loca["OrphicOutfits_FleetOfFoot_DisplayName"] = {"en": "Fleet of Foot"}
-loca["OrphicOutfits_FleetOfFoot_Description"] = {"en": """
-    <LSTag Tooltip="MovementSpeed">Movement speed</LSTag> increased by [1].
+loca["OrphicOutfits_Transgressor_DisplayName"] = {"en": "Transgressor"}
+loca["OrphicOutfits_Transgressor_Description"] = {"en": """
+    You have <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="SleightOfHand">Sleight of Hand</LSTag> and
+    <LSTag Tooltip="Stealth">Stealth</LSTag> <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
     """}
 
 orphic_outfits.add(passive_data(
-    "OrphicOutfits_FleetOfFoot",
-    DisplayName=loca["OrphicOutfits_FleetOfFoot_DisplayName"],
-    Description=loca["OrphicOutfits_FleetOfFoot_Description"],
-    DescriptionParams=["Distance(1.5)"],
-    Boosts=["ActionResource(Movement,1.5,0)"],
+    "OrphicOutfits_Transgressor",
+    DisplayName=loca["OrphicOutfits_Transgressor_DisplayName"],
+    Description=loca["OrphicOutfits_Transgressor_Description"],
+    Boosts=["Advantage(Skill,SleightOfHand)", "Advantage(Skill,Stealth)"],
 ))
 
-loca["OrphicOutfits_LuckyUnderwear_DisplayName"] = {"en": "Lucky Underwear"}
-loca["OrphicOutfits_LuckyUnderwear_Description"] = {"en": """
-    You don't know why, but you always seem to have good luck in this pair of underwear.
+loca["OrphicOutfits_Dependable_DisplayName"] = {"en": "Dependable"}
+loca["OrphicOutfits_Dependable_Description"] = {"en": """
+    Increases your <LSTag Tooltip="Constitution">Constitution</LSTag> by [1], and you gain
+    <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="Concentration">Concentration</LSTag>
+    <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
     """}
 
 orphic_outfits.add(passive_data(
-    "OrphicOutfits_LuckyUnderwear",
-    DisplayName=loca["OrphicOutfits_LuckyUnderwear_DisplayName"],
-    Description=loca["OrphicOutfits_LuckyUnderwear_Description"],
-    Boosts=["RollBonus(SavingThrow,1)"],
+    "OrphicOutfits_Dependable",
+    DisplayName=loca["OrphicOutfits_Dependable_DisplayName"],
+    Description=loca["OrphicOutfits_Dependable_Description"],
+    DescriptionParams=["2"],
+    Boosts=["Ability(Constitution,2,30)", "Advantage(Concentration)"],
 ))
 
 orphic_outfits.add_treasure_table("""\
@@ -116,7 +119,7 @@ CanMerge 1
 new subtable "1,1"
 object category "I_OrphicOutfits_Camp_BlackFlareLeatherOutfit",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_OrphicOutfits_Camp_ComfortableBoots",1,0,0,0,0,0,0,0
+object category "I_OrphicOutfits_Camp_TrespassersTreads",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OrphicOutfits_Underwear_HalfOrc",1,0,0,0,0,0,0,0
 new subtable "1,1"

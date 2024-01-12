@@ -6,13 +6,13 @@
         <node id="Templates">
             <children>
                 <node id="GameObjects">
-                    <attribute id="DisplayName" type="TranslatedString" handle="h137d64e6g30e6g8c94g524egaf0635a530b2" version="1" />
-                    <attribute id="Description" type="TranslatedString" handle="h40dc9be4g60d8g02c5gcbd4g0410d580eaf5" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0603ebd8g3aa1g3940g1af7gf1009f69eea3" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h811d2eceg2626g25bcg9135g89fd08b3dcc8" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="09228143-3367-435d-acbb-a65a8e5255b1" />
-                    <attribute id="Name" type="LSString" value="OrphicOutfits_Camp_ComfortableBoots" />
+                    <attribute id="Name" type="LSString" value="OrphicOutfits_Camp_TrespassersTreads" />
                     <attribute id="ParentTemplateId" type="FixedString" value="bc090f4e-ff74-49f6-a3f2-7eb561f57436" />
-                    <attribute id="Stats" type="FixedString" value="OrphicOutfits_Camp_ComfortableBoots" />
+                    <attribute id="Stats" type="FixedString" value="OrphicOutfits_Camp_TrespassersTreads" />
                     <attribute id="Type" type="FixedString" value="item" />
                 </node>
             </children>

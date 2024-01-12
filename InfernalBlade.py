@@ -20,7 +20,7 @@ from uuid import UUID
 
 def strength_increase(level) -> int:
     """Return the strength increase for a given level."""
-    return int((level + 1) / 2)
+    return int((level + 2) / 3) * 2
 
 
 infernal_blade = Mod(os.path.dirname(__file__),
@@ -212,7 +212,9 @@ infernal_blade.add(status_data(
 infernal_blade.add_level_maps([
     Lsx.Node("LevelMapSeries", [
         *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{strength_increase(level)}")
-            for level in range(1, 21)],
+            for level in range(1, 13)],
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{strength_increase(12)}")
+            for level in range(13, 21)],
         Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
         Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),
     ]),

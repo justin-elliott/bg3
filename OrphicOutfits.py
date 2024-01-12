@@ -5,6 +5,7 @@ Generates files for the "OrphicOutfits" mod.
 
 import os
 
+from moddb.boosts import Boosts
 from modtools.gamedata import armor_data, passive_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
@@ -16,6 +17,12 @@ from uuid import UUID
 # data\s*"([^"]*)"\s*"([^"]*)"
 # $1="$2",
 
+
+def ability_increase(level) -> int:
+    """Return the ability increase for a given level."""
+    return int((level + 5) / 6) * 2
+
+
 orphic_outfits = Mod(os.path.dirname(__file__),
                      author="justin-elliott",
                      name="OrphicOutfits",
@@ -24,6 +31,8 @@ orphic_outfits = Mod(os.path.dirname(__file__),
 
 loca = orphic_outfits.get_localization()
 loca.add_language("en", "English")
+
+boosts = Boosts(orphic_outfits)
 
 loca["OrphicOutfits_Camp_TrespassersTreads_DisplayName"] = {"en": "Trespasser's Treads"}
 loca["OrphicOutfits_Camp_TrespassersTreads_Description"] = {"en": """
@@ -49,6 +58,8 @@ orphic_outfits.add_root_templates([
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Camp_BlackFlareLeatherOutfit",
     using="ARM_Vanity_Body_Leather_Black",
+    Rarity="Legendary",
+    PassivesOnEquip=["OrphicOutfits_SeductiveGrace"],
 ))
 
 orphic_outfits.add(armor_data(
@@ -85,6 +96,22 @@ orphic_outfits.add(armor_data(
     PassivesOnEquip=["OrphicOutfits_Dependable"],
 ))
 
+loca["OrphicOutfits_SeductiveGrace_DisplayName"] = {"en": "Seductive Grace"}
+loca["OrphicOutfits_SeductiveGrace_Description"] = {"en": """
+    Increases your <LSTag Tooltip="Charisma">Charisma</LSTag> and <LSTag Tooltip="Dexterity">Dexterity</LSTag> by [1].
+    """}
+
+orphic_outfits.add(passive_data(
+    "OrphicOutfits_SeductiveGrace",
+    DisplayName=loca["OrphicOutfits_SeductiveGrace_DisplayName"],
+    Description=loca["OrphicOutfits_SeductiveGrace_Description"],
+    DescriptionParams=["LevelMapValue(OrphicOutfits_AbilityValue)"],
+    Boosts=[
+        *boosts.by_level(lambda level: f"Ability(Charisma,{ability_increase(level)},30)"),
+        *boosts.by_level(lambda level: f"Ability(Dexterity,{ability_increase(level)},30)"),
+    ],
+))
+
 loca["OrphicOutfits_Transgressor_DisplayName"] = {"en": "Transgressor"}
 loca["OrphicOutfits_Transgressor_Description"] = {"en": """
     You have <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="SleightOfHand">Sleight of Hand</LSTag> and
@@ -109,9 +136,23 @@ orphic_outfits.add(passive_data(
     "OrphicOutfits_Dependable",
     DisplayName=loca["OrphicOutfits_Dependable_DisplayName"],
     Description=loca["OrphicOutfits_Dependable_Description"],
-    DescriptionParams=["2"],
-    Boosts=["Ability(Constitution,2,30)", "Advantage(Concentration)"],
+    DescriptionParams=["LevelMapValue(OrphicOutfits_AbilityValue)"],
+    Boosts=[
+        *boosts.by_level(lambda level: f"Ability(Constitution,{ability_increase(level)},30)"),
+        "Advantage(Concentration)",
+    ],
 ))
+
+orphic_outfits.add_level_maps([
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{ability_increase(level)}")
+            for level in range(1, 13)],
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{ability_increase(12)}")
+            for level in range(13, 21)],
+        Lsx.Attribute("Name", "FixedString", value="OrphicOutfits_AbilityValue"),
+        Lsx.Attribute("UUID", "guid", value="bfc5329e-9fec-4fec-834f-e25baa6bd350"),
+    ]),
+])
 
 orphic_outfits.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"

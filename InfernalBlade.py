@@ -5,7 +5,7 @@ Generates files for the "InfernalBlade" mod.
 
 import os
 
-from moddb.boosts import boosts_by_level_for
+from moddb.boosts import Boosts
 from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
@@ -32,7 +32,7 @@ infernal_blade = Mod(os.path.dirname(__file__),
 loca = infernal_blade.get_localization()
 loca.add_language("en", "English")
 
-boosts_by_level = boosts_by_level_for(infernal_blade)
+boosts = Boosts(infernal_blade)
 
 loca["InfernalBlade_DisplayName"] = {"en": "Infernal Blade"}
 loca["InfernalBlade_Description"] = {"en": """
@@ -158,7 +158,7 @@ infernal_blade.add(passive_data(
         "OnShortRest",
     ],
     Boosts=[
-        *boosts_by_level(lambda level: f"Ability(Strength,{strength_increase(level)},30)"),
+        *boosts.by_level(lambda level: f"Ability(Strength,{strength_increase(level)},30)"),
         "JumpMaxDistanceMultiplier(1.5)",
     ],
 ))

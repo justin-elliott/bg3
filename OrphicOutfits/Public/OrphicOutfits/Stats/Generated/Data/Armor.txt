@@ -3,6 +3,8 @@
 new entry "OrphicOutfits_Camp_BlackFlareLeatherOutfit"
 type "Armor"
 using "ARM_Vanity_Body_Leather_Black"
+data "PassivesOnEquip" "OrphicOutfits_SeductiveGrace"
+data "Rarity" "Legendary"
 
 new entry "OrphicOutfits_Camp_TrespassersTreads"
 type "Armor"

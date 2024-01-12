@@ -37,8 +37,7 @@ class ValueLists:
 
         for line in value_lists_file:
             if match := ValueLists.__valuelist_regex.match(line):
-                if valuelist:
-                    self.__valuelists[valuelist] = allowed_contents
+                self._complete_valuelist(valuelist, allowed_contents)
                 valuelist = match[1]
                 allowed_contents = set()
             elif match := ValueLists.__value_regex.match(line):
@@ -46,7 +45,11 @@ class ValueLists:
             elif line.strip():
                 raise RuntimeError(f"Unknown line in ValueLists.txt: {line}")
 
-        if valuelist is not None:
+        self._complete_valuelist(valuelist, allowed_contents)
+
+    def _complete_valuelist(self, valuelist: str | None, allowed_contents: Set[str]) -> None:
+        """Create a new valuelist with the given allowed contents."""
+        if valuelist:
             if "None" in allowed_contents:
                 allowed_contents.add("")  # An empty string is synonymous with "None"
             self.__valuelists[valuelist] = allowed_contents

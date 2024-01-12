@@ -73,7 +73,7 @@ infernal_blade.add(weapon_data(
     BoostsOnEquipMainHand=[
         "CannotBeDisarmed()",
         "Proficiency(Greatswords)",
-        "UnlockSpell(InfernalBlade_InfernalDash)",
+        "UnlockSpell(InfernalBlade_Hellcrawler)",
         "UnlockSpell(Projectile_FireBolt)",
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
@@ -117,54 +117,23 @@ infernal_blade.add(passive_data(
     ],
 ))
 
-loca["InfernalBlade_InfernalDash_DisplayName"] = {"en": "Infernal Dash"}
-loca["InfernalBlade_InfernalDash_Description"] = {"en": """
-    Double your <LSTag Tooltip="MovementSpeed">Movement Speed</LSTag>. Jump no longer requires a
-    <LSTag Type="ActionResource" Tooltip="BonusActionPoint">Bonus Action</LSTag>.
-    """}
-
 infernal_blade.add(spell_data(
-    "InfernalBlade_InfernalDash",
+    "InfernalBlade_Hellcrawler",
     SpellType="Shout",
-    using="Shout_Dash_BonusAction",
-    DisplayName=loca["InfernalBlade_InfernalDash_DisplayName"],
-    Description=loca["InfernalBlade_InfernalDash_Description"],
-    TooltipStatusApply=[
-        "ApplyStatus(DASH, 100, 1)",
-        "ApplyStatus(InfernalBlade_FreeJump, 100, 1)",
-    ],
-    SpellProperties=[
-        "ApplyStatus(DASH, 100, 1)",
-        "ApplyStatus(InfernalBlade_FreeJump, 100, 1)",
-    ],
-    SpellFlags=[
-        "IgnoreSilence",
-        "Stealth",
-        "Invisible",
-        "NoCameraMove",
-    ],
+    using="Target_MAG_Legendary_HellCrawler",
+    DescriptionParams=["DealDamage(1d4,Fire)", "Distance(3)"],
+    Cooldown="",
+    SpellProperties=["GROUND:CreateExplosion(InfernalBlade_HellcrawlerFireball)", "GROUND:TeleportSource()"],
     SpellStyleGroup="Class",
+    UseCosts=["BonusActionPoint:1", "Movement:Distance*0.5"],
 ))
 
-loca["InfernalBlade_FreeJump_DisplayName"] = {"en": "Jump"}
-loca["InfernalBlade_FreeJump_Description"] = {"en": """
-    Jump no longer requires a <LSTag Type="ActionResource" Tooltip="BonusActionPoint">Bonus Action</LSTag>.
-    """}
-
-infernal_blade.add(status_data(
-    "InfernalBlade_FreeJump",
-    StatusType="BOOST",
-    DisplayName=loca["InfernalBlade_FreeJump_DisplayName"],
-    Description=loca["InfernalBlade_FreeJump_Description"],
-    Icon="Action_Jump",
-    StackId="InfernalBlade_FreeJump",
-    TickType="EndTurn",
-    Boosts=[
-        "UnlockSpellVariant("
-        + "SpellId('Projectile_Jump'), "
-        + "ModifyUseCosts(Replace, BonusActionPoint, 0, 0, BonusActionPoint))",
-    ],
-    StatusGroups="SG_RemoveOnRespec",
+infernal_blade.add(spell_data(
+    "InfernalBlade_HellcrawlerFireball",
+    SpellType="Shout",
+    using="Projectile_MAG_Infernal_MistyStep_Fireball",
+    SpellSuccess=["DealDamage(1d4,Fire,Magical)"],
+    SpellFail=["DealDamage(1,Fire,Magical)"],
 ))
 
 loca["InfernalBlade_InfernalMight_DisplayName"] = {"en": "Infernal Might"}

@@ -3,7 +3,7 @@
 new entry "InfernalBlade_GreatSword"
 type "Weapon"
 using "WPN_Greatsword_1"
-data "BoostsOnEquipMainHand" "CannotBeDisarmed();Proficiency(Greatswords);UnlockSpell(InfernalBlade_InfernalDash);UnlockSpell(Projectile_FireBolt);UnlockSpell(Target_PommelStrike);UnlockSpell(Target_Slash_New);UnlockSpell(InfernalBlade_Cleave)"
+data "BoostsOnEquipMainHand" "CannotBeDisarmed();Proficiency(Greatswords);UnlockSpell(InfernalBlade_Hellcrawler);UnlockSpell(Projectile_FireBolt);UnlockSpell(Target_PommelStrike);UnlockSpell(Target_Slash_New);UnlockSpell(InfernalBlade_Cleave)"
 data "DefaultBoosts" "WeaponProperty(Magical);IF(CharacterLevelRange(4,6)):WeaponEnchantment(1);IF(CharacterLevelRange(7,9)):WeaponEnchantment(2);IF(CharacterLevelRange(10,20)):WeaponEnchantment(3);IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,Fire,Magical);IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,Fire,Magical);IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,Fire,Magical);IF(CharacterLevelRange(7,11)):ReduceCriticalAttackThreshold(1);IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)"
 data "ItemGroup" ""
 data "PassivesOnEquip" "InfernalBlade_InfernalCorrupter;InfernalBlade_InfernalMight;InfernalBlade_InfernalResilience;Blindsight;RecklessAttack"

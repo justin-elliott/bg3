@@ -5,7 +5,7 @@ Generates files for the "OrphicOutfits" mod.
 
 import os
 
-from modtools.gamedata import armor_data
+from modtools.gamedata import armor_data, passive_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID
@@ -60,21 +60,54 @@ orphic_outfits.add(armor_data(
     MinAmount="1",
     MaxAmount="1",
     Priority="0",
+    Rarity="Legendary",
+    PassivesOnEquip=["OrphicOutfits_FleetOfFoot"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_HalfOrc",
     using="ARM_Underwear_HalfOrcs",
+    Rarity="Legendary",
+    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_Incubus",
     using="ARM_Underwear_Incubus",
+    Rarity="Legendary",
+    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
 ))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Underwear_Tiefling",
     using="ARM_Underwear_Tieflings",
+    Rarity="Legendary",
+    PassivesOnEquip=["OrphicOutfits_LuckyUnderwear"],
+))
+
+loca["OrphicOutfits_FleetOfFoot_DisplayName"] = {"en": "Fleet of Foot"}
+loca["OrphicOutfits_FleetOfFoot_Description"] = {"en": """
+    <LSTag Tooltip="MovementSpeed">Movement speed</LSTag> increased by [1].
+    """}
+
+orphic_outfits.add(passive_data(
+    "OrphicOutfits_FleetOfFoot",
+    DisplayName=loca["OrphicOutfits_FleetOfFoot_DisplayName"],
+    Description=loca["OrphicOutfits_FleetOfFoot_Description"],
+    DescriptionParams=["Distance(1.5)"],
+    Boosts=["ActionResource(Movement,1.5,0)"],
+))
+
+loca["OrphicOutfits_LuckyUnderwear_DisplayName"] = {"en": "Lucky Underwear"}
+loca["OrphicOutfits_LuckyUnderwear_Description"] = {"en": """
+    You don't know why, but you always seem to have good luck in this pair of underwear.
+    """}
+
+orphic_outfits.add(passive_data(
+    "OrphicOutfits_LuckyUnderwear",
+    DisplayName=loca["OrphicOutfits_LuckyUnderwear_DisplayName"],
+    Description=loca["OrphicOutfits_LuckyUnderwear_Description"],
+    Boosts=["RollBonus(SavingThrow,1)"],
 ))
 
 orphic_outfits.add_treasure_table("""\

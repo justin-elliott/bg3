@@ -13,7 +13,7 @@ from modtools.unpak import Unpak
 from modtools.localization import Localization
 from modtools.lsx import Lsx
 from modtools.modifiers import Modifiers
-from modtools.prologue import TXT_PROLOGUE
+from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from modtools.valuelists import ValueLists
 from uuid import UUID
 
@@ -305,7 +305,7 @@ class Mod:
             scripts_dir = os.path.join(mod_dir, "Scripts", "thoth", "helpers")
             os.makedirs(scripts_dir, exist_ok=True)
             with open(os.path.join(scripts_dir, "Scripts.khn"), "w") as f:
-                f.write(TXT_PROLOGUE)
+                f.write(LUA_PROLOGUE)
                 f.write("\n".join(self.__scripts))
 
     def _build_treasure_table(self, public_dir: str) -> None:

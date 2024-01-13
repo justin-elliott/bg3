@@ -112,8 +112,8 @@ infernal_blade.add(passive_data(
     Description=loca["InfernalBlade_InfernalCorrupter_Description"],
     Icon="PassiveFeature_DraconicAncestry_Black",
     Boosts=[
-        "IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Slashing, Resistant)",
-        "IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Fire, Resistant)",
+        "IgnoreResistance(Slashing, Resistant)",
+        "IgnoreResistance(Fire, Resistant)",
     ],
 ))
 

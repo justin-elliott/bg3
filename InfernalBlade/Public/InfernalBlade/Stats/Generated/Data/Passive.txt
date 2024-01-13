@@ -2,7 +2,7 @@
 
 new entry "InfernalBlade_InfernalCorrupter"
 type "PassiveData"
-data "Boosts" "IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Slashing, Resistant);IF(IsMeleeAttack() and IsWeaponAttack()):IgnoreResistance(Fire, Resistant)"
+data "Boosts" "IgnoreResistance(Slashing, Resistant);IgnoreResistance(Fire, Resistant)"
 data "Description" "h58cf471bgb06bg9780g3cd6gcea126203f3e"
 data "DisplayName" "h3eab2604g8168gef24g3cd8gce3129661ddb"
 data "Icon" "PassiveFeature_DraconicAncestry_Black"

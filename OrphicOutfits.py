@@ -34,6 +34,35 @@ loca.add_language("en", "English")
 
 boosts = Boosts(orphic_outfits)
 
+loca["OrphicOutfits_Camp_FittedLeathers_DisplayName"] = {"en": "Fitted Leathers"}
+loca["OrphicOutfits_Camp_FittedLeathers_Description"] = {"en": """
+    This outfit comforms to your body like a second skin.
+    """}
+
+black_flare_leather_outfit_uuid = UUID("5efe9bb8-bffe-4c91-bbd6-bee4d5d0611c")
+fitted_leathers_uuid = UUID("6a4d26a9-96aa-4676-8c22-4c682c4dc8f3")
+
+orphic_outfits.add_root_templates([
+    Lsx.Node("GameObjects", [
+        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["OrphicOutfits_Camp_FittedLeathers_DisplayName"], version=1),
+        Lsx.Attribute("Description", "TranslatedString", handle=loca["OrphicOutfits_Camp_FittedLeathers_Description"], version=1),
+        Lsx.Attribute("LevelName", "FixedString", value=""),
+        Lsx.Attribute("MapKey", "FixedString", value=str(fitted_leathers_uuid)),
+        Lsx.Attribute("Name", "LSString", value="OrphicOutfits_Camp_FittedLeathers"),
+        Lsx.Attribute("ParentTemplateId", "FixedString", value=str(black_flare_leather_outfit_uuid)),
+        Lsx.Attribute("Stats", "FixedString", value="OrphicOutfits_Camp_FittedLeathers"),
+        Lsx.Attribute("Type", "FixedString", value="item"),
+    ]),
+])
+
+orphic_outfits.add(armor_data(
+    "OrphicOutfits_Camp_FittedLeathers",
+    using="ARM_Vanity_Body_Leather_Black",
+    Rarity="Legendary",
+    RootTemplate=str(fitted_leathers_uuid),
+    PassivesOnEquip=["OrphicOutfits_SeductiveGrace"],
+))
+
 loca["OrphicOutfits_Camp_TrespassersTreads_DisplayName"] = {"en": "Trespasser's Treads"}
 loca["OrphicOutfits_Camp_TrespassersTreads_Description"] = {"en": """
     The perfect boots to be wearing when you're someplace that you're not welcome.
@@ -54,13 +83,6 @@ orphic_outfits.add_root_templates([
         Lsx.Attribute("Type", "FixedString", value="item"),
     ]),
 ])
-
-orphic_outfits.add(armor_data(
-    "OrphicOutfits_Camp_BlackFlareLeatherOutfit",
-    using="ARM_Vanity_Body_Leather_Black",
-    Rarity="Legendary",
-    PassivesOnEquip=["OrphicOutfits_SeductiveGrace"],
-))
 
 orphic_outfits.add(armor_data(
     "OrphicOutfits_Camp_TrespassersTreads",
@@ -158,7 +180,7 @@ orphic_outfits.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
-object category "I_OrphicOutfits_Camp_BlackFlareLeatherOutfit",1,0,0,0,0,0,0,0
+object category "I_OrphicOutfits_Camp_FittedLeathers",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OrphicOutfits_Camp_TrespassersTreads",1,0,0,0,0,0,0,0
 new subtable "1,1"

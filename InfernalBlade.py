@@ -192,6 +192,13 @@ infernal_blade.add(spell_data(
     SpellType="Zone",
     using="Zone_Cleave",
     Cooldown="None",
+    SpellSuccess=[
+        "DealDamage(MainMeleeWeapon, MainWeaponDamageType)",
+        "GROUND:ExecuteWeaponFunctors(MainHand)",
+    ],
+    TooltipDamageList=[
+        "DealDamage(MainMeleeWeapon, MainWeaponDamageType)",
+    ],
 ))
 
 infernal_blade.add(status_data(

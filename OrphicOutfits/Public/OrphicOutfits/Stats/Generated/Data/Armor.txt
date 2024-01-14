@@ -7,11 +7,6 @@ data "PassivesOnEquip" "OrphicOutfits_SeductiveGrace"
 data "Rarity" "Legendary"
 data "RootTemplate" "6a4d26a9-96aa-4676-8c22-4c682c4dc8f3"
 
-new entry "OrphicOutfits_Camp_BlackFlareLeatherOutfit"
-type "Armor"
-using "ARM_Vanity_Body_Leather_Black"
-data "Rarity" "Legendary"
-
 new entry "OrphicOutfits_Camp_TrespassersTreads"
 type "Armor"
 using "ARM_Camp_Shoes"

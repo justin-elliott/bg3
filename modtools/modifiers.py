@@ -28,8 +28,7 @@ class Modifiers:
         """
         self.__modifiers = {}
 
-        modifiers_path = unpak.get_file_path("Shared", os.path.join(
-            "Public", "Shared", "Stats", "Generated", "Structure", "Modifiers.txt"))
+        modifiers_path = unpak.get_file_path("Shared:Public/Shared/Stats/Generated/Structure/Modifiers.txt")
         with open(modifiers_path, "r") as f:
             self._parse(f)
 

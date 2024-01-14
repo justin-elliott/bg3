@@ -33,12 +33,14 @@ class Unpak:
         self.__unpak_dir = os.path.join(self.__cache_dir, "unpak")
         self._cache_export_tool()
 
-    def get_file_path(self, pak_name: str, relative_path: str) -> str:
-        """Get the path of the named file, unpacking the .pak file into the cache if necessary.
+    def get_file_path(self, pak_and_path: str) -> str:
+        """Get the path of a named file from within a .pak, unpacking it into the cache if necessary.
 
-        pak_name -- The name of the .pak file, without its extension.
-        relative_path -- The path of the file within the .pak.
+        Example: unpak.get_file_path("PakName:path/to/file")
+
+        pak_and_path -- The file .pak and relative path, separated by a colon.
         """
+        pak_name, relative_path = pak_and_path.split(":")
         cached_pak_dir = self._get_cached_pak_dir(pak_name)
         return os.path.join(cached_pak_dir, relative_path)
 
@@ -64,6 +66,7 @@ class Unpak:
     def _get_cached_pak_dir(self, pak_name: str) -> str:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
 
+        pak_name = pak_name[0:-4] if pak_name.endswith(".pak") else pak_name
         cached_pak_dir = os.path.join(self.__unpak_dir, pak_name)
         pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
 

@@ -21,7 +21,8 @@ class ValueLists:
 
     def __init__(self, unpak: Unpak):
         self.__valuelists = {}
-        value_lists_path = unpak.get_file_path("Shared:Public/Shared/Stats/Generated/Structure/Base/ValueLists.txt")
+        shared_pak = unpak.get("Shared")
+        value_lists_path = os.path.join(shared_pak.path, "Public/Shared/Stats/Generated/Structure/Base/ValueLists.txt")
         with open(value_lists_path, "r") as value_lists_file:
             self._parse(value_lists_file)
 

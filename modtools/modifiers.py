@@ -27,8 +27,8 @@ class Modifiers:
         method_target -- the object in which to create functions implementing the modifiers
         """
         self.__modifiers = {}
-
-        modifiers_path = unpak.get_file_path("Shared:Public/Shared/Stats/Generated/Structure/Modifiers.txt")
+        shared_pak = unpak.get("Shared")
+        modifiers_path = os.path.join(shared_pak.path, "Public/Shared/Stats/Generated/Structure/Modifiers.txt")
         with open(modifiers_path, "r") as f:
             self._parse(f)
 

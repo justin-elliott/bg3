@@ -13,6 +13,8 @@ import shutil
 import sys
 import winreg
 
+from collections.abc import Mapping
+from dataclasses import dataclass
 from zipfile import ZipFile
 
 EXPORT_TOOL_VERSION = "1.18.7"
@@ -21,28 +23,33 @@ EXPORT_TOOL_VERSION = "1.18.7"
 class Unpak:
     """Management of BG3 .pak files."""
 
+    @dataclass
+    class CachedPak:
+        """Description of a cached, unpacked .pak file."""
+        path: os.PathLike  # Path to the cached .pak directory
+        hash: str          # SHA256 hex digest
+
     __installdir_regex = re.compile(R"""\s*"installdir"\s*"([^"]*)"\s*""")
 
     __cache_dir: os.PathLike
     __export_tool_dir: os.PathLike
     __unpak_dir: os.PathLike
+    __cached_paks: Mapping[str, CachedPak]
 
     def __init__(self, cache_dir: os.PathLike | None):
         self.__cache_dir = cache_dir or os.path.join(os.path.dirname(__file__), ".cache")
         self.__export_tool_dir = os.path.join(self.__cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
         self.__unpak_dir = os.path.join(self.__cache_dir, "unpak")
+        self.__cached_paks = {}
         self._cache_export_tool()
 
-    def get_file_path(self, pak_and_path: str) -> str:
-        """Get the path of a named file from within a .pak, unpacking it into the cache if necessary.
-
-        Example: unpak.get_file_path("PakName:path/to/file")
-
-        pak_and_path -- The file .pak and relative path, separated by a colon.
-        """
-        pak_name, relative_path = pak_and_path.split(":")
-        cached_pak_dir = self._get_cached_pak_dir(pak_name)
-        return os.path.join(cached_pak_dir, relative_path)
+    def get(self, pak_name: str) -> CachedPak:
+        """Retrieve the details for a .pak file, caching it if necessary."""
+        pak_name = pak_name[0:-4] if pak_name.endswith(".pak") else pak_name
+        if pak_name not in self.__cached_paks:
+            cached_pak = self._get_cached_pak_dir(pak_name)
+            self.__cached_paks[pak_name] = cached_pak
+        return self.__cached_paks[pak_name]
 
     def _cache_export_tool(self) -> None:
         """Download the LSLib export tool into the cache, if it is not already present."""
@@ -63,18 +70,18 @@ class Unpak:
             with ZipFile(cache_export_tool_zip, "r") as cache_export_tool_zip:
                 cache_export_tool_zip.extractall(path=self.__cache_dir)
 
-    def _get_cached_pak_dir(self, pak_name: str) -> str:
+    def _get_cached_pak_dir(self, pak_name: str) -> CachedPak:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
-
-        pak_name = pak_name[0:-4] if pak_name.endswith(".pak") else pak_name
         cached_pak_dir = os.path.join(self.__unpak_dir, pak_name)
+        hash_filename = os.path.join(cached_pak_dir, ".sha256")
         pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
+        hash = None
 
         if os.path.exists(cached_pak_dir):
-            with open(pak_filename, "rb") as pak_file, open(os.path.join(cached_pak_dir, ".sha256"), "r") as hash_file:
+            with open(pak_filename, "rb") as pak_file, open(hash_filename, "r") as hash_file:
                 digest = hashlib.file_digest(pak_file, "sha256")
-                cached_hexdigest = hash_file.read()
-                if digest.hexdigest() != cached_hexdigest:
+                hash = hash_file.read()
+                if digest.hexdigest() != hash:
                     shutil.rmtree(cached_pak_dir)
 
         if not os.path.exists(cached_pak_dir):
@@ -87,11 +94,11 @@ class Unpak:
 
             packager = Packager()
             packager.UncompressPackage(pak_filename, cached_pak_dir)
-            with open(pak_filename, "rb") as pak_file, open(os.path.join(cached_pak_dir, ".sha256"), "w") as hash_file:
-                digest = hashlib.file_digest(pak_file, "sha256")
-                hash_file.write(digest.hexdigest())
+            with open(pak_filename, "rb") as pak_file, open(hash_filename, "w") as hash_file:
+                hash = hashlib.file_digest(pak_file, "sha256").hexdigest()
+                hash_file.write(hash)
 
-        return cached_pak_dir
+        return Unpak.CachedPak(cached_pak_dir, hash)
 
     def _get_bg3_data_dir(self) -> os.PathLike:
         """Get the BG3 data directory."""

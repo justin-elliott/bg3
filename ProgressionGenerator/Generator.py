@@ -17,6 +17,7 @@ CLASS_NAMES: Final[set[str]] = {
     "Druid",
     "Fighter",
     "Monk",
+    "MulticlassSpellSlots",
     "Paladin",
     "Ranger",
     "Rogue",

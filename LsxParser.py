@@ -5,7 +5,6 @@ Parser for .lsx files.
 
 import os
 
-from dataclasses import dataclass, field
 from modtools.unpak import Unpak
 from operator import itemgetter
 from pathlib import PurePath
@@ -13,11 +12,58 @@ from typing import Self
 from xml.etree.ElementTree import XMLParser
 
 
-@dataclass
+class Attribute:
+    id: str
+    fields: dict[str, set[str]]  # name -> values
+
+    def __init__(self, xml_attrs: dict[str, str]):
+        self.id = xml_attrs.get("id")
+        self.fields = {
+            field: set([value] if field == "type" else []) for field, value in xml_attrs.items() if field != "id"
+        }
+
+    def merge(self, other: Self) -> Self:
+        for field, values in other.fields.items():
+            if (our_values := self.fields.setdefault(field, values)) != values:
+                our_values |= values
+        return self
+
+    def __str__(self, indent: int = 0) -> str:
+        pad = " " * (indent * 4)
+        s = f"{pad}{self.id}("
+        fields = []
+        for field, values in self.fields.items():
+            f = field
+            if len(values) > 0:
+                f += f"=\"{"|".join(list(values))}\""
+            fields.append(f)
+        s += ", ".join(fields)
+        s += ")"
+        return s
+
+
 class Node:
     id: str
-    attributes: dict[str, set[str]] = field(default_factory=dict)
-    children: dict[str, Self] = field(default_factory=dict)
+    attributes: dict[str, Attribute]
+    children: dict[str, Self]
+
+    def __init__(self, xml_attrs: dict[str, str]):
+        self.id = xml_attrs.get("id")
+        self.attributes = {}
+        self.children = {}
+
+    def __str__(self, indent: int = 0) -> str:
+        pad = " " * (indent * 4)
+        s = f"{pad}{self.id}(\n"
+        for _, attribute in sorted(self.attributes.items()):
+            s += f"{attribute.__str__(indent + 1)}\n"
+        if len(self.children) > 0:
+            s += f"{pad}    children=[\n"
+            for _, child in sorted(self.children.items()):
+                s += f"{child.__str__(indent + 2)}\n"
+            s += f"{pad}    ]\n"
+        s += f"{pad})"
+        return s
 
 
 class LsxParser:
@@ -37,36 +83,33 @@ class LsxParser:
             self.version = None
             self.region_id = None
             self.root = None
-            self.__node_stack = [Node("")]  # Sentinel to ensure that there is always a parent node
+            self.__node_stack = [Node({"id": ""})]  # Sentinel to ensure that there is always a parent node
 
-        def start(self, tag: str, attributes: dict) -> None:
-            match tag:
+        def start(self, xml_tag: str, xml_attrs: dict) -> None:
+            match xml_tag:
                 case "save":
                     pass
                 case "version":
-                    self.version = itemgetter("major", "minor", "revision", "build")(attributes)
+                    self.version = itemgetter("major", "minor", "revision", "build")(xml_attrs)
                 case "region":
-                    self.region_id = attributes.get("id", "")
+                    self.region_id = xml_attrs.get("id", "")
                 case "node":
-                    node_id = attributes.get("id", "")
+                    node = Node(xml_attrs)
                     parent_node = self.__node_stack[-1]
-                    node = parent_node.children.get(node_id, None)
-                    if node is None:
-                        node = Node(node_id)
-                        parent_node.children[node_id] = node
+                    node = parent_node.children.setdefault(node.id, node)
                     self.__node_stack.append(node)
                 case "attribute":
+                    attribute = Attribute(xml_attrs)
                     node = self.__node_stack[-1]
-                    attribute_id = attributes.get("id")
-                    node_attrs = node.attributes.setdefault(attribute_id, set())
-                    node_attrs.add(attributes.get("type"))
+                    if (node_attrs := node.attributes.setdefault(attribute.id, attribute)) != attribute:
+                        node_attrs.merge(attribute)
                 case "children":
                     pass
                 case _:
                     raise LsxParser.UnexpectedTagError(f"Tag <{tag}> was not expected")
 
-        def end(self, tag: str) -> None:
-            if tag == "node":
+        def end(self, xml_tag: str) -> None:
+            if xml_tag == "node":
                 node = self.__node_stack.pop()
                 if len(self.__node_stack) == 1:  # The root node is just above the sentinel
                     self.root = node
@@ -95,6 +138,10 @@ def main():
     lsx_parser = LsxParser(unpak)
     lsx_parser.parse("Shared/Public/Shared/Progressions/Progressions.lsx")
     lsx_parser.parse("Shared/Public/SharedDev/Progressions/Progressions.lsx")
+    lsx_parser.parse("Shared/Public/Shared/ClassDescriptions/ClassDescriptions.lsx")
+    lsx_parser.parse("Shared/Public/Shared/Levelmaps/LevelMapValues.lsx")
+    lsx_parser.parse("Shared/Public/SharedDev/Levelmaps/LevelMapValues.lsx")
+    lsx_parser.parse("Shared/Public/Shared/RootTemplates/_merged.lsf.lsx")
 
 
 if __name__ == "__main__":

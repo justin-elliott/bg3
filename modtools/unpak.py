@@ -15,6 +15,7 @@ import winreg
 
 from collections.abc import Mapping
 from dataclasses import dataclass
+from pathlib import Path
 from zipfile import ZipFile
 
 EXPORT_TOOL_VERSION = "1.18.7"
@@ -90,13 +91,33 @@ class Unpak:
             if self.__export_tool_dir not in sys.path:
                 sys.path.append(self.__export_tool_dir)
             clr.AddReference("LSLib")
-            from LSLib.LS import Packager
+            from LSLib.LS import (
+                Packager,
+                ResourceConversionParameters,
+                ResourceLoadParameters,
+                ResourceUtils
+            )
+            from LSLib.LS.Enums import Game, ResourceFormat
 
+            # Decompress the package
             packager = Packager()
             packager.UncompressPackage(pak_filename, cached_pak_dir)
             with open(pak_filename, "rb") as pak_file, open(hash_filename, "w") as hash_file:
                 hash = hashlib.file_digest(pak_file, "sha256").hexdigest()
                 hash_file.write(hash)
+
+            # Convert .lsf -> .lsf.lsx
+            resource_utils = ResourceUtils()
+            lsf_filenames = Path(cached_pak_dir).glob("**/*.lsf")
+            for lsf_filename in lsf_filenames:
+                resource = resource_utils.LoadResource(str(lsf_filename),
+                                                       ResourceFormat.LSF,
+                                                       ResourceLoadParameters.FromGameVersion(Game.BaldursGate3))
+                resource_utils.SaveResource(resource,
+                                            str(lsf_filename) + ".lsx",
+                                            ResourceFormat.LSX,
+                                            ResourceConversionParameters.FromGameVersion(Game.BaldursGate3))
+                lsf_filename.unlink()
 
         return Unpak.CachedPak(cached_pak_dir, hash)
 

@@ -4,7 +4,7 @@ Movement-related spells and passives for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import passive_data
+from modtools.gamedata import passive_data, spell_data
 from modtools.mod import Mod
 
 
@@ -46,5 +46,20 @@ class Movement:
             Properties=["Highlighted", "ForceShowInCC"],
             BoostContext=["OnEquip", "OnCreate"],
             Boosts=[f"ActionResource(Movement,{meters_per_round},0)"],
+        ))
+        return name
+
+    def add_misty_step(self, use_costs: str | list[str] = "Movement:Distance*0.5") -> str:
+        """Add a fast movement passive, returning its name."""
+        name = f"{self.__mod.get_prefix()}_MistyStep"
+        self.__mod.add(spell_data(
+            name,
+            using="Target_MistyStep",
+            SpellType="Target",
+            Level="",
+            SpellSchool="None",
+            Sheathing="Sheathed",
+            SpellStyleGroup="Class",
+            UseCosts=use_costs,
         ))
         return name

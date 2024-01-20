@@ -30,7 +30,6 @@ infernal_blade = Mod(os.path.dirname(__file__),
                      description="Adds the sword, the Infernal Blade.")
 
 loca = infernal_blade.get_localization()
-loca.add_language("en", "English")
 
 boosts = Boosts(infernal_blade)
 

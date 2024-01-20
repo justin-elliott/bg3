@@ -23,4 +23,8 @@
     <content contentuid="h097088eegb912g7ff1g6adcg0d8279834185" version="1">Chromatic Weapon: Thunder</content>
     <content contentuid="hf59f9d93g6d28gd9d7g0773g8f7140fcbeaf" version="1">Imbue a weapon with thunder. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
     <content contentuid="hde117b9ege283gbf3bga121gf5262083d7ba" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional thunder damage.</content>
+    <content contentuid="hf6a7b597g4ee6ge9aagb73fg13d1877fe263" version="1">Charge</content>
+    <content contentuid="h6c4c98afg3ad0g6b1bg9f42ga9597f025b71" version="1">Charge forward and attack the first enemy in your way. Until your next turn, you have &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, but enemies also have Advantage against you.</content>
+    <content contentuid="hc47e9542gf173gb8cdg7983g94e40095aef2" version="1">Wild Swing</content>
+    <content contentuid="h6e12814ag8e8eg8b52g1742gd9f4226e375b" version="1">Swing your weapon in a large arc to attack up to [1] enemies at once. Until your next turn, you have &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, but enemies also have Advantage against you.</content>
 </contentList>

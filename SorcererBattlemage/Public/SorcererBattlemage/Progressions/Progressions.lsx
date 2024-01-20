@@ -134,6 +134,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,4);ActionResource(SpellSlot,4,5);ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical"/>
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(3276fcfe-e143-4559-b6e0-7d7aa0ffcb53,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />

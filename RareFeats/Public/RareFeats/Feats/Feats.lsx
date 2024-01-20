@@ -18,27 +18,27 @@
                 </node>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_6" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,6,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="9bf1120b-db18-0b70-2aca-f0c1e44cf073" />
-                </node>
-                <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_8" />
                     <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,8,8,FeatASI)" />
                     <attribute id="UUID" type="guid" value="d39052c2-ad2f-8725-0586-8a8d41922326" />
                 </node>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_10" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,10,10,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="4fc7e3ff-3cad-0a1e-19fe-66ddfe82ed7d" />
+                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_16" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,16,16,FeatASI)" />
+                    <attribute id="UUID" type="guid" value="077f03bd-e918-c0f3-edfc-c2a9253cf70b" />
                 </node>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_12" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,12,12,FeatASI)" />
-                    <attribute id="UUID" type="guid" value="aebd82d1-759b-4c4e-b513-d50db9a7c99c" />
+                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_32" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,32,32,FeatASI)" />
+                    <attribute id="UUID" type="guid" value="eedf4af3-d1c2-05b3-6d68-47772bc26abb" />
+                </node>
+                <node id="Feat">
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
+                    <attribute id="Name" type="FixedString" value="AbilityScoreIncrease_44" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,44,44,FeatASI)" />
+                    <attribute id="UUID" type="guid" value="8dfaac60-b270-8ade-7572-e76b98cfaf57" />
                 </node>
             </children>
         </node>

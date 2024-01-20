@@ -49,7 +49,7 @@ rare_feats.add_feats([
 ])
 
 # Add Ability Score Improvement (ASI) feats
-for asi in range(4, 14, 2):
+for asi in [4, 8, 16, 32, 44]:
     feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
     feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
 

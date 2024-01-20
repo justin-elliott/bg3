@@ -27,10 +27,9 @@ orphic_outfits = Mod(os.path.dirname(__file__),
                      author="justin-elliott",
                      name="OrphicOutfits",
                      mod_uuid=UUID("143ff0cb-eccb-4775-91c4-68af77030bbc"),
-                     description="Adds a selction of outfits to the tutorial chest.")
+                     description="Adds a selection of outfits to the tutorial chest.")
 
 loca = orphic_outfits.get_localization()
-loca.add_language("en", "English")
 
 boosts = Boosts(orphic_outfits)
 

@@ -78,6 +78,7 @@ class Mod:
         self.__valuelists = ValueLists(self.__unpak)
 
         self.__localization = Localization(mod_uuid)
+        self.__localization.add_language("en", "English")
 
         self.__gamedata = GameData(self.__modifiers, self.__valuelists)
 

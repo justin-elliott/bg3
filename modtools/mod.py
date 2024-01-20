@@ -5,6 +5,7 @@ The main mod definition for Baldur's Gate 3 mods.
 
 import hashlib
 import os
+import re
 import shutil
 import time
 
@@ -112,6 +113,10 @@ class Mod:
 
     def get_name(self) -> str:
         return self.__name
+
+    def get_prefix(self) -> str:
+        """Get the module name with all non-alphanumeric, non-underscore characters removed."""
+        return re.sub(r"\W+", "", self.__name)
 
     def get_description(self) -> str:
         return self.__description

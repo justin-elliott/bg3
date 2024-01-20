@@ -9,41 +9,45 @@ from modtools.mod import Mod
 
 class BattleMagic:
     """Adds the Battle Magic passive to a Baldur's Gate 3 mod."""
-    __name: str
+    __mod: Mod
 
     def __init__(self, mod: Mod):
-        """Add the Battle Magic passive to the given mod."""
-        self.__name = "".join(mod.get_name().split()) + "_BattleMagic"
+        """Initialize."""
+        self.__mod = mod
 
-        loca = mod.get_localization()
-        loca[f"{self.__name}_DisplayName"] = {"en": "Battle Magic"}
-        loca[f"{self.__name}_Description"] = {"en": """
+    def add_battle_magic(self) -> str:
+        """Add the Battle Magic passive, returning its name."""
+        name = f"{self.__mod.get_prefix()}_BattleMagic"
+
+        loca = self.__mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Battle Magic"}
+        loca[f"{name}_Description"] = {"en": """
             After making a melee attack, you can cast a spell as a
             <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
             """}
 
-        mod.add(passive_data(
-            self.__name,
-            DisplayName=loca[f"{self.__name}_DisplayName"],
-            Description=loca[f"{self.__name}_Description"],
+        self.__mod.add(passive_data(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
             Icon="PassiveFeature_WarMagic",
             Properties="Highlighted",
             StatsFunctorContext="OnAttack",
             Conditions="IsWeaponAttack() or IsUnarmedAttack()",
-            StatsFunctors=f"ApplyStatus(SELF,{self.__name.upper()},100,1)"
+            StatsFunctors=f"ApplyStatus(SELF,{name.upper()},100,1)"
         ))
 
-        mod.add(status_data(
-            self.__name.upper(),
+        self.__mod.add(status_data(
+            name.upper(),
             StatusType="BOOST",
-            DisplayName=loca[f"{self.__name}_DisplayName"],
-            Description=loca[f"{self.__name}_Description"],
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
             Icon="PassiveFeature_WarMagic",
             Boosts=[
                 "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))",
                 "UnlockSpellVariant(RangedSpellAttackCheck(),ModifySpellRoll('AttackType.RangedSpellAttack','AttackType.MeleeSpellAttack'))"
             ],
-            StackId=self.__name.upper(),
+            StackId=name.upper(),
             StatusPropertyFlags=[
                 "DisableOverhead",
                 "DisableCombatlog",
@@ -51,5 +55,4 @@ class BattleMagic:
             ],
         ))
 
-    def __str__(self) -> str:
-        return self.__name
+        return name

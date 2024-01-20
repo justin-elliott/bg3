@@ -5,7 +5,7 @@ Generates files for the "ChromaticBlade" mod.
 
 import os
 
-from moddb.boosts import Boosts
+from moddb.scripts import character_level_range
 from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
@@ -23,9 +23,9 @@ chromatic_blade = Mod(os.path.dirname(__file__),
                       name="ChromaticBlade",
                       mod_uuid=UUID("ae8399a2-3445-4c0b-b9c4-4d77f3daf46c"),
                       description="Adds the sword, the Chromatic Blade.")
+chromatic_blade.add_script(character_level_range)
 
 loca = chromatic_blade.get_localization()
-
 loca["ChromaticBlade_DisplayName"] = {"en": "Chromatic Blade"}
 loca["ChromaticBlade_Description"] = {"en": """
     This blade shimmers with elemental force.
@@ -79,11 +79,8 @@ chromatic_blade.add(weapon_data(
 
 loca["ChromaticBlade_ChromaticWeapon_DisplayName"] = {"en": "Chromatic Weapon"}
 loca["ChromaticBlade_ChromaticWeapon_Description"] = {"en": """
-    Imbue a weapon with elemental power. It receives a +1 bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
-    and deals an additional 1d4 damage of your choice.
-    """}
-loca["ChromaticBlade_ChromaticWeapon_StatusDescription"] = {"en": """
-    Has a +1 bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> and deals an additional [1].
+    Imbue a weapon with elemental power. It receives a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
+    and deals an additional [2] damage of your choice.
     """}
 
 chromatic_blade.add(spell_data(
@@ -92,12 +89,18 @@ chromatic_blade.add(spell_data(
     Level="",
     SpellSchool="Transmutation",
     ContainerSpells=[
-        "ChromaticBlade_ChromaticWeapon_Acid",
+        f"ChromaticBlade_ChromaticWeapon_{element}" for element in [
+            "Acid", "Cold", "Fire", "Force", "Lightning", "Thunder"
+        ]
     ],
     TargetConditions="Self() and HasWeaponInMainHand()",
     Icon="Spell_Transmutation_ElementalWeapon",
     DisplayName=loca["ChromaticBlade_ChromaticWeapon_DisplayName"],
     Description=loca["ChromaticBlade_ChromaticWeapon_Description"],
+    DescriptionParams=[
+        "LevelMapValue(ChromaticBlade_AttackRollBonus)",
+        "LevelMapValue(ChromaticBlade_DamageDice)",
+    ],
     PreviewCursor="Cast",
     CastTextEvent="Cast",
     UseCosts="ActionPoint:1",
@@ -124,55 +127,160 @@ chromatic_blade.add(spell_data(
     HitAnimationType="MagicalNonDamage",
 ))
 
-loca["ChromaticBlade_ChromaticWeapon_Acid_DisplayName"] = {"en": "Chromatic Weapon: Acid"}
-loca["ChromaticBlade_ChromaticWeapon_Acid_Description"] = {"en": """
-    Imbue a weapon with a corrosive might. It receives a +1 bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
-    and deals an additional [1].
-    """}
+chromatic_blade.add_level_maps([
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 4) / 5)}")
+            for level in range(1, 13)],
+        *[Lsx.Attribute(f"Level{level}", "LSString", value="3")
+            for level in range(13, 21)],
+        Lsx.Attribute("Name", "FixedString", value="ChromaticBlade_AttackRollBonus"),
+        Lsx.Attribute("UUID", "guid", value="3f101a02-27e5-4eee-955e-dc488f1c036e"),
+    ]),
+    Lsx.Node("LevelMapSeries", [
+        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 4) / 5)}d4")
+            for level in range(1, 13)],
+        *[Lsx.Attribute(f"Level{level}", "LSString", value="3d4")
+            for level in range(13, 21)],
+        Lsx.Attribute("Name", "FixedString", value="ChromaticBlade_DamageDice"),
+        Lsx.Attribute("UUID", "guid", value="631e717a-82cf-4b04-b541-8f860547e208"),
+    ]),
+])
 
-chromatic_blade.add(spell_data(
-    "ChromaticBlade_ChromaticWeapon_Acid",
-    using="ChromaticBlade_ChromaticWeapon",
-    SpellType="Shout",
-    SpellContainerID="ChromaticBlade_ChromaticWeapon",
-    ContainerSpells="",
-    SpellProperties="ApplyEquipmentStatus(MainHand,CHROMATICBLADE_CHROMATICWEAPON_ACID,100,-1)",
-    Icon="Spell_Transmutation_ElementalWeapon_Acid",
-    DisplayName=loca["ChromaticBlade_ChromaticWeapon_Acid_DisplayName"],
-    Description=loca["ChromaticBlade_ChromaticWeapon_Acid_Description"],
-    DescriptionParams="DealDamage(1d4,Acid)",
-    TooltipStatusApply="ApplyStatus(CHROMATICBLADE_CHROMATICWEAPON_ACID,100,-1)",
-    PrepareSound="Spell_Prepare_Buff_ElementalWeaponAcid_L1to3",
-    PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponAcid_L1to3",
-    CastSound="Spell_Cast_Buff_ElementalWeaponAcid_L1to3",
-    TargetSound="Spell_Impact_Buff_ElementalWeaponAcid_L1to3",
-    SpellFlags=[
-        "HasVerbalComponent",
-        "HasSomaticComponent",
-        "IsSpell",
-        "IsMelee",
-    ],
-    PrepareEffect="803e65f9-b27c-4e9c-af2a-8cf0e8e8564d",
-    CastEffect="dfb57578-dafa-4c39-9f6e-238b9e2c237d",
-    TargetEffect="89018ece-411e-4c00-94ec-6cb3743f4af5",
-))
 
-chromatic_blade.add(status_data(
-    "CHROMATICBLADE_CHROMATICWEAPON_ACID",
-    StatusType="BOOST",
-    DisplayName=loca["ChromaticBlade_ChromaticWeapon_DisplayName"],
-    Description=loca["ChromaticBlade_ChromaticWeapon_StatusDescription"],
-    DescriptionParams="DealDamage(1d4,Acid)",
-    Icon="Spell_Transmutation_ElementalWeapon_Acid",
-    StackId="ELEMENTAL_WEAPON",
-    Boosts=[
-        "WeaponEnchantment(1)",
-        "WeaponDamage(1d4,Acid)",
-    ],
-    StatusGroups="SG_RemoveOnRespec",
-    StatusEffect="3798c69d-e202-4323-b660-2e1778dafafc",
-    StatusPropertyFlags=["IgnoreResting"],
-))
+def add_chromatic_weapon_element(element: str,
+                                 icon: str,
+                                 PrepareSound: str,
+                                 PrepareLoopSound: str,
+                                 CastSound: str,
+                                 TargetSound: str,
+                                 PrepareEffect: str,
+                                 CastEffect: str,
+                                 TargetEffect: str,
+                                 StatusEffect: str) -> None:
+    title = element.title()
+    lower = element.lower()
+    upper = element.upper()
+
+    loca[f"ChromaticBlade_ChromaticWeapon_{title}_DisplayName"] = {"en": f"Chromatic Weapon: {title}"}
+    loca[f"ChromaticBlade_ChromaticWeapon_{title}_Description"] = {"en": f"""
+        Imbue a weapon with {lower}. It receives a +[1] bonus to
+        <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, and deals an additional [2].
+        """}
+    loca[f"ChromaticBlade_ChromaticWeapon_{title}_StatusDescription"] = {"en": f"""
+        Has a bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> and deals additional {lower} damage.
+        """}
+
+    chromatic_blade.add(spell_data(
+        f"ChromaticBlade_ChromaticWeapon_{title}",
+        using="ChromaticBlade_ChromaticWeapon",
+        SpellType="Shout",
+        SpellContainerID="ChromaticBlade_ChromaticWeapon",
+        ContainerSpells="",
+        SpellProperties=f"ApplyEquipmentStatus(MainHand,CHROMATICBLADE_CHROMATICWEAPON_{upper},100,-1)",
+        Icon=icon,
+        DisplayName=loca[f"ChromaticBlade_ChromaticWeapon_{title}_DisplayName"],
+        Description=loca[f"ChromaticBlade_ChromaticWeapon_{title}_Description"],
+        DescriptionParams=[
+            "LevelMapValue(ChromaticBlade_AttackRollBonus)",
+            f"DealDamage(LevelMapValue(ChromaticBlade_DamageDice),{title})",
+        ],
+        TooltipStatusApply=f"ApplyStatus(CHROMATICBLADE_CHROMATICWEAPON_{upper},100,-1)",
+        PrepareSound=PrepareSound,
+        PrepareLoopSound=PrepareLoopSound,
+        CastSound=CastSound,
+        TargetSound=TargetSound,
+        SpellFlags=[
+            "HasVerbalComponent",
+            "HasSomaticComponent",
+            "IsSpell",
+            "IsMelee",
+        ],
+        PrepareEffect=PrepareEffect,
+        CastEffect=CastEffect,
+        TargetEffect=TargetEffect,
+    ))
+
+    chromatic_blade.add(status_data(
+        f"CHROMATICBLADE_CHROMATICWEAPON_{upper}",
+        StatusType="BOOST",
+        DisplayName=loca[f"ChromaticBlade_ChromaticWeapon_{title}_DisplayName"],
+        Description=loca[f"ChromaticBlade_ChromaticWeapon_{title}_StatusDescription"],
+        Icon=icon,
+        StackId="ELEMENTAL_WEAPON",
+        Boosts=[
+            "IF(CharacterLevelRange(1,5)):WeaponEnchantment(1)",
+            "IF(CharacterLevelRange(6,10)):WeaponEnchantment(2)",
+            "IF(CharacterLevelRange(11,20)):WeaponEnchantment(3)",
+            f"IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,{title},Magical)",
+            f"IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,{title},Magical)",
+            f"IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,{title},Magical)",
+        ],
+        StatusGroups="SG_RemoveOnRespec",
+        StatusEffect=StatusEffect,
+        StatusPropertyFlags=["IgnoreResting"],
+    ))
+
+
+add_chromatic_weapon_element("Acid",
+                             "Spell_Transmutation_ElementalWeapon_Acid",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponAcid_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponAcid_L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponAcid_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponAcid_L1to3",
+                             PrepareEffect="803e65f9-b27c-4e9c-af2a-8cf0e8e8564d",
+                             CastEffect="dfb57578-dafa-4c39-9f6e-238b9e2c237d",
+                             TargetEffect="89018ece-411e-4c00-94ec-6cb3743f4af5",
+                             StatusEffect="3798c69d-e202-4323-b660-2e1778dafafc")
+add_chromatic_weapon_element("Cold",
+                             "Spell_Transmutation_ElementalWeapon_Cold",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponCold_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponCold_L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponCold_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponCold_L1to3",
+                             PrepareEffect="743b0439-4d13-4988-acd3-43318fb97536",
+                             CastEffect="43efb4cc-023f-43c6-91a1-9383d754f31a",
+                             TargetEffect="37848e95-b5cb-4184-a3c2-33780787694d",
+                             StatusEffect="e92003cd-6622-4a82-a3c7-69d6222f0ba0")
+add_chromatic_weapon_element("Fire",
+                             "Spell_Transmutation_ElementalWeapon_Fire",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponFire_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponFire_L1to3L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponFire_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponFire_L1to3",
+                             PrepareEffect="6e0c79d5-f724-4628-8669-da3d766e9b83",
+                             CastEffect="d8ed1647-82eb-4079-a914-1b2c2a89f153",
+                             TargetEffect="e4d6914d-1a62-41b4-8932-eee907f2c200",
+                             StatusEffect="8a4c7e6e-a629-4765-9c5d-d354838703d8")
+add_chromatic_weapon_element("Force",
+                             "Spell_Transmutation_MagicWeapon",
+                             PrepareSound="Spell_Prepare_Buff_Gen_L1to3_01",
+                             PrepareLoopSound="Spell_Prepare_Buff_Gen_L1to3_01_Loop",
+                             CastSound="Spell_Cast_Buff_MagicWeapon_L1to3",
+                             TargetSound="Spell_Impact_Buff_MagicWeapon_L1to3",
+                             PrepareEffect="33302a46-4a12-41dd-8845-6b7314d50022",
+                             CastEffect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
+                             TargetEffect="5e3997ae-d2f5-4b97-96e3-c987e6b9584d",
+                             StatusEffect="083181ba-1276-438b-876f-e3e75593990f")
+add_chromatic_weapon_element("Lightning",
+                             "Spell_Transmutation_ElementalWeapon_Lightning",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponLightning_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponLightning_L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponLightning_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponLightning_L1to3",
+                             PrepareEffect="460e98c4-4e94-47b9-bd21-75088d0d8e52",
+                             CastEffect="da768bec-1f51-4d6f-8617-a3a6c2c01a58",
+                             TargetEffect="7547b944-e3e5-4b6d-b2e9-8320425b4f12",
+                             StatusEffect="7905bb82-0284-46b8-855b-24f17560fe4a")
+add_chromatic_weapon_element("Thunder",
+                             "Spell_Transmutation_ElementalWeapon_Thunder",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponThunder_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponThunder_L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponThunder_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponThunder_L1to3",
+                             PrepareEffect="9b6f51df-22cc-49cf-9ae9-a0e0ac0f8882",
+                             CastEffect="bfeec9c4-0287-4a24-a104-b2ae38d85b4f",
+                             TargetEffect="5e3997ae-d2f5-4b97-96e3-c987e6b9584d",
+                             StatusEffect="ca0b3ab3-dac0-47f7-b313-7ca69c85b5b4")
 
 chromatic_blade.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"

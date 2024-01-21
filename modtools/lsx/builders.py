@@ -62,5 +62,5 @@ class LsxBuilder(LsxMetadata):
         super().__init__(region, root, node_builder)
 
     def __call__(self, *nodes: Node) -> Lsx:
-        assert all(node.id == self.node_builder.id for node in nodes)
-        return Lsx(self, nodes)
+        assert all(node.metadata == self.node_builder for node in nodes)
+        return Lsx(self, list(nodes))

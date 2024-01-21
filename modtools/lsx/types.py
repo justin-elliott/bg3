@@ -135,15 +135,6 @@ class Attribute:
             attributes["value"] = self.value
         return ElementTree.Element("attribute", attributes)
 
-    def __str__(self) -> str:
-        if self._data_type in Attribute.LIST_TYPES:
-            return f"[{", ".join(f'"{entry}"' for entry in self.value)}]"
-        elif self._data_type in Attribute.HANDLE_TYPES:
-            return f'"{self.handle}"' if self.version == 1 else (
-                f"""Attribute(handle="{self.handle}", version={self.version})""")
-        else:
-            return f'"{self.value}"'
-
 
 class NodeMetadata:
     """Class representing the metadata for a node in an .lsx file."""
@@ -251,7 +242,7 @@ class Lsx:
     _nodes: list[Node]
 
     @property
-    def metadata(self) -> NodeMetadata:
+    def metadata(self) -> LsxMetadata:
         return self._metadata
 
     @property
@@ -270,6 +261,39 @@ class Lsx:
         self._metadata = metadata
         self._nodes = nodes
 
+    def __contains__(self, key_value: str) -> bool:
+        return self.get(key_value) is not None
+
+    def __getitem__(self, key_value: str) -> Node:
+        node = self.get(key_value)
+        if node is None:
+            raise KeyError(f"{key_value} not found in Lsx")
+        return node
+
+    def __delitem__(self, key_value: str) -> Node:
+        self.nodes.remove(self[key_value])
+
+    def __setitem__(self, key_value: str, node: Node) -> None:
+        if (old_node := self.get(key_value)) is not None:
+            self.nodes[self.nodes.index(old_node)] = node
+        else:
+            self.nodes.append(node)
+
+    def get(self, key_value: str, default: Node | None = None) -> Node | None:
+        key = self.metadata.node_builder.key
+        assert key is not None
+        for node in self.nodes:
+            if node.attributes[key].value == key_value:
+                return node
+        return default
+
+    def add(self, node: Node) -> None:
+        assert node.metadata == self.metadata.node_builder
+        if (key := self.metadata.node_builder.key) is not None:
+            self[key] = node
+        else:
+            self.nodes.append(node)
+
     def save(self, path: os.PathLike, version: tuple[int, int, int, int] | None = None):
         document = ElementTree.ElementTree(self.xml(version))
         ElementTree.indent(document, space=" "*4)
@@ -287,6 +311,6 @@ class Lsx:
         region = ElementTree.SubElement(element, "region", id=self.region)
         root = ElementTree.SubElement(region, "node", id=self.root)
         children = ElementTree.SubElement(root, "children")
-        for node in self._nodes:
+        for node in self.nodes:
             children.append(node.xml())
         return element

@@ -3,7 +3,11 @@
 Representation of .lsx types.
 """
 
+import os
+import xml.etree.ElementTree as ElementTree
+
 from enum import StrEnum
+from modtools.prologue import XML_PROLOGUE
 from typing import Final, Self
 
 
@@ -114,14 +118,31 @@ class Attribute:
             assert handle is not None
             self.handle = (str(handle), int(version) if version is not None else 1)
 
+    def xml(self, id: str) -> ElementTree.Element:
+        attributes = {
+            "id": id,
+            "type": self._data_type
+        }
+        if self._data_type == DataType.LSSTRING_COMMA:
+            attributes["type"] = DataType.LSSTRING
+            attributes["value"] = ",".join(self.value)
+        if self._data_type in Attribute.LIST_TYPES:
+            attributes["value"] = ";".join(self.value)
+        elif self._data_type in Attribute.HANDLE_TYPES:
+            attributes["handle"] = self.handle
+            attributes["version"] = self.version
+        else:
+            attributes["value"] = self.value
+        return ElementTree.Element("attribute", attributes)
+
     def __str__(self) -> str:
         if self._data_type in Attribute.LIST_TYPES:
-            return f"[{", ".join(f'"{entry}"' for entry in self._value)}]"
+            return f"[{", ".join(f'"{entry}"' for entry in self.value)}]"
         elif self._data_type in Attribute.HANDLE_TYPES:
-            return f'"{self._handle}"' if self._version == 1 else (
-                f"""Attribute(handle="{self._handle}", version={self._version})""")
+            return f'"{self.handle}"' if self.version == 1 else (
+                f"""Attribute(handle="{self.handle}", version={self.version})""")
         else:
-            return f'"{self._value}"'
+            return f'"{self.value}"'
 
 
 class NodeMetadata:
@@ -161,9 +182,8 @@ class NodeMetadata:
 class Node:
     """Class representing a node in an .lsx file."""
     _metadata: NodeMetadata
-
-    attributes: dict[str, Attribute]
-    children: list[Self]
+    _attributes: dict[str, Attribute]
+    _children: list[Self]
 
     @property
     def metadata(self) -> NodeMetadata:
@@ -177,16 +197,28 @@ class Node:
     def key(self) -> str | None:
         return self._metadata.key
 
+    @property
+    def attributes(self) -> dict[str, Attribute]:
+        return self._attributes
+
+    @property
+    def children(self) -> list[Self]:
+        return self._children
+
     def __init__(self, metadata: NodeMetadata, attributes: dict[str, Attribute] = {}, children: [Self] = []):
         self._metadata = metadata
-        self.attributes = attributes
-        self.children = children
+        self._attributes = attributes
+        self._children = children
 
-    def __str__(self) -> str:
-        args = [f"{key}={value}" for key, value in self.attributes.items()]
+    def xml(self) -> ElementTree.Element:
+        element = ElementTree.Element("node", id=self.id)
+        for id, attribute in self.attributes.items():
+            element.append(attribute.xml(id))
         if len(self.children) > 0:
-            args.append(f"children=[{", ".join(str(node) for node in self.children)}]")
-        return f"{self.id}({", ".join(args)})"
+            children = ElementTree.SubElement(element, "children")
+            for child in self.children:
+                children.append(child.xml())
+        return element
 
 
 class LsxMetadata:
@@ -216,8 +248,7 @@ class LsxMetadata:
 class Lsx:
     """Class representing an .lsx file."""
     _metadata: LsxMetadata
-
-    nodes: list[Node]
+    _nodes: list[Node]
 
     @property
     def metadata(self) -> NodeMetadata:
@@ -231,9 +262,31 @@ class Lsx:
     def root(self) -> str:
         return self._metadata.root
 
+    @property
+    def nodes(self) -> list[Node]:
+        return self._nodes
+
     def __init__(self, metadata: LsxMetadata, nodes: list[Node]):
         self._metadata = metadata
-        self.nodes = nodes
+        self._nodes = nodes
 
-    def __str__(self) -> str:
-        return f"{self.region}({", ".join(str(node) for node in self.nodes)})"
+    def save(self, path: os.PathLike, version: tuple[int, int, int, int] | None = None):
+        document = ElementTree.ElementTree(self.xml(version))
+        ElementTree.indent(document, space=" "*4)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "wb") as f:
+            f.write(XML_PROLOGUE)
+            document.write(f, encoding="UTF-8", xml_declaration=False)
+
+    def xml(self, version: tuple[int, int, int, int] | None = None) -> ElementTree.Element:
+        element = ElementTree.Element("save")
+        if version:
+            ElementTree.SubElement(element, "version", {
+                attr: str(ver) for attr, ver in zip(["major", "minor", "revision", "build"], version)
+            })
+        region = ElementTree.SubElement(element, "region", id=self.region)
+        root = ElementTree.SubElement(region, "node", id=self.root)
+        children = ElementTree.SubElement(root, "children")
+        for node in self._nodes:
+            children.append(node.xml())
+        return element

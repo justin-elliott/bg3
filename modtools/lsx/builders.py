@@ -3,26 +3,18 @@
 Builders for .lsx types.
 """
 
-from modtools.lsx.types import Attribute, DataType, Lsx, Node
+from modtools.lsx.types import Attribute, DataType, Lsx, LsxMetadata, Node, NodeMetadata
 from typing import Self
 
 
-class NodeBuilder:
+class NodeBuilder(NodeMetadata):
     """Class that builds an lsx.types.Node."""
-    id: str
-    key: str
-    attributes: dict[str, DataType]
-    child_builders: list[Self]
-
     def __init__(self,
                  id: str,
                  attributes: dict[str, DataType] = {},
                  child_builders: list[Self] = [],
                  key: str = "UUID"):
-        self.id = id
-        self.key = key
-        self.attributes = attributes
-        self.child_builders = child_builders
+        super().__init__(id, key, attributes, child_builders)
 
     def __call__(self, **kwargs: str | Attribute | list[Node]) -> Node:
         attributes = {}
@@ -30,57 +22,45 @@ class NodeBuilder:
 
         for name, value in kwargs.items():
             if name == "children":
-                assert len(self.child_builders) > 0
-                for node in value:
-                    assert isinstance(node, Node)
-                    assert any(node.id == child_builder.id for child_builder in self.child_builders)
-                children = value
+                children = self._build_children(value)
             elif (data_type := self.attributes.get(name, None)) is not None:
-                attribute = Attribute()
-                if data_type in [DataType.TRANSLATEDSTRING, DataType.TRANSLATEDFSSTRING]:
-                    if isinstance(value, Attribute):
-                        assert value.value is None
-                        assert isinstance(value.handle, str)
-                        assert isinstance(value.version, int)
-                        attribute.handle = value.handle
-                        attribute.version = value.version
-                    else:
-                        attribute.handle = str(value)
-                        attribute.version = 1
-                else:
-                    if isinstance(value, Attribute):
-                        assert value.value is not None
-                        assert value.handle is None
-                        assert value.version is None
-                        attribute.value = value.value
-                    elif isinstance(value, str):
-                        attribute.value = value
-                    else:
-                        try:
-                            attribute.value = list(iter(value))
-                            assert data_type in [DataType.LSSTRING, DataType.LSWSTRING]
-                        except TypeError:
-                            attribute.value = str(value)
-                attributes[name] = attribute
+                attributes[name] = self._build_attribute(data_type, value)
             else:
                 raise KeyError(f"{self.id} does not have an attribute '{name}'")
 
         if self.key is not None and self.key not in attributes:
             raise KeyError(f"{self.id} missing attribute '{self.key}'")
-        return Node(self.id, attributes, children)
+        return Node(self, attributes, children)
+
+    def _build_children(self, children: str | Attribute | list[Node]) -> list[Node]:
+        for node in children:
+            assert isinstance(node, Node)
+            assert node.metadata in self.child_builders
+        return children
+
+    def _build_attribute(self, data_type: DataType, value: str | Attribute | list[Node]) -> list[Node]:
+        if data_type in Attribute.HANDLE_TYPES:
+            if isinstance(value, Attribute):
+                assert value.data_type == data_type
+                return value
+            return Attribute(data_type, handle=str(value), version=1)
+        elif data_type in Attribute.LIST_TYPES:
+            if isinstance(value, Attribute):
+                assert value.data_type == data_type
+                return value
+            return Attribute(data_type, value=value)
+        else:
+            if isinstance(value, Attribute):
+                assert value.data_type == data_type
+                return value
+            return Attribute(data_type, value=str(value))
 
 
-class LsxBuilder:
+class LsxBuilder(LsxMetadata):
     """Class that builds an lsx.types.Lsx."""
-    region: str
-    root: str
-    node_builder: NodeBuilder
-
     def __init__(self, region: str, root: str, node_builder: NodeBuilder):
-        self.region = region
-        self.root = root
-        self.node_builder = node_builder
+        super().__init__(region, root, node_builder)
 
     def __call__(self, *nodes: Node) -> Lsx:
         assert all(node.id == self.node_builder.id for node in nodes)
-        return Lsx(self.region, self.root, nodes)
+        return Lsx(self, nodes)

@@ -56,15 +56,9 @@ camp_clothes.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
-object category "I_ARM_Vanity_Body_Leather_Black",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_CampClothes_ComfortableBoots",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_ARM_Underwear_HalfOrcs",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_ARM_Underwear_Incubus",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_ARM_Underwear_Tieflings",1,0,0,0,0,0,0,0
+new subtable "10,1"
+object category "I_OBJ_Dye_Ocean",1,0,0,0,0,0,0,0
 """)
 
 camp_clothes.build()

@@ -5,6 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
+from modtools.gamedata import passive_data
 from modtools.lsx import Lsx
 from modtools.mod import Mod
 from uuid import UUID
@@ -62,7 +63,7 @@ for asi in [4, 8, 16, 32, 44]:
         Lsx.Node("FeatDescription", [
             Lsx.Attribute("DisplayName", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_DisplayName"], version="1"),
             Lsx.Attribute("Description", "TranslatedString", handle=loca[f"RareFeats_ASI_{asi}_Description"], version="1"),
-            Lsx.Attribute("ExactMatch", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("ExactMatch", "FixedString", value=f"RareFeats_ASI_{asi}"),
             Lsx.Attribute("FeatId", "guid", value=str(feat_uuid)),
             Lsx.Attribute("UUID", "guid", value=str(feat_description_uuid)),
         ]),
@@ -71,9 +72,74 @@ for asi in [4, 8, 16, 32, 44]:
     rare_feats.add_feats([
         Lsx.Node("Feat", [
             Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
-            Lsx.Attribute("Name", "FixedString", value=f"AbilityScoreIncrease_{asi}"),
+            Lsx.Attribute("Name", "FixedString", value=f"RareFeats_ASI_{asi}"),
             Lsx.Attribute("Selectors", "LSString", value=f"SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,{asi},{asi},FeatASI)"),
             Lsx.Attribute("UUID", "guid", value=str(feat_uuid)),
+        ]),
+    ])
+
+# Add Ability Score Improvement (ASI) Plus feats
+abilities = [
+    ("Strength",     "Spell_Transmutation_EnhanceAbility_BullsStrenght"),
+    ("Dexterity",    "Spell_Transmutation_EnhanceAbility_CatsGrace"),
+    ("Constitution", "Spell_Transmutation_EnhanceAbility_BearsEndurance"),
+    ("Intelligence", "Spell_Transmutation_EnhanceAbility_FoxsCunning"),
+    ("Wisdom",       "Spell_Transmutation_EnhanceAbility_OwlsWisdom"),
+    ("Charisma",     "Spell_Transmutation_EnhanceAbility_EaglesSplendor"),
+]
+
+for bonus in [4]:
+    asi_plus_passives = []
+
+    for ability, ability_icon in abilities:
+        loca[f"RareFeats_ASIPlus_{ability}_{bonus}_DisplayName"] = {"en": ability}
+        loca[f"RareFeats_ASIPlus_{ability}_{bonus}_Description"] = {"en": f"""
+            Increase your <LSTag Tooltip="{ability}">{ability}</LSTag> by {bonus}, to a maximum of 30.
+            """}
+
+        asi_plus_passive = f"RareFeats_ASIPlus_{ability}_{bonus}"
+        asi_plus_passives.append(asi_plus_passive)
+        rare_feats.add(passive_data(
+            asi_plus_passive,
+            DisplayName=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_DisplayName"],
+            Description=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_Description"],
+            Icon=ability_icon,
+            Boosts=[f"Ability({ability},{bonus},30)"],
+            Properties=["IsHidden"],
+        ))
+
+    asi_plus_feat_uuid = rare_feats.make_uuid(f"feat_ASIPlus_{bonus}")
+    asi_plus_feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASIPlus_{bonus}")
+    asi_plus_passive_list_uuid = str(rare_feats.make_uuid(f"RareFeats_ASIPlus_{bonus}_PassiveList"))
+
+    rare_feats.add_passive_lists([
+        Lsx.Node("PassiveList", [
+            Lsx.Attribute("Passives", "LSString", value=asi_plus_passives, list_joiner=","),
+            Lsx.Attribute("UUID", "guid", value=asi_plus_passive_list_uuid)
+        ]),
+    ])
+
+    loca[f"RareFeats_ASIPlus_{bonus}_DisplayName"] = {"en": f"Rare Feats: Ability Improvement Plus (+{bonus})"}
+    loca[f"RareFeats_ASIPlus_{bonus}_Description"] = {"en": f"""
+        Improve one of your abilities by {bonus}, to a maximum of 30.
+        """}
+
+    rare_feats.add_feat_descriptions([
+        Lsx.Node("FeatDescription", [
+            Lsx.Attribute("DisplayName", "TranslatedString", handle=loca[f"RareFeats_ASIPlus_{bonus}_DisplayName"], version="1"),
+            Lsx.Attribute("Description", "TranslatedString", handle=loca[f"RareFeats_ASIPlus_{bonus}_Description"], version="1"),
+            Lsx.Attribute("ExactMatch", "FixedString", value=f"RareFeats_ASIPlus_{bonus}"),
+            Lsx.Attribute("FeatId", "guid", value=str(asi_plus_feat_uuid)),
+            Lsx.Attribute("UUID", "guid", value=str(asi_plus_feat_description_uuid)),
+        ]),
+    ])
+
+    rare_feats.add_feats([
+        Lsx.Node("Feat", [
+            Lsx.Attribute("CanBeTakenMultipleTimes", "bool", value="true"),
+            Lsx.Attribute("Name", "FixedString", value=f"RareFeats_ASIPlus_{bonus}"),
+            Lsx.Attribute("Selectors", "LSString", value=f"SelectPassives({asi_plus_passive_list_uuid},1,RareFeats_ASIPlus_{bonus})"),
+            Lsx.Attribute("UUID", "guid", value=str(asi_plus_feat_uuid)),
         ]),
     ])
 

@@ -138,10 +138,6 @@ def main():
     lsx_parser = LsxParser(unpak)
     lsx_parser.parse("Shared/Public/Shared/Progressions/Progressions.lsx")
     lsx_parser.parse("Shared/Public/SharedDev/Progressions/Progressions.lsx")
-    lsx_parser.parse("Shared/Public/Shared/ClassDescriptions/ClassDescriptions.lsx")
-    lsx_parser.parse("Shared/Public/Shared/Levelmaps/LevelMapValues.lsx")
-    lsx_parser.parse("Shared/Public/SharedDev/Levelmaps/LevelMapValues.lsx")
-    lsx_parser.parse("Shared/Public/Shared/RootTemplates/_merged.lsf.lsx")
 
 
 if __name__ == "__main__":

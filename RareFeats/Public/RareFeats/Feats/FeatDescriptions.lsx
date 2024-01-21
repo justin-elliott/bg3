@@ -47,6 +47,48 @@
                     <attribute id="FeatId" type="guid" value="8dfaac60-b270-8ade-7572-e76b98cfaf57" />
                     <attribute id="UUID" type="guid" value="c3dc1469-d559-6027-687a-26dc4580b7a9" />
                 </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_Athlete" />
+                    <attribute id="FeatId" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
+                    <attribute id="UUID" type="guid" value="391a4912-5d9b-728d-8527-9fa004f548bc" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha5825f85g4348gd9fag5af2g3cfd5d93c499" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_LightlyArmored" />
+                    <attribute id="FeatId" type="guid" value="89035b8f-c2d2-259c-194d-71e20b966217" />
+                    <attribute id="UUID" type="guid" value="eba2847a-2bf2-4755-3b28-53ea7055bc58" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0409311fg78f3g4b27g567bg60660e423c7a" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h7438d601g230agd911g19f1g7552a3e6018b" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ModeratelyArmored" />
+                    <attribute id="FeatId" type="guid" value="126cca76-6b42-e09e-a07b-79520b904493" />
+                    <attribute id="UUID" type="guid" value="a08f957a-5c3a-6352-b8cd-7af71d1d4364" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h999658bdg279cgc24cg74d7gf4a54644069e" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="hc44e1a34gf457g286cg6fc5g7438c5c40eb8" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_Performer" />
+                    <attribute id="FeatId" type="guid" value="fabd93ce-594c-81fb-2eb8-f5648b560d39" />
+                    <attribute id="UUID" type="guid" value="a7b864d7-531a-2e4e-e03a-d1127995f3c3" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hc1c143f6g5ca4gfb4fg34d5g476efe0c0813" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_TavernBrawler" />
+                    <attribute id="FeatId" type="guid" value="bf0bdace-f36c-d316-dd36-9de499eec73f" />
+                    <attribute id="UUID" type="guid" value="03aa37d0-d378-5420-2dfb-e470e11a3855" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h702d115ag660fga66cg6151gf37ce87cf6ac" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_WeaponMaster" />
+                    <attribute id="FeatId" type="guid" value="1d26fb7d-98e3-205a-839e-bd751d53cc93" />
+                    <attribute id="UUID" type="guid" value="2ef4ee37-2f60-4329-384c-2db03e72fe71" />
+                </node>
             </children>
         </node>
     </region>

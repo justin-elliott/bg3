@@ -13,4 +13,16 @@
     <content contentuid="hf417ae7fgf48fg5ef7gf162gd4ed24c98fd8" version="1">You have 32 points to spend across your abilities, to a maximum of 20.</content>
     <content contentuid="h59a86282gf643gccb1gfe57g0a7069b7b211" version="1">Rare Feats: Ability Improvement (+44)</content>
     <content contentuid="he6d5a848gb40bg6828g17a8gc75e02d30f9e" version="1">You have 44 points to spend across your abilities, to a maximum of 20.</content>
+    <content contentuid="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1">Rare Feats: Athlete</content>
+    <content contentuid="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1">When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
+    <content contentuid="ha5825f85g4348gd9fag5af2g3cfd5d93c499" version="1">Rare Feats: Lightly Armoured</content>
+    <content contentuid="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
+    <content contentuid="h0409311fg78f3g4b27g567bg60660e423c7a" version="1">Rare Feats: Moderately Armoured</content>
+    <content contentuid="h7438d601g230agd911g19f1g7552a3e6018b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Medium Armour and shields.</content>
+    <content contentuid="h999658bdg279cgc24cg74d7gf4a54644069e" version="1">Rare Feats: Performer</content>
+    <content contentuid="hc44e1a34gf457g286cg6fc5g7438c5c40eb8" version="1">You gain &lt;LSTag Tooltip="MusicalInstrumentProficiency"&gt;Musical Instrument Proficiency&lt;/LSTag&gt;.</content>
+    <content contentuid="hc1c143f6g5ca4gfb4fg34d5g476efe0c0813" version="1">Rare Feats: Tavern Brawler</content>
+    <content contentuid="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1">When you make an unarmed attack, use an improvised weapon, or throw something, your Strength &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
+    <content contentuid="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1">Rare Feats: Weapon Master</content>
+    <content contentuid="h702d115ag660fga66cg6151gf37ce87cf6ac" version="1">You gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; with four weapons of your choice.</content>
 </contentList>

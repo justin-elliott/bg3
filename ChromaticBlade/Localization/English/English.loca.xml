@@ -14,9 +14,6 @@
     <content contentuid="hc372d0e4gc8bfg5b54g6d23g50426a2c35c6" version="1">Chromatic Weapon: Fire</content>
     <content contentuid="he3ebfe9eg3a81gb71cg5ffbg6baa84d6630e" version="1">Imbue a weapon with fire. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
     <content contentuid="h05dbceb5gd337g20ccg65edg105822f00b88" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional fire damage.</content>
-    <content contentuid="hca09176ag1cf9ge15dg1300gc507813cb580" version="1">Chromatic Weapon: Force</content>
-    <content contentuid="h1c775338g4562g6945gbb34gd31377d313d0" version="1">Imbue a weapon with force. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hc46ba541gdadfg1f3egb022g1b97220a3fc0" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional force damage.</content>
     <content contentuid="h78ad35fdgc4dcg3789g1790g78bc0834de2c" version="1">Chromatic Weapon: Lightning</content>
     <content contentuid="hc6a929c1g6463ga289g7b76gb1aa178a8070" version="1">Imbue a weapon with lightning. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
     <content contentuid="h6b30ef2eg383fgd26ag2cf2gb734f809817d" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional lightning damage.</content>

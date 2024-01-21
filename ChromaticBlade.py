@@ -93,7 +93,7 @@ chromatic_blade.add(spell_data(
     SpellSchool="Transmutation",
     ContainerSpells=[
         f"ChromaticBlade_ChromaticWeapon_{element}" for element in [
-            "Acid", "Cold", "Fire", "Force", "Lightning", "Thunder"
+            "Acid", "Cold", "Fire", "Lightning", "Thunder"
         ]
     ],
     TargetConditions="Self() and HasWeaponInMainHand()",
@@ -254,16 +254,6 @@ add_chromatic_weapon_element("Fire",
                              CastEffect="d8ed1647-82eb-4079-a914-1b2c2a89f153",
                              TargetEffect="e4d6914d-1a62-41b4-8932-eee907f2c200",
                              StatusEffect="8a4c7e6e-a629-4765-9c5d-d354838703d8")
-add_chromatic_weapon_element("Force",
-                             "Spell_Transmutation_MagicWeapon",
-                             PrepareSound="Spell_Prepare_Buff_Gen_L1to3_01",
-                             PrepareLoopSound="Spell_Prepare_Buff_Gen_L1to3_01_Loop",
-                             CastSound="Spell_Cast_Buff_MagicWeapon_L1to3",
-                             TargetSound="Spell_Impact_Buff_MagicWeapon_L1to3",
-                             PrepareEffect="33302a46-4a12-41dd-8845-6b7314d50022",
-                             CastEffect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
-                             TargetEffect="5e3997ae-d2f5-4b97-96e3-c987e6b9584d",
-                             StatusEffect="083181ba-1276-438b-876f-e3e75593990f")
 add_chromatic_weapon_element("Lightning",
                              "Spell_Transmutation_ElementalWeapon_Lightning",
                              PrepareSound="Spell_Prepare_Buff_ElementalWeaponLightning_L1to3",

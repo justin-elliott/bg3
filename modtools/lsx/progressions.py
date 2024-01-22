@@ -179,15 +179,15 @@ class CharacterSubclasses:
                   WIZARD | MULTICLASS_SPELL_SLOTS)
 
 
-ProgressionSubclass = NodeBuilder("SubClass", key_attribute="Object", attributes={
+ProgressionSubclass: Final = NodeBuilder("SubClass", key_attribute="Object", attributes={
     "Object": DataType.GUID,
 })
 
-ProgressionSubclasses = NodeBuilder("SubClasses", key_attribute=None, child_builders=[
+ProgressionSubclasses: Final = NodeBuilder("SubClasses", key_attribute=None, child_builders=[
     ProgressionSubclass,
 ])
 
-Progression = NodeBuilder("Progression", {
+Progression: Final = NodeBuilder("Progression", {
         "AllowImprovement": DataType.BOOL,
         "Boosts": DataType.LSSTRING,
         "IsMulticlass": DataType.BOOL,
@@ -205,4 +205,4 @@ Progression = NodeBuilder("Progression", {
     ],
 )
 
-Progressions = LsxBuilder("Progressions", "root", Progression)
+Progressions: Final = LsxBuilder("Progressions", "root", Progression)

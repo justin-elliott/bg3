@@ -89,6 +89,7 @@ class CharacterClass(StrEnum):
 
 
 class CharacterSubclasses:
+    """Sets of character class and subclasses by primary class."""
     BARBARIAN: Final = frozenset([
         CharacterClass.BARBARIAN,
         CharacterClass.BARBARIAN_BERSERKER,

@@ -6,6 +6,7 @@ Representation of .lsx types.
 import os
 import xml.etree.ElementTree as ElementTree
 
+from collections import OrderedDict
 from enum import StrEnum
 from modtools.prologue import XML_PROLOGUE
 from typing import Final, Self
@@ -139,7 +140,7 @@ class Attribute:
 class NodeMetadata:
     """Class representing the metadata for a node in an .lsx file."""
     _id: str
-    _key: str | None
+    _key_attribute: str | None
     _attributes: dict[str, DataType]
     _child_builders: list[Self]
 
@@ -148,8 +149,8 @@ class NodeMetadata:
         return self._id
 
     @property
-    def key(self) -> str | None:
-        return self._key
+    def key_attribute(self) -> str | None:
+        return self._key_attribute
 
     @property
     def attributes(self) -> dict[str, DataType]:
@@ -161,11 +162,11 @@ class NodeMetadata:
 
     def __init__(self,
                  id: str,
-                 key: str | None,
+                 key_attribute: str | None,
                  attributes: dict[str, DataType],
                  child_builders: list[Self]):
         self._id = id
-        self._key = key
+        self._key_attribute = key_attribute
         self._attributes = attributes
         self._child_builders = child_builders
 
@@ -185,10 +186,6 @@ class Node:
         return self._metadata.id
 
     @property
-    def key(self) -> str | None:
-        return self._metadata.key
-
-    @property
     def attributes(self) -> dict[str, Attribute]:
         return self._attributes
 
@@ -200,6 +197,13 @@ class Node:
         self._metadata = metadata
         self._attributes = attributes
         self._children = children
+
+    def key(self) -> str:
+        """Return the node's key."""
+        if (key_attribute := self.metadata.key_attribute) is not None:
+            return self.attributes[key_attribute].value
+        else:
+            return str(id(self))
 
     def xml(self) -> ElementTree.Element:
         element = ElementTree.Element("node", id=self.id)
@@ -239,7 +243,7 @@ class LsxMetadata:
 class Lsx:
     """Class representing an .lsx file."""
     _metadata: LsxMetadata
-    _nodes: list[Node]
+    _nodes: OrderedDict[str, Node]
 
     @property
     def metadata(self) -> LsxMetadata:
@@ -254,45 +258,33 @@ class Lsx:
         return self._metadata.root
 
     @property
-    def nodes(self) -> list[Node]:
+    def nodes(self) -> OrderedDict[str, Node]:
         return self._nodes
 
     def __init__(self, metadata: LsxMetadata, nodes: list[Node]):
         self._metadata = metadata
-        self._nodes = nodes
+        self._nodes = OrderedDict([(node.key(), node) for node in nodes])
 
-    def __contains__(self, key_value: str) -> bool:
-        return self.get(key_value) is not None
+    def __contains__(self, key: str) -> bool:
+        return key in self.nodes
 
-    def __getitem__(self, key_value: str) -> Node:
-        node = self.get(key_value)
-        if node is None:
-            raise KeyError(f"{key_value} not found in Lsx")
-        return node
+    def __getitem__(self, key: str) -> Node:
+        return self.nodes[key]
 
-    def __delitem__(self, key_value: str) -> Node:
-        self.nodes.remove(self[key_value])
+    def __delitem__(self, key: str) -> Node:
+        del self.nodes[key]
 
-    def __setitem__(self, key_value: str, node: Node) -> None:
-        if (old_node := self.get(key_value)) is not None:
-            self.nodes[self.nodes.index(old_node)] = node
-        else:
-            self.nodes.append(node)
+    def __setitem__(self, key: str, node: Node) -> None:
+        assert node.metadata == self.metadata.node_builder
+        assert key == node.key()
+        self.nodes[key] = node
 
-    def get(self, key_value: str, default: Node | None = None) -> Node | None:
-        key = self.metadata.node_builder.key
-        assert key is not None
-        for node in self.nodes:
-            if node.attributes[key].value == key_value:
-                return node
-        return default
+    def get(self, key: str, default: Node | None = None) -> Node | None:
+        return self.nodes.get(key, default)
 
     def add(self, node: Node) -> None:
         assert node.metadata == self.metadata.node_builder
-        if (key := self.metadata.node_builder.key) is not None:
-            self[key] = node
-        else:
-            self.nodes.append(node)
+        self.nodes[node.key()] = node
 
     def save(self, path: os.PathLike, version: tuple[int, int, int, int] | None = None):
         document = ElementTree.ElementTree(self.xml(version))
@@ -311,6 +303,6 @@ class Lsx:
         region = ElementTree.SubElement(element, "region", id=self.region)
         root = ElementTree.SubElement(region, "node", id=self.root)
         children = ElementTree.SubElement(root, "children")
-        for node in self.nodes:
+        for node in self.nodes.values():
             children.append(node.xml())
         return element

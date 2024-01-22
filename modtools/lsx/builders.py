@@ -13,8 +13,8 @@ class NodeBuilder(NodeMetadata):
                  id: str,
                  attributes: dict[str, DataType] = {},
                  child_builders: list[Self] = [],
-                 key: str = "UUID"):
-        super().__init__(id, key, attributes, child_builders)
+                 key_attribute: str = "UUID"):
+        super().__init__(id, key_attribute, attributes, child_builders)
 
     def __call__(self, **kwargs: str | Attribute | list[Node]) -> Node:
         attributes = {}
@@ -28,7 +28,7 @@ class NodeBuilder(NodeMetadata):
             else:
                 raise KeyError(f"{self.id} does not have an attribute '{name}'")
 
-        if self.key is not None and self.key not in attributes:
+        if self.key_attribute is not None and self.key_attribute not in attributes:
             raise KeyError(f"{self.id} missing attribute '{self.key}'")
         return Node(self, attributes, children)
 

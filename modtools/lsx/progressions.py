@@ -7,11 +7,11 @@ from modtools.lsx.builders import LsxBuilder, NodeBuilder
 from modtools.lsx.types import DataType
 
 
-ProgressionSubclass = NodeBuilder("SubClass", key="Object", attributes={
+ProgressionSubclass = NodeBuilder("SubClass", key_attribute="Object", attributes={
     "Object": DataType.GUID,
 })
 
-ProgressionSubclasses = NodeBuilder("SubClasses", key=None, child_builders=[
+ProgressionSubclasses = NodeBuilder("SubClasses", key_attribute=None, child_builders=[
     ProgressionSubclass
 ])
 

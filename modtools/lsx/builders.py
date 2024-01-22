@@ -93,8 +93,13 @@ class NodeBuilder(NodeMetadata):
 
 class LsxBuilder(LsxMetadata):
     """Class that builds an lsx.types.Lsx."""
-    def __init__(self, region: str, root: str, node_builder: NodeBuilder):
-        super().__init__(region, root, node_builder)
+
+    def __init__(self,
+                 region: str,
+                 root: str,
+                 node_builder: NodeBuilder,
+                 relative_path: os.PathLike):
+        super().__init__(region, root, node_builder, relative_path)
 
     def __call__(self, *nodes: Node) -> Lsx:
         assert all(node.metadata == self.node_builder for node in nodes)

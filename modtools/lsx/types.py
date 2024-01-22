@@ -253,6 +253,7 @@ class LsxMetadata:
     _region: str
     _root: str
     _node_builder: NodeMetadata
+    _relative_path: os.PathLike
 
     @property
     def region(self) -> str:
@@ -266,10 +267,15 @@ class LsxMetadata:
     def node_builder(self) -> NodeMetadata:
         return self._node_builder
 
-    def __init__(self, region: str, root: str, node_builder: NodeMetadata):
+    @property
+    def relative_path(self) -> os.PathLike:
+        return self._relative_path
+
+    def __init__(self, region: str, root: str, node_builder: NodeMetadata, relative_path: os.PathLike):
         self._region = region
         self._root = root
         self._node_builder = node_builder
+        self._relative_path = os.path.normpath(relative_path)
 
 
 class Lsx:
@@ -318,7 +324,8 @@ class Lsx:
         assert node.metadata == self.metadata.node_builder
         self.nodes[node.key()] = node
 
-    def save(self, path: os.PathLike, version: tuple[int, int, int, int] | None = None):
+    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None):
+        path = os.path.join(mod_path, self.metadata.relative_path)
         document = ElementTree.ElementTree(self.xml(version))
         ElementTree.indent(document, space=" "*4)
         os.makedirs(os.path.dirname(path), exist_ok=True)

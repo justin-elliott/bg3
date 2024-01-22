@@ -179,7 +179,7 @@ class CharacterSubclasses:
                   WIZARD | MULTICLASS_SPELL_SLOTS)
 
 
-ProgressionSubclass: Final = NodeBuilder("SubClass", key_attribute="Object", attributes={
+ProgressionSubclass: Final = NodeBuilder("SubClass", key_attribute=None, attributes={
     "Object": DataType.GUID,
 })
 
@@ -205,4 +205,4 @@ Progression: Final = NodeBuilder("Progression", {
     ],
 )
 
-Progressions: Final = LsxBuilder("Progressions", "root", Progression)
+Progressions: Final = LsxBuilder("Progressions", "root", Progression, "Public/Shared/Progressions/Progressions.lsx")

@@ -6,9 +6,8 @@ Test code for modtools.lsx_v2.
 import os
 import xml.etree.ElementTree as ElementTree
 
+from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
-    CharacterClass,
-    CharacterSubclasses,
     Progression,
     Progressions,
     ProgressionSubclass,

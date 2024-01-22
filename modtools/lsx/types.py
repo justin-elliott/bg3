@@ -10,7 +10,7 @@ from abc import abstractmethod
 from collections import OrderedDict
 from enum import StrEnum
 from modtools.prologue import XML_PROLOGUE
-from typing import Final, Self, ValuesView
+from typing import Final, Self
 
 
 class DataType(StrEnum):

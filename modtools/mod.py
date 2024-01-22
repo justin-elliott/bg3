@@ -17,6 +17,7 @@ from modtools.lsx.types import LsxCollection, Node
 from modtools.modifiers import Modifiers
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from modtools.valuelists import ValueLists
+from pathlib import PurePath
 from uuid import UUID
 
 
@@ -138,6 +139,10 @@ class Mod:
 
     def get_localization(self) -> Localization:
         return self._localization
+
+    def get_pak_path(self, pak_name: str, relative_path: os.PathLike) -> os.PathLike:
+        cached_pak = self._unpak.get(pak_name)
+        return os.path.join(cached_pak.path, relative_path)
 
     def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""

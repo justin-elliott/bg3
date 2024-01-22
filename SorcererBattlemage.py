@@ -5,6 +5,7 @@ Generates files for the "ChromaticBlade" mod.
 
 import os
 
+from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
     Progression,
     Progressions,
@@ -29,7 +30,12 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
 
 loca = sorcerer_battlemage.get_localization()
 
-progressions_lsx = Progressions.load(sorcerer_battlemage.get_pak_path("Shared", PROGRESSIONS_LSX_PATH),
-                                     sorcerer_battlemage.get_pak_path("Shared", PROGRESSIONS_DEV_LSX_PATH))
+progressions_lsx = Progressions.load(sorcerer_battlemage.get_cache_path(PROGRESSIONS_LSX_PATH),
+                                     sorcerer_battlemage.get_cache_path(PROGRESSIONS_DEV_LSX_PATH))
+sorcerer_progression = list(progressions_lsx.filter(lambda node: node["Name"].value in CharacterSubclasses.SORCERER))
+sorcerer_progression.sort(key=lambda node: (CharacterClass(node["Name"].value).name, int(node["Level"].value)))
+
+for node in sorcerer_progression:
+    sorcerer_battlemage.add(node)
 
 sorcerer_battlemage.build()

@@ -140,7 +140,8 @@ class Mod:
     def get_localization(self) -> Localization:
         return self._localization
 
-    def get_pak_path(self, pak_name: str, relative_path: os.PathLike) -> os.PathLike:
+    def get_cache_path(self, lsx_path: os.PathLike) -> os.PathLike:
+        pak_name, _, relative_path = str(PurePath(lsx_path).as_posix()).partition("/")
         cached_pak = self._unpak.get(pak_name)
         return os.path.join(cached_pak.path, relative_path)
 
@@ -340,7 +341,7 @@ class Mod:
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self._gamedata.build(mod_dir, self._folder)
-        self._lsx_collection.save(mod_dir, self._version)
+        self._lsx_collection.save(mod_dir, self._folder, self._version)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)
         self._build_character_creation_presets(public_dir)

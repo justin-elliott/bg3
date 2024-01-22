@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ElementTree
 
 from abc import abstractmethod
 from collections import OrderedDict
+from collections.abc import Callable, Iterable
 from enum import StrEnum
 from modtools.prologue import XML_PROLOGUE
 from typing import Final, Self
@@ -329,8 +330,14 @@ class Lsx:
         assert node.metadata == self.metadata.node_builder
         self.nodes[node.key()] = node
 
-    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None) -> None:
-        path = os.path.join(mod_path, self.metadata.relative_path)
+    def filter(self, predicate: Callable[[Node], bool]) -> Iterable[Node]:
+        return filter(predicate, self.nodes.values())
+
+    def save(self,
+             mod_path: os.PathLike,
+             folder: os.PathLike,
+             version: tuple[int, int, int, int] | None = None) -> None:
+        path = os.path.join(mod_path, str(self.metadata.relative_path).format(folder))
         document = ElementTree.ElementTree(self.xml(version))
         ElementTree.indent(document, space=" "*4)
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -373,6 +380,9 @@ class LsxCollection:
             self._collection[node.metadata] = lsx
         lsx.add(node)
 
-    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None) -> None:
+    def save(self,
+             mod_path: os.PathLike,
+             folder: os.PathLike,
+             version: tuple[int, int, int, int] | None = None) -> None:
         for lsx in self._collection.values():
-            lsx.save(mod_path, version)
+            lsx.save(mod_path, folder, version)

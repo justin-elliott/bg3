@@ -34,9 +34,9 @@ Progression: Final = NodeBuilder("Progression", {
     ],
 )
 
-PROGRESSIONS_LSX_PATH: Final = "Public/Shared/Progressions/Progressions.lsx"
-PROGRESSIONS_DEV_LSX_PATH: Final = "Public/SharedDev/Progressions/Progressions.lsx"
+PROGRESSIONS_LSX_PATH: Final = "Shared.pak/Public/Shared/Progressions/Progressions.lsx"
+PROGRESSIONS_DEV_LSX_PATH: Final = "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx"
 
-Progressions: Final = LsxBuilder("Progressions", "root", Progression, PROGRESSIONS_LSX_PATH)
+Progressions: Final = LsxBuilder("Progressions", "root", Progression, "Public/{0}/Progressions/Progressions.lsx")
 
 LsxCollection.register(Progression, Progressions)

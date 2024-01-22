@@ -5,6 +5,7 @@ Generates files for the "ChromaticBlade" mod.
 
 import os
 
+from modtools.lsx.actionresources import ActionResource, update_action_resources
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
     Progression,
@@ -36,6 +37,10 @@ sorcerer_progression = list(progressions_lsx.filter(lambda node: node["Name"].va
 sorcerer_progression.sort(key=lambda node: (CharacterClass(node["Name"].value).name, int(node["Level"].value)))
 
 for node in sorcerer_progression:
+    if (boosts := node.get("Boosts")) is not None:
+        boosts.value = update_action_resources(boosts.value,
+                                               [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],
+                                               lambda _resource, count, _level: count * 2)
     sorcerer_battlemage.add(node)
 
 sorcerer_battlemage.build()

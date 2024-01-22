@@ -198,6 +198,37 @@ class Node:
         self._attributes = attributes
         self._children = children
 
+    def __contains__(self, attribute_id: str) -> bool:
+        return attribute_id in self.attributes
+
+    def __getitem__(self, attribute_id: str) -> Attribute:
+        return self.attributes[attribute_id]
+
+    def __delitem__(self, attribute_id: str) -> None:
+        assert attribute_id != self.metadata.key_attribute
+        del self.attributes[attribute_id]
+
+    def __setitem__(self, attribute_id: str, attribute: Attribute) -> None:
+        self.set(attribute_id, attribute)
+
+    def get(self, attribute_id: str, default: Attribute | None = None) -> Attribute | None:
+        return self.attributes.get(attribute_id, default)
+
+    def set(self, attribute_id: str, attribute: Attribute) -> None:
+        assert attribute_id != self.metadata.key_attribute
+        assert attribute.data_type == self.metadata.attributes[attribute_id]
+        self.attributes[attribute_id] = attribute
+
+    def set_value(self, attribute_id: str, value: str | list[str]) -> None:
+        assert attribute_id != self.metadata.key_attribute
+        data_type = self.metadata.attributes[attribute_id]
+        self.attributes[attribute_id] = Attribute(data_type, value=value)
+
+    def set_handle(self, attribute_id: str, handle: str, version: int = 1) -> None:
+        assert attribute_id != self.metadata.key_attribute
+        data_type = self.metadata.attributes[attribute_id]
+        self.attributes[attribute_id] = Attribute(data_type, handle=handle, version=version)
+
     def key(self) -> str:
         """Return the node's key."""
         if (key_attribute := self.metadata.key_attribute) is not None:
@@ -271,7 +302,7 @@ class Lsx:
     def __getitem__(self, key: str) -> Node:
         return self.nodes[key]
 
-    def __delitem__(self, key: str) -> Node:
+    def __delitem__(self, key: str) -> None:
         del self.nodes[key]
 
     def __setitem__(self, key: str, node: Node) -> None:

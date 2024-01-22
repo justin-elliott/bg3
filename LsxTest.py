@@ -93,6 +93,9 @@ assert progressions[key] is not None
 progressions[key] = node
 assert progressions[key] is not None
 
+assert node["UUID"].value == key
+assert node["ProgressionType"].value == "0"
+
 xml = progressions.xml(version=(4, 1, 1, 1))
 ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)

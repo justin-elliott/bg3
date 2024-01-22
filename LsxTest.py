@@ -6,7 +6,14 @@ Test code for modtools.lsx_v2.
 import os
 import xml.etree.ElementTree as ElementTree
 
-from modtools.lsx.progressions import Progression, Progressions, ProgressionSubclass, ProgressionSubclasses
+from modtools.lsx.progressions import (
+    CharacterClass,
+    CharacterSubclasses,
+    Progression,
+    Progressions,
+    ProgressionSubclass,
+    ProgressionSubclasses
+)
 from modtools.unpak import Unpak
 
 
@@ -107,6 +114,16 @@ shared = unpak.get("Shared")
 
 class_progressions = Progressions.load(os.path.join(shared.path, "Public/Shared/Progressions/Progressions.lsx"),
                                        os.path.join(shared.path, "Public/SharedDev/Progressions/Progressions.lsx"))
-xml = class_progressions.xml(version=(4, 1, 1, 1))
+sorcerer_progressions = Progressions()
+sorcerer_nodes = []
+for node in class_progressions.nodes.values():
+    if (name := node.get("Name")) is not None and name.value in CharacterSubclasses.SORCERER:
+        sorcerer_nodes.append(node)
+
+sorcerer_nodes.sort(key=lambda node: (CharacterClass(node.get("Name").value).name, int(node.get("Level").value)))
+for node in sorcerer_nodes:
+    sorcerer_progressions.add(node)
+
+xml = sorcerer_progressions.xml(version=(4, 1, 1, 1))
 ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)

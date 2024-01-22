@@ -6,7 +6,6 @@ Builders for .lsx types.
 import os
 import xml.etree.ElementTree as ElementTree
 
-from collections import OrderedDict
 from modtools.lsx.types import Attribute, DataType, Lsx, LsxMetadata, Node, NodeMetadata
 from typing import Self
 
@@ -66,7 +65,7 @@ class NodeBuilder(NodeMetadata):
         for attribute in element.findall("attribute"):
             id = attribute.get("id", "")
             if (data_type := self.attributes.get(id, None)) is not None:
-                assert attribute.get("type", "") == data_type if data_type != DataType.LSSTRING_COMMA else (
+                assert attribute.get("type", "") == data_type if data_type not in Attribute.PSEUDO_LSSTRING_TYPES else (
                     attribute.get("type", "") == DataType.LSSTRING
                 )
                 if (value := attribute.get("value")) is not None:

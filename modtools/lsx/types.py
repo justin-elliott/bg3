@@ -38,7 +38,8 @@ class DataType(StrEnum):
     PATH = "path"
     FIXEDSTRING = "FixedString"
     LSSTRING = "LSString"
-    LSSTRING_COMMA = "LSString,"  # A pseudo-type representing comma-separated lists such as PassiveLists.
+    LSSTRING_VALUE = "LSString:value"  # A pseudo-type representing a single value
+    LSSTRING_COMMA = "LSString:comma"  # A pseudo-type representing comma-separated lists such as PassiveLists.
     UINT64 = "uint64"
     SCRATCHBUFFER = "ScratchBuffer"
     OLD_INT64 = "old_int64"
@@ -53,8 +54,9 @@ class DataType(StrEnum):
 
 class Attribute:
     """Class representing an .lsx attribute value."""
-    HANDLE_TYPES: Final[frozenset[DataType]] = frozenset([DataType.TRANSLATEDSTRING, DataType.TRANSLATEDFSSTRING])
-    LIST_TYPES: Final[frozenset[DataType]] = frozenset([DataType.LSSTRING, DataType.LSSTRING_COMMA, DataType.LSWSTRING])
+    HANDLE_TYPES: Final = frozenset([DataType.TRANSLATEDSTRING, DataType.TRANSLATEDFSSTRING])
+    LIST_TYPES: Final = frozenset([DataType.LSSTRING, DataType.LSSTRING_COMMA, DataType.LSWSTRING])
+    PSEUDO_LSSTRING_TYPES: Final = frozenset([DataType.LSSTRING_COMMA, DataType.LSSTRING_VALUE])
 
     _data_type: DataType
     _value: str | list[str] | None = None
@@ -122,10 +124,9 @@ class Attribute:
     def xml(self, id: str) -> ElementTree.Element:
         attributes = {
             "id": id,
-            "type": self._data_type
+            "type": self.data_type if self.data_type not in Attribute.PSEUDO_LSSTRING_TYPES else DataType.LSSTRING
         }
         if self._data_type == DataType.LSSTRING_COMMA:
-            attributes["type"] = DataType.LSSTRING
             attributes["value"] = ",".join(self.value)
         if self._data_type in Attribute.LIST_TYPES:
             attributes["value"] = ";".join(self.value)

@@ -172,6 +172,11 @@ class CharacterSubclasses:
         CharacterClass.WIZARD_NECROMANCY,
         CharacterClass.WIZARD_TRANSMUTATION,
     ])
+    MULTICLASS_SPELL_SLOTS: Final = frozenset([
+        CharacterClass.MULTICLASS_SPELL_SLOTS,
+    ])
+    ALL: Final = (BARBARIAN | BARD | CLERIC | DRUID | FIGHTER | MONK | PALADIN | RANGER | ROGUE | SORCERER | WARLOCK |
+                  WIZARD | MULTICLASS_SPELL_SLOTS)
 
 
 ProgressionSubclass = NodeBuilder("SubClass", key_attribute="Object", attributes={
@@ -179,7 +184,7 @@ ProgressionSubclass = NodeBuilder("SubClass", key_attribute="Object", attributes
 })
 
 ProgressionSubclasses = NodeBuilder("SubClasses", key_attribute=None, child_builders=[
-    ProgressionSubclass
+    ProgressionSubclass,
 ])
 
 Progression = NodeBuilder("Progression", {

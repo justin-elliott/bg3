@@ -3,9 +3,11 @@
 Test code for modtools.lsx_v2.
 """
 
+import os
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx.progressions import Progression, Progressions, ProgressionSubclass, ProgressionSubclasses
+from modtools.unpak import Unpak
 
 
 progressions = Progressions(
@@ -97,5 +99,14 @@ assert node["UUID"].value == key
 assert node["ProgressionType"].value == "0"
 
 xml = progressions.xml(version=(4, 1, 1, 1))
+ElementTree.indent(xml, space=" "*4)
+# ElementTree.dump(xml)
+
+unpak = Unpak(cache_dir=None)
+shared = unpak.get("Shared")
+
+class_progressions = Progressions.load(os.path.join(shared.path, "Public/Shared/Progressions/Progressions.lsx"),
+                                       os.path.join(shared.path, "Public/SharedDev/Progressions/Progressions.lsx"))
+xml = class_progressions.xml(version=(4, 1, 1, 1))
 ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)

@@ -142,7 +142,7 @@ class NodeMetadata:
     _id: str
     _key_attribute: str | None
     _attributes: dict[str, DataType]
-    _child_builders: list[Self]
+    _child_builders: dict[str, Self]
 
     @property
     def id(self) -> str:
@@ -157,7 +157,7 @@ class NodeMetadata:
         return self._attributes
 
     @property
-    def child_builders(self) -> list[Self]:
+    def child_builders(self) -> dict[str, Self]:
         return self._child_builders
 
     def __init__(self,
@@ -168,14 +168,14 @@ class NodeMetadata:
         self._id = id
         self._key_attribute = key_attribute
         self._attributes = attributes
-        self._child_builders = child_builders
+        self._child_builders = dict([(builder.id, builder) for builder in child_builders])
 
 
 class Node:
     """Class representing a node in an .lsx file."""
     _metadata: NodeMetadata
     _attributes: dict[str, Attribute]
-    _children: list[Self]
+    _children: OrderedDict[Self]
 
     @property
     def metadata(self) -> NodeMetadata:
@@ -190,13 +190,13 @@ class Node:
         return self._attributes
 
     @property
-    def children(self) -> list[Self]:
+    def children(self) -> OrderedDict[Self]:
         return self._children
 
-    def __init__(self, metadata: NodeMetadata, attributes: dict[str, Attribute] = {}, children: [Self] = []):
+    def __init__(self, metadata: NodeMetadata, attributes: dict[str, Attribute] = {}, children: list[Self] = []):
         self._metadata = metadata
         self._attributes = attributes
-        self._children = children
+        self._children = OrderedDict([(child.key(), child) for child in children])
 
     def __contains__(self, attribute_id: str) -> bool:
         return attribute_id in self.attributes
@@ -242,7 +242,7 @@ class Node:
             element.append(attribute.xml(id))
         if len(self.children) > 0:
             children = ElementTree.SubElement(element, "children")
-            for child in self.children:
+            for child in self.children.values():
                 children.append(child.xml())
         return element
 
@@ -329,7 +329,7 @@ class Lsx:
         element = ElementTree.Element("save")
         if version:
             ElementTree.SubElement(element, "version", {
-                attr: str(ver) for attr, ver in zip(["major", "minor", "revision", "build"], version)
+                attr: str(ver) for attr, ver in zip(("major", "minor", "revision", "build"), version)
             })
         region = ElementTree.SubElement(element, "region", id=self.region)
         root = ElementTree.SubElement(region, "node", id=self.root)

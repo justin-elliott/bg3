@@ -6,10 +6,11 @@ Representation of .lsx types.
 import os
 import xml.etree.ElementTree as ElementTree
 
+from abc import abstractmethod
 from collections import OrderedDict
 from enum import StrEnum
 from modtools.prologue import XML_PROLOGUE
-from typing import Final, Self
+from typing import Final, Self, ValuesView
 
 
 class DataType(StrEnum):
@@ -277,6 +278,10 @@ class LsxMetadata:
         self._node_builder = node_builder
         self._relative_path = os.path.normpath(relative_path)
 
+    @abstractmethod
+    def __call__(self, *nodes: Node) -> "Lsx":
+        pass
+
 
 class Lsx:
     """Class representing an .lsx file."""
@@ -324,7 +329,7 @@ class Lsx:
         assert node.metadata == self.metadata.node_builder
         self.nodes[node.key()] = node
 
-    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None):
+    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None) -> None:
         path = os.path.join(mod_path, self.metadata.relative_path)
         document = ElementTree.ElementTree(self.xml(version))
         ElementTree.indent(document, space=" "*4)
@@ -345,3 +350,32 @@ class Lsx:
         for node in self.nodes.values():
             children.append(node.xml())
         return element
+
+
+class LsxCollection:
+    """Class representing a collection of .lsx nodes."""
+    _registered_metadata: dict[NodeMetadata, LsxMetadata] = {}
+
+    _collection: dict[NodeMetadata, Lsx]
+
+    @classmethod
+    def register(cls, node_meta: NodeMetadata, lsx_meta: LsxMetadata) -> None:
+        cls._registered_metadata[node_meta] = lsx_meta
+
+    def __init__(self):
+        self._collection = {}
+
+    def is_storable(item: any) -> bool:
+        return isinstance(item, Node) and item.metadata in LsxCollection._registered_metadata
+
+    def add(self, node: Node) -> None:
+        assert self.is_storable(node)
+        lsx = self._collection.get(node.metadata)
+        if lsx is None:
+            lsx = LsxCollection._registered_metadata[node.metadata]()
+            self._collection[node.metadata] = lsx
+        lsx.add(node)
+
+    def save(self, mod_path: os.PathLike, version: tuple[int, int, int, int] | None = None) -> None:
+        for lsx in self._collection.values():
+            lsx.save(mod_path, version)

@@ -5,7 +5,7 @@ Test code for modtools.lsx_v2.
 
 from enum import StrEnum
 from modtools.lsx.builders import LsxBuilder, NodeBuilder
-from modtools.lsx.types import DataType
+from modtools.lsx.types import DataType, LsxCollection
 from typing import Final
 
 
@@ -206,3 +206,5 @@ Progression: Final = NodeBuilder("Progression", {
 )
 
 Progressions: Final = LsxBuilder("Progressions", "root", Progression, "Public/Shared/Progressions/Progressions.lsx")
+
+LsxCollection.register(Progression, Progressions)

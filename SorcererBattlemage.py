@@ -6,13 +6,14 @@ Generates files for the "ChromaticBlade" mod.
 import os
 
 from modtools.lsx.actionresources import ActionResource, update_action_resources
-from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
+from modtools.lsx.characterclasses import CharacterSubclasses
 from modtools.lsx.progressions import (
-    Progression,
+    ProgressionKey,
     Progressions,
     PROGRESSIONS_LSX_PATH,
     PROGRESSIONS_DEV_LSX_PATH
 )
+from modtools.lsx.types import Node
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -33,10 +34,13 @@ loca = sorcerer_battlemage.get_localization()
 
 progressions_lsx = Progressions.load(sorcerer_battlemage.get_cache_path(PROGRESSIONS_LSX_PATH),
                                      sorcerer_battlemage.get_cache_path(PROGRESSIONS_DEV_LSX_PATH))
-sorcerer_progression = list(progressions_lsx.filter(lambda node: node["Name"].value in CharacterSubclasses.SORCERER))
-sorcerer_progression.sort(key=lambda node: (CharacterClass(node["Name"].value).name, int(node["Level"].value)))
 
-for node in sorcerer_progression:
+sorcerer_progression: dict[(str, int, bool), Node] = {
+    ProgressionKey.for_node(node): node
+    for node in progressions_lsx.filter(lambda node: node["Name"].value in CharacterSubclasses.SORCERER)
+}
+
+for _, node in sorted(sorcerer_progression.items()):
     if (boosts := node.get("Boosts")) is not None:
         boosts.value = update_action_resources(boosts.value,
                                                [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],

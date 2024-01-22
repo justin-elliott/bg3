@@ -38,7 +38,7 @@ def update_action_resources(iter: Iterable[str],
     """
     Update action resources.
 
-    iter -- An iterable that could contain action resources.
+    iter -- The iterable containing resources to be updated.
     resources -- The resources to match against.
     apply -- A callable that returns a new 'count' value when called with the (resource, count, level).
     """

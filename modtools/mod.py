@@ -12,7 +12,8 @@ import time
 from modtools.gamedata import GameData, GameDatum
 from modtools.unpak import Unpak
 from modtools.localization import Localization
-from modtools.lsx import Lsx
+from modtools.lsx_v1 import Lsx
+from modtools.lsx.types import LsxCollection, Node
 from modtools.modifiers import Modifiers
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from modtools.valuelists import ValueLists
@@ -22,37 +23,38 @@ from uuid import UUID
 class Mod:
     """Baldur's Gate 3 mod definition."""
 
-    __author: str
-    __base_dir: str
-    __name: str
-    __description: str
-    __folder: str
-    __uuid: UUID
-    __version: (int, int, int, int)
+    _author: str
+    _base_dir: str
+    _name: str
+    _description: str
+    _folder: str
+    _uuid: UUID
+    _version: (int, int, int, int)
 
-    __unpak: Unpak
-    __modifiers: Modifiers
-    __valuelists: ValueLists
+    _unpak: Unpak
+    _modifiers: Modifiers
+    _valuelists: ValueLists
 
-    __localization: Localization
+    _localization: Localization
 
-    __gamedata: GameData
+    _gamedata: GameData
+    _lsx_collection: LsxCollection
 
-    __character_creation_presets: Lsx
-    __class_descriptions: Lsx
-    __feat_descriptions: Lsx
-    __feats: Lsx
-    __level_maps: Lsx
-    __passive_lists: Lsx
-    __progressions: Lsx
-    __progression_descriptions: Lsx
-    __races: Lsx
-    __root_templates: Lsx
-    __spell_lists: Lsx
-    __tags: Lsx
+    _character_creation_presets: Lsx
+    _class_descriptions: Lsx
+    _feat_descriptions: Lsx
+    _feats: Lsx
+    _level_maps: Lsx
+    _passive_lists: Lsx
+    _progressions: Lsx
+    _progression_descriptions: Lsx
+    _races: Lsx
+    _root_templates: Lsx
+    _spell_lists: Lsx
+    _tags: Lsx
 
-    __scripts: [str]
-    __treasure_table: [str]
+    _scripts: [str]
+    _treasure_table: [str]
 
     def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
                  version: (int, int, int, int) = (4, 1, 1, 1), cache_dir: os.PathLike | None = None):
@@ -66,175 +68,178 @@ class Mod:
         folder -- folder for the mod (defaults to the mod's name)
         version -- version of the mod (major, minor, revision, build)
         """
-        self.__author = author
-        self.__base_dir = base_dir
-        self.__name = name
-        self.__description = description
-        self.__folder = folder or name
-        self.__uuid = mod_uuid
-        self.__version = version
+        self._author = author
+        self._base_dir = base_dir
+        self._name = name
+        self._description = description
+        self._folder = folder or name
+        self._uuid = mod_uuid
+        self._version = version
 
-        self.__unpak = Unpak(cache_dir)
-        self.__modifiers = Modifiers(self.__unpak)
-        self.__valuelists = ValueLists(self.__unpak)
+        self._unpak = Unpak(cache_dir)
+        self._modifiers = Modifiers(self._unpak)
+        self._valuelists = ValueLists(self._unpak)
 
-        self.__localization = Localization(mod_uuid)
-        self.__localization.add_language("en", "English")
+        self._localization = Localization(mod_uuid)
+        self._localization.add_language("en", "English")
 
-        self.__gamedata = GameData(self.__modifiers, self.__valuelists)
+        self._gamedata = GameData(self._modifiers, self._valuelists)
+        self._lsx_collection = LsxCollection()
 
-        self.__character_creation_presets = None
-        self.__class_descriptions = None
-        self.__feat_descriptions = None
-        self.__feats = None
-        self.__level_maps = None
-        self.__passive_lists = None
-        self.__progressions = None
-        self.__progression_descriptions = None
-        self.__races = None
-        self.__root_templates = None
-        self.__spell_lists = None
-        self.__tags = None
+        self._character_creation_presets = None
+        self._class_descriptions = None
+        self._feat_descriptions = None
+        self._feats = None
+        self._level_maps = None
+        self._passive_lists = None
+        self._progressions = None
+        self._progression_descriptions = None
+        self._races = None
+        self._root_templates = None
+        self._spell_lists = None
+        self._tags = None
 
-        self.__scripts = None
-        self.__treasure_table = None
+        self._scripts = None
+        self._treasure_table = None
 
     def make_uuid(self, key: str) -> UUID:
         m = hashlib.sha256()
-        m.update(self.__uuid.bytes)
+        m.update(self._uuid.bytes)
         m.update(bytes(key, "UTF-8"))
         return UUID(m.hexdigest()[0:32])
 
     def get_author(self) -> str:
-        return self.__author
+        return self._author
 
     def get_base_dir(self) -> str:
-        return self.__base_dir
+        return self._base_dir
 
     def get_name(self) -> str:
-        return self.__name
+        return self._name
 
     def get_prefix(self) -> str:
         """Get the module name with all non-alphanumeric, non-underscore characters removed."""
-        return re.sub(r"\W+", "", self.__name)
+        return re.sub(r"\W+", "", self._name)
 
     def get_description(self) -> str:
-        return self.__description
+        return self._description
 
     def get_folder(self) -> str:
-        return self.__folder
+        return self._folder
 
     def get_uuid(self) -> UUID:
-        return self.__uuid
+        return self._uuid
 
     def get_version(self) -> (int, int, int, int):
-        return self.__version
+        return self._version
 
     def get_modifiers(self) -> Modifiers:
-        return self.__modifiers
+        return self._modifiers
 
     def get_localization(self) -> Localization:
-        return self.__localization
+        return self._localization
 
-    def add(self, datum: any) -> None:
+    def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""
-        if isinstance(datum, GameDatum):
-            self.__gamedata.add(datum)
+        if isinstance(item, GameDatum):
+            self._gamedata.add(item)
+        elif isinstance(item, Node):
+            self._lsx_collection.add(item)
         else:
             raise TypeError("add: Invalid data type")
 
     def add_character_creation_presets(self, nodes: [Lsx.Node]) -> None:
-        if not self.__character_creation_presets:
-            self.__character_creation_presets = Lsx(self.__version, "CharacterCreationPresets", "root")
-        self.__character_creation_presets.add_children(nodes)
+        if not self._character_creation_presets:
+            self._character_creation_presets = Lsx(self._version, "CharacterCreationPresets", "root")
+        self._character_creation_presets.add_children(nodes)
 
     def add_class_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self.__class_descriptions:
-            self.__class_descriptions = Lsx(self.__version, "ClassDescriptions", "root")
-        self.__class_descriptions.add_children(nodes)
+        if not self._class_descriptions:
+            self._class_descriptions = Lsx(self._version, "ClassDescriptions", "root")
+        self._class_descriptions.add_children(nodes)
 
     def add_feat_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self.__feat_descriptions:
-            self.__feat_descriptions = Lsx(self.__version, "FeatDescriptions", "root")
-        self.__feat_descriptions.add_children(nodes)
+        if not self._feat_descriptions:
+            self._feat_descriptions = Lsx(self._version, "FeatDescriptions", "root")
+        self._feat_descriptions.add_children(nodes)
 
     def add_feats(self, nodes: [Lsx.Node]) -> None:
-        if not self.__feats:
-            self.__feats = Lsx(self.__version, "Feats", "root")
-        self.__feats.add_children(nodes)
+        if not self._feats:
+            self._feats = Lsx(self._version, "Feats", "root")
+        self._feats.add_children(nodes)
 
     def add_level_maps(self, nodes: [Lsx.Node]) -> None:
-        if not self.__level_maps:
-            self.__level_maps = Lsx(self.__version, "LevelMapValues", "root")
-        self.__level_maps.add_children(nodes)
+        if not self._level_maps:
+            self._level_maps = Lsx(self._version, "LevelMapValues", "root")
+        self._level_maps.add_children(nodes)
 
     def add_passive_lists(self, nodes: [Lsx.Node]) -> None:
-        if not self.__passive_lists:
-            self.__passive_lists = Lsx(self.__version, "PassiveLists", "root")
-        self.__passive_lists.add_children(nodes)
+        if not self._passive_lists:
+            self._passive_lists = Lsx(self._version, "PassiveLists", "root")
+        self._passive_lists.add_children(nodes)
 
     def add_progressions(self, nodes: [Lsx.Node]) -> None:
-        if not self.__progressions:
-            self.__progressions = Lsx(self.__version, "Progressions", "root")
-        self.__progressions.add_children(nodes)
+        if not self._progressions:
+            self._progressions = Lsx(self._version, "Progressions", "root")
+        self._progressions.add_children(nodes)
 
     def add_progression_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self.__progression_descriptions:
-            self.__progression_descriptions = Lsx(self.__version, "ProgressionDescriptions", "root")
-        self.__progression_descriptions.add_children(nodes)
+        if not self._progression_descriptions:
+            self._progression_descriptions = Lsx(self._version, "ProgressionDescriptions", "root")
+        self._progression_descriptions.add_children(nodes)
 
     def add_races(self, nodes: [Lsx.Node]) -> None:
-        if not self.__races:
-            self.__races = Lsx(self.__version, "Races", "root")
-        self.__races.add_children(nodes)
+        if not self._races:
+            self._races = Lsx(self._version, "Races", "root")
+        self._races.add_children(nodes)
 
     def add_root_templates(self, nodes: [Lsx.Node]) -> None:
-        if not self.__root_templates:
-            self.__root_templates = Lsx(self.__version, "Templates", "Templates")
-        self.__root_templates.add_children(nodes)
+        if not self._root_templates:
+            self._root_templates = Lsx(self._version, "Templates", "Templates")
+        self._root_templates.add_children(nodes)
 
     def add_spell_lists(self, nodes: [Lsx.Node]) -> None:
-        if not self.__spell_lists:
-            self.__spell_lists = Lsx(self.__version, "SpellLists", "root")
-        self.__spell_lists.add_children(nodes)
+        if not self._spell_lists:
+            self._spell_lists = Lsx(self._version, "SpellLists", "root")
+        self._spell_lists.add_children(nodes)
 
     def add_tags(self, nodes: [Lsx.Node]) -> None:
-        if not self.__tags:
-            self.__tags = []
-        self.__tags.extend(nodes)
+        if not self._tags:
+            self._tags = []
+        self._tags.extend(nodes)
 
     def add_script(self, text: str) -> None:
-        self.__scripts = self.__scripts or []
-        if text not in self.__scripts:
-            self.__scripts.append(text)
+        self._scripts = self._scripts or []
+        if text not in self._scripts:
+            self._scripts.append(text)
 
     def add_treasure_table(self, text: str) -> None:
-        self.__treasure_table = self.__treasure_table or []
-        self.__treasure_table.append(text)
+        self._treasure_table = self._treasure_table or []
+        self._treasure_table.append(text)
 
     def _build_meta(self, mod_dir: str) -> None:
         """Build the meta.lsx underneath the given mod_dir."""
         build_version = str(time.time_ns())
 
-        lsx = Lsx(self.__version, "Config", "root")
+        lsx = Lsx(self._version, "Config", "root")
         lsx.add_children([
             Lsx.Node("Dependencies"),
             Lsx.Node("ModuleInfo", attributes=[
-                    Lsx.Attribute("Author", "LSWString", value=self.__author),
+                    Lsx.Attribute("Author", "LSWString", value=self._author),
                     Lsx.Attribute("CharacterCreationLevelName", "FixedString", value=""),
-                    Lsx.Attribute("Description", "LSWString", value=self.__description),
-                    Lsx.Attribute("Folder", "LSWString", value=self.__folder),
+                    Lsx.Attribute("Description", "LSWString", value=self._description),
+                    Lsx.Attribute("Folder", "LSWString", value=self._folder),
                     Lsx.Attribute("LobbyLevelName", "FixedString", value=""),
                     Lsx.Attribute("MD5", "LSString", value=""),
                     Lsx.Attribute("MainMenuBackgroundVideo", "FixedString", value=""),
                     Lsx.Attribute("MenuLevelName", "FixedString", value=""),
-                    Lsx.Attribute("Name", "FixedString", value=self.__name),
+                    Lsx.Attribute("Name", "FixedString", value=self._name),
                     Lsx.Attribute("NumPlayers", "uint8", value="4"),
                     Lsx.Attribute("PhotoBooth", "FixedString", value=""),
                     Lsx.Attribute("StartupLevelName", "FixedString", value=""),
                     Lsx.Attribute("Tags", "LSString", value=""),
                     Lsx.Attribute("Type", "FixedString", value="Add-on"),
-                    Lsx.Attribute("UUID", "FixedString", value=str(self.__uuid)),
+                    Lsx.Attribute("UUID", "FixedString", value=str(self._uuid)),
                     Lsx.Attribute("Version64", "int64", value=build_version),
                 ],
                 children=[
@@ -249,89 +254,90 @@ class Mod:
                     ]),
                 ])
         ])
-        lsx.build(os.path.join(mod_dir, "Mods", self.__folder, "meta.lsx"))
+        lsx.build(os.path.join(mod_dir, "Mods", self._folder, "meta.lsx"))
 
     def _build_character_creation_presets(self, public_dir: str) -> None:
-        if self.__character_creation_presets:
-            self.__character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
+        if self._character_creation_presets:
+            self._character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
                                                                  "CharacterCreationPresets.lsx"))
 
     def _build_class_descriptions(self, public_dir: str) -> None:
-        if self.__class_descriptions:
-            self.__class_descriptions.build(os.path.join(public_dir, "ClassDescriptions", "ClassDescriptions.lsx"))
+        if self._class_descriptions:
+            self._class_descriptions.build(os.path.join(public_dir, "ClassDescriptions", "ClassDescriptions.lsx"))
 
     def _build_feat_descriptions(self, public_dir: str) -> None:
-        if self.__feat_descriptions:
-            self.__feat_descriptions.build(os.path.join(public_dir, "Feats", "FeatDescriptions.lsx"))
+        if self._feat_descriptions:
+            self._feat_descriptions.build(os.path.join(public_dir, "Feats", "FeatDescriptions.lsx"))
 
     def _build_feats(self, public_dir: str) -> None:
-        if self.__feats:
-            self.__feats.build(os.path.join(public_dir, "Feats", "Feats.lsx"))
+        if self._feats:
+            self._feats.build(os.path.join(public_dir, "Feats", "Feats.lsx"))
 
     def _build_level_maps(self, public_dir: str) -> None:
-        if self.__level_maps:
-            self.__level_maps.build(os.path.join(public_dir, "Levelmaps", "LevelMapValues.lsx"))
+        if self._level_maps:
+            self._level_maps.build(os.path.join(public_dir, "Levelmaps", "LevelMapValues.lsx"))
 
     def _build_progressions(self, public_dir: str) -> None:
-        if self.__progressions:
-            self.__progressions.build(os.path.join(public_dir, "Progressions", "Progressions.lsx"))
+        if self._progressions:
+            self._progressions.build(os.path.join(public_dir, "Progressions", "Progressions.lsx"))
 
     def _build_passive_lists(self, public_dir: str) -> None:
-        if self.__passive_lists:
-            self.__passive_lists.build(os.path.join(public_dir, "Lists", "PassiveLists.lsx"))
+        if self._passive_lists:
+            self._passive_lists.build(os.path.join(public_dir, "Lists", "PassiveLists.lsx"))
 
     def _build_progression_descriptions(self, public_dir: str) -> None:
-        if self.__progression_descriptions:
-            self.__progression_descriptions.build(
+        if self._progression_descriptions:
+            self._progression_descriptions.build(
                 os.path.join(public_dir, "Progressions", "ProgressionDescriptions.lsx"))
 
     def _build_races(self, public_dir: str) -> None:
-        if self.__races:
-            self.__races.build(os.path.join(public_dir, "Races", "Races.lsx"))
+        if self._races:
+            self._races.build(os.path.join(public_dir, "Races", "Races.lsx"))
 
     def _build_root_templates(self, public_dir: str) -> None:
-        if self.__root_templates:
-            self.__root_templates.build(os.path.join(public_dir, "RootTemplates", "_merged.lsx"))
+        if self._root_templates:
+            self._root_templates.build(os.path.join(public_dir, "RootTemplates", "_merged.lsx"))
 
     def _build_spell_lists(self, public_dir: str) -> None:
-        if self.__spell_lists:
-            self.__spell_lists.build(os.path.join(public_dir, "Lists", "SpellLists.lsx"))
+        if self._spell_lists:
+            self._spell_lists.build(os.path.join(public_dir, "Lists", "SpellLists.lsx"))
 
     def _build_tags(self, public_dir: str) -> None:
-        if self.__tags:
-            for tag in self.__tags:
-                lsx = Lsx(self.__version, "Tags")
+        if self._tags:
+            for tag in self._tags:
+                lsx = Lsx(self._version, "Tags")
                 lsx.set_root(tag)
                 tag_uuid = next(attr.get_value() for attr in tag.get_attributes() if attr.get_id() == "UUID")
                 tag_file = f"{tag_uuid}.lsx"
                 lsx.build(os.path.join(public_dir, "Tags", tag_file))
 
     def _build_scripts(self, mod_dir: str) -> None:
-        if self.__scripts:
+        if self._scripts:
             scripts_dir = os.path.join(mod_dir, "Scripts", "thoth", "helpers")
             os.makedirs(scripts_dir, exist_ok=True)
             with open(os.path.join(scripts_dir, "Scripts.khn"), "w") as f:
                 f.write(LUA_PROLOGUE)
-                f.write("\n".join(self.__scripts))
+                f.write("\n".join(self._scripts))
 
     def _build_treasure_table(self, public_dir: str) -> None:
-        if self.__treasure_table:
+        if self._treasure_table:
             treasure_table_dir = os.path.join(public_dir, "Stats", "Generated")
             os.makedirs(treasure_table_dir, exist_ok=True)
             with open(os.path.join(treasure_table_dir, "TreasureTable.txt"), "w") as f:
                 f.write(TXT_PROLOGUE)
-                f.write("\n".join(self.__treasure_table))
+                f.write("\n".join(self._treasure_table))
 
     def build(self) -> None:
-        """Build the mod files underneath the __base_dir."""
-        mod_dir = os.path.join(self.__base_dir, self.__folder)
+        """Build the mod files underneath the _base_dir."""
+        mod_dir = os.path.join(self._base_dir, self._folder)
         if os.path.exists(mod_dir):
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
-        self.__gamedata.build(mod_dir, self.__folder)
-        self.__localization.build(mod_dir)
-        public_dir = os.path.join(mod_dir, "Public", self.__folder)
+        self._gamedata.build(mod_dir, self._folder)
+        self._lsx_collection.save(mod_dir, self._version)
+        self._localization.build(mod_dir)
+        public_dir = os.path.join(mod_dir, "Public", self._folder)
         self._build_character_creation_presets(public_dir)
         self._build_class_descriptions(public_dir)
         self._build_feat_descriptions(public_dir)

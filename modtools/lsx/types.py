@@ -365,11 +365,8 @@ class LsxCollection:
     def __init__(self):
         self._collection = {}
 
-    def is_storable(item: any) -> bool:
-        return isinstance(item, Node) and item.metadata in LsxCollection._registered_metadata
-
     def add(self, node: Node) -> None:
-        assert self.is_storable(node)
+        assert node.metadata in LsxCollection._registered_metadata
         lsx = self._collection.get(node.metadata)
         if lsx is None:
             lsx = LsxCollection._registered_metadata[node.metadata]()

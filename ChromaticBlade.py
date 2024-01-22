@@ -6,8 +6,8 @@ Generates files for the "ChromaticBlade" mod.
 import os
 
 from moddb.scripts import character_level_range
-from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
-from modtools.lsx import Lsx
+from modtools.gamedata import spell_data, status_data, weapon_data
+from modtools.lsx_v1 import Lsx
 from modtools.mod import Mod
 from uuid import UUID
 

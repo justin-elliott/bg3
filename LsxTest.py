@@ -3,7 +3,9 @@
 Test code for modtools.lsx_v2.
 """
 
+from abc import abstractmethod
 import os
+from typing import Callable
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
@@ -13,6 +15,7 @@ from modtools.lsx.progressions import (
     ProgressionSubclass,
     ProgressionSubclasses
 )
+from modtools.lsx.types import DataType
 from modtools.unpak import Unpak
 
 
@@ -125,4 +128,171 @@ for node in sorcerer_nodes:
 
 xml = sorcerer_progressions.xml(version=(4, 1, 1, 1))
 ElementTree.indent(xml, space=" "*4)
-ElementTree.dump(xml)
+# ElementTree.dump(xml)
+
+
+class LsxAttribute:
+    _type_name: str
+
+    def __init__(self, type_name: str):
+        super().__init__()
+        self._type_name = type_name
+
+    @abstractmethod
+    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                   Callable[[object, any], None],
+                                                   Callable[[object], None]]:
+        pass
+
+
+class LsxString(LsxAttribute):
+    def __init__(self, type_name: str):
+        super().__init__(type_name)
+
+    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                   Callable[[object, any], None],
+                                                   Callable[[object], None]]:
+        def getter(obj: object) -> str:
+            store: dict = obj.__dict__.setdefault(member, {})
+            return store.get("str")
+
+        def setter(obj: object, value: str) -> None:
+            store: dict = obj.__dict__.setdefault(member, {})
+            store["str"] = str(value)
+
+        def deleter(obj: object) -> None:
+            store: dict = obj.__dict__.setdefault(member, {})
+            if "str" in store:
+                del store["str"]
+
+        return (getter, setter, deleter)
+
+
+class LsxList(LsxAttribute):
+    LIST_TYPES = (list, tuple, set)
+
+    _separator: str
+
+    def __init__(self, type_name: str, separator: str = ";"):
+        super().__init__(type_name)
+        self._separator = separator
+
+    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                   Callable[[object, any], None],
+                                                   Callable[[object], None]]:
+        def getter(obj: object) -> list[str]:
+            store: dict = obj.__dict__.setdefault(member, {})
+            return store.get("list")
+
+        def setter(obj: object, values: list[str]) -> None:
+            if not isinstance(values, LsxList.LIST_TYPES):
+                values = [x for x in str(values).split(self._separator) if x]
+            else:
+                values = [str(x) for x in values]
+            store: dict = obj.__dict__.setdefault(member, {})
+            store["list"] = values
+
+        def deleter(obj: object) -> None:
+            store: dict = obj.__dict__.setdefault(member, {})
+            if "list" in store:
+                del store["list"]
+
+        return (getter, setter, deleter)
+
+
+class LsxTranslation(LsxAttribute):
+    def __init__(self, type_name: str):
+        super().__init__(type_name)
+
+    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                   Callable[[object, any], None],
+                                                   Callable[[object], None]]:
+        def getter(obj: object) -> tuple[str, int]:
+            store: dict = obj.__dict__.setdefault(member, {})
+            return (store.get("handle"), store.get("version"))
+
+        def setter(obj: object, value: str | tuple[str, int]) -> None:
+            store: dict = obj.__dict__.setdefault(member, {})
+            if not isinstance(value, tuple):
+                value = (value, 1)
+            handle, version = value
+            store["handle"] = str(handle)
+            store["version"] = int(version)
+
+        def deleter(obj: object) -> None:
+            store: dict = obj.__dict__.setdefault(member, {})
+            if "handle" in store:
+                del store["handle"]
+                del store["version"]
+
+        return (getter, setter, deleter)
+
+
+class LsxType:
+    LSString = LsxList("LSString")
+    LSStringValue = LsxString("LSString")
+    GUID = LsxString("guid")
+    TranslatedString = LsxTranslation("TranslatedString")
+    uint8 = LsxString("uint8")
+
+
+class LsxNode:
+    @classmethod
+    def __init_subclass__(cls) -> None:
+        attributes: dict[tuple[str, LsxAttribute]] = {}
+        for member_name, data_type in list(cls.__dict__.items()):
+            if isinstance(data_type, LsxAttribute):
+                attributes[member_name] = data_type
+        setattr(cls, "_attributes_", attributes)
+
+        for member_name, data_type in attributes.items():
+            getter, setter, deleter = data_type.wrap_accessors("_" + member_name)
+            prop = property(fget=getter, fset=setter, fdel=deleter)
+            setattr(cls, member_name, prop)
+
+    def __init__(self, **kwds):
+        attributes = getattr(self, "_attributes_")
+        print(attributes)
+        for name, value in kwds.items():
+            if name not in attributes:
+                raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
+            setattr(self, name, value)
+
+
+class MyClass(LsxNode):
+    Name = LsxType.LSStringValue
+    UUID = LsxType.GUID
+    Level = LsxType.uint8
+    Passives = LsxType.LSString
+    DisplayName = LsxType.TranslatedString
+
+
+my_obj_1 = MyClass(Level=42, Passives=["42", "84"])
+print(my_obj_1.__dict__)
+my_obj_1.Name = "hello world"
+my_obj_1.UUID = "hello!"
+my_obj_1.Passives = "abc;def;ghi;"
+print(my_obj_1.Passives)
+my_obj_1.Passives = ["abc", "def", "ghi"]
+print(my_obj_1.Passives)
+my_obj_1.DisplayName = ("xxx", 42)
+print("DisplayName =", my_obj_1.DisplayName)
+my_obj_1.DisplayName = "yyy"
+print("DisplayName =", my_obj_1.DisplayName)
+
+my_obj_2 = MyClass()
+print(my_obj_2.__dict__)
+my_obj_2.UUID = "world"
+
+a = my_obj_1.UUID
+print(a)
+
+print(my_obj_1.UUID)
+print(my_obj_2.UUID)
+# print(my_obj_2.Name)
+
+print(my_obj_1.__dict__)
+print(my_obj_2.__dict__)
+
+b = my_obj_1.Level
+print(b)

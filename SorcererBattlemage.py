@@ -12,9 +12,10 @@ from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
     Progressions,
     PROGRESSIONS_LSX_PATH,
-    PROGRESSIONS_DEV_LSX_PATH
+    PROGRESSIONS_DEV_LSX_PATH,
 )
-from modtools.lsx.types import Attribute, DataType, Node
+from modtools.lsx.spelllists import SpellList
+from modtools.lsx.types import Node
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -45,13 +46,27 @@ sorcerer_progression: dict[(str, int, bool), Node] = {
     for node in progressions_lsx.filter(lambda node: node["Name"].value in CharacterSubclasses.SORCERER)
 }
 
+level_1_spelllist = str(sorcerer_battlemage.make_uuid("level_1_spelllist"))
+sorcerer_battlemage.add(SpellList(
+    Comment="Sorcerer Battlemage level 1 spells",
+    Spells=[bolster, "Target_CreateDestroyWater", "Projectile_EldritchBlast", "Target_Guidance"],
+    UUID=level_1_spelllist,
+))
+
+level_2_spelllist = str(sorcerer_battlemage.make_uuid("level_2_spelllist"))
+sorcerer_battlemage.add(SpellList(
+    Comment="Sorcerer Battlemage level 2 spells",
+    Spells=["Target_EnhanceAbility"],
+    UUID=level_2_spelllist,
+))
+
 
 def level_1():
     """Add armor and weapon proficiencies, passives, skills, and spells."""
     for is_multiclass in [False, True]:
         node = sorcerer_progression[(CharacterClass.SORCERER.name, 1, is_multiclass)]
 
-        boosts = node.get("Boosts", Attribute(DataType.LSSTRING, [])).value
+        boosts = node["Boosts"].value if "Boosts" in node else []
         boosts = [boost for boost in boosts if boost not in ["Proficiency(Daggers)",
                                                              "Proficiency(Quarterstaffs)",
                                                              "Proficiency(LightCrossbows)"]]
@@ -68,6 +83,10 @@ def level_1():
         passives_added = node["PassivesAdded"].value if "PassivesAdded" in node else []
         passives_added.extend([battle_magic, "SculptSpells"])
         node.set_value("PassivesAdded", passives_added)
+
+        selectors = node["Selectors"].value if "Selectors" in node else []
+        selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
+        node.set_value("Selectors", selectors)
 
 
 level_1()

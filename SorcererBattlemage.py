@@ -88,6 +88,17 @@ def level_1():
         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
         node.set_value("Selectors", selectors)
 
+    # Progression when Sorcerer is the class selected at level one
+    node = sorcerer_progression[(CharacterClass.SORCERER.name, 1, False)]
+
+    selectors = node["Selectors"].value if "Selectors" in node else []
+    selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
+    selectors.extend([
+        "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+        "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+    ])
+    node.set_value("Selectors", selectors)
+
 
 level_1()
 

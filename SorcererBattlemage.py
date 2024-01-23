@@ -6,6 +6,7 @@ Generates files for the "ChromaticBlade" mod.
 import os
 
 from moddb.battlemagic import BattleMagic
+from moddb.bolster import Bolster
 from modtools.lsx.actionresources import ActionResource, update_action_resources
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
@@ -30,9 +31,9 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
                           mod_uuid=UUID("aa8aa79d-c67e-4fd8-98f7-392f549abf7e"),
                           description="Upgrades the Sorcerer class to a Battlemage.")
 
+# Add spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
-
-loca = sorcerer_battlemage.get_localization()
+bolster = Bolster(sorcerer_battlemage).add_bolster()
 
 # Load the game's Sorcerer progression, creating a dictionary indexed by (Name, Level, IsMulticlass)
 progressions_lsx = Progressions.load(sorcerer_battlemage.get_cache_path(PROGRESSIONS_LSX_PATH),

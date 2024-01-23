@@ -10,25 +10,25 @@ from modtools.mod import Mod
 
 class Movement:
     """Adds movement-related spells and passives to a Baldur's Gate 3 mod."""
-    __mod: Mod
+    _mod: Mod
 
     def __init__(self, mod: Mod):
         """Initialize."""
-        self.__mod = mod
+        self._mod = mod
 
     @cached_property
     def _fast_movement_display_name(self):
         """Get the localization handle for the Fast Movement display name."""
-        display_name = f"{self.__mod.get_prefix()}_FastMovement_DisplayName"
-        loca = self.__mod.get_localization()
+        display_name = f"{self._mod.get_prefix()}_FastMovement_DisplayName"
+        loca = self._mod.get_localization()
         loca[display_name] = {"en": "Fast Movement"}
         return loca[display_name]
 
     @cached_property
     def _fast_movement_description(self):
         """Get the localization handle for the Fast Movement description."""
-        description = f"{self.__mod.get_prefix()}_FastMovement_Description"
-        loca = self.__mod.get_localization()
+        description = f"{self._mod.get_prefix()}_FastMovement_Description"
+        loca = self._mod.get_localization()
         loca[description] = {"en": """
             <LSTag Tooltip="MovementSpeed">Movement speed</LSTag> increased by [1].
             """}
@@ -36,8 +36,8 @@ class Movement:
 
     def add_fast_movement(self, meters_per_round: float) -> str:
         """Add a fast movement passive, returning its name."""
-        name = f"{self.__mod.get_prefix()}_FastMovement_{int(meters_per_round*10)}"
-        self.__mod.add(passive_data(
+        name = f"{self._mod.get_prefix()}_FastMovement_{int(meters_per_round*10)}"
+        self._mod.add(passive_data(
             name,
             DisplayName=self._fast_movement_display_name,
             Description=self._fast_movement_description,
@@ -51,8 +51,8 @@ class Movement:
 
     def add_misty_step(self, use_costs: str | list[str] = "Movement:Distance*0.5") -> str:
         """Add a fast movement passive, returning its name."""
-        name = f"{self.__mod.get_prefix()}_MistyStep"
-        self.__mod.add(spell_data(
+        name = f"{self._mod.get_prefix()}_MistyStep"
+        self._mod.add(spell_data(
             name,
             using="Target_MistyStep",
             SpellType="Target",

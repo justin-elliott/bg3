@@ -3,4 +3,7 @@
 <contentList>
     <content contentuid="h8213c287g4ed6ge599g2ea0gd37a2b3b2801" version="1">Battle Magic</content>
     <content contentuid="h04511244gf7a7g87beg19a9g4bf748c41099" version="1">After making a melee attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="hb1f70ceeg3b1dg230dgc2c1ge8fa6d59adf2" version="1">Bolster</content>
+    <content contentuid="hb7314a93g783fg1cd6gd91ag5210f9c5642f" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="hc0116e6dg814cg8328g660eg790825a16639" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
 </contentList>

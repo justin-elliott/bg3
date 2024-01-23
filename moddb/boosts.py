@@ -10,15 +10,15 @@ from modtools.mod import Mod
 
 class Boosts:
     """Boosts-related functionality for Baldur's Gate 3 mods."""
-    __mod: Mod
+    _mod: Mod
 
     def __init__(self, mod: Mod):
         """Initialize for the given Mod."""
-        self.__mod = mod
+        self._mod = mod
 
     def by_level(self, boost_fn: (Callable[[int], str]), lastLevel: int = 12) -> [str]:
         """Generate a list of boost values."""
-        self.__mod.add_script(character_level_range)
+        self._mod.add_script(character_level_range)
 
         range_and_boost = [(1, 1, boost_fn(1))]
 

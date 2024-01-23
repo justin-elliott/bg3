@@ -4,24 +4,8 @@ Progression definitions.
 """
 
 from modtools.lsx.builders import LsxBuilder, NodeBuilder
-from modtools.lsx.characterclasses import CharacterClass
-from modtools.lsx.types import DataType, LsxCollection, Node
-from typing import Final, NamedTuple
-
-
-class ProgressionKey(NamedTuple):
-    name: str
-    level: int
-    is_multiclass: bool
-
-    @classmethod
-    def for_node(cls, node: Node) -> "ProgressionKey":
-        """Return a key for a given node."""
-        return cls(
-            CharacterClass(node["Name"].value).name,
-            int(node["Level"].value),
-            node["IsMulticlass"].value.lower() == "true" if "IsMulticlass" in node else False
-        )
+from modtools.lsx.types import DataType, LsxCollection
+from typing import Final
 
 
 ProgressionSubclass: Final = NodeBuilder("SubClass", key_attribute=None, attributes={

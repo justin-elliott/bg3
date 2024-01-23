@@ -241,7 +241,7 @@ class Node:
 
     def xml(self) -> ElementTree.Element:
         element = ElementTree.Element("node", id=self.id)
-        for id, attribute in self.attributes.items():
+        for id, attribute in sorted(self.attributes.items()):
             element.append(attribute.xml(id))
         if len(self.children) > 0:
             children = ElementTree.SubElement(element, "children")
@@ -327,10 +327,12 @@ class Lsx:
         return self.nodes.get(key, default)
 
     def add(self, node: Node) -> None:
+        """Add or replace a node."""
         assert node.metadata == self.metadata.node_builder
         self.nodes[node.key()] = node
 
     def filter(self, predicate: Callable[[Node], bool]) -> Iterable[Node]:
+        """Filter nodes based on a 'predicate'."""
         return filter(predicate, self.nodes.values())
 
     def save(self,

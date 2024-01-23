@@ -32,7 +32,7 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
                           mod_uuid=UUID("aa8aa79d-c67e-4fd8-98f7-392f549abf7e"),
                           description="Upgrades the Sorcerer class to a Battlemage.")
 
-# Add spells
+# Add passives and spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
 bolster = Bolster(sorcerer_battlemage).add_bolster()
 

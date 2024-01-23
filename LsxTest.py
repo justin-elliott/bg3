@@ -135,13 +135,13 @@ class LsxAttribute:
     _type_name: str
 
     def __init__(self, type_name: str):
-        super().__init__()
         self._type_name = type_name
 
     @abstractmethod
     def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                    Callable[[object, any], None],
                                                    Callable[[object], None]]:
+        """Returns the get, set, and del accessors for the LsxAttribute."""
         pass
 
 
@@ -230,6 +230,7 @@ class LsxTranslation(LsxAttribute):
 
 class LsxType:
     LSString = LsxList("LSString")
+    LSStringComma = LsxList("LSString", ",")
     LSStringValue = LsxString("LSString")
     GUID = LsxString("guid")
     TranslatedString = LsxTranslation("TranslatedString")
@@ -237,26 +238,31 @@ class LsxType:
 
 
 class LsxNode:
+    _attributes_: dict[str, LsxAttribute]
+
     @classmethod
     def __init_subclass__(cls) -> None:
-        attributes: dict[tuple[str, LsxAttribute]] = {}
+        cls._attributes_ = {}
         for member_name, data_type in list(cls.__dict__.items()):
             if isinstance(data_type, LsxAttribute):
-                attributes[member_name] = data_type
-        setattr(cls, "_attributes_", attributes)
+                cls._attributes_[member_name] = data_type
 
-        for member_name, data_type in attributes.items():
+        for member_name, data_type in cls._attributes_.items():
             getter, setter, deleter = data_type.wrap_accessors("_" + member_name)
             prop = property(fget=getter, fset=setter, fdel=deleter)
             setattr(cls, member_name, prop)
 
     def __init__(self, **kwds):
-        attributes = getattr(self, "_attributes_")
-        print(attributes)
         for name, value in kwds.items():
-            if name not in attributes:
+            if name not in self._attributes_:
                 raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
             setattr(self, name, value)
+
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__}({", ".join(
+            f"{name}={repr(getattr(self, name))}" for name in sorted(self._attributes_.keys())
+            if getattr(self, name) is not None
+            )})"
 
 
 class MyClass(LsxNode):
@@ -265,9 +271,11 @@ class MyClass(LsxNode):
     Level = LsxType.uint8
     Passives = LsxType.LSString
     DisplayName = LsxType.TranslatedString
+    PassiveList = LsxType.LSStringComma
+    Dummy = LsxType.uint8
 
 
-my_obj_1 = MyClass(Level=42, Passives=["42", "84"])
+my_obj_1 = MyClass(Level=42, Passives=["42", "84"], PassiveList="foo,bar,baz")
 print(my_obj_1.__dict__)
 my_obj_1.Name = "hello world"
 my_obj_1.UUID = "hello!"
@@ -296,3 +304,5 @@ print(my_obj_2.__dict__)
 
 b = my_obj_1.Level
 print(b)
+print(my_obj_1._attributes_)
+print(my_obj_1)

@@ -3,12 +3,9 @@
 Test code for modtools.lsx_v2.
 """
 
-from abc import abstractmethod
 import os
-from typing import Callable
 import xml.etree.ElementTree as ElementTree
 
-from modtools.lsx_v3.children import LsxChildren
 from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
@@ -18,7 +15,6 @@ from modtools.lsx.progressions import (
     ProgressionSubclass,
     ProgressionSubclasses
 )
-from modtools.lsx.types import DataType
 from modtools.unpak import Unpak
 
 
@@ -156,7 +152,7 @@ class MyClass(LsxNode):
     DisplayName = LsxType.TRANSLATEDSTRING
     PassiveList = LsxType.LSSTRING_COMMA
     Dummy = LsxType.UINT8
-    children = LsxChildren(Bob, Alice)
+    children = (Bob, Alice)
 
 
 my_obj_1 = MyClass(Level=42, Passives=["42", "84"], PassiveList="foo,bar,baz")
@@ -189,14 +185,16 @@ print(my_obj_2.__dict__)
 b = my_obj_1.Level
 print(b)
 
+print(my_obj_1._children_)
+
 bob = Bob(Name="Bob")
 alice = Alice(Name="Alice", Hobbies="Reading;Gaming")
 mallory = Mallory(Name="Mallory", Hobbies="Hacking;Phishing")
 
-my_obj_1.children = (bob, alice)
+# my_obj_1.children = (bob, alice)
 
 print(my_obj_1._attributes_)
 print(my_obj_1)
 
-for child in my_obj_1.children:
-    print(child)
+# for child in my_obj_1.children:
+#     print(child)

@@ -6,6 +6,7 @@ Test code for modtools.lsx_v2.
 import os
 import xml.etree.ElementTree as ElementTree
 
+from modtools.lsx_v3.children import LsxChildren
 from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
@@ -198,3 +199,29 @@ print(my_obj_1)
 
 # for child in my_obj_1.children:
 #     print(child)
+
+lsx_children = LsxChildren([alice, bob], (Alice, Bob))
+lsx_children[0] = alice
+print(lsx_children)
+print(lsx_children[0])
+assert len(lsx_children) == 2
+for child in lsx_children:
+    print(child)
+assert bob in lsx_children
+
+try:
+    lsx_children.append(mallory)
+    assert False
+except TypeError as e:
+    print("Correctly received:", e)
+
+children_copy = lsx_children.copy()
+assert len(set(children_copy).difference(lsx_children)) == 0
+
+children_copy.extend(lsx_children)
+assert len(children_copy) == 2 * len(lsx_children)
+print("; ".join(str(child) for child in children_copy))
+
+print(children_copy + lsx_children)
+children_copy += lsx_children
+print("; ".join(str(child) for child in children_copy))

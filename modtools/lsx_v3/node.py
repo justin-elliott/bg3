@@ -31,7 +31,7 @@ class LsxNode:
 
     def __str__(self) -> str:
         attributes = []
-        for name in sorted(self._attributes_.keys()):
+        for name in sorted(self._attributes_.keys(), key=lambda name: (name == "children", name)):
             if (value := getattr(self, name)) is not None:
-                attributes.append(f"{name}={repr(value)}")
+                attributes.append(f"{name}='{value}'" if isinstance(value, str) else f"{name}={str(value)}")
         return f"{self.__class__.__name__}({", ".join(attributes)})"

@@ -186,7 +186,7 @@ print(my_obj_2.__dict__)
 b = my_obj_1.Level
 print(b)
 
-print(my_obj_1._children_)
+print(my_obj_1._allowed_child_types_)
 
 bob = Bob(Name="Bob")
 alice = Alice(Name="Alice", Hobbies="Reading;Gaming")
@@ -200,13 +200,13 @@ print(my_obj_1)
 # for child in my_obj_1.children:
 #     print(child)
 
-lsx_children = LsxChildren([alice, bob], (Alice, Bob))
+lsx_children = LsxChildren[LsxNode]([alice, bob], (Alice, Bob))
 lsx_children[0] = alice
 print(lsx_children)
 print(lsx_children[0])
 assert len(lsx_children) == 2
 for child in lsx_children:
-    print(child)
+    print("Child =", child)
 assert bob in lsx_children
 
 try:
@@ -225,3 +225,21 @@ print("; ".join(str(child) for child in children_copy))
 print(children_copy + lsx_children)
 children_copy += lsx_children
 print("; ".join(str(child) for child in children_copy))
+
+children_copy = children_copy.copy(predicate=lambda n: n.Name == "Bob")
+assert len(children_copy) == 3
+print("; ".join(str(child) for child in children_copy))
+
+print(children_copy.find(lambda n: n.Name == "Mallory"))
+print("Alice:", "; ".join(str(child) for child in lsx_children.findall(lambda n: n.Name == "Alice")))
+print("Mallory:", "; ".join(str(child) for child in lsx_children.finditer(lambda n: n.Name == "Mallory")))
+
+children_copy = lsx_children.copy() + lsx_children.copy()
+children_copy.removeall(lambda n: n.Name == "Bob")
+print("; ".join(str(child) for child in children_copy))
+
+children_copy.update(lsx_children, key=lambda n: n.Name)
+print("Update:", "; ".join(str(child) for child in children_copy))
+
+my_obj_1 = MyClass(Name="Bob Smith", Level=13, children=[alice, bob, bob, alice])
+print("children =",  "; ".join(str(child) for child in my_obj_1.children))

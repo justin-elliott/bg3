@@ -18,8 +18,8 @@ class LsxAttribute:
         self._type_name = type_name
 
     @abstractmethod
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         """Returns the get and set accessors for the LsxAttribute."""
         pass
 
@@ -30,9 +30,8 @@ class LsxBool(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None],
-                                                   Callable[[object], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> bool | None:
             store: dict = obj.__dict__.setdefault(member, {})
             return store.get("bool")
@@ -57,9 +56,8 @@ class LsxList(LsxAttribute):
         super().__init__(type_name)
         self._separator = separator
 
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None],
-                                                   Callable[[object], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> list[str] | None:
             store: dict = obj.__dict__.setdefault(member, {})
             return store.get("list")
@@ -82,9 +80,8 @@ class LsxNumber(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None],
-                                                   Callable[[object], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> Number | None:
             store: dict = obj.__dict__.setdefault(member, {})
             return store.get("number")
@@ -104,9 +101,8 @@ class LsxString(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None],
-                                                   Callable[[object], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> str | None:
             store: dict = obj.__dict__.setdefault(member, {})
             return store.get("str")
@@ -124,9 +120,8 @@ class LsxTranslation(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
-    def wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
-                                                   Callable[[object, any], None],
-                                                   Callable[[object], None]]:
+    def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
+                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> tuple[str, int] | None:
             store: dict = obj.__dict__.setdefault(member, {})
             handle = store.get("handle")

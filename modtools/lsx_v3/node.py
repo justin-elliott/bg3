@@ -13,18 +13,22 @@ import modtools.lsx_v3.detail as detail
 class LsxNode:
     """A class representing an .lsx node."""
 
+    _id_: str                              # The node's id attribute (defaulting to the subclass name).
     _attributes_: dict[str, LsxAttribute]  # The node's attribute definitions.
     _child_types_: tuple                   # The valid types for the node's children.
 
     @classmethod
     def __init_subclass__(cls) -> None:
+        cls._id_ = cls.__name__
         cls._attributes_ = {}
         cls._child_types_ = ()
-        for member_name, data_type in list(cls.__dict__.items()):
-            if member_name == "children":
-                cls._child_types_ = tuple(data_type)
-            elif isinstance(data_type, LsxAttribute):
-                cls._attributes_[member_name] = data_type
+        for member_name, value in list(cls.__dict__.items()):
+            if member_name == "id":
+                cls._id_ = str(value)
+            elif member_name == "children":
+                cls._child_types_ = tuple(value)
+            elif isinstance(value, LsxAttribute):
+                cls._attributes_[member_name] = value
 
         for member_name, data_type in cls._attributes_.items():
             getter, setter = data_type._wrap_accessors("_" + member_name)
@@ -43,7 +47,7 @@ class LsxNode:
 
     def xml(self) -> Element:
         """Returns an XML encoding of the node."""
-        element = Element("node", id=self.__class__.__name__)
+        element = Element("node", id=self._id_)
         for id, attribute in sorted(self._attributes_.items()):
             if (value := getattr(self, id, None)) is not None:
                 element.append(attribute.xml(id, value))
@@ -57,4 +61,4 @@ class LsxNode:
         for name in sorted(self._attributes_.keys(), key=lambda name: (name == "children", name)):
             if (value := getattr(self, name)) is not None:
                 attributes.append(f"{name}='{value}'" if isinstance(value, str) else f"{name}={str(value)}")
-        return f"{self.__class__.__name__}({", ".join(attributes)})"
+        return f"{self._id_}({", ".join(attributes)})"

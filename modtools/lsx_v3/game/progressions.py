@@ -7,12 +7,14 @@ from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 
 
-class SubClass(LsxNode):
+class Subclass(LsxNode):
+    id = "SubClass"
     Object = LsxType.GUID
 
 
-class SubClasses(LsxNode):
-    children = (SubClass,)
+class Subclasses(LsxNode):
+    id = "SubClasses"
+    children = (Subclass,)
 
 
 class Progression(LsxNode):
@@ -27,4 +29,4 @@ class Progression(LsxNode):
     Selectors = LsxType.LSSTRING
     TableUUID = LsxType.GUID
     UUID = LsxType.GUID
-    children = (SubClasses,)
+    children = (Subclasses,)

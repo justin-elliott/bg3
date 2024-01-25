@@ -6,7 +6,7 @@ Test code for modtools.lsx_v2.
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx_v3.children import LsxChildren
-from modtools.lsx_v3.game.progressions import Progression, SubClass, SubClasses
+from modtools.lsx_v3.game.progressions import Progression, Subclass, Subclasses
 from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 
@@ -159,11 +159,11 @@ progression = Progression(
     TableUUID="e2416b02-953a-4ce8-aa8f-eb98d549d86d",
     UUID="e115c732-80b1-4ae1-bf04-cee44660d64f",
     children=[
-        SubClasses(
+        Subclasses(
             children=[
-                SubClass(Object="14374d37-a70e-41a8-9dc5-85a23f8b5dd2"),
-                SubClass(Object="36286b0a-26f9-4b4e-9311-fd1404301d20"),
-                SubClass(Object="d379fdae-b401-4731-8d50-277c73919ae3"),
+                Subclass(Object="14374d37-a70e-41a8-9dc5-85a23f8b5dd2"),
+                Subclass(Object="36286b0a-26f9-4b4e-9311-fd1404301d20"),
+                Subclass(Object="d379fdae-b401-4731-8d50-277c73919ae3"),
             ]
         )
     ]

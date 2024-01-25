@@ -66,7 +66,7 @@ print(my_obj_2.__dict__)
 b = my_obj_1.Level
 print(b)
 
-print(my_obj_1._allowed_child_types_)
+print(my_obj_1._child_types_)
 
 bob = Bob(Name="Bob")
 alice = Alice(Name="Alice", Hobbies="Reading;Gaming")
@@ -80,8 +80,8 @@ print(my_obj_1)
 # for child in my_obj_1.children:
 #     print(child)
 
-lsx_children = LsxChildren([alice, bob], allowed_child_types=[Alice, Bob])
-print("lsx_children._allowed_child_types =", lsx_children._allowed_child_types)
+lsx_children = LsxChildren([alice, bob], types=[Alice, Bob])
+print("lsx_children._types =", lsx_children._types)
 lsx_children[0] = alice
 print(lsx_children)
 print(lsx_children[0])

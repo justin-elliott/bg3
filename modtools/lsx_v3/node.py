@@ -13,16 +13,16 @@ import modtools.lsx_v3.detail as detail
 class LsxNode:
     """A class representing an .lsx node."""
 
-    _attributes_: dict[str, LsxAttribute]
-    _allowed_child_types_: tuple
+    _attributes_: dict[str, LsxAttribute]  # The node's attribute definitions.
+    _child_types_: tuple                   # The valid types for the node's children.
 
     @classmethod
     def __init_subclass__(cls) -> None:
         cls._attributes_ = {}
-        cls._allowed_child_types_ = ()
+        cls._child_types_ = ()
         for member_name, data_type in list(cls.__dict__.items()):
             if member_name == "children":
-                cls._allowed_child_types_ = tuple(data_type)
+                cls._child_types_ = tuple(data_type)
             elif isinstance(data_type, LsxAttribute):
                 cls._attributes_[member_name] = data_type
 
@@ -31,8 +31,8 @@ class LsxNode:
             prop = property(fget=getter, fset=setter)
             setattr(cls, member_name, prop)
 
-        if len(cls._allowed_child_types_) > 0:
-            getter, setter = detail.LsxChildren[Self]._wrap_accessors("_children", cls._allowed_child_types_)
+        if len(cls._child_types_) > 0:
+            getter, setter = detail.LsxChildren[Self]._wrap_accessors("_children", cls._child_types_)
             setattr(cls, "children", property(fget=getter, fset=setter))
 
     def __init__(self, **kwds):
@@ -47,7 +47,7 @@ class LsxNode:
         for id, attribute in sorted(self._attributes_.items()):
             if (value := getattr(self, id, None)) is not None:
                 element.append(attribute.xml(id, value))
-        if len(self._allowed_child_types_) > 0:
+        if len(self._child_types_) > 0:
             children: detail.LsxChildren[Self] = getattr(self, "children")
             element.append(children.xml())
         return element

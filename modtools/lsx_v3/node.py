@@ -4,8 +4,9 @@ Representation of .lsx nodes.
 """
 
 from modtools.lsx_v3.attributes import LsxAttribute
-from modtools.lsx_v3.children import LsxChildren
-from typing import Self
+from typing import Iterable, Self
+
+import modtools.lsx_v3.detail.children as children
 
 
 class LsxNode:
@@ -30,7 +31,7 @@ class LsxNode:
             setattr(cls, member_name, prop)
 
         if len(cls._allowed_child_types_) > 0:
-            getter, setter = LsxChildren[Self]._wrap_accessors("_children", cls._allowed_child_types_)
+            getter, setter = children.LsxChildren[Self]._wrap_accessors("_children", cls._allowed_child_types_)
             setattr(cls, "children", property(fget=getter, fset=setter))
 
     def __init__(self, **kwds):
@@ -45,3 +46,19 @@ class LsxNode:
             if (value := getattr(self, name)) is not None:
                 attributes.append(f"{name}='{value}'" if isinstance(value, str) else f"{name}={str(value)}")
         return f"{self.__class__.__name__}({", ".join(attributes)})"
+
+
+class LsxChildren(children.LsxChildren[LsxNode]):
+    """A specialization of the LsxChildren generic class for LsxNode."""
+
+    def __init__(self, children: Iterable[LsxNode], allowed_child_types: Iterable[LsxNode] | None = None):
+        """
+        Initialize the container.
+
+        children -- the container's children.
+        allowed_child_types -- the types allowed in the container. If this is not specified, it defaults to the types of
+        the passed-in children, if any, otherwise to LsxNode.
+        """
+        if allowed_child_types is None:
+            allowed_child_types = set([type(child) for child in children]) if len(children) > 0 else (LsxNode,)
+        super().__init__(children, allowed_child_types)

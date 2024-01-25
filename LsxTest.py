@@ -6,7 +6,8 @@ Test code for modtools.lsx_v2.
 import os
 import xml.etree.ElementTree as ElementTree
 
-from modtools.lsx_v3.node import LsxChildren, LsxNode
+from modtools.lsx_v3.children import LsxChildren
+from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx.progressions import (
@@ -199,7 +200,7 @@ print(my_obj_1)
 # for child in my_obj_1.children:
 #     print(child)
 
-lsx_children = LsxChildren([alice, bob])
+lsx_children = LsxChildren([alice, bob], allowed_child_types=[Alice, Bob])
 print("lsx_children._allowed_child_types =", lsx_children._allowed_child_types)
 lsx_children[0] = alice
 print(lsx_children)

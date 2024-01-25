@@ -16,7 +16,8 @@ class LsxChildren[Node]:
     _allowed_child_types: tuple[Node, ...]
     _children: list[Node]
 
-    def __init__(self, children: Iterable[Node], allowed_child_types: Iterable[Node]):
+    def __init__(self, children: Iterable[Node] = [], *, allowed_child_types: Iterable[Node]):
+        """Initialize the collection, setting the allowed child types and, optionally, the children."""
         self._allowed_child_types = tuple(allowed_child_types)
         self._check_child_types([type(child) for child in children], self._allowed_child_types)
         self._children = list(children)
@@ -56,7 +57,7 @@ class LsxChildren[Node]:
 
     def update(self, children: Iterable[Node], key: KeyFunction) -> Self:
         """
-        Update this instance with the contents of 'children', overwriting existing entries with the same key as the
+        Update this collection with the contents of 'children', overwriting existing entries with the same key as the
         incoming children.
         """
         self._check_child_types([type(child) for child in children], self._allowed_child_types)
@@ -67,9 +68,9 @@ class LsxChildren[Node]:
         return self
 
     def copy(self, *, predicate: Predicate | None = None) -> Self:
-        """Create a copy of this instance, optionally including only children that match the 'predicate'."""
+        """Create a copy of this collection, optionally including only children that match the 'predicate'."""
         return LsxChildren(list(filter(predicate, self._children) if predicate else self._children),
-                           self._allowed_child_types)
+                           allowed_child_types=self._allowed_child_types)
 
     def find(self, predicate: Predicate) -> Node | None:
         """Return the first child that matches the 'predicate', or None if there is no match."""
@@ -105,9 +106,9 @@ class LsxChildren[Node]:
     def _wrap_accessors(member: str, allowed_child_types: Iterable[Node]) -> tuple[Callable[[object], any],
                                                                                    Callable[[object, any], None]]:
         def getter(obj: object) -> LsxChildren:
-            return obj.__dict__.setdefault(member, LsxChildren((), allowed_child_types))
+            return obj.__dict__.setdefault(member, LsxChildren(allowed_child_types=allowed_child_types))
 
         def setter(obj: object, children: Iterable[Node]) -> None:
-            setattr(obj, member, LsxChildren(children, allowed_child_types))
+            setattr(obj, member, LsxChildren(children, allowed_child_types=allowed_child_types))
 
         return (getter, setter)

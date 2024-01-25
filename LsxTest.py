@@ -119,6 +119,14 @@ children_copy = lsx_children.copy() + lsx_children.copy()
 children_copy.removeall(lambda n: n.Name == "Bob")
 print(children_copy)
 
+children_copy = lsx_children.copy() + lsx_children.copy()
+children_copy.unique(lambda n: n.Name)
+print("unique =", children_copy)
+
+children_copy = lsx_children.copy() + lsx_children.copy()
+children_copy.sort(lambda n: n.Name)
+print("sort =", children_copy)
+
 children_copy.update(lsx_children, key=lambda n: n.Name)
 print("Update:", children_copy)
 

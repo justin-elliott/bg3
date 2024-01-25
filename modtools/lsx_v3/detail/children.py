@@ -56,6 +56,17 @@ class LsxChildren[Node]:
         self._children.extend(children)
         return self
 
+    def sort(self, key: KeyFunction) -> Self:
+        """Sort the collection by the key."""
+        self._children.sort(key=key)
+
+    def unique(self, key: KeyFunction) -> Self:
+        """
+        Remove duplicates from the collection by replacing earlier entries with later entries that have the same key.
+        """
+        self._children = list({key(child): child for child in self._children}.values())
+        return self
+
     def update(self, children: Iterable[Node], key: KeyFunction) -> Self:
         """
         Update this collection with the contents of 'children', overwriting existing entries with the same key as the

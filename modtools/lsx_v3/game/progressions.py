@@ -34,7 +34,7 @@ class Progression(LsxNode):
 
 
 class Progressions(LsxDocument):
-    id = "Progressions"
     region = "Progressions"
     root = "root"
+    path = "Public/{folder}/Progressions/Progressions.lsx"
     children = (Progression,)

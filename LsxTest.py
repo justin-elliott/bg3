@@ -174,3 +174,5 @@ progressions = Progressions(progression)
 xml = progressions.xml(version=(4, 3, 2, 1))
 ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)
+
+# progressions.save("LsxTest", version=(5, 4, 3, 21), folder="LsxTest")

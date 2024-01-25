@@ -3,10 +3,13 @@
 Representation of .lsx documents.
 """
 
+import os
+
 from collections.abc import Callable
 from modtools.lsx_v3.children import LsxChildren
 from modtools.lsx_v3.node import LsxNode
-from xml.etree.ElementTree import Element, SubElement
+from modtools.prologue import XML_PROLOGUE
+from xml.etree.ElementTree import Element, ElementTree, indent as xml_indent, SubElement
 
 
 class LsxDocument:
@@ -15,11 +18,12 @@ class LsxDocument:
     id: str
     region: str
     root: str
+    path: str
     children: tuple[type[LsxNode], ...]
 
     @classmethod
     def __init_subclass__(cls) -> None:
-        missing_members = [member for member in ["region", "root", "children"] if member not in cls.__dict__]
+        missing_members = [member for member in ["region", "root", "path", "children"] if member not in cls.__dict__]
         if missing_members:
             raise AttributeError(f"{cls.__name__} missing member(s): {", ".join(missing_members)}")
 
@@ -36,6 +40,9 @@ class LsxDocument:
         setattr(cls, "_root", str(cls.__dict__["root"]))
         setattr(cls, "root", property(fget=cls._wrap_getter("_root")))
 
+        setattr(cls, "_path", str(cls.__dict__["path"]))
+        setattr(cls, "path", property(fget=cls._wrap_getter("_path")))
+
         getter, setter = LsxChildren._wrap_accessors("_children", child_types)
         setattr(cls, "children", property(fget=getter, fset=setter))
 
@@ -43,7 +50,19 @@ class LsxDocument:
         children: LsxChildren = self.children
         children.extend(nodes)
 
-    def xml(self, version: tuple[int, int, int, int] | None = None) -> Element:
+    def save(self, mod_path: os.PathLike, *,
+             version: tuple[int, int, int, int] | None = None,
+             **kwds: str) -> None:
+        """Save the document to the path identified by the document's 'path' property."""
+        path = os.path.normpath(os.path.join(mod_path, self.path.format(**kwds)))
+        document = ElementTree(self.xml(version=version))
+        xml_indent(document, space=" "*4)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "wb") as f:
+            f.write(XML_PROLOGUE)
+            document.write(f, encoding="UTF-8", xml_declaration=False)
+
+    def xml(self, *, version: tuple[int, int, int, int] | None = None) -> Element:
         """Returns an XML encoding of the document."""
         element = Element("save")
         if version:

@@ -13,7 +13,7 @@ class LsxChildren[Node]:
     type KeyFunction = Callable[[Node], any]  # A function returning a key identifying a child node.
     type Predicate = Callable[[Node], bool]   # A predicate testing a child node.
 
-    _allowed_child_types: tuple[Node]
+    _allowed_child_types: tuple[Node, ...]
     _children: list[Node]
 
     def __init__(self, children: Iterable[Node], allowed_child_types: Iterable[Node]):
@@ -96,14 +96,14 @@ class LsxChildren[Node]:
         self._children = [child for child in self._children if not predicate(child)]
         return self
 
-    def _check_child_types(self, children: Iterable[Node], allowed_child_types: tuple[Node]) -> None:
+    def _check_child_types(self, children: Iterable[Node], allowed_child_types: tuple[Node, ...]) -> None:
         invalid_types = [t.__name__ for t in filter(lambda t: not issubclass(t, allowed_child_types), children)]
         if len(invalid_types) > 0:
             raise TypeError(f"Invalid type(s) for children: {", ".join(invalid_types)}")
 
     @staticmethod
-    def _wrap_accessors(member: str, allowed_child_types: tuple) -> tuple[Callable[[object], any],
-                                                                          Callable[[object, any], None]]:
+    def _wrap_accessors(member: str, allowed_child_types: Iterable[Node]) -> tuple[Callable[[object], any],
+                                                                                   Callable[[object, any], None]]:
         def getter(obj: object) -> LsxChildren:
             return obj.__dict__.setdefault(member, LsxChildren((), allowed_child_types))
 

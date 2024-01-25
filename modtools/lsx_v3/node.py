@@ -5,6 +5,7 @@ Representation of .lsx nodes.
 
 from modtools.lsx_v3.attributes import LsxAttribute
 from typing import Self
+from xml.etree.ElementTree import Element
 
 import modtools.lsx_v3.detail as detail
 
@@ -39,6 +40,16 @@ class LsxNode:
             if name not in self._attributes_ and getattr(self, name, None) is None:
                 raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
             setattr(self, name, value)
+
+    def xml(self) -> Element:
+        """Returns an XML encoding of the node."""
+        element = Element("node", id=self.__class__.__name__)
+        for id, attribute in sorted(self._attributes_.items()):
+            if (value := getattr(self, id, None)) is not None:
+                element.append(attribute.xml(id, value))
+        if len(self._allowed_child_types_) > 0:
+            element.append(self.children.xml())
+        return element
 
     def __str__(self) -> str:
         attributes = []

@@ -5,6 +5,7 @@ Representation of a collection of .lsx child nodes.
 
 from collections.abc import Callable, Iterable
 from typing import Self
+from xml.etree.ElementTree import Element
 
 
 class LsxChildren[Node]:
@@ -96,6 +97,13 @@ class LsxChildren[Node]:
         """Remove all children matching the 'predicate'."""
         self._children = [child for child in self._children if not predicate(child)]
         return self
+
+    def xml(self) -> Element:
+        """Returns an XML encoding of the children."""
+        element = Element("children")
+        for child in self._children:
+            element.append(child.xml())
+        return element
 
     def _check_child_types(self, children: Iterable[Node], allowed_child_types: tuple[Node, ...]) -> None:
         invalid_types = [t.__name__ for t in filter(lambda t: not issubclass(t, allowed_child_types), children)]

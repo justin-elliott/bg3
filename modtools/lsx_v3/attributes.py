@@ -7,6 +7,7 @@ from abc import abstractmethod
 from ast import literal_eval
 from collections.abc import Callable
 from numbers import Number
+from xml.etree.ElementTree import Element
 
 
 class LsxAttribute:
@@ -16,6 +17,11 @@ class LsxAttribute:
 
     def __init__(self, type_name: str):
         self._type_name = type_name
+
+    @abstractmethod
+    def xml(self, id: str, value: any) -> Element:
+        """Returns an XML encoding of the attribute."""
+        pass
 
     @abstractmethod
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
@@ -29,6 +35,9 @@ class LsxBool(LsxAttribute):
 
     def __init__(self, type_name: str):
         super().__init__(type_name)
+
+    def xml(self, id: str, value: bool) -> Element:
+        return Element("attribute", id=id, type=self._type_name, value=str(value).lower())
 
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                     Callable[[object, any], None]]:
@@ -56,6 +65,9 @@ class LsxList(LsxAttribute):
         super().__init__(type_name)
         self._separator = separator
 
+    def xml(self, id: str, value: list) -> Element:
+        return Element("attribute", id=id, type=self._type_name, value=self._separator.join(value))
+
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                     Callable[[object, any], None]]:
         def getter(obj: object) -> list[str] | None:
@@ -80,6 +92,9 @@ class LsxNumber(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
+    def xml(self, id: str, value: Number) -> Element:
+        return Element("attribute", id=id, type=self._type_name, value=str(value))
+
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                     Callable[[object, any], None]]:
         def getter(obj: object) -> Number | None:
@@ -101,6 +116,9 @@ class LsxString(LsxAttribute):
     def __init__(self, type_name: str):
         super().__init__(type_name)
 
+    def xml(self, id: str, value: str) -> Element:
+        return Element("attribute", id=id, type=self._type_name, value=value)
+
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                     Callable[[object, any], None]]:
         def getter(obj: object) -> str | None:
@@ -119,6 +137,10 @@ class LsxTranslation(LsxAttribute):
 
     def __init__(self, type_name: str):
         super().__init__(type_name)
+
+    def xml(self, id: str, value: tuple[str, int]) -> Element:
+        handle, version = value
+        return Element("attribute", id=id, type=self._type_name, handle=handle, version=str(version))
 
     def _wrap_accessors(self, member: str) -> tuple[Callable[[object], any],
                                                     Callable[[object, any], None]]:

@@ -3,132 +3,12 @@
 Test code for modtools.lsx_v2.
 """
 
-import os
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx_v3.children import LsxChildren
+from modtools.lsx_v3.game.progressions import Progression, SubClass, SubClasses
 from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
-from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
-from modtools.lsx.progressions import (
-    Progression,
-    Progressions,
-    ProgressionSubclass,
-    ProgressionSubclasses
-)
-from modtools.unpak import Unpak
-
-
-progressions = Progressions(
-    Progression(
-        Boosts=[
-            "Proficiency(LightArmor)",
-            "Proficiency(MediumArmor)",
-            "Proficiency(HeavyArmor)",
-            "Proficiency(Shields)",
-            "Proficiency(SimpleWeapons)",
-            "Proficiency(MartialWeapons)",
-        ],
-        IsMulticlass=True,
-        Level=1,
-        Name="Sorcerer",
-        PassivesAdded=[
-            "UnlockedSpellSlotLevel1",
-            "SorcererBattlemage_BattleMagic",
-            "SculptSpells",
-        ],
-        ProgressionType=0,
-        Selectors=[
-            "SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared)",
-            "SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell)",
-            "AddSpells(7f5b917c-be99-4f36-a87c-09a58bc56290,,,,AlwaysPrepared)",
-        ],
-        TableUUID="e2416b02-953a-4ce8-aa8f-eb98d549d86d",
-        UUID="e115c732-80b1-4ae1-bf04-cee44660d64f",
-        children=[
-            ProgressionSubclasses(
-                children=[
-                    ProgressionSubclass(Object="14374d37-a70e-41a8-9dc5-85a23f8b5dd2"),
-                    ProgressionSubclass(Object="36286b0a-26f9-4b4e-9311-fd1404301d20"),
-                    ProgressionSubclass(Object="d379fdae-b401-4731-8d50-277c73919ae3"),
-                ]
-            )
-        ]
-    )
-)
-
-progressions.add(
-    Progression(
-        Boosts=[
-            "Proficiency(LightArmor)",
-            "Proficiency(MediumArmor)",
-            "Proficiency(HeavyArmor)",
-            "Proficiency(Shields)",
-            "Proficiency(SimpleWeapons)",
-            "Proficiency(MartialWeapons)",
-        ],
-        Level=1,
-        Name="Sorcerer",
-        PassivesAdded=[
-            "UnlockedSpellSlotLevel1",
-            "SorcererBattlemage_BattleMagic",
-            "SculptSpells",
-        ],
-        ProgressionType=0,
-        Selectors=[
-            "SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared)",
-            "SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell)",
-            "AddSpells(7f5b917c-be99-4f36-a87c-09a58bc56290,,,,AlwaysPrepared)",
-        ],
-        TableUUID="e2416b02-953a-4ce8-aa8f-eb98d549d86d",
-        UUID="410ef291-f4ea-43c0-9b91-8f033b81a5f3",
-        children=[
-            ProgressionSubclasses(
-                children=[
-                    ProgressionSubclass(Object="14374d37-a70e-41a8-9dc5-85a23f8b5dd2"),
-                    ProgressionSubclass(Object="36286b0a-26f9-4b4e-9311-fd1404301d20"),
-                    ProgressionSubclass(Object="d379fdae-b401-4731-8d50-277c73919ae3"),
-                ]
-            )
-        ]
-    )
-)
-
-key = "410ef291-f4ea-43c0-9b91-8f033b81a5f3"
-assert key in progressions
-node = progressions.get(key)
-del progressions[key]
-assert key not in progressions
-progressions[key] = node
-assert progressions[key] is not None
-progressions[key] = node
-assert progressions[key] is not None
-
-assert node["UUID"].value == key
-assert node["ProgressionType"].value == "0"
-
-xml = progressions.xml(version=(4, 1, 1, 1))
-ElementTree.indent(xml, space=" "*4)
-# ElementTree.dump(xml)
-
-unpak = Unpak(cache_dir=None)
-shared = unpak.get("Shared")
-
-class_progressions = Progressions.load(os.path.join(shared.path, "Public/Shared/Progressions/Progressions.lsx"),
-                                       os.path.join(shared.path, "Public/SharedDev/Progressions/Progressions.lsx"))
-sorcerer_progressions = Progressions()
-sorcerer_nodes = []
-for node in class_progressions.nodes.values():
-    if (name := node.get("Name")) is not None and name.value in CharacterSubclasses.SORCERER:
-        sorcerer_nodes.append(node)
-
-sorcerer_nodes.sort(key=lambda node: (CharacterClass(node.get("Name").value).name, int(node.get("Level").value)))
-for node in sorcerer_nodes:
-    sorcerer_progressions.add(node)
-
-xml = sorcerer_progressions.xml(version=(4, 1, 1, 1))
-ElementTree.indent(xml, space=" "*4)
-# ElementTree.dump(xml)
 
 
 class Bob(LsxNode):
@@ -244,3 +124,43 @@ print("Update:", children_copy)
 
 my_obj_1 = MyClass(Name="Bob Smith", Level=13, children=[alice, bob, bob, alice])
 print("my_obj_1.children =", my_obj_1.children)
+
+progression = Progression(
+    Boosts=[
+        "Proficiency(LightArmor)",
+        "Proficiency(MediumArmor)",
+        "Proficiency(HeavyArmor)",
+        "Proficiency(Shields)",
+        "Proficiency(SimpleWeapons)",
+        "Proficiency(MartialWeapons)",
+    ],
+    IsMulticlass=True,
+    Level=1,
+    Name="Sorcerer",
+    PassivesAdded=[
+        "UnlockedSpellSlotLevel1",
+        "SorcererBattlemage_BattleMagic",
+        "SculptSpells",
+    ],
+    ProgressionType=0,
+    Selectors=[
+        "SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared)",
+        "SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell)",
+        "AddSpells(7f5b917c-be99-4f36-a87c-09a58bc56290,,,,AlwaysPrepared)",
+    ],
+    TableUUID="e2416b02-953a-4ce8-aa8f-eb98d549d86d",
+    UUID="e115c732-80b1-4ae1-bf04-cee44660d64f",
+    children=[
+        SubClasses(
+            children=[
+                SubClass(Object="14374d37-a70e-41a8-9dc5-85a23f8b5dd2"),
+                SubClass(Object="36286b0a-26f9-4b4e-9311-fd1404301d20"),
+                SubClass(Object="d379fdae-b401-4731-8d50-277c73919ae3"),
+            ]
+        )
+    ]
+)
+
+xml = progression.xml()
+ElementTree.indent(xml, space=" "*4)
+ElementTree.dump(xml)

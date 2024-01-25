@@ -15,7 +15,7 @@ class LsxNode:
 
     _id_: str                              # The node's id attribute (defaulting to the subclass name).
     _attributes_: dict[str, LsxAttribute]  # The node's attribute definitions.
-    _child_types_: tuple                   # The valid types for the node's children.
+    _child_types_: tuple[type[Self], ...]  # The valid types for the node's children.
 
     @classmethod
     def __init_subclass__(cls) -> None:

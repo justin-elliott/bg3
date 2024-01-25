@@ -6,7 +6,7 @@ Test code for modtools.lsx_v2.
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx_v3.children import LsxChildren
-from modtools.lsx_v3.game.progressions import Progression, Subclass, Subclasses
+from modtools.lsx_v3.game.progressions import Progression, Progressions, Subclass, Subclasses
 from modtools.lsx_v3.node import LsxNode
 from modtools.lsx_v3.type import LsxType
 
@@ -169,6 +169,8 @@ progression = Progression(
     ]
 )
 
-xml = progression.xml()
+progressions = Progressions(progression)
+
+xml = progressions.xml(version=(4, 3, 2, 1))
 ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)

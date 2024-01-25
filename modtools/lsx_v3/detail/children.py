@@ -20,7 +20,7 @@ class LsxChildren[Node]:
     def __init__(self, children: Iterable[Node] = [], *, types: Iterable[Node]):
         """Initialize the collection, setting the expected child types and, optionally, the children."""
         self._types = tuple(types)
-        self._check_child_types([type(child) for child in children], self._types)
+        self._check_child_types([type(child) for child in children])
         self._children = list(children)
 
     def __len__(self) -> int:
@@ -30,7 +30,7 @@ class LsxChildren[Node]:
         return self._children[index]
 
     def __setitem__(self, index: int, child: Node) -> None:
-        self._check_child_types((type(child),), self._types)
+        self._check_child_types((type(child),))
         self._children[index] = child
 
     def __iter__(self) -> Iterable[Node]:
@@ -43,7 +43,7 @@ class LsxChildren[Node]:
         return f"[{", ".join(str(child) for child in self._children)}]"
 
     def append(self, child: Node) -> Self:
-        self._check_child_types((type(child),), self._types)
+        self._check_child_types((type(child),))
         self._children.append(child)
         return self
 
@@ -52,7 +52,7 @@ class LsxChildren[Node]:
         return self
 
     def extend(self, children: Iterable[Node]) -> Self:
-        self._check_child_types([type(child) for child in children], self._types)
+        self._check_child_types([type(child) for child in children])
         self._children.extend(children)
         return self
 
@@ -72,7 +72,7 @@ class LsxChildren[Node]:
         Update this collection with the contents of 'children', overwriting existing entries with the same key as the
         incoming children.
         """
-        self._check_child_types([type(child) for child in children], self._types)
+        self._check_child_types([type(child) for child in children])
         lhs = {key(child): child for child in self._children}
         rhs = {key(child): child for child in children}
         lhs.update(rhs)
@@ -116,8 +116,8 @@ class LsxChildren[Node]:
             element.append(child.xml())
         return element
 
-    def _check_child_types(self, children: Iterable[Node], types: tuple[Node, ...]) -> None:
-        invalid_types = [t.__name__ for t in filter(lambda t: not issubclass(t, types), children)]
+    def _check_child_types(self, children: Iterable[type[Node]]) -> None:
+        invalid_types = [t.__name__ for t in filter(lambda t: not issubclass(t, self._types), children)]
         if len(invalid_types) > 0:
             raise TypeError(f"Invalid type(s) for children: {", ".join(invalid_types)}")
 

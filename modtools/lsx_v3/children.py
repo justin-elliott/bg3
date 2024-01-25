@@ -37,6 +37,9 @@ class LsxChildren[Node]:
     def __add__(self, children: Iterable[Node]) -> Self:
         return self.copy().extend(children)
 
+    def __str__(self) -> str:
+        return f"[{", ".join(str(child) for child in self._children)}]"
+
     def append(self, child: Node) -> Self:
         self._check_child_types((type(child),), self._allowed_child_types)
         self._children.append(child)

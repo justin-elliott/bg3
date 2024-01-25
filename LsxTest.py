@@ -220,26 +220,26 @@ assert len(set(children_copy).difference(lsx_children)) == 0
 
 children_copy.extend(lsx_children)
 assert len(children_copy) == 2 * len(lsx_children)
-print("; ".join(str(child) for child in children_copy))
+print(children_copy)
 
 print(children_copy + lsx_children)
 children_copy += lsx_children
-print("; ".join(str(child) for child in children_copy))
+print(children_copy)
 
 children_copy = children_copy.copy(predicate=lambda n: n.Name == "Bob")
 assert len(children_copy) == 3
-print("; ".join(str(child) for child in children_copy))
+print(children_copy)
 
 print(children_copy.find(lambda n: n.Name == "Mallory"))
-print("Alice:", "; ".join(str(child) for child in lsx_children.findall(lambda n: n.Name == "Alice")))
-print("Mallory:", "; ".join(str(child) for child in lsx_children.finditer(lambda n: n.Name == "Mallory")))
+print("Alice:", lsx_children.findall(lambda n: n.Name == "Alice"))
+print("Mallory:", lsx_children.finditer(lambda n: n.Name == "Mallory"))
 
 children_copy = lsx_children.copy() + lsx_children.copy()
 children_copy.removeall(lambda n: n.Name == "Bob")
-print("; ".join(str(child) for child in children_copy))
+print(children_copy)
 
 children_copy.update(lsx_children, key=lambda n: n.Name)
-print("Update:", "; ".join(str(child) for child in children_copy))
+print("Update:", children_copy)
 
 my_obj_1 = MyClass(Name="Bob Smith", Level=13, children=[alice, bob, bob, alice])
-print("children =",  "; ".join(str(child) for child in my_obj_1.children))
+print("my_obj_1.children =", my_obj_1.children)

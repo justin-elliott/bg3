@@ -42,12 +42,12 @@ class Mod:
     _gamedata: GameData
     _lsx: Lsx_v3
 
-    _character_creation_presets: Lsx    #
-    _class_descriptions: Lsx            #
+    _character_creation_presets: Lsx    # Removed dependents
+    _class_descriptions: Lsx            # Deprecated
     _feat_descriptions: Lsx             # Deprecated
     _feats: Lsx                         # Deprecated
     _level_maps: Lsx                    # Deprecated
-    _passive_lists: Lsx                 #
+    _passive_lists: Lsx                 # Deprecated
     _progressions: Lsx                  # Deprecated
     _progression_descriptions: Lsx      #
     _races: Lsx                         #

@@ -7,8 +7,7 @@ import os
 
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
-from modtools.lsx.game.actionresources import ActionResource, update_action_resources
-from modtools.lsx.game.characterclasses import CharacterClass, CharacterSubclasses
+from modtools.lsx.game import ActionResource, CharacterClass, CharacterSubclasses, update_action_resources
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod

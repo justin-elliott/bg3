@@ -3,6 +3,5 @@
 Detail package.
 """
 
+# flake8: noqa
 from .children import LsxChildren
-
-assert LsxChildren.__name__ in globals()

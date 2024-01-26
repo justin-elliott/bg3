@@ -10,8 +10,7 @@ from moddb.bolster import Bolster
 from modtools.lsx.actionresources import ActionResource, update_action_resources
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx import Lsx
-from modtools.lsx.game.progressions import Progressions
-from modtools.lsx.game.spelllists import SpellList
+from modtools.lsx.game import SpellList
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -42,62 +41,69 @@ progressions_lsx.children.update(progressions_dev_lsx.children, key=lambda child
 sorcerer_progression = progressions_lsx.children.keepall(lambda child: child.Name in CharacterSubclasses.SORCERER)
 sorcerer_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 
-# level_1_spelllist = str(sorcerer_battlemage.make_uuid("level_1_spelllist"))
-# sorcerer_battlemage.add(SpellList(
-#     Comment="Sorcerer Battlemage level 1 spells",
-#     Spells=[bolster, "Target_CreateDestroyWater", "Projectile_EldritchBlast", "Target_Guidance"],
-#     UUID=level_1_spelllist,
-# ))
+level_1_spelllist = str(sorcerer_battlemage.make_uuid("level_1_spelllist"))
+sorcerer_battlemage.add(SpellList(
+    Comment="Sorcerer Battlemage level 1 spells",
+    Spells=[bolster, "Target_CreateDestroyWater", "Projectile_EldritchBlast", "Target_Guidance"],
+    UUID=level_1_spelllist,
+))
 
-# level_2_spelllist = str(sorcerer_battlemage.make_uuid("level_2_spelllist"))
-# sorcerer_battlemage.add(SpellList(
-#     Comment="Sorcerer Battlemage level 2 spells",
-#     Spells=["Target_EnhanceAbility"],
-#     UUID=level_2_spelllist,
-# ))
-
-
-# def level_1():
-#     """Add armor and weapon proficiencies, passives, skills, and spells."""
-#     for is_multiclass in [False, True]:
-#         node = sorcerer_progression[(CharacterClass.SORCERER.name, 1, is_multiclass)]
-
-#         boosts = node["Boosts"].value if "Boosts" in node else []
-#         boosts = [boost for boost in boosts if boost not in ["Proficiency(Daggers)",
-#                                                              "Proficiency(Quarterstaffs)",
-#                                                              "Proficiency(LightCrossbows)"]]
-#         boosts.extend([
-#             "Proficiency(LightArmor)",
-#             "Proficiency(MediumArmor)",
-#             "Proficiency(HeavyArmor)",
-#             "Proficiency(Shields)",
-#             "Proficiency(SimpleWeapons)",
-#             "Proficiency(MartialWeapons)",
-#         ])
-#         node.set_value("Boosts", boosts)
-
-#         passives_added = node["PassivesAdded"].value if "PassivesAdded" in node else []
-#         passives_added.extend([battle_magic, "SculptSpells"])
-#         node.set_value("PassivesAdded", passives_added)
-
-#         selectors = node["Selectors"].value if "Selectors" in node else []
-#         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
-#         node.set_value("Selectors", selectors)
-
-#     # Progression when Sorcerer is the class selected at level one
-#     node = sorcerer_progression[(CharacterClass.SORCERER.name, 1, False)]
-
-#     selectors = node["Selectors"].value if "Selectors" in node else []
-#     selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
-#     selectors.extend([
-#         "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-#         "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-#     ])
-#     node.set_value("Selectors", selectors)
+level_2_spelllist = str(sorcerer_battlemage.make_uuid("level_2_spelllist"))
+sorcerer_battlemage.add(SpellList(
+    Comment="Sorcerer Battlemage level 2 spells",
+    Spells=["Target_EnhanceAbility"],
+    UUID=level_2_spelllist,
+))
 
 
-# level_1()
+def sorcerer_level(level: int, *, is_multiclass: bool = False):
+    return lambda child: (child.Name == CharacterClass.SORCERER
+                          and child.Level == level
+                          and (child.IsMulticlass or False) == is_multiclass)
 
+
+def level_1():
+    """Add armor and weapon proficiencies, passives, skills, and spells."""
+    for is_multiclass in [False, True]:
+        child = sorcerer_progression.find(sorcerer_level(1, is_multiclass=is_multiclass))
+
+        boosts = child.Boosts or []
+        boosts = [boost for boost in boosts if boost not in ["Proficiency(Daggers)",
+                                                             "Proficiency(Quarterstaffs)",
+                                                             "Proficiency(LightCrossbows)"]]
+        boosts.extend([
+            "Proficiency(LightArmor)",
+            "Proficiency(MediumArmor)",
+            "Proficiency(HeavyArmor)",
+            "Proficiency(Shields)",
+            "Proficiency(SimpleWeapons)",
+            "Proficiency(MartialWeapons)",
+        ])
+        child.Boosts = boosts
+
+        passives_added = child.PassivesAdded or []
+        passives_added.extend([battle_magic, "SculptSpells"])
+        child.PassivesAdded = passives_added
+
+        selectors = child.Selectors or []
+        selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
+        child.Selectors = selectors
+
+    # Progression when Sorcerer is the class selected at level one
+    child = sorcerer_progression.find(sorcerer_level(1))
+
+    selectors = child.Selectors or []
+    selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
+    selectors.extend([
+        "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+        "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+    ])
+    child.Selectors = selectors
+
+
+level_1()
+
+# Double spell slots and sorcery points
 for child in sorcerer_progression:
     if (boosts := child.Boosts) is not None:
         child.Boosts = update_action_resources(boosts,

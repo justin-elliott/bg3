@@ -3,6 +3,5 @@
 Lsx package.
 """
 
+# flake8: noqa
 from .lsx import Lsx
-
-assert Lsx.__name__ in globals()

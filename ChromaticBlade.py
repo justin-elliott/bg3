@@ -7,8 +7,7 @@ import os
 
 from moddb.scripts import character_level_range
 from modtools.gamedata import spell_data, status_data, weapon_data
-from modtools.lsx.game import GameObjects
-from modtools.lsx_v1 import Lsx
+from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -129,24 +128,19 @@ chromatic_blade.add(spell_data(
     HitAnimationType="MagicalNonDamage",
 ))
 
-chromatic_blade.add_level_maps([
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 4) / 5)}")
-            for level in range(1, 13)],
-        *[Lsx.Attribute(f"Level{level}", "LSString", value="3")
-            for level in range(13, 21)],
-        Lsx.Attribute("Name", "FixedString", value="ChromaticBlade_AttackRollBonus"),
-        Lsx.Attribute("UUID", "guid", value="3f101a02-27e5-4eee-955e-dc488f1c036e"),
-    ]),
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 4) / 5)}d4")
-            for level in range(1, 13)],
-        *[Lsx.Attribute(f"Level{level}", "LSString", value="3d4")
-            for level in range(13, 21)],
-        Lsx.Attribute("Name", "FixedString", value="ChromaticBlade_DamageDice"),
-        Lsx.Attribute("UUID", "guid", value="631e717a-82cf-4b04-b541-8f860547e208"),
-    ]),
-])
+chromatic_blade.add(LevelMapSeries(
+    **{f"Level{level}": int((level + 4) / 5) for level in range(1, 13)},
+    **{f"Level{level}": 3 for level in range(13, 21)},
+    Name="ChromaticBlade_AttackRollBonus",
+    UUID=chromatic_blade.make_uuid("ChromaticBlade_AttackRollBonus"),
+))
+
+chromatic_blade.add(LevelMapSeries(
+    **{f"Level{level}": f"{int((level + 4) / 5)}d4" for level in range(1, 13)},
+    **{f"Level{level}": "3d4" for level in range(13, 21)},
+    Name="ChromaticBlade_DamageDice",
+    UUID=chromatic_blade.make_uuid("ChromaticBlade_DamageDice"),
+))
 
 
 def add_chromatic_weapon_element(element: str,

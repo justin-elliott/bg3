@@ -27,7 +27,7 @@
                     <attribute id="Level19" type="LSString" value="3" />
                     <attribute id="Level20" type="LSString" value="3" />
                     <attribute id="Name" type="FixedString" value="ChromaticBlade_AttackRollBonus" />
-                    <attribute id="UUID" type="guid" value="3f101a02-27e5-4eee-955e-dc488f1c036e" />
+                    <attribute id="UUID" type="guid" value="9e6b7a6f-b65d-fb9f-65a4-c528ae65ade5" />
                 </node>
                 <node id="LevelMapSeries">
                     <attribute id="Level1" type="LSString" value="1d4" />
@@ -51,7 +51,7 @@
                     <attribute id="Level19" type="LSString" value="3d4" />
                     <attribute id="Level20" type="LSString" value="3d4" />
                     <attribute id="Name" type="FixedString" value="ChromaticBlade_DamageDice" />
-                    <attribute id="UUID" type="guid" value="631e717a-82cf-4b04-b541-8f860547e208" />
+                    <attribute id="UUID" type="guid" value="df38eca6-3cc2-d32e-fe8e-53a68874f386" />
                 </node>
             </children>
         </node>

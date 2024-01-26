@@ -10,7 +10,9 @@ from .classdescriptions import *
 from .featdescriptions import *
 from .feats import *
 from .levelmaps import *
+from .meta import *
 from .passivelists import *
+from .progressiondescriptions import *
 from .progressions import *
 from .roottemplates import *
 from .spelllists import *

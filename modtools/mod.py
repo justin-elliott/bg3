@@ -12,8 +12,8 @@ import time
 from modtools.gamedata import GameData, GameDatum
 from modtools.unpak import Unpak
 from modtools.localization import Localization
-from modtools.lsx_v1 import Lsx
-from modtools.lsx import Lsx as Lsx_v3
+from modtools.lsx import Lsx
+from modtools.lsx.game import Dependencies, ModuleInfo
 from modtools.lsx.node import LsxNode
 from modtools.modifiers import Modifiers
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
@@ -40,20 +40,7 @@ class Mod:
     _localization: Localization
 
     _gamedata: GameData
-    _lsx: Lsx_v3
-
-    _character_creation_presets: Lsx    # Removed dependents
-    _class_descriptions: Lsx            # Deprecated
-    _feat_descriptions: Lsx             # Deprecated
-    _feats: Lsx                         # Deprecated
-    _level_maps: Lsx                    # Deprecated
-    _passive_lists: Lsx                 # Deprecated
-    _progressions: Lsx                  # Deprecated
-    _progression_descriptions: Lsx      #
-    _races: Lsx                         #
-    _root_templates: Lsx                # Deprecated
-    _spell_lists: Lsx                   # Deprecated
-    _tags: Lsx                          #
+    _lsx: Lsx
 
     _scripts: [str]
     _treasure_table: [str]
@@ -86,20 +73,7 @@ class Mod:
         self._localization.add_language("en", "English")
 
         self._gamedata = GameData(self._modifiers, self._valuelists)
-        self._lsx = Lsx_v3()
-
-        self._character_creation_presets = None
-        self._class_descriptions = None
-        self._feat_descriptions = None
-        self._feats = None
-        self._level_maps = None
-        self._passive_lists = None
-        self._progressions = None
-        self._progression_descriptions = None
-        self._races = None
-        self._root_templates = None
-        self._spell_lists = None
-        self._tags = None
+        self._lsx = Lsx()
 
         self._scripts = None
         self._treasure_table = None
@@ -155,66 +129,6 @@ class Mod:
         else:
             raise TypeError("add: Invalid data type")
 
-    def add_character_creation_presets(self, nodes: [Lsx.Node]) -> None:
-        if not self._character_creation_presets:
-            self._character_creation_presets = Lsx(self._version, "CharacterCreationPresets", "root")
-        self._character_creation_presets.add_children(nodes)
-
-    def add_class_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self._class_descriptions:
-            self._class_descriptions = Lsx(self._version, "ClassDescriptions", "root")
-        self._class_descriptions.add_children(nodes)
-
-    def add_feat_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self._feat_descriptions:
-            self._feat_descriptions = Lsx(self._version, "FeatDescriptions", "root")
-        self._feat_descriptions.add_children(nodes)
-
-    def add_feats(self, nodes: [Lsx.Node]) -> None:
-        if not self._feats:
-            self._feats = Lsx(self._version, "Feats", "root")
-        self._feats.add_children(nodes)
-
-    def add_level_maps(self, nodes: [Lsx.Node]) -> None:
-        if not self._level_maps:
-            self._level_maps = Lsx(self._version, "LevelMapValues", "root")
-        self._level_maps.add_children(nodes)
-
-    def add_passive_lists(self, nodes: [Lsx.Node]) -> None:
-        if not self._passive_lists:
-            self._passive_lists = Lsx(self._version, "PassiveLists", "root")
-        self._passive_lists.add_children(nodes)
-
-    def add_progressions(self, nodes: [Lsx.Node]) -> None:
-        if not self._progressions:
-            self._progressions = Lsx(self._version, "Progressions", "root")
-        self._progressions.add_children(nodes)
-
-    def add_progression_descriptions(self, nodes: [Lsx.Node]) -> None:
-        if not self._progression_descriptions:
-            self._progression_descriptions = Lsx(self._version, "ProgressionDescriptions", "root")
-        self._progression_descriptions.add_children(nodes)
-
-    def add_races(self, nodes: [Lsx.Node]) -> None:
-        if not self._races:
-            self._races = Lsx(self._version, "Races", "root")
-        self._races.add_children(nodes)
-
-    def add_root_templates(self, nodes: [Lsx.Node]) -> None:
-        if not self._root_templates:
-            self._root_templates = Lsx(self._version, "Templates", "Templates")
-        self._root_templates.add_children(nodes)
-
-    def add_spell_lists(self, nodes: [Lsx.Node]) -> None:
-        if not self._spell_lists:
-            self._spell_lists = Lsx(self._version, "SpellLists", "root")
-        self._spell_lists.add_children(nodes)
-
-    def add_tags(self, nodes: [Lsx.Node]) -> None:
-        if not self._tags:
-            self._tags = []
-        self._tags.extend(nodes)
-
     def add_script(self, text: str) -> None:
         self._scripts = self._scripts or []
         if text not in self._scripts:
@@ -224,99 +138,42 @@ class Mod:
         self._treasure_table = self._treasure_table or []
         self._treasure_table.append(text)
 
-    def _build_meta(self, mod_dir: str) -> None:
-        """Build the meta.lsx underneath the given mod_dir."""
+    def _add_meta(self) -> None:
+        """Add the meta definition."""
         build_version = str(time.time_ns())
 
-        lsx = Lsx(self._version, "Config", "root")
-        lsx.add_children([
-            Lsx.Node("Dependencies"),
-            Lsx.Node("ModuleInfo", attributes=[
-                    Lsx.Attribute("Author", "LSWString", value=self._author),
-                    Lsx.Attribute("CharacterCreationLevelName", "FixedString", value=""),
-                    Lsx.Attribute("Description", "LSWString", value=self._description),
-                    Lsx.Attribute("Folder", "LSWString", value=self._folder),
-                    Lsx.Attribute("LobbyLevelName", "FixedString", value=""),
-                    Lsx.Attribute("MD5", "LSString", value=""),
-                    Lsx.Attribute("MainMenuBackgroundVideo", "FixedString", value=""),
-                    Lsx.Attribute("MenuLevelName", "FixedString", value=""),
-                    Lsx.Attribute("Name", "FixedString", value=self._name),
-                    Lsx.Attribute("NumPlayers", "uint8", value="4"),
-                    Lsx.Attribute("PhotoBooth", "FixedString", value=""),
-                    Lsx.Attribute("StartupLevelName", "FixedString", value=""),
-                    Lsx.Attribute("Tags", "LSString", value=""),
-                    Lsx.Attribute("Type", "FixedString", value="Add-on"),
-                    Lsx.Attribute("UUID", "FixedString", value=str(self._uuid)),
-                    Lsx.Attribute("Version64", "int64", value=build_version),
-                ],
-                children=[
-                    Lsx.Node("PublishVersion", [
-                        Lsx.Attribute("Version64", "int64", value=build_version)
-                    ]),
-                    Lsx.Node("Scripts"),
-                    Lsx.Node("TargetModes", children=[
-                        Lsx.Node("Target", [
-                            Lsx.Attribute("Object", "FixedString", value="Story")
-                        ])
-                    ]),
-                ])
-        ])
-        lsx.build(os.path.join(mod_dir, "Mods", self._folder, "meta.lsx"))
-
-    def _build_character_creation_presets(self, public_dir: str) -> None:
-        if self._character_creation_presets:
-            self._character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
-                                                                            "CharacterCreationPresets.lsx"))
-
-    def _build_class_descriptions(self, public_dir: str) -> None:
-        if self._class_descriptions:
-            self._class_descriptions.build(os.path.join(public_dir, "ClassDescriptions", "ClassDescriptions.lsx"))
-
-    def _build_feat_descriptions(self, public_dir: str) -> None:
-        if self._feat_descriptions:
-            self._feat_descriptions.build(os.path.join(public_dir, "Feats", "FeatDescriptions.lsx"))
-
-    def _build_feats(self, public_dir: str) -> None:
-        if self._feats:
-            self._feats.build(os.path.join(public_dir, "Feats", "Feats.lsx"))
-
-    def _build_level_maps(self, public_dir: str) -> None:
-        if self._level_maps:
-            self._level_maps.build(os.path.join(public_dir, "Levelmaps", "LevelMapValues.lsx"))
-
-    def _build_progressions(self, public_dir: str) -> None:
-        if self._progressions:
-            self._progressions.build(os.path.join(public_dir, "Progressions", "Progressions.lsx"))
-
-    def _build_passive_lists(self, public_dir: str) -> None:
-        if self._passive_lists:
-            self._passive_lists.build(os.path.join(public_dir, "Lists", "PassiveLists.lsx"))
-
-    def _build_progression_descriptions(self, public_dir: str) -> None:
-        if self._progression_descriptions:
-            self._progression_descriptions.build(
-                os.path.join(public_dir, "Progressions", "ProgressionDescriptions.lsx"))
-
-    def _build_races(self, public_dir: str) -> None:
-        if self._races:
-            self._races.build(os.path.join(public_dir, "Races", "Races.lsx"))
-
-    def _build_root_templates(self, public_dir: str) -> None:
-        if self._root_templates:
-            self._root_templates.build(os.path.join(public_dir, "RootTemplates", "_merged.lsx"))
-
-    def _build_spell_lists(self, public_dir: str) -> None:
-        if self._spell_lists:
-            self._spell_lists.build(os.path.join(public_dir, "Lists", "SpellLists.lsx"))
-
-    def _build_tags(self, public_dir: str) -> None:
-        if self._tags:
-            for tag in self._tags:
-                lsx = Lsx(self._version, "Tags")
-                lsx.set_root(tag)
-                tag_uuid = next(attr.get_value() for attr in tag.get_attributes() if attr.get_id() == "UUID")
-                tag_file = f"{tag_uuid}.lsx"
-                lsx.build(os.path.join(public_dir, "Tags", tag_file))
+        self.add(Dependencies())
+        self.add(ModuleInfo(
+            Author=self._author,
+            CharacterCreationLevelName="",
+            Description=self._description,
+            Folder=self._folder,
+            LobbyLevelName="",
+            MD5="",
+            MainMenuBackgroundVideo="",
+            MenuLevelName="",
+            Name=self._name,
+            NumPlayers="4",
+            PhotoBooth="",
+            StartupLevelName="",
+            Tags="",
+            Type="Add-on",
+            UUID=self._uuid,
+            Version64=build_version,
+            children=[
+                ModuleInfo.PublishVersion(
+                    Version64=build_version,
+                ),
+                ModuleInfo.Scripts(),
+                ModuleInfo.TargetModes(
+                    children=[
+                        ModuleInfo.TargetModes.Target(
+                            Object="Story",
+                        ),
+                    ],
+                ),
+            ],
+        ))
 
     def _build_scripts(self, mod_dir: str) -> None:
         if self._scripts:
@@ -340,22 +197,10 @@ class Mod:
         if os.path.exists(mod_dir):
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
-        self._build_meta(mod_dir)
+        self._add_meta()
         self._gamedata.build(mod_dir, self._folder)
         self._lsx.save(mod_dir, version=self._version, folder=self._folder)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)
-        self._build_character_creation_presets(public_dir)
-        self._build_class_descriptions(public_dir)
-        self._build_feat_descriptions(public_dir)
-        self._build_feats(public_dir)
-        self._build_level_maps(public_dir)
-        self._build_passive_lists(public_dir)
-        self._build_progressions(public_dir)
-        self._build_progression_descriptions(public_dir)
-        self._build_races(public_dir)
-        self._build_root_templates(public_dir)
-        self._build_spell_lists(public_dir)
-        self._build_tags(public_dir)
         self._build_scripts(mod_dir)
         self._build_treasure_table(public_dir)

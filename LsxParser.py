@@ -3,6 +3,7 @@
 Parser for .lsx files.
 """
 
+import argparse
 import os
 
 from modtools.lsx.type import LsxType
@@ -11,6 +12,21 @@ from operator import itemgetter
 from pathlib import PurePath
 from typing import Self
 from xml.etree.ElementTree import XMLParser
+
+
+PROLOGUE = '''\
+#!/usr/bin/env python3
+"""
+LSX definitions.
+"""
+
+from modtools.lsx.children import LsxChildren
+from modtools.lsx.document import LsxDocument
+from modtools.lsx.node import LsxNode
+from modtools.lsx import Lsx
+from modtools.lsx.type import LsxType
+
+'''
 
 
 class Attribute:
@@ -129,9 +145,20 @@ class LsxParser:
         with open(cached_path, "rb") as lsx_file:
             for line in lsx_file:
                 xml_parser.feed(line)
-        print(lsx.version)
-        print(lsx.region_id)
-        self.output_node(lsx.root)
+
+        print(PROLOGUE)
+        for child in lsx.root.children.values():
+            self.output_node(child)
+
+        print(f"class {lsx.region_id}(LsxDocument):")
+        if lsx.root.id != "root":
+            print(f'    root = "{lsx.root.id}"')
+        print(f'    path = "{lsx_path}"')
+        self.output_child_list(lsx.root)
+
+        print()
+        print()
+        print(f"Lsx.register({lsx.region_id})")
 
     def output_node(self, node: Node) -> None:
         for child in node.children.values():
@@ -163,6 +190,15 @@ class LsxParser:
                 python_type = getattr(LsxType, type_name)._python_type
                 print(f"    {name}{sub_name}: {python_type} = LsxType.{type_name}{comment}")
 
+        self.output_child_list(node)
+
+        if len(node.attributes) == 0 and len(node.children) == 0:
+            print("    pass")
+
+        print()
+        print()
+
+    def output_child_list(self, node: Node) -> None:
         child_list = ", ".join(node.children.keys())
         if len(node.children) == 1:
             child_list += ","
@@ -174,19 +210,15 @@ class LsxParser:
         elif len(node.children) > 0:
             print(f"    children = ({child_list})")
 
-        if len(node.attributes) == 0 and len(node.children) == 0:
-            print("    pass")
-
-        print()
-        print()
-
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate LSX definitions from an .lsx file.")
+    parser.add_argument("pak_path", type=str, default=None, help="Path to .lsx file within a .pak.")
+    args = parser.parse_args()
+
     unpak = Unpak(cache_dir=None)
     lsx_parser = LsxParser(unpak)
-    lsx_parser.parse("Shared.pak/Public/SharedDev/RootTemplates/_merged.lsf.lsx")
-    # lsx_parser.parse("Shared.pak/Public/SharedDev/Lists/PassiveLists.lsx")
-    # lsx_parser.parse("Shared.pak/Public/SharedDev/Lists/SpellLists.lsx")
+    lsx_parser.parse(args.pak_path)
 
 
 if __name__ == "__main__":

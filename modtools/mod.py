@@ -51,7 +51,7 @@ class Mod:
     _progressions: Lsx                  # Deprecated
     _progression_descriptions: Lsx      #
     _races: Lsx                         #
-    _root_templates: Lsx                #
+    _root_templates: Lsx                # Deprecated
     _spell_lists: Lsx                   # Deprecated
     _tags: Lsx                          #
 

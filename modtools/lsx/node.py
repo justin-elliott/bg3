@@ -68,8 +68,8 @@ class LsxNode:
         for id, attribute in self._attributes_.items():
             if (value := getattr(self, id, None)) is not None:
                 element.append(attribute.xml(id, value))
-        if len(self._child_types_) > 0:
-            children: detail.LsxChildren[Self] = getattr(self, "children")
+        children: detail.LsxChildren[Self] = getattr(self, "children", [])
+        if len(children) > 0:
             element.append(children.xml())
         return element
 

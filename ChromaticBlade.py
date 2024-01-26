@@ -7,6 +7,7 @@ import os
 
 from moddb.scripts import character_level_range
 from modtools.gamedata import spell_data, status_data, weapon_data
+from modtools.lsx.game import GameObjects
 from modtools.lsx_v1 import Lsx
 from modtools.mod import Mod
 from uuid import UUID
@@ -36,18 +37,16 @@ katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
 phalar_aluve_uuid = UUID("6d0d3206-50b5-48ed-af92-a146ed6b98f2")
 
 chromatic_blade_game_objects_uuid = UUID("05b4b0c3-44cc-41da-a50b-a8cba6787e16")
-chromatic_blade.add_root_templates([
-    Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["ChromaticBlade_DisplayName"], version=1),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["ChromaticBlade_Description"], version=1),
-        Lsx.Attribute("LevelName", "FixedString", value=""),
-        Lsx.Attribute("MapKey", "FixedString", value=str(chromatic_blade_game_objects_uuid)),
-        Lsx.Attribute("Name", "LSString", value="ChromaticBlade_Sword"),
-        Lsx.Attribute("ParentTemplateId", "FixedString", value=str(katana_uuid)),
-        Lsx.Attribute("Stats", "FixedString", value="ChromaticBlade_Sword"),
-        Lsx.Attribute("Type", "FixedString", value="item"),
-    ])
-])
+chromatic_blade.add(GameObjects(
+    DisplayName=loca["ChromaticBlade_DisplayName"],
+    Description=loca["ChromaticBlade_Description"],
+    LevelName="",
+    MapKey=chromatic_blade_game_objects_uuid,
+    Name="ChromaticBlade_Sword",
+    ParentTemplateId=katana_uuid,
+    Stats="ChromaticBlade_Sword",
+    Type="item",
+))
 
 chromatic_blade.add(weapon_data(
     "ChromaticBlade_Sword",

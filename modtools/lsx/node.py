@@ -3,6 +3,7 @@
 Representation of .lsx nodes.
 """
 
+from collections import OrderedDict
 from modtools.lsx.attributes import LsxAttribute
 from typing import Self
 from xml.etree.ElementTree import Element
@@ -13,16 +14,16 @@ import modtools.lsx.detail as detail
 class LsxNode:
     """A class representing an .lsx node."""
 
-    _id_: str                              # The node's id attribute (defaulting to the subclass name).
-    _attributes_: dict[str, LsxAttribute]  # The node's attribute definitions.
-    _child_types_: tuple[type[Self], ...]  # The valid types for the node's children.
+    _id_: str                                     # The node's id attribute (defaulting to the subclass name).
+    _attributes_: OrderedDict[str, LsxAttribute]  # The node's attribute definitions.
+    _child_types_: tuple[type[Self], ...]         # The valid types for the node's children.
 
     children: detail.LsxChildren[Self]
 
     @classmethod
     def __init_subclass__(cls) -> None:
         cls._id_ = cls.__name__
-        cls._attributes_ = {}
+        cls._attributes_ = OrderedDict()
         cls._child_types_ = ()
         for member_name, value in list(cls.__dict__.items()):
             if member_name == "id":
@@ -66,7 +67,7 @@ class LsxNode:
     def xml(self) -> Element:
         """Returns an XML encoding of the node."""
         element = Element("node", id=self._id_)
-        for id, attribute in sorted(self._attributes_.items()):
+        for id, attribute in self._attributes_.items():
             if (value := getattr(self, id, None)) is not None:
                 element.append(attribute.xml(id, value))
         if len(self._child_types_) > 0:
@@ -76,7 +77,10 @@ class LsxNode:
 
     def __str__(self) -> str:
         attributes = []
-        for name in sorted(self._attributes_.keys(), key=lambda name: (name == "children", name)):
+        for name in self._attributes_.keys():
             if (value := getattr(self, name)) is not None:
                 attributes.append(f"{name}='{value}'" if isinstance(value, str) else f"{name}={str(value)}")
+        if len(self._child_types_) > 0:
+            children: detail.LsxChildren[Self] = getattr(self, "children")
+            attributes.append(f"children={children}")
         return f"{self._id_}({", ".join(attributes)})"

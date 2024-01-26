@@ -5,7 +5,7 @@ Bolster for Baldur's Gate 3 mods.
 
 from modtools.gamedata import spell_data, status_data
 from modtools.mod import Mod
-from modtools.lsx_v1 import Lsx
+from modtools.lsx.game import LevelMapSeries
 
 
 class Bolster:
@@ -87,12 +87,10 @@ class Bolster:
             StatusGroups="SG_RemoveOnRespec",
         ))
 
-        self._mod.add_level_maps([
-            Lsx.Node("LevelMapSeries", [
-                *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int(level * 2.5)}") for level in range(1, 21)],
-                Lsx.Attribute("Name", "FixedString", value=f"{name}_AidValue"),
-                Lsx.Attribute("UUID", "guid", value=str(self._mod.make_uuid(f"{name}_AidValue"))),
-            ]),
-        ])
+        self._mod.add(LevelMapSeries(
+            **{f"Level{level}": f"{int(level * 2.5)}" for level in range(1, 21)},
+            Name=f"{name}_AidValue",
+            UUID=self._mod.make_uuid(f"{name}_AidValue"),
+        ))
 
         return name

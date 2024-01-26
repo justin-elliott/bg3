@@ -49,8 +49,8 @@ class Movement:
         ))
         return name
 
-    def add_misty_step(self, use_costs: str | list[str] = "Movement:Distance*0.5") -> str:
-        """Add a fast movement passive, returning its name."""
+    def add_misty_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
+        """Add the Misty Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_MistyStep"
         self._mod.add(spell_data(
             name,

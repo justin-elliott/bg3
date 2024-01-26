@@ -5,6 +5,7 @@ Parser for .lsx files.
 
 import argparse
 import os
+import sys
 
 from io import TextIOWrapper
 from modtools.lsx.type import LsxType
@@ -138,12 +139,15 @@ class LsxParser:
     def __init__(self, unpak: Unpak):
         self.__unpak = unpak
 
-    def parse(self, lsx_path: os.PathLike, name: str) -> None:
+    def parse(self, lsx_path: os.PathLike, output: str) -> None:
         pak_name, _, relative_path = str(PurePath(lsx_path).as_posix()).partition("/")
         cached_pak = self.__unpak.get(pak_name)
         cached_path = os.path.join(cached_pak.path, relative_path)
 
-        output_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "modtools/lsx/game", name))
+        if output:
+            output_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "modtools/lsx/game", output))
+        else:
+            output_path = None
 
         lsx = LsxParser.Lsx()
         xml_parser = XMLParser(target=lsx)
@@ -151,26 +155,28 @@ class LsxParser:
             for line in lsx_file:
                 xml_parser.feed(line)
 
-        with open(output_path, "w") as f:
+        with (open(output_path, "w") if output_path is not None else sys.stdout) as f:
             f.write(PROLOGUE)
+
             for child in lsx.root.children.values():
-                self.output_node(f, child)
+                self.output_node(f, child, 0)
 
             f.write(f"class {lsx.region_id}(LsxDocument):\n")
             if lsx.root.id != "root":
                 f.write(f'    root = "{lsx.root.id}"\n')
             f.write(f'    path = "{relative_path}"\n')
-            self.output_child_list(f, lsx.root)
+            self.output_child_list(f, lsx.root, 0)
 
             f.write("\n")
             f.write("\n")
             f.write(f"Lsx.register({lsx.region_id})\n")
 
-    def output_node(self, f: TextIOWrapper, node: Node) -> None:
-        for child in node.children.values():
-            self.output_node(f, child)
+    def output_node(self, f: TextIOWrapper, node: Node, depth: int) -> None:
+        indent = " " * 4 * depth
+        f.write(f"{indent}class {node.id}(LsxNode):\n")
 
-        f.write(f"class {node.id}(LsxNode):\n")
+        for child in node.children.values():
+            self.output_node(f, child, depth + 1)
 
         for name, attribute in sorted(node.attributes.items()):
             attribute_type = attribute.fields["type"]
@@ -194,38 +200,40 @@ class LsxParser:
                     comment = f"  # {name}"
 
                 python_type = getattr(LsxType, type_name)._python_type
-                f.write(f"    {name}{sub_name}: {python_type} = LsxType.{type_name}{comment}\n")
+                f.write(f"{indent}    {name}{sub_name}: {python_type} = LsxType.{type_name}{comment}\n")
 
-        self.output_child_list(f, node)
+        self.output_child_list(f, node, depth)
 
         if len(node.attributes) == 0 and len(node.children) == 0:
-            f.write("    pass\n")
+            f.write(f"{indent}    pass\n")
 
         f.write("\n")
-        f.write("\n")
+        if depth == 0:
+            f.write("\n")
 
-    def output_child_list(self, f: TextIOWrapper, node: Node) -> None:
+    def output_child_list(self, f: TextIOWrapper, node: Node, depth: int) -> None:
+        indent = " " * 4 * depth
         child_list = ", ".join(node.children.keys())
         if len(node.children) == 1:
             child_list += ","
-        if len(child_list) > 100 and len(node.children) > 1:
-            f.write("    children = (\n")
+        if len(child_list) > 100 - 4 * depth and len(node.children) > 1:
+            f.write(f"{indent}    children = (\n")
             for child in node.children.keys():
-                f.write(f"        {child},\n")
-            f.write("    )\n")
+                f.write(f"{indent}        {child},\n")
+            f.write(f"{indent}    )\n")
         elif len(node.children) > 0:
-            f.write(f"    children = ({child_list})\n")
+            f.write(f"{indent}    children = ({child_list})\n")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate LSX definitions from an .lsx file.")
     parser.add_argument("pak_path", type=str, default=None, help="Path to .lsx file within a .pak.")
-    parser.add_argument("name", type=str, default="None", help="Name of the output file.")
+    parser.add_argument("-o", "--output", type=str, default=None, help="Name of the output file.")
     args = parser.parse_args()
 
     unpak = Unpak(cache_dir=None)
     lsx_parser = LsxParser(unpak)
-    lsx_parser.parse(args.pak_path, args.name)
+    lsx_parser.parse(args.pak_path, args.output)
 
 
 if __name__ == "__main__":

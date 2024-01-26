@@ -10,895 +10,755 @@ from modtools.lsx import Lsx
 from modtools.lsx.type import LsxType
 
 
-class Bound(LsxNode):
-    Height: float = LsxType.FLOAT
-    IsIgnoringScale: bool = LsxType.BOOL
-    Max: str = LsxType.FVEC3
-    Min: str = LsxType.FVEC3
-    Radius: float = LsxType.FLOAT
-    Shape: int = LsxType.UINT8
-    Type: int = LsxType.UINT8
-
-
-class Bounds(LsxNode):
-    children = (Bound,)
-
-
-class Attributes(LsxNode):
-    ActivateSoundEvent: str = LsxType.FIXEDSTRING
-    Animation: str = LsxType.FIXEDSTRING
-    ApplyDeathTypeBloodCheck: bool = LsxType.BOOL
-    CellAtGrow: int = LsxType.INT32
-    Conditions: str = LsxType.LSSTRING_VALUE
-    ExplodeFX: str = LsxType.FIXEDSTRING
-    ExternalCauseAsSurfaceOwner: bool = LsxType.BOOL
-    FadeOutDelay: float = LsxType.FLOAT
-    FadeOutFX: str = LsxType.FIXEDSTRING
-    GrowTimer: float = LsxType.FLOAT
-    LifeTime: float = LsxType.FLOAT
-    PlayOnHUD: bool = LsxType.BOOL
-    Radius: float = LsxType.FLOAT
-    SnapToGround: bool = LsxType.BOOL
-    SurfaceType: str = LsxType.FIXEDSTRING
-    TargetItemState: int = LsxType.UINT8
-    Timeout: float = LsxType.FLOAT
-    TotalCells: int = LsxType.INT32
-    VisualWithDynamicPhysics: str = LsxType.FIXEDSTRING
-    templateAfterDestruction: str = LsxType.FIXEDSTRING
-    visualDestruction: str = LsxType.FIXEDSTRING
-
-
-class Action(LsxNode):
-    ActionType: int = LsxType.INT32
-    children = (Attributes,)
-
-
-class OnDestroyActions(LsxNode):
-    children = (Action,)
-
-
-class PrefabChildren(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class PrefabChildrenGroup(LsxNode):
-    children = (PrefabChildren,)
-
-
-class PrefabChildrenTransforms(LsxNode):
-    Position: str = LsxType.FVEC3
-    RotationQuat: str = LsxType.FVEC4
-    Scale: float = LsxType.FLOAT
-
-
-class PrefabChildrenTransformGroup(LsxNode):
-    children = (PrefabChildrenTransforms,)
-
-
-class LocomotionParams(LsxNode):
-    IsMovementEnabled: bool = LsxType.BOOL
-    IsWorldClimbingEnabled: bool = LsxType.BOOL
-    LadderBlendspace_Attach_Down: str = LsxType.FIXEDSTRING
-    LadderBlendspace_Attach_Up: str = LsxType.FIXEDSTRING
-    LadderBlendspace_Detach_Down: str = LsxType.FIXEDSTRING
-    LadderBlendspace_Detach_Up: str = LsxType.FIXEDSTRING
-    MaxDashDistance: float = LsxType.FLOAT
-    MovementAcceleration: float = LsxType.FLOAT
-    MovementSpeedDash: float = LsxType.FLOAT
-    MovementSpeedRun: float = LsxType.FLOAT
-    MovementSpeedSprint: float = LsxType.FLOAT
-    MovementSpeedStroll: float = LsxType.FLOAT
-    MovementSpeedWalk: float = LsxType.FLOAT
-    MovementStepUpHeight: float = LsxType.FLOAT
-    MovementTiltToRemap: str = LsxType.FIXEDSTRING
-    ProbeSpineBOffset: float = LsxType.FLOAT
-    SteeringSpeedCurveWithoutTransitions: str = LsxType.FIXEDSTRING
-    SteeringSpeed_CastingCurve: str = LsxType.FIXEDSTRING
-    SteeringSpeed_MovingCurve: str = LsxType.FIXEDSTRING
-    UseStandAtDestination: bool = LsxType.BOOL
-    WorldClimbingBlendspace_DownA: str = LsxType.FIXEDSTRING
-    WorldClimbingBlendspace_DownB: str = LsxType.FIXEDSTRING
-    WorldClimbingBlendspace_DownBHeight: float = LsxType.FLOAT
-    WorldClimbingBlendspace_UpA: str = LsxType.FIXEDSTRING
-    WorldClimbingBlendspace_UpB: str = LsxType.FIXEDSTRING
-    WorldClimbingBlendspace_UpBHeight: float = LsxType.FLOAT
-    WorldClimbingHeight: float = LsxType.FLOAT
-    WorldClimbingRadius: float = LsxType.FLOAT
-    WorldClimbingSpeed: float = LsxType.FLOAT
-
-
-class Tag(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class Tags(LsxNode):
-    children = (Tag,)
-
-
-class SourceConditions(LsxNode):
-    MaximumHealthPercentage: int = LsxType.INT32
-    MinimumHealthPercentage: int = LsxType.INT32
-    children = (Tags,)
-
-
-class Tag(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class Tags(LsxNode):
-    children = (Tag,)
-
-
-class TargetConditions(LsxNode):
-    MaximumHealthPercentage: int = LsxType.INT32
-    MinimumHealthPercentage: int = LsxType.INT32
-    children = (Tags,)
-
-
-class OnlyInNPCLoadout(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class ExcludeInNPCLoadout(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class Skill(LsxNode):
-    AIFlags: int = LsxType.UINT16
-    CasualExplorer: bool = LsxType.BOOL
-    Classic: bool = LsxType.BOOL
-    FallbackStartRound: int = LsxType.INT32
-    HonorHardcore: bool = LsxType.BOOL
-    LearningStrategy: int = LsxType.UINT8
-    MinimumImpact: int = LsxType.INT32
-    OnlyCastOnSelf: bool = LsxType.BOOL
-    ScoreModifier: float = LsxType.FLOAT
-    Skill: str = LsxType.FIXEDSTRING
-    SpellCastingAbility: int = LsxType.UINT8
-    StartRound: int = LsxType.INT32
-    TacticianHardcore: bool = LsxType.BOOL
-    children = (SourceConditions, TargetConditions, OnlyInNPCLoadout, ExcludeInNPCLoadout)
-
-
-class SkillList(LsxNode):
-    children = (Skill,)
-
-
-class Status(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class StatusList(LsxNode):
-    children = (Status,)
-
-
-class Tag(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class Tags(LsxNode):
-    children = (Tag,)
-
-
-class PickingPhysicsTemplates(LsxNode):
-    MapKey: str = LsxType.FIXEDSTRING
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class PickingPhysics(LsxNode):
-    children = (PickingPhysicsTemplates,)
-
-
-class Attributes(LsxNode):
-    AiUseInCombat: bool = LsxType.BOOL
-    AllowScaling: bool = LsxType.BOOL
-    Animation: str = LsxType.FIXEDSTRING
-    BlockMapMarkerNavigation: bool = LsxType.BOOL
-    BookId: str = LsxType.FIXEDSTRING
-    BotomHorizontalOffset: float = LsxType.FLOAT
-    BotomVerticalOffset: float = LsxType.FLOAT
-    ClassId: str = LsxType.GUID
-    ClimbDirection: int = LsxType.INT32
-    CombineSlots: int = LsxType.INT8
-    Conditions: str = LsxType.LSSTRING_VALUE
-    Consume: bool = LsxType.BOOL
-    EventID: str = LsxType.FIXEDSTRING
-    FallbackPreviewRadius: float = LsxType.FLOAT
-    Heal: float = LsxType.FLOAT
-    InsertSlots: int = LsxType.INT8
-    IsBase: bool = LsxType.BOOL
-    IsHiddenStatus: bool = LsxType.BOOL
-    NodeLadderOffest: float = LsxType.FLOAT
-    RecipeID: str = LsxType.FIXEDSTRING
-    SecretDoor: bool = LsxType.BOOL
-    SkillID: str = LsxType.FIXEDSTRING
-    SnapToGround: bool = LsxType.BOOL
-    Source: str = LsxType.FIXEDSTRING
-    SourceType: int = LsxType.INT32
-    SpellId: str = LsxType.FIXEDSTRING
-    StatsId: str = LsxType.FIXEDSTRING
-    StatusDuration: int = LsxType.INT32
-    Target: str = LsxType.FIXEDSTRING
-    TopAttachNearOffset: float = LsxType.FLOAT
-    TopDetachOffset: float = LsxType.FLOAT
-    TopLineTolerance: float = LsxType.FLOAT
-    TopMidOffset: float = LsxType.FLOAT
-    TopMidToPlatformFixedLength: float = LsxType.FLOAT
-    Type: int = LsxType.INT32
-    Visibility: int = LsxType.INT32
-
-
-class Action(LsxNode):
-    ActionType: int = LsxType.INT32
-    children = (Attributes,)
-
-
-class OnUsePeaceActions(LsxNode):
-    children = (Action,)
-
-
-class String(LsxNode):
-    String: str = LsxType.LSSTRING_VALUE
-
-
-class double(LsxNode):
-    double: float = LsxType.DOUBLE
-
-
-class Scalar(LsxNode):
-    children = (String, double)
-
-
-class Scalar(LsxNode):
-    children = (Scalar,)
-
-
-class Value(LsxNode):
-    children = (Scalar,)
-
-
-class ConstellationConfigParameter(LsxNode):
-    Name: str = LsxType.LSSTRING_VALUE
-    children = (Value,)
-
-
-class ConstellationConfigGlobalParameters(LsxNode):
-    children = (ConstellationConfigParameter,)
-
-
-class ExcludeInDifficulty(LsxNode):
-    pass
-
-
-class InventoryItem(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class InventoryList(LsxNode):
-    children = (InventoryItem,)
-
-
-class Tags(LsxNode):
-    pass
-
-
-class SourceConditions(LsxNode):
-    MaximumHealthPercentage: int = LsxType.INT32
-    MinimumHealthPercentage: int = LsxType.INT32
-    children = (Tags,)
-
-
-class Tags(LsxNode):
-    pass
-
-
-class TargetConditions(LsxNode):
-    MaximumHealthPercentage: int = LsxType.INT32
-    MinimumHealthPercentage: int = LsxType.INT32
-    children = (Tags,)
-
-
-class OnlyInNPCLoadout(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class Item(LsxNode):
-    AIFlags: int = LsxType.UINT16
-    Amount: int = LsxType.INT32
-    CanBePickpocketed: bool = LsxType.BOOL
-    CasualExplorer: bool = LsxType.BOOL
-    Classic: bool = LsxType.BOOL
-    FallbackStartRound: int = LsxType.INT32
-    HonorHardcore: bool = LsxType.BOOL
-    IsDroppedOnDeath: bool = LsxType.BOOL
-    IsTradable: int = LsxType.UINT8
-    IsTradeable: bool = LsxType.BOOL
-    ItemName: str = LsxType.LSSTRING_VALUE
-    LevelName: str = LsxType.LSSTRING_VALUE
-    MinimumImpact: int = LsxType.INT32
-    OnlyCastOnSelf: bool = LsxType.BOOL
-    ScoreModifier: float = LsxType.FLOAT
-    StartRound: int = LsxType.INT32
-    TacticianHardcore: bool = LsxType.BOOL
-    TemplateID: str = LsxType.FIXEDSTRING
-    Type: int = LsxType.UINT8
-    UUID: str = LsxType.FIXEDSTRING
-    children = (SourceConditions, TargetConditions, OnlyInNPCLoadout)
-
-
-class ItemList(LsxNode):
-    children = (Item,)
-
-
-class OnlyInDifficulty(LsxNode):
-    pass
-
-
-class ScriptConfigGlobalParameters(LsxNode):
-    pass
-
-
-class ScriptVariables(LsxNode):
-    Value: str = LsxType.LSSTRING_VALUE
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.FIXEDSTRING
-    children = (ScriptVariables,)
-
-
-class ScriptVariables(LsxNode):
-    children = (Object,)
-
-
-class ScriptOverrides(LsxNode):
-    children = (ScriptVariables,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.FIXEDSTRING
-    children = (ScriptOverrides,)
-
-
-class ScriptOverrides(LsxNode):
-    children = (Object,)
-
-
-class ScriptOverrides(LsxNode):
-    children = (ScriptOverrides,)
-
-
-class Parameter(LsxNode):
-    MapKey: str = LsxType.FIXEDSTRING
-    Type: int = LsxType.INT32
-    Value: LsxChildren = LsxType.LSSTRING
-
-
-class Parameters(LsxNode):
-    children = (Parameter,)
-
-
-class Script(LsxNode):
-    UUID: str = LsxType.FIXEDSTRING
-    children = (Parameters,)
-
-
-class Scripts(LsxNode):
-    children = (Script,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class AfroLongHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class AfroShortHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class CurlyLongHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class CurlyShortHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class DreadLongHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class DreadShortHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class LongHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.GUID
-
-
-class ParentRace(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class ShortHair(LsxNode):
-    children = (Object,)
-
-
-class MapValue(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    children = (MapValue,)
-
-
-class Visuals(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class WavyLongHair(LsxNode):
-    children = (Object,)
-
-
-class Object(LsxNode):
-    MapKey: str = LsxType.GUID
-    MapValue: str = LsxType.FIXEDSTRING
-
-
-class WavyShortHair(LsxNode):
-    children = (Object,)
-
-
-class Slot(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class Object(LsxNode):
-    ForcePresetValues: bool = LsxType.BOOL
-    GroupName: str = LsxType.FIXEDSTRING
-    MapKey: str = LsxType.FIXEDSTRING
-    MaterialPresetResource: str = LsxType.FIXEDSTRING
-
-
-class MaterialPresets(LsxNode):
-    children = (Object,)
-
-
-class Vector3Parameters(LsxNode):
-    Color: bool = LsxType.BOOL
-    Custom: bool = LsxType.BOOL
-    Enabled: bool = LsxType.BOOL
-    Parameter: str = LsxType.FIXEDSTRING
-    Value: str = LsxType.FVEC3
-
-
-class ColorPreset(LsxNode):
-    ForcePresetValues: bool = LsxType.BOOL
-    GroupName: str = LsxType.FIXEDSTRING
-    MaterialPresetResource: str = LsxType.FIXEDSTRING
-
-
-class MaterialOverrides(LsxNode):
-    MaterialResource: str = LsxType.FIXEDSTRING
-    children = (MaterialPresets, Vector3Parameters, ColorPreset)
-
-
-class RealMaterialOverrides(LsxNode):
-    pass
-
-
-class VisualSet(LsxNode):
-    BodySetVisual: str = LsxType.FIXEDSTRING
-    ShowEquipmentVisuals: bool = LsxType.BOOL
-    children = (MaterialOverrides, RealMaterialOverrides)
-
-
-class Equipment(LsxNode):
-    EquipmentSlots: int = LsxType.UINT32
-    children = (
-        AfroLongHair,
-        AfroShortHair,
-        CurlyLongHair,
-        CurlyShortHair,
-        DreadLongHair,
-        DreadShortHair,
-        LongHair,
-        ParentRace,
-        ShortHair,
-        Visuals,
-        WavyLongHair,
-        WavyShortHair,
-        Slot,
-        VisualSet,
-    )
-
-
-class EquipmentType(LsxNode):
-    _id_ = ""
-    Object: str = LsxType.GUID
-
-
-class EquipmentTypes(LsxNode):
-    children = (EquipmentType,)
-
-
-class FootStepInfo(LsxNode):
-    FootBoneName: str = LsxType.FIXEDSTRING
-    FootHearingEffectName: str = LsxType.LSSTRING_VALUE
-    FootPrintEffectName: str = LsxType.LSSTRING_VALUE
-    FootScuffEventName: str = LsxType.FIXEDSTRING
-    FootSlideEffectName: str = LsxType.LSSTRING_VALUE
-    FootSmearEffectName: str = LsxType.LSSTRING_VALUE
-    FootSoundEventName: str = LsxType.FIXEDSTRING
-    Name: str = LsxType.LSSTRING_VALUE
-
-
-class FootStepInfos(LsxNode):
-    children = (FootStepInfo,)
-
-
-class Attributes(LsxNode):
-    ActivateSoundEvent: str = LsxType.FIXEDSTRING
-    Animation: str = LsxType.FIXEDSTRING
-    ApplyDeathTypeBloodCheck: bool = LsxType.BOOL
-    CellAtGrow: int = LsxType.INT32
-    Conditions: str = LsxType.LSSTRING_VALUE
-    ExternalCauseAsSurfaceOwner: bool = LsxType.BOOL
-    GrowTimer: float = LsxType.FLOAT
-    LifeTime: float = LsxType.FLOAT
-    PlayOnHUD: bool = LsxType.BOOL
-    SurfaceType: str = LsxType.FIXEDSTRING
-    Timeout: float = LsxType.FLOAT
-    TotalCells: int = LsxType.INT32
-
-
-class Action(LsxNode):
-    ActionType: int = LsxType.INT32
-    children = (Attributes,)
-
-
-class OnDeathActions(LsxNode):
-    children = (Action,)
-
-
-class TreasureItem(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class TradeTreasures(LsxNode):
-    children = (TreasureItem,)
-
-
-class TreasureItem(LsxNode):
-    Object: str = LsxType.FIXEDSTRING
-
-
-class Treasures(LsxNode):
-    children = (TreasureItem,)
-
-
-class ConstructionPoint(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class ConstructionPoints(LsxNode):
-    children = (ConstructionPoint,)
-
-
-class HelperEnd(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class HelperStart(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class ConstructionLine(LsxNode):
-    ConstructionLineGuid: str = LsxType.GUID
-    children = (ConstructionPoints, HelperEnd, HelperStart)
-
-
-class ConstructionLines(LsxNode):
-    children = (ConstructionLine,)
-
-
-class ConstructionPointNeighbour(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class ConstructionPointNeighbours(LsxNode):
-    children = (ConstructionPointNeighbour,)
-
-
-class ConstructionPointLeftCornerTile(LsxNode):
-    TileId: str = LsxType.GUID
-
-
-class ConstructionPointLeftCornerTiles(LsxNode):
-    children = (ConstructionPointLeftCornerTile,)
-
-
-class ConstructionPointNeighbourTile(LsxNode):
-    ConstructionPointTile1Id: str = LsxType.GUID
-
-
-class ConstructionPointNeighbourTiles(LsxNode):
-    children = (ConstructionPointNeighbourTile,)
-
-
-class ConstructionPointRightCornerTile(LsxNode):
-    TileId: str = LsxType.GUID
-
-
-class ConstructionPointRightCornerTiles(LsxNode):
-    children = (ConstructionPointRightCornerTile,)
-
-
-class ConstructionTileList(LsxNode):
-    ConstructionNonOptimalTilesEnd: int = LsxType.INT32
-    ConstructionNonOptimalTilesStart: int = LsxType.INT32
-    Side: int = LsxType.INT32
-    children = (ConstructionPointLeftCornerTiles, ConstructionPointNeighbourTiles, ConstructionPointRightCornerTiles)
-
-
-class ConstructionTileLists(LsxNode):
-    children = (ConstructionTileList,)
-
-
-class ConstructionPointNeighbour(LsxNode):
-    children = (ConstructionPointNeighbours, ConstructionTileLists)
-
-
-class ConstructionPointNeighbours(LsxNode):
-    children = (ConstructionPointNeighbour,)
-
-
-class ConstructionPoint(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-    ConstructionPointStop: bool = LsxType.BOOL
-    children = (ConstructionPointNeighbours,)
-
-
-class ConstructionPoints(LsxNode):
-    children = (ConstructionPoint,)
-
-
-class ConstructionBranch(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class ConstructionBranches(LsxNode):
-    ConstructionBranchCount: int = LsxType.INT32
-    children = (ConstructionBranch,)
-
-
-class ConstructionPoint(LsxNode):
-    ConstructionHelperPoint: bool = LsxType.BOOL
-    ConstructionPointId: str = LsxType.GUID
-    ConstructionPointStretch: bool = LsxType.BOOL
-    ConstructionPointTransform: str = LsxType.MAT4X4
-    children = (ConstructionBranches,)
-
-
-class ConstructionSpline(LsxNode):
-    ConstructionPointCount: int = LsxType.INT32
-    id: str = LsxType.GUID
-    children = (ConstructionPoint,)
-
-
-class ConstructionBranch(LsxNode):
-    ConstructionPointId: str = LsxType.GUID
-
-
-class ConstructionBranches(LsxNode):
-    ConstructionBranchCount: int = LsxType.INT32
-    children = (ConstructionBranch,)
-
-
-class ConstructionPoint(LsxNode):
-    ConstructionHelperPoint: bool = LsxType.BOOL
-    ConstructionPointId: str = LsxType.GUID
-    ConstructionPointStretch: bool = LsxType.BOOL
-    ConstructionPointTransform: str = LsxType.MAT4X4
-    children = (ConstructionBranches,)
-
-
-class Exclusions(LsxNode):
-    pass
-
-
-class Index(LsxNode):
-    Object: int = LsxType.UINT16
-
-
-class Indices(LsxNode):
-    children = (Index,)
-
-
-class Vertex(LsxNode):
-    Position: str = LsxType.FVEC3
-    UV: str = LsxType.FVEC2
-
-
-class Vertices(LsxNode):
-    children = (Vertex,)
-
-
-class Filling(LsxNode):
-    BoundMax: str = LsxType.FVEC3
-    BoundMin: str = LsxType.FVEC3
-    FadeGroup: str = LsxType.FIXEDSTRING
-    FadeIn: bool = LsxType.BOOL
-    Fadeable: bool = LsxType.BOOL
-    HierarchyOnlyFade: bool = LsxType.BOOL
-    Id: str = LsxType.FIXEDSTRING
-    Material: str = LsxType.FIXEDSTRING
-    Name: str = LsxType.LSSTRING_VALUE
-    Opacity: float = LsxType.FLOAT
-    Physics: str = LsxType.FIXEDSTRING
-    Rotate: str = LsxType.MAT3X3
-    Scale: float = LsxType.FLOAT
-    SeeThrough: bool = LsxType.BOOL
-    Tiling: float = LsxType.FLOAT
-    Translate: str = LsxType.FVEC3
-    UVOffset: str = LsxType.FVEC2
-    UVRotation: float = LsxType.FLOAT
-    WalkOn: bool = LsxType.BOOL
-    children = (ConstructionSpline, Exclusions, Indices, Vertices)
-
-
-class Fillings(LsxNode):
-    children = (Filling,)
-
-
-class tile(LsxNode):
-    CanSeeThrough: bool = LsxType.BOOL
-    ClickThrough: bool = LsxType.BOOL
-    Climbable: bool = LsxType.BOOL
-    Flip: bool = LsxType.BOOL
-    Point1: str = LsxType.GUID
-    Point2: str = LsxType.GUID
-    Rotate: str = LsxType.MAT3X3
-    Scale: float = LsxType.FLOAT
-    ScaleZ: float = LsxType.FLOAT
-    ShootThrough: bool = LsxType.BOOL
-    ShootThroughType: int = LsxType.INT8
-    Stretchable: bool = LsxType.BOOL
-    Translate: str = LsxType.FVEC3
-    TwoSidedTileCount: int = LsxType.INT32
-    UUID: str = LsxType.FIXEDSTRING
-    WalkOn: bool = LsxType.BOOL
-    WalkThrough: bool = LsxType.BOOL
-    tile: str = LsxType.GUID
-
-
-class tiles(LsxNode):
-    CanSeeThrough: bool = LsxType.BOOL
-    ClickThrough: bool = LsxType.BOOL
-    Climbable: bool = LsxType.BOOL
-    CollideWithCamera: bool = LsxType.BOOL
-    ConstructionBend: bool = LsxType.BOOL
-    ConstructionPlaceTwoTiles: bool = LsxType.BOOL
-    FadeGroup: str = LsxType.FIXEDSTRING
-    FadeIn: bool = LsxType.BOOL
-    Fadeable: bool = LsxType.BOOL
-    HierarchyOnlyFade: bool = LsxType.BOOL
-    Opacity: float = LsxType.FLOAT
-    SeeThrough: bool = LsxType.BOOL
-    ShootThrough: bool = LsxType.BOOL
-    ShootThroughType: int = LsxType.INT8
-    TileSet: str = LsxType.FIXEDSTRING
-    WalkOn: bool = LsxType.BOOL
-    WalkThrough: bool = LsxType.BOOL
-    children = (tile,)
-
-
-class SpeakerGroup(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class SpeakerGroupList(LsxNode):
-    children = (SpeakerGroup,)
-
-
-class InteractionFilter(LsxNode):
-    Object: str = LsxType.GUID
-
-
-class InteractionFilterList(LsxNode):
-    children = (InteractionFilter,)
-
-
-class FadeChildren(LsxNode):
-    pass
-
-
-class GameMaster(LsxNode):
-    pass
-
-
-class FX(LsxNode):
-    pass
-
-
-class InstanceVisual(LsxNode):
-    pass
-
-
-class IntroFX(LsxNode):
-    pass
-
-
-class StatusData(LsxNode):
-    AffectedByRoll: bool = LsxType.BOOL
-    ApplyToCharacters: bool = LsxType.BOOL
-    ApplyToItems: bool = LsxType.BOOL
-    ApplyTypes: int = LsxType.UINT8
-    Chance: float = LsxType.FLOAT
-    Duration: float = LsxType.FLOAT
-    Force: bool = LsxType.BOOL
-    KeepAlive: bool = LsxType.BOOL
-    OnlyOncePerTurn: bool = LsxType.BOOL
-    Remove: bool = LsxType.BOOL
-    StatusId: str = LsxType.FIXEDSTRING
-    VanishOnApply: bool = LsxType.BOOL
-
-
-class StatusData(LsxNode):
-    children = (StatusData,)
-
-
 class GameObjects(LsxNode):
+    class Bounds(LsxNode):
+        class Bound(LsxNode):
+            Height: float = LsxType.FLOAT
+            IsIgnoringScale: bool = LsxType.BOOL
+            Max: str = LsxType.FVEC3
+            Min: str = LsxType.FVEC3
+            Radius: float = LsxType.FLOAT
+            Shape: int = LsxType.UINT8
+            Type: int = LsxType.UINT8
+
+        children = (Bound,)
+
+    class OnDestroyActions(LsxNode):
+        class Action(LsxNode):
+            class Attributes(LsxNode):
+                ActivateSoundEvent: str = LsxType.FIXEDSTRING
+                Animation: str = LsxType.FIXEDSTRING
+                ApplyDeathTypeBloodCheck: bool = LsxType.BOOL
+                CellAtGrow: int = LsxType.INT32
+                Conditions: str = LsxType.LSSTRING_VALUE
+                ExplodeFX: str = LsxType.FIXEDSTRING
+                ExternalCauseAsSurfaceOwner: bool = LsxType.BOOL
+                FadeOutDelay: float = LsxType.FLOAT
+                FadeOutFX: str = LsxType.FIXEDSTRING
+                GrowTimer: float = LsxType.FLOAT
+                LifeTime: float = LsxType.FLOAT
+                PlayOnHUD: bool = LsxType.BOOL
+                Radius: float = LsxType.FLOAT
+                SnapToGround: bool = LsxType.BOOL
+                SurfaceType: str = LsxType.FIXEDSTRING
+                TargetItemState: int = LsxType.UINT8
+                Timeout: float = LsxType.FLOAT
+                TotalCells: int = LsxType.INT32
+                VisualWithDynamicPhysics: str = LsxType.FIXEDSTRING
+                templateAfterDestruction: str = LsxType.FIXEDSTRING
+                visualDestruction: str = LsxType.FIXEDSTRING
+
+            ActionType: int = LsxType.INT32
+            children = (Attributes,)
+
+        children = (Action,)
+
+    class PrefabChildrenGroup(LsxNode):
+        class PrefabChildren(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        children = (PrefabChildren,)
+
+    class PrefabChildrenTransformGroup(LsxNode):
+        class PrefabChildrenTransforms(LsxNode):
+            Position: str = LsxType.FVEC3
+            RotationQuat: str = LsxType.FVEC4
+            Scale: float = LsxType.FLOAT
+
+        children = (PrefabChildrenTransforms,)
+
+    class LocomotionParams(LsxNode):
+        IsMovementEnabled: bool = LsxType.BOOL
+        IsWorldClimbingEnabled: bool = LsxType.BOOL
+        LadderBlendspace_Attach_Down: str = LsxType.FIXEDSTRING
+        LadderBlendspace_Attach_Up: str = LsxType.FIXEDSTRING
+        LadderBlendspace_Detach_Down: str = LsxType.FIXEDSTRING
+        LadderBlendspace_Detach_Up: str = LsxType.FIXEDSTRING
+        MaxDashDistance: float = LsxType.FLOAT
+        MovementAcceleration: float = LsxType.FLOAT
+        MovementSpeedDash: float = LsxType.FLOAT
+        MovementSpeedRun: float = LsxType.FLOAT
+        MovementSpeedSprint: float = LsxType.FLOAT
+        MovementSpeedStroll: float = LsxType.FLOAT
+        MovementSpeedWalk: float = LsxType.FLOAT
+        MovementStepUpHeight: float = LsxType.FLOAT
+        MovementTiltToRemap: str = LsxType.FIXEDSTRING
+        ProbeSpineBOffset: float = LsxType.FLOAT
+        SteeringSpeedCurveWithoutTransitions: str = LsxType.FIXEDSTRING
+        SteeringSpeed_CastingCurve: str = LsxType.FIXEDSTRING
+        SteeringSpeed_MovingCurve: str = LsxType.FIXEDSTRING
+        UseStandAtDestination: bool = LsxType.BOOL
+        WorldClimbingBlendspace_DownA: str = LsxType.FIXEDSTRING
+        WorldClimbingBlendspace_DownB: str = LsxType.FIXEDSTRING
+        WorldClimbingBlendspace_DownBHeight: float = LsxType.FLOAT
+        WorldClimbingBlendspace_UpA: str = LsxType.FIXEDSTRING
+        WorldClimbingBlendspace_UpB: str = LsxType.FIXEDSTRING
+        WorldClimbingBlendspace_UpBHeight: float = LsxType.FLOAT
+        WorldClimbingHeight: float = LsxType.FLOAT
+        WorldClimbingRadius: float = LsxType.FLOAT
+        WorldClimbingSpeed: float = LsxType.FLOAT
+
+    class SkillList(LsxNode):
+        class Skill(LsxNode):
+            class SourceConditions(LsxNode):
+                class Tags(LsxNode):
+                    class Tag(LsxNode):
+                        Object: str = LsxType.GUID
+
+                    children = (Tag,)
+
+                MaximumHealthPercentage: int = LsxType.INT32
+                MinimumHealthPercentage: int = LsxType.INT32
+                children = (Tags,)
+
+            class TargetConditions(LsxNode):
+                class Tags(LsxNode):
+                    class Tag(LsxNode):
+                        Object: str = LsxType.GUID
+
+                    children = (Tag,)
+
+                MaximumHealthPercentage: int = LsxType.INT32
+                MinimumHealthPercentage: int = LsxType.INT32
+                children = (Tags,)
+
+            class OnlyInNPCLoadout(LsxNode):
+                Object: str = LsxType.GUID
+
+            class ExcludeInNPCLoadout(LsxNode):
+                Object: str = LsxType.GUID
+
+            AIFlags: int = LsxType.UINT16
+            CasualExplorer: bool = LsxType.BOOL
+            Classic: bool = LsxType.BOOL
+            FallbackStartRound: int = LsxType.INT32
+            HonorHardcore: bool = LsxType.BOOL
+            LearningStrategy: int = LsxType.UINT8
+            MinimumImpact: int = LsxType.INT32
+            OnlyCastOnSelf: bool = LsxType.BOOL
+            ScoreModifier: float = LsxType.FLOAT
+            Skill: str = LsxType.FIXEDSTRING
+            SpellCastingAbility: int = LsxType.UINT8
+            StartRound: int = LsxType.INT32
+            TacticianHardcore: bool = LsxType.BOOL
+            children = (SourceConditions, TargetConditions, OnlyInNPCLoadout, ExcludeInNPCLoadout)
+
+        children = (Skill,)
+
+    class StatusList(LsxNode):
+        class Status(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        children = (Status,)
+
+    class Tags(LsxNode):
+        class Tag(LsxNode):
+            Object: str = LsxType.GUID
+
+        children = (Tag,)
+
+    class PickingPhysics(LsxNode):
+        class PickingPhysicsTemplates(LsxNode):
+            MapKey: str = LsxType.FIXEDSTRING
+            MapValue: str = LsxType.FIXEDSTRING
+
+        children = (PickingPhysicsTemplates,)
+
+    class OnUsePeaceActions(LsxNode):
+        class Action(LsxNode):
+            class Attributes(LsxNode):
+                AiUseInCombat: bool = LsxType.BOOL
+                AllowScaling: bool = LsxType.BOOL
+                Animation: str = LsxType.FIXEDSTRING
+                BlockMapMarkerNavigation: bool = LsxType.BOOL
+                BookId: str = LsxType.FIXEDSTRING
+                BotomHorizontalOffset: float = LsxType.FLOAT
+                BotomVerticalOffset: float = LsxType.FLOAT
+                ClassId: str = LsxType.GUID
+                ClimbDirection: int = LsxType.INT32
+                CombineSlots: int = LsxType.INT8
+                Conditions: str = LsxType.LSSTRING_VALUE
+                Consume: bool = LsxType.BOOL
+                EventID: str = LsxType.FIXEDSTRING
+                FallbackPreviewRadius: float = LsxType.FLOAT
+                Heal: float = LsxType.FLOAT
+                InsertSlots: int = LsxType.INT8
+                IsBase: bool = LsxType.BOOL
+                IsHiddenStatus: bool = LsxType.BOOL
+                NodeLadderOffest: float = LsxType.FLOAT
+                RecipeID: str = LsxType.FIXEDSTRING
+                SecretDoor: bool = LsxType.BOOL
+                SkillID: str = LsxType.FIXEDSTRING
+                SnapToGround: bool = LsxType.BOOL
+                Source: str = LsxType.FIXEDSTRING
+                SourceType: int = LsxType.INT32
+                SpellId: str = LsxType.FIXEDSTRING
+                StatsId: str = LsxType.FIXEDSTRING
+                StatusDuration: int = LsxType.INT32
+                Target: str = LsxType.FIXEDSTRING
+                TopAttachNearOffset: float = LsxType.FLOAT
+                TopDetachOffset: float = LsxType.FLOAT
+                TopLineTolerance: float = LsxType.FLOAT
+                TopMidOffset: float = LsxType.FLOAT
+                TopMidToPlatformFixedLength: float = LsxType.FLOAT
+                Type: int = LsxType.INT32
+                Visibility: int = LsxType.INT32
+
+            ActionType: int = LsxType.INT32
+            children = (Attributes,)
+
+        children = (Action,)
+
+    class ConstellationConfigGlobalParameters(LsxNode):
+        class ConstellationConfigParameter(LsxNode):
+            class Value(LsxNode):
+                class Scalar(LsxNode):
+                    class Scalar(LsxNode):
+                        class String(LsxNode):
+                            String: str = LsxType.LSSTRING_VALUE
+
+                        class double(LsxNode):
+                            double: float = LsxType.DOUBLE
+
+                        children = (String, double)
+
+                    children = (Scalar,)
+
+                children = (Scalar,)
+
+            Name: str = LsxType.LSSTRING_VALUE
+            children = (Value,)
+
+        children = (ConstellationConfigParameter,)
+
+    class ExcludeInDifficulty(LsxNode):
+        pass
+
+    class InventoryList(LsxNode):
+        class InventoryItem(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        children = (InventoryItem,)
+
+    class ItemList(LsxNode):
+        class Item(LsxNode):
+            class SourceConditions(LsxNode):
+                class Tags(LsxNode):
+                    pass
+
+                MaximumHealthPercentage: int = LsxType.INT32
+                MinimumHealthPercentage: int = LsxType.INT32
+                children = (Tags,)
+
+            class TargetConditions(LsxNode):
+                class Tags(LsxNode):
+                    pass
+
+                MaximumHealthPercentage: int = LsxType.INT32
+                MinimumHealthPercentage: int = LsxType.INT32
+                children = (Tags,)
+
+            class OnlyInNPCLoadout(LsxNode):
+                Object: str = LsxType.GUID
+
+            AIFlags: int = LsxType.UINT16
+            Amount: int = LsxType.INT32
+            CanBePickpocketed: bool = LsxType.BOOL
+            CasualExplorer: bool = LsxType.BOOL
+            Classic: bool = LsxType.BOOL
+            FallbackStartRound: int = LsxType.INT32
+            HonorHardcore: bool = LsxType.BOOL
+            IsDroppedOnDeath: bool = LsxType.BOOL
+            IsTradable: int = LsxType.UINT8
+            IsTradeable: bool = LsxType.BOOL
+            ItemName: str = LsxType.LSSTRING_VALUE
+            LevelName: str = LsxType.LSSTRING_VALUE
+            MinimumImpact: int = LsxType.INT32
+            OnlyCastOnSelf: bool = LsxType.BOOL
+            ScoreModifier: float = LsxType.FLOAT
+            StartRound: int = LsxType.INT32
+            TacticianHardcore: bool = LsxType.BOOL
+            TemplateID: str = LsxType.FIXEDSTRING
+            Type: int = LsxType.UINT8
+            UUID: str = LsxType.FIXEDSTRING
+            children = (SourceConditions, TargetConditions, OnlyInNPCLoadout)
+
+        children = (Item,)
+
+    class OnlyInDifficulty(LsxNode):
+        pass
+
+    class ScriptConfigGlobalParameters(LsxNode):
+        pass
+
+    class ScriptOverrides(LsxNode):
+        class ScriptOverrides(LsxNode):
+            class Object(LsxNode):
+                class ScriptOverrides(LsxNode):
+                    class ScriptVariables(LsxNode):
+                        class Object(LsxNode):
+                            class ScriptVariables(LsxNode):
+                                Value: str = LsxType.LSSTRING_VALUE
+
+                            MapKey: str = LsxType.FIXEDSTRING
+                            children = (ScriptVariables,)
+
+                        children = (Object,)
+
+                    children = (ScriptVariables,)
+
+                MapKey: str = LsxType.FIXEDSTRING
+                children = (ScriptOverrides,)
+
+            children = (Object,)
+
+        children = (ScriptOverrides,)
+
+    class Scripts(LsxNode):
+        class Script(LsxNode):
+            class Parameters(LsxNode):
+                class Parameter(LsxNode):
+                    MapKey: str = LsxType.FIXEDSTRING
+                    Type: int = LsxType.INT32
+                    Value: LsxChildren = LsxType.LSSTRING
+
+                children = (Parameter,)
+
+            UUID: str = LsxType.FIXEDSTRING
+            children = (Parameters,)
+
+        children = (Script,)
+
+    class Equipment_(LsxNode):
+        _id_ = "Equipment"
+
+        class AfroLongHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class AfroShortHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class CurlyLongHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class CurlyShortHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class DreadLongHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class DreadShortHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class LongHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class ParentRace(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.GUID
+
+            children = (Object,)
+
+        class ShortHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class Visuals(LsxNode):
+            class Object(LsxNode):
+                class MapValue(LsxNode):
+                    Object: str = LsxType.FIXEDSTRING
+
+                MapKey: str = LsxType.GUID
+                children = (MapValue,)
+
+            children = (Object,)
+
+        class WavyLongHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class WavyShortHair(LsxNode):
+            class Object(LsxNode):
+                MapKey: str = LsxType.GUID
+                MapValue: str = LsxType.FIXEDSTRING
+
+            children = (Object,)
+
+        class Slot(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        class VisualSet(LsxNode):
+            class MaterialOverrides(LsxNode):
+                class MaterialPresets(LsxNode):
+                    class Object(LsxNode):
+                        ForcePresetValues: bool = LsxType.BOOL
+                        GroupName: str = LsxType.FIXEDSTRING
+                        MapKey: str = LsxType.FIXEDSTRING
+                        MaterialPresetResource: str = LsxType.FIXEDSTRING
+
+                    children = (Object,)
+
+                class Vector3Parameters(LsxNode):
+                    Color: bool = LsxType.BOOL
+                    Custom: bool = LsxType.BOOL
+                    Enabled: bool = LsxType.BOOL
+                    Parameter: str = LsxType.FIXEDSTRING
+                    Value: str = LsxType.FVEC3
+
+                class ColorPreset(LsxNode):
+                    ForcePresetValues: bool = LsxType.BOOL
+                    GroupName: str = LsxType.FIXEDSTRING
+                    MaterialPresetResource: str = LsxType.FIXEDSTRING
+
+                MaterialResource: str = LsxType.FIXEDSTRING
+                children = (MaterialPresets, Vector3Parameters, ColorPreset)
+
+            class RealMaterialOverrides(LsxNode):
+                pass
+
+            BodySetVisual: str = LsxType.FIXEDSTRING
+            ShowEquipmentVisuals: bool = LsxType.BOOL
+            children = (MaterialOverrides, RealMaterialOverrides)
+
+        EquipmentSlots: int = LsxType.UINT32
+        children = (
+            AfroLongHair,
+            AfroShortHair,
+            CurlyLongHair,
+            CurlyShortHair,
+            DreadLongHair,
+            DreadShortHair,
+            LongHair,
+            ParentRace,
+            ShortHair,
+            Visuals,
+            WavyLongHair,
+            WavyShortHair,
+            Slot,
+            VisualSet,
+        )
+
+    class EquipmentTypes(LsxNode):
+        class EquipmentType(LsxNode):
+            _id_ = ""
+            Object: str = LsxType.GUID
+
+        children = (EquipmentType,)
+
+    class FootStepInfos(LsxNode):
+        class FootStepInfo(LsxNode):
+            FootBoneName: str = LsxType.FIXEDSTRING
+            FootHearingEffectName: str = LsxType.LSSTRING_VALUE
+            FootPrintEffectName: str = LsxType.LSSTRING_VALUE
+            FootScuffEventName: str = LsxType.FIXEDSTRING
+            FootSlideEffectName: str = LsxType.LSSTRING_VALUE
+            FootSmearEffectName: str = LsxType.LSSTRING_VALUE
+            FootSoundEventName: str = LsxType.FIXEDSTRING
+            Name: str = LsxType.LSSTRING_VALUE
+
+        children = (FootStepInfo,)
+
+    class OnDeathActions(LsxNode):
+        class Action(LsxNode):
+            class Attributes(LsxNode):
+                ActivateSoundEvent: str = LsxType.FIXEDSTRING
+                Animation: str = LsxType.FIXEDSTRING
+                ApplyDeathTypeBloodCheck: bool = LsxType.BOOL
+                CellAtGrow: int = LsxType.INT32
+                Conditions: str = LsxType.LSSTRING_VALUE
+                ExternalCauseAsSurfaceOwner: bool = LsxType.BOOL
+                GrowTimer: float = LsxType.FLOAT
+                LifeTime: float = LsxType.FLOAT
+                PlayOnHUD: bool = LsxType.BOOL
+                SurfaceType: str = LsxType.FIXEDSTRING
+                Timeout: float = LsxType.FLOAT
+                TotalCells: int = LsxType.INT32
+
+            ActionType: int = LsxType.INT32
+            children = (Attributes,)
+
+        children = (Action,)
+
+    class TradeTreasures(LsxNode):
+        class TreasureItem(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        children = (TreasureItem,)
+
+    class Treasures(LsxNode):
+        class TreasureItem(LsxNode):
+            Object: str = LsxType.FIXEDSTRING
+
+        children = (TreasureItem,)
+
+    class ConstructionLines(LsxNode):
+        class ConstructionLine(LsxNode):
+            class ConstructionPoints(LsxNode):
+                class ConstructionPoint(LsxNode):
+                    ConstructionPointId: str = LsxType.GUID
+
+                children = (ConstructionPoint,)
+
+            class HelperEnd(LsxNode):
+                ConstructionPointId: str = LsxType.GUID
+
+            class HelperStart(LsxNode):
+                ConstructionPointId: str = LsxType.GUID
+
+            ConstructionLineGuid: str = LsxType.GUID
+            children = (ConstructionPoints, HelperEnd, HelperStart)
+
+        children = (ConstructionLine,)
+
+    class ConstructionPoints(LsxNode):
+        class ConstructionPoint(LsxNode):
+            class ConstructionPointNeighbours(LsxNode):
+                class ConstructionPointNeighbour(LsxNode):
+                    class ConstructionPointNeighbours(LsxNode):
+                        class ConstructionPointNeighbour(LsxNode):
+                            ConstructionPointId: str = LsxType.GUID
+
+                        children = (ConstructionPointNeighbour,)
+
+                    class ConstructionTileLists(LsxNode):
+                        class ConstructionTileList(LsxNode):
+                            class ConstructionPointLeftCornerTiles(LsxNode):
+                                class ConstructionPointLeftCornerTile(LsxNode):
+                                    TileId: str = LsxType.GUID
+
+                                children = (ConstructionPointLeftCornerTile,)
+
+                            class ConstructionPointNeighbourTiles(LsxNode):
+                                class ConstructionPointNeighbourTile(LsxNode):
+                                    ConstructionPointTile1Id: str = LsxType.GUID
+
+                                children = (ConstructionPointNeighbourTile,)
+
+                            class ConstructionPointRightCornerTiles(LsxNode):
+                                class ConstructionPointRightCornerTile(LsxNode):
+                                    TileId: str = LsxType.GUID
+
+                                children = (ConstructionPointRightCornerTile,)
+
+                            ConstructionNonOptimalTilesEnd: int = LsxType.INT32
+                            ConstructionNonOptimalTilesStart: int = LsxType.INT32
+                            Side: int = LsxType.INT32
+                            children = (
+                                ConstructionPointLeftCornerTiles,
+                                ConstructionPointNeighbourTiles,
+                                ConstructionPointRightCornerTiles,
+                            )
+
+                        children = (ConstructionTileList,)
+
+                    children = (ConstructionPointNeighbours, ConstructionTileLists)
+
+                children = (ConstructionPointNeighbour,)
+
+            ConstructionPointId: str = LsxType.GUID
+            ConstructionPointStop: bool = LsxType.BOOL
+            children = (ConstructionPointNeighbours,)
+
+        children = (ConstructionPoint,)
+
+    class ConstructionSpline(LsxNode):
+        class ConstructionPoint(LsxNode):
+            class ConstructionBranches(LsxNode):
+                class ConstructionBranch(LsxNode):
+                    ConstructionPointId: str = LsxType.GUID
+
+                ConstructionBranchCount: int = LsxType.INT32
+                children = (ConstructionBranch,)
+
+            ConstructionHelperPoint: bool = LsxType.BOOL
+            ConstructionPointId: str = LsxType.GUID
+            ConstructionPointStretch: bool = LsxType.BOOL
+            ConstructionPointTransform: str = LsxType.MAT4X4
+            children = (ConstructionBranches,)
+
+        ConstructionPointCount: int = LsxType.INT32
+        id: str = LsxType.GUID
+        children = (ConstructionPoint,)
+
+    class Fillings(LsxNode):
+        class Filling(LsxNode):
+            class ConstructionSpline(LsxNode):
+                class ConstructionPoint(LsxNode):
+                    class ConstructionBranches(LsxNode):
+                        class ConstructionBranch(LsxNode):
+                            ConstructionPointId: str = LsxType.GUID
+
+                        ConstructionBranchCount: int = LsxType.INT32
+                        children = (ConstructionBranch,)
+
+                    ConstructionHelperPoint: bool = LsxType.BOOL
+                    ConstructionPointId: str = LsxType.GUID
+                    ConstructionPointStretch: bool = LsxType.BOOL
+                    ConstructionPointTransform: str = LsxType.MAT4X4
+                    children = (ConstructionBranches,)
+
+                ConstructionPointCount: int = LsxType.INT32
+                id: str = LsxType.GUID
+                children = (ConstructionPoint,)
+
+            class Exclusions(LsxNode):
+                pass
+
+            class Indices(LsxNode):
+                class Index(LsxNode):
+                    Object: int = LsxType.UINT16
+
+                children = (Index,)
+
+            class Vertices(LsxNode):
+                class Vertex(LsxNode):
+                    Position: str = LsxType.FVEC3
+                    UV: str = LsxType.FVEC2
+
+                children = (Vertex,)
+
+            BoundMax: str = LsxType.FVEC3
+            BoundMin: str = LsxType.FVEC3
+            FadeGroup: str = LsxType.FIXEDSTRING
+            FadeIn: bool = LsxType.BOOL
+            Fadeable: bool = LsxType.BOOL
+            HierarchyOnlyFade: bool = LsxType.BOOL
+            Id: str = LsxType.FIXEDSTRING
+            Material: str = LsxType.FIXEDSTRING
+            Name: str = LsxType.LSSTRING_VALUE
+            Opacity: float = LsxType.FLOAT
+            Physics: str = LsxType.FIXEDSTRING
+            Rotate: str = LsxType.MAT3X3
+            Scale: float = LsxType.FLOAT
+            SeeThrough: bool = LsxType.BOOL
+            Tiling: float = LsxType.FLOAT
+            Translate: str = LsxType.FVEC3
+            UVOffset: str = LsxType.FVEC2
+            UVRotation: float = LsxType.FLOAT
+            WalkOn: bool = LsxType.BOOL
+            children = (ConstructionSpline, Exclusions, Indices, Vertices)
+
+        children = (Filling,)
+
+    class tiles(LsxNode):
+        class tile(LsxNode):
+            CanSeeThrough: bool = LsxType.BOOL
+            ClickThrough: bool = LsxType.BOOL
+            Climbable: bool = LsxType.BOOL
+            Flip: bool = LsxType.BOOL
+            Point1: str = LsxType.GUID
+            Point2: str = LsxType.GUID
+            Rotate: str = LsxType.MAT3X3
+            Scale: float = LsxType.FLOAT
+            ScaleZ: float = LsxType.FLOAT
+            ShootThrough: bool = LsxType.BOOL
+            ShootThroughType: int = LsxType.INT8
+            Stretchable: bool = LsxType.BOOL
+            Translate: str = LsxType.FVEC3
+            TwoSidedTileCount: int = LsxType.INT32
+            UUID: str = LsxType.FIXEDSTRING
+            WalkOn: bool = LsxType.BOOL
+            WalkThrough: bool = LsxType.BOOL
+            tile: str = LsxType.GUID
+
+        CanSeeThrough: bool = LsxType.BOOL
+        ClickThrough: bool = LsxType.BOOL
+        Climbable: bool = LsxType.BOOL
+        CollideWithCamera: bool = LsxType.BOOL
+        ConstructionBend: bool = LsxType.BOOL
+        ConstructionPlaceTwoTiles: bool = LsxType.BOOL
+        FadeGroup: str = LsxType.FIXEDSTRING
+        FadeIn: bool = LsxType.BOOL
+        Fadeable: bool = LsxType.BOOL
+        HierarchyOnlyFade: bool = LsxType.BOOL
+        Opacity: float = LsxType.FLOAT
+        SeeThrough: bool = LsxType.BOOL
+        ShootThrough: bool = LsxType.BOOL
+        ShootThroughType: int = LsxType.INT8
+        TileSet: str = LsxType.FIXEDSTRING
+        WalkOn: bool = LsxType.BOOL
+        WalkThrough: bool = LsxType.BOOL
+        children = (tile,)
+
+    class SpeakerGroupList(LsxNode):
+        class SpeakerGroup(LsxNode):
+            Object: str = LsxType.GUID
+
+        children = (SpeakerGroup,)
+
+    class InteractionFilterList(LsxNode):
+        class InteractionFilter(LsxNode):
+            Object: str = LsxType.GUID
+
+        children = (InteractionFilter,)
+
+    class FadeChildren(LsxNode):
+        pass
+
+    class GameMaster(LsxNode):
+        pass
+
+    class FX(LsxNode):
+        pass
+
+    class InstanceVisual(LsxNode):
+        pass
+
+    class IntroFX(LsxNode):
+        pass
+
+    class StatusData(LsxNode):
+        class StatusData(LsxNode):
+            AffectedByRoll: bool = LsxType.BOOL
+            ApplyToCharacters: bool = LsxType.BOOL
+            ApplyToItems: bool = LsxType.BOOL
+            ApplyTypes: int = LsxType.UINT8
+            Chance: float = LsxType.FLOAT
+            Duration: float = LsxType.FLOAT
+            Force: bool = LsxType.BOOL
+            KeepAlive: bool = LsxType.BOOL
+            OnlyOncePerTurn: bool = LsxType.BOOL
+            Remove: bool = LsxType.BOOL
+            StatusId: str = LsxType.FIXEDSTRING
+            VanishOnApply: bool = LsxType.BOOL
+
+        children = (StatusData,)
+
     Acceleration: float = LsxType.FLOAT
     ActiveCharacterLightID: str = LsxType.FIXEDSTRING
     AiHint: str = LsxType.GUID
@@ -953,8 +813,8 @@ class GameObjects(LsxNode):
     DeathRaycastMinLength: float = LsxType.FLOAT
     DeathRaycastVerticalLength: float = LsxType.FLOAT
     DecalMaterial: str = LsxType.FIXEDSTRING
-    DefaultState_uint8: int = LsxType.UINT8  # DefaultState
     DefaultState_FixedString: str = LsxType.FIXEDSTRING  # DefaultState
+    DefaultState_uint8: int = LsxType.UINT8  # DefaultState
     Description: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
     DestroyTrailFXOnImpact: bool = LsxType.BOOL
     DestroyWithStack: bool = LsxType.BOOL
@@ -1104,8 +964,8 @@ class GameObjects(LsxNode):
     PreviewPathImpactFX: str = LsxType.FIXEDSTRING
     PreviewPathMaterial: str = LsxType.FIXEDSTRING
     PreviewPathRadius: float = LsxType.FLOAT
-    Race_int8: int = LsxType.INT8  # Race
     Race_guid: str = LsxType.GUID  # Race
+    Race_int8: int = LsxType.INT8  # Race
     Radius: float = LsxType.FLOAT
     ReadinessFlags: int = LsxType.UINT32
     RecieveDecal: bool = LsxType.BOOL
@@ -1242,7 +1102,7 @@ class GameObjects(LsxNode):
         ScriptConfigGlobalParameters,
         ScriptOverrides,
         Scripts,
-        Equipment,
+        Equipment_,
         EquipmentTypes,
         FootStepInfos,
         OnDeathActions,

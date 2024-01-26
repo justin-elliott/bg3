@@ -9,11 +9,10 @@ from modtools.lsx import Lsx
 from modtools.lsx.type import LsxType
 
 
-class Tags(LsxNode):
-    Object: str = LsxType.GUID
-
-
 class ClassDescription(LsxNode):
+    class Tags(LsxNode):
+        Object: str = LsxType.GUID
+
     CharacterCreationPose: str = LsxType.GUID
     ClassEquipment: str = LsxType.FIXEDSTRING
     Description: tuple[str, int] | str = LsxType.TRANSLATEDSTRING

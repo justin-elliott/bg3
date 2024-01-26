@@ -4,9 +4,9 @@ Representation of a collection of .lsx child nodes.
 """
 
 from collections.abc import Iterable
-from modtools.lsx_v3.node import LsxNode
+from modtools.lsx.node import LsxNode
 
-import modtools.lsx_v3.detail as detail
+import modtools.lsx.detail as detail
 
 
 class LsxChildren(detail.LsxChildren[LsxNode]):

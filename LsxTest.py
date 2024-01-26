@@ -6,12 +6,12 @@ Test code for modtools.lsx_v2.
 import os
 import xml.etree.ElementTree as ElementTree
 
-from modtools.lsx_v3.children import LsxChildren
-from modtools.lsx_v3.document import LsxDocument
-from modtools.lsx_v3.game.progressions import Progression, Progressions, Subclass, Subclasses
-from modtools.lsx_v3.node import LsxNode
-from modtools.lsx_v3.lsx import Lsx
-from modtools.lsx_v3.type import LsxType
+from modtools.lsx.children import LsxChildren
+from modtools.lsx.document import LsxDocument
+from modtools.lsx.game.progressions import Progression, Progressions, Subclass, Subclasses
+from modtools.lsx.node import LsxNode
+from modtools.lsx import Lsx
+from modtools.lsx.type import LsxType
 from modtools.unpak import Unpak
 
 
@@ -123,12 +123,12 @@ children_copy = lsx_children.copy() + lsx_children.copy()
 children_copy.removeall(lambda n: n.Name == "Bob")
 print(children_copy)
 
-children_copy = lsx_children.copy() + lsx_children.copy()
-children_copy.unique(lambda n: n.Name)
+children_copy: LsxChildren = lsx_children.copy() + lsx_children.copy()
+children_copy.unique(key=lambda n: n.Name)
 print("unique =", children_copy)
 
 children_copy = lsx_children.copy() + lsx_children.copy()
-children_copy.sort(lambda n: n.Name)
+children_copy.sort(key=lambda n: n.Name)
 print("sort =", children_copy)
 
 children_copy.update(lsx_children, key=lambda n: n.Name)

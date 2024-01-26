@@ -3,10 +3,10 @@
 Progression definitions.
 """
 
-from modtools.lsx_v3.document import LsxDocument
-from modtools.lsx_v3.node import LsxNode
-from modtools.lsx_v3.lsx import Lsx
-from modtools.lsx_v3.type import LsxType
+from modtools.lsx.document import LsxDocument
+from modtools.lsx.node import LsxNode
+from modtools.lsx.lsx import Lsx
+from modtools.lsx.type import LsxType
 
 
 class Subclass(LsxNode):
@@ -35,8 +35,6 @@ class Progression(LsxNode):
 
 
 class Progressions(LsxDocument):
-    region = "Progressions"
-    root = "root"
     path = "Public/{folder}/Progressions/Progressions.lsx"
     children = (Progression,)
 

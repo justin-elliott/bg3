@@ -3,7 +3,7 @@
 Representation of .lsx types.
 """
 
-from modtools.lsx_v3.attributes import LsxBool, LsxList, LsxNumber, LsxString, LsxTranslation
+from modtools.lsx.attributes import LsxBool, LsxList, LsxNumber, LsxString, LsxTranslation
 
 
 class LsxType:

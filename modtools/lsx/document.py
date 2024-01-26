@@ -6,8 +6,8 @@ Representation of .lsx documents.
 import os
 
 from collections.abc import Callable
-from modtools.lsx_v3.children import LsxChildren
-from modtools.lsx_v3.node import LsxNode
+from modtools.lsx.children import LsxChildren
+from modtools.lsx.node import LsxNode
 from modtools.prologue import XML_PROLOGUE
 from xml.etree.ElementTree import Element, ElementTree, indent as xml_indent, SubElement
 
@@ -17,15 +17,14 @@ class LsxDocument:
 
     _child_types_: tuple[type[LsxNode], ...] = ()
 
-    id: str
     region: str
     root: str
     path: str
-    children: tuple[type[LsxNode], ...]
+    children: LsxChildren
 
     @classmethod
     def __init_subclass__(cls) -> None:
-        missing_members = [member for member in ["region", "root", "path", "children"] if member not in cls.__dict__]
+        missing_members = [member for member in ["path", "children"] if member not in cls.__dict__]
         if missing_members:
             raise AttributeError(f"{cls.__name__} missing member(s): {", ".join(missing_members)}")
 
@@ -33,13 +32,10 @@ class LsxDocument:
         if len(cls._child_types_) == 0:
             raise TypeError(f"{cls.__name__} missing child types")
 
-        setattr(cls, "_id", str(cls.__dict__["id"]) if "id" in cls.__dict__ else cls.__name__)
-        setattr(cls, "id", property(fget=cls._wrap_getter("_id")))
-
-        setattr(cls, "_region", str(cls.__dict__["region"]))
+        setattr(cls, "_region", str(cls.__dict__.get("region", cls.__name__)))
         setattr(cls, "region", property(fget=cls._wrap_getter("_region")))
 
-        setattr(cls, "_root", str(cls.__dict__["root"]))
+        setattr(cls, "_root", str(cls.__dict__.get("root", "root")))
         setattr(cls, "root", property(fget=cls._wrap_getter("_root")))
 
         setattr(cls, "_path", str(cls.__dict__["path"]))
@@ -49,13 +45,11 @@ class LsxDocument:
         setattr(cls, "children", property(fget=getter, fset=setter))
 
     def __init__(self, *nodes: LsxNode):
-        children: LsxChildren = self.children
-        children.extend(nodes)
+        self.children.extend(nodes)
 
     def load(self, children_node: Element) -> None:
         """Load the document's children from the given XML <children> node."""
-        children: LsxChildren = self.children
-        children.clear()
+        self.children.clear()
 
         for node in children_node.findall("node"):
             child_name = node.get("id")
@@ -66,7 +60,7 @@ class LsxDocument:
                 raise TypeError(f"{LsxDocument.load.__qualname__} unsupported node id='{child_name}'")
             child = child_type()
             child.load(node)
-            children.append(child)
+            self.children.append(child)
 
     def save(self, mod_path: os.PathLike, *,
              version: tuple[int, int, int, int] | None = None,

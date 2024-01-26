@@ -13,7 +13,8 @@ from modtools.gamedata import GameData, GameDatum
 from modtools.unpak import Unpak
 from modtools.localization import Localization
 from modtools.lsx_v1 import Lsx
-from modtools.lsx.types import LsxCollection, Node
+from modtools.lsx import Lsx as Lsx_v3
+from modtools.lsx.node import LsxNode
 from modtools.modifiers import Modifiers
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from modtools.valuelists import ValueLists
@@ -39,7 +40,7 @@ class Mod:
     _localization: Localization
 
     _gamedata: GameData
-    _lsx_collection: LsxCollection
+    _lsx: Lsx_v3
 
     _character_creation_presets: Lsx
     _class_descriptions: Lsx
@@ -85,7 +86,7 @@ class Mod:
         self._localization.add_language("en", "English")
 
         self._gamedata = GameData(self._modifiers, self._valuelists)
-        self._lsx_collection = LsxCollection()
+        self._lsx = Lsx_v3()
 
         self._character_creation_presets = None
         self._class_descriptions = None
@@ -149,8 +150,8 @@ class Mod:
         """Add a datum to the GameData collection."""
         if isinstance(item, GameDatum):
             self._gamedata.add(item)
-        elif isinstance(item, Node):
-            self._lsx_collection.add(item)
+        elif isinstance(item, LsxNode):
+            self._lsx.children.append(item)
         else:
             raise TypeError("add: Invalid data type")
 
@@ -265,7 +266,7 @@ class Mod:
     def _build_character_creation_presets(self, public_dir: str) -> None:
         if self._character_creation_presets:
             self._character_creation_presets.build(os.path.join(public_dir, "CharacterCreationPresets",
-                                                                 "CharacterCreationPresets.lsx"))
+                                                                            "CharacterCreationPresets.lsx"))
 
     def _build_class_descriptions(self, public_dir: str) -> None:
         if self._class_descriptions:
@@ -341,7 +342,7 @@ class Mod:
         os.makedirs(mod_dir, exist_ok=True)
         self._build_meta(mod_dir)
         self._gamedata.build(mod_dir, self._folder)
-        self._lsx_collection.save(mod_dir, self._folder, self._version)
+        self._lsx.save(mod_dir, version=self._version, folder=self._folder)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)
         self._build_character_creation_presets(public_dir)

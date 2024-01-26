@@ -5,9 +5,9 @@ Registration, loading, and saving of .lsx documents
 
 import os
 
-from modtools.lsx_v3.children import LsxChildren
-from modtools.lsx_v3.document import LsxDocument
-from modtools.lsx_v3.node import LsxNode
+from modtools.lsx.children import LsxChildren
+from modtools.lsx.document import LsxDocument
+from modtools.lsx.node import LsxNode
 from typing import ClassVar
 from xml.etree.ElementTree import parse as xml_parse
 
@@ -30,12 +30,12 @@ class Lsx:
     @classmethod
     def register(cls, document_type: type[LsxDocument]) -> None:
         """Register all of the child types that the document manages against the document."""
-        document_id = getattr(document_type, "_id")
-        cls._document_types[document_id] = document_type
+        region = getattr(document_type, "_region")
+        cls._document_types[region] = document_type
 
         for child_type in document_type._child_types_:
             if (existing_owner := cls._child_mapping.get(child_type)) is not None and document_type != existing_owner:
-                raise ValueError(f"{Lsx.register.__qualname__}({document_id}): "
+                raise ValueError(f"{Lsx.register.__qualname__}({region}): "
                                  f"{child_type.__name__} is already registered to "
                                  f"{cls._child_mapping[child_type].__name__}")
             cls._child_mapping[child_type] = document_type

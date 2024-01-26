@@ -3,11 +3,11 @@
 Representation of .lsx nodes.
 """
 
-from modtools.lsx_v3.attributes import LsxAttribute
+from modtools.lsx.attributes import LsxAttribute
 from typing import Self
 from xml.etree.ElementTree import Element
 
-import modtools.lsx_v3.detail as detail
+import modtools.lsx.detail as detail
 
 
 class LsxNode:
@@ -16,6 +16,8 @@ class LsxNode:
     _id_: str                              # The node's id attribute (defaulting to the subclass name).
     _attributes_: dict[str, LsxAttribute]  # The node's attribute definitions.
     _child_types_: tuple[type[Self], ...]  # The valid types for the node's children.
+
+    children: detail.LsxChildren[Self]
 
     @classmethod
     def __init_subclass__(cls) -> None:

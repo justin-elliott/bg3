@@ -3,40 +3,41 @@
 Progression definitions.
 """
 
+from modtools.lsx.children import LsxChildren
 from modtools.lsx.document import LsxDocument
 from modtools.lsx.node import LsxNode
-from modtools.lsx.lsx import Lsx
+from modtools.lsx import Lsx
 from modtools.lsx.type import LsxType
 
 
 class Subclass(LsxNode):
     id = "SubClass"
-    Object = LsxType.GUID
+    Object: str = LsxType.GUID
 
 
 class Subclasses(LsxNode):
     id = "SubClasses"
-    children = (Subclass,)
+    children: LsxChildren = (Subclass,)
 
 
 class Progression(LsxNode):
-    AllowImprovement = LsxType.BOOL
-    Boosts = LsxType.LSSTRING
-    IsMulticlass = LsxType.BOOL
-    Level = LsxType.UINT8
-    Name = LsxType.LSSTRING_VALUE
-    PassivesAdded = LsxType.LSSTRING
-    PassivesRemoved = LsxType.LSSTRING
-    ProgressionType = LsxType.UINT8
-    Selectors = LsxType.LSSTRING
-    TableUUID = LsxType.GUID
-    UUID = LsxType.GUID
-    children = (Subclasses,)
+    AllowImprovement: bool = LsxType.BOOL
+    Boosts: LsxChildren = LsxType.LSSTRING
+    IsMulticlass: bool = LsxType.BOOL
+    Level: int = LsxType.UINT8
+    Name: str = LsxType.LSSTRING_VALUE
+    PassivesAdded: LsxChildren = LsxType.LSSTRING
+    PassivesRemoved: LsxChildren = LsxType.LSSTRING
+    ProgressionType: int = LsxType.UINT8
+    Selectors: LsxChildren = LsxType.LSSTRING
+    TableUUID: str = LsxType.GUID
+    UUID: str = LsxType.GUID
+    children: LsxChildren = (Subclasses,)
 
 
 class Progressions(LsxDocument):
     path = "Public/{folder}/Progressions/Progressions.lsx"
-    children = (Progression,)
+    children: LsxChildren = (Progression,)
 
 
 Lsx.register(Progressions)

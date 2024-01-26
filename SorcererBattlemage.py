@@ -10,7 +10,7 @@ from moddb.bolster import Bolster
 from modtools.lsx.actionresources import ActionResource, update_action_resources
 from modtools.lsx.characterclasses import CharacterClass, CharacterSubclasses
 from modtools.lsx import Lsx
-from modtools.lsx.game import SpellList
+from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -57,13 +57,17 @@ sorcerer_battlemage.add(SpellList(
 
 
 def sorcerer_level(level: int, *, is_multiclass: bool = False):
-    return lambda child: (child.Name == CharacterClass.SORCERER
-                          and child.Level == level
-                          and (child.IsMulticlass or False) == is_multiclass)
+    def predicate(child: Progression) -> bool:
+        return (child.Name == CharacterClass.SORCERER
+                and child.Level == level
+                and (child.IsMulticlass or False) == is_multiclass)
+    return predicate
 
 
 def level_1():
     """Add armor and weapon proficiencies, passives, skills, and spells."""
+    child: Progression
+
     for is_multiclass in [False, True]:
         child = sorcerer_progression.find(sorcerer_level(1, is_multiclass=is_multiclass))
 
@@ -101,14 +105,18 @@ def level_1():
     child.Selectors = selectors
 
 
-level_1()
+def increase_resources(multiplier: int):
+    # Double spell slots and sorcery points
+    child: Progression
+    for child in sorcerer_progression:
+        if (boosts := child.Boosts) is not None:
+            child.Boosts = update_action_resources(boosts,
+                                                   [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],
+                                                   lambda _resource, count, _level: count * multiplier)
+        sorcerer_battlemage.add(child)
 
-# Double spell slots and sorcery points
-for child in sorcerer_progression:
-    if (boosts := child.Boosts) is not None:
-        child.Boosts = update_action_resources(boosts,
-                                               [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],
-                                               lambda _resource, count, _level: count * 2)
-    sorcerer_battlemage.add(child)
+
+level_1()
+increase_resources(2)
 
 sorcerer_battlemage.build()

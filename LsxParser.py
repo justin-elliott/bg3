@@ -106,7 +106,7 @@ class LsxParser:
                 case "children":
                     pass
                 case _:
-                    raise LsxParser.UnexpectedTagError(f"Tag <{tag}> was not expected")
+                    raise LsxParser.UnexpectedTagError(f"Tag <{xml_tag}> was not expected")
 
         def end(self, xml_tag: str) -> None:
             if xml_tag == "node":
@@ -130,14 +130,39 @@ class LsxParser:
                 xml_parser.feed(line)
         print(lsx.version)
         print(lsx.region_id)
-        print(lsx.root)
+        self.output_node(lsx.root)
+
+    def output_node(self, node: Node) -> None:
+        for child in node.children.values():
+            self.output_node(child)
+
+        print(f"class {node.id}(LsxNode):")
+
+        for name, fields in sorted(node.attributes.items()):
+            print(f"    {name} = x")
+
+        child_list = ", ".join(node.children.keys())
+        if len(node.children) == 1:
+            child_list += ","
+        if len(child_list) > 100 and len(node.children) > 1:
+            print("    children = (")
+            for child in node.children.keys():
+                print(f"        {child},")
+            print("    )")
+        elif len(node.children) > 0:
+            print(f"    children = ({child_list})")
+
+        if len(node.attributes) == 0 and len(node.children) == 0:
+            print("    pass")
+
+        print()
+        print()
 
 
 def main():
     unpak = Unpak(cache_dir=None)
     lsx_parser = LsxParser(unpak)
-    lsx_parser.parse("Shared/Public/Shared/Progressions/Progressions.lsx")
-    lsx_parser.parse("Shared/Public/SharedDev/Progressions/Progressions.lsx")
+    lsx_parser.parse("Shared.pak/Public/SharedDev/RootTemplates/_merged.lsf.lsx")
 
 
 if __name__ == "__main__":

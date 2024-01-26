@@ -22,13 +22,11 @@ class LsxNode:
 
     @classmethod
     def __init_subclass__(cls) -> None:
-        cls._id_ = cls.__name__
+        cls._id_ = str(cls.__dict__.get("_id_", cls.__name__))
         cls._attributes_ = OrderedDict()
         cls._child_types_ = ()
         for member_name, value in list(cls.__dict__.items()):
-            if member_name == "id":
-                cls._id_ = str(value)
-            elif member_name == "children":
+            if member_name == "children":
                 cls._child_types_ = tuple(value)
             elif isinstance(value, LsxAttribute):
                 cls._attributes_[member_name] = value

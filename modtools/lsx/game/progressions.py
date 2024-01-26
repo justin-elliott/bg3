@@ -11,12 +11,12 @@ from modtools.lsx.type import LsxType
 
 
 class Subclass(LsxNode):
-    id = "SubClass"
+    _id_ = "SubClass"
     Object: str = LsxType.GUID
 
 
 class Subclasses(LsxNode):
-    id = "SubClasses"
+    _id_ = "SubClasses"
     children: LsxChildren = (Subclass,)
 
 

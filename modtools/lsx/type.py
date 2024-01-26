@@ -3,7 +3,7 @@
 Representation of .lsx types.
 """
 
-from modtools.lsx.attributes import LsxBool, LsxList, LsxNumber, LsxString, LsxTranslation
+from modtools.lsx.attributes import LsxAttribute, LsxBool, LsxList, LsxNumber, LsxString, LsxTranslation
 
 
 class LsxType:
@@ -45,3 +45,13 @@ class LsxType:
     GUID = LsxString("guid")
     INT64 = LsxNumber("int64")
     TRANSLATEDFSSTRING = LsxString("TranslatedFSString")
+
+    # Mapping of .lsx 'type' attribute names to LsxType names.
+    BY_NAME: dict[str, str] = {}
+
+
+LsxType.BY_NAME = {
+    value._type_name: name for name, value in LsxType.__dict__.items()
+    if isinstance(value, LsxAttribute)
+    and name not in ("LSSTRING_VALUE", "LSSTRING_COMMA")  # Omit pseudo-types
+}

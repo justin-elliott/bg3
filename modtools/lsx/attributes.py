@@ -13,9 +13,11 @@ from xml.etree.ElementTree import Element
 class LsxAttribute:
     """An abstract class representing an .lsx attribute."""
 
-    _type_name: str  # The attribute's .lsx 'type' XML attribute
+    _python_type: str  # The attribute's Python type name
+    _type_name: str    # The attribute's .lsx 'type' XML attribute
 
-    def __init__(self, type_name: str):
+    def __init__(self, python_type: str, type_name: str):
+        self._python_type = python_type
         self._type_name = type_name
 
     @abstractmethod
@@ -34,7 +36,7 @@ class LsxBool(LsxAttribute):
     """An attribute subclass representing a Boolean."""
 
     def __init__(self, type_name: str):
-        super().__init__(type_name)
+        super().__init__("bool", type_name)
 
     def xml(self, id: str, value: bool) -> Element:
         return Element("attribute", id=id, type=self._type_name, value=str(value).lower())
@@ -62,7 +64,7 @@ class LsxList(LsxAttribute):
     _separator: str
 
     def __init__(self, type_name: str, separator: str = ";"):
-        super().__init__(type_name)
+        super().__init__("LsxChildren", type_name)
         self._separator = separator
 
     def xml(self, id: str, value: list) -> Element:
@@ -90,7 +92,7 @@ class LsxNumber(LsxAttribute):
     """An attribute subclass representing a Number."""
 
     def __init__(self, type_name: str):
-        super().__init__(type_name)
+        super().__init__("float" if type_name in ("float", "double") else "int", type_name)
 
     def xml(self, id: str, value: Number) -> Element:
         return Element("attribute", id=id, type=self._type_name, value=str(value))
@@ -114,7 +116,7 @@ class LsxString(LsxAttribute):
     """An attribute subclass representing a (non-list) string."""
 
     def __init__(self, type_name: str):
-        super().__init__(type_name)
+        super().__init__("str", type_name)
 
     def xml(self, id: str, value: str) -> Element:
         return Element("attribute", id=id, type=self._type_name, value=value)
@@ -136,7 +138,7 @@ class LsxTranslation(LsxAttribute):
     """An attribute subclass representing a translated string."""
 
     def __init__(self, type_name: str):
-        super().__init__(type_name)
+        super().__init__("tuple[str, int] | str", type_name)
 
     def xml(self, id: str, value: tuple[str, int]) -> Element:
         handle, version = value

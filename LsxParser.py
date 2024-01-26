@@ -5,6 +5,7 @@ Parser for .lsx files.
 
 import os
 
+from modtools.lsx.type import LsxType
 from modtools.unpak import Unpak
 from operator import itemgetter
 from pathlib import PurePath
@@ -19,7 +20,7 @@ class Attribute:
     def __init__(self, xml_attrs: dict[str, str]):
         self.id = xml_attrs.get("id")
         self.fields = {
-            field: set([value] if field == "type" else []) for field, value in xml_attrs.items() if field != "id"
+            field: set([value]) for field, value in xml_attrs.items() if field != "id"
         }
 
     def merge(self, other: Self) -> Self:
@@ -138,8 +139,29 @@ class LsxParser:
 
         print(f"class {node.id}(LsxNode):")
 
-        for name, fields in sorted(node.attributes.items()):
-            print(f"    {name} = x")
+        for name, attribute in sorted(node.attributes.items()):
+            attribute_type = attribute.fields["type"]
+            for sub_type in attribute_type:
+                type_name = LsxType.BY_NAME[sub_type]
+
+                if type_name == "LSSTRING" and (values := attribute.fields.get("value")) is not None:
+                    has_commas = any("," in text and "(" not in text for text in values)
+                    if has_commas:
+                        type_name = "LSSTRING_COMMA"
+                    else:
+                        has_semicolons = any(";" in text for text in values)
+                        if not has_semicolons:
+                            type_name = "LSSTRING_VALUE"
+
+                if len(attribute_type) == 1:
+                    sub_name = ""
+                    comment = ""
+                else:
+                    sub_name = "_" + sub_type
+                    comment = f"  # {name}"
+
+                python_type = getattr(LsxType, type_name)._python_type
+                print(f"    {name}{sub_name}: {python_type} = LsxType.{type_name}{comment}")
 
         child_list = ", ".join(node.children.keys())
         if len(node.children) == 1:
@@ -163,6 +185,8 @@ def main():
     unpak = Unpak(cache_dir=None)
     lsx_parser = LsxParser(unpak)
     lsx_parser.parse("Shared.pak/Public/SharedDev/RootTemplates/_merged.lsf.lsx")
+    # lsx_parser.parse("Shared.pak/Public/SharedDev/Lists/PassiveLists.lsx")
+    # lsx_parser.parse("Shared.pak/Public/SharedDev/Lists/SpellLists.lsx")
 
 
 if __name__ == "__main__":

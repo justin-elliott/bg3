@@ -202,3 +202,5 @@ assert len(game_progressions.children) == 286
 # xml = game_progressions.xml(version=(4, 3, 2, 1))
 # ElementTree.indent(xml, space=" "*4)
 # ElementTree.dump(xml)
+
+print(LsxType.BY_NAME)

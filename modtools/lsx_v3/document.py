@@ -15,6 +15,8 @@ from xml.etree.ElementTree import Element, ElementTree, indent as xml_indent, Su
 class LsxDocument:
     """A class representing an .lsx document."""
 
+    _child_types_: tuple[type[LsxNode], ...] = ()
+
     id: str
     region: str
     root: str
@@ -27,8 +29,8 @@ class LsxDocument:
         if missing_members:
             raise AttributeError(f"{cls.__name__} missing member(s): {", ".join(missing_members)}")
 
-        child_types = tuple(cls.__dict__["children"])
-        if len(child_types) == 0:
+        cls._child_types_ = tuple(cls.__dict__["children"])
+        if len(cls._child_types_) == 0:
             raise TypeError(f"{cls.__name__} missing child types")
 
         setattr(cls, "_id", str(cls.__dict__["id"]) if "id" in cls.__dict__ else cls.__name__)
@@ -43,12 +45,28 @@ class LsxDocument:
         setattr(cls, "_path", str(cls.__dict__["path"]))
         setattr(cls, "path", property(fget=cls._wrap_getter("_path")))
 
-        getter, setter = LsxChildren._wrap_accessors("_children", child_types)
+        getter, setter = LsxChildren._wrap_accessors("_children", cls._child_types_)
         setattr(cls, "children", property(fget=getter, fset=setter))
 
     def __init__(self, *nodes: LsxNode):
         children: LsxChildren = self.children
         children.extend(nodes)
+
+    def load(self, children_node: Element) -> None:
+        """Load the document's children from the given XML <children> node."""
+        children: LsxChildren = self.children
+        children.clear()
+
+        for node in children_node.findall("node"):
+            child_name = node.get("id")
+            try:
+                child_type: type[LsxNode] = next(
+                    child_type for child_type in self._child_types_ if child_type._id_ == child_name)
+            except StopIteration:
+                raise TypeError(f"{LsxDocument.load.__qualname__} unsupported node id='{child_name}'")
+            child = child_type()
+            child.load(node)
+            children.append(child)
 
     def save(self, mod_path: os.PathLike, *,
              version: tuple[int, int, int, int] | None = None,

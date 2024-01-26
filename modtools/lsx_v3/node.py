@@ -45,6 +45,19 @@ class LsxNode:
                 raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
             setattr(self, name, value)
 
+    def load(self, node: Element) -> None:
+        """Load the node from the given XML <node>."""
+        assert node.get("id") == self._id_
+
+        for attribute in node.findall("attribute"):
+            id = attribute.get("id")
+            if (value := attribute.get("value")) is not None:
+                setattr(self, id, value)
+            else:
+                handle = attribute.get("handle")
+                version = attribute.get("version")
+                setattr(self, id, (handle, int(version)))
+
     def xml(self) -> Element:
         """Returns an XML encoding of the node."""
         element = Element("node", id=self._id_)

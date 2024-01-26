@@ -14,14 +14,18 @@ class LsxChildren[Node]:
     type KeyFunction = Callable[[Node], any]  # A function returning a key identifying a child node.
     type Predicate = Callable[[Node], bool]   # A predicate testing a child node.
 
-    _types: tuple[Node, ...]  # The child types that the collection can contain.
-    _children: list[Node]     # The list of children.
+    _types: tuple[type[Node], ...]  # The child types that the collection can contain.
+    _children: list[Node]           # The list of children.
 
     def __init__(self, children: Iterable[Node] = [], *, types: Iterable[Node]):
         """Initialize the collection, setting the expected child types and, optionally, the children."""
         self._types = tuple(types)
         self._check_child_types([type(child) for child in children])
         self._children = list(children)
+
+    @property
+    def types(self) -> tuple[type[Node], ...]:
+        return self._types
 
     def __len__(self) -> int:
         return len(self._children)
@@ -122,8 +126,8 @@ class LsxChildren[Node]:
             raise TypeError(f"Invalid type(s) for children: {", ".join(invalid_types)}")
 
     @staticmethod
-    def _wrap_accessors(member: str, types: Iterable[Node]) -> tuple[Callable[[object], any],
-                                                                     Callable[[object, any], None]]:
+    def _wrap_accessors(member: str, types: Iterable[type[Node]]) -> tuple[Callable[[object], any],
+                                                                           Callable[[object, any], None]]:
         def getter(obj: object) -> LsxChildren:
             return obj.__dict__.setdefault(member, LsxChildren(types=types))
 

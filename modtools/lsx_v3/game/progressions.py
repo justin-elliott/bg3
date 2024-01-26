@@ -5,6 +5,7 @@ Progression definitions.
 
 from modtools.lsx_v3.document import LsxDocument
 from modtools.lsx_v3.node import LsxNode
+from modtools.lsx_v3.lsx import Lsx
 from modtools.lsx_v3.type import LsxType
 
 
@@ -38,3 +39,6 @@ class Progressions(LsxDocument):
     root = "root"
     path = "Public/{folder}/Progressions/Progressions.lsx"
     children = (Progression,)
+
+
+Lsx.register(Progressions)

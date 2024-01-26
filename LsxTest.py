@@ -3,12 +3,16 @@
 Test code for modtools.lsx_v2.
 """
 
+import os
 import xml.etree.ElementTree as ElementTree
 
 from modtools.lsx_v3.children import LsxChildren
+from modtools.lsx_v3.document import LsxDocument
 from modtools.lsx_v3.game.progressions import Progression, Progressions, Subclass, Subclasses
 from modtools.lsx_v3.node import LsxNode
+from modtools.lsx_v3.lsx import Lsx
 from modtools.lsx_v3.type import LsxType
+from modtools.unpak import Unpak
 
 
 class Bob(LsxNode):
@@ -176,3 +180,25 @@ ElementTree.indent(xml, space=" "*4)
 ElementTree.dump(xml)
 
 # progressions.save("LsxTest", version=(5, 4, 3, 21), folder="LsxTest")
+
+
+class Regressions(LsxDocument):
+    region = "Regressions"
+    root = "root"
+    path = "Public/{folder}/Regressions/Regressions.lsx"
+    children = (Progression,)
+
+
+try:
+    Lsx.register(Regressions)  # This should fail; Progression already belongs to Progressions
+    assert False
+except ValueError as e:
+    print(f"Expected: {e}")
+
+unpak = Unpak(cache_dir=None)
+game_progressions = Lsx.load(os.path.join(unpak.get("Shared.pak").path, "Public/Shared/Progressions/Progressions.lsx"))
+assert len(game_progressions.children) == 286
+
+# xml = game_progressions.xml(version=(4, 3, 2, 1))
+# ElementTree.indent(xml, space=" "*4)
+# ElementTree.dump(xml)

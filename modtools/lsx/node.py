@@ -60,6 +60,9 @@ class LsxNode:
                 version = attribute.get("version")
                 setattr(self, id, (handle, int(version)))
 
+        if (children_node := node.find("children")) is not None:
+            self.children.load(children_node)
+
     def xml(self) -> Element:
         """Returns an XML encoding of the node."""
         element = Element("node", id=self._id_)

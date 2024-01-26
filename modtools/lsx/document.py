@@ -49,18 +49,7 @@ class LsxDocument:
 
     def load(self, children_node: Element) -> None:
         """Load the document's children from the given XML <children> node."""
-        self.children.clear()
-
-        for node in children_node.findall("node"):
-            child_name = node.get("id")
-            try:
-                child_type: type[LsxNode] = next(
-                    child_type for child_type in self._child_types_ if child_type._id_ == child_name)
-            except StopIteration:
-                raise TypeError(f"{LsxDocument.load.__qualname__} unsupported node id='{child_name}'")
-            child = child_type()
-            child.load(node)
-            self.children.append(child)
+        self.children.load(children_node)
 
     def save(self, mod_path: os.PathLike, *,
              version: tuple[int, int, int, int] | None = None,

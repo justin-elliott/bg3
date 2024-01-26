@@ -113,6 +113,20 @@ class LsxChildren[Node]:
         self._children = [child for child in self._children if not predicate(child)]
         return self
 
+    def load(self, children_node: Element) -> None:
+        """Load the children from the given XML <children> node."""
+        self._children.clear()
+
+        for node in children_node.findall("node"):
+            child_name = node.get("id")
+            try:
+                child_type: type[Node] = next(child_type for child_type in self._types if child_type._id_ == child_name)
+            except StopIteration:
+                raise TypeError(f"{LsxChildren.load.__qualname__} unsupported node id='{child_name}'")
+            child = child_type()
+            child.load(node)
+            self._children.append(child)
+
     def xml(self) -> Element:
         """Returns an XML encoding of the children."""
         element = Element("children")

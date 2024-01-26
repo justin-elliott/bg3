@@ -29,7 +29,7 @@ class ActionResource(StrEnum):
     WILD_SHAPE_CHARGES = "WildShape"
 
 
-ACTION_RESOURCE_REGEX: Final = re.compile(r"^\s*ActionResource\((\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$")
+_ACTION_RESOURCE_REGEX: Final = re.compile(r"^\s*ActionResource\((\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$")
 
 
 def update_action_resources(iter: Iterable[str],
@@ -44,7 +44,7 @@ def update_action_resources(iter: Iterable[str],
     """
     results = []
     for item in iter:
-        if (match := ACTION_RESOURCE_REGEX.match(item)) is not None:
+        if (match := _ACTION_RESOURCE_REGEX.match(item)) is not None:
             resource, count, level = match.groups()
             if resource in resources:
                 updated_count = apply(resource, int(count), int(level))

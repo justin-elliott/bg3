@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LSX definitions.
+Feat Descriptions definitions.
 """
 
 from modtools.lsx.document import LsxDocument

@@ -44,8 +44,8 @@ class Mod:
 
     _character_creation_presets: Lsx    #
     _class_descriptions: Lsx            #
-    _feat_descriptions: Lsx             #
-    _feats: Lsx                         #
+    _feat_descriptions: Lsx             # Deprecated
+    _feats: Lsx                         # Deprecated
     _level_maps: Lsx                    # Deprecated
     _passive_lists: Lsx                 #
     _progressions: Lsx                  # Deprecated

@@ -9,6 +9,7 @@ from .characterclasses import *
 from .featdescriptions import *
 from .feats import *
 from .levelmaps import *
+from .passivelists import *
 from .progressions import *
 from .roottemplates import *
 from .spelllists import *

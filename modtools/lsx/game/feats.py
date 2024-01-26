@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LSX definitions.
+Feats definitions.
 """
 
 from modtools.lsx.children import LsxChildren
@@ -20,7 +20,7 @@ class Feat(LsxNode):
 
 
 class Feats(LsxDocument):
-    path = "Public/SharedDev/Feats/Feats.lsx"
+    path = "Public/{folder}/Feats/Feats.lsx"
     children = (Feat,)
 
 

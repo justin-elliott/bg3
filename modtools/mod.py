@@ -42,18 +42,18 @@ class Mod:
     _gamedata: GameData
     _lsx: Lsx_v3
 
-    _character_creation_presets: Lsx
-    _class_descriptions: Lsx
-    _feat_descriptions: Lsx
-    _feats: Lsx
-    _level_maps: Lsx
-    _passive_lists: Lsx
-    _progressions: Lsx
-    _progression_descriptions: Lsx
-    _races: Lsx
-    _root_templates: Lsx
-    _spell_lists: Lsx
-    _tags: Lsx
+    _character_creation_presets: Lsx    #
+    _class_descriptions: Lsx            #
+    _feat_descriptions: Lsx             #
+    _feats: Lsx                         #
+    _level_maps: Lsx                    # Deprecated
+    _passive_lists: Lsx                 #
+    _progressions: Lsx                  # Deprecated
+    _progression_descriptions: Lsx      #
+    _races: Lsx                         #
+    _root_templates: Lsx                #
+    _spell_lists: Lsx                   # Deprecated
+    _tags: Lsx                          #
 
     _scripts: [str]
     _treasure_table: [str]

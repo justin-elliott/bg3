@@ -6,7 +6,7 @@ Generates files for the "ChromaticBlade" mod.
 import os
 
 from moddb.scripts import character_level_range
-from modtools.gamedata import spell_data, status_data, weapon_data
+from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
 from uuid import UUID
@@ -66,8 +66,7 @@ chromatic_blade.add(weapon_data(
         "IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
-        "MAG_ChargedLightning_Charge_OnDamage_Passive",
-        "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
+        "ChromaticBlade_ChromaticBarrier",
     ],
     Weapon_Properties=[
         "Dippable",
@@ -79,10 +78,72 @@ chromatic_blade.add(weapon_data(
     Unique="1",
 ))
 
+loca["ChromaticBlade_ChromaticBarrier_DisplayName"] = {"en": "Chromatic Barrier"}
+loca["ChromaticBlade_ChromaticBarrier_Description"] = {"en": """
+    The magic of your blade forms a barrier around you that protects you from harm, and causes you to inflict additional
+    force damage.
+    """}
+loca["ChromaticBlade_ChromaticBarrier_StatusDescription"] = {"en": """
+    Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.
+
+    While the barrier is active, you deal additional force damage equal to the number of charges remaining.
+    Dealing damage adds 1 charge, up to [1] charges.
+    """}
+
+chromatic_blade.add(passive_data(
+    "ChromaticBlade_ChromaticBarrier",
+    DisplayName=loca["ChromaticBlade_ChromaticBarrier_DisplayName"],
+    Description=loca["ChromaticBlade_ChromaticBarrier_Description"],
+    Icon="PassiveFeature_ArcaneWard",
+    PriorityOrder="2",
+    Properties=["Highlighted", "OncePerAttack"],
+    StatsFunctorContext=["OnDamage"],
+    Conditions=[
+        "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',4)",
+    ],
+    StatsFunctors=[
+        "ApplyStatus(SELF,CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration+1)",
+    ],
+))
+
+chromatic_blade.add(passive_data(
+    "ChromaticBlade_ChromaticBarrier_Damaged",
+    DisplayName=loca["ChromaticBlade_ChromaticBarrier_DisplayName"],
+    Properties="IsHidden",
+    StatsFunctorContext=["OnDamaged", "OnDamagedPrevented"],
+    Conditions=[
+        "StatusDurationMoreThan(context.Target,'CHROMATICBLADE_CHROMATICBARRIER',0)",
+    ],
+    StatsFunctors=[
+        "ApplyStatus(CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration-1)",
+    ],
+))
+
+chromatic_blade.add(status_data(
+    "CHROMATICBLADE_CHROMATICBARRIER",
+    StatusType="BOOST",
+    DisplayName=loca["ChromaticBlade_ChromaticBarrier_DisplayName"],
+    Description=loca["ChromaticBlade_ChromaticBarrier_StatusDescription"],
+    DescriptionParams="4",
+    Icon="Status_ArcaneWard",
+    SoundLoop="Spell_Status_ArcaneWard_MO",
+    SoundStop="Spell_Status_ArcaneWard_Depleted",
+    StackId="CHROMATICBLADE_CHROMATICBARRIER",
+    StackType="Overwrite",
+    Boosts=[
+        "DamageBonus(1,Force)",
+        "DamageReduction(All,Flat,1)",
+    ],
+    Passives="ChromaticBlade_ChromaticBarrier_Damaged",
+    StatusPropertyFlags=["MultiplyEffectsByDuration", "FreezeDuration", "DisableCombatlog"],
+    StatusGroups="SG_RemoveOnRespec",
+    StatusEffect="370b3339-9668-49e8-bdc6-ff0a4444f8dd",
+))
+
 loca["ChromaticBlade_ChromaticWeapon_DisplayName"] = {"en": "Chromatic Weapon"}
 loca["ChromaticBlade_ChromaticWeapon_Description"] = {"en": """
     Imbue a weapon with elemental power. It receives a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
-    and deals an additional [2] damage of your choice.
+    and deals an additional 1d4 damage of your choice.
     """}
 
 chromatic_blade.add(spell_data(
@@ -99,10 +160,7 @@ chromatic_blade.add(spell_data(
     Icon="Spell_Transmutation_ElementalWeapon",
     DisplayName=loca["ChromaticBlade_ChromaticWeapon_DisplayName"],
     Description=loca["ChromaticBlade_ChromaticWeapon_Description"],
-    DescriptionParams=[
-        "LevelMapValue(ChromaticBlade_AttackRollBonus)",
-        "LevelMapValue(ChromaticBlade_DamageDice)",
-    ],
+    DescriptionParams=["LevelMapValue(ChromaticBlade_AttackRollBonus)"],
     PreviewCursor="Cast",
     CastTextEvent="Cast",
     UseCosts="ActionPoint:1",
@@ -134,13 +192,6 @@ chromatic_blade.add(LevelMapSeries(
     **{f"Level{level}": 3 for level in range(13, 21)},
     Name="ChromaticBlade_AttackRollBonus",
     UUID=chromatic_blade.make_uuid("ChromaticBlade_AttackRollBonus"),
-))
-
-chromatic_blade.add(LevelMapSeries(
-    **{f"Level{level}": f"{int((level + 4) / 5)}d4" for level in range(1, 13)},
-    **{f"Level{level}": "3d4" for level in range(13, 21)},
-    Name="ChromaticBlade_DamageDice",
-    UUID=chromatic_blade.make_uuid("ChromaticBlade_DamageDice"),
 ))
 
 
@@ -179,7 +230,7 @@ def add_chromatic_weapon_element(element: str,
         Description=loca[f"ChromaticBlade_ChromaticWeapon_{title}_Description"],
         DescriptionParams=[
             "LevelMapValue(ChromaticBlade_AttackRollBonus)",
-            f"DealDamage(LevelMapValue(ChromaticBlade_DamageDice),{title})",
+            f"DealDamage(1d4,{title})",
         ],
         TooltipStatusApply=f"ApplyStatus(CHROMATICBLADE_CHROMATICWEAPON_{upper},100,-1)",
         PrepareSound=PrepareSound,
@@ -208,9 +259,7 @@ def add_chromatic_weapon_element(element: str,
             "IF(CharacterLevelRange(1,5)):WeaponEnchantment(1)",
             "IF(CharacterLevelRange(6,10)):WeaponEnchantment(2)",
             "IF(CharacterLevelRange(11,20)):WeaponEnchantment(3)",
-            f"IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,{title},Magical)",
-            f"IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,{title},Magical)",
-            f"IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,{title},Magical)",
+            f"WeaponDamage(1d4,{title},Magical)",
         ],
         StatusGroups="SG_RemoveOnRespec",
         StatusEffect=StatusEffect,

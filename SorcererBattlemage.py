@@ -8,6 +8,7 @@ import os
 from collections.abc import Callable, Iterable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
+from moddb.movement import Movement
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -40,6 +41,7 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
 # Add passives and spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
 bolster = Bolster(sorcerer_battlemage).add_bolster()
+fast_movement = Movement(sorcerer_battlemage).add_fast_movement(3.0)
 
 # Modify the game's Sorcerer class description
 class_descriptions = Lsx.load(sorcerer_battlemage.get_cache_path(CLASS_DESCRIPTION_PATH))
@@ -126,12 +128,47 @@ def level_1() -> None:
 
 
 def level_2() -> None:
-    """Add additional passives."""
     child: Progression = sorcerer_progression.find(sorcerer_level(2))
     child.PassivesAdded = (child.PassivesAdded or []) + ["AgonizingBlast", "DevilsSight", "RepellingBlast"]
 
     index = child.Selectors.index("AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876)")
     child.Selectors[index] = "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)"
+
+
+def level_3() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(3))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["ImprovedCritical"]
+
+    selectors = child.Selectors or []
+    selectors.append(f"AddSpells({level_2_spelllist},,,,AlwaysPrepared)")
+    child.Selectors = selectors
+
+
+def level_5() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(5))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack", fast_movement]
+
+
+def level_7() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(7))
+    child.PassivesAdded = (child.PassivesAdded or []) + [
+        "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
+
+
+def level_8() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(8))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["FastHands"]
+
+
+def level_9() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(9))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["BrutalCritical"]
+
+
+def level_11() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(11))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack_2"]
+    child.PassivesRemoved = (child.PassivesRemoved or []) + ["ExtraAttack"]
 
 
 def increase_resources(multiplier: int):
@@ -153,6 +190,12 @@ def allow_improvement(levels: Iterable[int]) -> None:
 
 level_1()
 level_2()
+level_3()
+level_5()
+level_7()
+level_8()
+level_9()
+level_11()
 increase_resources(2)
 allow_improvement([level for level in range(2, 13)])
 

@@ -7,7 +7,13 @@ import os
 
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
-from modtools.lsx.game import ActionResource, CharacterClass, CharacterSubclasses, update_action_resources
+from modtools.lsx.game import (
+    ActionResource,
+    CharacterClass,
+    CharacterSubclasses,
+    ClassDescription,
+    update_action_resources
+)
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
@@ -18,6 +24,8 @@ from uuid import UUID
 
 # data\s*"([^"]*)"\s*"([^"]*)"
 # $1="$2",
+
+CLASS_DESCRIPTION_PATH = "Shared.pak/Public/Shared/ClassDescriptions/ClassDescriptions.lsx"
 
 PROGRESSIONS_LSX_PATH = "Shared.pak/Public/Shared/Progressions/Progressions.lsx"
 PROGRESSIONS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx"
@@ -31,6 +39,18 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
 # Add passives and spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
 bolster = Bolster(sorcerer_battlemage).add_bolster()
+
+# Modify the game's Sorcerer class description
+class_descriptions = Lsx.load(sorcerer_battlemage.get_cache_path(CLASS_DESCRIPTION_PATH))
+sorcerer_class_description: ClassDescription = class_descriptions.children.find(
+    lambda child: child.Name == CharacterClass.SORCERER)
+
+sorcerer_class_description.CanLearnSpells = True
+sorcerer_class_description.BaseHp = 10
+sorcerer_class_description.HpPerLevel = 6
+sorcerer_class_description.MustPrepareSpells = True
+
+sorcerer_battlemage.add(sorcerer_class_description)
 
 # Load the game's Sorcerer progression, creating a dictionary indexed by (Name, Level, IsMulticlass)
 progressions_lsx = Lsx.load(sorcerer_battlemage.get_cache_path(PROGRESSIONS_LSX_PATH))

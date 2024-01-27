@@ -62,6 +62,13 @@
                     <attribute id="UUID" type="guid" value="391a4912-5d9b-728d-8527-9fa004f548bc" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h3efe0374gc06ag71b8gfa9fg330a03b2ada6" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_FightingStyle" />
+                    <attribute id="FeatId" type="guid" value="3fff4ae0-397f-d576-f1ff-4a355175e576" />
+                    <attribute id="UUID" type="guid" value="3ad07a46-cb7c-8376-7187-b9d6be4b581f" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="ha5825f85g4348gd9fag5af2g3cfd5d93c499" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_LightlyArmored" />

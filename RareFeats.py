@@ -152,6 +152,29 @@ rare_feats.add(Feat(
     UUID=athlete_uuid,
 ))
 
+# Fighting Style
+fighting_style_uuid = rare_feats.make_uuid("RareFeats_FightingStyle")
+
+loca["RareFeats_FightingStyle_DisplayName"] = {"en": "Rare Feats: Fighting Style"}
+loca["RareFeats_FightingStyle_Description"] = {"en": """
+    Adopt a particular style of fighting as your specialty.
+    """}
+
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_FightingStyle_DisplayName"],
+    Description=loca["RareFeats_FightingStyle_Description"],
+    ExactMatch="RareFeats_FightingStyle",
+    FeatId=fighting_style_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_FeatDescription_FightingStyle"),
+))
+
+rare_feats.add(Feat(
+    CanBeTakenMultipleTimes=True,
+    Name="RareFeats_FightingStyle",
+    Selectors=["SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)"],
+    UUID=fighting_style_uuid,
+))
+
 # Lightly Armored without the ASI
 lightly_armored_uuid = rare_feats.make_uuid("RareFeats_LightlyArmored")
 

@@ -3,6 +3,7 @@
 Progression Descriptions definitions.
 """
 
+from modtools.lsx.children import LsxChildren
 from modtools.lsx.document import LsxDocument
 from modtools.lsx.node import LsxNode
 from modtools.lsx import Lsx
@@ -25,7 +26,7 @@ class ProgressionDescription(LsxNode):
 
 class ProgressionDescriptions(LsxDocument):
     path = "Public/{folder}/Progressions/ProgressionDescriptions.lsx"
-    children = (ProgressionDescription,)
+    children: LsxChildren = (ProgressionDescription,)
 
 
 Lsx.register(ProgressionDescriptions)

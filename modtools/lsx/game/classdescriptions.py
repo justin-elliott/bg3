@@ -3,6 +3,7 @@
 Class Descriptions definitions.
 """
 
+from modtools.lsx.children import LsxChildren
 from modtools.lsx.document import LsxDocument
 from modtools.lsx.node import LsxNode
 from modtools.lsx import Lsx
@@ -39,12 +40,12 @@ class ClassDescription(LsxNode):
     SpellList: str = LsxType.GUID
     SubclassTitle: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
     UUID: str = LsxType.GUID
-    children = (Tags,)
+    children: LsxChildren = (Tags,)
 
 
 class ClassDescriptions(LsxDocument):
     path = "Public/{folder}/ClassDescriptions/ClassDescriptions.lsx"
-    children = (ClassDescription,)
+    children: LsxChildren = (ClassDescription,)
 
 
 Lsx.register(ClassDescriptions)

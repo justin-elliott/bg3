@@ -3,6 +3,7 @@
 Feat Descriptions definitions.
 """
 
+from modtools.lsx.children import LsxChildren
 from modtools.lsx.document import LsxDocument
 from modtools.lsx.node import LsxNode
 from modtools.lsx import Lsx
@@ -19,7 +20,7 @@ class FeatDescription(LsxNode):
 
 class FeatDescriptions(LsxDocument):
     path = "Public/{folder}/Feats/FeatDescriptions.lsx"
-    children = (FeatDescription,)
+    children: LsxChildren = (FeatDescription,)
 
 
 Lsx.register(FeatDescriptions)

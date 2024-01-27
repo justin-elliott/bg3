@@ -64,7 +64,7 @@ class LsxList(LsxAttribute):
     _separator: str
 
     def __init__(self, type_name: str, separator: str = ";"):
-        super().__init__("LsxChildren", type_name)
+        super().__init__("list[str]", type_name)
         self._separator = separator
 
     def xml(self, id: str, value: list) -> Element:

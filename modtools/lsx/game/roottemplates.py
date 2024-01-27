@@ -21,7 +21,7 @@ class GameObjects(LsxNode):
             Shape: int = LsxType.UINT8
             Type: int = LsxType.UINT8
 
-        children = (Bound,)
+        children: LsxChildren = (Bound,)
 
     class OnDestroyActions(LsxNode):
         class Action(LsxNode):
@@ -49,15 +49,15 @@ class GameObjects(LsxNode):
                 visualDestruction: str = LsxType.FIXEDSTRING
 
             ActionType: int = LsxType.INT32
-            children = (Attributes,)
+            children: LsxChildren = (Attributes,)
 
-        children = (Action,)
+        children: LsxChildren = (Action,)
 
     class PrefabChildrenGroup(LsxNode):
         class PrefabChildren(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (PrefabChildren,)
+        children: LsxChildren = (PrefabChildren,)
 
     class PrefabChildrenTransformGroup(LsxNode):
         class PrefabChildrenTransforms(LsxNode):
@@ -65,7 +65,7 @@ class GameObjects(LsxNode):
             RotationQuat: str = LsxType.FVEC4
             Scale: float = LsxType.FLOAT
 
-        children = (PrefabChildrenTransforms,)
+        children: LsxChildren = (PrefabChildrenTransforms,)
 
     class LocomotionParams(LsxNode):
         IsMovementEnabled: bool = LsxType.BOOL
@@ -105,22 +105,22 @@ class GameObjects(LsxNode):
                     class Tag(LsxNode):
                         Object: str = LsxType.GUID
 
-                    children = (Tag,)
+                    children: LsxChildren = (Tag,)
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
-                children = (Tags,)
+                children: LsxChildren = (Tags,)
 
             class TargetConditions(LsxNode):
                 class Tags(LsxNode):
                     class Tag(LsxNode):
                         Object: str = LsxType.GUID
 
-                    children = (Tag,)
+                    children: LsxChildren = (Tag,)
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
-                children = (Tags,)
+                children: LsxChildren = (Tags,)
 
             class OnlyInNPCLoadout(LsxNode):
                 Object: str = LsxType.GUID
@@ -141,28 +141,28 @@ class GameObjects(LsxNode):
             SpellCastingAbility: int = LsxType.UINT8
             StartRound: int = LsxType.INT32
             TacticianHardcore: bool = LsxType.BOOL
-            children = (SourceConditions, TargetConditions, OnlyInNPCLoadout, ExcludeInNPCLoadout)
+            children: LsxChildren = (SourceConditions, TargetConditions, OnlyInNPCLoadout, ExcludeInNPCLoadout)
 
-        children = (Skill,)
+        children: LsxChildren = (Skill,)
 
     class StatusList(LsxNode):
         class Status(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (Status,)
+        children: LsxChildren = (Status,)
 
     class Tags(LsxNode):
         class Tag(LsxNode):
             Object: str = LsxType.GUID
 
-        children = (Tag,)
+        children: LsxChildren = (Tag,)
 
     class PickingPhysics(LsxNode):
         class PickingPhysicsTemplates(LsxNode):
             MapKey: str = LsxType.FIXEDSTRING
             MapValue: str = LsxType.FIXEDSTRING
 
-        children = (PickingPhysicsTemplates,)
+        children: LsxChildren = (PickingPhysicsTemplates,)
 
     class OnUsePeaceActions(LsxNode):
         class Action(LsxNode):
@@ -205,9 +205,9 @@ class GameObjects(LsxNode):
                 Visibility: int = LsxType.INT32
 
             ActionType: int = LsxType.INT32
-            children = (Attributes,)
+            children: LsxChildren = (Attributes,)
 
-        children = (Action,)
+        children: LsxChildren = (Action,)
 
     class ConstellationConfigGlobalParameters(LsxNode):
         class ConstellationConfigParameter(LsxNode):
@@ -220,16 +220,16 @@ class GameObjects(LsxNode):
                         class double(LsxNode):
                             double: float = LsxType.DOUBLE
 
-                        children = (String, double)
+                        children: LsxChildren = (String, double)
 
-                    children = (Scalar,)
+                    children: LsxChildren = (Scalar,)
 
-                children = (Scalar,)
+                children: LsxChildren = (Scalar,)
 
             Name: str = LsxType.LSSTRING_VALUE
-            children = (Value,)
+            children: LsxChildren = (Value,)
 
-        children = (ConstellationConfigParameter,)
+        children: LsxChildren = (ConstellationConfigParameter,)
 
     class ExcludeInDifficulty(LsxNode):
         pass
@@ -238,7 +238,7 @@ class GameObjects(LsxNode):
         class InventoryItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (InventoryItem,)
+        children: LsxChildren = (InventoryItem,)
 
     class ItemList(LsxNode):
         class Item(LsxNode):
@@ -248,7 +248,7 @@ class GameObjects(LsxNode):
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
-                children = (Tags,)
+                children: LsxChildren = (Tags,)
 
             class TargetConditions(LsxNode):
                 class Tags(LsxNode):
@@ -256,7 +256,7 @@ class GameObjects(LsxNode):
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
-                children = (Tags,)
+                children: LsxChildren = (Tags,)
 
             class OnlyInNPCLoadout(LsxNode):
                 Object: str = LsxType.GUID
@@ -281,9 +281,9 @@ class GameObjects(LsxNode):
             TemplateID: str = LsxType.FIXEDSTRING
             Type: int = LsxType.UINT8
             UUID: str = LsxType.FIXEDSTRING
-            children = (SourceConditions, TargetConditions, OnlyInNPCLoadout)
+            children: LsxChildren = (SourceConditions, TargetConditions, OnlyInNPCLoadout)
 
-        children = (Item,)
+        children: LsxChildren = (Item,)
 
     class OnlyInDifficulty(LsxNode):
         pass
@@ -301,18 +301,18 @@ class GameObjects(LsxNode):
                                 Value: str = LsxType.LSSTRING_VALUE
 
                             MapKey: str = LsxType.FIXEDSTRING
-                            children = (ScriptVariables,)
+                            children: LsxChildren = (ScriptVariables,)
 
-                        children = (Object,)
+                        children: LsxChildren = (Object,)
 
-                    children = (ScriptVariables,)
+                    children: LsxChildren = (ScriptVariables,)
 
                 MapKey: str = LsxType.FIXEDSTRING
-                children = (ScriptOverrides,)
+                children: LsxChildren = (ScriptOverrides,)
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
-        children = (ScriptOverrides,)
+        children: LsxChildren = (ScriptOverrides,)
 
     class Scripts(LsxNode):
         class Script(LsxNode):
@@ -320,14 +320,14 @@ class GameObjects(LsxNode):
                 class Parameter(LsxNode):
                     MapKey: str = LsxType.FIXEDSTRING
                     Type: int = LsxType.INT32
-                    Value: LsxChildren = LsxType.LSSTRING
+                    Value: list[str] = LsxType.LSSTRING
 
-                children = (Parameter,)
+                children: LsxChildren = (Parameter,)
 
             UUID: str = LsxType.FIXEDSTRING
-            children = (Parameters,)
+            children: LsxChildren = (Parameters,)
 
-        children = (Script,)
+        children: LsxChildren = (Script,)
 
     class Equipment_(LsxNode):
         _id_ = "Equipment"
@@ -337,63 +337,63 @@ class GameObjects(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class AfroShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class CurlyLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class CurlyShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class DreadLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class DreadShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class LongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class ParentRace(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.GUID
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class ShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class Visuals(LsxNode):
             class Object(LsxNode):
@@ -401,23 +401,23 @@ class GameObjects(LsxNode):
                     Object: str = LsxType.FIXEDSTRING
 
                 MapKey: str = LsxType.GUID
-                children = (MapValue,)
+                children: LsxChildren = (MapValue,)
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class WavyLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class WavyShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
-            children = (Object,)
+            children: LsxChildren = (Object,)
 
         class Slot(LsxNode):
             Object: str = LsxType.FIXEDSTRING
@@ -431,7 +431,7 @@ class GameObjects(LsxNode):
                         MapKey: str = LsxType.FIXEDSTRING
                         MaterialPresetResource: str = LsxType.FIXEDSTRING
 
-                    children = (Object,)
+                    children: LsxChildren = (Object,)
 
                 class Vector3Parameters(LsxNode):
                     Color: bool = LsxType.BOOL
@@ -446,17 +446,17 @@ class GameObjects(LsxNode):
                     MaterialPresetResource: str = LsxType.FIXEDSTRING
 
                 MaterialResource: str = LsxType.FIXEDSTRING
-                children = (MaterialPresets, Vector3Parameters, ColorPreset)
+                children: LsxChildren = (MaterialPresets, Vector3Parameters, ColorPreset)
 
             class RealMaterialOverrides(LsxNode):
                 pass
 
             BodySetVisual: str = LsxType.FIXEDSTRING
             ShowEquipmentVisuals: bool = LsxType.BOOL
-            children = (MaterialOverrides, RealMaterialOverrides)
+            children: LsxChildren = (MaterialOverrides, RealMaterialOverrides)
 
         EquipmentSlots: int = LsxType.UINT32
-        children = (
+        children: LsxChildren = (
             AfroLongHair,
             AfroShortHair,
             CurlyLongHair,
@@ -478,7 +478,7 @@ class GameObjects(LsxNode):
             _id_ = ""
             Object: str = LsxType.GUID
 
-        children = (EquipmentType,)
+        children: LsxChildren = (EquipmentType,)
 
     class FootStepInfos(LsxNode):
         class FootStepInfo(LsxNode):
@@ -491,7 +491,7 @@ class GameObjects(LsxNode):
             FootSoundEventName: str = LsxType.FIXEDSTRING
             Name: str = LsxType.LSSTRING_VALUE
 
-        children = (FootStepInfo,)
+        children: LsxChildren = (FootStepInfo,)
 
     class OnDeathActions(LsxNode):
         class Action(LsxNode):
@@ -510,21 +510,21 @@ class GameObjects(LsxNode):
                 TotalCells: int = LsxType.INT32
 
             ActionType: int = LsxType.INT32
-            children = (Attributes,)
+            children: LsxChildren = (Attributes,)
 
-        children = (Action,)
+        children: LsxChildren = (Action,)
 
     class TradeTreasures(LsxNode):
         class TreasureItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (TreasureItem,)
+        children: LsxChildren = (TreasureItem,)
 
     class Treasures(LsxNode):
         class TreasureItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (TreasureItem,)
+        children: LsxChildren = (TreasureItem,)
 
     class ConstructionLines(LsxNode):
         class ConstructionLine(LsxNode):
@@ -532,7 +532,7 @@ class GameObjects(LsxNode):
                 class ConstructionPoint(LsxNode):
                     ConstructionPointId: str = LsxType.GUID
 
-                children = (ConstructionPoint,)
+                children: LsxChildren = (ConstructionPoint,)
 
             class HelperEnd(LsxNode):
                 ConstructionPointId: str = LsxType.GUID
@@ -541,9 +541,9 @@ class GameObjects(LsxNode):
                 ConstructionPointId: str = LsxType.GUID
 
             ConstructionLineGuid: str = LsxType.GUID
-            children = (ConstructionPoints, HelperEnd, HelperStart)
+            children: LsxChildren = (ConstructionPoints, HelperEnd, HelperStart)
 
-        children = (ConstructionLine,)
+        children: LsxChildren = (ConstructionLine,)
 
     class ConstructionPoints(LsxNode):
         class ConstructionPoint(LsxNode):
@@ -553,7 +553,7 @@ class GameObjects(LsxNode):
                         class ConstructionPointNeighbour(LsxNode):
                             ConstructionPointId: str = LsxType.GUID
 
-                        children = (ConstructionPointNeighbour,)
+                        children: LsxChildren = (ConstructionPointNeighbour,)
 
                     class ConstructionTileLists(LsxNode):
                         class ConstructionTileList(LsxNode):
@@ -561,40 +561,40 @@ class GameObjects(LsxNode):
                                 class ConstructionPointLeftCornerTile(LsxNode):
                                     TileId: str = LsxType.GUID
 
-                                children = (ConstructionPointLeftCornerTile,)
+                                children: LsxChildren = (ConstructionPointLeftCornerTile,)
 
                             class ConstructionPointNeighbourTiles(LsxNode):
                                 class ConstructionPointNeighbourTile(LsxNode):
                                     ConstructionPointTile1Id: str = LsxType.GUID
 
-                                children = (ConstructionPointNeighbourTile,)
+                                children: LsxChildren = (ConstructionPointNeighbourTile,)
 
                             class ConstructionPointRightCornerTiles(LsxNode):
                                 class ConstructionPointRightCornerTile(LsxNode):
                                     TileId: str = LsxType.GUID
 
-                                children = (ConstructionPointRightCornerTile,)
+                                children: LsxChildren = (ConstructionPointRightCornerTile,)
 
                             ConstructionNonOptimalTilesEnd: int = LsxType.INT32
                             ConstructionNonOptimalTilesStart: int = LsxType.INT32
                             Side: int = LsxType.INT32
-                            children = (
+                            children: LsxChildren = (
                                 ConstructionPointLeftCornerTiles,
                                 ConstructionPointNeighbourTiles,
                                 ConstructionPointRightCornerTiles,
                             )
 
-                        children = (ConstructionTileList,)
+                        children: LsxChildren = (ConstructionTileList,)
 
-                    children = (ConstructionPointNeighbours, ConstructionTileLists)
+                    children: LsxChildren = (ConstructionPointNeighbours, ConstructionTileLists)
 
-                children = (ConstructionPointNeighbour,)
+                children: LsxChildren = (ConstructionPointNeighbour,)
 
             ConstructionPointId: str = LsxType.GUID
             ConstructionPointStop: bool = LsxType.BOOL
-            children = (ConstructionPointNeighbours,)
+            children: LsxChildren = (ConstructionPointNeighbours,)
 
-        children = (ConstructionPoint,)
+        children: LsxChildren = (ConstructionPoint,)
 
     class ConstructionSpline(LsxNode):
         class ConstructionPoint(LsxNode):
@@ -603,17 +603,17 @@ class GameObjects(LsxNode):
                     ConstructionPointId: str = LsxType.GUID
 
                 ConstructionBranchCount: int = LsxType.INT32
-                children = (ConstructionBranch,)
+                children: LsxChildren = (ConstructionBranch,)
 
             ConstructionHelperPoint: bool = LsxType.BOOL
             ConstructionPointId: str = LsxType.GUID
             ConstructionPointStretch: bool = LsxType.BOOL
             ConstructionPointTransform: str = LsxType.MAT4X4
-            children = (ConstructionBranches,)
+            children: LsxChildren = (ConstructionBranches,)
 
         ConstructionPointCount: int = LsxType.INT32
         id: str = LsxType.GUID
-        children = (ConstructionPoint,)
+        children: LsxChildren = (ConstructionPoint,)
 
     class Fillings(LsxNode):
         class Filling(LsxNode):
@@ -624,17 +624,17 @@ class GameObjects(LsxNode):
                             ConstructionPointId: str = LsxType.GUID
 
                         ConstructionBranchCount: int = LsxType.INT32
-                        children = (ConstructionBranch,)
+                        children: LsxChildren = (ConstructionBranch,)
 
                     ConstructionHelperPoint: bool = LsxType.BOOL
                     ConstructionPointId: str = LsxType.GUID
                     ConstructionPointStretch: bool = LsxType.BOOL
                     ConstructionPointTransform: str = LsxType.MAT4X4
-                    children = (ConstructionBranches,)
+                    children: LsxChildren = (ConstructionBranches,)
 
                 ConstructionPointCount: int = LsxType.INT32
                 id: str = LsxType.GUID
-                children = (ConstructionPoint,)
+                children: LsxChildren = (ConstructionPoint,)
 
             class Exclusions(LsxNode):
                 pass
@@ -643,14 +643,14 @@ class GameObjects(LsxNode):
                 class Index(LsxNode):
                     Object: int = LsxType.UINT16
 
-                children = (Index,)
+                children: LsxChildren = (Index,)
 
             class Vertices(LsxNode):
                 class Vertex(LsxNode):
                     Position: str = LsxType.FVEC3
                     UV: str = LsxType.FVEC2
 
-                children = (Vertex,)
+                children: LsxChildren = (Vertex,)
 
             BoundMax: str = LsxType.FVEC3
             BoundMin: str = LsxType.FVEC3
@@ -671,9 +671,9 @@ class GameObjects(LsxNode):
             UVOffset: str = LsxType.FVEC2
             UVRotation: float = LsxType.FLOAT
             WalkOn: bool = LsxType.BOOL
-            children = (ConstructionSpline, Exclusions, Indices, Vertices)
+            children: LsxChildren = (ConstructionSpline, Exclusions, Indices, Vertices)
 
-        children = (Filling,)
+        children: LsxChildren = (Filling,)
 
     class tiles(LsxNode):
         class tile(LsxNode):
@@ -713,19 +713,19 @@ class GameObjects(LsxNode):
         TileSet: str = LsxType.FIXEDSTRING
         WalkOn: bool = LsxType.BOOL
         WalkThrough: bool = LsxType.BOOL
-        children = (tile,)
+        children: LsxChildren = (tile,)
 
     class SpeakerGroupList(LsxNode):
         class SpeakerGroup(LsxNode):
             Object: str = LsxType.GUID
 
-        children = (SpeakerGroup,)
+        children: LsxChildren = (SpeakerGroup,)
 
     class InteractionFilterList(LsxNode):
         class InteractionFilter(LsxNode):
             Object: str = LsxType.GUID
 
-        children = (InteractionFilter,)
+        children: LsxChildren = (InteractionFilter,)
 
     class FadeChildren(LsxNode):
         pass
@@ -757,7 +757,7 @@ class GameObjects(LsxNode):
             StatusId: str = LsxType.FIXEDSTRING
             VanishOnApply: bool = LsxType.BOOL
 
-        children = (StatusData,)
+        children: LsxChildren = (StatusData,)
 
     Acceleration: float = LsxType.FLOAT
     ActiveCharacterLightID: str = LsxType.FIXEDSTRING
@@ -1014,7 +1014,7 @@ class GameObjects(LsxNode):
     SurfaceCategory: int = LsxType.UINT8
     SwarmGroup: str = LsxType.FIXEDSTRING
     TechnicalDescription: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
-    TechnicalDescriptionParams: LsxChildren = LsxType.LSSTRING
+    TechnicalDescriptionParams: list[str] = LsxType.LSSTRING
     TemplateAfterDestruction: str = LsxType.FIXEDSTRING
     TextureMapping: int = LsxType.UINT8
     Tiling: str = LsxType.FVEC2
@@ -1083,7 +1083,7 @@ class GameObjects(LsxNode):
     _OriginalFileVersion_: int = LsxType.INT64
     maxStackAmount: int = LsxType.INT32
     offset: str = LsxType.FVEC2
-    children = (
+    children: LsxChildren = (
         Bounds,
         OnDestroyActions,
         PrefabChildrenGroup,
@@ -1127,7 +1127,7 @@ class GameObjects(LsxNode):
 class Templates(LsxDocument):
     root = "Templates"
     path = "Public/{folder}/RootTemplates/_merged.lsf.lsx"
-    children = (GameObjects,)
+    children: LsxChildren = (GameObjects,)
 
 
 Lsx.register(Templates)

@@ -3,6 +3,7 @@
 Meta definitions.
 """
 
+from modtools.lsx.children import LsxChildren
 from modtools.lsx.document import LsxDocument
 from modtools.lsx.node import LsxNode
 from modtools.lsx import Lsx
@@ -24,7 +25,7 @@ class ModuleInfo(LsxNode):
         class Target(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
-        children = (Target,)
+        children: LsxChildren = (Target,)
 
     Author: str = LsxType.LSSTRING_VALUE
     CharacterCreationLevelName: str = LsxType.FIXEDSTRING
@@ -42,12 +43,12 @@ class ModuleInfo(LsxNode):
     Type: str = LsxType.FIXEDSTRING
     UUID: str = LsxType.FIXEDSTRING
     Version64: int = LsxType.INT64
-    children = (PublishVersion, Scripts, TargetModes)
+    children: LsxChildren = (PublishVersion, Scripts, TargetModes)
 
 
 class Config(LsxDocument):
     path = "Mods/{folder}/meta.lsx"
-    children = (Dependencies, ModuleInfo)
+    children: LsxChildren = (Dependencies, ModuleInfo)
 
 
 Lsx.register(Config)

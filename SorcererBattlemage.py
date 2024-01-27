@@ -5,6 +5,7 @@ Generates files for the "ChromaticBlade" mod.
 
 import os
 
+from collections.abc import Callable, Iterable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from modtools.lsx.game import (
@@ -75,7 +76,7 @@ sorcerer_battlemage.add(SpellList(
 ))
 
 
-def sorcerer_level(level: int, *, is_multiclass: bool = False):
+def sorcerer_level(level: int, *, is_multiclass: bool = False) -> Callable[[Progression], bool]:
     def predicate(child: Progression) -> bool:
         return (child.Name == CharacterClass.SORCERER
                 and child.Level == level
@@ -83,7 +84,7 @@ def sorcerer_level(level: int, *, is_multiclass: bool = False):
     return predicate
 
 
-def level_1():
+def level_1() -> None:
     """Add armor and weapon proficiencies, passives, skills, and spells."""
     child: Progression
 
@@ -124,6 +125,15 @@ def level_1():
     child.Selectors = selectors
 
 
+def level_2() -> None:
+    """Add additional passives."""
+    child: Progression = sorcerer_progression.find(sorcerer_level(2))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["AgonizingBlast", "DevilsSight", "RepellingBlast"]
+
+    index = child.Selectors.index("AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876)")
+    child.Selectors[index] = "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)"
+
+
 def increase_resources(multiplier: int):
     # Double spell slots and sorcery points
     child: Progression
@@ -132,10 +142,21 @@ def increase_resources(multiplier: int):
             child.Boosts = update_action_resources(boosts,
                                                    [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],
                                                    lambda _resource, count, _level: count * multiplier)
-        sorcerer_battlemage.add(child)
+
+
+def allow_improvement(levels: Iterable[int]) -> None:
+    levels = set(levels)
+    for level in range(1, 13):
+        child: Progression = sorcerer_progression.find(sorcerer_level(level))
+        child.AllowImprovement = True if level in levels else None
 
 
 level_1()
+level_2()
 increase_resources(2)
+allow_improvement([level for level in range(2, 13)])
+
+for child in sorcerer_progression:
+    sorcerer_battlemage.add(child)
 
 sorcerer_battlemage.build()

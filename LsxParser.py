@@ -216,13 +216,13 @@ class LsxParser:
         child_list = ", ".join(node.children.keys())
         if len(node.children) == 1:
             child_list += ","
-        if len(child_list) > 100 - 4 * depth and len(node.children) > 1:
-            f.write(f"{indent}    children = (\n")
+        if len(child_list) > 80 - 4 * depth and len(node.children) > 1:
+            f.write(f"{indent}    children: LsxChildren = (\n")
             for child in node.children.keys():
                 f.write(f"{indent}        {child},\n")
             f.write(f"{indent}    )\n")
         elif len(node.children) > 0:
-            f.write(f"{indent}    children = ({child_list})\n")
+            f.write(f"{indent}    children: LsxChildren = ({child_list})\n")
 
 
 def main():

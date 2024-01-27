@@ -12,7 +12,7 @@ from modtools.lsx.type import LsxType
 
 class SpellList(LsxNode):
     Comment: str = LsxType.LSSTRING_VALUE
-    Spells: LsxChildren = LsxType.LSSTRING
+    Spells: list[str] = LsxType.LSSTRING
     UUID: str = LsxType.GUID
 
 

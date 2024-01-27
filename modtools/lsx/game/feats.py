@@ -13,15 +13,15 @@ from modtools.lsx.type import LsxType
 class Feat(LsxNode):
     CanBeTakenMultipleTimes: bool = LsxType.BOOL
     Name: str = LsxType.FIXEDSTRING
-    PassivesAdded: LsxChildren = LsxType.LSSTRING
+    PassivesAdded: list[str] = LsxType.LSSTRING
     Requirements: str = LsxType.LSSTRING_VALUE
-    Selectors: LsxChildren = LsxType.LSSTRING
+    Selectors: list[str] = LsxType.LSSTRING
     UUID: str = LsxType.GUID
 
 
 class Feats(LsxDocument):
     path = "Public/{folder}/Feats/Feats.lsx"
-    children = (Feat,)
+    children: LsxChildren = (Feat,)
 
 
 Lsx.register(Feats)

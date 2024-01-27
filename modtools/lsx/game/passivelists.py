@@ -11,13 +11,13 @@ from modtools.lsx.type import LsxType
 
 
 class PassiveList(LsxNode):
-    Passives: LsxChildren = LsxType.LSSTRING_COMMA
+    Passives: list[str] = LsxType.LSSTRING_COMMA
     UUID: str = LsxType.GUID
 
 
 class PassiveLists(LsxDocument):
     path = "Public/{folder}/Lists/PassiveLists.lsx"
-    children = (PassiveList,)
+    children: LsxChildren = (PassiveList,)
 
 
 Lsx.register(PassiveLists)

@@ -18,25 +18,25 @@ class Progression(LsxNode):
             _id_ = "SubClass"
             Object: str = LsxType.GUID
 
-        children = (Subclass,)
+        children: LsxChildren = (Subclass,)
 
     AllowImprovement: bool = LsxType.BOOL
-    Boosts: LsxChildren = LsxType.LSSTRING
+    Boosts: list[str] = LsxType.LSSTRING
     IsMulticlass: bool = LsxType.BOOL
     Level: int = LsxType.UINT8
     Name: str = LsxType.LSSTRING_VALUE
-    PassivesAdded: LsxChildren = LsxType.LSSTRING
-    PassivesRemoved: LsxChildren = LsxType.LSSTRING
+    PassivesAdded: list[str] = LsxType.LSSTRING
+    PassivesRemoved: list[str] = LsxType.LSSTRING
     ProgressionType: int = LsxType.UINT8
-    Selectors: LsxChildren = LsxType.LSSTRING
+    Selectors: list[str] = LsxType.LSSTRING
     TableUUID: str = LsxType.GUID
     UUID: str = LsxType.GUID
-    children = (Subclasses,)
+    children: LsxChildren = (Subclasses,)
 
 
 class Progressions(LsxDocument):
     path = "Public/{folder}/Progressions/Progressions.lsx"
-    children = (Progression,)
+    children: LsxChildren = (Progression,)
 
 
 Lsx.register(Progressions)

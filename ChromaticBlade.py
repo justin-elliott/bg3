@@ -66,6 +66,8 @@ chromatic_blade.add(weapon_data(
         "IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)",
     ],
     PassivesOnEquip=[
+        "MAG_ChargedLightning_Charge_OnDamage_Passive",
+        "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
     ],
     Weapon_Properties=[
         "Dippable",

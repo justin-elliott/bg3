@@ -5,7 +5,7 @@
     <content contentuid="h9334d51bg347bg5360ge04bgdd49e8f8f274" version="1">This blade shimmers with elemental force.</content>
     <content contentuid="h9289dab9gbfd2g4c41g9adagc9f94f95b313" version="1">Chromatic Barrier</content>
     <content contentuid="h549f48e2gd36cg96b6ge8c8g337fa1c200b4" version="1">The magic of your blade forms a barrier around you that protects you from harm, and causes you to inflict additional force damage.</content>
-    <content contentuid="h8ebdd939g33d9g7845g1757gdef8b7f8be4a" version="1">Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.&lt;br&gt;&lt;br&gt;While the barrier is active, you deal additional force damage equal to the number of charges remaining. Dealing damage adds 1 charge, up to [1] charges.</content>
+    <content contentuid="h8ebdd939g33d9g7845g1757gdef8b7f8be4a" version="1">Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.&lt;br&gt;&lt;br&gt;While the barrier is active, you deal additional force damage equal to the number of charges remaining. Dealing damage adds 1 charge, up to half your level, rounded up.</content>
     <content contentuid="h37040088gfb6fg4f7dg435eg2983ea983101" version="1">Chromatic Weapon</content>
     <content contentuid="h9a3b863ag029ag3438ga67cgec3afb5fb8b8" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional 1d4 damage of your choice.</content>
     <content contentuid="hbd1d6391ga90egc774g10a7gc634c74d28a5" version="1">Chromatic Weapon: Acid</content>

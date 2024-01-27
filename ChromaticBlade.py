@@ -87,7 +87,7 @@ loca["ChromaticBlade_ChromaticBarrier_StatusDescription"] = {"en": """
     Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.
 
     While the barrier is active, you deal additional force damage equal to the number of charges remaining.
-    Dealing damage adds 1 charge, up to [1] charges.
+    Dealing damage adds 1 charge, up to half your level, rounded up.
     """}
 
 chromatic_blade.add(passive_data(
@@ -99,7 +99,7 @@ chromatic_blade.add(passive_data(
     Properties=["Highlighted", "OncePerAttack"],
     StatsFunctorContext=["OnDamage"],
     Conditions=[
-        "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',4)",
+        "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',(context.Source.Level+1)/2)",
     ],
     StatsFunctors=[
         "ApplyStatus(SELF,CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration+1)",
@@ -124,7 +124,6 @@ chromatic_blade.add(status_data(
     StatusType="BOOST",
     DisplayName=loca["ChromaticBlade_ChromaticBarrier_DisplayName"],
     Description=loca["ChromaticBlade_ChromaticBarrier_StatusDescription"],
-    DescriptionParams="4",
     Icon="Status_ArcaneWard",
     SoundLoop="Spell_Status_ArcaneWard_MO",
     SoundStop="Spell_Status_ArcaneWard_Depleted",

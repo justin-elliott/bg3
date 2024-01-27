@@ -58,8 +58,7 @@ chromatic_blade.add(weapon_data(
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(ChromaticBlade_Charge)",
-        "UnlockSpell(ChromaticBlade_RecklessAttack)",
-        "UnlockSpell(ChromaticBlade_WildSwing)",
+        "UnlockSpell(ChromaticBlade_Cleave)",
         "UnlockSpell(ChromaticBlade_ChromaticWeapon)",
     ],
     DefaultBoosts=[
@@ -172,7 +171,7 @@ def add_chromatic_weapon_element(element: str,
         SpellType="Shout",
         SpellContainerID="ChromaticBlade_ChromaticWeapon",
         ContainerSpells="",
-        SpellProperties=f"ApplyEquipmentStatus(MainHand,CHROMATICBLADE_CHROMATICWEAPON_{upper},100,-1)",
+        SpellProperties=f"ApplyEquipmentStatus(MeleeMainHand,CHROMATICBLADE_CHROMATICWEAPON_{upper},100,-1)",
         Icon=icon,
         DisplayName=loca[f"ChromaticBlade_ChromaticWeapon_{title}_DisplayName"],
         Description=loca[f"ChromaticBlade_ChromaticWeapon_{title}_Description"],
@@ -271,8 +270,6 @@ add_chromatic_weapon_element("Thunder",
 loca["ChromaticBlade_Charge_DisplayName"] = {"en": "Charge"}
 loca["ChromaticBlade_Charge_Description"] = {"en": """
     Charge forward and attack the first enemy in your way.
-    Until your next turn, you have <LSTag Tooltip="Advantage">Advantage</LSTag> on
-    <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, but enemies also have Advantage against you.
     """}
 
 chromatic_blade.add(spell_data(
@@ -285,9 +282,6 @@ chromatic_blade.add(spell_data(
     TooltipAttackSave="",
     TooltipStatusApply="",
     Cooldown="None",
-    SpellProperties=[
-        "IF(not HasStatus('RECKLESS_ATTACK',context.Source)):ApplyStatus(SELF,RECKLESS_ATTACK,100,1)",
-    ],
     SpellSuccess=[
         "DealDamage(MainMeleeWeapon/2,MainWeaponDamageType)",
         "GROUND:ExecuteWeaponFunctors(MainHand)",
@@ -296,47 +290,10 @@ chromatic_blade.add(spell_data(
 ))
 
 chromatic_blade.add(spell_data(
-    "ChromaticBlade_RecklessAttack",
-    SpellType="Zone",
-    using="Target_RecklessAttack",
-    Cooldown="None",
-    SpellFlags=[
-        "IsDefaultWeaponAction",
-        "IsHarmful",
-        "IsMelee",
-    ],
-    SpellProperties=[
-        "IF(not HasStatus('RECKLESS_ATTACK',context.Source)):ApplyStatus(SELF,RECKLESS_ATTACK,100,1)",
-        "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-        "GROUND:ExecuteWeaponFunctors(MainHand)",
-    ],
-))
-
-loca["ChromaticBlade_WildSwing_DisplayName"] = {"en": "Wild Swing"}
-loca["ChromaticBlade_WildSwing_Description"] = {"en": """
-    Swing your weapon in a large arc to attack up to [1] enemies at once.
-    Until your next turn, you have <LSTag Tooltip="Advantage">Advantage</LSTag> on
-    <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, but enemies also have Advantage against you.
-    """}
-
-chromatic_blade.add(spell_data(
-    "ChromaticBlade_WildSwing",
+    "ChromaticBlade_Cleave",
     SpellType="Zone",
     using="Zone_Cleave",
-    DisplayName=loca["ChromaticBlade_WildSwing_DisplayName"],
-    Description=loca["ChromaticBlade_WildSwing_Description"],
     Cooldown="None",
-    SpellProperties=[
-        "IF(not HasStatus('RECKLESS_ATTACK',context.Source)):ApplyStatus(SELF,RECKLESS_ATTACK,100,1)",
-        "GROUND:ExecuteWeaponFunctors(MainHand)",
-    ],
-    SpellSuccess=[
-        "DealDamage(MainMeleeWeapon/2,MainWeaponDamageType)",
-        "GROUND:ExecuteWeaponFunctors(MainHand)",
-    ],
-    TooltipDamageList=[
-        "DealDamage(MainMeleeWeapon/2,MainWeaponDamageType)",
-    ],
 ))
 
 chromatic_blade.add_treasure_table("""\

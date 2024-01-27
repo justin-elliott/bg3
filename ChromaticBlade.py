@@ -87,7 +87,7 @@ loca["ChromaticBlade_ChromaticBarrier_StatusDescription"] = {"en": """
     Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.
 
     While the barrier is active, you deal additional force damage equal to the number of charges remaining.
-    Dealing damage adds 1 charge, up to half your level, rounded up.
+    Dealing damage with the Chromatic Blade adds 1 charge, up to half your level, rounded up.
     """}
 
 chromatic_blade.add(passive_data(
@@ -98,9 +98,8 @@ chromatic_blade.add(passive_data(
     PriorityOrder="2",
     Properties=["Highlighted", "OncePerAttack"],
     StatsFunctorContext=["OnDamage"],
-    Conditions=[
-        "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',(context.Source.Level+1)/2)",
-    ],
+    Conditions="AttackedWithPassiveSourceWeapon() and "
+               "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',(context.Source.Level+1)/2)",
     StatsFunctors=[
         "ApplyStatus(SELF,CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration+1)",
     ],

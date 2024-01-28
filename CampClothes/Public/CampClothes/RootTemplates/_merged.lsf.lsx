@@ -6,12 +6,12 @@
         <node id="Templates">
             <children>
                 <node id="GameObjects">
-                    <attribute id="DisplayName" type="TranslatedString" handle="h3b62d67bg3ac9gaa21ga1ceg65d16dd670bb" version="1" />
                     <attribute id="Description" type="TranslatedString" handle="h4dc96120gb68bg720agaa81g0fde0aa2c22d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h3b62d67bg3ac9gaa21ga1ceg65d16dd670bb" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="ffda4777-7b6b-4582-b128-5f0175419b4a" />
                     <attribute id="Name" type="LSString" value="CampClothes_ComfortableBoots" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="bc090f4e-ff74-49f6-a3f2-7eb561f57436" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="cf987856-1381-477e-88db-6b359f7e19e8" />
                     <attribute id="Stats" type="FixedString" value="CampClothes_ComfortableBoots" />
                     <attribute id="Type" type="FixedString" value="item" />
                 </node>

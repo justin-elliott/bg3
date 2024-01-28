@@ -6,7 +6,7 @@ Generates files for the "CampClothes" mod.
 import os
 
 from modtools.gamedata import armor_data
-from modtools.lsx import Lsx
+from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -30,21 +30,19 @@ loca["CampClothes_ComfortableBoots_Description"] = {"en": """
     Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.
     """}
 
-boots_of_aid_and_comfort_uuid = UUID("bc090f4e-ff74-49f6-a3f2-7eb561f57436")
+arm_boots_leather_a = UUID("cf987856-1381-477e-88db-6b359f7e19e8")
 comfortable_boots_game_objects_uuid = UUID("ffda4777-7b6b-4582-b128-5f0175419b4a")
 
-camp_clothes.add_root_templates([
-    Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["CampClothes_ComfortableBoots_DisplayName"], version=1),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["CampClothes_ComfortableBoots_Description"], version=1),
-        Lsx.Attribute("LevelName", "FixedString", value=""),
-        Lsx.Attribute("MapKey", "FixedString", value=str(comfortable_boots_game_objects_uuid)),
-        Lsx.Attribute("Name", "LSString", value="CampClothes_ComfortableBoots"),
-        Lsx.Attribute("ParentTemplateId", "FixedString", value=str(boots_of_aid_and_comfort_uuid)),
-        Lsx.Attribute("Stats", "FixedString", value="CampClothes_ComfortableBoots"),
-        Lsx.Attribute("Type", "FixedString", value="item"),
-    ]),
-])
+camp_clothes.add(GameObjects(
+    DisplayName=loca["CampClothes_ComfortableBoots_DisplayName"],
+    Description=loca["CampClothes_ComfortableBoots_Description"],
+    LevelName="",
+    MapKey=comfortable_boots_game_objects_uuid,
+    Name="CampClothes_ComfortableBoots",
+    ParentTemplateId=arm_boots_leather_a,
+    Stats="CampClothes_ComfortableBoots",
+    Type="item",
+))
 
 camp_clothes.add(armor_data(
     "CampClothes_ComfortableBoots",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates files for the "ChromaticBlade" mod.
+Generates files for the "SorcererBattlemage" mod.
 """
 
 import os

@@ -10,13 +10,13 @@ from collections.abc import Callable, Iterable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.movement import Movement
+from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
 from modtools.gamedata import spell_data
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
-    update_action_resources
 )
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
@@ -175,42 +175,6 @@ def level_11() -> None:
     child.PassivesRemoved = (child.PassivesRemoved or []) + ["ExtraAttack"]
 
 
-ADD_SPELLS_REGEX = re.compile(r"AddSpells\(([^,)]*)(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?\)")
-
-
-def spells_always_prepared():
-    """Ensure that spells gained with AddSpells() are AlwaysPrepared."""
-    child: Progression
-    for child in bard_progression:
-        selectors = []
-        for selector in child.Selectors or []:
-            if match := ADD_SPELLS_REGEX.match(selector):
-                fields = match.groups("")
-                selector = (f"AddSpells({fields[0]},{fields[1]},{fields[2]},{fields[3]},"
-                            f"{fields[4] or "AlwaysPrepared"})")
-            selectors.append(selector)
-        if selectors:
-            child.Selectors = selectors
-
-
-def increase_resources(multiplier: int):
-    """Increase class resources."""
-    child: Progression
-    for child in bard_progression:
-        if (boosts := child.Boosts) is not None:
-            child.Boosts = update_action_resources(boosts, [ActionResource.SPELL_SLOTS,
-                                                            ActionResource.BARDIC_INSPIRATION_CHARGES],
-                                                   lambda _resource, count, _level: count * multiplier)
-
-
-def allow_improvement(levels: Iterable[int]) -> None:
-    """Add additional feats."""
-    levels = set(levels)
-    for level in range(1, 13):
-        child: Progression = bard_progression.find(bard_level(level))
-        child.AllowImprovement = True if level in levels else None
-
-
 level_1()
 level_2()
 level_3()
@@ -219,9 +183,10 @@ level_7()
 level_8()
 level_9()
 level_11()
-spells_always_prepared()
-increase_resources(2)
-allow_improvement([level for level in range(2, 13)])
+
+spells_always_prepared(bard_progression)
+multiply_resources(bard_progression, [ActionResource.SPELL_SLOTS, ActionResource.BARDIC_INSPIRATION_CHARGES], 2)
+allow_improvement(bard_progression, range(2, 13))
 
 for child in bard_progression:
     bard_battlemage.add(child)

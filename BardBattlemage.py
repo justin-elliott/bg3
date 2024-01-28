@@ -4,9 +4,8 @@ Generates files for the "BardBattlemage" mod.
 """
 
 import os
-import re
 
-from collections.abc import Callable, Iterable
+from collections.abc import Callable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.movement import Movement
@@ -22,12 +21,6 @@ from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
 from uuid import UUID
-
-# <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
-# Lsx.Attribute("$1", "$2", value="$3"),
-
-# data\s*"([^"]*)"\s*"([^"]*)"
-# $1="$2",
 
 CLASS_DESCRIPTION_PATH = "Shared.pak/Public/Shared/ClassDescriptions/ClassDescriptions.lsx"
 

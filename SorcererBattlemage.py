@@ -5,27 +5,23 @@ Generates files for the "SorcererBattlemage" mod.
 
 import os
 
-from collections.abc import Callable, Iterable
+from collections.abc import Callable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
+from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
+from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
 from modtools.lsx.game import (
     ActionResource,
+    CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
-    update_action_resources
 )
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
 from uuid import UUID
-
-# <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
-# Lsx.Attribute("$1", "$2", value="$3"),
-
-# data\s*"([^"]*)"\s*"([^"]*)"
-# $1="$2",
 
 CLASS_DESCRIPTION_PATH = "Shared.pak/Public/Shared/ClassDescriptions/ClassDescriptions.lsx"
 
@@ -41,6 +37,7 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
 # Add passives and spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
 bolster = Bolster(sorcerer_battlemage).add_bolster()
+empowered_spells = EmpoweredSpells(sorcerer_battlemage).add_empowered_spells(CharacterAbility.CHARISMA)
 fast_movement = Movement(sorcerer_battlemage).add_fast_movement(3.0)
 
 # Modify the game's Sorcerer class description
@@ -52,6 +49,9 @@ sorcerer_class_description.CanLearnSpells = True
 sorcerer_class_description.BaseHp = 10
 sorcerer_class_description.HpPerLevel = 6
 sorcerer_class_description.MustPrepareSpells = True
+sorcerer_class_description.children.append(ClassDescription.Tags(
+    Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
+))
 
 sorcerer_battlemage.add(sorcerer_class_description)
 
@@ -137,16 +137,27 @@ def level_2() -> None:
 
 def level_3() -> None:
     child: Progression = sorcerer_progression.find(sorcerer_level(3))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["ImprovedCritical"]
-
     selectors = child.Selectors or []
-    selectors.append(f"AddSpells({level_2_spelllist},,,,AlwaysPrepared)")
+    selectors.extend([
+        f"AddSpells({level_2_spelllist},,,,AlwaysPrepared)",
+        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+    ])
     child.Selectors = selectors
+
+
+def level_4() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(4))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["ImprovedCritical"]
 
 
 def level_5() -> None:
     child: Progression = sorcerer_progression.find(sorcerer_level(5))
     child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack", fast_movement]
+
+
+def level_6() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(6))
+    child.PassivesAdded = (child.PassivesAdded or []) + ["PotentCantrip"]
 
 
 def level_7() -> None:
@@ -165,39 +176,40 @@ def level_9() -> None:
     child.PassivesAdded = (child.PassivesAdded or []) + ["BrutalCritical"]
 
 
+def level_10() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(10))
+    child.PassivesAdded = (child.PassivesAdded or []) + [empowered_spells]
+
+
 def level_11() -> None:
     child: Progression = sorcerer_progression.find(sorcerer_level(11))
     child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack_2"]
     child.PassivesRemoved = (child.PassivesRemoved or []) + ["ExtraAttack"]
 
 
-def increase_resources(multiplier: int):
-    # Double spell slots and sorcery points
-    child: Progression
-    for child in sorcerer_progression:
-        if (boosts := child.Boosts) is not None:
-            child.Boosts = update_action_resources(boosts,
-                                                   [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS],
-                                                   lambda _resource, count, _level: count * multiplier)
-
-
-def allow_improvement(levels: Iterable[int]) -> None:
-    levels = set(levels)
-    for level in range(1, 13):
-        child: Progression = sorcerer_progression.find(sorcerer_level(level))
-        child.AllowImprovement = True if level in levels else None
+def level_12() -> None:
+    child: Progression = sorcerer_progression.find(sorcerer_level(12))
+    selectors = child.Selectors or []
+    selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)")  # Action Surge
+    child.Selectors = selectors
 
 
 level_1()
 level_2()
 level_3()
+level_4()
 level_5()
+level_6()
 level_7()
 level_8()
 level_9()
+level_10()
 level_11()
-increase_resources(2)
-allow_improvement([level for level in range(2, 13)])
+level_12()
+
+allow_improvement(sorcerer_progression, range(2, 13))
+multiply_resources(sorcerer_progression, [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS], 2)
+spells_always_prepared(sorcerer_progression)
 
 for child in sorcerer_progression:
     sorcerer_battlemage.add(child)

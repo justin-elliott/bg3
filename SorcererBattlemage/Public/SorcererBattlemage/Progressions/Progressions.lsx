@@ -72,9 +72,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;ImprovedCritical" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,1,Metamagic);SelectSpells(f80396e2-cb76-4694-b0db-5c34da61a478,1,2,SorcererSpell);AddSpells(c9def881-1569-cb8f-7c87-0c016c14d198,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,1,Metamagic);SelectSpells(f80396e2-cb76-4694-b0db-5c34da61a478,1,2,SorcererSpell);AddSpells(c9def881-1569-cb8f-7c87-0c016c14d198,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
                     <attribute id="UUID" type="guid" value="e60b351e-aa26-4c5e-bbdc-ce5c8af03b5a" />
                 </node>
@@ -83,6 +83,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,1,0,SorcererCantrip,,,AlwaysPrepared);SelectSpells(f80396e2-cb76-4694-b0db-5c34da61a478,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
@@ -104,6 +105,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(dcbaf2ae-1f45-453e-ab83-cd154f8277a4,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
@@ -147,6 +149,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
+                    <attribute id="PassivesAdded" type="LSString" value="SorcererBattlemage_EmpoweredSpells_Charisma" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,1,0,SorcererCantrip,,,AlwaysPrepared);SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,1,Metamagic);SelectSpells(3276fcfe-e143-4559-b6e0-7d7aa0ffcb53,1,2,SorcererSpell)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
@@ -170,7 +173,7 @@
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(1270a6db-980b-4e3b-bf26-2924da61dfd5,1,2,SorcererSpell)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(1270a6db-980b-4e3b-bf26-2924da61dfd5,1,2,SorcererSpell);AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
                     <attribute id="UUID" type="guid" value="9c5f5645-ccb9-49c0-864c-2522aabff53e" />
                 </node>
@@ -217,7 +220,7 @@
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
                     <attribute id="UUID" type="guid" value="94ba4bb9-7335-497a-8ac0-1ec535fb85d6" />
                 </node>

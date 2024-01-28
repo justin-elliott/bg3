@@ -13,9 +13,7 @@ _ADD_SPELLS_REGEX = re.compile(r"AddSpells\(([^,)]*)(?:,([^,)]*))?(?:,([^,)]*))?
 
 
 def allow_improvement(progressions: Iterable[Progression],
-                      levels: Container[int],
-                      *,
-                      predicate: Callable[[Progression], bool] | None = None) -> None:
+                      levels: Container[int]) -> None:
     """Add additional feats."""
     for progression in progressions:
         if progression.ProgressionType == 0:  # Parent classes only; subclasses don't allow improvement
@@ -24,9 +22,7 @@ def allow_improvement(progressions: Iterable[Progression],
 
 def multiply_resources(progressions: Iterable[Progression],
                        resources: Container[ActionResource],
-                       multiplier: int,
-                       *,
-                       predicate: Callable[[Progression], bool] | None = None) -> None:
+                       multiplier: int) -> None:
     """Increase class resources."""
     for progression in progressions:
         if (boosts := progression.Boosts) is not None:
@@ -34,9 +30,7 @@ def multiply_resources(progressions: Iterable[Progression],
                                                          lambda _resource, count, _level: count * multiplier)
 
 
-def spells_always_prepared(progressions: Iterable[Progression],
-                           *,
-                           predicate: Callable[[Progression], bool] | None = None) -> None:
+def spells_always_prepared(progressions: Iterable[Progression]) -> None:
     """Ensure that spells gained with AddSpells() are AlwaysPrepared."""
     for progression in progressions:
         if progression.Selectors:

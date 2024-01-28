@@ -3,8 +3,18 @@
 Character class enumeration.
 """
 
-from enum import StrEnum
+from enum import IntEnum, StrEnum
 from typing import Final
+
+
+class CharacterAbility(IntEnum):
+    """Character ability numbering."""
+    STRENGTH = 1
+    AGILITY = 2
+    CONSTITUTION = 3
+    INTELLIGENCE = 4
+    WISDOM = 5
+    CHARISMA = 6
 
 
 class CharacterClass(StrEnum):

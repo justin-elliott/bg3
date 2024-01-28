@@ -66,7 +66,7 @@ sorcerer_progression.sort(key=lambda child: (CharacterClass(child.Name).name, ch
 level_1_spelllist = str(sorcerer_battlemage.make_uuid("level_1_spelllist"))
 sorcerer_battlemage.add(SpellList(
     Comment="Sorcerer Battlemage level 1 spells",
-    Spells=[bolster, "Target_CreateDestroyWater", "Projectile_EldritchBlast", "Target_Guidance"],
+    Spells=[bolster, "Target_CreateDestroyWater", "Target_Guidance"],
     UUID=level_1_spelllist,
 ))
 
@@ -129,7 +129,7 @@ def level_1() -> None:
 
 def level_2() -> None:
     child: Progression = sorcerer_progression.find(sorcerer_level(2))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["AgonizingBlast", "DevilsSight", "RepellingBlast"]
+    child.PassivesAdded = (child.PassivesAdded or []) + ["DevilsSight"]
 
     index = child.Selectors.index("AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876)")
     child.Selectors[index] = "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)"

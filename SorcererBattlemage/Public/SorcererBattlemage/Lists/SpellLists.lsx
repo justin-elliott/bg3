@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Sorcerer Battlemage level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="SorcererBattlemage_Bolster;Target_CreateDestroyWater;Projectile_EldritchBlast;Target_Guidance" />
+                    <attribute id="Spells" type="LSString" value="SorcererBattlemage_Bolster;Target_CreateDestroyWater;Target_Guidance" />
                     <attribute id="UUID" type="guid" value="a02e1839-592b-0af5-c04a-f2790aeb22fc" />
                 </node>
                 <node id="SpellList">

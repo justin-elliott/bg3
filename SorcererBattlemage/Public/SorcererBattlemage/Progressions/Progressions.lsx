@@ -61,7 +61,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SorceryPoint,4,0);Tag(SORCERER_METAMAGIC)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="AgonizingBlast;DevilsSight;RepellingBlast" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,1,2,SorcererSpell);AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared);SelectPassives(49704931-e47b-4ce6-abc6-dfa7ba640752,2,Metamagic)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />

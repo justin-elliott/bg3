@@ -2,7 +2,7 @@
 
 new entry "ChromaticBlade_ChromaticBarrier"
 type "PassiveData"
-data "Conditions" "AttackedWithPassiveSourceWeapon() and StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',(context.Source.Level+1)/2)"
+data "Conditions" "AttackedWithPassiveSourceWeapon() and StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',context.Source.Level/2)"
 data "Description" "h549f48e2gd36cg96b6ge8c8g337fa1c200b4"
 data "DisplayName" "h9289dab9gbfd2g4c41g9adagc9f94f95b313"
 data "Icon" "PassiveFeature_ArcaneWard"

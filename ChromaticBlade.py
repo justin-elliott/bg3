@@ -99,7 +99,7 @@ chromatic_blade.add(passive_data(
     Properties=["Highlighted", "OncePerAttack"],
     StatsFunctorContext=["OnDamage"],
     Conditions="AttackedWithPassiveSourceWeapon() and "
-               "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',(context.Source.Level+1)/2)",
+               "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',context.Source.Level/2)",
     StatsFunctors=[
         "ApplyStatus(SELF,CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration+1)",
     ],

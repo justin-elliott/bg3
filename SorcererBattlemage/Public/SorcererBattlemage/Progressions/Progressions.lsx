@@ -163,7 +163,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(1270a6db-980b-4e3b-bf26-2924da61dfd5,1,2,SorcererSpell)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(1270a6db-980b-4e3b-bf26-2924da61dfd5,1,2,SorcererSpell);AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
                     <attribute id="UUID" type="guid" value="2ef87d92-f1c6-4bb2-ab60-308963eef0da" />
                 </node>

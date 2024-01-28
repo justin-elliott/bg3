@@ -186,6 +186,10 @@ def level_11() -> None:
     child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack_2"]
     child.PassivesRemoved = (child.PassivesRemoved or []) + ["ExtraAttack"]
 
+    selectors = child.Selectors or []
+    selectors.append("AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)")  # Fly
+    child.Selectors = selectors
+
 
 def level_12() -> None:
     child: Progression = sorcerer_progression.find(sorcerer_level(12))

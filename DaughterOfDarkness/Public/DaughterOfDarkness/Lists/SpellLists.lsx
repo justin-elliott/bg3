@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Daughter of Darkness level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_BlessingOfTheTrickster;DaughterOfDarkness_Bolster;Target_CharmPerson;Shout_DisguiseSelf;Shout_Shield_Wizard;DaughterOfDarkness_ViciousMockery" />
+                    <attribute id="Spells" type="LSString" value="Target_BlessingOfTheTrickster;DaughterOfDarkness_Bolster;Target_CharmPerson;Shout_DisguiseSelf;DaughterOfDarkness_NightsEdge_Summon;Shout_Shield_Wizard;DaughterOfDarkness_ViciousMockery" />
                     <attribute id="UUID" type="guid" value="273dd08a-4d88-e19a-3d7b-dedc7a01e022" />
                 </node>
                 <node id="SpellList">

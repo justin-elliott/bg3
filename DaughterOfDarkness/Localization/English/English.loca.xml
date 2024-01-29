@@ -10,4 +10,13 @@
     <content contentuid="h7e136cdcg20a2g4f8eg5891gd243611130c6" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h9546db39g4789g38ddg0937g08d3b28ffb95" version="1">Fast Movement</content>
     <content contentuid="h9107207fg4a18ge344geb8cg870c563b114c" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="he2792f88g0717g90a2gdf38g2f314bca4219" version="1">Night's Edge</content>
+    <content contentuid="h3d2f41a6gf091g5b65g1129ga65266392d4a" version="1">This blade is enveloped in shadow.</content>
+    <content contentuid="hc89fd7c9g1bcdgd23eg73c0gab44214eaca8" version="1">Night's Aegis</content>
+    <content contentuid="hadca802ega2dagc77fgee43g9b5f2d912369" version="1">The magic of your blade forms a barrier around you that protects you from harm, and causes you to inflict additional force damage.</content>
+    <content contentuid="heaac26efgf0cdg638cg62a8g0030ba539959" version="1">Your barrier blocks damage equal to its charges and then loses 1 charge.&lt;br&gt;&lt;br&gt;While the barrier is active, you deal additional force damage equal to the number of charges remaining. Dealing damage with the Night's Edge adds 1 charge, up to half your level, rounded up.</content>
+    <content contentuid="h9e0624e2gcefdgca3cga560g2ac7c9067225" version="1">Bind the Night</content>
+    <content contentuid="h47241b0bga10dgbf8agaebfgd5f3abc4696d" version="1">Conjure the Night's Edge to your hands.</content>
+    <content contentuid="h691ad194g724eg70d1gd7ebg74e68233b236" version="1">Bound in Darkness</content>
+    <content contentuid="hd7b33dc1ge097gdf57gb590g8a731e34ca4d" version="1">The cleric bound to this weapon is always &lt;LSTag Tooltip="Proficiency"&gt;Proficient&lt;/LSTag&gt; with it. The weapon's damage is magical.</content>
 </contentList>

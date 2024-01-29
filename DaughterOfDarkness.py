@@ -10,13 +10,15 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources
-from modtools.gamedata import passive_data, spell_data
+from moddb.scripts import character_level_range
+from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
+    GameObjects,
     LevelMapSeries,
 )
 from modtools.lsx import Lsx
@@ -34,6 +36,8 @@ daughter_of_darkness = Mod(os.path.dirname(__file__),
                            name="DaughterOfDarkness",
                            mod_uuid=UUID("225bcb03-1c2f-4e01-a4e1-93ae05f14783"),
                            description="Upgrades the Cleric Trickery domain subclass.")
+
+daughter_of_darkness.add_script(character_level_range)
 
 loca = daughter_of_darkness.get_localization()
 
@@ -79,6 +83,208 @@ daughter_of_darkness.add(LevelMapSeries(
     UUID=daughter_of_darkness.make_uuid("DaughterOfDarkness_ViciousMockeryValue"),
 ))
 
+# Add the Night's Edge
+loca["DaughterOfDarkness_NightsEdge_DisplayName"] = {"en": "Night's Edge"}
+loca["DaughterOfDarkness_NightsEdge_Description"] = {"en": """
+    This blade is enveloped in shadow.
+    """}
+
+katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+
+nights_edge_game_objects_uuid = daughter_of_darkness.make_uuid("NightsEdge_GameObjects")
+daughter_of_darkness.add(GameObjects(
+    DisplayName=loca["DaughterOfDarkness_NightsEdge_DisplayName"],
+    Description=loca["DaughterOfDarkness_NightsEdge_Description"],
+    LevelName="",
+    MapKey=nights_edge_game_objects_uuid,
+    Name="DaughterOfDarkness_NightsEdge_Sword",
+    ParentTemplateId=katana_uuid,
+    Stats="DaughterOfDarkness_NightsEdge_Sword",
+    Type="item",
+    children=[
+        GameObjects.StatusList(
+            children=[
+                GameObjects.StatusList.Status(
+                    Object="DAUGHTEROFDARKNESS_NIGHTSEDGE",
+                ),
+            ],
+        ),
+    ],
+))
+
+daughter_of_darkness.add(status_data(
+    "DAUGHTEROFDARKNESS_NIGHTSEDGE",
+    using="SHADOW_BLADE",
+    StatusType="EFFECT",
+    Boosts=[],
+    StatusEffect="ae580720-fde4-4596-b671-b5280cdbe9eb",  # UND_BOOOALSERVANT_WEAPON_StatusEffect
+))
+
+daughter_of_darkness.add(weapon_data(
+    "DaughterOfDarkness_NightsEdge_Sword",
+    using="WPN_Greatsword",
+    RootTemplate=str(nights_edge_game_objects_uuid),
+    Rarity="Legendary",
+    BoostsOnEquipMainHand=[
+        "UnlockSpell(Target_PommelStrike)",
+        "UnlockSpell(Target_Slash_New)",
+        "UnlockSpell(DaughterOfDarkness_NightsEdge_Cleave)",
+    ],
+    DefaultBoosts=[
+        "IF(CharacterLevelRange(7,11)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)",
+        "IF(CharacterLevelRange(1,5)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(6,10)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(11,20)):WeaponEnchantment(3)",
+        "WeaponDamage(1d4,Force,Magical)",
+    ],
+    PassivesOnEquip=["DaughterOfDarkness_NightsAegis"],
+    Weapon_Properties=[
+        "Dippable",
+        "Heavy",
+        "Magical",
+        "Melee",
+        "Twohanded",
+    ],
+    Unique="1",
+))
+
+loca["DaughterOfDarkness_NightsAegis_DisplayName"] = {"en": "Night's Aegis"}
+loca["DaughterOfDarkness_NightsAegis_Description"] = {"en": """
+    The magic of your blade forms a barrier around you that protects you from harm, and causes you to inflict additional
+    force damage.
+    """}
+loca["DaughterOfDarkness_NightsAegis_StatusDescription"] = {"en": """
+    Your barrier blocks damage equal to its charges and then loses 1 charge.
+
+    While the barrier is active, you deal additional force damage equal to the number of charges remaining.
+    Dealing damage with the Night's Edge adds 1 charge, up to half your level, rounded up.
+    """}
+
+daughter_of_darkness.add(passive_data(
+    "DaughterOfDarkness_NightsAegis",
+    DisplayName=loca["DaughterOfDarkness_NightsAegis_DisplayName"],
+    Description=loca["DaughterOfDarkness_NightsAegis_Description"],
+    Icon="PassiveFeature_ArcaneWard",
+    PriorityOrder="2",
+    Properties=["Highlighted", "OncePerAttack"],
+    StatsFunctorContext=["OnDamage"],
+    Conditions="AttackedWithPassiveSourceWeapon() and "
+               "StatusDurationLessThan(context.Source,'DAUGHTEROFDARKNESS_NIGHTSAEGIS',context.Source.Level/2)",
+    StatsFunctors=[
+        "ApplyStatus(SELF,DAUGHTEROFDARKNESS_NIGHTSAEGIS,100,Target.DAUGHTEROFDARKNESS_NIGHTSAEGIS.Duration+1)",
+    ],
+))
+
+daughter_of_darkness.add(passive_data(
+    "DaughterOfDarkness_NightsAegis_Damaged",
+    DisplayName=loca["DaughterOfDarkness_NightsAegis_DisplayName"],
+    Properties="IsHidden",
+    StatsFunctorContext=["OnDamaged", "OnDamagedPrevented"],
+    Conditions=[
+        "StatusDurationMoreThan(context.Target,'DAUGHTEROFDARKNESS_NIGHTSAEGIS',0)",
+    ],
+    StatsFunctors=[
+        "ApplyStatus(DAUGHTEROFDARKNESS_NIGHTSAEGIS,100,Target.DAUGHTEROFDARKNESS_NIGHTSAEGIS.Duration-1)",
+    ],
+))
+
+daughter_of_darkness.add(status_data(
+    "DAUGHTEROFDARKNESS_NIGHTSAEGIS",
+    StatusType="BOOST",
+    DisplayName=loca["DaughterOfDarkness_NightsAegis_DisplayName"],
+    Description=loca["DaughterOfDarkness_NightsAegis_StatusDescription"],
+    Icon="Status_ArcaneWard",
+    SoundLoop="Spell_Status_ArcaneWard_MO",
+    SoundStop="Spell_Status_ArcaneWard_Depleted",
+    StackId="DAUGHTEROFDARKNESS_NIGHTSAEGIS",
+    StackType="Overwrite",
+    Boosts=[
+        "DamageBonus(1,Force)",
+        "DamageReduction(All,Flat,1)",
+    ],
+    Passives="DaughterOfDarkness_NightsAegis_Damaged",
+    StatusPropertyFlags=["MultiplyEffectsByDuration", "FreezeDuration", "DisableCombatlog"],
+    StatusGroups="SG_RemoveOnRespec",
+    StatusEffect="370b3339-9668-49e8-bdc6-ff0a4444f8dd",
+))
+
+daughter_of_darkness.add(spell_data(
+    "DaughterOfDarkness_NightsEdge_Cleave",
+    SpellType="Zone",
+    using="Zone_Cleave",
+    Cooldown="None",
+))
+
+loca["DaughterOfDarkness_NightsEdge_Summon_DisplayName"] = {"en": "Bind the Night"}
+loca["DaughterOfDarkness_NightsEdge_Summon_Description"] = {"en": """
+    Conjure the Night's Edge to your hands.
+    """}
+
+daughter_of_darkness.add(spell_data(
+    "DaughterOfDarkness_NightsEdge_Summon",
+    SpellType="Shout",
+    Cooldown="OncePerCombat",
+    TargetConditions="Self()",
+    Icon="Action_PactOfTheBlade_Greatsword",
+    DisplayName=loca["DaughterOfDarkness_NightsEdge_Summon_DisplayName"],
+    Description=loca["DaughterOfDarkness_NightsEdge_Summon_Description"],
+    SpellProperties=[
+        f"SummonInInventory({nights_edge_game_objects_uuid},Permanent,1,true,true,true,,,"
+        + "DaughterOfDarkness_NightsEdge_Summon,DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON)",
+    ],
+    CastTextEvent="Cast",
+    UseCosts="ActionPoint:1",
+    SpellAnimation=[
+        "f489d217-b699-4e8e-bf22-6ef539c5d65b,,",
+        ",,",
+        "7a343ea7-1330-428a-b0b1-9f6dc7f2a91c,,",
+        "0f872585-3c6e-4493-a0b5-5acc882b7aaf,,",
+        "f9414915-2da7-4f40-bcbd-90e956461246,,",
+        ",,",
+        "f2a62277-c87a-4ec7-b4f2-c3c37e6e30ae,,",
+        ",,",
+        ",,"
+    ],
+    VerbalIntent="Summon",
+    SpellStyleGroup="Class",
+    SpellAnimationIntentType="Aggressive",
+    PrepareSound="Action_Prepare_Item_ShadowBlade",
+    PrepareLoopSound="Action_Loop_Item_ShadowBlade",
+    CastSound="Action_Cast_Item_ShadowBlade",
+    TargetSound="Action_Impact_Item_ShadowBlade",
+    VocalComponentSound="Vocal_Component_EnchantWeapon",
+    PrepareEffect="3998daf3-8dd5-4b10-b33a-5ab51bb97860",
+    CastEffect="514ecdc7-87b3-43f8-bd8a-69fb3b46f8da",
+    Sheathing="Sheathed",
+))
+
+loca["DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON_DisplayName"] = {"en": "Bound in Darkness"}
+loca["DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON_Description"] = {"en": """
+    The cleric bound to this weapon is always <LSTag Tooltip="Proficiency">Proficient</LSTag> with it.
+    The weapon's damage is magical.
+    """}
+
+daughter_of_darkness.add(status_data(
+    "DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON",
+    StatusType="BOOST",
+    DisplayName=loca["DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON_DisplayName"],
+    Description=loca["DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON_Description"],
+    Icon="Action_PactOfTheBlade_Greatsword",
+    StackId="DAUGHTEROFDARKNESS_NIGHTSEDGE_SUMMON",
+    Boosts=[
+        "CannotBeDisarmed()",
+        "WeaponProperty(Magical)",
+        "IntrinsicSummonerProficiency()",
+        "IntrinsicSourceProficiency()",
+        "ItemReturnToOwner()",
+        "Attribute(InventoryBound)",
+        "WeaponAttackRollAbilityOverride(Wisdom)"
+    ],
+    StatusGroups="SG_RemoveOnRespec",
+    IsUnique="1",
+))
+
 # Modify the game's Cleric class description
 class_descriptions = Lsx.load(daughter_of_darkness.get_cache_path(CLASS_DESCRIPTION_PATH))
 cleric_class_description: ClassDescription = class_descriptions.children.find(
@@ -108,6 +314,7 @@ daughter_of_darkness.add(SpellList(
         bolster,
         "Target_CharmPerson",
         "Shout_DisguiseSelf",
+        "DaughterOfDarkness_NightsEdge_Summon",
         "Shout_Shield_Wizard",
         "DaughterOfDarkness_ViciousMockery",
     ],

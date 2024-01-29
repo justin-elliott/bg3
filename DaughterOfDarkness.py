@@ -9,14 +9,15 @@ from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
-from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
-from modtools.gamedata import spell_data
+from moddb.progression import allow_improvement, multiply_resources
+from modtools.gamedata import passive_data, spell_data
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
+    LevelMapSeries,
 )
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression, SpellList
@@ -45,14 +46,37 @@ movement = Movement(daughter_of_darkness)
 fast_movement = movement.add_fast_movement(3.0)
 shadow_step = movement.add_shadow_step()
 
-daughter_of_darkness.add(spell_data(
+daughter_of_darkness.add(passive_data(
     "DaughterOfDarkness_PassWithoutTrace",
-    using="Shout_PassWithoutTrace",
-    SpellType="Shout",
-    Level="",
-    TooltipUpcastDescription="",
-    UseCosts=["ActionPoint:1"],
-    SpellFlags=["IsSpell", "HasVerbalComponent", "HasSomaticComponent", "Invisible"],
+    DisplayName="h2b6ab85cg8d21g4c23g895eg6b8a61fdabab;1",
+    Description="h5d1c1f49g43a6g44e0g807cgeb572b500fe2;6",
+    Icon="Spell_Abjuration_PassWithoutTrace",
+    Properties=["Highlighted", "IsToggled", "ToggledDefaultAddToHotbar"],
+    ToggleOnFunctors=["ApplyStatus(SELF,PASS_WITHOUT_TRACE_AURA,100,-1)"],
+    ToggleOffFunctors=["RemoveStatus(SELF,PASS_WITHOUT_TRACE_AURA)"],
+))
+
+daughter_of_darkness.add(spell_data(
+    "DaughterOfDarkness_ViciousMockery",
+    using="Target_ViciousMockery",
+    SpellType="Target",
+    SpellSuccess=[
+        "ApplyStatus(VICIOUSMOCKERY,100,1)",
+        "DealDamage(LevelMapValue(DaughterOfDarkness_ViciousMockeryValue),Psychic,Magical)",
+    ],
+    SpellFail=[
+        "IF(HasPassive('PotentCantrip',context.Source)):"
+        + "DealDamage((LevelMapValue(DaughterOfDarkness_ViciousMockeryValue)/2),Psychic,Magical)",
+    ],
+    TooltipDamageList=[
+        "DealDamage(LevelMapValue(DaughterOfDarkness_ViciousMockeryValue),Psychic)",
+    ],
+))
+
+daughter_of_darkness.add(LevelMapSeries(
+    **{f"Level{level}": f"{level // 5 + 2}d4" for level in range(1, 21)},
+    Name="DaughterOfDarkness_ViciousMockeryValue",
+    UUID=daughter_of_darkness.make_uuid("DaughterOfDarkness_ViciousMockeryValue"),
 ))
 
 # Modify the game's Cleric class description
@@ -84,8 +108,8 @@ daughter_of_darkness.add(SpellList(
         bolster,
         "Target_CharmPerson",
         "Shout_DisguiseSelf",
-        "Projectile_EldritchBlast",
         "Shout_Shield_Wizard",
+        "DaughterOfDarkness_ViciousMockery",
     ],
     UUID=level_1_spelllist,
 ))
@@ -95,9 +119,8 @@ daughter_of_darkness.add(SpellList(
     Comment="Daughter of Darkness level 2 spells",
     Spells=[
         "Target_Darkness",
-        "Shout_Hide_BonusAction",
+        "Shout_Hide_ShadowArts",
         "Shout_MirrorImage",
-        "DaughterOfDarkness_PassWithoutTrace",
         shadow_step,
     ],
     UUID=level_2_spelllist,
@@ -133,9 +156,6 @@ def level_1() -> None:
     boosts = progression.Boosts or []
     boosts.extend([
         "ProficiencyBonus(SavingThrow,Constitution)",
-        "Proficiency(HeavyArmor)",
-        "Proficiency(SimpleWeapons)",
-        "Proficiency(MartialWeapons)",
     ])
     progression.Boosts = boosts
 
@@ -152,6 +172,7 @@ def level_1() -> None:
     selectors = progression.Selectors or []
     selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
     selectors.extend([
+        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
         "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
         "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
     ])
@@ -160,14 +181,14 @@ def level_1() -> None:
 
 def level_2() -> None:
     progression = trickery_level(2)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight", "RepellingBlast"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight"]
 
 
 def level_3() -> None:
     progression = trickery_level(3)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DaughterOfDarkness_PassWithoutTrace"]
     progression.Selectors = [
         f"AddSpells({level_2_spelllist},ClericTrickeryDomainSpells,,,AlwaysPrepared)",
-        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
     ]
 
 

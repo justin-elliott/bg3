@@ -29,6 +29,30 @@
                     <attribute id="Name" type="FixedString" value="DaughterOfDarkness_Bolster_AidValue" />
                     <attribute id="UUID" type="guid" value="071b3792-12bf-c84e-69f5-e509cce24da3" />
                 </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="2d4" />
+                    <attribute id="Level2" type="LSString" value="2d4" />
+                    <attribute id="Level3" type="LSString" value="2d4" />
+                    <attribute id="Level4" type="LSString" value="2d4" />
+                    <attribute id="Level5" type="LSString" value="3d4" />
+                    <attribute id="Level6" type="LSString" value="3d4" />
+                    <attribute id="Level7" type="LSString" value="3d4" />
+                    <attribute id="Level8" type="LSString" value="3d4" />
+                    <attribute id="Level9" type="LSString" value="3d4" />
+                    <attribute id="Level10" type="LSString" value="4d4" />
+                    <attribute id="Level11" type="LSString" value="4d4" />
+                    <attribute id="Level12" type="LSString" value="4d4" />
+                    <attribute id="Level13" type="LSString" value="4d4" />
+                    <attribute id="Level14" type="LSString" value="4d4" />
+                    <attribute id="Level15" type="LSString" value="5d4" />
+                    <attribute id="Level16" type="LSString" value="5d4" />
+                    <attribute id="Level17" type="LSString" value="5d4" />
+                    <attribute id="Level18" type="LSString" value="5d4" />
+                    <attribute id="Level19" type="LSString" value="5d4" />
+                    <attribute id="Level20" type="LSString" value="6d4" />
+                    <attribute id="Name" type="FixedString" value="DaughterOfDarkness_ViciousMockeryValue" />
+                    <attribute id="UUID" type="guid" value="3143a8e0-7430-0a07-92b6-c6362cf0ebf5" />
+                </node>
             </children>
         </node>
     </region>

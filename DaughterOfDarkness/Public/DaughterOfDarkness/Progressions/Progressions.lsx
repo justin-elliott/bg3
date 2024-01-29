@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="DomainSpells;UnlockedSpellSlotLevel1" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="1dbce574-fff1-49be-b7da-704f9b73cad9" />
                     <children>
@@ -560,7 +560,7 @@
                     <attribute id="UUID" type="guid" value="1e4d3a2f-e712-4135-bc6a-569c169ea15f" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution);Proficiency(HeavyArmor);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
+                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;SculptSpells" />
@@ -572,7 +572,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;RepellingBlast" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(c35cb4e6-2690-4e1f-bd89-69f4f69ae818,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
@@ -581,8 +581,9 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_PassWithoutTrace" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(71fe1520-1848-5108-2bd4-6a7c99121f63,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(71fe1520-1848-5108-2bd4-6a7c99121f63,ClericTrickeryDomainSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="90dafea8-c773-4dfa-b0c8-da4789122a0f" />
                 </node>

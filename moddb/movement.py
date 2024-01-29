@@ -63,3 +63,20 @@ class Movement:
             UseCosts=use_costs,
         ))
         return name
+
+    def add_shadow_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
+        """Add the Shadow Step cantrip, returning its name."""
+        name = f"{self._mod.get_prefix()}_ShadowStep"
+        self._mod.add(spell_data(
+            name,
+            using="Target_ShadowStep",
+            SpellType="Target",
+            Level="",
+            SpellProperties="GROUND:TeleportSource()",
+            RequirementConditions="",
+            RequirementEvents="",
+            TargetConditions="",
+            TooltipStatusApply="",
+            UseCosts=use_costs,
+        ))
+        return name

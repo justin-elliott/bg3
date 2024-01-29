@@ -1,3 +1,0 @@
-function IntensifiedSpellCheck()
-    return HasFunctor(StatsFunctorType.DealDamage) & HasSpellFlag(SpellFlags.Spell)
-end

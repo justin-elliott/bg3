@@ -125,9 +125,12 @@ def level_1() -> None:
     child = bard_progression.find(bard_level(1))
 
     selectors = child.Selectors or []
-    index = child.Selectors.index("SelectSkills(ed664663-93b9-4070-a54b-3c7b19c0e7b4,3)")
-    child.Selectors[index] = "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)"
-    selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
+    index = selectors.index("SelectSkills(ed664663-93b9-4070-a54b-3c7b19c0e7b4,3)")
+    selectors[index] = "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)"
+    selectors.extend([
+        f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)",
+        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+    ]),
     child.Selectors = selectors
 
 

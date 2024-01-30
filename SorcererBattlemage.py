@@ -5,7 +5,6 @@ Generates files for the "SorcererBattlemage" mod.
 
 import os
 
-from collections.abc import Callable
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
@@ -78,22 +77,18 @@ sorcerer_battlemage.add(SpellList(
 ))
 
 
-def sorcerer_level(level: int, *, is_multiclass: bool = False) -> Callable[[Progression], bool]:
-    def predicate(child: Progression) -> bool:
-        return (child.Name == CharacterClass.SORCERER
-                and child.Level == level
-                and (child.IsMulticlass or False) == is_multiclass)
-    return predicate
+def sorcerer_level(level: int, *, is_multiclass: bool = False) -> Progression:
+    return sorcerer_progression.find(lambda progression: (progression.Name == CharacterClass.SORCERER
+                                                          and progression.Level == level
+                                                          and (progression.IsMulticlass or False) == is_multiclass))
 
 
 def level_1() -> None:
     """Add armor and weapon proficiencies, passives, skills, and spells."""
-    child: Progression
-
     for is_multiclass in [False, True]:
-        child = sorcerer_progression.find(sorcerer_level(1, is_multiclass=is_multiclass))
+        progression = sorcerer_level(1, is_multiclass=is_multiclass)
 
-        boosts = child.Boosts or []
+        boosts = progression.Boosts or []
         boosts = [boost for boost in boosts if boost not in ["Proficiency(Daggers)",
                                                              "Proficiency(Quarterstaffs)",
                                                              "Proficiency(LightCrossbows)"]]
@@ -105,97 +100,96 @@ def level_1() -> None:
             "Proficiency(SimpleWeapons)",
             "Proficiency(MartialWeapons)",
         ])
-        child.Boosts = boosts
+        progression.Boosts = boosts
 
-        passives_added = child.PassivesAdded or []
+        passives_added = progression.PassivesAdded or []
         passives_added.extend([battle_magic, "SculptSpells"])
-        child.PassivesAdded = passives_added
+        progression.PassivesAdded = passives_added
 
-        selectors = child.Selectors or []
+        selectors = progression.Selectors or []
         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
-        child.Selectors = selectors
+        progression.Selectors = selectors
 
     # Progression when Sorcerer is the class selected at level one
-    child = sorcerer_progression.find(sorcerer_level(1))
+    progression = sorcerer_level(1)
 
-    selectors = child.Selectors or []
+    selectors = progression.Selectors or []
     selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
     selectors.extend([
-        "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+        "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
         "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
     ])
-    child.Selectors = selectors
+    progression.Selectors = selectors
 
 
 def level_2() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(2))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["DevilsSight"]
-
-    index = child.Selectors.index("AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876)")
-    child.Selectors[index] = "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)"
+    progression = sorcerer_level(2)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight"]
 
 
 def level_3() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(3))
-    selectors = child.Selectors or []
+    progression = sorcerer_level(3)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
+
+    selectors = progression.Selectors or []
     selectors.extend([
         f"AddSpells({level_2_spelllist},,,,AlwaysPrepared)",
-        "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
     ])
-    child.Selectors = selectors
+    progression.Selectors = selectors
 
 
 def level_4() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(4))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["ImprovedCritical"]
+    progression = sorcerer_level(4)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
 
 def level_5() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(5))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack", fast_movement]
+    progression = sorcerer_level(5)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", fast_movement]
 
 
 def level_6() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(6))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["PotentCantrip"]
+    progression = sorcerer_level(6)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
 
 
 def level_7() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(7))
-    child.PassivesAdded = (child.PassivesAdded or []) + [
+    progression = sorcerer_level(7)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + [
         "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
 
 
 def level_8() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(8))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["FastHands"]
+    progression = sorcerer_level(8)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
 
 def level_9() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(9))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["BrutalCritical"]
+    progression = sorcerer_level(9)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
 
 
 def level_10() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(10))
-    child.PassivesAdded = (child.PassivesAdded or []) + [empowered_spells]
+    progression = sorcerer_level(10)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells]
 
 
 def level_11() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(11))
-    child.PassivesAdded = (child.PassivesAdded or []) + ["ExtraAttack_2"]
-    child.PassivesRemoved = (child.PassivesRemoved or []) + ["ExtraAttack"]
+    progression = sorcerer_level(11)
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
+    progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
-    selectors = child.Selectors or []
+    selectors = progression.Selectors or []
     selectors.append("AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)")  # Fly
-    child.Selectors = selectors
+    progression.Selectors = selectors
 
 
 def level_12() -> None:
-    child: Progression = sorcerer_progression.find(sorcerer_level(12))
-    selectors = child.Selectors or []
+    progression = sorcerer_level(12)
+    selectors = progression.Selectors or []
     selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)")  # Action Surge
-    child.Selectors = selectors
+    progression.Selectors = selectors
 
 
 level_1()

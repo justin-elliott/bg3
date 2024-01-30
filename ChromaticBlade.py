@@ -80,14 +80,11 @@ chromatic_blade.add(weapon_data(
 
 loca["ChromaticBlade_ChromaticBarrier_DisplayName"] = {"en": "Chromatic Barrier"}
 loca["ChromaticBlade_ChromaticBarrier_Description"] = {"en": """
-    The magic of your blade forms a barrier around you that protects you from harm, and causes you to inflict additional
-    force damage.
+    The magic of your blade forms a barrier around you that protects you from harm.
     """}
 loca["ChromaticBlade_ChromaticBarrier_StatusDescription"] = {"en": """
-    Your chromatic barrier blocks damage equal to its charges and then loses 1 charge.
-
-    While the barrier is active, you deal additional force damage equal to the number of charges remaining.
-    Dealing damage with the Chromatic Blade adds 1 charge, up to half your level, rounded up.
+    Your chromatic barrier blocks damage equal to its charges and then loses 1 charge. Dealing damage with the Chromatic
+    Blade adds 1 charge, up to your level.
     """}
 
 chromatic_blade.add(passive_data(
@@ -99,7 +96,7 @@ chromatic_blade.add(passive_data(
     Properties=["Highlighted", "OncePerAttack"],
     StatsFunctorContext=["OnDamage"],
     Conditions="AttackedWithPassiveSourceWeapon() and "
-               "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',context.Source.Level/2)",
+               "StatusDurationLessThan(context.Source,'CHROMATICBLADE_CHROMATICBARRIER',context.Source.Level)",
     StatsFunctors=[
         "ApplyStatus(SELF,CHROMATICBLADE_CHROMATICBARRIER,100,Target.CHROMATICBLADE_CHROMATICBARRIER.Duration+1)",
     ],
@@ -129,7 +126,6 @@ chromatic_blade.add(status_data(
     StackId="CHROMATICBLADE_CHROMATICBARRIER",
     StackType="Overwrite",
     Boosts=[
-        "DamageBonus(1,Force)",
         "DamageReduction(All,Flat,1)",
     ],
     Passives="ChromaticBlade_ChromaticBarrier_Damaged",
@@ -151,7 +147,7 @@ chromatic_blade.add(spell_data(
     SpellSchool="Transmutation",
     ContainerSpells=[
         f"ChromaticBlade_ChromaticWeapon_{element}" for element in [
-            "Acid", "Cold", "Fire", "Lightning", "Thunder"
+            "Acid", "Cold", "Fire", "Force", "Lightning"
         ]
     ],
     TargetConditions="Self() and HasWeaponInMainHand()",
@@ -295,6 +291,16 @@ add_chromatic_weapon_element("Fire",
                              CastEffect="d8ed1647-82eb-4079-a914-1b2c2a89f153",
                              TargetEffect="e4d6914d-1a62-41b4-8932-eee907f2c200",
                              StatusEffect="8a4c7e6e-a629-4765-9c5d-d354838703d8")
+add_chromatic_weapon_element("Force",
+                             "Spell_Transmutation_ElementalWeapon_Thunder",
+                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponThunder_L1to3",
+                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponThunder_L1to3",
+                             CastSound="Spell_Cast_Buff_ElementalWeaponThunder_L1to3",
+                             TargetSound="Spell_Impact_Buff_ElementalWeaponThunder_L1to3",
+                             PrepareEffect="9b6f51df-22cc-49cf-9ae9-a0e0ac0f8882",
+                             CastEffect="bfeec9c4-0287-4a24-a104-b2ae38d85b4f",
+                             TargetEffect="5e3997ae-d2f5-4b97-96e3-c987e6b9584d",
+                             StatusEffect="ae580720-fde4-4596-b671-b5280cdbe9eb")
 add_chromatic_weapon_element("Lightning",
                              "Spell_Transmutation_ElementalWeapon_Lightning",
                              PrepareSound="Spell_Prepare_Buff_ElementalWeaponLightning_L1to3",
@@ -305,16 +311,6 @@ add_chromatic_weapon_element("Lightning",
                              CastEffect="da768bec-1f51-4d6f-8617-a3a6c2c01a58",
                              TargetEffect="7547b944-e3e5-4b6d-b2e9-8320425b4f12",
                              StatusEffect="7905bb82-0284-46b8-855b-24f17560fe4a")
-add_chromatic_weapon_element("Thunder",
-                             "Spell_Transmutation_ElementalWeapon_Thunder",
-                             PrepareSound="Spell_Prepare_Buff_ElementalWeaponThunder_L1to3",
-                             PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponThunder_L1to3",
-                             CastSound="Spell_Cast_Buff_ElementalWeaponThunder_L1to3",
-                             TargetSound="Spell_Impact_Buff_ElementalWeaponThunder_L1to3",
-                             PrepareEffect="9b6f51df-22cc-49cf-9ae9-a0e0ac0f8882",
-                             CastEffect="bfeec9c4-0287-4a24-a104-b2ae38d85b4f",
-                             TargetEffect="5e3997ae-d2f5-4b97-96e3-c987e6b9584d",
-                             StatusEffect="ca0b3ab3-dac0-47f7-b313-7ca69c85b5b4")
 
 loca["ChromaticBlade_Charge_DisplayName"] = {"en": "Charge"}
 loca["ChromaticBlade_Charge_Description"] = {"en": """

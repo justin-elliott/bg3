@@ -10,6 +10,7 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources
+from modtools.gamedata import passive_data
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -32,6 +33,8 @@ druid_battlemage = Mod(os.path.dirname(__file__),
                        name="DruidBattlemage",
                        mod_uuid=UUID("a5ffe54f-736e-44a1-8814-76c128875bbc"),
                        description="Upgrades the Druid class to a Battlemage.")
+
+loca = druid_battlemage.get_localization()
 
 # Add passives and spells
 battle_magic = BattleMagic(druid_battlemage).add_battle_magic()
@@ -68,9 +71,27 @@ druid_battlemage.add(SpellList(
     UUID=level_1_spelllist,
 ))
 
+loca["DruidBattlemage_NaturalResistance_DisplayName"] = {"en": "Natural Resistance"}
+loca["DruidBattlemage_NaturalResistance_Description"] = {"en": """
+    You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].
+    """}
 
-def druid_level(level: int, *, is_multiclass: bool = False) -> Progression:
-    return druid_progression.find(lambda progression: (progression.Name == CharacterClass.DRUID
+druid_battlemage.add(passive_data(
+    "DruidBattlemage_NaturalResistance",
+    DisplayName=loca["DruidBattlemage_NaturalResistance_DisplayName"],
+    Description=loca["DruidBattlemage_NaturalResistance_Description"],
+    DescriptionParams=["ClassLevel(Druid)"],
+    Icon="Spell_Transmutation_Barkskin",
+    Properties=["Highlighted"],
+    Boosts=["DamageReduction(All,Flat,ClassLevel(Druid))"],
+))
+
+
+def progression_level(level: int,
+                      *,
+                      character_class: CharacterClass = CharacterClass.DRUID,
+                      is_multiclass: bool = False) -> Progression:
+    return druid_progression.find(lambda progression: (progression.Name == character_class
                                                        and progression.Level == level
                                                        and (progression.IsMulticlass or False) == is_multiclass))
 
@@ -78,10 +99,10 @@ def druid_level(level: int, *, is_multiclass: bool = False) -> Progression:
 def level_1() -> None:
     """Add armor and weapon proficiencies, passives, skills, and spells."""
     for is_multiclass in [False, True]:
-        progression = druid_level(1, is_multiclass=is_multiclass)
+        progression = progression_level(1, is_multiclass=is_multiclass)
 
         passives_added = progression.PassivesAdded or []
-        passives_added.extend([battle_magic, "FightingStyle_TwoWeaponFighting"])
+        passives_added.extend([battle_magic, "DruidBattlemage_NaturalResistance", "FightingStyle_TwoWeaponFighting"])
         progression.PassivesAdded = passives_added
 
         selectors = progression.Selectors or []
@@ -89,7 +110,7 @@ def level_1() -> None:
         progression.Selectors = selectors
 
     # Progression when Druid is the class selected at level one
-    progression = druid_level(1)
+    progression = progression_level(1)
 
     selectors = progression.Selectors or []
     selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
@@ -101,53 +122,53 @@ def level_1() -> None:
 
 
 def level_2() -> None:
-    progression = druid_level(2)
+    progression = progression_level(2)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight"]
 
 
 def level_3() -> None:
-    progression = druid_level(3)
+    progression = progression_level(3)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
 
 
 def level_4() -> None:
-    progression = druid_level(4)
+    progression = progression_level(4)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
 
 def level_5() -> None:
-    progression = druid_level(5)
+    progression = progression_level(5)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", fast_movement]
 
 
 def level_6() -> None:
-    progression = druid_level(6)
+    progression = progression_level(6)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
 
 
 def level_7() -> None:
-    progression = druid_level(7)
+    progression = progression_level(7)
     progression.PassivesAdded = (progression.PassivesAdded or []) + [
         "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
 
 
 def level_8() -> None:
-    progression = druid_level(8)
+    progression = progression_level(8)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
 
 def level_9() -> None:
-    progression = druid_level(9)
+    progression = progression_level(9)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
 
 
 def level_10() -> None:
-    progression = druid_level(10)
+    progression = progression_level(10)
     progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells]
 
 
 def level_11() -> None:
-    progression = druid_level(11)
+    progression = progression_level(11)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
     progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
@@ -157,7 +178,7 @@ def level_11() -> None:
 
 
 def level_12() -> None:
-    progression = druid_level(12)
+    progression = progression_level(12)
     selectors = progression.Selectors or []
     selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)")  # Action Surge
     progression.Selectors = selectors

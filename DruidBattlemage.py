@@ -75,7 +75,7 @@ raven_spelllist = str(druid_battlemage.make_uuid("raven_spelllist"))
 druid_battlemage.add(SpellList(
     Comment="Druid Battlemage Raven Wildshape",
     Spells=["Shout_WildShape_Raven"],
-    UUID=level_1_spelllist,
+    UUID=raven_spelllist,
 ))
 
 loca["DruidBattlemage_NaturalResistance_DisplayName"] = {"en": "Natural Resistance"}

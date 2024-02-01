@@ -13,7 +13,7 @@
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Druid Battlemage Raven Wildshape" />
                     <attribute id="Spells" type="LSString" value="Shout_WildShape_Raven" />
-                    <attribute id="UUID" type="guid" value="ad05b8fd-7a2d-1ff7-ebc7-82604b704b92" />
+                    <attribute id="UUID" type="guid" value="f8ad41e0-7b53-5e10-125e-06e766d69e09" />
                 </node>
             </children>
         </node>

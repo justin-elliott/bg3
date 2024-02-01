@@ -31,7 +31,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight" />
+                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;DevilsSight" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="95322dde-349a-4101-964f-9aa46abd890b" />
@@ -69,7 +69,7 @@
                     <attribute id="Name" type="LSString" value="Druid" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared);AddSpells(f8ad41e0-7b53-5e10-125e-06e766d69e09,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="100feb8e-10dd-4892-acf5-7671e7063171" />
                 </node>
@@ -131,7 +131,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="WildStrike_2;DruidBattlemage_EmpoweredSpells_Wisdom" />
+                    <attribute id="PassivesAdded" type="LSString" value="WildStrike_2;DruidBattlemage_EmpoweredSpells_Wisdom;NaturesWard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
@@ -145,7 +145,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(6a4e2167-55f3-4ba8-900f-14666b293e93);AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(6a4e2167-55f3-4ba8-900f-14666b293e93);AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="132c7999-90ea-4ab9-a394-7348e7f9681d" />
                 </node>

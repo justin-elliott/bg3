@@ -66,8 +66,15 @@ druid_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child
 
 level_1_spelllist = str(druid_battlemage.make_uuid("level_1_spelllist"))
 druid_battlemage.add(SpellList(
-    Comment="Sorcerer Battlemage level 1 spells",
+    Comment="Druid Battlemage level 1 spells",
     Spells=[bolster],
+    UUID=level_1_spelllist,
+))
+
+raven_spelllist = str(druid_battlemage.make_uuid("raven_spelllist"))
+druid_battlemage.add(SpellList(
+    Comment="Druid Battlemage Raven Wildshape",
+    Spells=["Shout_WildShape_Raven"],
     UUID=level_1_spelllist,
 ))
 
@@ -123,7 +130,7 @@ def level_1() -> None:
 
 def level_2() -> None:
     progression = progression_level(2)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight"]
 
 
 def level_3() -> None:
@@ -134,6 +141,10 @@ def level_3() -> None:
 def level_4() -> None:
     progression = progression_level(4)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
+
+    selectors = progression.Selectors or []
+    selectors.append(f"AddSpells({raven_spelllist},,,,AlwaysPrepared)")
+    progression.Selectors = selectors
 
 
 def level_5() -> None:
@@ -164,7 +175,7 @@ def level_9() -> None:
 
 def level_10() -> None:
     progression = progression_level(10)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells, "NaturesWard"]
 
 
 def level_11() -> None:
@@ -173,7 +184,7 @@ def level_11() -> None:
     progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
     selectors = progression.Selectors or []
-    selectors.append("AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)")  # Fly
+    selectors.append("AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)")  # Volley, Whirlwind
     progression.Selectors = selectors
 
 

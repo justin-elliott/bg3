@@ -64,20 +64,6 @@ progressions_lsx.children.update(progressions_dev_lsx.children, key=lambda child
 druid_progression = progressions_lsx.children.keepall(lambda child: child.Name in CharacterSubclasses.DRUID)
 druid_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 
-level_1_spelllist = str(druid_battlemage.make_uuid("level_1_spelllist"))
-druid_battlemage.add(SpellList(
-    Comment="Druid Battlemage level 1 spells",
-    Spells=[bolster],
-    UUID=level_1_spelllist,
-))
-
-raven_spelllist = str(druid_battlemage.make_uuid("raven_spelllist"))
-druid_battlemage.add(SpellList(
-    Comment="Druid Battlemage Raven Wildshape",
-    Spells=["Shout_WildShape_Raven"],
-    UUID=raven_spelllist,
-))
-
 loca["DruidBattlemage_NaturalResistance_DisplayName"] = {"en": "Natural Resistance"}
 loca["DruidBattlemage_NaturalResistance_Description"] = {"en": """
     You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].
@@ -112,6 +98,13 @@ def level_1() -> None:
         passives_added.extend([battle_magic, "DruidBattlemage_NaturalResistance", "FightingStyle_TwoWeaponFighting"])
         progression.PassivesAdded = passives_added
 
+        level_1_spelllist = str(druid_battlemage.make_uuid("level_1_spelllist"))
+        druid_battlemage.add(SpellList(
+            Comment="Druid Battlemage level 1 spells",
+            Spells=[bolster],
+            UUID=level_1_spelllist,
+        ))
+
         selectors = progression.Selectors or []
         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
         progression.Selectors = selectors
@@ -130,7 +123,14 @@ def level_1() -> None:
 
 def level_2() -> None:
     progression = progression_level(2)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight", "WildShape_Combat"]
+
+    selectors = progression.Selectors or []
+    selectors.extend([
+        "AddSpells(2df1a00f-a66a-4240-a505-6a7835f2f1fa,,,,AlwaysPrepared)",
+        "AddSpells(db963d3f-e0ba-4aba-a8e2-cf404dc54429,,,,AlwaysPrepared)",
+    ])
+    progression.Selectors = selectors
 
 
 def level_3() -> None:
@@ -143,7 +143,7 @@ def level_4() -> None:
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
     selectors = progression.Selectors or []
-    selectors.append(f"AddSpells({raven_spelllist},,,,AlwaysPrepared)")
+    selectors.append("AddSpells(94081296-f79b-4294-973e-111dabea22ca,,,,AlwaysPrepared)")
     progression.Selectors = selectors
 
 
@@ -154,7 +154,11 @@ def level_5() -> None:
 
 def level_6() -> None:
     progression = progression_level(6)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip", "PrimalStrike"]
+
+    selectors = progression.Selectors or []
+    selectors.append("AddSpells(c3221a24-3bf7-4475-a675-1b5d87f650f0,,,,AlwaysPrepared)")
+    progression.Selectors = selectors
 
 
 def level_7() -> None:
@@ -167,6 +171,10 @@ def level_8() -> None:
     progression = progression_level(8)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
+    selectors = progression.Selectors or []
+    selectors.append("AddSpells(dcdfdf72-16cd-473a-a15f-31a85381c3aa,,,,AlwaysPrepared)")
+    progression.Selectors = selectors
+
 
 def level_9() -> None:
     progression = progression_level(9)
@@ -175,14 +183,16 @@ def level_9() -> None:
 
 def level_10() -> None:
     progression = progression_level(10)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells, "NaturesWard"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells, "ExtraAttack_2", "NaturesWard"]
+    progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
+
+    selectors = progression.Selectors or []
+    selectors.append("AddSpells(fa0b047d-4ff6-4ba0-8911-6c0f2f13be22,,,,AlwaysPrepared)")
+    progression.Selectors = selectors
 
 
 def level_11() -> None:
     progression = progression_level(11)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
-    progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
-
     selectors = progression.Selectors or []
     selectors.append("AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)")  # Volley, Whirlwind
     progression.Selectors = selectors

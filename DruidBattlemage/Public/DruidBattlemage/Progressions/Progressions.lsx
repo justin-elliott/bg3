@@ -31,8 +31,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;DevilsSight" />
+                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;DevilsSight;WildShape_Combat" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(2df1a00f-a66a-4240-a505-6a7835f2f1fa,,,,AlwaysPrepared);AddSpells(db963d3f-e0ba-4aba-a8e2-cf404dc54429,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="95322dde-349a-4101-964f-9aa46abd890b" />
                     <children>
@@ -69,7 +70,7 @@
                     <attribute id="Name" type="LSString" value="Druid" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared);AddSpells(f8ad41e0-7b53-5e10-125e-06e766d69e09,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared);AddSpells(94081296-f79b-4294-973e-111dabea22ca,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="100feb8e-10dd-4892-acf5-7671e7063171" />
                 </node>
@@ -89,8 +90,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip;PrimalStrike" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(c3221a24-3bf7-4475-a675-1b5d87f650f0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="0485e0eb-e537-4adb-a06e-5cf677388f85" />
                 </node>
@@ -112,6 +114,7 @@
                     <attribute id="Name" type="LSString" value="Druid" />
                     <attribute id="PassivesAdded" type="LSString" value="FastHands" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(dcdfdf72-16cd-473a-a15f-31a85381c3aa,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="bc7df415-ed9a-416d-8c6e-10a432b1995c" />
                 </node>
@@ -131,9 +134,10 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="WildStrike_2;DruidBattlemage_EmpoweredSpells_Wisdom;NaturesWard" />
+                    <attribute id="PassivesAdded" type="LSString" value="WildStrike_2;DruidBattlemage_EmpoweredSpells_Wisdom;ExtraAttack_2;NaturesWard" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared);AddSpells(fa0b047d-4ff6-4ba0-8911-6c0f2f13be22,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="7b1d78e9-fc1c-4871-87e7-80c0369ce2d3" />
                 </node>
@@ -142,8 +146,6 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
-                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(6a4e2167-55f3-4ba8-900f-14666b293e93);AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />

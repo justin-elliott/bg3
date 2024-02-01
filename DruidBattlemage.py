@@ -62,7 +62,6 @@ progressions_dev_lsx = Lsx.load(druid_battlemage.get_cache_path(PROGRESSIONS_DEV
 progressions_lsx.children.update(progressions_dev_lsx.children, key=lambda child: child.UUID)
 
 druid_progression = progressions_lsx.children.keepall(lambda child: child.Name in CharacterSubclasses.DRUID)
-druid_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 
 loca["DruidBattlemage_NaturalResistance_DisplayName"] = {"en": "Natural Resistance"}
 loca["DruidBattlemage_NaturalResistance_Description"] = {"en": """
@@ -125,10 +124,12 @@ def level_2() -> None:
     progression = progression_level(2)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight", "WildShape_Combat"]
 
+    progression = progression_level(2, character_class=CharacterClass.DRUID_SPORES)
     selectors = progression.Selectors or []
+    selectors.remove("AddSpells(0f094e35-9675-464d-8cae-8e58c28de955,,,,AlwaysPrepared)")  # Wild Shapes
     selectors.extend([
-        "AddSpells(2df1a00f-a66a-4240-a505-6a7835f2f1fa,,,,AlwaysPrepared)",
-        "AddSpells(db963d3f-e0ba-4aba-a8e2-cf404dc54429,,,,AlwaysPrepared)",
+        "AddSpells(2df1a00f-a66a-4240-a505-6a7835f2f1fa,,,,AlwaysPrepared)",  # Combat Wild Shapes
+        "AddSpells(db963d3f-e0ba-4aba-a8e2-cf404dc54429,,,,AlwaysPrepared)",  # CWS: Polar Bear
     ])
     progression.Selectors = selectors
 
@@ -142,8 +143,10 @@ def level_4() -> None:
     progression = progression_level(4)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
+    progression = progression_level(4, character_class=CharacterClass.DRUID_SPORES)
     selectors = progression.Selectors or []
-    selectors.append("AddSpells(94081296-f79b-4294-973e-111dabea22ca,,,,AlwaysPrepared)")
+    selectors.remove("AddSpells(ef953742-69fa-4730-a289-bf9ce9629b1a,,,,AlwaysPrepared)")  # WS:  Deep Rothe
+    selectors.append("AddSpells(94081296-f79b-4294-973e-111dabea22ca,,,,AlwaysPrepared)")  # CWS: Deep Rothe, Raven
     progression.Selectors = selectors
 
 
@@ -156,8 +159,10 @@ def level_6() -> None:
     progression = progression_level(6)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip", "PrimalStrike"]
 
+    progression = progression_level(6, character_class=CharacterClass.DRUID_SPORES)
     selectors = progression.Selectors or []
-    selectors.append("AddSpells(c3221a24-3bf7-4475-a675-1b5d87f650f0,,,,AlwaysPrepared)")
+    selectors.remove("AddSpells(c15f9224-a600-4a10-a5e7-642eed9c4222,,,,AlwaysPrepared)")  # WS:  Panther, Owlbear
+    selectors.append("AddSpells(c3221a24-3bf7-4475-a675-1b5d87f650f0,,,,AlwaysPrepared)")  # CWS: Panther, Owlbear
     progression.Selectors = selectors
 
 
@@ -171,9 +176,14 @@ def level_8() -> None:
     progression = progression_level(8)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
-    selectors = progression.Selectors or []
-    selectors.append("AddSpells(dcdfdf72-16cd-473a-a15f-31a85381c3aa,,,,AlwaysPrepared)")
-    progression.Selectors = selectors
+    druid_progression.append(Progression(
+        Level=8,
+        Name=CharacterClass.DRUID_SPORES,
+        ProgressionType=1,
+        Selectors="AddSpells(dcdfdf72-16cd-473a-a15f-31a85381c3aa,,,,AlwaysPrepared)",  # CWS: Sabre-Toothed Tiger
+        TableUUID="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a",
+        UUID=druid_battlemage.make_uuid("CircleOfSpores_Level_8")
+    ))
 
 
 def level_9() -> None:
@@ -186,8 +196,13 @@ def level_10() -> None:
     progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells, "ExtraAttack_2", "NaturesWard"]
     progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
+    progression = progression_level(10, character_class=CharacterClass.DRUID_SPORES)
     selectors = progression.Selectors or []
-    selectors.append("AddSpells(fa0b047d-4ff6-4ba0-8911-6c0f2f13be22,,,,AlwaysPrepared)")
+    selectors.remove("AddSpells(e4d81321-c46f-4334-af8b-b6f4f87d811c)")  # WS: Dilophosaurus
+    selectors.extend([
+        "AddSpells(57d542ac-2d17-406c-90bd-b55920c94b95,,,,AlwaysPrepared)",  # CWS: Dilophosaurus
+        "AddSpells(fa0b047d-4ff6-4ba0-8911-6c0f2f13be22,,,,AlwaysPrepared)",  # CWS: Myrmidons
+    ]),
     progression.Selectors = selectors
 
 
@@ -224,6 +239,7 @@ multiply_resources(druid_progression,
                     ActionResource.NATURAL_RECOVERY_CHARGES, ActionResource.WILD_SHAPE_CHARGES],
                    2)
 
+druid_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 for child in druid_progression:
     druid_battlemage.add(child)
 

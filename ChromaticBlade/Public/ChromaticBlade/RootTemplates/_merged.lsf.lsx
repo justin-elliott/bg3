@@ -14,6 +14,18 @@
                     <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
                     <attribute id="Stats" type="FixedString" value="ChromaticBlade_Sword" />
                     <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
                 </node>
             </children>
         </node>

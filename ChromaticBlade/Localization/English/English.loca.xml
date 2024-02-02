@@ -3,26 +3,30 @@
 <contentList>
     <content contentuid="h3a17a1fagf040g58bag72eeg005e2ba12d2f" version="1">Chromatic Blade</content>
     <content contentuid="h9334d51bg347bg5360ge04bgdd49e8f8f274" version="1">This blade shimmers with elemental force.</content>
-    <content contentuid="h9289dab9gbfd2g4c41g9adagc9f94f95b313" version="1">Chromatic Barrier</content>
-    <content contentuid="h549f48e2gd36cg96b6ge8c8g337fa1c200b4" version="1">The magic of your blade forms a barrier around you that protects you from harm.</content>
-    <content contentuid="h8ebdd939g33d9g7845g1757gdef8b7f8be4a" version="1">Your chromatic barrier blocks damage equal to its charges and then loses 1 charge. Dealing damage with the Chromatic Blade adds 1 charge, up to your level.</content>
+    <content contentuid="hde588378g48a2g9453g411agf432f91a7546" version="1">If the blade hits an object, the hit is always critical.</content>
     <content contentuid="h37040088gfb6fg4f7dg435eg2983ea983101" version="1">Chromatic Weapon</content>
-    <content contentuid="h9a3b863ag029ag3438ga67cgec3afb5fb8b8" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional 1d4 damage of your choice.</content>
+    <content contentuid="h9a3b863ag029ag3438ga67cgec3afb5fb8b8" version="1">Imbue the blade with elemental power. It deals an additional [1] damage of your choice.</content>
     <content contentuid="hbd1d6391ga90egc774g10a7gc634c74d28a5" version="1">Chromatic Weapon: Acid</content>
-    <content contentuid="h8e89d516g9d84g7295g55c6gd72262411fc5" version="1">Imbue a weapon with acid. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hb4915a83g0801gaf80g99e2g94b9e4e140e2" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional acid damage.</content>
+    <content contentuid="h8e89d516g9d84g7295g55c6gd72262411fc5" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="hb4915a83g0801gaf80g99e2g94b9e4e140e2" version="1">Deals additional acid damage.</content>
     <content contentuid="h2e7e2202g78dcga213g58c4ga20d08799945" version="1">Chromatic Weapon: Cold</content>
-    <content contentuid="h7fff0a08gc983g41fag470dg301cd4dee9c9" version="1">Imbue a weapon with cold. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="h401c0216g05f4gae08gdd13g18a09d7c1428" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional cold damage.</content>
+    <content contentuid="h7fff0a08gc983g41fag470dg301cd4dee9c9" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="h401c0216g05f4gae08gdd13g18a09d7c1428" version="1">Deals additional cold damage.</content>
     <content contentuid="hc372d0e4gc8bfg5b54g6d23g50426a2c35c6" version="1">Chromatic Weapon: Fire</content>
-    <content contentuid="he3ebfe9eg3a81gb71cg5ffbg6baa84d6630e" version="1">Imbue a weapon with fire. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="h05dbceb5gd337g20ccg65edg105822f00b88" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional fire damage.</content>
+    <content contentuid="he3ebfe9eg3a81gb71cg5ffbg6baa84d6630e" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="h05dbceb5gd337g20ccg65edg105822f00b88" version="1">Deals additional fire damage.</content>
     <content contentuid="hca09176ag1cf9ge15dg1300gc507813cb580" version="1">Chromatic Weapon: Force</content>
-    <content contentuid="h1c775338g4562g6945gbb34gd31377d313d0" version="1">Imbue a weapon with force. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hc46ba541gdadfg1f3egb022g1b97220a3fc0" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional force damage.</content>
+    <content contentuid="h1c775338g4562g6945gbb34gd31377d313d0" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="hc46ba541gdadfg1f3egb022g1b97220a3fc0" version="1">Deals additional force damage.</content>
     <content contentuid="h78ad35fdgc4dcg3789g1790g78bc0834de2c" version="1">Chromatic Weapon: Lightning</content>
-    <content contentuid="hc6a929c1g6463ga289g7b76gb1aa178a8070" version="1">Imbue a weapon with lightning. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="h6b30ef2eg383fgd26ag2cf2gb734f809817d" version="1">Has a bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals additional lightning damage.</content>
+    <content contentuid="hc6a929c1g6463ga289g7b76gb1aa178a8070" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="h6b30ef2eg383fgd26ag2cf2gb734f809817d" version="1">Deals additional lightning damage.</content>
+    <content contentuid="h4b3fef49gf15dg9db9g512fga233bc8926cc" version="1">Chromatic Weapon: Poison</content>
+    <content contentuid="he19966a1gda59g4651g8cefgec6964f9ce04" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="hbb934f77g5e5ag8e74g187dg35e259cd84d1" version="1">Deals additional poison damage.</content>
+    <content contentuid="h097088eegb912g7ff1g6adcg0d8279834185" version="1">Chromatic Weapon: Thunder</content>
+    <content contentuid="hf59f9d93g6d28gd9d7g0773g8f7140fcbeaf" version="1">Imbue the blade to deal an additional [1].</content>
+    <content contentuid="hde117b9ege283gbf3bga121gf5262083d7ba" version="1">Deals additional thunder damage.</content>
     <content contentuid="hf6a7b597g4ee6ge9aagb73fg13d1877fe263" version="1">Charge</content>
     <content contentuid="h6c4c98afg3ad0g6b1bg9f42ga9597f025b71" version="1">Charge forward and attack the first enemy in your way.</content>
 </contentList>

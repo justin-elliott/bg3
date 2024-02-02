@@ -94,8 +94,11 @@ sorcerer_battlemage.add(SpellList(
 ))
 
 
-def sorcerer_level(level: int, *, is_multiclass: bool = False) -> Progression:
-    return sorcerer_progression.find(lambda progression: (progression.Name == CharacterClass.SORCERER
+def progression_level(level: int,
+                      *,
+                      character_class: CharacterClass = CharacterClass.SORCERER,
+                      is_multiclass: bool = False) -> Progression:
+    return sorcerer_progression.find(lambda progression: (progression.Name == character_class
                                                           and progression.Level == level
                                                           and (progression.IsMulticlass or False) == is_multiclass))
 
@@ -103,7 +106,7 @@ def sorcerer_level(level: int, *, is_multiclass: bool = False) -> Progression:
 def level_1() -> None:
     """Add armor and weapon proficiencies, passives, skills, and spells."""
     for is_multiclass in [False, True]:
-        progression = sorcerer_level(1, is_multiclass=is_multiclass)
+        progression = progression_level(1, is_multiclass=is_multiclass)
 
         boosts = progression.Boosts or []
         boosts = [boost for boost in boosts if boost not in ["Proficiency(Daggers)",
@@ -120,15 +123,26 @@ def level_1() -> None:
         progression.Boosts = boosts
 
         passives_added = progression.PassivesAdded or []
-        passives_added.extend([battle_magic, "SculptSpells", "SorcererBattlemage_Warding"])
+        passives_added.extend([
+            battle_magic,
+            "SculptSpells",
+            "UnarmouredDefence_Barbarian",
+            "SorcererBattlemage_Warding",
+        ])
         progression.PassivesAdded = passives_added
 
         selectors = progression.Selectors or []
         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
         progression.Selectors = selectors
 
+        # Remove Draconic Resilience, since we have Unarmored Defence instead
+        progression = progression_level(1, character_class=CharacterClass.SORCERER_DRACONIC)
+        passives_added = progression.PassivesAdded or []
+        passives_added = [passive for passive in passives_added if passive != "DraconicResilience"]
+        progression.PassivesAdded = passives_added
+
     # Progression when Sorcerer is the class selected at level one
-    progression = sorcerer_level(1)
+    progression = progression_level(1)
 
     selectors = progression.Selectors or []
     selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
@@ -141,12 +155,12 @@ def level_1() -> None:
 
 
 def level_2() -> None:
-    progression = sorcerer_level(2)
+    progression = progression_level(2)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight"]
 
 
 def level_3() -> None:
-    progression = sorcerer_level(3)
+    progression = progression_level(3)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
 
     selectors = progression.Selectors or []
@@ -157,43 +171,43 @@ def level_3() -> None:
 
 
 def level_4() -> None:
-    progression = sorcerer_level(4)
+    progression = progression_level(4)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
 
 def level_5() -> None:
-    progression = sorcerer_level(5)
+    progression = progression_level(5)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", fast_movement]
 
 
 def level_6() -> None:
-    progression = sorcerer_level(6)
+    progression = progression_level(6)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
 
 
 def level_7() -> None:
-    progression = sorcerer_level(7)
+    progression = progression_level(7)
     progression.PassivesAdded = (progression.PassivesAdded or []) + [
         "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
 
 
 def level_8() -> None:
-    progression = sorcerer_level(8)
+    progression = progression_level(8)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
 
 def level_9() -> None:
-    progression = sorcerer_level(9)
+    progression = progression_level(9)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
 
 
 def level_10() -> None:
-    progression = sorcerer_level(10)
+    progression = progression_level(10)
     progression.PassivesAdded = (progression.PassivesAdded or []) + [empowered_spells]
 
 
 def level_11() -> None:
-    progression = sorcerer_level(11)
+    progression = progression_level(11)
     progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
     progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
@@ -203,7 +217,7 @@ def level_11() -> None:
 
 
 def level_12() -> None:
-    progression = sorcerer_level(12)
+    progression = progression_level(12)
     selectors = progression.Selectors or []
     selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)")  # Action Surge
     progression.Selectors = selectors

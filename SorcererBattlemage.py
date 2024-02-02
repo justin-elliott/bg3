@@ -73,7 +73,7 @@ sorcerer_battlemage.add(passive_data(
     "SorcererBattlemage_Warding",
     DisplayName=loca["SorcererBattlemage_Warding_DisplayName"],
     Description=loca["SorcererBattlemage_Warding_Description"],
-    DescriptionParams=["ClassLevel(Sorcerer)"],
+    DescriptionParams=["RegainHitPoints(max(1, ClassLevel(Sorcerer)))"],
     Icon="PassiveFeature_ArcaneWard",
     Properties=["Highlighted"],
     Boosts=["DamageReduction(All,Flat,ClassLevel(Sorcerer))"],

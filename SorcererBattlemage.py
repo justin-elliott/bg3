@@ -10,6 +10,7 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
+from modtools.gamedata import passive_data
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -32,6 +33,8 @@ sorcerer_battlemage = Mod(os.path.dirname(__file__),
                           name="SorcererBattlemage",
                           mod_uuid=UUID("aa8aa79d-c67e-4fd8-98f7-392f549abf7e"),
                           description="Upgrades the Sorcerer class to a Battlemage.")
+
+loca = sorcerer_battlemage.get_localization()
 
 # Add passives and spells
 battle_magic = BattleMagic(sorcerer_battlemage).add_battle_magic()
@@ -60,7 +63,21 @@ progressions_dev_lsx = Lsx.load(sorcerer_battlemage.get_cache_path(PROGRESSIONS_
 progressions_lsx.children.update(progressions_dev_lsx.children, key=lambda child: child.UUID)
 
 sorcerer_progression = progressions_lsx.children.keepall(lambda child: child.Name in CharacterSubclasses.SORCERER)
-sorcerer_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
+
+loca["SorcererBattlemage_Warding_DisplayName"] = {"en": "Warding"}
+loca["SorcererBattlemage_Warding_Description"] = {"en": """
+    Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].
+    """}
+
+sorcerer_battlemage.add(passive_data(
+    "SorcererBattlemage_Warding",
+    DisplayName=loca["SorcererBattlemage_Warding_DisplayName"],
+    Description=loca["SorcererBattlemage_Warding_Description"],
+    DescriptionParams=["ClassLevel(Sorcerer)"],
+    Icon="PassiveFeature_ArcaneWard",
+    Properties=["Highlighted"],
+    Boosts=["DamageReduction(All,Flat,ClassLevel(Sorcerer))"],
+))
 
 level_1_spelllist = str(sorcerer_battlemage.make_uuid("level_1_spelllist"))
 sorcerer_battlemage.add(SpellList(
@@ -103,7 +120,7 @@ def level_1() -> None:
         progression.Boosts = boosts
 
         passives_added = progression.PassivesAdded or []
-        passives_added.extend([battle_magic, "SculptSpells"])
+        passives_added.extend([battle_magic, "SculptSpells", "SorcererBattlemage_Warding"])
         progression.PassivesAdded = passives_added
 
         selectors = progression.Selectors or []
@@ -125,7 +142,7 @@ def level_1() -> None:
 
 def level_2() -> None:
     progression = sorcerer_level(2)
-    progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight"]
+    progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "DevilsSight"]
 
 
 def level_3() -> None:
@@ -209,6 +226,7 @@ allow_improvement(sorcerer_progression, range(2, 13))
 multiply_resources(sorcerer_progression, [ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS], 2)
 spells_always_prepared(sorcerer_progression)
 
+sorcerer_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 for child in sorcerer_progression:
     sorcerer_battlemage.add(child)
 

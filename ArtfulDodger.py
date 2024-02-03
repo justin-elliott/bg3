@@ -7,6 +7,7 @@ import os
 
 from moddb.bolster import Bolster
 from moddb.movement import Movement
+from moddb.progression import allow_improvement
 from modtools.gamedata import passive_data, spell_data
 from modtools.lsx.game import (
     CharacterClass,
@@ -231,6 +232,8 @@ level_9()
 level_10()
 level_11()
 level_12()
+
+allow_improvement(rogue_progression, range(2, 13, 2))
 
 rogue_progression.sort(key=lambda child: (CharacterClass(child.Name).name, child.Level, child.IsMulticlass or False))
 for child in rogue_progression:

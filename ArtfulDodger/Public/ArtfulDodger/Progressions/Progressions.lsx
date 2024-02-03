@@ -6,7 +6,6 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="false" />
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Dexterity);ProficiencyBonus(SavingThrow,Intelligence);Proficiency(LightArmor);Proficiency(SimpleWeapons);Proficiency(HandCrossbows);Proficiency(Longswords);Proficiency(Rapiers);Proficiency(Shortswords);ActionResource(SneakAttack_Charge,1,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Rogue" />
@@ -17,7 +16,6 @@
                     <attribute id="UUID" type="guid" value="16f00e7f-12f6-4cff-b610-4ee738b02d62" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="false" />
                     <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);ActionResource(SneakAttack_Charge,1,0)" />
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
@@ -29,7 +27,7 @@
                     <attribute id="UUID" type="guid" value="cd3d8b16-37ce-4107-a2e3-e729751c2b1c" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="false" />
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Rogue" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -76,6 +74,7 @@
                     <attribute id="UUID" type="guid" value="19857e46-f5dc-4a9f-847e-5f714ceef7b1" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Rogue" />
                     <attribute id="ProgressionType" type="uint8" value="0" />

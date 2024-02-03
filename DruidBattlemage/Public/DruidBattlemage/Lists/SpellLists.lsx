@@ -6,14 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Druid Battlemage level 1 spells" />
+                    <attribute id="Comment" type="LSString" value="Spells gained at Druid level 1" />
                     <attribute id="Spells" type="LSString" value="DruidBattlemage_Bolster" />
                     <attribute id="UUID" type="guid" value="ad05b8fd-7a2d-1ff7-ebc7-82604b704b92" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Druid Battlemage level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="DruidBattlemage_Bolster" />
-                    <attribute id="UUID" type="guid" value="ad05b8fd-7a2d-1ff7-ebc7-82604b704b92" />
+                    <attribute id="Comment" type="LSString" value="Spells gained at Druid level 5" />
+                    <attribute id="Spells" type="LSString" value="Target_Counterspell" />
+                    <attribute id="UUID" type="guid" value="7388f979-27ae-4dc9-812a-299e2e574ad4" />
                 </node>
             </children>
         </node>

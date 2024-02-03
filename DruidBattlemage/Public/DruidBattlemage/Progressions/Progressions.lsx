@@ -31,7 +31,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;DevilsSight;WildShape_Combat" />
+                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;SuperiorDarkvision" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="95322dde-349a-4101-964f-9aa46abd890b" />
@@ -80,7 +80,7 @@
                     <attribute id="Name" type="LSString" value="Druid" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3;WildStrike;ExtraAttack;DruidBattlemage_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(3156daf5-9266-41d0-b52c-5bc559a98654)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3156daf5-9266-41d0-b52c-5bc559a98654);AddSpells(7388f979-27ae-4dc9-812a-299e2e574ad4,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="95868b34-a3c7-4748-92b8-f44f72242bf4" />
                 </node>
@@ -89,7 +89,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip;PrimalStrike" />
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
                     <attribute id="UUID" type="guid" value="0485e0eb-e537-4adb-a06e-5cf677388f85" />
@@ -166,7 +166,7 @@
                     <attribute id="UUID" type="guid" value="783683c5-c875-48c9-9875-69569528a89d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(NaturalRecoveryPoint,2,0);ActionResource(WildShape,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(NaturalRecoveryPoint,2,0);ActionResource(WildShape,8,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="CircleOfTheLand" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -252,7 +252,7 @@
                     <attribute id="UUID" type="guid" value="94387976-ebc2-46a2-836a-ec92a82b270c" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WildShape,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WildShape,8,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="CircleOfTheMoon" />
                     <attribute id="PassivesAdded" type="LSString" value="WildShape_Combat" />
@@ -309,11 +309,11 @@
                     <attribute id="UUID" type="guid" value="da7601da-2a17-456c-bd0e-f98160470653" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WildShape,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WildShape,8,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="CircleOfTheSpores" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(e568eca4-b5e1-4b67-83d6-d831adf05e23,,,,AlwaysPrepared);AddSpells(729670a8-da85-4fd2-9764-4dec636a275b,DruidCircleOfTheSporesSpells,,,AlwaysPrepared);AddSpells(2df1a00f-a66a-4240-a505-6a7835f2f1fa,,,,AlwaysPrepared);AddSpells(db963d3f-e0ba-4aba-a8e2-cf404dc54429,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(0f094e35-9675-464d-8cae-8e58c28de955,,,,AlwaysPrepared);AddSpells(e568eca4-b5e1-4b67-83d6-d831adf05e23,,,,AlwaysPrepared);AddSpells(729670a8-da85-4fd2-9764-4dec636a275b,DruidCircleOfTheSporesSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
                     <attribute id="UUID" type="guid" value="ac2a03fd-ac7b-42b6-a1b7-e0de94a77703" />
                 </node>
@@ -329,7 +329,7 @@
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="CircleOfTheSpores" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(94081296-f79b-4294-973e-111dabea22ca,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(ef953742-69fa-4730-a289-bf9ce9629b1a,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
                     <attribute id="UUID" type="guid" value="19f13a6e-11d8-4237-853f-3e9e8c5d8393" />
                 </node>
@@ -346,7 +346,7 @@
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="CircleOfTheSpores" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(469bd836-191a-4b92-8220-4796e2f4dc77,,,,AlwaysPrepared);AddSpells(c3221a24-3bf7-4475-a675-1b5d87f650f0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(c15f9224-a600-4a10-a5e7-642eed9c4222,,,,AlwaysPrepared);AddSpells(469bd836-191a-4b92-8220-4796e2f4dc77,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
                     <attribute id="UUID" type="guid" value="c3becf07-a557-405f-ba5d-a3d5d52819c2" />
                 </node>
@@ -357,14 +357,6 @@
                     <attribute id="Selectors" type="LSString" value="AddSpells(040c1144-88fc-4578-9958-ccd3ad82698d,DruidCircleOfTheSporesSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
                     <attribute id="UUID" type="guid" value="5d57552e-acac-47c2-9753-5abd8bb845a0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="8" />
-                    <attribute id="Name" type="LSString" value="CircleOfTheSpores" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(dcdfdf72-16cd-473a-a15f-31a85381c3aa,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
-                    <attribute id="UUID" type="guid" value="b8d6b374-81de-1b9b-7e3c-36871027a295" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="9" />
@@ -379,7 +371,7 @@
                     <attribute id="Name" type="LSString" value="CircleOfTheSpores" />
                     <attribute id="PassivesAdded" type="LSString" value="SpreadingSpores" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(57d542ac-2d17-406c-90bd-b55920c94b95,,,,AlwaysPrepared);AddSpells(fa0b047d-4ff6-4ba0-8911-6c0f2f13be22,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(e4d81321-c46f-4334-af8b-b6f4f87d811c)" />
                     <attribute id="TableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a" />
                     <attribute id="UUID" type="guid" value="7099737e-99ed-411c-bb50-25197e735a65" />
                 </node>

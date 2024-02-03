@@ -3,9 +3,9 @@
 new equipment "EQP_CC_DruidBattlemage"
 add initialweaponset "Melee"
 add equipmentgroup
-add equipment entry "DruidBattlemage_Scimitar"
+add equipment entry "DruidBattlemage_Tempest"
 add equipmentgroup
-add equipment entry "DruidBattlemage_Scimitar"
+add equipment entry "DruidBattlemage_Thunder"
 add equipmentgroup
 add equipment entry "ARM_Leather_Body_Druid"
 add equipmentgroup

@@ -12,7 +12,10 @@
     <content contentuid="hf6f9dd49g35b3gb63bg2168g5f91e35395f9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h713dfe33gaaa2gd5a3g6da3gfc1906bcbc80" version="1">Natural Resistance</content>
     <content contentuid="h965942f5gd823g810dg79e3g75c78e6c28d1" version="1">You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="h5dbb710eg2d60ge922gbd57gabef7af5fbb5" version="1">Stormblade</content>
-    <content contentuid="h8c4ba096gb0dbgcf50g776cg1f64744bf958" version="1">This blade crackles with electrical energy.</content>
-    <content contentuid="h3f8dc6a3g57a8ge809gfe2bg7bb0c8fa2444" version="1">If the Stormblade hits an object, the hit is always critical.</content>
+    <content contentuid="h91a6eb56g07eag45edg342cg2963998812d3" version="1">Tempest</content>
+    <content contentuid="hc170dfacg501cge41bgc11bgf79e53c7bcf7" version="1">Sparks of electrical energy dance along the length of the blade.</content>
+    <content contentuid="h6caecf47g4a31gb71cgc38bg64d9a493854e" version="1">Thunder</content>
+    <content contentuid="h9d9752d6g58a7gfbc4g15a6g244ebbb580a7" version="1">Sparks of electrical energy crash along the length of the blade.</content>
+    <content contentuid="hcd248687gaa66g80d9g3527g5d3ef462dc0f" version="1">Thunderstrike</content>
+    <content contentuid="h00120894gbc31gf562g38fcg191c8ebd69cc" version="1">When the wielder deals damage using this weapon, they inflict [1] turns of &lt;LSTag Type="Status" Tooltip="MAG_THUNDER_REVERBERATION"&gt;Reverberation&lt;/LSTag&gt; upon the target(s).</content>
 </contentList>

@@ -80,33 +80,65 @@ druid_battlemage.add(passive_data(
     Boosts=["DamageReduction(All,Flat,ClassLevel(Druid))"],
 ))
 
-# Add scimitar
-loca["DruidBattlemage_Scimitar_DisplayName"] = {"en": "Stormblade"}
-loca["DruidBattlemage_Scimitar_Description"] = {"en": """
-    This blade crackles with electrical energy.
-    """}
+# Add scimitars
+druid_battlemage.add(status_data(
+    "DruidBattlemage_Scimitar_LightningEffect",
+    StatusType="EFFECT",
+    DisplayName="h363588c6g20b9g4407g91d8gebab0f1a5dca;1",
+    StatusPropertyFlags=["IgnoreResting", "DisableCombatlog", "DisableOverhead", "DisablePortraitIndicator"],
+    StatusEffect="7905bb82-0284-46b8-855b-24f17560fe4a",
+))
 
-druid_battlemage_scimitar_uuid = druid_battlemage.make_uuid("DruidBattlemage_Scimitar")
 scimitar_a_0_uuid = UUID("868217db-9dcb-414c-bb88-e321ab3e0349")
 scimitar_a_1_uuid = UUID("7cc7a0e1-d0b8-4569-afb2-d538e8941894")
 scimitar_a_2_uuid = UUID("5193af64-48c1-406f-90bf-87f7f01b4684")
 scimitar_momentum_on_attack = UUID("4456e2ec-ba1f-4f53-aab8-847249cabc09")
 scimitar_the_clover = UUID("517231eb-e812-43ed-9ce3-482ba7ed31e6")
 
+druid_battlemage_tempest_uuid = druid_battlemage.make_uuid("DruidBattlemage_Tempest")
+
+loca["DruidBattlemage_Tempest_DisplayName"] = {"en": "Tempest"}
+loca["DruidBattlemage_Tempest_Description"] = {"en": """
+    Sparks of electrical energy dance along the length of the blade.
+    """}
+
 druid_battlemage.add(GameObjects(
-    DisplayName=loca["DruidBattlemage_Scimitar_DisplayName"],
-    Description=loca["DruidBattlemage_Scimitar_Description"],
+    DisplayName=loca["DruidBattlemage_Tempest_DisplayName"],
+    Description=loca["DruidBattlemage_Tempest_Description"],
     LevelName="",
-    MapKey=druid_battlemage_scimitar_uuid,
-    Name="DruidBattlemage_Scimitar",
+    MapKey=druid_battlemage_tempest_uuid,
+    Name="DruidBattlemage_Tempest",
     ParentTemplateId=scimitar_a_1_uuid,
-    Stats="DruidBattlemage_Scimitar",
+    Stats="DruidBattlemage_Tempest",
     Type="item",
     children=[
         GameObjects.StatusList(
             children=[
-                GameObjects.StatusList.Status(Object="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"),
-                GameObjects.StatusList.Status(Object="MAG_DIAMONDSBANE_TECHNICAL"),
+                GameObjects.StatusList.Status(Object="DruidBattlemage_Scimitar_LightningEffect"),
+            ],
+        ),
+    ],
+))
+
+druid_battlemage_thunder_uuid = druid_battlemage.make_uuid("DruidBattlemage_Thunder")
+
+loca["DruidBattlemage_Thunder_DisplayName"] = {"en": "Thunder"}
+loca["DruidBattlemage_Thunder_Description"] = {"en": """
+    Sparks of electrical energy crash along the length of the blade.
+    """}
+
+druid_battlemage.add(GameObjects(
+    DisplayName=loca["DruidBattlemage_Thunder_DisplayName"],
+    Description=loca["DruidBattlemage_Thunder_Description"],
+    LevelName="",
+    MapKey=druid_battlemage_thunder_uuid,
+    Name="DruidBattlemage_Thunder",
+    ParentTemplateId=scimitar_a_1_uuid,
+    Stats="DruidBattlemage_Thunder",
+    Type="item",
+    children=[
+        GameObjects.StatusList(
+            children=[
                 GameObjects.StatusList.Status(Object="DruidBattlemage_Scimitar_LightningEffect"),
             ],
         ),
@@ -116,11 +148,11 @@ druid_battlemage.add(GameObjects(
 druid_battlemage.add_script(character_level_range)
 
 druid_battlemage.add(weapon_data(
-    "DruidBattlemage_Scimitar",
+    "DruidBattlemage_Tempest",
     using="WPN_Scimitar",
-    RootTemplate=str(druid_battlemage_scimitar_uuid),
+    RootTemplate=str(druid_battlemage_tempest_uuid),
     Rarity="Legendary",
-    Damage="1d8",
+    Damage="1d6",
     DefaultBoosts=[
         "CannotBeDisarmed()",
         "WeaponProperty(Magical)",
@@ -132,8 +164,7 @@ druid_battlemage.add(weapon_data(
         "IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,Lightning,Magical)",
     ],
     PassivesOnEquip=[
-        "DruidBattlemage_Scimitar_CriticalVsItems",
-        "MAG_IgnoreSlashingResistance_Passive",
+        "MAG_ChargedLightning_Charge_OnDamage_Passive",
         "MAG_TheClover_Rearrangement_Passive",
     ],
     Weapon_Properties=[
@@ -145,31 +176,62 @@ druid_battlemage.add(weapon_data(
     ],
 ))
 
-loca["DruidBattlemage_Scimitar_CriticalVsItems_Description"] = {"en": """
-    If the Stormblade hits an object, the hit is always critical.
+druid_battlemage.add(weapon_data(
+    "DruidBattlemage_Thunder",
+    using="WPN_Scimitar",
+    RootTemplate=str(druid_battlemage_thunder_uuid),
+    Rarity="Legendary",
+    Damage="1d6",
+    DefaultBoosts=[
+        "CannotBeDisarmed()",
+        "WeaponProperty(Magical)",
+        "IF(CharacterLevelRange(1,5)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(6,10)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(11,20)):WeaponEnchantment(3)",
+        "IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,Thunder,Magical)",
+        "IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,Thunder,Magical)",
+        "IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,Thunder,Magical)",
+    ],
+    PassivesOnEquip=[
+        "DruidBattlemage_Thunderstrike",
+        "MAG_ArcaneEnchantment_Lesser_Passive",
+    ],
+    Weapon_Properties=[
+        "Dippable",
+        "Finesse",
+        "Light",
+        "Magical",
+        "Melee",
+    ],
+))
+
+loca["DruidBattlemage_Thunderstrike_DisplayName"] = {"en": "Thunderstrike"}
+loca["DruidBattlemage_Thunderstrike_Description"] = {"en": """
+    When the wielder deals damage using this weapon, they inflict [1] turns of
+    <LSTag Type="Status" Tooltip="MAG_THUNDER_REVERBERATION">Reverberation</LSTag> upon the target(s).
     """}
 
 druid_battlemage.add(passive_data(
-    "DruidBattlemage_Scimitar_CriticalVsItems",
-    using="UNI_Adamantine_CriticalVsItems_Passive",
-    Description=loca["DruidBattlemage_Scimitar_CriticalVsItems_Description"],
-))
-
-druid_battlemage.add(status_data(
-    "DruidBattlemage_Scimitar_LightningEffect",
-    StatusType="EFFECT",
-    DisplayName="h363588c6g20b9g4407g91d8gebab0f1a5dca;1",
-    StatusPropertyFlags=["IgnoreResting", "DisableCombatlog", "DisableOverhead", "DisablePortraitIndicator"],
-    StatusEffect="7905bb82-0284-46b8-855b-24f17560fe4a",
+    "DruidBattlemage_Thunderstrike",
+    DisplayName=loca["DruidBattlemage_Thunderstrike_DisplayName"],
+    Description=loca["DruidBattlemage_Thunderstrike_Description"],
+    DescriptionParams=["2"],
+    Properties=["OncePerAttack"],
+    StatsFunctorContext=["OnDamage"],
+    Conditions=["AttackedWithPassiveSourceWeapon()"],
+    StatsFunctors=[
+        "ApplyStatus(MAG_THUNDER_REVERBERATION,100,2)",
+        "ApplyStatus(MAG_THUNDER_REVERBERATION_DURATION_TECHNICAL,100,1)",
+    ],
 ))
 
 druid_battlemage.add_equipment("""\
 new equipment "EQP_CC_DruidBattlemage"
 add initialweaponset "Melee"
 add equipmentgroup
-add equipment entry "DruidBattlemage_Scimitar"
+add equipment entry "DruidBattlemage_Tempest"
 add equipmentgroup
-add equipment entry "DruidBattlemage_Scimitar"
+add equipment entry "DruidBattlemage_Thunder"
 add equipmentgroup
 add equipment entry "ARM_Leather_Body_Druid"
 add equipmentgroup

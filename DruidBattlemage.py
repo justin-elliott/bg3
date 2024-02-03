@@ -75,7 +75,7 @@ druid_battlemage.add(passive_data(
     DisplayName=loca["DruidBattlemage_NaturalResistance_DisplayName"],
     Description=loca["DruidBattlemage_NaturalResistance_Description"],
     DescriptionParams=["RegainHitPoints(max(1, ClassLevel(Druid)))"],
-    Icon="Spell_Transmutation_Barkskin",
+    Icon="PassiveFeature_Durable",
     Properties=["Highlighted"],
     Boosts=["DamageReduction(All,Flat,ClassLevel(Druid))"],
 ))

@@ -12,8 +12,6 @@
     <content contentuid="hf6f9dd49g35b3gb63bg2168g5f91e35395f9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h713dfe33gaaa2gd5a3g6da3gfc1906bcbc80" version="1">Natural Resistance</content>
     <content contentuid="h965942f5gd823g810dg79e3g75c78e6c28d1" version="1">You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="hb18b8a76ge4c7g5a8cgea51g12c7a21f8ab1" version="1">Preservation</content>
-    <content contentuid="h8098a19bg49f0ga84fgb2d6g3ecca77921fd" version="1">You safeguard your allies from your spells. They automatically succeed &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt; against spells that require them.</content>
     <content contentuid="h5dbb710eg2d60ge922gbd57gabef7af5fbb5" version="1">Stormblade</content>
     <content contentuid="h8c4ba096gb0dbgcf50g776cg1f64744bf958" version="1">This blade crackles with electrical energy.</content>
     <content contentuid="h3f8dc6a3g57a8ge809gfe2bg7bb0c8fa2444" version="1">If the Stormblade hits an object, the hit is always critical.</content>

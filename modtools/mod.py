@@ -42,6 +42,7 @@ class Mod:
     _gamedata: GameData
     _lsx: Lsx
 
+    _equipment: [str]
     _scripts: [str]
     _treasure_table: [str]
 
@@ -75,6 +76,7 @@ class Mod:
         self._gamedata = GameData(self._modifiers, self._valuelists)
         self._lsx = Lsx()
 
+        self._equipment = None
         self._scripts = None
         self._treasure_table = None
 
@@ -129,6 +131,10 @@ class Mod:
         else:
             raise TypeError("add: Invalid data type")
 
+    def add_equipment(self, text: str) -> None:
+        self._equipment = self._equipment or []
+        self._equipment.append(text)
+
     def add_script(self, text: str) -> None:
         self._scripts = self._scripts or []
         if text not in self._scripts:
@@ -175,6 +181,14 @@ class Mod:
             ],
         ))
 
+    def _build_equipment(self, public_dir: str) -> None:
+        if self._equipment:
+            equipment_dir = os.path.join(public_dir, "Stats", "Generated")
+            os.makedirs(equipment_dir, exist_ok=True)
+            with open(os.path.join(equipment_dir, "Equipment.txt"), "w") as f:
+                f.write(TXT_PROLOGUE)
+                f.write("\n".join(self._equipment))
+
     def _build_scripts(self, mod_dir: str) -> None:
         if self._scripts:
             scripts_dir = os.path.join(mod_dir, "Scripts", "thoth", "helpers")
@@ -202,5 +216,6 @@ class Mod:
         self._lsx.save(mod_dir, version=self._version, folder=self._folder)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)
+        self._build_equipment(public_dir)
         self._build_scripts(mod_dir)
         self._build_treasure_table(public_dir)

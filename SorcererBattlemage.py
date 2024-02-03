@@ -135,11 +135,11 @@ def level_1() -> None:
         selectors.append(f"AddSpells({level_1_spelllist},,,,AlwaysPrepared)")
         progression.Selectors = selectors
 
-        # Remove Draconic Resilience, since we have Unarmored Defence instead
-        progression = progression_level(1, character_class=CharacterClass.SORCERER_DRACONIC)
-        passives_added = progression.PassivesAdded or []
-        passives_added = [passive for passive in passives_added if passive != "DraconicResilience"]
-        progression.PassivesAdded = passives_added
+    # Remove Draconic Resilience, since we have Unarmored Defence instead
+    progression = progression_level(1, character_class=CharacterClass.SORCERER_DRACONIC)
+    passives_added = progression.PassivesAdded or []
+    passives_added = [passive for passive in passives_added if passive != "DraconicResilience"]
+    progression.PassivesAdded = passives_added
 
     # Progression when Sorcerer is the class selected at level one
     progression = progression_level(1)

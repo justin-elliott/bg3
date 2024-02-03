@@ -65,19 +65,20 @@ progressions_lsx.children.update(progressions_dev_lsx.children, key=lambda child
 
 druid_progression = progressions_lsx.children.keepall(lambda child: child.Name in CharacterSubclasses.DRUID)
 
-loca["DruidBattlemage_NaturalResistance_DisplayName"] = {"en": "Natural Resistance"}
-loca["DruidBattlemage_NaturalResistance_Description"] = {"en": """
-    You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].
+loca["DruidBattlemage_Regrowth_DisplayName"] = {"en": "Regrowth"}
+loca["DruidBattlemage_Regrowth_Description"] = {"en": """
+    On taking damage, you heal for [1].
     """}
 
 druid_battlemage.add(passive_data(
-    "DruidBattlemage_NaturalResistance",
-    DisplayName=loca["DruidBattlemage_NaturalResistance_DisplayName"],
-    Description=loca["DruidBattlemage_NaturalResistance_Description"],
+    "DruidBattlemage_Regrowth",
+    DisplayName=loca["DruidBattlemage_Regrowth_DisplayName"],
+    Description=loca["DruidBattlemage_Regrowth_Description"],
     DescriptionParams=["RegainHitPoints(max(1, ClassLevel(Druid)))"],
-    Icon="Spell_Transmutation_Barkskin",
+    Icon="Action_Cleric_PreserveLife",
     Properties=["Highlighted"],
-    Boosts=["DamageReduction(All,Flat,ClassLevel(Druid))"],
+    StatsFunctorContext=["OnDamaged"],
+    StatsFunctors=["RegainHitPoints(ClassLevel(Druid))"],
 ))
 
 # Add scimitar
@@ -211,7 +212,7 @@ def level_1() -> None:
         passives_added = progression.PassivesAdded or []
         passives_added.extend([
             battle_magic,
-            "DruidBattlemage_NaturalResistance",
+            "DruidBattlemage_Regrowth",
             "FightingStyle_TwoWeaponFighting",
         ])
         progression.PassivesAdded = passives_added

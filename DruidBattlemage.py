@@ -193,7 +193,7 @@ druid_battlemage.add(weapon_data(
         "IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,Thunder,Magical)",
     ],
     PassivesOnEquip=[
-        "DruidBattlemage_Thunderstrike",
+        "DruidBattlemage_Clash",
         "MAG_ArcaneEnchantment_Lesser_Passive",
     ],
     Weapon_Properties=[
@@ -205,16 +205,16 @@ druid_battlemage.add(weapon_data(
     ],
 ))
 
-loca["DruidBattlemage_Thunderstrike_DisplayName"] = {"en": "Thunderstrike"}
-loca["DruidBattlemage_Thunderstrike_Description"] = {"en": """
+loca["DruidBattlemage_Clash_DisplayName"] = {"en": "Clash"}
+loca["DruidBattlemage_Clash_Description"] = {"en": """
     When the wielder deals damage using this weapon, they inflict [1] turns of
     <LSTag Type="Status" Tooltip="MAG_THUNDER_REVERBERATION">Reverberation</LSTag> upon the target(s).
     """}
 
 druid_battlemage.add(passive_data(
-    "DruidBattlemage_Thunderstrike",
-    DisplayName=loca["DruidBattlemage_Thunderstrike_DisplayName"],
-    Description=loca["DruidBattlemage_Thunderstrike_Description"],
+    "DruidBattlemage_Clash",
+    DisplayName=loca["DruidBattlemage_Clash_DisplayName"],
+    Description=loca["DruidBattlemage_Clash_Description"],
     DescriptionParams=["2"],
     Properties=["OncePerAttack"],
     StatsFunctorContext=["OnDamage"],

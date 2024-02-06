@@ -46,8 +46,16 @@ class Mod:
     _scripts: [str]
     _treasure_table: [str]
 
-    def __init__(self, base_dir: str, author: str, name: str, mod_uuid: UUID, description: str = "", folder: str = None,
-                 version: (int, int, int, int) = (4, 1, 1, 1), cache_dir: os.PathLike | None = None):
+    def __init__(self,
+                 base_dir: str,
+                 *,
+                 author: str,
+                 name: str,
+                 mod_uuid: UUID = None,
+                 description: str = "",
+                 folder: str = None,
+                 version: (int, int, int, int) = (4, 1, 1, 1),
+                 cache_dir: os.PathLike | None = None):
         """Define a mod.
 
         base_dir -- the base directory of the mod
@@ -63,8 +71,14 @@ class Mod:
         self._name = name
         self._description = description
         self._folder = folder or name
-        self._uuid = mod_uuid
         self._version = version
+
+        if mod_uuid:
+            self._uuid = mod_uuid
+        else:
+            m = hashlib.sha256()
+            m.update(bytes(f"BG3:{author}:{name}", "UTF-8"))
+            self._uuid = UUID(bytes=m.digest()[0:16])
 
         self._unpak = Unpak(cache_dir)
         self._modifiers = Modifiers(self._unpak)
@@ -84,7 +98,7 @@ class Mod:
         m = hashlib.sha256()
         m.update(self._uuid.bytes)
         m.update(bytes(key, "UTF-8"))
-        return UUID(m.hexdigest()[0:32])
+        return UUID(bytes=m.digest()[0:16])
 
     def get_author(self) -> str:
         return self._author

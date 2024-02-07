@@ -5,9 +5,8 @@ Generates files for the "Champion" mod.
 
 import os
 
-from modtools.lsx.game import CharacterClass
-from modtools.lsx.game import Progression
-from modtools.progressionreplacer import class_level, ProgressionReplacer
+from modtools.lsx.game import CharacterClass, CharacterSubclasses, ClassDescription, Progression
+from modtools.progressionreplacer import class_description, class_level, ProgressionReplacer
 
 
 class Champion(ProgressionReplacer):
@@ -15,7 +14,11 @@ class Champion(ProgressionReplacer):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="Champion",
-                         classes=(CharacterClass.FIGHTER, CharacterClass.FIGHTER_CHAMPION))
+                         classes=CharacterSubclasses.FIGHTER)
+
+    @class_description(CharacterClass.FIGHTER)
+    def fighter_description(self, class_description: ClassDescription) -> None:
+        pass
 
     @class_level(CharacterClass.FIGHTER, levels=range(1, 13))
     @class_level(CharacterClass.FIGHTER, 1, is_multiclass=True)

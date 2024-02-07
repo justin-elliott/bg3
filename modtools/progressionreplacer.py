@@ -14,7 +14,7 @@ from uuid import UUID
 
 type ClassLevelKey = tuple[CharacterClass, int, bool]
 type MultiClassLevelKey = tuple[list[CharacterClass], list[int], bool]
-type ProgressionBuilder = Callable[[object, Progression], Progression]
+type ProgressionBuilder = Callable[[object, Progression], None]
 
 
 def class_level(character_classes: CharacterClass | Iterable[CharacterClass],
@@ -73,53 +73,63 @@ class ProgressionReplacer:
         self._mod = Mod(base_dir, author=author, name=name, **kwds)
         self._classes = classes
 
-    def preprocess(self, progressions: Iterable[Progression]) -> Iterable[Progression]:
-        """Apply any preprocessing steps to the loaded game progressions."""
-        return progressions
+    def make_uuid(self, key: str) -> UUID:
+        """Generate a UUID for the given key."""
+        return self._mod.make_uuid(f"ProgressionReplacer:{key}")
 
-    def postprocess(self, progressions: Iterable[Progression]) -> Iterable[Progression]:
+    def preprocess(self, progressions: Iterable[Progression]) -> None:
+        """Apply any preprocessing steps to the loaded game progressions."""
+        pass
+
+    def postprocess(self, progressions: Iterable[Progression]) -> None:
         """Apply any postprocessing steps to the updated progressions."""
-        return progressions
+        pass
+
+    def make_progression(self, character_class: CharacterClass, level: int) -> Progression:
+        """Return a Progression for the given character class and level. """
+        raise NotImplementedError("make_progression() must be overridden by a subclass")
 
     def build(self) -> None:
         """Build the new progression."""
         class_level = dict(self._class_level)
-        progressions: list[Progression] = []
+        progressions = self._load_game_progressions()
 
-        # Load the game progression
-        progressions_lsx = Lsx.load(self._mod.get_cache_path(self.PROGRESSIONS_LSX_PATH))
-        progressions_dev_lsx = Lsx.load(self._mod.get_cache_path(self.PROGRESSIONS_DEV_LSX_PATH))
-        progressions_lsx.children.update(progressions_dev_lsx.children, key=self._by_uuid)
-
-        game_progressions = progressions_lsx.children.keepall(self._is_one_of_our_classes)
-
-        game_progressions.sort(key=self._by_name_level_multiclass)
-        game_progressions = self.preprocess(game_progressions)
+        self.preprocess(progressions)
 
         # Pass the existing progression to the defined builder functions
-        for progression in game_progressions:
+        for progression in progressions:
             key = (CharacterClass(progression.Name), progression.Level, progression.IsMulticlass or False)
             if builder := class_level.get(key):
-                if new_progression := builder(self, progression):
-                    progressions.append(new_progression)
+                builder(self, progression)
                 del class_level[key]
 
         # Call the builder functions that did not match an existing progression
-        for builder in class_level.values():
-            if new_progression := builder(self, None):
-                progressions.append(new_progression)
+        for key, builder in class_level.items():
+            character_class, level, is_multiclass = key
+            progression = self.make_progression(character_class, level)
+            if is_multiclass:
+                progression.IsMulticlass = True
+            progressions.append(progression)
+            builder(self, progression)
 
         progressions.sort(key=self._by_name_level_multiclass)
-        progressions = self.postprocess(progressions)
+        self.postprocess(progressions)
 
         for progression in progressions:
             self._mod.add(progression)
 
         self._mod.build()
 
-    def make_uuid(self, key: str) -> UUID:
-        """Generate a UUID for the given key."""
-        return self._mod.make_uuid(f"ProgressionReplacer:{key}")
+    def _load_game_progressions(self) -> list[Progression]:
+        """Load the game configuration from the .pak cache."""
+        progressions_lsx = Lsx.load(self._mod.get_cache_path(self.PROGRESSIONS_LSX_PATH))
+        progressions_dev_lsx = Lsx.load(self._mod.get_cache_path(self.PROGRESSIONS_DEV_LSX_PATH))
+        progressions_lsx.children.update(progressions_dev_lsx.children, key=self._by_uuid)
+
+        progressions_lsx.children.keepall(self._is_one_of_our_classes)
+        progressions_lsx.children.sort(key=self._by_name_level_multiclass)
+
+        return list(progressions_lsx.children)
 
     @staticmethod
     def _by_uuid(progression: Progression) -> UUID:

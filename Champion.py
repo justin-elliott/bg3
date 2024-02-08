@@ -76,5 +76,10 @@ class Champion(ProgressionReplacer):
         )
 
 
-champion = Champion()
-champion.build()
+def main():
+    champion = Champion()
+    champion.build()
+
+
+if __name__ == "__main__":
+    main()

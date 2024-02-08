@@ -20,3 +20,6 @@ class CriticalHitTypeData(GameData):
     RadiantFX: VL.Guid = VL.Guid
     SlashingFX: VL.Guid = VL.Guid
     ThunderFX: VL.Guid = VL.Guid
+
+    def filename(self) -> str:
+        return "CriticalHitTypes.txt"

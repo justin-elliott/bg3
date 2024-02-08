@@ -42,3 +42,6 @@ class InterruptData(GameData):
     TooltipOnSave: VL.FixedString = VL.FixedString
     TooltipPermanentWarnings: VL.FixedString = VL.FixedString
     TooltipStatusApply: VL.FixedString = VL.FixedString
+
+    def filename(self) -> str:
+        return "Interrupt.txt"

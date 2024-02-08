@@ -5,11 +5,12 @@ A class representing game data parsed from Modifiers.txt.
 
 import modtools.gamedata_v2.valuelists as VL
 
+from abc import ABCMeta, abstractmethod
 from collections.abc import Callable, Set
 from typing import ClassVar
 
 
-class GameData:
+class GameData(metaclass=ABCMeta):
     """Representation of game data ("Modifiers")."""
 
     _LIST_TYPES = (list, tuple, set)
@@ -20,8 +21,15 @@ class GameData:
     name: str
     using: str
 
+    @abstractmethod
+    def filename(self) -> str:
+        """Return the filename for this game data object."""
+        pass
+
     @classmethod
     def __init_subclass__(cls) -> None:
+        super().__init_subclass__()
+
         cls._id_ = str(cls.__dict__.get("_id_", cls.__name__))
         cls._fields_ = dict()
 
@@ -63,6 +71,7 @@ class GameData:
                     else:
                         values = ";".join(values)
                     s += f"data \"{key.replace("_", " ")}\" \"{values}\"\n"
+
         return s
 
     @classmethod

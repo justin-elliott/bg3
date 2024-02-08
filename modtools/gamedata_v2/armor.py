@@ -58,3 +58,6 @@ class Armor(GameData):
     ValueScale: VL.ConstantFloat = VL.ConstantFloat
     ValueUUID: VL.Guid = VL.Guid
     Weight: VL.ConstantFloat = VL.ConstantFloat
+
+    def filename(self) -> str:
+        return "Armor.txt"

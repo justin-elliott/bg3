@@ -39,3 +39,6 @@ class PassiveData(GameData):
     TooltipPermanentWarnings: VL.FixedString = VL.FixedString
     TooltipSave: VL.FixedString = VL.FixedString
     TooltipUseCosts: VL.FixedString = VL.FixedString
+
+    def filename(self) -> str:
+        return "Passive.txt"

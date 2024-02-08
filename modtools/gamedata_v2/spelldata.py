@@ -210,3 +210,6 @@ class SpellData(GameData):
     WallStartEffect: VL.FixedString = VL.FixedString
     WeaponBones: VL.FixedString = VL.FixedString
     WeaponTypes: VL.WeaponFlags = VL.WeaponFlags
+
+    def filename(self) -> str:
+        return f"Spell_{self.SpellType[0]}.txt"

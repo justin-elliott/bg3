@@ -62,3 +62,6 @@ class ObjectData(GameData):
     VerticalFOV: VL.ConstantInt = VL.ConstantInt
     Vitality: VL.ConstantInt = VL.ConstantInt
     Weight: VL.ConstantFloat = VL.ConstantFloat
+
+    def filename(self) -> str:
+        return "Object.txt"

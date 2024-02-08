@@ -68,3 +68,6 @@ class Weapon(GameData):
     Weapon_Group: VL.WeaponGroup = VL.WeaponGroup
     Weapon_Properties: VL.WeaponFlags = VL.WeaponFlags
     Weight: VL.ConstantFloat = VL.ConstantFloat
+
+    def filename(self) -> str:
+        return "Weapon.txt"

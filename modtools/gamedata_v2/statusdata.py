@@ -130,3 +130,6 @@ class StatusData(GameData):
     TooltipSave: VL.FixedString = VL.FixedString
     UseLyingPickingState: VL.YesNo = VL.YesNo
     WeaponOverride: VL.FixedString = VL.FixedString
+
+    def filename(self) -> str:
+        return f"Status_{self.StatusType[0]}.txt"

@@ -29,6 +29,18 @@ class GameDataParser:
     _MODIFIER_REGEX = re.compile("""\\s*modifier\\s+type\\s*"([^"]+)"\\s*""")
     _MEMBER_REGEX = re.compile("""\\s*modifier\\s*"([^"]+)"\\s*,\\s*"([^"]+)"\\s*""")
 
+    _MODIFIER_TO_FILENAME = {
+        "Character": "Character.txt",
+        "Armor": "Armor.txt",
+        "ObjectData": "Object.txt",
+        "Weapon": "Weapon.txt",
+        "SpellData": "Spell_{self.SpellType[0]}.txt",
+        "StatusData": "Status_{self.StatusType[0]}.txt",
+        "PassiveData": "Passive.txt",
+        "InterruptData": "Interrupt.txt",
+        "CriticalHitTypeData": "CriticalHitTypes.txt",
+    }
+
     _modifiers_path: os.PathLike
 
     def __init__(self, unpak: Unpak):
@@ -77,6 +89,10 @@ class GameDataParser:
                 for member, member_type in sorted(members.items()):
                     if member != "_id_":
                         f.write(f"    {member}: VL.{member_type} = VL.{member_type}\n")
+                f.write("\n")
+                filename = self._MODIFIER_TO_FILENAME[modifier]
+                f.write("    def filename(self) -> str:\n")
+                f.write(f"""        return {"f" if "{" in filename else ""}"{filename}"\n""")
 
 
 def main():

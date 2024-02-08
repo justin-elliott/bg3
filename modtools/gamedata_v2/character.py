@@ -62,3 +62,6 @@ class Character(GameData):
     Weight: VL.ConstantFloat = VL.ConstantFloat
     Wisdom: VL.ConstantInt = VL.ConstantInt
     XPReward: VL.Guid = VL.Guid
+
+    def filename(self) -> str:
+        return "Character.txt"

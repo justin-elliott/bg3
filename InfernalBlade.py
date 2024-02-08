@@ -6,7 +6,7 @@ Generates files for the "InfernalBlade" mod.
 import os
 
 from moddb.boosts import Boosts
-from modtools.gamedata_v2 import PassiveData, SpellData, StatusData, Weapon
+from modtools.gamedata import PassiveData, SpellData, StatusData, Weapon
 from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
 from uuid import UUID

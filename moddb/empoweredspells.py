@@ -3,7 +3,7 @@
 Empowered Spells for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata_v2 import PassiveData
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import CharacterAbility
 from modtools.mod import Mod
 

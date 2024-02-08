@@ -6,7 +6,6 @@ Parser for the ValueLists.txt file.
 import argparse
 import os
 import re
-import sys
 
 from collections.abc import Mapping
 from modtools.prologue import PYTHON_PROLOGUE
@@ -16,9 +15,9 @@ from pathlib import PurePath
 
 PROLOGUE = f'''\
 {PYTHON_PROLOGUE}
-import modtools.gamedata_v2.valuelists as VL
+import modtools.gamedata.valuelists as VL
 
-from modtools.gamedata_v2.gamedata import GameData
+from modtools.gamedata.gamedata import GameData
 '''
 
 MODIFIERS_PATH = "Shared.pak/Public/Shared/Stats/Generated/Structure/Modifiers.txt"
@@ -40,6 +39,8 @@ class GameDataParser:
         "InterruptData": "Interrupt.txt",
         "CriticalHitTypeData": "CriticalHitTypes.txt",
     }
+
+    _STDOUT = 1
 
     _modifiers_path: os.PathLike
 
@@ -79,7 +80,7 @@ class GameDataParser:
 
         for modifier in modifiers.keys():
             modifier_file = os.path.join(output_path, modifier.lower() + ".py") if output_path is not None else None
-            with (open(modifier_file, "w") if modifier_file is not None else sys.stdout) as f:
+            with (open(modifier_file, "w") if modifier_file is not None else os.fdopen(self._STDOUT, "w")) as f:
                 f.write(PROLOGUE)
                 f.write("\n\n")
                 f.write(f"class {modifier}(GameData):\n")

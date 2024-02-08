@@ -10,7 +10,7 @@ from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
-from modtools.gamedata_v2 import SpellData
+from modtools.gamedata import SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,

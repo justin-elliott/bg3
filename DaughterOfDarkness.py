@@ -11,7 +11,7 @@ from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources
 from moddb.scripts import character_level_range
-from modtools.gamedata_v2 import PassiveData, SpellData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,

@@ -5,7 +5,7 @@ Generates files for the "CampClothes" mod.
 
 import os
 
-from modtools.gamedata_v2 import Armor
+from modtools.gamedata import Armor
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from uuid import UUID

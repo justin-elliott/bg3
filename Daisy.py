@@ -5,7 +5,7 @@ Generates files for the "Daisy" mod.
 
 import os
 
-from modtools.gamedata_v2 import Armor
+from modtools.gamedata import Armor
 from modtools.mod import Mod
 from uuid import UUID
 

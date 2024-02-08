@@ -4,7 +4,7 @@ Movement-related spells and passives for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata_v2 import PassiveData, SpellData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.mod import Mod
 
 

@@ -10,7 +10,7 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
-from modtools.gamedata_v2 import PassiveData
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,

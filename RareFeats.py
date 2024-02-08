@@ -5,7 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
-from modtools.gamedata_v2 import PassiveData
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import FeatDescription, Feat, PassiveList
 from modtools.mod import Mod
 from uuid import UUID

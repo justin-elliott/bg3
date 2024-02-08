@@ -3,7 +3,7 @@
 Bolster for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata_v2 import SpellData, StatusData
+from modtools.gamedata import SpellData, StatusData
 from modtools.mod import Mod
 from modtools.lsx.game import LevelMapSeries
 

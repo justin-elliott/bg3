@@ -3,7 +3,7 @@
 A class representing game data parsed from Modifiers.txt.
 """
 
-import modtools.gamedata_v2.valuelists as VL
+import modtools.gamedata.valuelists as VL
 
 from abc import ABCMeta, abstractmethod
 from collections.abc import Callable, Set

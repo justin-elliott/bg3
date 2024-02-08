@@ -8,7 +8,7 @@ import os
 from moddb.bolster import Bolster
 from moddb.movement import Movement
 from moddb.progression import allow_improvement
-from modtools.gamedata_v2 import PassiveData, SpellData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import (
     CharacterClass,
     CharacterSubclasses,

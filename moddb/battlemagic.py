@@ -3,7 +3,7 @@
 Battle Magic for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata_v2 import PassiveData, StatusData
+from modtools.gamedata import PassiveData, StatusData
 from modtools.mod import Mod
 
 

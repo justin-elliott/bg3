@@ -6,7 +6,7 @@ A class representing a collection of GameData objects.
 import os
 
 from collections.abc import Mapping
-from modtools.gamedata_v2.gamedata import GameData
+from modtools.gamedata.gamedata import GameData
 from modtools.prologue import TXT_PROLOGUE
 
 

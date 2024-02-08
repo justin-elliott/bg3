@@ -9,16 +9,13 @@ import re
 import shutil
 import time
 
-from modtools.gamedata import GameData, GameDatum
-from modtools.gamedata_v2 import GameData as GameData_v2, GameDataCollection
+from modtools.gamedata import GameData, GameDataCollection
 from modtools.unpak import Unpak
 from modtools.localization import Localization
 from modtools.lsx import Lsx
 from modtools.lsx.game import Dependencies, ModuleInfo
 from modtools.lsx.node import LsxNode
-from modtools.modifiers import Modifiers
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
-from modtools.valuelists import ValueLists
 from pathlib import PurePath
 from uuid import UUID
 
@@ -35,13 +32,10 @@ class Mod:
     _version: (int, int, int, int)
 
     _unpak: Unpak
-    _modifiers: Modifiers
-    _valuelists: ValueLists
 
     _localization: Localization
 
-    _gamedata: GameData
-    _gamedata_v2: GameDataCollection
+    _game_data: GameDataCollection
     _lsx: Lsx
 
     _equipment: [str]
@@ -83,14 +77,11 @@ class Mod:
             self._uuid = UUID(bytes=m.digest()[0:16])
 
         self._unpak = Unpak(cache_dir)
-        self._modifiers = Modifiers(self._unpak)
-        self._valuelists = ValueLists(self._unpak)
 
         self._localization = Localization(self._uuid)
         self._localization.add_language("en", "English")
 
-        self._gamedata = GameData(self._modifiers, self._valuelists)
-        self._gamedata_v2 = GameDataCollection()
+        self._game_data = GameDataCollection()
         self._lsx = Lsx()
 
         self._equipment = None
@@ -128,9 +119,6 @@ class Mod:
     def get_version(self) -> (int, int, int, int):
         return self._version
 
-    def get_modifiers(self) -> Modifiers:
-        return self._modifiers
-
     def get_localization(self) -> Localization:
         return self._localization
 
@@ -141,10 +129,8 @@ class Mod:
 
     def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""
-        if isinstance(item, GameDatum):
-            self._gamedata.add(item)
-        elif isinstance(item, GameData_v2):
-            self._gamedata_v2.add(item)
+        if isinstance(item, GameData):
+            self._game_data.add(item)
         elif isinstance(item, LsxNode):
             self._lsx.children.append(item)
         else:
@@ -231,8 +217,7 @@ class Mod:
             shutil.rmtree(mod_dir)
         os.makedirs(mod_dir, exist_ok=True)
         self._add_meta()
-        self._gamedata.build(mod_dir, self._folder)
-        self._gamedata_v2.build(mod_dir, self._folder)
+        self._game_data.build(mod_dir, self._folder)
         self._lsx.save(mod_dir, version=self._version, folder=self._folder)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)

@@ -101,6 +101,7 @@ class ProgressionReplacer:
         self._mod = Mod(base_dir, author=author, name=name, **kwds)
         self._classes = classes
 
+    @property
     def mod(self) -> Mod:
         """Return our Mod."""
         return self._mod

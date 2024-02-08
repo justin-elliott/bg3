@@ -3,7 +3,7 @@
 Empowered Spells for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata import passive_data
+from modtools.gamedata_v2 import PassiveData
 from modtools.lsx.game import CharacterAbility
 from modtools.mod import Mod
 
@@ -29,7 +29,7 @@ class EmpoweredSpells:
             <LSTag Tooltip="AbilityModifier">Modifier</LSTag> to the damage it deals.
             """}
 
-        self._mod.add(passive_data(
+        self._mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],

@@ -6,6 +6,7 @@ BG3 .gamedata definitions package.
 # flake8: noqa
 from .armor import *
 from .character import *
+from .collection import *
 from .criticalhittypedata import *
 from .gamedata import *
 from .interruptdata import *

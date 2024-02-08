@@ -20,7 +20,7 @@ class GameDataCollection:
 
     def add(self, game_data: GameData) -> None:
         """Add GameData to the collection."""
-        assert issubclass(game_data, GameData)
+        assert isinstance(game_data, GameData)
         self._game_data.append(game_data)
 
     def build(self, mod_dir: os.PathLike, folder: str) -> None:

@@ -10,6 +10,7 @@ import shutil
 import time
 
 from modtools.gamedata import GameData, GameDatum
+from modtools.gamedata_v2 import GameData as GameData_v2, GameDataCollection
 from modtools.unpak import Unpak
 from modtools.localization import Localization
 from modtools.lsx import Lsx
@@ -40,6 +41,7 @@ class Mod:
     _localization: Localization
 
     _gamedata: GameData
+    _gamedata_v2: GameDataCollection
     _lsx: Lsx
 
     _equipment: [str]
@@ -88,6 +90,7 @@ class Mod:
         self._localization.add_language("en", "English")
 
         self._gamedata = GameData(self._modifiers, self._valuelists)
+        self._gamedata_v2 = GameDataCollection()
         self._lsx = Lsx()
 
         self._equipment = None
@@ -140,6 +143,8 @@ class Mod:
         """Add a datum to the GameData collection."""
         if isinstance(item, GameDatum):
             self._gamedata.add(item)
+        elif isinstance(item, GameData_v2):
+            self._gamedata_v2.add(item)
         elif isinstance(item, LsxNode):
             self._lsx.children.append(item)
         else:
@@ -227,6 +232,7 @@ class Mod:
         os.makedirs(mod_dir, exist_ok=True)
         self._add_meta()
         self._gamedata.build(mod_dir, self._folder)
+        self._gamedata_v2.build(mod_dir, self._folder)
         self._lsx.save(mod_dir, version=self._version, folder=self._folder)
         self._localization.build(mod_dir)
         public_dir = os.path.join(mod_dir, "Public", self._folder)

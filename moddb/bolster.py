@@ -3,7 +3,7 @@
 Bolster for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata import spell_data, status_data
+from modtools.gamedata_v2 import SpellData, StatusData
 from modtools.mod import Mod
 from modtools.lsx.game import LevelMapSeries
 
@@ -36,7 +36,7 @@ class Bolster:
             You can see in the dark up to [2].
             """}
 
-        self._mod.add(spell_data(
+        self._mod.add(SpellData(
             name,
             using="Shout_Aid",
             SpellType="Shout",
@@ -64,7 +64,7 @@ class Bolster:
             VerbalIntent="Buff",
         ))
 
-        self._mod.add(status_data(
+        self._mod.add(StatusData(
             name.upper(),
             StatusType="BOOST",
             DisplayName=loca[f"{name}_DisplayName"],

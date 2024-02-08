@@ -11,7 +11,7 @@ from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources
 from moddb.scripts import character_level_range
-from modtools.gamedata import passive_data, status_data, weapon_data
+from modtools.gamedata_v2 import PassiveData, StatusData, Weapon
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -70,7 +70,7 @@ loca["DruidBattlemage_NaturalResistance_Description"] = {"en": """
     You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].
     """}
 
-druid_battlemage.add(passive_data(
+druid_battlemage.add(PassiveData(
     "DruidBattlemage_NaturalResistance",
     DisplayName=loca["DruidBattlemage_NaturalResistance_DisplayName"],
     Description=loca["DruidBattlemage_NaturalResistance_Description"],
@@ -81,7 +81,7 @@ druid_battlemage.add(passive_data(
 ))
 
 # Add scimitars
-druid_battlemage.add(status_data(
+druid_battlemage.add(StatusData(
     "DruidBattlemage_Scimitar_LightningEffect",
     StatusType="EFFECT",
     DisplayName="h363588c6g20b9g4407g91d8gebab0f1a5dca;1",
@@ -147,7 +147,7 @@ druid_battlemage.add(GameObjects(
 
 druid_battlemage.add_script(character_level_range)
 
-druid_battlemage.add(weapon_data(
+druid_battlemage.add(Weapon(
     "DruidBattlemage_Tempest",
     using="WPN_Scimitar",
     RootTemplate=str(druid_battlemage_tempest_uuid),
@@ -176,7 +176,7 @@ druid_battlemage.add(weapon_data(
     ],
 ))
 
-druid_battlemage.add(weapon_data(
+druid_battlemage.add(Weapon(
     "DruidBattlemage_Thunder",
     using="WPN_Scimitar",
     RootTemplate=str(druid_battlemage_thunder_uuid),
@@ -211,7 +211,7 @@ loca["DruidBattlemage_Clash_Description"] = {"en": """
     <LSTag Type="Status" Tooltip="MAG_THUNDER_REVERBERATION">Reverberation</LSTag> upon the target(s).
     """}
 
-druid_battlemage.add(passive_data(
+druid_battlemage.add(PassiveData(
     "DruidBattlemage_Clash",
     DisplayName=loca["DruidBattlemage_Clash_DisplayName"],
     Description=loca["DruidBattlemage_Clash_Description"],

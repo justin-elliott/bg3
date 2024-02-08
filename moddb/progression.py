@@ -5,7 +5,7 @@ Progression-related functions for Baldur's Gate 3 mods.
 
 import re
 
-from collections.abc import Callable, Container, Iterable
+from collections.abc import Container, Iterable
 from modtools.lsx.game import ActionResource, Progression, update_action_resources
 
 # AddSpells(UUID[,a][,b][,c][,d])

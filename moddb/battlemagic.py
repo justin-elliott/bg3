@@ -3,7 +3,7 @@
 Battle Magic for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata import passive_data, status_data
+from modtools.gamedata_v2 import PassiveData, StatusData
 from modtools.mod import Mod
 
 
@@ -26,7 +26,7 @@ class BattleMagic:
             <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
             """}
 
-        self._mod.add(passive_data(
+        self._mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
@@ -37,7 +37,7 @@ class BattleMagic:
             StatsFunctors=f"ApplyStatus(SELF,{name.upper()},100,1)"
         ))
 
-        self._mod.add(status_data(
+        self._mod.add(StatusData(
             name.upper(),
             StatusType="BOOST",
             DisplayName=loca[f"{name}_DisplayName"],
@@ -45,7 +45,8 @@ class BattleMagic:
             Icon="PassiveFeature_WarMagic",
             Boosts=[
                 "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))",
-                "UnlockSpellVariant(RangedSpellAttackCheck(),ModifySpellRoll('AttackType.RangedSpellAttack','AttackType.MeleeSpellAttack'))"
+                "UnlockSpellVariant(RangedSpellAttackCheck(),ModifySpellRoll('AttackType.RangedSpellAttack',"
+                + "'AttackType.MeleeSpellAttack'))"
             ],
             StackId=name.upper(),
             StatusPropertyFlags=[

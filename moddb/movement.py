@@ -4,7 +4,7 @@ Movement-related spells and passives for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import passive_data, spell_data
+from modtools.gamedata_v2 import PassiveData, SpellData
 from modtools.mod import Mod
 
 
@@ -37,7 +37,7 @@ class Movement:
     def add_fast_movement(self, meters_per_round: float) -> str:
         """Add a fast movement passive, returning its name."""
         name = f"{self._mod.get_prefix()}_FastMovement_{int(meters_per_round*10)}"
-        self._mod.add(passive_data(
+        self._mod.add(PassiveData(
             name,
             DisplayName=self._fast_movement_display_name,
             Description=self._fast_movement_description,
@@ -52,7 +52,7 @@ class Movement:
     def add_misty_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Misty Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_MistyStep"
-        self._mod.add(spell_data(
+        self._mod.add(SpellData(
             name,
             using="Target_MistyStep",
             SpellType="Target",
@@ -67,7 +67,7 @@ class Movement:
     def add_shadow_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Shadow Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_ShadowStep"
-        self._mod.add(spell_data(
+        self._mod.add(SpellData(
             name,
             using="Target_ShadowStep",
             SpellType="Target",

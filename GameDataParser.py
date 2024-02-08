@@ -16,7 +16,7 @@ from pathlib import PurePath
 
 PROLOGUE = f'''\
 {PYTHON_PROLOGUE}
-import modtools.valuelists_v2 as VL
+import modtools.gamedata_v2.valuelists as VL
 
 from modtools.gamedata_v2.gamedata import GameData
 '''

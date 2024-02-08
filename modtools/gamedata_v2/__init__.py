@@ -13,4 +13,5 @@ from .objectdata import *
 from .passivedata import *
 from .spelldata import *
 from .statusdata import *
+from .valuelists import *
 from .weapon import *

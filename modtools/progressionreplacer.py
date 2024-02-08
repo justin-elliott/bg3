@@ -101,6 +101,10 @@ class ProgressionReplacer:
         self._mod = Mod(base_dir, author=author, name=name, **kwds)
         self._classes = classes
 
+    def mod(self) -> Mod:
+        """Return our Mod."""
+        return self._mod
+
     def make_uuid(self, key: str) -> UUID:
         """Generate a UUID for the given key."""
         return self._mod.make_uuid(f"ProgressionReplacer:{key}")

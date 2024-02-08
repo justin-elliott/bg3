@@ -9,13 +9,14 @@ import re
 import sys
 
 from collections.abc import Set
+from modtools.prologue import PYTHON_PROLOGUE
 from modtools.unpak import Unpak
 from pathlib import PurePath
 from typing import TextIO
 
 
-PROLOGUE = '''\
-#!/usr/bin/env python3
+PROLOGUE = f'''\
+{PYTHON_PROLOGUE}
 """
 A class representing ValueLists, together with definitions parsed from ValueLists.txt.
 """

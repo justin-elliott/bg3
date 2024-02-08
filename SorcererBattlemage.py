@@ -10,7 +10,7 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
-from modtools.gamedata import passive_data
+from modtools.gamedata_v2 import PassiveData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -69,7 +69,7 @@ loca["SorcererBattlemage_Warding_Description"] = {"en": """
     Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].
     """}
 
-sorcerer_battlemage.add(passive_data(
+sorcerer_battlemage.add(PassiveData(
     "SorcererBattlemage_Warding",
     DisplayName=loca["SorcererBattlemage_Warding_DisplayName"],
     Description=loca["SorcererBattlemage_Warding_Description"],

@@ -6,7 +6,7 @@ Generates files for the "ChromaticBlade" mod.
 import os
 
 from moddb.scripts import character_level_range
-from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
+from modtools.gamedata_v2 import PassiveData, SpellData, StatusData, Weapon
 from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
 from uuid import UUID
@@ -55,7 +55,7 @@ chromatic_blade.add(GameObjects(
     ],
 ))
 
-chromatic_blade.add(weapon_data(
+chromatic_blade.add(Weapon(
     "ChromaticBlade_Sword",
     using="WPN_Longsword",
     RootTemplate=str(chromatic_blade_game_objects_uuid),
@@ -94,7 +94,7 @@ loca["ChromaticBlade_CriticalVsItems_Description"] = {"en": """
     If the blade hits an object, the hit is always critical.
     """}
 
-chromatic_blade.add(passive_data(
+chromatic_blade.add(PassiveData(
     "ChromaticBlade_CriticalVsItems_Passive",
     using="UNI_Adamantine_CriticalVsItems_Passive",
     Description=loca["ChromaticBlade_CriticalVsItems_Description"],
@@ -105,7 +105,7 @@ loca["ChromaticBlade_ChromaticWeapon_Description"] = {"en": """
     Imbue the blade with elemental power. It deals an additional [1] damage of your choice.
     """}
 
-chromatic_blade.add(spell_data(
+chromatic_blade.add(SpellData(
     "ChromaticBlade_ChromaticWeapon",
     SpellType="Shout",
     Level="",
@@ -182,7 +182,7 @@ def add_chromatic_weapon_element(element: str,
         Deals additional {lower} damage.
         """}
 
-    chromatic_blade.add(spell_data(
+    chromatic_blade.add(SpellData(
         f"ChromaticBlade_ChromaticWeapon_{title}",
         using="ChromaticBlade_ChromaticWeapon",
         SpellType="Shout",
@@ -209,7 +209,7 @@ def add_chromatic_weapon_element(element: str,
         TargetEffect=TargetEffect,
     ))
 
-    chromatic_blade.add(status_data(
+    chromatic_blade.add(StatusData(
         f"CHROMATICBLADE_CHROMATICWEAPON_{upper}",
         StatusType="BOOST",
         DisplayName=loca[f"ChromaticBlade_ChromaticWeapon_{title}_DisplayName"],
@@ -303,7 +303,7 @@ loca["ChromaticBlade_Charge_Description"] = {"en": """
     Charge forward and attack the first enemy in your way.
     """}
 
-chromatic_blade.add(spell_data(
+chromatic_blade.add(SpellData(
     "ChromaticBlade_Charge",
     SpellType="Zone",
     using="Rush_SpringAttack",
@@ -320,7 +320,7 @@ chromatic_blade.add(spell_data(
     UseCosts="BonusActionPoint:1",
 ))
 
-chromatic_blade.add(spell_data(
+chromatic_blade.add(SpellData(
     "ChromaticBlade_Cleave",
     SpellType="Zone",
     using="Zone_Cleave",

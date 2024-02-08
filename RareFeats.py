@@ -5,7 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
-from modtools.gamedata import passive_data
+from modtools.gamedata_v2 import PassiveData
 from modtools.lsx.game import FeatDescription, Feat, PassiveList
 from modtools.mod import Mod
 from uuid import UUID
@@ -91,7 +91,7 @@ for bonus in [4]:
 
         asi_plus_passive = f"RareFeats_ASIPlus_{ability}_{bonus}"
         asi_plus_passives.append(asi_plus_passive)
-        rare_feats.add(passive_data(
+        rare_feats.add(PassiveData(
             asi_plus_passive,
             DisplayName=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_DisplayName"],
             Description=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_Description"],

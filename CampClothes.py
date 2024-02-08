@@ -5,7 +5,7 @@ Generates files for the "CampClothes" mod.
 
 import os
 
-from modtools.gamedata import armor_data
+from modtools.gamedata_v2 import Armor
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from uuid import UUID
@@ -44,7 +44,7 @@ camp_clothes.add(GameObjects(
     Type="item",
 ))
 
-camp_clothes.add(armor_data(
+camp_clothes.add(Armor(
     "CampClothes_ComfortableBoots",
     using="ARM_Camp_Shoes",
     RootTemplate=str(comfortable_boots_game_objects_uuid),

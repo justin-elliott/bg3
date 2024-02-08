@@ -10,7 +10,7 @@ from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources, spells_always_prepared
-from modtools.gamedata import spell_data
+from modtools.gamedata_v2 import SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -72,7 +72,7 @@ bard_battlemage.add(SpellList(
 ))
 
 # Upgrade the Vicious Mockery cantrip
-bard_battlemage.add(spell_data(
+bard_battlemage.add(SpellData(
     "Target_ViciousMockery",
     using="Target_ViciousMockery",
     SpellType="Target",

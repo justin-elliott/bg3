@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Bard" />
                     <attribute id="PassivesAdded" type="LSString" value="BardicInspiration;BardSpellcasting;UnlockedSpellSlotLevel1;BardBattlemage_BattleMagic;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSpells(61f79a30-2cac-4a7a-b5fe-50c89d307dd6,2,0,BardCantrip,,,AlwaysPrepared);SelectSpells(dcb45167-86bd-4297-9b9d-c295be51af5b,4,0,BardSpells);SelectEquipment(aab8c5b5-eacf-4867-8e5f-bd4de3a9132e,1,BardInstrument);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);AddSpells(53894ab5-9bc5-6846-3d41-57e486436ae4,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSpells(61f79a30-2cac-4a7a-b5fe-50c89d307dd6,2,0,BardCantrip,,,AlwaysPrepared);SelectSpells(dcb45167-86bd-4297-9b9d-c295be51af5b,4,0,BardSpells);SelectEquipment(aab8c5b5-eacf-4867-8e5f-bd4de3a9132e,1,BardInstrument);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);AddSpells(53894ab5-9bc5-6846-3d41-57e486436ae4,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="TableUUID" type="guid" value="229c98da-2cd1-4a5e-8051-9d90ec7931e7" />
                     <attribute id="UUID" type="guid" value="374c3aae-828b-44d8-b4e3-51ba802977dd" />
                 </node>

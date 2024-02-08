@@ -11,14 +11,13 @@ from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import allow_improvement, multiply_resources
 from moddb.scripts import character_level_range
-from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
+from modtools.gamedata_v2 import PassiveData, SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
-    GameObjects,
     LevelMapSeries,
 )
 from modtools.lsx import Lsx
@@ -50,7 +49,7 @@ movement = Movement(daughter_of_darkness)
 fast_movement = movement.add_fast_movement(3.0)
 shadow_step = movement.add_shadow_step()
 
-daughter_of_darkness.add(passive_data(
+daughter_of_darkness.add(PassiveData(
     "DaughterOfDarkness_PassWithoutTrace",
     DisplayName="h2b6ab85cg8d21g4c23g895eg6b8a61fdabab;1",
     Description="h5d1c1f49g43a6g44e0g807cgeb572b500fe2;6",
@@ -60,7 +59,7 @@ daughter_of_darkness.add(passive_data(
     ToggleOffFunctors=["RemoveStatus(SELF,PASS_WITHOUT_TRACE_AURA)"],
 ))
 
-daughter_of_darkness.add(spell_data(
+daughter_of_darkness.add(SpellData(
     "DaughterOfDarkness_ViciousMockery",
     using="Target_ViciousMockery",
     SpellType="Target",

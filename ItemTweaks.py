@@ -5,7 +5,7 @@ Generates files for the "ItemTweaks" mod.
 
 import os
 
-from modtools.gamedata import armor_data
+from modtools.gamedata_v2 import Armor
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -16,7 +16,7 @@ item_tweaks = Mod(os.path.dirname(__file__),
                   description="Tweaks various game items.")
 
 # The Smuggler's Ring now provides advantage on dexterity checks, and boosts all dexterity-based skills.
-item_tweaks.add(armor_data(
+item_tweaks.add(Armor(
     "PLA_SmugglerRing",
     using="PLA_SmugglerRing",
     Boosts=[

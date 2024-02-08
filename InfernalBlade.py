@@ -6,8 +6,8 @@ Generates files for the "InfernalBlade" mod.
 import os
 
 from moddb.boosts import Boosts
-from modtools.gamedata import passive_data, spell_data, status_data, weapon_data
-from modtools.lsx import Lsx
+from modtools.gamedata_v2 import PassiveData, SpellData, StatusData, Weapon
+from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -43,26 +43,23 @@ katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
 phalar_aluve_uuid = UUID("6d0d3206-50b5-48ed-af92-a146ed6b98f2")
 
 infernal_blade_game_objects_uuid = UUID("5166e9d7-fbad-4406-a544-211a8eb3f151")
-infernal_blade.add_root_templates([
-    Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["InfernalBlade_DisplayName"], version=1),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["InfernalBlade_Description"], version=1),
-        Lsx.Attribute("LevelName", "FixedString", value=""),
-        Lsx.Attribute("MapKey", "FixedString", value=str(infernal_blade_game_objects_uuid)),
-        Lsx.Attribute("Name", "LSString", value="InfernalBlade_GreatSword"),
-        Lsx.Attribute("ParentTemplateId", "FixedString", value=str(katana_uuid)),
-        Lsx.Attribute("Stats", "FixedString", value="InfernalBlade_GreatSword"),
-        Lsx.Attribute("Type", "FixedString", value="item"),
-    ], children=[
-        Lsx.Node("StatusList", children=[
-            Lsx.Node("Status", [
-                Lsx.Attribute("Object", "FixedString", value="InfernalBlade_EverBurning"),
-            ]),
+infernal_blade.add(GameObjects(
+    DisplayName=loca["InfernalBlade_DisplayName"],
+    Description=loca["InfernalBlade_Description"],
+    LevelName="",
+    MapKey=infernal_blade_game_objects_uuid,
+    Name="InfernalBlade_GreatSword",
+    ParentTemplateId=katana_uuid,
+    Stats="InternalBlade_GreatSword",
+    Type="item",
+    children=[
+        GameObjects.StatusList(children=[
+            GameObjects.StatusList.Status(Object="InfernalBlade_EverBurning"),
         ]),
-    ])
-])
+    ],
+))
 
-infernal_blade.add(weapon_data(
+infernal_blade.add(Weapon(
     "InfernalBlade_GreatSword",
     using="WPN_Greatsword_1",
     RootTemplate=str(infernal_blade_game_objects_uuid),
@@ -105,7 +102,7 @@ loca["InfernalBlade_InfernalCorrupter_Description"] = {"en": """
     damage.
     """}
 
-infernal_blade.add(passive_data(
+infernal_blade.add(PassiveData(
     "InfernalBlade_InfernalCorrupter",
     DisplayName=loca["InfernalBlade_InfernalCorrupter_DisplayName"],
     Description=loca["InfernalBlade_InfernalCorrupter_Description"],
@@ -116,7 +113,7 @@ infernal_blade.add(passive_data(
     ],
 ))
 
-infernal_blade.add(spell_data(
+infernal_blade.add(SpellData(
     "InfernalBlade_Hellcrawler",
     SpellType="Shout",
     using="Target_MAG_Legendary_HellCrawler",
@@ -127,7 +124,7 @@ infernal_blade.add(spell_data(
     UseCosts=["BonusActionPoint:1", "Movement:Distance*0.5"],
 ))
 
-infernal_blade.add(spell_data(
+infernal_blade.add(SpellData(
     "InfernalBlade_HellcrawlerFireball",
     SpellType="Shout",
     using="Projectile_MAG_Infernal_MistyStep_Fireball",
@@ -140,7 +137,7 @@ loca["InfernalBlade_InfernalMight_Description"] = {"en": """
     Increases your <LSTag Tooltip="Strength">Strength</LSTag> by [1], and your jump distance by [2].
     """}
 
-infernal_blade.add(passive_data(
+infernal_blade.add(PassiveData(
     "InfernalBlade_InfernalMight",
     DisplayName=loca["InfernalBlade_InfernalMight_DisplayName"],
     Description=loca["InfernalBlade_InfernalMight_Description"],
@@ -167,7 +164,7 @@ loca["InfernalBlade_InfernalResilience_Description"] = {"en": """
     You are <LSTag Tooltip="Resistant">Resistant</LSTag> to Fire damage, and all incoming damage is reduced by [1].
     """}
 
-infernal_blade.add(passive_data(
+infernal_blade.add(PassiveData(
     "InfernalBlade_InfernalResilience",
     DisplayName=loca["InfernalBlade_InfernalResilience_DisplayName"],
     Description=loca["InfernalBlade_InfernalResilience_Description"],
@@ -186,7 +183,7 @@ infernal_blade.add(passive_data(
     ],
 ))
 
-infernal_blade.add(spell_data(
+infernal_blade.add(SpellData(
     "InfernalBlade_Cleave",
     SpellType="Zone",
     using="Zone_Cleave",
@@ -200,7 +197,7 @@ infernal_blade.add(spell_data(
     ],
 ))
 
-infernal_blade.add(status_data(
+infernal_blade.add(StatusData(
     "InfernalBlade_EverBurning",
     StatusType="BOOST",
     DisplayName=loca["InfernalBlade_DisplayName"],
@@ -215,22 +212,17 @@ infernal_blade.add(status_data(
     ],
 ))
 
-infernal_blade.add_level_maps([
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{strength_increase(level)}")
-            for level in range(1, 13)],
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{strength_increase(12)}")
-            for level in range(13, 21)],
-        Lsx.Attribute("Name", "FixedString", value="InfernalBlade_StrengthValue"),
-        Lsx.Attribute("UUID", "guid", value="bd94be18-3f34-401c-aaa2-5f18cbdac211"),
-    ]),
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int((level + 1) / 2)}")
-            for level in range(1, 21)],
-        Lsx.Attribute("Name", "FixedString", value="InfernalBlade_DamageReductionValue"),
-        Lsx.Attribute("UUID", "guid", value="56c0db94-9826-4646-a966-e8a1165319b4"),
-    ]),
-])
+infernal_blade.add(LevelMapSeries(
+    **{f"Level{level}": strength_increase(level) for level in range(1, 13)},
+    **{f"Level{level}": strength_increase(12) for level in range(13, 21)},
+    Name="InfernalBlade_StrengthValue",
+    UUID="bd94be18-3f34-401c-aaa2-5f18cbdac211",
+))
+infernal_blade.add(LevelMapSeries(
+    **{f"Level{level}": (level + 1) // 2 for level in range(1, 21)},
+    Name="InfernalBlade_DamageReductionValue",
+    UUID="56c0db94-9826-4646-a966-e8a1165319b4",
+))
 
 infernal_blade.add_treasure_table("""\
 new treasuretable "TUT_Chest_Potions"

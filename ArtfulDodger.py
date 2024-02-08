@@ -8,7 +8,7 @@ import os
 from moddb.bolster import Bolster
 from moddb.movement import Movement
 from moddb.progression import allow_improvement
-from modtools.gamedata import passive_data, spell_data
+from modtools.gamedata_v2 import PassiveData, SpellData
 from modtools.lsx.game import (
     CharacterClass,
     CharacterSubclasses,
@@ -46,7 +46,7 @@ loca["ArtfulDodger_ShadowStep_Hide_Description"] = {"en": """
     Step through the shadows and gain <LSTag Tooltip="Stealth">Stealth</LSTag>.
     """}
 
-shadow_step_hide = spell_data(
+shadow_step_hide = SpellData(
     "ArtfulDodger_ShadowStep_Hide",
     using=shadow_step,
     SpellType="Target",
@@ -92,7 +92,7 @@ loca["ArtfulDodger_ShakeItOff_Description"] = {"en": """
     When you take damage, you heal for [1].
     """}
 
-artful_dodger.add(passive_data(
+artful_dodger.add(PassiveData(
     "ArtfulDodger_ShakeItOff",
     DisplayName=loca["ArtfulDodger_ShakeItOff_DisplayName"],
     Description=loca["ArtfulDodger_ShakeItOff_Description"],

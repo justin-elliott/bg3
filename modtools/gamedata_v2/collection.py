@@ -34,7 +34,6 @@ class GameDataCollection:
         os.makedirs(data_dir, exist_ok=True)
 
         for filename, game_data in file_data.items():
-            game_data.sort(key=lambda data: data.name)
             with open(os.path.join(data_dir, filename), "w") as f:
                 f.write(TXT_PROLOGUE)
                 f.write("\n".join(str(data) for data in game_data))

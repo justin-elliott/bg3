@@ -8,6 +8,7 @@ import os
 from functools import cached_property
 from moddb.bolster import Bolster
 from moddb.movement import Movement
+from moddb.pack_mule import PackMule
 from moddb.progression import multiply_resources
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
@@ -75,6 +76,7 @@ class TheFifthElement(ProgressionReplacer):
     _bolster: str
     _manifestation_of_will: str
     _misty_step: str
+    _pack_mule: str
     _tempered_body: str
 
     @cached_property
@@ -108,6 +110,7 @@ class TheFifthElement(ProgressionReplacer):
         self._bolster = Bolster(self.mod).add_bolster()
         self._manifestation_of_will = manifestation_of_will(self.mod)
         self._misty_step = Movement(self.mod).add_misty_step()
+        self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
         self._tempered_body = tempered_body(self.mod)
 
     @class_description(CharacterClass.MONK)
@@ -141,7 +144,7 @@ class TheFifthElement(ProgressionReplacer):
     @class_level(CharacterClass.MONK_FOURELEMENTS, 3)
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "Blindsight", "SuperiorDarkvision", self._tempered_body]
+            "Blindsight", "SuperiorDarkvision", self._pack_mule, self._tempered_body]
 
         selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
         selectors.extend([

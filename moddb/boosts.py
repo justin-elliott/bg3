@@ -16,7 +16,7 @@ class Boosts:
         """Initialize for the given Mod."""
         self._mod = mod
 
-    def by_level(self, boost_fn: (Callable[[int], str]), lastLevel: int = 12) -> [str]:
+    def by_level(self, boost_fn: (Callable[[int], str]), lastLevel: int = 12) -> list[str]:
         """Generate a list of boost values."""
         self._mod.add_script(character_level_range)
 

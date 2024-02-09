@@ -74,7 +74,7 @@ def tempered_body(mod: Mod) -> str:
 class TheFifthElement(ProgressionReplacer):
     _bolster: str
     _manifestation_of_will: str
-    _shadow_step: str
+    _misty_step: str
     _tempered_body: str
 
     @cached_property
@@ -92,7 +92,7 @@ class TheFifthElement(ProgressionReplacer):
         spelllist = str(self.make_uuid("level_5_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Monk level 5",
-            Spells=[self._shadow_step],
+            Spells=[self._misty_step],
             UUID=spelllist,
         ))
         return spelllist
@@ -107,7 +107,7 @@ class TheFifthElement(ProgressionReplacer):
         # Passives and skills
         self._bolster = Bolster(self.mod).add_bolster()
         self._manifestation_of_will = manifestation_of_will(self.mod)
-        self._shadow_step = Movement(self.mod).add_shadow_step()
+        self._misty_step = Movement(self.mod).add_misty_step()
         self._tempered_body = tempered_body(self.mod)
 
     @class_description(CharacterClass.MONK)

@@ -12,7 +12,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Monk level 5" />
-                    <attribute id="Spells" type="LSString" value="TheFifthElement_ShadowStep" />
+                    <attribute id="Spells" type="LSString" value="TheFifthElement_MistyStep" />
                     <attribute id="UUID" type="guid" value="15b3b69c-e5d7-3ad0-2801-3b3a0e0ab241" />
                 </node>
             </children>

@@ -55,7 +55,7 @@ def tempered_body(mod: Mod) -> str:
     loca = mod.get_localization()
     loca[f"{name}_DisplayName"] = {"en": "Tempered Body"}
     loca[f"{name}_Description"] = {"en": """
-        Through training, you have gained resistant to all forms of damage. Incoming damage is reduced by [1].
+        Through training, you have gained resistance to all forms of damage. Incoming damage is reduced by [1].
         """}
 
     mod.add(PassiveData(
@@ -130,8 +130,6 @@ class TheFifthElement(ProgressionReplacer):
 
     @class_level(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_multiclass(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [self._tempered_body]
-
         selectors = progression.Selectors or []
         selectors.append(f"AddSpells({self._level_1_spelllist})")
         progression.Selectors = selectors
@@ -142,7 +140,8 @@ class TheFifthElement(ProgressionReplacer):
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 3)
     def level_3(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "SuperiorDarkvision"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "Blindsight", "SuperiorDarkvision", self._tempered_body]
 
         selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
         selectors.extend([

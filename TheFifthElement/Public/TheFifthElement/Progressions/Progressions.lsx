@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,6,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Monk" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;TheFifthElement_TemperedBody" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);AddSpells(af5e3cae-ae69-a141-2f74-1b8d2c26ee2d);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
@@ -20,7 +20,7 @@
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Monk" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;TheFifthElement_TemperedBody" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(af5e3cae-ae69-a141-2f74-1b8d2c26ee2d)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
@@ -155,7 +155,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="FourElements" />
-                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;SuperiorDarkvision" />
+                    <attribute id="PassivesAdded" type="LSString" value="Blindsight;SuperiorDarkvision;TheFifthElement_TemperedBody" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(de3d347b-69f4-43ac-915d-26e7cbb912bc);AddSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />

@@ -5,6 +5,7 @@ Generates files for the "DruidBattlemage" mod.
 
 import os
 
+from functools import cached_property
 from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
@@ -236,8 +237,26 @@ class DruidBattlemage(ProgressionReplacer):
     _empowered_spells: str
     _fast_movement: str
     _natural_resistance: str
-    _level_1_spelllist: str
-    _level_5_spelllist: str
+
+    @cached_property
+    def _level_1_spelllist(self) -> str:
+        spelllist = str(self.make_uuid("level_1_spelllist"))
+        self.mod.add(SpellList(
+            Comment="Spells gained at Druid level 1",
+            Spells=[self._bolster],
+            UUID=spelllist,
+        ))
+        return spelllist
+
+    @cached_property
+    def _level_5_spelllist(self) -> str:
+        spelllist = str(self.make_uuid("level_5_spelllist"))
+        self.mod.add(SpellList(
+            Comment="Spells gained at Druid level 5",
+            Spells=["Target_Counterspell"],
+            UUID=spelllist,
+        ))
+        return spelllist
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
@@ -256,21 +275,6 @@ class DruidBattlemage(ProgressionReplacer):
 
         # Add scimitars and equipment set
         add_equipment(self.mod, self._EQUIPMENT_SET_NAME)
-
-        # Create spelllists
-        self._level_1_spelllist = str(self.make_uuid("level_1_spelllist"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Druid level 1",
-            Spells=[self._bolster],
-            UUID=self._level_1_spelllist,
-        ))
-
-        self._level_5_spelllist = str(self.make_uuid("level_5_spelllist"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Druid level 5",
-            Spells=["Target_Counterspell"],
-            UUID=self._level_5_spelllist,
-        ))
 
     @class_description(CharacterClass.DRUID)
     def druid_description(self, class_description: ClassDescription) -> None:

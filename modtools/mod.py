@@ -17,6 +17,7 @@ from modtools.lsx.game import Dependencies, ModuleInfo
 from modtools.lsx.node import LsxNode
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from pathlib import PurePath
+from typing import Tuple
 from uuid import UUID
 
 
@@ -29,7 +30,7 @@ class Mod:
     _description: str
     _folder: str
     _uuid: UUID
-    _version: (int, int, int, int)
+    _version: Tuple[int, int, int, int]
 
     _unpak: Unpak
 
@@ -38,9 +39,10 @@ class Mod:
     _game_data: GameDataCollection
     _lsx: Lsx
 
-    _equipment: [str]
-    _scripts: [str]
-    _treasure_table: [str]
+    _equipment: list[str]
+    _scripts: list[str]
+    _treasure_table: list[str]
+    _xp_data: dict[int, int]
 
     def __init__(self,
                  base_dir: str,
@@ -50,7 +52,7 @@ class Mod:
                  mod_uuid: UUID = None,
                  description: str = "",
                  folder: str = None,
-                 version: (int, int, int, int) = (4, 1, 1, 1),
+                 version: Tuple[int, int, int, int] = (4, 1, 1, 1),
                  cache_dir: os.PathLike | None = None):
         """Define a mod.
 
@@ -87,6 +89,7 @@ class Mod:
         self._equipment = None
         self._scripts = None
         self._treasure_table = None
+        self._xp_data = None
 
     def make_uuid(self, key: str) -> UUID:
         m = hashlib.sha256()
@@ -149,6 +152,9 @@ class Mod:
         self._treasure_table = self._treasure_table or []
         self._treasure_table.append(text)
 
+    def set_xp_data(self, xp_data: dict[int, int]) -> None:
+        self._xp_data = xp_data
+
     def _add_meta(self) -> None:
         """Add the meta definition."""
         build_version = str(time.time_ns())
@@ -210,6 +216,15 @@ class Mod:
                 f.write(TXT_PROLOGUE)
                 f.write("\n".join(self._treasure_table))
 
+    def _build_xp_data(self, public_dir: str) -> None:
+        if self._xp_data:
+            xp_data_dir = os.path.join(public_dir, "Stats", "Generated", "Data")
+            os.makedirs(xp_data_dir, exist_ok=True)
+            with open(os.path.join(xp_data_dir, "XPData.txt"), "w") as f:
+                f.write(TXT_PROLOGUE)
+                f.write("".join(f"""key "Level{level}","{xp}"\n\n""" for level, xp in self._xp_data.items()))
+                f.write(f"""key "MaxXPLevel","{len(self._xp_data)}"\n""")
+
     def build(self) -> None:
         """Build the mod files underneath the _base_dir."""
         mod_dir = os.path.join(self._base_dir, self._folder)
@@ -224,3 +239,4 @@ class Mod:
         self._build_equipment(public_dir)
         self._build_scripts(mod_dir)
         self._build_treasure_table(public_dir)
+        self._build_xp_data(public_dir)

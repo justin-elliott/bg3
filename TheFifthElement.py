@@ -146,7 +146,7 @@ class TheFifthElement(ProgressionReplacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Blindsight", "SuperiorDarkvision", self._pack_mule, self._tempered_body]
 
-        selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        selectors = self._exclude_select_spells(progression)
         selectors.extend([
             "AddSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c)",  # All level 3 spells
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
@@ -157,11 +157,11 @@ class TheFifthElement(ProgressionReplacer):
     @class_level(CharacterClass.MONK_FOURELEMENTS, 4)
     def level_4(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        progression.Selectors = self._exclude_select_spells(progression)
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 5)
     def level_5(self, progression: Progression) -> None:
-        selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        selectors = self._exclude_select_spells(progression)
         selectors.append(f"AddSpells({self._level_5_spelllist})")
         progression.Selectors = selectors
 
@@ -169,7 +169,7 @@ class TheFifthElement(ProgressionReplacer):
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._manifestation_of_will]
 
-        selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        selectors = self._exclude_select_spells(progression)
         selectors.append("AddSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4)")  # All level 6 spells
         selectors.append("AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5)")  # Wholeness of Body
         progression.Selectors = selectors
@@ -177,39 +177,45 @@ class TheFifthElement(ProgressionReplacer):
     @class_level(CharacterClass.MONK_FOURELEMENTS, 7)
     def level_7(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        progression.Selectors = self._exclude_select_spells(progression)
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 8)
     def level_8(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        progression.Selectors = self._exclude_select_spells(progression)
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 9)
     def level_9(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        progression.Selectors = self._exclude_select_spells(progression)
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 10)
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["Indomitable"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        progression.Selectors = self._exclude_select_spells(progression)
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 11)
     def level_11(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
-        selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+        selectors = self._exclude_select_spells(progression)
         selectors.append("AddSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b)")  # All level 11 spells
         progression.Selectors = selectors
 
     @class_level(CharacterClass.MONK_FOURELEMENTS, 12)
     def level_12(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
-        progression.Selectors = [sel for sel in progression.Selectors if not sel.startswith("SelectSpells")]
+
+        selectors = self._exclude_select_spells(progression)
+        selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8)")  # Action Surge
+        progression.Selectors = selectors
 
     def postprocess(self, progressions: Iterable[Progression]) -> None:
         multiply_resources(progressions, [ActionResource.KI_POINTS], 3)
+
+    def _exclude_select_spells(self, progression: Progression) -> list[str]:
+        return [selector for selector in progression.Selectors if not selector.startswith("SelectSpells")]
 
 
 def main():

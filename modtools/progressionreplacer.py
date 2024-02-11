@@ -6,7 +6,7 @@ A base class for character progression replacers.
 from collections.abc import Callable, Container, Iterable
 from modtools.lsx.game import CharacterClass
 from modtools.lsx import Lsx
-from modtools.lsx.game import ClassDescription, Progression
+from modtools.lsx.game import ClassDescription, Origin, Progression
 from modtools.mod import Mod
 from typing import ClassVar
 from uuid import UUID
@@ -16,6 +16,7 @@ type ClassLevelKey = tuple[CharacterClass, int, bool]
 type MultiClassLevelKey = tuple[list[CharacterClass], list[int], bool]
 type ProgressionBuilder = Callable[[object, Progression], None]
 type ClassDescriptionBuilder = Callable[[object, ClassDescription], None]
+type OriginBuilder = Callable[[object, Origin], None]
 
 
 def class_description(character_classes: CharacterClass | Iterable[CharacterClass]) -> ClassDescriptionBuilder:
@@ -51,6 +52,16 @@ def class_level(character_classes: CharacterClass | Iterable[CharacterClass],
     return decorate
 
 
+def origin(name: str) -> OriginBuilder:
+    """A decorator mapping a named origin to its builder function."""
+    def decorate(fn: OriginBuilder) -> OriginBuilder:
+        origins: list[str] = getattr(fn, "origins", [])
+        origins.append(name)
+        setattr(fn, "origins", origins)
+        return fn
+    return decorate
+
+
 class ProgressionReplacer:
     """Generate replacers for class progressions."""
 
@@ -60,8 +71,12 @@ class ProgressionReplacer:
     PROGRESSIONS_LSX_PATH = "Shared.pak/Public/Shared/Progressions/Progressions.lsx"
     PROGRESSIONS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx"
 
+    ORIGINS_LSX_PATH = "Gustav.pak/Public/Gustav/Origins/Origins.lsx"
+    ORIGINS_DEV_LSX_PATH = "Gustav.pak/Public/GustavDev/Origins/Origins.lsx"
+
     _class_description: ClassVar[dict[CharacterClass, ClassDescriptionBuilder]] = {}
     _class_level: ClassVar[dict[ClassLevelKey, ProgressionBuilder]] = {}
+    _origins: ClassVar[dict[str, OriginBuilder]] = {}
 
     _mod: Mod
     _classes: Container[CharacterClass]
@@ -87,6 +102,14 @@ class ProgressionReplacer:
                             if key in cls._class_level:
                                 raise KeyError(f"{key} is already defined")
                             cls._class_level[key] = fn
+
+            # Origin builder
+            if origins := getattr(prop, "origins", None):
+                fn: OriginBuilder = prop
+                for origin in origins:
+                    if origin in cls._origins:
+                        raise KeyError(f"{origin} is already defined")
+                    cls._origins[origin] = fn
 
         return super().__new__(cls)
 
@@ -130,6 +153,13 @@ class ProgressionReplacer:
                 if builder := self._class_description.get(CharacterClass(class_description.Name)):
                     builder(self, class_description)
                     self._mod.add(class_description)
+
+        if self._origins:
+            origins = self._load_origins()
+            for origin in origins:
+                if builder := self._origins.get(origin.Name):
+                    builder(self, origin)
+                    self._mod.add(origin)
 
         class_level = dict(self._class_level)
         progressions = self._load_progressions()
@@ -199,6 +229,26 @@ class ProgressionReplacer:
         progressions_lsx.children.sort(key=self._by_name_level_multiclass)
 
         return list(progressions_lsx.children)
+
+    def _load_origins(self) -> list[Origin]:
+        """Load our origin from the .pak cache."""
+        def by_name(origin: Origin) -> UUID:
+            return origin.Name
+
+        def by_uuid(origin: Origin) -> UUID:
+            return origin.UUID
+
+        def is_one_of_our_origins(origin: Origin) -> UUID:
+            return origin.Name in self._origins
+
+        origins_lsx = Lsx.load(self._mod.get_cache_path(self.ORIGINS_LSX_PATH))
+        origins_dev_lsx = Lsx.load(self._mod.get_cache_path(self.ORIGINS_DEV_LSX_PATH))
+        origins_lsx.children.update(origins_dev_lsx.children, key=by_uuid)
+
+        origins_lsx.children.keepall(is_one_of_our_origins)
+        origins_lsx.children.sort(key=by_name)
+
+        return list(origins_lsx.children)
 
     @staticmethod
     def _by_name_level_multiclass(progression: Progression) -> tuple[str, int, bool]:

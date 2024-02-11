@@ -11,6 +11,7 @@ from .featdescriptions import *
 from .feats import *
 from .levelmaps import *
 from .meta import *
+from .origins import *
 from .passivelists import *
 from .progressiondescriptions import *
 from .progressions import *

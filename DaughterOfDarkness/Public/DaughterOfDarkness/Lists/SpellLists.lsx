@@ -6,6 +6,11 @@
         <node id="root">
             <children>
                 <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 1" />
+                    <attribute id="Spells" type="LSString" value="Projectile_WitchBolt" />
+                    <attribute id="UUID" type="guid" value="10f90850-2529-6b8a-29de-ffb73544cbd5" />
+                </node>
+                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 5" />
                     <attribute id="Spells" type="LSString" value="Target_Counterspell" />
                     <attribute id="UUID" type="guid" value="283b2b27-1a58-4c0f-56df-db94363a4c27" />

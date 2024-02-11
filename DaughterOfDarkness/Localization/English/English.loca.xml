@@ -5,4 +5,5 @@
     <content contentuid="h6bf3da46g160cg003agaec8ge05fffa94c67" version="1">After making a melee attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h9150ea86g6461g57ceg213bgf557e67585eb" version="1">Empowered Spells</content>
     <content contentuid="he5f83b48geaa6gea30g51d0g996d4c76c194" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
+    <content contentuid="hfc47d9feg4bdag5ae2g9f87g7043e7965326" version="1">Project a bolt of lightning.</content>
 </contentList>

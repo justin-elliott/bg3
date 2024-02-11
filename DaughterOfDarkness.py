@@ -9,6 +9,7 @@ from functools import cached_property
 from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.progression import multiply_resources
+from moddb.witchbolt import witch_bolt_to_cantrip
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -33,6 +34,16 @@ class DaughterOfDarkness(ProgressionReplacer):
     _empowered_spells: str
 
     @cached_property
+    def _level_1_spelllist(self) -> str:
+        spelllist = str(self.make_uuid("level_1_spelllist"))
+        self.mod.add(SpellList(
+            Comment="Spells gained at Tempest Domain Cleric level 1",
+            Spells=["Projectile_WitchBolt"],
+            UUID=spelllist,
+        ))
+        return spelllist
+
+    @cached_property
     def _level_5_spelllist(self) -> str:
         spelllist = str(self.make_uuid("level_5_spelllist"))
         self.mod.add(SpellList(
@@ -53,6 +64,9 @@ class DaughterOfDarkness(ProgressionReplacer):
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
 
+        # Spells
+        witch_bolt_to_cantrip(self.mod)
+
     @origin("Shadowheart")
     def shadowheart(self, origin: Origin) -> None:
         origin.SubClassUUID = "89bacf1b-8f15-4972-ada7-bf59c7c78441"  # Tempest Domain
@@ -68,6 +82,9 @@ class DaughterOfDarkness(ProgressionReplacer):
     @class_level(CharacterClass.CLERIC_TEMPEST, 1)
     def level_1(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._battle_magic, "SculptSpells"]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",
+        ]
 
     @class_level(CharacterClass.CLERIC_TEMPEST, 5)
     def level_5(self, progression: Progression) -> None:

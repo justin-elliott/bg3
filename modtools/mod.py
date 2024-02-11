@@ -7,6 +7,7 @@ import hashlib
 import os
 import re
 import shutil
+import textwrap
 import time
 
 from modtools.gamedata import GameData, GameDataCollection
@@ -141,16 +142,17 @@ class Mod:
 
     def add_equipment(self, text: str) -> None:
         self._equipment = self._equipment or []
-        self._equipment.append(text)
+        self._equipment.append(textwrap.dedent(text))
 
     def add_script(self, text: str) -> None:
         self._scripts = self._scripts or []
+        text = textwrap.dedent(text)
         if text not in self._scripts:
             self._scripts.append(text)
 
     def add_treasure_table(self, text: str) -> None:
         self._treasure_table = self._treasure_table or []
-        self._treasure_table.append(text)
+        self._treasure_table.append(textwrap.dedent(text))
 
     def set_xp_data(self, xp_data: dict[int, int]) -> None:
         self._xp_data = xp_data

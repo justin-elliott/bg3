@@ -6,14 +6,14 @@
         <node id="root">
             <children>
                 <node id="ClassDescription">
-                    <attribute id="BaseHp" type="int32" value="10" />
+                    <attribute id="BaseHp" type="int32" value="8" />
                     <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Cleric" />
                     <attribute id="Description" type="TranslatedString" handle="hac77027cg6dd2g4e7ega824gfbdbc91b6f05" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h1e736362g0299g4824g9b4eg65dd9457cfef" version="1" />
                     <attribute id="HasGod" type="bool" value="true" />
-                    <attribute id="HpPerLevel" type="int32" value="6" />
+                    <attribute id="HpPerLevel" type="int32" value="5" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
                     <attribute id="MulticlassSpellcasterModifier" type="double" value="1" />
                     <attribute id="MustPrepareSpells" type="bool" value="true" />

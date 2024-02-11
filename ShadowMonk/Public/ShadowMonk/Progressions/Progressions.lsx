@@ -165,7 +165,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Resource;ShadowMonk_MasterOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Resource;JackOfAllTrades" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="b9fd540c-8f8d-8ba1-dde7-37db6bb78d1b" />

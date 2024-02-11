@@ -4,3 +4,8 @@ new entry "PLA_SmugglerRing"
 type "Armor"
 using "PLA_SmugglerRing"
 data "Boosts" "Skill(Acrobatics,2)Skill(SleightOfHand,2);Skill(Stealth,2);Advantage(Ability,Dexterity)"
+
+new entry "DEN_RaidingParty_GoblinCaptain_Gloves"
+type "Armor"
+using "DEN_RaidingParty_GoblinCaptain_Gloves"
+data "Boosts" "Skill(SleightOfHand,2)"

@@ -120,6 +120,15 @@
                     <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(a05bd5e7-c815-4db7-9a21-66dc08d03e44,ClericTempestDomainSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
+                    <attribute id="UUID" type="guid" value="9328822b-9140-401d-9273-cb1a4998c068" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
@@ -127,6 +136,15 @@
                     <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(283b2b27-1a58-4c0f-56df-db94363a4c27,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="df047bb5-2337-4e0b-b50b-78d5b84fc6c4" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(fc1fa4ea-8294-4f3b-9df9-f5d64e528093,ClericTempestDomainSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
+                    <attribute id="UUID" type="guid" value="51f4518f-5691-4fbf-8421-d2f31a0160e0" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />

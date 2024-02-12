@@ -8,6 +8,7 @@ import os
 from functools import cached_property
 from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
+from moddb.movement import Movement
 from moddb.progression import multiply_resources
 from moddb.witchbolt import witch_bolt_to_cantrip
 from modtools.lsx.game import (
@@ -32,6 +33,7 @@ from typing import Iterable
 class DaughterOfDarkness(ProgressionReplacer):
     _battle_magic: str
     _empowered_spells: str
+    _fast_movement: str
 
     @cached_property
     def _level_1_spelllist(self) -> str:
@@ -63,6 +65,7 @@ class DaughterOfDarkness(ProgressionReplacer):
         # Passives
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
+        self._fast_movement = Movement(self.mod).add_fast_movement(3.0)
 
         # Spells
         witch_bolt_to_cantrip(self.mod)
@@ -86,12 +89,21 @@ class DaughterOfDarkness(ProgressionReplacer):
             f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",
         ]
 
+    @class_level(CharacterClass.CLERIC_TEMPEST, 3)
+    def level_3(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [self._fast_movement]
+
     @class_level(CharacterClass.CLERIC_TEMPEST, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack"]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)",
         ]
+
+    @class_level(CharacterClass.CLERIC_TEMPEST, 7)
+    def level_7(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
 
     @class_level(CharacterClass.CLERIC_TEMPEST, 10)
     def level_10(self, progression: Progression) -> None:

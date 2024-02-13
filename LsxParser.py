@@ -134,15 +134,14 @@ class LsxParser:
                 if len(self.__node_stack) == 1:  # The root node is just above the sentinel
                     self.root = node
 
-    __unpak: Unpak
+    _unpak: Unpak
 
     def __init__(self, unpak: Unpak):
-        self.__unpak = unpak
+        self._unpak = unpak
 
     def parse(self, lsx_path: os.PathLike, output: str) -> None:
-        pak_name, _, relative_path = str(PurePath(lsx_path).as_posix()).partition("/")
-        cached_pak = self.__unpak.get(pak_name)
-        cached_path = os.path.join(cached_pak.path, relative_path)
+        _, _, relative_path = str(PurePath(lsx_path).as_posix()).partition("/")
+        cached_path = self._unpak.get_path(lsx_path)
 
         if output:
             output_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "modtools/lsx/game", output))
@@ -231,7 +230,7 @@ def main():
     parser.add_argument("-o", "--output", type=str, default=None, help="Name of the output file.")
     args = parser.parse_args()
 
-    unpak = Unpak(cache_dir=None)
+    unpak = Unpak()
     lsx_parser = LsxParser(unpak)
     lsx_parser.parse(args.pak_path, args.output)
 

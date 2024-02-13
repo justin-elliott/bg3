@@ -11,7 +11,6 @@ import sys
 from collections.abc import Set
 from modtools.prologue import PYTHON_PROLOGUE
 from modtools.unpak import Unpak
-from pathlib import PurePath
 from typing import TextIO
 
 
@@ -36,9 +35,7 @@ class ValueListsParser:
     _value_lists_path: os.PathLike
 
     def __init__(self, unpak: Unpak):
-        pak_name, _, relative_path = str(PurePath(VALUE_LISTS_PATH).as_posix()).partition("/")
-        cached_pak = unpak.get(pak_name)
-        self._value_lists_path = os.path.join(cached_pak.path, relative_path)
+        self._value_lists_path = unpak.get_path(VALUE_LISTS_PATH)
 
     def parse(self, output: str | None):
         if output:

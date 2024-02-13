@@ -10,7 +10,6 @@ import re
 from collections.abc import Mapping
 from modtools.prologue import PYTHON_PROLOGUE
 from modtools.unpak import Unpak
-from pathlib import PurePath
 
 
 PROLOGUE = f'''\
@@ -45,9 +44,7 @@ class GameDataParser:
     _modifiers_path: os.PathLike
 
     def __init__(self, unpak: Unpak):
-        pak_name, _, relative_path = str(PurePath(MODIFIERS_PATH).as_posix()).partition("/")
-        cached_pak = unpak.get(pak_name)
-        self._modifiers_path = os.path.join(cached_pak.path, relative_path)
+        self._modifiers_path = unpak.get_path(MODIFIERS_PATH)
 
     def parse(self, output: str | None):
         if output:
@@ -101,7 +98,7 @@ def main():
     parser.add_argument("-o", "--output", type=str, default=None, help="Name of the output directory.")
     args = parser.parse_args()
 
-    unpak = Unpak(cache_dir=None)
+    unpak = Unpak()
     parser = GameDataParser(unpak)
     parser.parse(args.output)
 

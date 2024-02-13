@@ -5,17 +5,14 @@ This makes use of LSLib: https://github.com/Norbyte/lslib
 """
 
 import clr
-import hashlib
 import os
 import re
 import requests
-import shutil
 import sys
 import winreg
 
 from collections.abc import Mapping
-from dataclasses import dataclass
-from pathlib import Path
+from pathlib import PurePath
 from zipfile import ZipFile
 
 EXPORT_TOOL_VERSION = "1.18.7"
@@ -24,39 +21,37 @@ EXPORT_TOOL_VERSION = "1.18.7"
 class Unpak:
     """Management of BG3 .pak files."""
 
-    @dataclass
-    class CachedPak:
-        """Description of a cached, unpacked .pak file."""
-        path: os.PathLike  # Path to the cached .pak directory
-        hash: str          # SHA256 hex digest
+    _INSTALLDIR_REGEX = re.compile(R"""\s*"installdir"\s*"([^"]*)"\s*""")
 
-    __installdir_regex = re.compile(R"""\s*"installdir"\s*"([^"]*)"\s*""")
+    _cache_dir: os.PathLike
+    _export_tool_dir: os.PathLike
+    _unpak_dir: os.PathLike
+    _cached_files: Mapping[tuple[str, str], os.PathLike]
 
-    __cache_dir: os.PathLike
-    __export_tool_dir: os.PathLike
-    __unpak_dir: os.PathLike
-    __cached_paks: Mapping[str, CachedPak]
-
-    def __init__(self, cache_dir: os.PathLike | None):
-        self.__cache_dir = cache_dir or os.path.join(os.path.dirname(__file__), ".cache")
-        self.__export_tool_dir = os.path.join(self.__cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
-        self.__unpak_dir = os.path.join(self.__cache_dir, "unpak")
-        self.__cached_paks = {}
+    def __init__(self, cache_dir: os.PathLike | None = None):
+        self._cache_dir = cache_dir or os.path.join(os.path.dirname(__file__), ".cache")
+        self._export_tool_dir = os.path.join(self._cache_dir, f"ExportTool-v{EXPORT_TOOL_VERSION}")
+        self._unpak_dir = os.path.join(self._cache_dir, "unpak")
+        self._cached_files = {}
         self._cache_export_tool()
 
-    def get(self, pak_name: str) -> CachedPak:
+    def get_path(self, pak_path: str) -> os.PathLike:
         """Retrieve the details for a .pak file, caching it if necessary."""
+        pak_name, _, relative_path = str(PurePath(pak_path).as_posix()).partition("/")
         pak_name = pak_name[0:-4] if pak_name.endswith(".pak") else pak_name
-        if pak_name not in self.__cached_paks:
-            cached_pak = self._get_cached_pak_dir(pak_name)
-            self.__cached_paks[pak_name] = cached_pak
-        return self.__cached_paks[pak_name]
+        file_key = (pak_name, relative_path)
+        if file_path := self._cached_files.get(file_key):
+            return file_path
+
+        file_path = self._cache_file(pak_name, relative_path)
+        self._cached_files[file_key] = file_path
+        return file_path
 
     def _cache_export_tool(self) -> None:
         """Download the LSLib export tool into the cache, if it is not already present."""
-        os.makedirs(self.__cache_dir, exist_ok=True)
+        os.makedirs(self._cache_dir, exist_ok=True)
 
-        cache_export_tool_zip = self.__export_tool_dir + ".zip"
+        cache_export_tool_zip = self._export_tool_dir + ".zip"
         export_tool_zip = os.path.basename(cache_export_tool_zip)
 
         if not os.path.exists(cache_export_tool_zip):
@@ -67,59 +62,69 @@ class Unpak:
                 for chunk in export_tool.iter_content(chunk_size=4096):
                     export_tool_zip_file.write(chunk)
 
-        if not os.path.exists(self.__export_tool_dir):
+        if not os.path.exists(self._export_tool_dir):
             with ZipFile(cache_export_tool_zip, "r") as cache_export_tool_zip:
-                cache_export_tool_zip.extractall(path=self.__cache_dir)
+                cache_export_tool_zip.extractall(path=self._cache_dir)
 
-    def _get_cached_pak_dir(self, pak_name: str) -> CachedPak:
+    def _cache_file(self, pak_name: str, relative_path: str) -> os.PathLike:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
-        cached_pak_dir = os.path.join(self.__unpak_dir, pak_name)
-        hash_filename = os.path.join(cached_pak_dir, ".sha256")
+        cached_pak_dir = os.path.join(self._unpak_dir, pak_name)
+        cached_file_path = os.path.join(cached_pak_dir, relative_path)
         pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
-        hash = None
 
-        if os.path.exists(cached_pak_dir):
-            with open(pak_filename, "rb") as pak_file, open(hash_filename, "r") as hash_file:
-                digest = hashlib.file_digest(pak_file, "sha256")
-                hash = hash_file.read()
-                if digest.hexdigest() != hash:
-                    shutil.rmtree(cached_pak_dir)
+        # If there is a cached file, and it is still current, return its path
+        pak_stat_result = os.stat(pak_filename)
+        try:
+            file_stat_result = os.stat(cached_file_path)
+            if file_stat_result.st_mtime >= pak_stat_result.st_mtime:
+                return cached_file_path
+            os.remove(cached_file_path)  # The file is stale
+        except FileNotFoundError:
+            pass
 
-        if not os.path.exists(cached_pak_dir):
-            os.makedirs(self.__unpak_dir, exist_ok=True)
+        if not os.path.exists(cached_file_path):
+            os.makedirs(self._unpak_dir, exist_ok=True)
 
-            if self.__export_tool_dir not in sys.path:
-                sys.path.append(self.__export_tool_dir)
+            if self._export_tool_dir not in sys.path:
+                sys.path.append(self._export_tool_dir)
             clr.AddReference("LSLib")
             from LSLib.LS import (
+                AbstractFileInfo,
                 Packager,
                 ResourceConversionParameters,
                 ResourceLoadParameters,
                 ResourceUtils
             )
             from LSLib.LS.Enums import Game, ResourceFormat
+            from System import Func
 
-            # Decompress the package
+            # Filter for the file of interest
+            filter_path = relative_path[0:-4] if relative_path.endswith(".lsf.lsx") else relative_path
+            destination_path = os.path.join(cached_pak_dir, filter_path)
+
+            def filter(file_info: AbstractFileInfo) -> bool:
+                return file_info.Name == filter_path
+
+            # Extract the file
             packager = Packager()
-            packager.UncompressPackage(pak_filename, cached_pak_dir)
-            with open(pak_filename, "rb") as pak_file, open(hash_filename, "w") as hash_file:
-                hash = hashlib.file_digest(pak_file, "sha256").hexdigest()
-                hash_file.write(hash)
+            packager.UncompressPackage(pak_filename, cached_pak_dir, Func[AbstractFileInfo, bool](filter))
+
+            # Ensure that the file was extracted
+            os.stat(destination_path)
 
             # Convert .lsf -> .lsf.lsx
-            resource_utils = ResourceUtils()
-            lsf_filenames = Path(cached_pak_dir).glob("**/*.lsf")
-            for lsf_filename in lsf_filenames:
-                resource = resource_utils.LoadResource(str(lsf_filename),
+            if destination_path.endswith(".lsf"):
+                resource_utils = ResourceUtils()
+                resource = resource_utils.LoadResource(destination_path,
                                                        ResourceFormat.LSF,
                                                        ResourceLoadParameters.FromGameVersion(Game.BaldursGate3))
                 resource_utils.SaveResource(resource,
-                                            str(lsf_filename) + ".lsx",
+                                            cached_file_path,
                                             ResourceFormat.LSX,
                                             ResourceConversionParameters.FromGameVersion(Game.BaldursGate3))
-                lsf_filename.unlink()
+                os.remove(destination_path)
 
-        return Unpak.CachedPak(cached_pak_dir, hash)
+        return cached_file_path
 
     def _get_bg3_data_dir(self) -> os.PathLike:
         """Get the BG3 data directory."""
@@ -139,6 +144,6 @@ class Unpak:
         """Given the steamapps_path, parse the BG3 manifest, and determine the game's install location."""
         with open(os.path.join(steamapps_path, "appmanifest_1086940.acf"), "r") as manifest_file:
             for line in manifest_file:
-                if (match := self.__installdir_regex.match(line)):
+                if (match := self._INSTALLDIR_REGEX.match(line)):
                     return match[1]
         raise KeyError("Installdir not found in manifest")

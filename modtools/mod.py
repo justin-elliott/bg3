@@ -17,7 +17,6 @@ from modtools.lsx import Lsx
 from modtools.lsx.game import Dependencies, ModuleInfo
 from modtools.lsx.node import LsxNode
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
-from pathlib import PurePath
 from typing import Tuple
 from uuid import UUID
 
@@ -127,9 +126,8 @@ class Mod:
         return self._localization
 
     def get_cache_path(self, lsx_path: os.PathLike) -> os.PathLike:
-        pak_name, _, relative_path = str(PurePath(lsx_path).as_posix()).partition("/")
-        cached_pak = self._unpak.get(pak_name)
-        return os.path.join(cached_pak.path, relative_path)
+        """Get the path of a file in the unpak cache."""
+        return self._unpak.get_path(lsx_path)
 
     def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""

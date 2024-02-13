@@ -119,7 +119,7 @@ class Mod:
     def get_uuid(self) -> UUID:
         return self._uuid
 
-    def get_version(self) -> (int, int, int, int):
+    def get_version(self) -> tuple[int, int, int, int]:
         return self._version
 
     def get_localization(self) -> Localization:

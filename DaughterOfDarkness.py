@@ -14,7 +14,6 @@ from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
-    CharacterSubclasses,
     ClassDescription,
     Origin,
     SpellList,

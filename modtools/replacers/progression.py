@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-A decorator for character progression replacement.
+A decorator for class/race progression replacement.
 """
 
 from collections.abc import Callable, Iterable
@@ -18,10 +18,10 @@ class Classification(IntEnum):
     OTHER = 3  # NPC classes, origin characters
 
 
-type ClassLevelKey = tuple[str, int, bool]
-type MultiClassLevelKey = tuple[list[str], list[int], bool]
+type NameLevelKey = tuple[str, int, bool]
+type MultiNameLevelKey = tuple[list[str], list[int], bool]
 type ProgressionBuilder = Callable[[Replacer, Progression], None]
-type ProgressionBuilderDict = dict[ClassLevelKey, list[ProgressionBuilder]]
+type ProgressionBuilderDict = dict[NameLevelKey, list[ProgressionBuilder]]
 
 
 _PROGRESSIONS_LSX_PATH = "Shared.pak/Public/Shared/Progressions/Progressions.lsx"
@@ -143,7 +143,7 @@ def progression(names: str | Iterable[str],
 
     def decorate(fn: ProgressionBuilder) -> ProgressionBuilder:
         setattr(fn, "builder", _progression_builder)
-        multi_class_level_keys: list[MultiClassLevelKey] = getattr(fn, "progression", [])
+        multi_class_level_keys: list[MultiNameLevelKey] = getattr(fn, "progression", [])
         multi_class_level_keys.append((names, levels, is_multiclass))
         setattr(fn, "progression", multi_class_level_keys)
         return fn

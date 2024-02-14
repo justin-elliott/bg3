@@ -20,8 +20,9 @@ from modtools.lsx.game import (
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
 from modtools.replacers import (
-    Replacer,
+    class_description,
     progression,
+    Replacer,
 )
 from typing import Iterable
 
@@ -111,25 +112,25 @@ class WayOfTheTempest(Replacer):
         self._bolster = Bolster(self.mod).add_bolster()
         self._tempestuous_flight = tempestuous_flight(self.mod)
 
-    # @class_description(CharacterClass.MONK)
-    # def monk_description(self, class_description: ClassDescription) -> None:
-    #     class_description.BaseHp = 10
-    #     class_description.HpPerLevel = 6
+    @class_description(CharacterClass.MONK)
+    def monk_description(self, class_description: ClassDescription) -> None:
+        class_description.BaseHp = 10
+        class_description.HpPerLevel = 6
 
-    # @class_description(CharacterClass.MONK_SHADOW)
-    # def way_of_the_tempest_description(self, class_description: ClassDescription) -> None:
-    #     loca = self.mod.get_localization()
-    #     loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Way of the Tempest"}
-    #     loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
-    #         You channel your ki into electrifying strikes and thunderous blows, leaving foes trembling in the wake of
-    #         your martial maelstrom.
-    #         """}
+    @class_description(CharacterClass.MONK_SHADOW)
+    def way_of_the_tempest_description(self, class_description: ClassDescription) -> None:
+        loca = self.mod.get_localization()
+        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Way of the Tempest"}
+        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
+            You channel your ki into electrifying strikes and thunderous blows, leaving foes trembling in the wake of
+            your martial maelstrom.
+            """}
 
-    #     class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
-    #     class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
+        class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
+        class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
 
-    #     class_description.CanLearnSpells = True
-    #     class_description.MustPrepareSpells = True
+        class_description.CanLearnSpells = True
+        class_description.MustPrepareSpells = True
 
     @progression(CharacterClass.MONK, 1)
     def level_1(self, progression: Progression) -> None:

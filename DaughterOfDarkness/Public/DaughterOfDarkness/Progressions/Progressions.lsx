@@ -6,6 +6,43 @@
         <node id="root">
             <children>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Wisdom);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(Morningstars);Proficiency(Flails)" />
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="DomainSpells;UnlockedSpellSlotLevel1" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(6cb9d731-a518-46f0-b20e-9e2bf18e6acd,2);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)" />
+                    <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
+                    <attribute id="UUID" type="guid" value="1dbce574-fff1-49be-b7da-704f9b73cad9" />
+                    <children>
+                        <node id="SubClasses">
+                            <children>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="4b5da2f5-b999-4623-8bff-a63df5560fb3" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="c54d7591-b305-4f22-b2a7-1bf5c4a3470a" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="f013d01b-3310-43f7-81bf-a51130442b5e" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="ebe18794-b5e1-41c4-befa-4b9d6922b0ec" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="6dec76d0-df22-411c-8a78-3d6fb843ae50" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="89bacf1b-8f15-4972-ada7-bf59c7c78441" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="b9ccf90e-b35b-4b73-b896-8ed2d32ae8c6" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="2" />
@@ -115,7 +152,7 @@
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WrathOfTheStorm;DaughterOfDarkness_BattleMagic;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(10f90850-2529-6b8a-29de-ffb73544cbd5,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(f713f052-76ff-5aae-4505-5261d500371f,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
                 </node>
@@ -133,7 +170,7 @@
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(283b2b27-1a58-4c0f-56df-db94363a4c27,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(0c7db60b-f360-eed4-dbb4-6ef34bdeade6,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="df047bb5-2337-4e0b-b50b-78d5b84fc6c4" />
                 </node>
@@ -152,7 +189,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_EmpoweredSpells_Wisdom" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="027a13f7-6551-b638-9dcc-8abac7949c50" />
+                    <attribute id="UUID" type="guid" value="8b31c926-5929-e259-421f-731ce52de008" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />
@@ -161,7 +198,7 @@
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="54ec1500-9778-e86a-af9d-50bc9a676fa0" />
+                    <attribute id="UUID" type="guid" value="7339fa2d-9167-a671-464a-858984a3e407" />
                 </node>
             </children>
         </node>

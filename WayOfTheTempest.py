@@ -218,7 +218,7 @@ class WayOfTheTempest(Replacer):
 
     def _increase_ki_points(self, progression: Progression):
         if progression.Boosts:
-            progression.Boosts = update_action_resources(progression.Boosts or [],
+            progression.Boosts = update_action_resources(progression.Boosts,
                                                          [ActionResource.KI_POINTS],
                                                          lambda _1, count, _2: count * 4)
 

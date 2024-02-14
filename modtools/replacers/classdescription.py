@@ -68,7 +68,7 @@ def _class_description_builder(replacer: Replacer, class_description_builders: l
 
     _update_class_descriptions(replacer, class_descriptions, builders, updated_class_descriptions)
 
-    # Save the new progression
+    # Save the updated class descriptions
     for class_description in sorted(updated_class_descriptions, key=_by_name):
         replacer.mod.add(class_description)
 

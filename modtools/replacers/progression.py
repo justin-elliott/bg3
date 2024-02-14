@@ -12,7 +12,7 @@ from modtools.replacers.replacer import Replacer
 from uuid import UUID
 
 
-class Classification(IntEnum):
+class _Classification(IntEnum):
     CLASS = 1
     RACE = 2
     OTHER = 3  # NPC classes, origin characters
@@ -35,13 +35,13 @@ def _by_uuid(progression: Progression) -> UUID:
 def _progression_order(progression: Progression) -> tuple[str, int, bool]:
     """Return a key ordering by classification, name, level, and multiclass."""
     name = progression.Name
-    classification = Classification.OTHER
+    classification = _Classification.OTHER
     if name in CharacterClass:
         name = CharacterClass(progression.Name).name
-        classification = Classification.CLASS
+        classification = _Classification.CLASS
     elif name in CharacterRace:
         name = CharacterRace(progression.Name).name
-        classification = Classification.RACE
+        classification = _Classification.RACE
 
     return (classification, name, progression.Level, progression.IsMulticlass or False)
 
@@ -111,8 +111,9 @@ def _create_progressions(replacer: Replacer,
             UUID=replacer.make_uuid(f"Progression:{name}:{level}")
         )
         for builder_fn in builder_fns:
-            builder_fn(replacer, progression)
-        updated_progressions.add(progression)
+            if not getattr(builder_fn, "only_existing_progressions", False):
+                builder_fn(replacer, progression)
+                updated_progressions.add(progression)
 
 
 def _progression_builder(replacer: Replacer, progression_builders: list[ProgressionBuilder]) -> None:
@@ -149,3 +150,9 @@ def progression(names: str | Iterable[str],
         return fn
 
     return decorate
+
+
+def only_existing_progressions(fn: ProgressionBuilder) -> ProgressionBuilder:
+    """A decorator used to indicate that new progressions should not be created for its builder."""
+    setattr(fn, "only_existing_progressions", True)
+    return fn

@@ -9,6 +9,7 @@ from functools import cached_property
 from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
+from moddb.progression import multiply_resources
 from moddb.witchbolt import witch_bolt_to_cantrip
 from modtools.lsx.game import (
     ActionResource,
@@ -17,7 +18,6 @@ from modtools.lsx.game import (
     ClassDescription,
     Origin,
     SpellList,
-    update_action_resources,
 )
 from modtools.lsx.game import Progression
 from modtools.replacers import (
@@ -78,7 +78,7 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if (progression.Level % 2) == 0 else None
-        self._increase_resources(progression)
+        multiply_resources(progression, [ActionResource.SPELL_SLOTS, ActionResource.CHANNEL_DIVINITY_CHARGES], 2)
 
     @progression(CharacterClass.CLERIC_TEMPEST, 1)
     def level_1(self, progression: Progression) -> None:
@@ -111,13 +111,6 @@ class DaughterOfDarkness(Replacer):
     def level_11(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
-
-    def _increase_resources(self, progression: Progression) -> None:
-        if progression.Boosts:
-            progression.Boosts = update_action_resources(progression.Boosts,
-                                                         [ActionResource.SPELL_SLOTS,
-                                                          ActionResource.CHANNEL_DIVINITY_CHARGES],
-                                                         lambda _1, count, _2: count * 2)
 
 
 def main():

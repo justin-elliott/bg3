@@ -8,12 +8,12 @@
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Monk level 1" />
                     <attribute id="Spells" type="LSString" value="TheFifthElement_Bolster" />
-                    <attribute id="UUID" type="guid" value="af5e3cae-ae69-a141-2f74-1b8d2c26ee2d" />
+                    <attribute id="UUID" type="guid" value="c6b6eb47-08cd-d623-836e-2cb6ec2262ea" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Monk level 5" />
                     <attribute id="Spells" type="LSString" value="TheFifthElement_MistyStep" />
-                    <attribute id="UUID" type="guid" value="15b3b69c-e5d7-3ad0-2801-3b3a0e0ab241" />
+                    <attribute id="UUID" type="guid" value="c03577c5-aaa1-e59c-774f-e7a5b1b958f0" />
                 </node>
             </children>
         </node>

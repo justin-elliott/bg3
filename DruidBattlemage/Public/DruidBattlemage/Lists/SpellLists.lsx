@@ -8,12 +8,12 @@
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Druid level 1" />
                     <attribute id="Spells" type="LSString" value="DruidBattlemage_Bolster" />
-                    <attribute id="UUID" type="guid" value="e9028588-9d8f-3d9e-0311-8a962d6787b9" />
+                    <attribute id="UUID" type="guid" value="65c6b9dc-e3e8-a85d-b35d-22447c0e170f" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Druid level 5" />
                     <attribute id="Spells" type="LSString" value="Target_Counterspell" />
-                    <attribute id="UUID" type="guid" value="d60c28cc-d9e5-1ca7-66ae-063c5cae03bf" />
+                    <attribute id="UUID" type="guid" value="0121ce12-438e-2177-db76-a20351d045bd" />
                 </node>
             </children>
         </node>

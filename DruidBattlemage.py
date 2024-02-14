@@ -10,7 +10,7 @@ from moddb.battlemagic import BattleMagic
 from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
-from moddb.progression import allow_improvement, multiply_resources
+from moddb.progression import multiply_resources
 from moddb.scripts import character_level_range
 from modtools.gamedata import PassiveData, StatusData, Weapon
 from modtools.lsx.game import (
@@ -22,8 +22,12 @@ from modtools.lsx.game import (
 )
 from modtools.lsx.game import GameObjects, Progression, SpellList
 from modtools.mod import Mod
-from modtools.progressionreplacer import class_description, class_level, ProgressionReplacer
-from typing import Iterable
+from modtools.replacers import (
+    class_description,
+    only_existing_progressions,
+    progression,
+    Replacer,
+)
 from uuid import UUID
 
 
@@ -229,7 +233,7 @@ def add_equipment(mod: Mod, equipment_set_name: str) -> None:
     """)
 
 
-class DruidBattlemage(ProgressionReplacer):
+class DruidBattlemage(Replacer):
     _EQUIPMENT_SET_NAME = "EQP_CC_DruidBattlemage"
 
     _battle_magic: str
@@ -263,8 +267,7 @@ class DruidBattlemage(ProgressionReplacer):
                          author="justin-elliott",
                          name="DruidBattlemage",
                          mod_uuid=UUID("a5ffe54f-736e-44a1-8814-76c128875bbc"),
-                         description="Upgrades the Druid class to a Battlemage.",
-                         classes=CharacterSubclasses.DRUID)
+                         description="Upgrades the Druid class to a Battlemage.")
 
         # Passives and skills
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
@@ -286,7 +289,7 @@ class DruidBattlemage(ProgressionReplacer):
             ClassDescription.Tags(Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"),  # WIZARD
         )
 
-    @class_level(CharacterClass.DRUID, 1)
+    @progression(CharacterClass.DRUID, 1)
     def level_1(self, progression: Progression) -> None:
         # Add common features
         self.level_1_multiclass(progression)
@@ -299,7 +302,7 @@ class DruidBattlemage(ProgressionReplacer):
         ])
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.DRUID, 1, is_multiclass=True)
+    @progression(CharacterClass.DRUID, 1, is_multiclass=True)
     def level_1_multiclass(self, progression: Progression) -> None:
         passives_added = progression.PassivesAdded or []
         passives_added.extend([
@@ -313,11 +316,23 @@ class DruidBattlemage(ProgressionReplacer):
         selectors.append(f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)")
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.DRUID, 2)
+    @progression(CharacterSubclasses.DRUID, range(1, 13))
+    @only_existing_progressions
+    def level_1_to_12_druid(self, progression: Progression) -> None:
+        if progression.Name == CharacterClass.DRUID:
+            progression.AllowImprovement = True if progression.Level > 1 else None
+        multiply_resources(progression,
+                           [ActionResource.SPELL_SLOTS,
+                            ActionResource.FUNGAL_INFESTATION_CHARGES,
+                            ActionResource.NATURAL_RECOVERY_CHARGES,
+                            ActionResource.WILD_SHAPE_CHARGES],
+                           2)
+
+    @progression(CharacterClass.DRUID, 2)
     def level_2(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["Blindsight", "SuperiorDarkvision"]
 
-    @class_level(CharacterClass.DRUID, 3)
+    @progression(CharacterClass.DRUID, 3)
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
 
@@ -328,11 +343,11 @@ class DruidBattlemage(ProgressionReplacer):
         ])
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.DRUID, 4)
+    @progression(CharacterClass.DRUID, 4)
     def level_4(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
-    @class_level(CharacterClass.DRUID, 5)
+    @progression(CharacterClass.DRUID, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", self._fast_movement]
 
@@ -340,30 +355,30 @@ class DruidBattlemage(ProgressionReplacer):
         selectors.append(f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)")
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.DRUID, 6)
+    @progression(CharacterClass.DRUID, 6)
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
 
-    @class_level(CharacterClass.DRUID, 7)
+    @progression(CharacterClass.DRUID, 7)
     def level_7(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "LandsStride_DifficultTerrain", "LandsStride_Surfaces", "LandsStride_Advantage"]
 
-    @class_level(CharacterClass.DRUID, 8)
+    @progression(CharacterClass.DRUID, 8)
     def level_8(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
-    @class_level(CharacterClass.DRUID, 9)
+    @progression(CharacterClass.DRUID, 9)
     def level_9(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
 
-    @class_level(CharacterClass.DRUID, 10)
+    @progression(CharacterClass.DRUID, 10)
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._empowered_spells, "ExtraAttack_2", "NaturesWard"]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
-    @class_level(CharacterClass.DRUID, 11)
+    @progression(CharacterClass.DRUID, 11)
     def level_11(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
 
@@ -371,20 +386,11 @@ class DruidBattlemage(ProgressionReplacer):
         selectors.append("AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)")  # Volley, Whirlwind
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.DRUID, 12)
+    @progression(CharacterClass.DRUID, 12)
     def level_12(self, progression: Progression) -> None:
         selectors = progression.Selectors or []
         selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)")  # Action Surge
         progression.Selectors = selectors
-
-    def postprocess(self, progressions: Iterable[Progression]) -> None:
-        allow_improvement(progressions, range(2, 13))
-        multiply_resources(progressions,
-                           [ActionResource.SPELL_SLOTS,
-                            ActionResource.FUNGAL_INFESTATION_CHARGES,
-                            ActionResource.NATURAL_RECOVERY_CHARGES],
-                           2)
-        multiply_resources(progressions, [ActionResource.WILD_SHAPE_CHARGES], 4)
 
 
 def main():

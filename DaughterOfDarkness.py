@@ -107,11 +107,6 @@ class DaughterOfDarkness(Replacer):
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._empowered_spells]
 
-    @progression(CharacterClass.CLERIC_TEMPEST, 11)
-    def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
-
 
 def main():
     daughter_of_darkness = DaughterOfDarkness()

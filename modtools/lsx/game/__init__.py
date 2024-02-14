@@ -5,7 +5,8 @@ BG3 .lsx definitions package.
 
 # flake8: noqa
 from .actionresources import *
-from .characterclasses import *
+from .characterclass import *
+from .characterrace import *
 from .classdescriptions import *
 from .featdescriptions import *
 from .feats import *

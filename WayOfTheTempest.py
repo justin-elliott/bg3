@@ -15,13 +15,13 @@ from modtools.lsx.game import (
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
+    update_action_resources,
 )
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
-from modtools.progressionreplacer import (
-    class_description,
-    class_level,
-    ProgressionReplacer,
+from modtools.replacers import (
+    Replacer,
+    progression,
 )
 from typing import Iterable
 
@@ -81,7 +81,7 @@ def tempestuous_flight(mod: Mod) -> str:
     return name
 
 
-class WayOfTheTempest(ProgressionReplacer):
+class WayOfTheTempest(Replacer):
     _bolster: str
     _pack_mule: str
     _tempered_body: str
@@ -101,8 +101,7 @@ class WayOfTheTempest(ProgressionReplacer):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="WayOfTheTempest",
-                         description="Changes the Way of Shadow Monk to the Way of the Tempest.",
-                         classes=CharacterSubclasses.MONK)
+                         description="Changes the Way of Shadow Monk to the Way of the Tempest.")
 
         # Passives
         self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
@@ -112,27 +111,27 @@ class WayOfTheTempest(ProgressionReplacer):
         self._bolster = Bolster(self.mod).add_bolster()
         self._tempestuous_flight = tempestuous_flight(self.mod)
 
-    @class_description(CharacterClass.MONK)
-    def monk_description(self, class_description: ClassDescription) -> None:
-        class_description.BaseHp = 10
-        class_description.HpPerLevel = 6
+    # @class_description(CharacterClass.MONK)
+    # def monk_description(self, class_description: ClassDescription) -> None:
+    #     class_description.BaseHp = 10
+    #     class_description.HpPerLevel = 6
 
-    @class_description(CharacterClass.MONK_SHADOW)
-    def way_of_the_tempest_description(self, class_description: ClassDescription) -> None:
-        loca = self.mod.get_localization()
-        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Way of the Tempest"}
-        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
-            You channel your ki into electrifying strikes and thunderous blows, leaving foes trembling in the wake of
-            your martial maelstrom.
-            """}
+    # @class_description(CharacterClass.MONK_SHADOW)
+    # def way_of_the_tempest_description(self, class_description: ClassDescription) -> None:
+    #     loca = self.mod.get_localization()
+    #     loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Way of the Tempest"}
+    #     loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
+    #         You channel your ki into electrifying strikes and thunderous blows, leaving foes trembling in the wake of
+    #         your martial maelstrom.
+    #         """}
 
-        class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
-        class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
+    #     class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
+    #     class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
 
-        class_description.CanLearnSpells = True
-        class_description.MustPrepareSpells = True
+    #     class_description.CanLearnSpells = True
+    #     class_description.MustPrepareSpells = True
 
-    @class_level(CharacterClass.MONK, 1)
+    @progression(CharacterClass.MONK, 1)
     def level_1(self, progression: Progression) -> None:
         # Add common features
         self.level_1_multiclass(progression)
@@ -145,17 +144,19 @@ class WayOfTheTempest(ProgressionReplacer):
         ])
         progression.Selectors = selectors
 
-    @class_level(CharacterClass.MONK, 1, is_multiclass=True)
+    @progression(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_multiclass(self, progression: Progression) -> None:
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",
         ]
+        self._increase_ki_points(progression)
 
-    @class_level(CharacterClass.MONK, range(2, 13))
+    @progression(CharacterClass.MONK, range(2, 13))
     def level_2_to_12_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True
+        self._increase_ki_points(progression)
 
-    @class_level(CharacterClass.MONK_SHADOW, 3)
+    @progression(CharacterClass.MONK_SHADOW, 3)
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Blindsight", "SuperiorDarkvision", self._pack_mule, self._tempered_body]
@@ -164,18 +165,18 @@ class WayOfTheTempest(ProgressionReplacer):
             "AddSpells(6566d841-ef96-4e13-ac40-c40f44c5e08b,,,,AlwaysPrepared)"  # Open Hand: Topple, Stagger, Push
         ]
 
-    @class_level(CharacterClass.MONK_SHADOW, 4)
+    @progression(CharacterClass.MONK_SHADOW, 4)
     def level_4(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Assassinate_Resource", "JackOfAllTrades"]
 
-    @class_level(CharacterClass.MONK_SHADOW, 5)
+    @progression(CharacterClass.MONK_SHADOW, 5)
     def level_5(self, progression: Progression) -> None:
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(fab9f457-4570-472e-95be-ffe5b5aa863d,,,,AlwaysPrepared)",  # Infiltration Expertise
         ]
 
-    @class_level(CharacterClass.MONK_SHADOW, 6)
+    @progression(CharacterClass.MONK_SHADOW, 6)
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Manifestation_of_Body", "Manifestation_of_Mind", "Manifestation_of_Soul"]
@@ -183,49 +184,42 @@ class WayOfTheTempest(ProgressionReplacer):
             "AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5,,,,AlwaysPrepared)",  # Wholeness of Body
         ]
 
-    @class_level(CharacterClass.MONK_SHADOW, 7)
+    @progression(CharacterClass.MONK_SHADOW, 7)
     def level_7(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
 
-    @class_level(CharacterClass.MONK_SHADOW, 8)
+    @progression(CharacterClass.MONK_SHADOW, 8)
     def level_8(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
 
-    @class_level(CharacterClass.MONK_SHADOW, 9)
+    @progression(CharacterClass.MONK_SHADOW, 9)
     def level_9(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(0ffe7be9-d826-42d7-b59e-d1924ad28ffc,,,,AlwaysPrepared)",  # Ki Resonation
         ]
 
-    @class_level(CharacterClass.MONK_SHADOW, 10)
+    @progression(CharacterClass.MONK_SHADOW, 10)
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["Indomitable"]
 
-    @class_level(CharacterClass.MONK_SHADOW, 11)
+    @progression(CharacterClass.MONK_SHADOW, 11)
     def level_11(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
 
-    @class_level(CharacterClass.MONK_SHADOW, 12)
+    @progression(CharacterClass.MONK_SHADOW, 12)
     def level_12(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)",  # Action Surge
         ]
 
-    def postprocess(self, progressions: Iterable[Progression]) -> None:
-        multiply_resources(progressions, [ActionResource.KI_POINTS], 4)
-
-    def make_progression(self, character_class: CharacterClass, level: int) -> Progression:
-        assert character_class == CharacterClass.MONK_SHADOW
-        return Progression(
-            Name=str(character_class),
-            Level=level,
-            ProgressionType=1,
-            TableUUID="6e1a1046-1202-410b-9d80-91c819a8bcca",
-            UUID=self.make_uuid(f"Way of the Tempest Monk Level {level}")
-        )
+    def _increase_ki_points(self, progression: Progression):
+        if progression.Boosts:
+            progression.Boosts = update_action_resources(progression.Boosts or [],
+                                                         [ActionResource.KI_POINTS],
+                                                         lambda _1, count, _2: count * 4)
 
 
 def main():

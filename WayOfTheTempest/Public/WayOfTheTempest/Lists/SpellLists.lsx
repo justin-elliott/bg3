@@ -8,7 +8,7 @@
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Monk level 1" />
                     <attribute id="Spells" type="LSString" value="WayOfTheTempest_Bolster" />
-                    <attribute id="UUID" type="guid" value="0533fea9-477e-22ea-e718-cad0aa4ae606" />
+                    <attribute id="UUID" type="guid" value="345a5fac-b4c9-1805-939f-9fba81496e00" />
                 </node>
             </children>
         </node>

@@ -96,6 +96,23 @@ class CharacterClass(StrEnum):
     MULTICLASS_SPELL_SLOTS = "MulticlassSpellSlots"
 
 
+BASE_CHARACTER_CLASSES: Final = frozenset([
+    CharacterClass.BARBARIAN,
+    CharacterClass.BARD,
+    CharacterClass.CLERIC,
+    CharacterClass.DRUID,
+    CharacterClass.FIGHTER,
+    CharacterClass.MONK,
+    CharacterClass.PALADIN,
+    CharacterClass.RANGER,
+    CharacterClass.ROGUE,
+    CharacterClass.SORCERER,
+    CharacterClass.WARLOCK,
+    CharacterClass.WIZARD,
+    CharacterClass.MULTICLASS_SPELL_SLOTS,
+])
+
+
 class CharacterSubclasses:
     """Sets of character class and subclasses by primary class."""
     BARBARIAN: Final = frozenset([

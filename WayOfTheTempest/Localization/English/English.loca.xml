@@ -10,6 +10,4 @@
     <content contentuid="hcf8bb20bg273aged63g1dbfg7fe779dbe326" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hdf28892cgbdaeg7745gbda3gd6a7a6739594" version="1">Tempestuous Flight</content>
     <content contentuid="h75c45907g6d3cg6b34g8eddgee6deda4e232" version="1">Call on the winds to fly you to your destination.</content>
-    <content contentuid="hd81dbe44g28bdg4a90geabfgfdd61850b3be" version="1">Way of the Tempest</content>
-    <content contentuid="h5098d128gefa4gc49age254g72fbd5184474" version="1">You channel your ki into electrifying strikes and thunderous blows, leaving foes trembling in the wake of your martial maelstrom.</content>
 </contentList>

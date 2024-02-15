@@ -228,6 +228,7 @@
                     <attribute id="Name" type="LSString" value="StormSorcery" />
                     <attribute id="PassivesAdded" type="LSString" value="TempestuousMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(ebff5998-d0e4-869d-8f56-df2ac4ae6f71,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
                     <attribute id="UUID" type="guid" value="6a973653-70d4-46dc-a634-315b47ef336e" />
                 </node>

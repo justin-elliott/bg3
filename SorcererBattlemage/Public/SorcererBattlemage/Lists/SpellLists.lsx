@@ -40,6 +40,11 @@
                     <attribute id="Spells" type="LSString" value="SorcererBattlemage_Bolster" />
                     <attribute id="UUID" type="guid" value="472da26c-1e36-25a0-5ce6-6b4ecad875dc" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="SorcererBattlemage level 1 Storm Sorcery spells" />
+                    <attribute id="Spells" type="LSString" value="SorcererBattlemage_StormBolt" />
+                    <attribute id="UUID" type="guid" value="ebff5998-d0e4-869d-8f56-df2ac4ae6f71" />
+                </node>
             </children>
         </node>
     </region>

@@ -78,6 +78,16 @@ class SorcererBattlemage(Replacer):
         ))
         return spell_list
 
+    @cached_property
+    def _level_1_storm_sorcery_spell_list(self) -> str:
+        spell_list = str(self.make_uuid("level_1_storm_sorcery_spell_list"))
+        self.mod.add(SpellList(
+            Comment="SorcererBattlemage level 1 Storm Sorcery spells",
+            Spells=[self._storm_bolt],
+            UUID=spell_list,
+        ))
+        return spell_list
+
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -155,6 +165,12 @@ class SorcererBattlemage(Replacer):
         ]
         progression.Selectors += [
             f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)"
+        ]
+
+    @progression(CharacterClass.SORCERER_STORM, 1)
+    def level_1_storm_sorcery(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._level_1_storm_sorcery_spell_list},,,,AlwaysPrepared)"
         ]
 
     @progression(CharacterClass.SORCERER, 2)

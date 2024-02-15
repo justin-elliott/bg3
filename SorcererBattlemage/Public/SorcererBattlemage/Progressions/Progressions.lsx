@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;SorcererBattlemage_BattleMagic;SculptSpells;SorcererBattlemage_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;SorcererBattlemage_BattleMagic;SorcererBattlemage_PackMule_100;SculptSpells;SorcererBattlemage_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared);SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(472da26c-1e36-25a0-5ce6-6b4ecad875dc,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />
@@ -34,7 +34,7 @@
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;SorcererBattlemage_BattleMagic;SculptSpells;SorcererBattlemage_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;SorcererBattlemage_BattleMagic;SorcererBattlemage_PackMule_100;SculptSpells;SorcererBattlemage_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(485a68b4-c678-4888-be63-4a702efbe391,4,0,SorcererCantrip,,,AlwaysPrepared);SelectSpells(92c4751f-6255-4f67-822c-a75d53830b27,2,0,SorcererSpell);AddSpells(472da26c-1e36-25a0-5ce6-6b4ecad875dc,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="e2416b02-953a-4ce8-aa8f-eb98d549d86d" />

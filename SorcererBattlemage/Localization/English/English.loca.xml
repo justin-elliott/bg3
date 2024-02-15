@@ -7,6 +7,8 @@
     <content contentuid="h0cda15a9g2604gfd19gb990g2556bebdb058" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h343d83f7g6dc9g0715g5a53gec638fed9aa2" version="1">Fast Movement</content>
     <content contentuid="h46f63dbcg437bg2627gd811g52fb44f32cc1" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h37b22663gaa3cg665agb9c4ga30ec47b5881" version="1">Pack Mule</content>
+    <content contentuid="h59587a1bgbb65g99a1gb99fgcf5938adc0f6" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="hd89be045g5765gbbf2gcb98g31ebecde7b17" version="1">Warding</content>
     <content contentuid="h923c1fcag52bcgcc17g41e8gc0e6d9645636" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="h3d6602bcg927fg57d8gbcfdgde5d00a03b75" version="1">Bolster</content>

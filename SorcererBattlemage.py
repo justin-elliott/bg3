@@ -6,13 +6,17 @@ Generates files for the "SorcererBattlemage" mod.
 import os
 
 from functools import cached_property
-from moddb.battlemagic import BattleMagic
-from moddb.bolster import Bolster
-from moddb.empoweredspells import EmpoweredSpells
-from moddb.movement import Movement
-from moddb.progression import multiply_resources, spells_always_prepared
-from moddb.stormbolt import storm_bolt
-from modtools.gamedata import PassiveData
+from moddb import (
+    BattleMagic,
+    Bolster,
+    Defense,
+    EmpoweredSpells,
+    Movement,
+    multiply_resources,
+    PackMule,
+    spells_always_prepared,
+    storm_bolt,
+)
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -21,7 +25,6 @@ from modtools.lsx.game import (
     ClassDescription,
 )
 from modtools.lsx.game import Progression, SpellList
-from modtools.mod import Mod
 from modtools.replacers import (
     class_description,
     only_existing_progressions,
@@ -31,30 +34,6 @@ from modtools.replacers import (
 )
 
 
-def warding(mod: Mod) -> str:
-    """Add the Warding passive, returning its name."""
-    name = f"{mod.get_prefix()}_Warding"
-
-    loca = mod.get_localization()
-    loca[f"{name}_DisplayName"] = {"en": "Warding"}
-    loca[f"{name}_Description"] = {"en": """
-        Your magic protects you from harm, making you resistant to all forms of damage.
-        Incoming damage is reduced by [1].
-        """}
-
-    mod.add(PassiveData(
-        name,
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        DescriptionParams=["RegainHitPoints(max(1,ClassLevel(Sorcerer)))"],
-        Icon="PassiveFeature_ArcaneWard",
-        Properties=["Highlighted"],
-        Boosts=["DamageReduction(All,Flat,ClassLevel(Sorcerer))"],
-    ))
-
-    return name
-
-
 class SorcererBattlemage(Replacer):
     _ACTION_RESOURCES = frozenset([ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS])
 
@@ -62,6 +41,7 @@ class SorcererBattlemage(Replacer):
     _battle_magic: str
     _empowered_spells: str
     _fast_movement: str
+    _pack_mule: str
     _warding: str
 
     # Spells
@@ -97,7 +77,8 @@ class SorcererBattlemage(Replacer):
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
         self._fast_movement = Movement(self.mod).add_fast_movement(3.0)
-        self._warding = warding(self.mod)
+        self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
+        self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
         self._storm_bolt = storm_bolt(self.mod)
@@ -160,6 +141,7 @@ class SorcererBattlemage(Replacer):
     def level_1_multiclass(self, progression: Progression) -> None:
         progression.PassivesAdded += [
             self._battle_magic,
+            self._pack_mule,
             "SculptSpells",
             self._warding,
         ]

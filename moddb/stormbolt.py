@@ -22,7 +22,7 @@ def storm_bolt(mod: Mod) -> None:
         SpellType="Projectile",
         Level="",
         ConcentrationSpellID="",
-        DisplayName=loca[f"{name}_Description"],
+        DisplayName=loca[f"{name}_DisplayName"],
         Description=loca[f"{name}_Description"],
         Icon="GenericIcon_DamageType_Lightning",
         SpellProperties=["GROUND:DealDamage(LevelMapValue(D10Cantrip),Lightning)"],

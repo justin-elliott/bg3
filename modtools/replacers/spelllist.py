@@ -10,7 +10,7 @@ from modtools.replacers.replacer import Replacer
 
 
 type SpellListBuilder = Callable[[Replacer, SpellList], None]
-type SpellListBuilderDict = dict[str, SpellListBuilder]
+type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
 
 _SPELL_LISTS_LSX_PATH = "Shared.pak/Public/Shared/Lists/SpellLists.lsx"
@@ -18,7 +18,7 @@ _SPELL_LISTS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Lists/SpellLists.lsx"
 
 
 def _by_comment(spell_list: SpellList) -> str:
-    return spell_list.Comment
+    return spell_list.Comment.lower()
 
 
 def _by_uuid(spell_list: SpellList) -> str:
@@ -39,9 +39,10 @@ def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuil
     builders: SpellListBuilderDict = dict()
 
     for spell_list_builder in spell_list_builders:
-        names = getattr(spell_list_builder, "spell_lists")
-        for name in names:
-            builders[name] = spell_list_builder
+        comment_or_uuids = getattr(spell_list_builder, "spell_lists")
+        for comment_or_uuid in comment_or_uuids:
+            builders_list = builders.setdefault(comment_or_uuid, [])
+            builders_list.append(spell_list_builder)
 
     return builders
 
@@ -52,8 +53,9 @@ def _update_spell_lists(replacer: Replacer,
                         updated_spell_lists: set[SpellList]):
     """Update spell lists that match our builder names."""
     for spell_list in spell_lists:
-        if builder_fn := builders.get(spell_list.UUID):
-            builder_fn(replacer, spell_list)
+        if builder_fns := builders.get(spell_list.Comment) or builders.get(spell_list.UUID):
+            for builder_fn in builder_fns:
+                builder_fn(replacer, spell_list)
             updated_spell_lists.add(spell_list)
 
 
@@ -71,12 +73,12 @@ def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListB
         replacer.mod.add(spell_list)
 
 
-def spell_list(uuid: str) -> SpellListBuilder:
+def spell_list(comment_or_uuid: str) -> SpellListBuilder:
     """A decorator mapping a spell list to its builder function."""
     def decorate(fn: SpellListBuilder) -> SpellListBuilder:
         setattr(fn, "builder", _spell_list_builder)
         spell_lists: list[str] = getattr(fn, "spell_lists", [])
-        spell_lists.append(uuid)
+        spell_lists.append(comment_or_uuid)
         setattr(fn, "spell_lists", spell_lists)
         return fn
 

@@ -27,7 +27,7 @@
                     <attribute id="Level19" type="LSString" value="47" />
                     <attribute id="Level20" type="LSString" value="50" />
                     <attribute id="Name" type="FixedString" value="SorcererBattlemage_Bolster_AidValue" />
-                    <attribute id="UUID" type="guid" value="a3ecf56d-736f-ef13-c578-c3bc20d63760" />
+                    <attribute id="UUID" type="guid" value="76c776b9-f8bc-a126-1b87-b1ca1de628de" />
                 </node>
             </children>
         </node>

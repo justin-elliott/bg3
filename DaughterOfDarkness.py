@@ -72,7 +72,7 @@ class DaughterOfDarkness(Replacer):
         origin.SubClassUUID = "89bacf1b-8f15-4972-ada7-bf59c7c78441"  # Tempest Domain
 
     @class_description(CharacterClass.CLERIC)
-    def druid_description(self, class_description: ClassDescription) -> None:
+    def cleric_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
 
     @progression(CharacterClass.CLERIC, range(1, 13))

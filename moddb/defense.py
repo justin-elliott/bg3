@@ -4,6 +4,7 @@ Defense-related functionality for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
+from modtools.lsx.game import CharacterAbility
 from modtools.gamedata import PassiveData
 from modtools.mod import Mod
 
@@ -34,6 +35,32 @@ class Defense:
             Incoming damage is reduced by [1].
             """}
         return loca[description]
+
+    def add_unarmored_defense(self, ability: CharacterAbility) -> str:
+        ability_name = ability.name.title()
+
+        name = f"{self._mod.get_prefix()}_UnarmoredDefense_{ability_name}"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Unarmored Defense"}
+        loca[f"{name}_Description"] = {"en": f"""
+            Your reflexes are as effective as any armour.
+            While not wearing armour, you add your {ability_name} <LSTag Tooltip="AbilityModifier">Modifier</LSTag>
+            to your <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.
+            """}
+
+        self._mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="PassiveFeature_UnarmoredDefense",
+            Properties=["Highlighted"],
+            BoostContext=["OnEquip", "OnCreate"],
+            BoostConditions=["not WearingArmor(context.Source) and not HasShieldEquipped(context.Source)"],
+            Boosts=[f"ACOverrideFormula(10,true,Dexterity,{ability_name})"],
+        ))
+
+        return name
 
     def add_warding(self, *,
                     display_name_handle: str = None,

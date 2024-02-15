@@ -42,6 +42,7 @@ class SorcererBattlemage(Replacer):
     _empowered_spells: str
     _fast_movement: str
     _pack_mule: str
+    _unarmored_defense: str
     _warding: str
 
     # Spells
@@ -78,7 +79,10 @@ class SorcererBattlemage(Replacer):
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
         self._fast_movement = Movement(self.mod).add_fast_movement(3.0)
         self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
-        self._warding = Defense(self.mod).add_warding()
+
+        defense = Defense(self.mod)
+        self._unarmored_defense = defense.add_unarmored_defense(CharacterAbility.CHARISMA)
+        self._warding = defense.add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
         self._storm_bolt = storm_bolt(self.mod)
@@ -117,17 +121,11 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1(self, progression: Progression) -> None:
+        progression.Boosts.append("Proficiency(SimpleWeapons)")
+        progression.Boosts.append("Proficiency(MartialWeapons)")
         progression.Boosts.remove("Proficiency(Daggers)")
         progression.Boosts.remove("Proficiency(Quarterstaffs)")
         progression.Boosts.remove("Proficiency(LightCrossbows)")
-        progression.Boosts += [
-            "Proficiency(LightArmor)",
-            "Proficiency(MediumArmor)",
-            "Proficiency(HeavyArmor)",
-            "Proficiency(Shields)",
-            "Proficiency(SimpleWeapons)",
-            "Proficiency(MartialWeapons)",
-        ]
         selectors = [selector for selector in progression.Selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
@@ -143,6 +141,7 @@ class SorcererBattlemage(Replacer):
             self._battle_magic,
             self._pack_mule,
             "SculptSpells",
+            self._unarmored_defense,
             self._warding,
         ]
         progression.Selectors += [

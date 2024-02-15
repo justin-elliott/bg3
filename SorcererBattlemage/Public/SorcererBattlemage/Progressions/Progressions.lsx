@@ -159,7 +159,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2;ReliableTalent" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(1270a6db-980b-4e3b-bf26-2924da61dfd5,1,2,SorcererSpell);AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />

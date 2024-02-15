@@ -204,7 +204,7 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 11)
     def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2", "ReliableTalent"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly

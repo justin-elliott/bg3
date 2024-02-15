@@ -8,3 +8,4 @@ from .classdescription import *
 from .origin import *
 from .progression import *
 from .replacer import *
+from .spelllist import *

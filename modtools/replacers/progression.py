@@ -9,7 +9,6 @@ from modtools.lsx.game import BASE_CHARACTER_CLASSES, CharacterClass, CharacterR
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression
 from modtools.replacers.replacer import Replacer
-from uuid import UUID
 
 
 class _Classification(IntEnum):
@@ -28,7 +27,7 @@ _PROGRESSIONS_LSX_PATH = "Shared.pak/Public/Shared/Progressions/Progressions.lsx
 _PROGRESSIONS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx"
 
 
-def _by_uuid(progression: Progression) -> UUID:
+def _by_uuid(progression: Progression) -> str:
     return progression.UUID
 
 
@@ -73,12 +72,12 @@ def _make_builders(progression_builders: list[ProgressionBuilder]) -> Progressio
 def _update_progressions(replacer: Replacer,
                          progressions: list[Progression],
                          builders: ProgressionBuilderDict,
-                         tableUuid: dict[str, UUID],
+                         tableUuid: dict[str, str],
                          updated_progressions: set[Progression]):
     """Update progressions that match our builder keys."""
     for progression in progressions:
         if progression.TableUUID:  # Ignore the one entry without a TableUUID
-            tableUuid[progression.Name] = UUID(progression.TableUUID)
+            tableUuid[progression.Name] = progression.TableUUID
             progression_key = (progression.Name, progression.Level, progression.IsMulticlass or False)
             if builder_fns := builders.get(progression_key):
                 for builder_fn in builder_fns:
@@ -89,7 +88,7 @@ def _update_progressions(replacer: Replacer,
 
 def _create_progressions(replacer: Replacer,
                          builders: ProgressionBuilderDict,
-                         tableUuid: dict[str, UUID],
+                         tableUuid: dict[str, str],
                          updated_progressions: set[Progression]):
     """Create and build progressions for builders that did not match existing progressions."""
     for progression_key, builder_fns in builders.items():
@@ -119,7 +118,7 @@ def _create_progressions(replacer: Replacer,
 def _progression_builder(replacer: Replacer, progression_builders: list[ProgressionBuilder]) -> None:
     """Update and/or extend an existing character progression."""
     builders = _make_builders(progression_builders)
-    tableUuid: dict[str, UUID] = dict()
+    tableUuid: dict[str, str] = dict()
 
     progressions = _load_progressions(replacer)
     updated_progressions: set[Progression] = set()

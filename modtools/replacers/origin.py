@@ -7,7 +7,6 @@ from collections.abc import Callable
 from modtools.lsx import Lsx
 from modtools.lsx.game import Origin
 from modtools.replacers.replacer import Replacer
-from uuid import UUID
 
 
 type OriginBuilder = Callable[[Replacer, Origin], None]
@@ -22,7 +21,7 @@ def _by_name(origin: Origin) -> str:
     return origin.Name
 
 
-def _by_uuid(origin: Origin) -> UUID:
+def _by_uuid(origin: Origin) -> str:
     return origin.UUID
 
 

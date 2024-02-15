@@ -8,7 +8,6 @@ from modtools.lsx.game import CharacterClass
 from modtools.lsx import Lsx
 from modtools.lsx.game import ClassDescription
 from modtools.replacers.replacer import Replacer
-from uuid import UUID
 
 
 type ClassDescriptionBuilder = Callable[[Replacer, ClassDescription], None]
@@ -23,7 +22,7 @@ def _by_name(class_description: ClassDescription) -> str:
     return class_description.Name
 
 
-def _by_uuid(class_description: ClassDescription) -> UUID:
+def _by_uuid(class_description: ClassDescription) -> str:
     return class_description.UUID
 
 

@@ -170,7 +170,7 @@
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(0c7db60b-f360-eed4-dbb4-6ef34bdeade6,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="df047bb5-2337-4e0b-b50b-78d5b84fc6c4" />
                 </node>

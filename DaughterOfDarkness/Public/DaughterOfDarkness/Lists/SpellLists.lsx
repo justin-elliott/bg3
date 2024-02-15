@@ -6,24 +6,9 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Cleric cantrips (Wisdom)" />
-                    <attribute id="Spells" type="LSString" value="Shout_Thaumaturgy;Target_SacredFlame;Target_Guidance;Target_Resistance;Target_Light;Shout_BladeWard;Shout_ProduceFlame;DaughterOfDarkness_StormBolt" />
-                    <attribute id="UUID" type="guid" value="2f43a103-5bf1-4534-b14f-663decc0c525" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 5" />
-                    <attribute id="Spells" type="LSString" value="Target_CallLightning;Target_SleetStorm;Target_Counterspell" />
-                    <attribute id="UUID" type="guid" value="4bac4d53-69e6-4f7d-b935-cd38ca8c938d" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Shadowheart Spells before Recruitment" />
-                    <attribute id="Spells" type="LSString" value="Projectile_GuidingBolt;Target_InflictWounds;Target_HealingWord;DaughterOfDarkness_StormBolt" />
-                    <attribute id="UUID" type="guid" value="d79abd89-c5f1-4013-81af-93a103c49426" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 5" />
-                    <attribute id="Spells" type="LSString" value="Target_Counterspell" />
-                    <attribute id="UUID" type="guid" value="0c7db60b-f360-eed4-dbb4-6ef34bdeade6" />
+                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 1" />
+                    <attribute id="Spells" type="LSString" value="Zone_Thunderwave;Target_FogCloud;DaughterOfDarkness_StormBolt" />
+                    <attribute id="UUID" type="guid" value="0888d55d-6382-4149-9b62-90a9579b0ec4" />
                 </node>
             </children>
         </node>

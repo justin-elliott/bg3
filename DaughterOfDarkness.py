@@ -5,7 +5,6 @@ Generates files for the "DaughterOfDarkness" mod.
 
 import os
 
-from functools import cached_property
 from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
@@ -38,16 +37,6 @@ class DaughterOfDarkness(Replacer):
     # Spells
     _storm_bolt: str
 
-    @cached_property
-    def _level_5_spelllist(self) -> str:
-        spelllist = str(self.make_uuid("level_5_spelllist"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Tempest Domain Cleric level 5",
-            Spells=["Target_Counterspell"],
-            UUID=spelllist,
-        ))
-        return spelllist
-
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -70,17 +59,8 @@ class DaughterOfDarkness(Replacer):
     def cleric_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
 
-    @spell_list("Cleric cantrips (Wisdom)")
-    def cantrips(self, spell_list: SpellList) -> None:
-        spell_list.Spells.append(self._storm_bolt)
-
-    @spell_list("Cleric Tempest Domain 5")
-    def level_5_spell_list(self, spell_list: SpellList) -> None:
-        spell_list.Spells.append("Target_Counterspell")
-
-    @spell_list("Shadowheart Spells before Recruitment")
-    def shadowheart_spells(self, spell_list: SpellList) -> None:
-        spell_list.Spells.remove("Target_SacredFlame")
+    @spell_list("Cleric Tempest Domain 1")
+    def level_1_tempest_spell_list(self, spell_list: SpellList) -> None:
         spell_list.Spells.append(self._storm_bolt)
 
     @progression(CharacterClass.CLERIC, range(1, 13))
@@ -99,9 +79,6 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TEMPEST, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack"]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)",
-        ]
 
     @progression(CharacterClass.CLERIC_TEMPEST, 7)
     def level_7(self, progression: Progression) -> None:

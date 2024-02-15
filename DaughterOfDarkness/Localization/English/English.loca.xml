@@ -7,5 +7,6 @@
     <content contentuid="he5f83b48geaa6gea30g51d0g996d4c76c194" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h7eebffd9g0846g206fg6751ge34f5475acc0" version="1">Fast Movement</content>
     <content contentuid="h734eb3ddg5dc8gddfeg3729g6a3312605eae" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
-    <content contentuid="hfc47d9feg4bdag5ae2g9f87g7043e7965326" version="1">Project a bolt of lightning.</content>
+    <content contentuid="h28b2fae0gf6a7gb143g1a0fg5611bae166ac" version="1">Storm Bolt</content>
+    <content contentuid="hffc2e11cg9904gc316geda4g5e58ba5e1907" version="1">Project a bolt of lightning.</content>
 </contentList>

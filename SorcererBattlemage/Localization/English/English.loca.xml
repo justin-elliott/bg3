@@ -12,5 +12,6 @@
     <content contentuid="h3d6602bcg927fg57d8gbcfdgde5d00a03b75" version="1">Bolster</content>
     <content contentuid="h94fdf31cg6280gf09bgccbcg3d8490165fd2" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h65785112gb53cg764dg0161g8e65b7ee51d1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="h53fdd0c4g219bgc96bgcfa3g791ecc1781e0" version="1">Project a bolt of lightning.</content>
+    <content contentuid="h30c0418egff5eg6ba3g57afg7fa0426dbefb" version="1">Storm Bolt</content>
+    <content contentuid="h55410927g9a9fgc4d7gfa1egf5a580843cf3" version="1">Project a bolt of lightning.</content>
 </contentList>

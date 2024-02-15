@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Convert Witch Bolt into a cantrip.
+Add the Storm Bolt cantrip.
 """
 
 
@@ -8,19 +8,23 @@ from modtools.gamedata import SpellData
 from modtools.mod import Mod
 
 
-def witch_bolt_to_cantrip(mod: Mod) -> None:
-    """Replace the existing Witch Bolt spell with a cantrip."""
+def storm_bolt(mod: Mod) -> None:
+    """Add the Storm Bolt cantrip, returning its name."""
+    name = f"{mod.get_prefix()}_StormBolt"
 
     loca = mod.get_localization()
-    loca["Projectile_WitchBolt_Description"] = {"en": "Project a bolt of lightning."}
+    loca[f"{name}_DisplayName"] = {"en": "Storm Bolt"}
+    loca[f"{name}_Description"] = {"en": "Project a bolt of lightning."}
 
     mod.add(SpellData(
-        "Projectile_WitchBolt",
+        name,
         using="Projectile_WitchBolt",
         SpellType="Projectile",
         Level="",
         ConcentrationSpellID="",
-        Description=loca["Projectile_WitchBolt_Description"],
+        DisplayName=loca[f"{name}_Description"],
+        Description=loca[f"{name}_Description"],
+        Icon="GenericIcon_DamageType_Lightning",
         SpellProperties=["GROUND:DealDamage(LevelMapValue(D10Cantrip),Lightning)"],
         SpellSuccess=["DealDamage(LevelMapValue(D10Cantrip),Lightning,Magical)"],
         TooltipDamageList=["DealDamage(LevelMapValue(D10Cantrip),Lightning)"],
@@ -38,6 +42,4 @@ def witch_bolt_to_cantrip(mod: Mod) -> None:
         UseCosts="ActionPoint:1",
     ))
 
-    # Replace upcast spells with no-ops
-    for level in range(2, 7):
-        mod.add(SpellData(f"Projectile_WitchBolt_{level}", SpellType="Projectile"))
+    return name

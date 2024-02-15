@@ -6,9 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 1" />
-                    <attribute id="Spells" type="LSString" value="Projectile_WitchBolt" />
-                    <attribute id="UUID" type="guid" value="f713f052-76ff-5aae-4505-5261d500371f" />
+                    <attribute id="Comment" type="LSString" value="Cleric cantrips (Wisdom)" />
+                    <attribute id="Spells" type="LSString" value="Shout_Thaumaturgy;Target_SacredFlame;Target_Guidance;Target_Resistance;Target_Light;Shout_BladeWard;Shout_ProduceFlame;DaughterOfDarkness_StormBolt" />
+                    <attribute id="UUID" type="guid" value="2f43a103-5bf1-4534-b14f-663decc0c525" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 5" />
+                    <attribute id="Spells" type="LSString" value="Target_CallLightning;Target_SleetStorm;Target_Counterspell" />
+                    <attribute id="UUID" type="guid" value="4bac4d53-69e6-4f7d-b935-cd38ca8c938d" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 5" />

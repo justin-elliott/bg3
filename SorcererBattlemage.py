@@ -11,7 +11,7 @@ from moddb.bolster import Bolster
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import multiply_resources, spells_always_prepared
-from moddb.witchbolt import witch_bolt_to_cantrip
+from moddb.stormbolt import storm_bolt
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     ActionResource,
@@ -66,6 +66,7 @@ class SorcererBattlemage(Replacer):
 
     # Spells
     _bolster: str
+    _storm_bolt: str
 
     @cached_property
     def _level_1_spell_list(self) -> str:
@@ -89,7 +90,7 @@ class SorcererBattlemage(Replacer):
         self._warding = warding(self.mod)
 
         self._bolster = Bolster(self.mod).add_bolster()
-        witch_bolt_to_cantrip(self.mod)
+        self._storm_bolt = storm_bolt(self.mod)
 
     @class_description(CharacterClass.SORCERER)
     def sorcerer_description(self, class_description: ClassDescription) -> None:
@@ -103,23 +104,14 @@ class SorcererBattlemage(Replacer):
 
     @spell_list("Sorcerer cantrips")
     def cantrips(self, spell_list: SpellList) -> None:
-        spell_list.Spells += ["Target_Guidance", "Projectile_WitchBolt"]
-
-    @spell_list("Sorcerer SLevel 1 expanded")
-    @spell_list("Sorcerer SLevel 2 expanded")
-    @spell_list("Sorcerer SLevel 3")
-    @spell_list("Sorcerer SLevel 4")
-    @spell_list("Sorcerer SLevel 5")
-    @spell_list("Sorcerer SLevel 6")
-    def spells_without_witch_bolt(self, spell_list: SpellList) -> None:
-        spell_list.Spells.remove("Projectile_WitchBolt")
+        spell_list.Spells += ["Target_Guidance", self._storm_bolt]
 
     @spell_list("Sorcerer SLevel 2 expanded")
     @spell_list("Sorcerer SLevel 3")
     @spell_list("Sorcerer SLevel 4")
     @spell_list("Sorcerer SLevel 5")
     @spell_list("Sorcerer SLevel 6")
-    def spells_with_enhance_ability(self, spell_list: SpellList) -> None:
+    def spell_lists_with_enhance_ability(self, spell_list: SpellList) -> None:
         spell_list.Spells.append("Target_EnhanceAbility")
 
     @progression(CharacterSubclasses.SORCERER, range(1, 13))

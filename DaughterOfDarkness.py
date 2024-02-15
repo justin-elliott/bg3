@@ -10,7 +10,7 @@ from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
 from moddb.progression import multiply_resources
-from moddb.witchbolt import witch_bolt_to_cantrip
+from moddb.stormbolt import storm_bolt
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -25,23 +25,18 @@ from modtools.replacers import (
     origin,
     progression,
     Replacer,
+    spell_list,
 )
 
 
 class DaughterOfDarkness(Replacer):
+    # Passives
     _battle_magic: str
     _empowered_spells: str
     _fast_movement: str
 
-    @cached_property
-    def _level_1_spelllist(self) -> str:
-        spelllist = str(self.make_uuid("level_1_spelllist"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Tempest Domain Cleric level 1",
-            Spells=["Projectile_WitchBolt"],
-            UUID=spelllist,
-        ))
-        return spelllist
+    # Spells
+    _storm_bolt: str
 
     @cached_property
     def _level_5_spelllist(self) -> str:
@@ -65,7 +60,7 @@ class DaughterOfDarkness(Replacer):
         self._fast_movement = Movement(self.mod).add_fast_movement(3.0)
 
         # Spells
-        witch_bolt_to_cantrip(self.mod)
+        self._storm_bolt = storm_bolt(self.mod)
 
     @origin("Shadowheart")
     def shadowheart(self, origin: Origin) -> None:
@@ -75,6 +70,14 @@ class DaughterOfDarkness(Replacer):
     def cleric_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
 
+    @spell_list("Cleric cantrips (Wisdom)")
+    def cantrips(self, spell_list: SpellList) -> None:
+        spell_list.Spells.append(self._storm_bolt)
+
+    @spell_list("Cleric Tempest Domain 5")
+    def level_5_spell_list(self, spell_list: SpellList) -> None:
+        spell_list.Spells.append("Target_Counterspell")
+
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if (progression.Level % 2) == 0 else None
@@ -83,9 +86,6 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TEMPEST, 1)
     def level_1(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._battle_magic, "SculptSpells"]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",
-        ]
 
     @progression(CharacterClass.CLERIC_TEMPEST, 3)
     def level_3(self, progression: Progression) -> None:

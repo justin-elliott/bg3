@@ -152,7 +152,7 @@
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WrathOfTheStorm;DaughterOfDarkness_BattleMagic;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(f713f052-76ff-5aae-4505-5261d500371f,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
                 </node>

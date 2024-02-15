@@ -78,6 +78,11 @@ class DaughterOfDarkness(Replacer):
     def level_5_spell_list(self, spell_list: SpellList) -> None:
         spell_list.Spells.append("Target_Counterspell")
 
+    @spell_list("Shadowheart Spells before Recruitment")
+    def shadowheart_spells(self, spell_list: SpellList) -> None:
+        spell_list.Spells.remove("Target_SacredFlame")
+        spell_list.Spells.append(self._storm_bolt)
+
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if (progression.Level % 2) == 0 else None

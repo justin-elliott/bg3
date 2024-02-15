@@ -16,6 +16,11 @@
                     <attribute id="UUID" type="guid" value="4bac4d53-69e6-4f7d-b935-cd38ca8c938d" />
                 </node>
                 <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Shadowheart Spells before Recruitment" />
+                    <attribute id="Spells" type="LSString" value="Projectile_GuidingBolt;Target_InflictWounds;Target_HealingWord;DaughterOfDarkness_StormBolt" />
+                    <attribute id="UUID" type="guid" value="d79abd89-c5f1-4013-81af-93a103c49426" />
+                </node>
+                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Tempest Domain Cleric level 5" />
                     <attribute id="Spells" type="LSString" value="Target_Counterspell" />
                     <attribute id="UUID" type="guid" value="0c7db60b-f360-eed4-dbb4-6ef34bdeade6" />

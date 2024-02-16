@@ -91,9 +91,19 @@ class DaughterOfDarkness(Replacer):
     def level_1(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._battle_magic, "SculptSpells"]
 
+    @progression(CharacterClass.CLERIC_TEMPEST, 2)
+    def level_2(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
+        ]
+
     @progression(CharacterClass.CLERIC_TEMPEST, 3)
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._fast_movement]
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+        ]
 
     @progression(CharacterClass.CLERIC_TEMPEST, 5)
     def level_5(self, progression: Progression) -> None:

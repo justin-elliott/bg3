@@ -162,11 +162,20 @@
                     <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="2" />
+                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DestructiveWrath" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)" />
+                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
+                    <attribute id="UUID" type="guid" value="31ea2386-5ade-467d-9be4-33ce599ccec2" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="TempestDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(a05bd5e7-c815-4db7-9a21-66dc08d03e44,ClericTempestDomainSpells,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(a05bd5e7-c815-4db7-9a21-66dc08d03e44,ClericTempestDomainSpells,,,AlwaysPrepared);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="9328822b-9140-401d-9273-cb1a4998c068" />
                 </node>

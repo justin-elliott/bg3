@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,1);ProficiencyBonus(SavingThrow,Wisdom);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(Morningstars);Proficiency(Flails)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Wisdom);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(Morningstars);Proficiency(Flails)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="DomainSpells;UnlockedSpellSlotLevel1" />
@@ -44,7 +44,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ActionResource(ChannelDivinity,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -53,8 +53,7 @@
                     <attribute id="UUID" type="guid" value="ef18265f-dda6-4eb6-8dd0-b14c57202c33" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ActionResource(SpellSlot,8,2)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
@@ -65,7 +64,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,2)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -74,8 +73,7 @@
                     <attribute id="UUID" type="guid" value="051cd419-b843-4996-807e-d0ac78084ef0" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,3)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="DestroyUndead;UnlockedSpellSlotLevel3" />
@@ -86,7 +84,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3);ActionResource(ChannelDivinity,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -94,8 +92,7 @@
                     <attribute id="UUID" type="guid" value="1ba0c22a-2655-4f3c-8bf8-f3314587ccaa" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,4)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -105,7 +102,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,4)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -113,8 +110,7 @@
                     <attribute id="UUID" type="guid" value="4cfd9e91-38ef-4b24-8a2a-9b736be91cf8" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,4);ActionResource(SpellSlot,4,5)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -124,7 +120,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,5)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="DivineIntervention" />
@@ -134,8 +130,7 @@
                     <attribute id="UUID" type="guid" value="0266b6b2-72d9-4319-84ae-afcdfc67b32b" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,6)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />

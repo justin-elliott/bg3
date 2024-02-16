@@ -127,12 +127,12 @@ class DaughterOfDarkness(Replacer):
 
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Shadowheart, and Tempest Domain Clerics.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
-                        help="Feat progression every n levels (defaulting to 1; feat every level)")
-    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=4,
-                        help="Spell slot multiplier (defaulting to 4; quadruple spell slots)")
-    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=4,
-                        help="Action resource (Channel Divinity) multiplier (defaulting to 4; quadruple charges)")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
+                        help="Feat progression every n levels (defaulting to 2; feat every other level)")
+    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
+                        help="Spell slot multiplier (defaulting to 2; double spell slots)")
+    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
+                        help="Action resource (Channel Divinity) multiplier (defaulting to 2; double charges)")
     args = DaughterOfDarkness.Args(**vars(parser.parse_args()))
 
     daughter_of_darkness = DaughterOfDarkness(args)

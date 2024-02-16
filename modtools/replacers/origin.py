@@ -51,10 +51,16 @@ def _update_origins(replacer: Replacer,
                     builders: OriginBuilderDict,
                     updated_origins: set[Origin]):
     """Update origins that match our builder names."""
+    unused_origins = set(builders.keys())
+
     for origin in origins:
         if builder_fn := builders.get(origin.Name):
             builder_fn(replacer, origin)
+            unused_origins.remove(origin.Name)
             updated_origins.add(origin)
+
+    if len(unused_origins) > 0:
+        raise KeyError(f"Unmatched origin(s): {", ".join(sorted(unused_origins))}")
 
 
 def _origin_builder(replacer: Replacer, origin_builders: list[OriginBuilder]) -> None:

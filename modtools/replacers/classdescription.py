@@ -61,7 +61,7 @@ def _update_class_descriptions(replacer: Replacer,
             updated_class_descriptions.add(class_description)
 
     if len(unused_builders) > 0:
-        raise KeyError(f"Unmatched class_description: {", ".join(sorted(unused_builders))}")
+        raise KeyError(f"Unmatched class_description(s): {", ".join(sorted(unused_builders))}")
 
 
 def _class_description_builder(replacer: Replacer, class_description_builders: list[ClassDescriptionBuilder]) -> None:

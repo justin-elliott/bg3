@@ -7,6 +7,7 @@ from collections.abc import Callable
 from modtools.lsx import Lsx
 from modtools.lsx.game import SpellList
 from modtools.replacers.replacer import Replacer
+from uuid import UUID
 
 
 type SpellListBuilder = Callable[[Replacer, SpellList], None]
@@ -75,6 +76,9 @@ def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListB
 
 def spell_list(comment_or_uuid: str) -> SpellListBuilder:
     """A decorator mapping a spell list to its builder function."""
+    if isinstance(comment_or_uuid, UUID):
+        comment_or_uuid = str(comment_or_uuid)
+
     def decorate(fn: SpellListBuilder) -> SpellListBuilder:
         setattr(fn, "builder", _spell_list_builder)
         spell_lists: list[str] = getattr(fn, "spell_lists", [])

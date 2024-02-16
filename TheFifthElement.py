@@ -3,34 +3,46 @@
 Generates files for the "TheFifthElement" mod.
 """
 
+import argparse
 import os
 
+from dataclasses import dataclass
 from functools import cached_property
-from moddb.bolster import Bolster
-from moddb.movement import Movement
-from moddb.pack_mule import PackMule
-from moddb.progression import multiply_resources
+from moddb import (
+    BattleMagic,
+    Bolster,
+    Defense,
+    EmpoweredSpells,
+    PackMule,
+    multiply_resources,
+    storm_bolt,
+)
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     ActionResource,
+    CharacterAbility,
     CharacterClass,
-    CharacterSubclasses,
     ClassDescription,
 )
 from modtools.lsx.game import Progression, SpellList
 from modtools.mod import Mod
-from modtools.replacers import class_description, progression, Replacer
-from typing import Iterable
+from modtools.replacers import (
+    class_description,
+    progression,
+    Replacer,
+    spell_list,
+)
+from uuid import UUID
 
 
-def manifestation_of_will(mod: Mod) -> str:
-    """Add the Manifestion of Will passive, returning its name."""
-    name = f"{mod.get_prefix()}_ManifestationOfWill"
+def arcane_manifestation(mod: Mod) -> str:
+    """Add the Arcane Manifestation passive, returning its name."""
+    name = f"{mod.get_prefix()}_ArcaneManifestation"
 
     loca = mod.get_localization()
-    loca[f"{name}_DisplayName"] = {"en": "Manifestation of Will"}
+    loca[f"{name}_DisplayName"] = {"en": "Arcane Manifestation"}
     loca[f"{name}_Description"] = {"en": """
-        Your strength of will infuses your strikes with ki. Your unarmed attacks deal an additional [1].
+        Arcane energy infuses your strikes. Your unarmed attacks deal an additional [1].
         """}
 
     mod.add(PassiveData(
@@ -49,38 +61,40 @@ def manifestation_of_will(mod: Mod) -> str:
     return name
 
 
-def tempered_body(mod: Mod) -> str:
-    """Add the Tempered Body passive, returning its name."""
-    name = f"{mod.get_prefix()}_TemperedBody"
-
-    loca = mod.get_localization()
-    loca[f"{name}_DisplayName"] = {"en": "Tempered Body"}
-    loca[f"{name}_Description"] = {"en": """
-        Through training, you have gained resistance to all forms of damage. Incoming damage is reduced by [1].
-        """}
-
-    mod.add(PassiveData(
-        name,
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        DescriptionParams=["RegainHitPoints(max(1,ClassLevel(Monk)))"],
-        Icon="PassiveFeature_Durable",
-        Properties=["Highlighted"],
-        Boosts=["DamageReduction(All,Flat,ClassLevel(Monk))"],
-    ))
-
-    return name
-
-
 class TheFifthElement(Replacer):
-    _bolster: str
-    _manifestation_of_will: str
-    _misty_step: str
+    @dataclass
+    class Args:
+        feats: int    # Feats every n levels
+        spells: int   # Multiplier for spell slots
+        actions: int  # Multiplier for other action resources (Channel Divinity charges)
+
+    WIZARD_CANTRIP_SPELL_LIST = UUID("3cae2e56-9871-4cef-bba6-96845ea765fa")
+    WIZARD_LEVEL_1_SPELL_LIST = UUID("11f331b0-e8b7-473b-9d1f-19e8e4178d7d")
+    WIZARD_LEVEL_2_SPELL_LIST = UUID("80c6b070-c3a6-4864-84ca-e78626784eb4")
+    WIZARD_LEVEL_3_SPELL_LIST = UUID("22755771-ca11-49f4-b772-13d8b8fecd93")
+    WIZARD_LEVEL_4_SPELL_LIST = UUID("820b1220-0385-426d-ae15-458dc8a6f5c0")
+    WIZARD_LEVEL_5_SPELL_LIST = UUID("f781a25e-d288-43b4-bf5d-3d8d98846687")
+    WIZARD_LEVEL_6_SPELL_LIST = UUID("bc917f22-7f71-4a25-9a77-7d2f91a96a65")
+
+    WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
+    FLY_SPELL_LIST = UUID("12150e11-267a-4ecc-a3cc-292c9e2a198d")
+
+    _args: Args
+    _feat_levels: set[int]
+
+    # Passives
+    _battle_magic: str
+    _empowered_spells: str
+    _arcane_manifestation: str
     _pack_mule: str
-    _tempered_body: str
+    _warding: str
+
+    # spells
+    _bolster: str
+    _storm_bolt: str
 
     @cached_property
-    def _level_1_spelllist(self) -> str:
+    def _level_1_spell_list(self) -> str:
         spelllist = str(self.make_uuid("level_1_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Monk level 1",
@@ -90,38 +104,63 @@ class TheFifthElement(Replacer):
         return spelllist
 
     @cached_property
-    def _level_5_spelllist(self) -> str:
+    def _level_5_spell_list(self) -> str:
         spelllist = str(self.make_uuid("level_5_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Monk level 5",
-            Spells=[self._misty_step],
+            Spells=["Target_Counterspell"],
             UUID=spelllist,
         ))
         return spelllist
 
-    def __init__(self):
+    def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="TheFifthElement",
-                         description="Upgrades the Way of the Four Elements Monk subclass.")
+                         description="Upgrades the Way of Shadow Monk subclass.")
 
-        # Passives and skills
-        self._bolster = Bolster(self.mod).add_bolster()
-        self._manifestation_of_will = manifestation_of_will(self.mod)
-        self._misty_step = Movement(self.mod).add_misty_step()
+        self._args = args
+        self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
+
+        self._battle_magic = BattleMagic(self.mod).add_battle_magic()
+        self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
+        self._arcane_manifestation = arcane_manifestation(self.mod)
         self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
-        self._tempered_body = tempered_body(self.mod)
+        self._warding = Defense(self.mod).add_warding()
+
+        self._bolster = Bolster(self.mod).add_bolster()
+        self._storm_bolt = storm_bolt(self.mod)
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:
         class_description.BaseHp = 10
         class_description.HpPerLevel = 6
 
-    @progression(CharacterClass.MONK, 1)
-    def level_1(self, progression: Progression) -> None:
-        # Add common features
-        self.level_1_multiclass(progression)
+        class_description.CanLearnSpells = True
+        class_description.MulticlassSpellcasterModifier = 1.0
+        class_description.MustPrepareSpells = True
 
+        class_description.children.append(ClassDescription.Tags(
+            Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
+        ))
+
+    @class_description(CharacterClass.MONK_SHADOW)
+    def monk_shadow_description(self, class_description: ClassDescription) -> None:
+        loca = self.mod.get_localization()
+        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Way of the Arcane"}
+        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
+            You seek mastery over mind and body. Your Ki connects you to the Weave.
+            """}
+
+        class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
+        class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
+
+    @spell_list(WIZARD_CANTRIP_SPELL_LIST)
+    def wizard_cantrip_spell_list(self, spell_list: SpellList) -> None:
+        spell_list.Spells.append(self._storm_bolt)
+
+    @progression(CharacterClass.MONK, 1)
+    def level_1_monk(self, progression: Progression) -> None:
         selectors = progression.Selectors or []
         selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
@@ -130,94 +169,122 @@ class TheFifthElement(Replacer):
         ])
         progression.Selectors = selectors
 
+    @progression(CharacterClass.MONK, 1)
     @progression(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_multiclass(self, progression: Progression) -> None:
-        selectors = progression.Selectors or []
-        selectors.append(f"AddSpells({self._level_1_spelllist})")
-        progression.Selectors = selectors
-        multiply_resources(progression, [ActionResource.KI_POINTS], 3)
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)"
+        ]
 
     @progression(CharacterClass.MONK, range(2, 13))
-    def level_2_to_12_monk(self, progression: Progression) -> None:
-        progression.AllowImprovement = True
-        multiply_resources(progression, [ActionResource.KI_POINTS], 3)
+    def level_1_to_12_monk(self, progression: Progression) -> None:
+        progression.AllowImprovement = True if progression.Level in self._feat_levels else None
+        multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 3)
+    @progression(CharacterClass.MONK_SHADOW, 3)
     def level_3(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "Blindsight", "SuperiorDarkvision", self._pack_mule, self._tempered_body]
+        progression.Boosts = [
+            f"ActionResource(SpellSlot,{4 * self._args.spells},1)"
+            f"ActionResource(SpellSlot,{2 * self._args.spells},2)"
+        ]
+        progression.PassivesAdded = [
+            "UnlockedSpellSlotLevel1",
+            "UnlockedSpellSlotLevel2",
+            "Blindsight",
+            "SuperiorDarkvision",
+            self._battle_magic,
+            self._pack_mule,
+            self._warding
+        ]
+        progression.Selectors = [
+            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},3,0)",
+        ]
 
-        selectors = self._exclude_select_spells(progression)
-        selectors.extend([
-            "AddSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c)",  # All level 3 spells
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-        ])
-        progression.Selectors = selectors
-
-    @progression(CharacterClass.MONK_FOURELEMENTS, 4)
+    @progression(CharacterClass.MONK_SHADOW, 4)
     def level_4(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
-        progression.Selectors = self._exclude_select_spells(progression)
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},2)"]
+        progression.PassivesAdded = ["JackOfAllTrades"]
+        progression.Selectors = [
+            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
+            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},3,0)",
+        ]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 5)
+    @progression(CharacterClass.MONK_SHADOW, 5)
     def level_5(self, progression: Progression) -> None:
-        selectors = self._exclude_select_spells(progression)
-        selectors.append(f"AddSpells({self._level_5_spelllist})")
-        progression.Selectors = selectors
+        progression.Boosts = [f"ActionResource(SpellSlot,{2 * self._args.spells},3)"]
+        progression.PassivesAdded = ["UnlockedSpellSlotLevel3"]
+        progression.Selectors = [
+            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},3,0)",
+        ]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 6)
+    @progression(CharacterClass.MONK_SHADOW, 6)
     def level_6(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [self._manifestation_of_will]
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},3)"]
+        progression.PassivesAdded = [self._arcane_manifestation]
+        progression.Selectors = [
+            f"AddSpells({self.WHOLENESS_OF_BODY_SPELL_LIST})",
+            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},3,0)",
+        ]
 
-        selectors = self._exclude_select_spells(progression)
-        selectors.append("AddSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4)")  # All level 6 spells
-        selectors.append("AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5)")  # Wholeness of Body
-        progression.Selectors = selectors
-
-    @progression(CharacterClass.MONK_FOURELEMENTS, 7)
+    @progression(CharacterClass.MONK_SHADOW, 7)
     def level_7(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
-        progression.Selectors = self._exclude_select_spells(progression)
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
+        progression.PassivesAdded = ["ImprovedCritical"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},3,0)"]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 8)
+    @progression(CharacterClass.MONK_SHADOW, 8)
     def level_8(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["FastHands"]
-        progression.Selectors = self._exclude_select_spells(progression)
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
+        progression.PassivesAdded = ["FastHands"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},3,0)"]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 9)
+    @progression(CharacterClass.MONK_SHADOW, 9)
     def level_9(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
-        progression.Selectors = self._exclude_select_spells(progression)
+        progression.Boosts = [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},4)"
+            f"ActionResource(SpellSlot,{1 * self._args.spells},5)"
+        ]
+        progression.PassivesAdded = ["BrutalCritical"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},3,0)"]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 10)
+    @progression(CharacterClass.MONK_SHADOW, 10)
     def level_10(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["Indomitable"]
-        progression.Selectors = self._exclude_select_spells(progression)
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},5)"]
+        progression.PassivesAdded = [self._empowered_spells]
+        progression.Selectors = [
+            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
+            f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},3,0)",
+        ]
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 11)
+    @progression(CharacterClass.MONK_SHADOW, 11)
     def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},6)"]
+        progression.PassivesAdded = ["ExtraAttack_2"]
+        progression.PassivesRemoved = ["ExtraAttack"]
+        progression.Selectors = [
+            f"AddSpells({self.FLY_SPELL_LIST},,,,AlwaysPrepared)",
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},3,0)",
+        ]
 
-        selectors = self._exclude_select_spells(progression)
-        selectors.append("AddSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b)")  # All level 11 spells
-        progression.Selectors = selectors
-
-    @progression(CharacterClass.MONK_FOURELEMENTS, 12)
+    @progression(CharacterClass.MONK_SHADOW, 12)
     def level_12(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
-
-        selectors = self._exclude_select_spells(progression)
-        selectors.append("AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8)")  # Action Surge
-        progression.Selectors = selectors
-
-    def _exclude_select_spells(self, progression: Progression) -> list[str]:
-        return [selector for selector in progression.Selectors if not selector.startswith("SelectSpells")]
+        progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},6)"]
+        progression.PassivesAdded = ["ReliableTalent"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},3,0)"]
 
 
 def main():
-    the_fifth_element = TheFifthElement()
+    parser = argparse.ArgumentParser(description="A replacer for Way of Shadow Monks.")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
+                        help="Feat progression every n levels (defaulting to 1; feat every level)")
+    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
+                        help="Spell slot multiplier (defaulting to 2; double spell slots)")
+    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
+                        help="Action resource (Ki) multiplier (defaulting to 2; double points)")
+    args = TheFifthElement.Args(**vars(parser.parse_args()))
+
+    the_fifth_element = TheFifthElement(args)
     the_fifth_element.build()
 
 

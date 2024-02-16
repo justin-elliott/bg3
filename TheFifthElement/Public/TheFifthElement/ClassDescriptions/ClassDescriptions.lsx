@@ -36,6 +36,7 @@
                     <attribute id="Description" type="TranslatedString" handle="hd6cd668dgdabdg9af3gf9c4gd892740b6894" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hd6524234gd4a2g09a4g03e3g537b5747632c" version="1" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
+                    <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Shadow" />
                     <attribute id="ParentGuid" type="guid" value="c4598bdb-fc07-40dd-a62c-90cc138bd76f" />
                     <attribute id="PrimaryAbility" type="uint8" value="2" />

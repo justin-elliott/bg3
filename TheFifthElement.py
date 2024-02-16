@@ -155,6 +155,8 @@ class TheFifthElement(Replacer):
         class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
         class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
 
+        class_description.MustPrepareSpells = True
+
     @spell_list(WIZARD_CANTRIP_SPELL_LIST)
     def wizard_cantrip_spell_list(self, spell_list: SpellList) -> None:
         spell_list.Spells.append(self._storm_bolt)

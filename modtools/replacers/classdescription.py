@@ -52,10 +52,16 @@ def _update_class_descriptions(replacer: Replacer,
                                builders: ClassDescriptionBuilderDict,
                                updated_class_descriptions: set[ClassDescription]):
     """Update class descriptions that match our builder classes."""
+    unused_builders = set(builders.keys())
+
     for class_description in class_descriptions:
         if builder_fn := builders.get(class_description.Name):
             builder_fn(replacer, class_description)
+            unused_builders.remove(class_description.Name)
             updated_class_descriptions.add(class_description)
+
+    if len(unused_builders) > 0:
+        raise KeyError(f"Unmatched class_description: {", ".join(sorted(unused_builders))}")
 
 
 def _class_description_builder(replacer: Replacer, class_description_builders: list[ClassDescriptionBuilder]) -> None:

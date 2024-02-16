@@ -55,7 +55,7 @@ class DaughterOfDarkness(Replacer):
                          description="Changes Shadowheart to a Tempest Cleric.")
 
         self._args = args
-        self._feat_levels = set(range(max(args.feats, 2), 13, args.feats))
+        self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
 
         # Passives
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
@@ -76,6 +76,10 @@ class DaughterOfDarkness(Replacer):
     @spell_list("Cleric Tempest Domain 1")
     def level_1_tempest_spell_list(self, spell_list: SpellList) -> None:
         spell_list.Spells.append(self._storm_bolt)
+
+    @spell_list("Cleric Tempest Domain 5")
+    def level_5_tempest_spell_list(self, spell_list: SpellList) -> None:
+        spell_list.Spells.append("Target_Counterspell")
 
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
@@ -103,6 +107,12 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TEMPEST, 10)
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [self._empowered_spells]
+
+    @progression(CharacterClass.CLERIC_TEMPEST, 11)
+    def level_11(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
+        ]
 
 
 def main():

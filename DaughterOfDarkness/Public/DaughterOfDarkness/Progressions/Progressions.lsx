@@ -191,6 +191,14 @@
                     <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
                     <attribute id="UUID" type="guid" value="8b31c926-5929-e259-421f-731ce52de008" />
                 </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
+                    <attribute id="UUID" type="guid" value="7339fa2d-9167-a671-464a-858984a3e407" />
+                </node>
             </children>
         </node>
     </region>

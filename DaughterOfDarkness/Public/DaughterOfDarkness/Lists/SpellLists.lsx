@@ -10,6 +10,11 @@
                     <attribute id="Spells" type="LSString" value="Zone_Thunderwave;Target_FogCloud;DaughterOfDarkness_StormBolt" />
                     <attribute id="UUID" type="guid" value="0888d55d-6382-4149-9b62-90a9579b0ec4" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 5" />
+                    <attribute id="Spells" type="LSString" value="Target_CallLightning;Target_SleetStorm;Target_Counterspell" />
+                    <attribute id="UUID" type="guid" value="4bac4d53-69e6-4f7d-b935-cd38ca8c938d" />
+                </node>
             </children>
         </node>
     </region>

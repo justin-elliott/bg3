@@ -176,7 +176,8 @@ class TheFifthElement(Replacer):
             f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)"
         ]
 
-    @progression(CharacterClass.MONK, range(2, 13))
+    @progression(CharacterClass.MONK, range(1, 13))
+    @progression(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_to_12_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)

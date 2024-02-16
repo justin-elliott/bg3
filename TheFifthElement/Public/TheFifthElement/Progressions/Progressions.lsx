@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
@@ -16,7 +16,7 @@
                     <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,4,0)" />
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Monk" />

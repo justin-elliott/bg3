@@ -44,7 +44,7 @@ class Defense:
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Unarmored Defense"}
         loca[f"{name}_Description"] = {"en": f"""
-            Your reflexes are as effective as any armour.
+            Your body is as resilient as any armour.
             While not wearing armour, you add your {ability_name} <LSTag Tooltip="AbilityModifier">Modifier</LSTag>
             to your <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.
             """}

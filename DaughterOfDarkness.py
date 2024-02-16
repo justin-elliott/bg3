@@ -3,8 +3,10 @@
 Generates files for the "DaughterOfDarkness" mod.
 """
 
+import argparse
 import os
 
+from dataclasses import dataclass
 from moddb.battlemagic import BattleMagic
 from moddb.empoweredspells import EmpoweredSpells
 from moddb.movement import Movement
@@ -29,6 +31,15 @@ from modtools.replacers import (
 
 
 class DaughterOfDarkness(Replacer):
+    @dataclass
+    class Args:
+        feats: int    # Feats every n levels
+        spells: int   # Multiplier for spell slots
+        actions: int  # Multiplier for other action resources (Channel Divinity charges)
+
+    _args: Args
+    _feat_levels: set[int]
+
     # Passives
     _battle_magic: str
     _empowered_spells: str
@@ -37,11 +48,14 @@ class DaughterOfDarkness(Replacer):
     # Spells
     _storm_bolt: str
 
-    def __init__(self):
+    def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="DaughterOfDarkness",
                          description="Changes Shadowheart to a Tempest Cleric.")
+
+        self._args = args
+        self._feat_levels = set(range(max(args.feats, 2), 13, args.feats))
 
         # Passives
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
@@ -65,8 +79,9 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
-        progression.AllowImprovement = True if (progression.Level % 2) == 0 else None
-        multiply_resources(progression, [ActionResource.SPELL_SLOTS, ActionResource.CHANNEL_DIVINITY_CHARGES], 2)
+        progression.AllowImprovement = True if progression.Level in self._feat_levels else None
+        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
+        multiply_resources(progression, [ActionResource.CHANNEL_DIVINITY_CHARGES], self._args.actions)
 
     @progression(CharacterClass.CLERIC_TEMPEST, 1)
     def level_1(self, progression: Progression) -> None:
@@ -91,7 +106,16 @@ class DaughterOfDarkness(Replacer):
 
 
 def main():
-    daughter_of_darkness = DaughterOfDarkness()
+    parser = argparse.ArgumentParser(description="A replacer for Shadowheart, and Tempest Domain Clerics.")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
+                        help="Feat progression every n levels (defaulting to 2; feats every other level)")
+    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
+                        help="Spell slot multiplier (defaulting to 2; double spell slots)")
+    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
+                        help="Action resource (Channel Divinity) multiplier (defaulting to 2; double charges)")
+    args = DaughterOfDarkness.Args(**vars(parser.parse_args()))
+
+    daughter_of_darkness = DaughterOfDarkness(args)
     daughter_of_darkness.build()
 
 

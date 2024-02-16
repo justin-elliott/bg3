@@ -53,11 +53,21 @@ def _update_spell_lists(replacer: Replacer,
                         builders: SpellListBuilderDict,
                         updated_spell_lists: set[SpellList]):
     """Update spell lists that match our builder names."""
+    unused_spell_lists = set(builders.keys())
+
     for spell_list in spell_lists:
         if builder_fns := builders.get(spell_list.Comment) or builders.get(spell_list.UUID):
             for builder_fn in builder_fns:
                 builder_fn(replacer, spell_list)
+                if spell_list.Comment in unused_spell_lists:
+                    unused_spell_lists.remove(spell_list.Comment)
+                else:
+                    unused_spell_lists.remove(spell_list.UUID)
+
             updated_spell_lists.add(spell_list)
+
+    if len(unused_spell_lists) > 0:
+        raise KeyError(f"Unmatched spell_list(s): {", ".join(sorted(unused_spell_lists))}")
 
 
 def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListBuilder]) -> None:

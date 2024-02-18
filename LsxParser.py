@@ -177,6 +177,9 @@ class LsxParser:
         for child in node.children.values():
             self.output_node(f, child, depth + 1)
 
+        parameters: list[str] = []
+        assignments: list[str] = []
+
         for name, attribute in sorted(node.attributes.items()):
             attribute_type = attribute.fields["type"]
             for sub_type in attribute_type:
@@ -200,11 +203,26 @@ class LsxParser:
 
                 python_type = getattr(LsxType, type_name)._python_type
                 f.write(f"{indent}    {name}{sub_name}: {python_type} = LsxType.{type_name}{comment}\n")
+                parameters.append(f"{name}{sub_name}: {python_type} = None")
+                assignments.append(f"{name}{sub_name}={name}{sub_name},")
+
+        if len(node.children) > 0:
+            parameters.append("children: LsxChildren = None")
+            assignments.append("children=children,")
 
         self.output_child_list(f, node, depth)
 
         if len(node.attributes) == 0 and len(node.children) == 0:
             f.write(f"{indent}    pass\n")
+        else:
+            f.write("\n")
+            f.write(f"{indent}    def __init__(self,\n")
+            f.write(f"{indent}                 *")
+            f.write("".join(f",\n{indent}                 {parameter}" for parameter in parameters))
+            f.write("):\n")
+            f.write(f"{indent}        super().__init__(\n")
+            f.write("".join(f"{indent}            {assignment}\n" for assignment in assignments))
+            f.write(f"{indent}        )\n")
 
         f.write("\n")
         if depth == 0:

@@ -84,8 +84,10 @@ class GameDataParser:
                 members = modifiers[modifier]
                 if "_id_" in members:
                     f.write(f"    _id_ = \"{members["_id_"]}\"\n")
-                parameters = []
-                assignments = []
+
+                parameters: list[str] = []
+                assignments: list[str] = []
+
                 for member, member_type in sorted(members.items()):
                     if member != "_id_":
                         f.write(f"    {member}: VL.{member_type} = VL.{member_type}\n")

@@ -42,9 +42,10 @@ class LsxNode:
 
     def __init__(self, **kwds):
         for name, value in kwds.items():
-            if name not in self._attributes_ and getattr(self, name, None) is None:
-                raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
-            setattr(self, name, value)
+            if value is not None:
+                if name not in self._attributes_ and getattr(self, name, None) is None:
+                    raise AttributeError(f"{self.__class__.__name__}.{name} is not defined", obj=self, name=name)
+                setattr(self, name, value)
 
     def load(self, node: Element) -> None:
         """Load the node from the given XML <node>."""

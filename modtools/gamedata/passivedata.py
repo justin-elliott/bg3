@@ -40,5 +40,76 @@ class PassiveData(GameData):
     TooltipSave: VL.FixedString = VL.FixedString
     TooltipUseCosts: VL.FixedString = VL.FixedString
 
+    def __init__(self,
+                 name: str,
+                 *,
+                 using: str = None,
+                 BoostConditions: VL.Conditions = None,
+                 BoostContext: VL.StatsFunctorContext = None,
+                 Boosts: VL.FixedString = None,
+                 Conditions: VL.Conditions = None,
+                 Description: VL.TranslatedString = None,
+                 DescriptionParams: VL.FixedString = None,
+                 DescriptionRef: VL.TranslatedString = None,
+                 DisplayName: VL.TranslatedString = None,
+                 DisplayNameRef: VL.TranslatedString = None,
+                 DynamicAnimationTag: VL.Guid = None,
+                 EnabledConditions: VL.Conditions = None,
+                 EnabledContext: VL.StatsFunctorContext = None,
+                 ExtraDescription: VL.TranslatedString = None,
+                 ExtraDescriptionParams: VL.FixedString = None,
+                 ExtraDescriptionRef: VL.TranslatedString = None,
+                 Icon: VL.FixedString = None,
+                 LoreDescription: VL.TranslatedString = None,
+                 LoreDescriptionRef: VL.TranslatedString = None,
+                 PriorityOrder: VL.ConstantInt = None,
+                 Properties: VL.PassiveFlags = None,
+                 StatsFunctorContext: VL.StatsFunctorContext = None,
+                 StatsFunctors: VL.StatsFunctors = None,
+                 ToggleGroup: VL.FixedString = None,
+                 ToggleOffContext: VL.StatsFunctorContext = None,
+                 ToggleOffEffect: VL.FixedString = None,
+                 ToggleOffFunctors: VL.StatsFunctors = None,
+                 ToggleOnEffect: VL.FixedString = None,
+                 ToggleOnFunctors: VL.StatsFunctors = None,
+                 TooltipConditionalDamage: VL.FixedString = None,
+                 TooltipPermanentWarnings: VL.FixedString = None,
+                 TooltipSave: VL.FixedString = None,
+                 TooltipUseCosts: VL.FixedString = None):
+        self.name = name
+        self.using = using
+        self.BoostConditions = BoostConditions
+        self.BoostContext = BoostContext
+        self.Boosts = Boosts
+        self.Conditions = Conditions
+        self.Description = Description
+        self.DescriptionParams = DescriptionParams
+        self.DescriptionRef = DescriptionRef
+        self.DisplayName = DisplayName
+        self.DisplayNameRef = DisplayNameRef
+        self.DynamicAnimationTag = DynamicAnimationTag
+        self.EnabledConditions = EnabledConditions
+        self.EnabledContext = EnabledContext
+        self.ExtraDescription = ExtraDescription
+        self.ExtraDescriptionParams = ExtraDescriptionParams
+        self.ExtraDescriptionRef = ExtraDescriptionRef
+        self.Icon = Icon
+        self.LoreDescription = LoreDescription
+        self.LoreDescriptionRef = LoreDescriptionRef
+        self.PriorityOrder = PriorityOrder
+        self.Properties = Properties
+        self.StatsFunctorContext = StatsFunctorContext
+        self.StatsFunctors = StatsFunctors
+        self.ToggleGroup = ToggleGroup
+        self.ToggleOffContext = ToggleOffContext
+        self.ToggleOffEffect = ToggleOffEffect
+        self.ToggleOffFunctors = ToggleOffFunctors
+        self.ToggleOnEffect = ToggleOnEffect
+        self.ToggleOnFunctors = ToggleOnFunctors
+        self.TooltipConditionalDamage = TooltipConditionalDamage
+        self.TooltipPermanentWarnings = TooltipPermanentWarnings
+        self.TooltipSave = TooltipSave
+        self.TooltipUseCosts = TooltipUseCosts
+
     def filename(self) -> str:
         return "Passive.txt"

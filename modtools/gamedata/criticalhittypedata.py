@@ -21,5 +21,38 @@ class CriticalHitTypeData(GameData):
     SlashingFX: VL.Guid = VL.Guid
     ThunderFX: VL.Guid = VL.Guid
 
+    def __init__(self,
+                 name: str,
+                 *,
+                 using: str = None,
+                 AcidFX: VL.Guid = None,
+                 BludgeoningFX: VL.Guid = None,
+                 ColdFX: VL.Guid = None,
+                 FireFX: VL.Guid = None,
+                 ForceFX: VL.Guid = None,
+                 LightningFX: VL.Guid = None,
+                 NecroticFX: VL.Guid = None,
+                 PiercingFX: VL.Guid = None,
+                 PoisonFX: VL.Guid = None,
+                 PsychicFX: VL.Guid = None,
+                 RadiantFX: VL.Guid = None,
+                 SlashingFX: VL.Guid = None,
+                 ThunderFX: VL.Guid = None):
+        self.name = name
+        self.using = using
+        self.AcidFX = AcidFX
+        self.BludgeoningFX = BludgeoningFX
+        self.ColdFX = ColdFX
+        self.FireFX = FireFX
+        self.ForceFX = ForceFX
+        self.LightningFX = LightningFX
+        self.NecroticFX = NecroticFX
+        self.PiercingFX = PiercingFX
+        self.PoisonFX = PoisonFX
+        self.PsychicFX = PsychicFX
+        self.RadiantFX = RadiantFX
+        self.SlashingFX = SlashingFX
+        self.ThunderFX = ThunderFX
+
     def filename(self) -> str:
         return "CriticalHitTypes.txt"

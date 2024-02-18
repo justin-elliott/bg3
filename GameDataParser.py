@@ -88,6 +88,21 @@ class GameDataParser:
                     if member != "_id_":
                         f.write(f"    {member}: VL.{member_type} = VL.{member_type}\n")
                 f.write("\n")
+                f.write("    def __init__(self,\n")
+                f.write("                 name: str,\n")
+                f.write("                 *,\n")
+                f.write("                 using: str = None")
+                for member, member_type in sorted(members.items()):
+                    if member != "_id_":
+                        f.write(",\n")
+                        f.write(f"                 {member}: VL.{member_type} = None")
+                f.write("):\n")
+                f.write("        self.name = name\n")
+                f.write("        self.using = using\n")
+                for member, member_type in sorted(members.items()):
+                    if member != "_id_":
+                        f.write(f"        self.{member} = {member}\n")
+                f.write("\n")
                 filename = self._MODIFIER_TO_FILENAME[modifier]
                 f.write("    def filename(self) -> str:\n")
                 f.write(f"""        return {"f" if "{" in filename else ""}"{filename}"\n""")

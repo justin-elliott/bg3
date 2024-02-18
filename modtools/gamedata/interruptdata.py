@@ -43,5 +43,82 @@ class InterruptData(GameData):
     TooltipPermanentWarnings: VL.FixedString = VL.FixedString
     TooltipStatusApply: VL.FixedString = VL.FixedString
 
+    def __init__(self,
+                 name: str,
+                 *,
+                 using: str = None,
+                 Conditions: VL.Conditions = None,
+                 Container: VL.FixedString = None,
+                 Cooldown: VL.CooldownType = None,
+                 Cost: VL.FixedString = None,
+                 Description: VL.TranslatedString = None,
+                 DescriptionParams: VL.FixedString = None,
+                 DescriptionRef: VL.TranslatedString = None,
+                 DisplayName: VL.TranslatedString = None,
+                 DisplayNameRef: VL.TranslatedString = None,
+                 EnableCondition: VL.Conditions = None,
+                 EnableContext: VL.StatsFunctorContext = None,
+                 ExtraDescription: VL.TranslatedString = None,
+                 ExtraDescriptionParams: VL.FixedString = None,
+                 ExtraDescriptionRef: VL.TranslatedString = None,
+                 Failure: VL.StatsFunctors = None,
+                 Icon: VL.FixedString = None,
+                 InterruptContext: VL.InterruptContext = None,
+                 InterruptContextScope: VL.InterruptContextScope = None,
+                 InterruptDefaultValue: VL.InterruptDefaultValue = None,
+                 InterruptFlags: VL.InterruptFlagsList = None,
+                 LoreDescription: VL.TranslatedString = None,
+                 LoreDescriptionRef: VL.TranslatedString = None,
+                 Properties: VL.StatsFunctors = None,
+                 Roll: VL.Conditions = None,
+                 ShortDescription: VL.TranslatedString = None,
+                 ShortDescriptionParams: VL.FixedString = None,
+                 ShortDescriptionRef: VL.TranslatedString = None,
+                 Stack: VL.FixedString = None,
+                 Success: VL.StatsFunctors = None,
+                 TooltipAttackSave: VL.FixedString = None,
+                 TooltipDamageList: VL.FixedString = None,
+                 TooltipOnMiss: VL.FixedString = None,
+                 TooltipOnSave: VL.FixedString = None,
+                 TooltipPermanentWarnings: VL.FixedString = None,
+                 TooltipStatusApply: VL.FixedString = None):
+        self.name = name
+        self.using = using
+        self.Conditions = Conditions
+        self.Container = Container
+        self.Cooldown = Cooldown
+        self.Cost = Cost
+        self.Description = Description
+        self.DescriptionParams = DescriptionParams
+        self.DescriptionRef = DescriptionRef
+        self.DisplayName = DisplayName
+        self.DisplayNameRef = DisplayNameRef
+        self.EnableCondition = EnableCondition
+        self.EnableContext = EnableContext
+        self.ExtraDescription = ExtraDescription
+        self.ExtraDescriptionParams = ExtraDescriptionParams
+        self.ExtraDescriptionRef = ExtraDescriptionRef
+        self.Failure = Failure
+        self.Icon = Icon
+        self.InterruptContext = InterruptContext
+        self.InterruptContextScope = InterruptContextScope
+        self.InterruptDefaultValue = InterruptDefaultValue
+        self.InterruptFlags = InterruptFlags
+        self.LoreDescription = LoreDescription
+        self.LoreDescriptionRef = LoreDescriptionRef
+        self.Properties = Properties
+        self.Roll = Roll
+        self.ShortDescription = ShortDescription
+        self.ShortDescriptionParams = ShortDescriptionParams
+        self.ShortDescriptionRef = ShortDescriptionRef
+        self.Stack = Stack
+        self.Success = Success
+        self.TooltipAttackSave = TooltipAttackSave
+        self.TooltipDamageList = TooltipDamageList
+        self.TooltipOnMiss = TooltipOnMiss
+        self.TooltipOnSave = TooltipOnSave
+        self.TooltipPermanentWarnings = TooltipPermanentWarnings
+        self.TooltipStatusApply = TooltipStatusApply
+
     def filename(self) -> str:
         return "Interrupt.txt"

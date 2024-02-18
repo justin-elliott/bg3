@@ -42,13 +42,6 @@ class GameData(metaclass=ABCMeta):
             prop = property(fget=getter, fset=setter)
             setattr(cls, member_name, prop)
 
-    def __init__(self, name: str, **kwds):
-        self.name = name
-        self.using = None
-
-        for key, value in kwds.items():
-            setattr(self, key, value)
-
     def __str__(self) -> str:
         """Returns a game data string."""
         s = f"""new entry "{self.name}"\n"""

@@ -84,24 +84,23 @@ class GameDataParser:
                 members = modifiers[modifier]
                 if "_id_" in members:
                     f.write(f"    _id_ = \"{members["_id_"]}\"\n")
+                parameters = []
+                assignments = []
                 for member, member_type in sorted(members.items()):
                     if member != "_id_":
                         f.write(f"    {member}: VL.{member_type} = VL.{member_type}\n")
+                        parameters.append(f"{member}: VL.{member_type} = None")
+                        assignments.append(f"self.{member} = {member}")
                 f.write("\n")
                 f.write("    def __init__(self,\n")
                 f.write("                 name: str,\n")
                 f.write("                 *,\n")
                 f.write("                 using: str = None")
-                for member, member_type in sorted(members.items()):
-                    if member != "_id_":
-                        f.write(",\n")
-                        f.write(f"                 {member}: VL.{member_type} = None")
+                f.write("".join(f",\n                 {parameter}" for parameter in parameters))
                 f.write("):\n")
                 f.write("        self.name = name\n")
                 f.write("        self.using = using\n")
-                for member, member_type in sorted(members.items()):
-                    if member != "_id_":
-                        f.write(f"        self.{member} = {member}\n")
+                f.write("".join(f"        {assignment}\n" for assignment in assignments))
                 f.write("\n")
                 filename = self._MODIFIER_TO_FILENAME[modifier]
                 f.write("    def filename(self) -> str:\n")

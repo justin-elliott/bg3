@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates files for the "TheFifthElement" mod.
+Generates files for the "WayOfTheArcane" mod.
 """
 
 import argparse
@@ -16,7 +16,6 @@ from moddb import (
     PackMule,
     multiply_resources,
     spells_always_prepared,
-    storm_bolt,
 )
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
@@ -31,7 +30,6 @@ from modtools.replacers import (
     class_description,
     progression,
     Replacer,
-    spell_list,
 )
 from uuid import UUID
 
@@ -62,7 +60,7 @@ def arcane_manifestation(mod: Mod) -> str:
     return name
 
 
-class TheFifthElement(Replacer):
+class WayOfTheArcane(Replacer):
     @dataclass
     class Args:
         feats: int    # Feats every n levels
@@ -92,7 +90,6 @@ class TheFifthElement(Replacer):
 
     # spells
     _bolster: str
-    _storm_bolt: str
 
     @cached_property
     def _level_1_spell_list(self) -> str:
@@ -117,7 +114,7 @@ class TheFifthElement(Replacer):
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
-                         name="TheFifthElement",
+                         name="WayOfTheArcane",
                          description="Upgrades the Way of Shadow Monk subclass.")
 
         self._args = args
@@ -130,7 +127,6 @@ class TheFifthElement(Replacer):
         self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
-        self._storm_bolt = storm_bolt(self.mod)
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:
@@ -157,10 +153,6 @@ class TheFifthElement(Replacer):
         class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
 
         class_description.MustPrepareSpells = True
-
-    @spell_list(WIZARD_CANTRIP_SPELL_LIST)
-    def wizard_cantrip_spell_list(self, spell_list: SpellList) -> None:
-        spell_list.Spells.append(self._storm_bolt)
 
     @progression(CharacterClass.MONK, 1)
     def level_1_monk(self, progression: Progression) -> None:
@@ -212,7 +204,7 @@ class TheFifthElement(Replacer):
         progression.PassivesAdded = ["JackOfAllTrades"]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},3,0)",
+            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},1,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 5)
@@ -220,7 +212,7 @@ class TheFifthElement(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{2 * self._args.spells},3)"]
         progression.PassivesAdded = ["UnlockedSpellSlotLevel3"]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},3,0)",
+            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},1,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 6)
@@ -229,20 +221,20 @@ class TheFifthElement(Replacer):
         progression.PassivesAdded = [self._arcane_manifestation]
         progression.Selectors = [
             f"AddSpells({self.WHOLENESS_OF_BODY_SPELL_LIST})",
-            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},3,0)",
+            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},1,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 7)
     def level_7(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
         progression.PassivesAdded = ["ImprovedCritical"]
-        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},3,0)"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},1,0)"]
 
     @progression(CharacterClass.MONK_SHADOW, 8)
     def level_8(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
         progression.PassivesAdded = ["FastHands"]
-        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},3,0)"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},1,0)"]
 
     @progression(CharacterClass.MONK_SHADOW, 9)
     def level_9(self, progression: Progression) -> None:
@@ -251,7 +243,7 @@ class TheFifthElement(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)"
         ]
         progression.PassivesAdded = ["BrutalCritical"]
-        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},3,0)"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},1,0)"]
 
     @progression(CharacterClass.MONK_SHADOW, 10)
     def level_10(self, progression: Progression) -> None:
@@ -259,7 +251,7 @@ class TheFifthElement(Replacer):
         progression.PassivesAdded = [self._empowered_spells]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},3,0)",
+            f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},1,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 11)
@@ -269,14 +261,14 @@ class TheFifthElement(Replacer):
         progression.PassivesRemoved = ["ExtraAttack"]
         progression.Selectors = [
             f"AddSpells({self.FLY_SPELL_LIST},,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},3,0)",
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},1,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 12)
     def level_12(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},6)"]
         progression.PassivesAdded = ["ReliableTalent"]
-        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},3,0)"]
+        progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},1,0)"]
 
 
 def main():
@@ -287,10 +279,10 @@ def main():
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
                         help="Action resource (Ki) multiplier (defaulting to 2; double points)")
-    args = TheFifthElement.Args(**vars(parser.parse_args()))
+    args = WayOfTheArcane.Args(**vars(parser.parse_args()))
 
-    the_fifth_element = TheFifthElement(args)
-    the_fifth_element.build()
+    way_of_the_arcane = WayOfTheArcane(args)
+    way_of_the_arcane.build()
 
 
 if __name__ == "__main__":

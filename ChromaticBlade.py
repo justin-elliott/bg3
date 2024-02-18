@@ -9,6 +9,7 @@ from moddb.scripts import character_level_range
 from modtools.gamedata import PassiveData, SpellData, StatusData, Weapon
 from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.mod import Mod
+from modtools.text import TreasureTable
 from uuid import UUID
 
 # <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
@@ -23,7 +24,7 @@ chromatic_blade = Mod(os.path.dirname(__file__),
                       name="ChromaticBlade",
                       mod_uuid=UUID("ae8399a2-3445-4c0b-b9c4-4d77f3daf46c"),
                       description="Adds the sword, the Chromatic Blade.")
-chromatic_blade.add_script(character_level_range)
+chromatic_blade.add(character_level_range)
 
 loca = chromatic_blade.get_localization()
 loca["ChromaticBlade_DisplayName"] = {"en": "Chromatic Blade"}
@@ -327,11 +328,11 @@ chromatic_blade.add(SpellData(
     Cooldown="None",
 ))
 
-chromatic_blade.add_treasure_table("""\
+chromatic_blade.add(TreasureTable("""
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
 object category "I_ChromaticBlade_Sword",1,0,0,0,0,0,0,0
-""")
+"""))
 
 chromatic_blade.build()

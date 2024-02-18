@@ -6,6 +6,8 @@ Generates files for the "Daisy" mod.
 import os
 
 from modtools.mod import Mod
+from modtools.text import XPData
+
 
 advancement = Mod(os.path.dirname(__file__),
                   author="justin-elliott",
@@ -32,5 +34,5 @@ double_advancement = {
     level: xp // 2 for level, xp in default_advancement.items()
 }
 
-advancement.set_xp_data(double_advancement)
+advancement.add(XPData(double_advancement))
 advancement.build()

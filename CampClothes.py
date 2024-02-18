@@ -8,6 +8,7 @@ import os
 from modtools.gamedata import Armor
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
+from modtools.text import TreasureTable
 from uuid import UUID
 
 # <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
@@ -168,7 +169,7 @@ object category {},1,0,0,0,0,0,0,0
 
 outfit_entries = "".join(outfit_template.format(outfit) for outfit in outfits).rstrip()
 
-camp_clothes.add_treasure_table(f"""\
+camp_clothes.add(TreasureTable(f"""
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 {outfit_entries}
@@ -178,6 +179,6 @@ new subtable "10,1"
 object category "I_OBJ_Dye_RedBrown",1,0,0,0,0,0,0,0
 new subtable "10000,1"
 object category "Gold",1,0,0,0,0,0,0,0
-""")
+"""))
 
 camp_clothes.build()

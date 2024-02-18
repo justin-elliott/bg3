@@ -28,6 +28,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Equipment
 from uuid import UUID
 
 
@@ -123,7 +124,7 @@ def add_equipment(mod: Mod, equipment_set_name: str) -> None:
         ],
     ))
 
-    mod.add_script(character_level_range)
+    mod.add(character_level_range)
 
     mod.add(Weapon(
         f"{prefix}_Tempest",
@@ -203,34 +204,34 @@ def add_equipment(mod: Mod, equipment_set_name: str) -> None:
         ],
     ))
 
-    mod.add_equipment(f"""\
-    new equipment "{equipment_set_name}"
-    add initialweaponset "Melee"
-    add equipmentgroup
-    add equipment entry "{prefix}_Tempest"
-    add equipmentgroup
-    add equipment entry "{prefix}_Thunder"
-    add equipmentgroup
-    add equipment entry "ARM_Leather_Body_Druid"
-    add equipmentgroup
-    add equipment entry "ARM_Boots_Leather_Druid"
-    add equipmentgroup
-    add equipment entry "OBJ_Potion_Healing"
-    add equipmentgroup
-    add equipment entry "OBJ_Potion_Healing"
-    add equipmentgroup
-    add equipment entry "OBJ_Scroll_Revivify"
-    add equipmentgroup
-    add equipment entry "OBJ_Keychain"
-    add equipmentgroup
-    add equipment entry "OBJ_Bag_AlchemyPouch"
-    add equipmentgroup
-    add equipment entry "ARM_Camp_Body"
-    add equipmentgroup
-    add equipment entry "ARM_Camp_Shoes"
-    add equipmentgroup
-    add equipment entry "OBJ_Backpack_CampSupplies"
-    """)
+    mod.add(Equipment(f"""
+        new equipment "{equipment_set_name}"
+        add initialweaponset "Melee"
+        add equipmentgroup
+        add equipment entry "{prefix}_Tempest"
+        add equipmentgroup
+        add equipment entry "{prefix}_Thunder"
+        add equipmentgroup
+        add equipment entry "ARM_Leather_Body_Druid"
+        add equipmentgroup
+        add equipment entry "ARM_Boots_Leather_Druid"
+        add equipmentgroup
+        add equipment entry "OBJ_Potion_Healing"
+        add equipmentgroup
+        add equipment entry "OBJ_Potion_Healing"
+        add equipmentgroup
+        add equipment entry "OBJ_Scroll_Revivify"
+        add equipmentgroup
+        add equipment entry "OBJ_Keychain"
+        add equipmentgroup
+        add equipment entry "OBJ_Bag_AlchemyPouch"
+        add equipmentgroup
+        add equipment entry "ARM_Camp_Body"
+        add equipmentgroup
+        add equipment entry "ARM_Camp_Shoes"
+        add equipmentgroup
+        add equipment entry "OBJ_Backpack_CampSupplies"
+        """))
 
 
 class DruidBattlemage(Replacer):

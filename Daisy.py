@@ -7,6 +7,7 @@ import os
 
 from modtools.gamedata import Armor
 from modtools.mod import Mod
+from modtools.text import TreasureTable
 from uuid import UUID
 
 daisy = Mod(os.path.dirname(__file__),
@@ -36,7 +37,7 @@ daisy.add(Armor(
     RootTemplate="5a0ee632-9145-48b2-9b92-97c32c2ccbd9",
 ))
 
-daisy.add_treasure_table("""\
+daisy.add(TreasureTable("""
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
@@ -45,6 +46,6 @@ new subtable "1,1"
 object category "I_Daisy_Clothing_Boots",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_Daisy_Clothing_Gloves",1,0,0,0,0,0,0,0
-""")
+"""))
 
 daisy.build()

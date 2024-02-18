@@ -18,7 +18,7 @@ class Boosts:
 
     def by_level(self, boost_fn: (Callable[[int], str]), lastLevel: int = 12) -> list[str]:
         """Generate a list of boost values."""
-        self._mod.add_script(character_level_range)
+        self._mod.add(character_level_range)
 
         range_and_boost = [(1, 1, boost_fn(1))]
 

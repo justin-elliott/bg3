@@ -7,16 +7,15 @@ import hashlib
 import os
 import re
 import shutil
-import textwrap
 import time
 
 from modtools.gamedata import GameData, GameDataCollection
+from modtools.text import Text, TextCollection
 from modtools.unpak import Unpak
 from modtools.localization import Localization
 from modtools.lsx import Lsx
 from modtools.lsx.game import Dependencies, ModuleInfo
 from modtools.lsx.node import LsxNode
-from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from typing import Tuple
 from uuid import UUID
 
@@ -38,11 +37,7 @@ class Mod:
 
     _game_data: GameDataCollection
     _lsx: Lsx
-
-    _equipment: list[str]
-    _scripts: list[str]
-    _treasure_table: list[str]
-    _xp_data: dict[int, int]
+    _text: TextCollection
 
     def __init__(self,
                  base_dir: str,
@@ -85,11 +80,7 @@ class Mod:
 
         self._game_data = GameDataCollection()
         self._lsx = Lsx()
-
-        self._equipment = None
-        self._scripts = None
-        self._treasure_table = None
-        self._xp_data = None
+        self._text = TextCollection()
 
     def make_uuid(self, key: str) -> UUID:
         m = hashlib.sha256()
@@ -135,25 +126,10 @@ class Mod:
             self._game_data.add(item)
         elif isinstance(item, LsxNode):
             self._lsx.children.append(item)
+        elif isinstance(item, Text):
+            self._text.add(item)
         else:
             raise TypeError("add: Invalid data type")
-
-    def add_equipment(self, text: str) -> None:
-        self._equipment = self._equipment or []
-        self._equipment.append(textwrap.dedent(text))
-
-    def add_script(self, text: str) -> None:
-        self._scripts = self._scripts or []
-        text = textwrap.dedent(text)
-        if text not in self._scripts:
-            self._scripts.append(text)
-
-    def add_treasure_table(self, text: str) -> None:
-        self._treasure_table = self._treasure_table or []
-        self._treasure_table.append(textwrap.dedent(text))
-
-    def set_xp_data(self, xp_data: dict[int, int]) -> None:
-        self._xp_data = xp_data
 
     def _add_meta(self) -> None:
         """Add the meta definition."""
@@ -192,39 +168,6 @@ class Mod:
             ],
         ))
 
-    def _build_equipment(self, public_dir: str) -> None:
-        if self._equipment:
-            equipment_dir = os.path.join(public_dir, "Stats", "Generated")
-            os.makedirs(equipment_dir, exist_ok=True)
-            with open(os.path.join(equipment_dir, "Equipment.txt"), "w") as f:
-                f.write(TXT_PROLOGUE)
-                f.write("\n".join(self._equipment))
-
-    def _build_scripts(self, mod_dir: str) -> None:
-        if self._scripts:
-            scripts_dir = os.path.join(mod_dir, "Scripts", "thoth", "helpers")
-            os.makedirs(scripts_dir, exist_ok=True)
-            with open(os.path.join(scripts_dir, "Scripts.khn"), "w") as f:
-                f.write(LUA_PROLOGUE)
-                f.write("\n".join(self._scripts))
-
-    def _build_treasure_table(self, public_dir: str) -> None:
-        if self._treasure_table:
-            treasure_table_dir = os.path.join(public_dir, "Stats", "Generated")
-            os.makedirs(treasure_table_dir, exist_ok=True)
-            with open(os.path.join(treasure_table_dir, "TreasureTable.txt"), "w") as f:
-                f.write(TXT_PROLOGUE)
-                f.write("\n".join(self._treasure_table))
-
-    def _build_xp_data(self, public_dir: str) -> None:
-        if self._xp_data:
-            xp_data_dir = os.path.join(public_dir, "Stats", "Generated", "Data")
-            os.makedirs(xp_data_dir, exist_ok=True)
-            with open(os.path.join(xp_data_dir, "XPData.txt"), "w") as f:
-                f.write(TXT_PROLOGUE)
-                f.write("".join(f"""key "Level{level}","{xp}"\n\n""" for level, xp in self._xp_data.items()))
-                f.write(f"""key "MaxXPLevel","{len(self._xp_data)}"\n""")
-
     def build(self) -> None:
         """Build the mod files underneath the _base_dir."""
         mod_dir = os.path.join(self._base_dir, self._folder)
@@ -234,9 +177,5 @@ class Mod:
         self._add_meta()
         self._game_data.build(mod_dir, self._folder)
         self._lsx.save(mod_dir, version=self._version, folder=self._folder)
+        self._text.save(mod_dir, folder=self._folder)
         self._localization.build(mod_dir)
-        public_dir = os.path.join(mod_dir, "Public", self._folder)
-        self._build_equipment(public_dir)
-        self._build_scripts(mod_dir)
-        self._build_treasure_table(public_dir)
-        self._build_xp_data(public_dir)

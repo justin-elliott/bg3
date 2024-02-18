@@ -15,6 +15,7 @@ from moddb import (
     EmpoweredSpells,
     PackMule,
     multiply_resources,
+    spells_always_prepared,
     storm_bolt,
 )
 from modtools.gamedata import PassiveData
@@ -183,6 +184,7 @@ class TheFifthElement(Replacer):
     def level_1_to_12_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)
+        spells_always_prepared(progression)
 
     @progression(CharacterClass.MONK_SHADOW, 3)
     def level_3(self, progression: Progression) -> None:

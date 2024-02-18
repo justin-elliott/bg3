@@ -176,6 +176,8 @@ new subtable "10,1"
 object category "I_OBJ_Dye_Ocean",1,0,0,0,0,0,0,0
 new subtable "10,1"
 object category "I_OBJ_Dye_RedBrown",1,0,0,0,0,0,0,0
+new subtable "10000,1"
+object category "Gold",1,0,0,0,0,0,0,0
 """)
 
 camp_clothes.build()

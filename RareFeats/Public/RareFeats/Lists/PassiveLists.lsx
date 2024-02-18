@@ -6,8 +6,8 @@
         <node id="root">
             <children>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_ASIPlus_Strength_4,RareFeats_ASIPlus_Dexterity_4,RareFeats_ASIPlus_Constitution_4,RareFeats_ASIPlus_Intelligence_4,RareFeats_ASIPlus_Wisdom_4,RareFeats_ASIPlus_Charisma_4" />
-                    <attribute id="UUID" type="guid" value="a9654b76-5de3-7248-7adf-29df05b72354" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_2,RareFeats_ASI_4,RareFeats_ASI_6,RareFeats_ASI_8,RareFeats_ASI_10,RareFeats_ASI_12,RareFeats_ASI_14,RareFeats_ASI_16" />
+                    <attribute id="UUID" type="guid" value="2b78e87f-99ca-872d-e4c1-1423b014d5dc" />
                 </node>
             </children>
         </node>

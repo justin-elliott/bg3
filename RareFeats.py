@@ -6,7 +6,11 @@ Generates files for the "RareFeats" mod.
 import os
 
 from modtools.gamedata import PassiveData
-from modtools.lsx.game import FeatDescription, Feat, PassiveList
+from modtools.lsx.game import (
+    FeatDescription,
+    Feat,
+    PassiveList,
+)
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -45,89 +49,53 @@ rare_feats.add(Feat(
     UUID=no_feat_uuid,
 ))
 
-# Add Ability Score Improvement (ASI) feats
-for asi in [4, 8, 16, 32, 44]:
-    feat_uuid = rare_feats.make_uuid(f"feat_ASI_{asi}")
-    feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASI_{asi}")
+# Add Ability Score Improvement (ASI) feat
+ABILITIES = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
-    loca[f"RareFeats_ASI_{asi}_DisplayName"] = {"en": f"Rare Feats: Ability Improvement (+{asi})"}
-    loca[f"RareFeats_ASI_{asi}_Description"] = {"en": f"""
-        You have {asi} points to spend across your abilities, to a maximum of 20.
+asi_passive_list = PassiveList(
+    Passives=[],
+    UUID=rare_feats.make_uuid("RareFeats_ASI_PassiveList"),
+)
+rare_feats.add(asi_passive_list)
+
+for bonus in range(2, 18, 2):
+    asi_passive = f"RareFeats_ASI_{bonus}"
+    asi_passive_list.Passives.append(asi_passive)
+
+    loca[f"{asi_passive}_DisplayName"] = {"en": f"Rare Feats: Abilities +{bonus}"}
+    loca[f"{asi_passive}_Description"] = {"en": f"""
+        Increase all of your abilities by {bonus}, to a maximum of 30.
         """}
 
-    rare_feats.add(FeatDescription(
-        DisplayName=loca[f"RareFeats_ASI_{asi}_DisplayName"],
-        Description=loca[f"RareFeats_ASI_{asi}_Description"],
-        ExactMatch=f"RareFeats_ASI_{asi}",
-        FeatId=feat_uuid,
-        UUID=feat_description_uuid,
+    rare_feats.add(PassiveData(
+        asi_passive,
+        DisplayName=loca[f"{asi_passive}_DisplayName"],
+        Description=loca[f"{asi_passive}_Description"],
+        Icon="Spell_Transmutation_EnhanceAbility",
+        Boosts=[f"Ability({ability},{bonus},30)" for ability in ABILITIES],
+        Properties=["IsHidden"],
     ))
 
-    rare_feats.add(Feat(
-        CanBeTakenMultipleTimes=True,
-        Name=f"RareFeats_ASI_{asi}",
-        Selectors=f"SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,{asi},{asi},FeatASI)",
-        UUID=feat_uuid,
-    ))
+asi_feat_uuid = rare_feats.make_uuid("RareFeats_ASI")
 
-# Add Ability Score Improvement (ASI) Plus feats
-abilities = [
-    ("Strength",     "Spell_Transmutation_EnhanceAbility_BullsStrenght"),
-    ("Dexterity",    "Spell_Transmutation_EnhanceAbility_CatsGrace"),
-    ("Constitution", "Spell_Transmutation_EnhanceAbility_BearsEndurance"),
-    ("Intelligence", "Spell_Transmutation_EnhanceAbility_FoxsCunning"),
-    ("Wisdom",       "Spell_Transmutation_EnhanceAbility_OwlsWisdom"),
-    ("Charisma",     "Spell_Transmutation_EnhanceAbility_EaglesSplendor"),
-]
+loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
+loca["RareFeats_ASI_Description"] = {"en": """
+    Improve all of your abilities by a selected amount, to a maximum of 30.
+    """}
 
-for bonus in [4]:
-    asi_plus_passives = []
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_ASI_DisplayName"],
+    Description=loca["RareFeats_ASI_Description"],
+    ExactMatch="RareFeats_ASI",
+    FeatId=asi_feat_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_ASI_FeatDescription"),
+))
 
-    for ability, ability_icon in abilities:
-        loca[f"RareFeats_ASIPlus_{ability}_{bonus}_DisplayName"] = {"en": ability}
-        loca[f"RareFeats_ASIPlus_{ability}_{bonus}_Description"] = {"en": f"""
-            Increase your <LSTag Tooltip="{ability}">{ability}</LSTag> by {bonus}, to a maximum of 30.
-            """}
-
-        asi_plus_passive = f"RareFeats_ASIPlus_{ability}_{bonus}"
-        asi_plus_passives.append(asi_plus_passive)
-        rare_feats.add(PassiveData(
-            asi_plus_passive,
-            DisplayName=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_DisplayName"],
-            Description=loca[f"RareFeats_ASIPlus_{ability}_{bonus}_Description"],
-            Icon=ability_icon,
-            Boosts=[f"Ability({ability},{bonus},30)"],
-            Properties=["IsHidden"],
-        ))
-
-    asi_plus_feat_uuid = rare_feats.make_uuid(f"feat_ASIPlus_{bonus}")
-    asi_plus_feat_description_uuid = rare_feats.make_uuid(f"feat_description_ASIPlus_{bonus}")
-    asi_plus_passive_list_uuid = str(rare_feats.make_uuid(f"RareFeats_ASIPlus_{bonus}_PassiveList"))
-
-    rare_feats.add(PassiveList(
-        Passives=asi_plus_passives,
-        UUID=asi_plus_passive_list_uuid,
-    ))
-
-    loca[f"RareFeats_ASIPlus_{bonus}_DisplayName"] = {"en": f"Rare Feats: Ability Improvement Plus (+{bonus})"}
-    loca[f"RareFeats_ASIPlus_{bonus}_Description"] = {"en": f"""
-        Improve one of your abilities by {bonus}, to a maximum of 30.
-        """}
-
-    rare_feats.add(FeatDescription(
-        DisplayName=loca[f"RareFeats_ASIPlus_{bonus}_DisplayName"],
-        Description=loca[f"RareFeats_ASIPlus_{bonus}_Description"],
-        ExactMatch=f"RareFeats_ASIPlus_{bonus}",
-        FeatId=asi_plus_feat_uuid,
-        UUID=asi_plus_feat_description_uuid,
-    ))
-
-    rare_feats.add(Feat(
-        CanBeTakenMultipleTimes=True,
-        Name=f"RareFeats_ASIPlus_{bonus}",
-        Selectors=f"SelectPassives({asi_plus_passive_list_uuid},1,RareFeats_ASIPlus_{bonus})",
-        UUID=asi_plus_feat_uuid,
-    ))
+rare_feats.add(Feat(
+    Name="RareFeats_ASI",
+    Selectors=f"SelectPassives({asi_passive_list.UUID},1,RareFeats_ASI)",
+    UUID=asi_feat_uuid,
+))
 
 # Athlete without the ASI
 athlete_uuid = rare_feats.make_uuid("RareFeats_Athlete")

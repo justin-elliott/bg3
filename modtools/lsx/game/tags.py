@@ -19,7 +19,13 @@ class Tags(LsxDocument, LsxNode):
             class Category(LsxNode):
                 Name: str = LsxType.LSSTRING_VALUE
 
+                def __init__(self, *, Name: str = None):
+                    super().__init__(Name=Name)
+
             children: LsxChildren = (Category,)
+
+            def __init__(self, *, children: LsxChildren = None):
+                super().__init__(children=children)
 
         Description: str = LsxType.LSSTRING_VALUE
         DisplayDescription: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
@@ -28,6 +34,25 @@ class Tags(LsxDocument, LsxNode):
         Name: str = LsxType.FIXEDSTRING
         UUID: str = LsxType.GUID
         children: LsxChildren = (Categories,)
+
+        def __init__(self,
+                     *,
+                     Description: str = None,
+                     DisplayDescription: tuple[str, int] | str = None,
+                     DisplayName: tuple[str, int] | str = None,
+                     Icon: str = None,
+                     Name: str = None,
+                     UUID: str = None,
+                     children: LsxChildren = None):
+            super.__init__(
+                Description=Description,
+                DisplayDescription=DisplayDescription,
+                DisplayName=DisplayName,
+                Icon=Icon,
+                Name=Name,
+                UUID=UUID,
+                children=children,
+            )
 
     root = "Tags"
     path = "Public/{folder}/Tags/{tag_name}.lsf.lsx"

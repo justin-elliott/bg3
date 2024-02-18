@@ -17,6 +17,21 @@ class FeatDescription(LsxNode):
     FeatId: str = LsxType.GUID
     UUID: str = LsxType.GUID
 
+    def __init__(self,
+                 *,
+                 Description: tuple[str, int] | str = None,
+                 DisplayName: tuple[str, int] | str = None,
+                 ExactMatch: str = None,
+                 FeatId: str = None,
+                 UUID: str = None):
+        super().__init__(
+            Description=Description,
+            DisplayName=DisplayName,
+            ExactMatch=ExactMatch,
+            FeatId=FeatId,
+            UUID=UUID,
+        )
+
 
 class FeatDescriptions(LsxDocument):
     path = "Public/{folder}/Feats/FeatDescriptions.lsx"

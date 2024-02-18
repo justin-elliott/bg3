@@ -14,6 +14,15 @@ class PassiveList(LsxNode):
     Passives: list[str] = LsxType.LSSTRING_COMMA
     UUID: str = LsxType.GUID
 
+    def __init__(self,
+                 *,
+                 Passives: list[str] = None,
+                 UUID: str = None):
+        super().__init__(
+            Passives=Passives,
+            UUID=UUID,
+        )
+
 
 class PassiveLists(LsxDocument):
     path = "Public/{folder}/Lists/PassiveLists.lsx"

@@ -18,6 +18,13 @@ class ModuleInfo(LsxNode):
     class PublishVersion(LsxNode):
         Version64: int = LsxType.INT64
 
+        def __init__(self,
+                     *,
+                     Version64: int = None):
+            super().__init__(
+                Version64=Version64,
+            )
+
     class Scripts(LsxNode):
         pass
 
@@ -25,7 +32,21 @@ class ModuleInfo(LsxNode):
         class Target(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (Target,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     Author: str = LsxType.LSSTRING_VALUE
     CharacterCreationLevelName: str = LsxType.FIXEDSTRING
@@ -44,6 +65,45 @@ class ModuleInfo(LsxNode):
     UUID: str = LsxType.FIXEDSTRING
     Version64: int = LsxType.INT64
     children: LsxChildren = (PublishVersion, Scripts, TargetModes)
+
+    def __init__(self,
+                 *,
+                 Author: str = None,
+                 CharacterCreationLevelName: str = None,
+                 Description: str = None,
+                 Folder: str = None,
+                 LobbyLevelName: str = None,
+                 MD5: str = None,
+                 MainMenuBackgroundVideo: str = None,
+                 MenuLevelName: str = None,
+                 Name: str = None,
+                 NumPlayers: int = None,
+                 PhotoBooth: str = None,
+                 StartupLevelName: str = None,
+                 Tags: str = None,
+                 Type: str = None,
+                 UUID: str = None,
+                 Version64: int = None,
+                 children: LsxChildren = None):
+        super().__init__(
+            Author=Author,
+            CharacterCreationLevelName=CharacterCreationLevelName,
+            Description=Description,
+            Folder=Folder,
+            LobbyLevelName=LobbyLevelName,
+            MD5=MD5,
+            MainMenuBackgroundVideo=MainMenuBackgroundVideo,
+            MenuLevelName=MenuLevelName,
+            Name=Name,
+            NumPlayers=NumPlayers,
+            PhotoBooth=PhotoBooth,
+            StartupLevelName=StartupLevelName,
+            Tags=Tags,
+            Type=Type,
+            UUID=UUID,
+            Version64=Version64,
+            children=children,
+        )
 
 
 class Config(LsxDocument):

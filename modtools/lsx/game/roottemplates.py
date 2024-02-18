@@ -21,7 +21,33 @@ class GameObjects(LsxNode):
             Shape: int = LsxType.UINT8
             Type: int = LsxType.UINT8
 
+            def __init__(self,
+                         *,
+                         Height: float = None,
+                         IsIgnoringScale: bool = None,
+                         Max: str = None,
+                         Min: str = None,
+                         Radius: float = None,
+                         Shape: int = None,
+                         Type: int = None):
+                super().__init__(
+                    Height=Height,
+                    IsIgnoringScale=IsIgnoringScale,
+                    Max=Max,
+                    Min=Min,
+                    Radius=Radius,
+                    Shape=Shape,
+                    Type=Type,
+                )
+
         children: LsxChildren = (Bound,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class OnDestroyActions(LsxNode):
         class Action(LsxNode):
@@ -48,16 +74,93 @@ class GameObjects(LsxNode):
                 templateAfterDestruction: str = LsxType.FIXEDSTRING
                 visualDestruction: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             ActivateSoundEvent: str = None,
+                             Animation: str = None,
+                             ApplyDeathTypeBloodCheck: bool = None,
+                             CellAtGrow: int = None,
+                             Conditions: str = None,
+                             ExplodeFX: str = None,
+                             ExternalCauseAsSurfaceOwner: bool = None,
+                             FadeOutDelay: float = None,
+                             FadeOutFX: str = None,
+                             GrowTimer: float = None,
+                             LifeTime: float = None,
+                             PlayOnHUD: bool = None,
+                             Radius: float = None,
+                             SnapToGround: bool = None,
+                             SurfaceType: str = None,
+                             TargetItemState: int = None,
+                             Timeout: float = None,
+                             TotalCells: int = None,
+                             VisualWithDynamicPhysics: str = None,
+                             templateAfterDestruction: str = None,
+                             visualDestruction: str = None):
+                    super().__init__(
+                        ActivateSoundEvent=ActivateSoundEvent,
+                        Animation=Animation,
+                        ApplyDeathTypeBloodCheck=ApplyDeathTypeBloodCheck,
+                        CellAtGrow=CellAtGrow,
+                        Conditions=Conditions,
+                        ExplodeFX=ExplodeFX,
+                        ExternalCauseAsSurfaceOwner=ExternalCauseAsSurfaceOwner,
+                        FadeOutDelay=FadeOutDelay,
+                        FadeOutFX=FadeOutFX,
+                        GrowTimer=GrowTimer,
+                        LifeTime=LifeTime,
+                        PlayOnHUD=PlayOnHUD,
+                        Radius=Radius,
+                        SnapToGround=SnapToGround,
+                        SurfaceType=SurfaceType,
+                        TargetItemState=TargetItemState,
+                        Timeout=Timeout,
+                        TotalCells=TotalCells,
+                        VisualWithDynamicPhysics=VisualWithDynamicPhysics,
+                        templateAfterDestruction=templateAfterDestruction,
+                        visualDestruction=visualDestruction,
+                    )
+
             ActionType: int = LsxType.INT32
             children: LsxChildren = (Attributes,)
 
+            def __init__(self,
+                         *,
+                         ActionType: int = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ActionType=ActionType,
+                    children=children,
+                )
+
         children: LsxChildren = (Action,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class PrefabChildrenGroup(LsxNode):
         class PrefabChildren(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (PrefabChildren,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class PrefabChildrenTransformGroup(LsxNode):
         class PrefabChildrenTransforms(LsxNode):
@@ -65,7 +168,25 @@ class GameObjects(LsxNode):
             RotationQuat: str = LsxType.FVEC4
             Scale: float = LsxType.FLOAT
 
+            def __init__(self,
+                         *,
+                         Position: str = None,
+                         RotationQuat: str = None,
+                         Scale: float = None):
+                super().__init__(
+                    Position=Position,
+                    RotationQuat=RotationQuat,
+                    Scale=Scale,
+                )
+
         children: LsxChildren = (PrefabChildrenTransforms,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class LocomotionParams(LsxNode):
         IsMovementEnabled: bool = LsxType.BOOL
@@ -98,6 +219,69 @@ class GameObjects(LsxNode):
         WorldClimbingRadius: float = LsxType.FLOAT
         WorldClimbingSpeed: float = LsxType.FLOAT
 
+        def __init__(self,
+                     *,
+                     IsMovementEnabled: bool = None,
+                     IsWorldClimbingEnabled: bool = None,
+                     LadderBlendspace_Attach_Down: str = None,
+                     LadderBlendspace_Attach_Up: str = None,
+                     LadderBlendspace_Detach_Down: str = None,
+                     LadderBlendspace_Detach_Up: str = None,
+                     MaxDashDistance: float = None,
+                     MovementAcceleration: float = None,
+                     MovementSpeedDash: float = None,
+                     MovementSpeedRun: float = None,
+                     MovementSpeedSprint: float = None,
+                     MovementSpeedStroll: float = None,
+                     MovementSpeedWalk: float = None,
+                     MovementStepUpHeight: float = None,
+                     MovementTiltToRemap: str = None,
+                     ProbeSpineBOffset: float = None,
+                     SteeringSpeedCurveWithoutTransitions: str = None,
+                     SteeringSpeed_CastingCurve: str = None,
+                     SteeringSpeed_MovingCurve: str = None,
+                     UseStandAtDestination: bool = None,
+                     WorldClimbingBlendspace_DownA: str = None,
+                     WorldClimbingBlendspace_DownB: str = None,
+                     WorldClimbingBlendspace_DownBHeight: float = None,
+                     WorldClimbingBlendspace_UpA: str = None,
+                     WorldClimbingBlendspace_UpB: str = None,
+                     WorldClimbingBlendspace_UpBHeight: float = None,
+                     WorldClimbingHeight: float = None,
+                     WorldClimbingRadius: float = None,
+                     WorldClimbingSpeed: float = None):
+            super().__init__(
+                IsMovementEnabled=IsMovementEnabled,
+                IsWorldClimbingEnabled=IsWorldClimbingEnabled,
+                LadderBlendspace_Attach_Down=LadderBlendspace_Attach_Down,
+                LadderBlendspace_Attach_Up=LadderBlendspace_Attach_Up,
+                LadderBlendspace_Detach_Down=LadderBlendspace_Detach_Down,
+                LadderBlendspace_Detach_Up=LadderBlendspace_Detach_Up,
+                MaxDashDistance=MaxDashDistance,
+                MovementAcceleration=MovementAcceleration,
+                MovementSpeedDash=MovementSpeedDash,
+                MovementSpeedRun=MovementSpeedRun,
+                MovementSpeedSprint=MovementSpeedSprint,
+                MovementSpeedStroll=MovementSpeedStroll,
+                MovementSpeedWalk=MovementSpeedWalk,
+                MovementStepUpHeight=MovementStepUpHeight,
+                MovementTiltToRemap=MovementTiltToRemap,
+                ProbeSpineBOffset=ProbeSpineBOffset,
+                SteeringSpeedCurveWithoutTransitions=SteeringSpeedCurveWithoutTransitions,
+                SteeringSpeed_CastingCurve=SteeringSpeed_CastingCurve,
+                SteeringSpeed_MovingCurve=SteeringSpeed_MovingCurve,
+                UseStandAtDestination=UseStandAtDestination,
+                WorldClimbingBlendspace_DownA=WorldClimbingBlendspace_DownA,
+                WorldClimbingBlendspace_DownB=WorldClimbingBlendspace_DownB,
+                WorldClimbingBlendspace_DownBHeight=WorldClimbingBlendspace_DownBHeight,
+                WorldClimbingBlendspace_UpA=WorldClimbingBlendspace_UpA,
+                WorldClimbingBlendspace_UpB=WorldClimbingBlendspace_UpB,
+                WorldClimbingBlendspace_UpBHeight=WorldClimbingBlendspace_UpBHeight,
+                WorldClimbingHeight=WorldClimbingHeight,
+                WorldClimbingRadius=WorldClimbingRadius,
+                WorldClimbingSpeed=WorldClimbingSpeed,
+            )
+
     class SkillList(LsxNode):
         class Skill(LsxNode):
             class SourceConditions(LsxNode):
@@ -105,28 +289,92 @@ class GameObjects(LsxNode):
                     class Tag(LsxNode):
                         Object: str = LsxType.GUID
 
+                        def __init__(self,
+                                     *,
+                                     Object: str = None):
+                            super().__init__(
+                                Object=Object,
+                            )
+
                     children: LsxChildren = (Tag,)
+
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
                 children: LsxChildren = (Tags,)
+
+                def __init__(self,
+                             *,
+                             MaximumHealthPercentage: int = None,
+                             MinimumHealthPercentage: int = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MaximumHealthPercentage=MaximumHealthPercentage,
+                        MinimumHealthPercentage=MinimumHealthPercentage,
+                        children=children,
+                    )
 
             class TargetConditions(LsxNode):
                 class Tags(LsxNode):
                     class Tag(LsxNode):
                         Object: str = LsxType.GUID
 
+                        def __init__(self,
+                                     *,
+                                     Object: str = None):
+                            super().__init__(
+                                Object=Object,
+                            )
+
                     children: LsxChildren = (Tag,)
+
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
 
                 MaximumHealthPercentage: int = LsxType.INT32
                 MinimumHealthPercentage: int = LsxType.INT32
                 children: LsxChildren = (Tags,)
 
+                def __init__(self,
+                             *,
+                             MaximumHealthPercentage: int = None,
+                             MinimumHealthPercentage: int = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MaximumHealthPercentage=MaximumHealthPercentage,
+                        MinimumHealthPercentage=MinimumHealthPercentage,
+                        children=children,
+                    )
+
             class OnlyInNPCLoadout(LsxNode):
                 Object: str = LsxType.GUID
 
+                def __init__(self,
+                             *,
+                             Object: str = None):
+                    super().__init__(
+                        Object=Object,
+                    )
+
             class ExcludeInNPCLoadout(LsxNode):
                 Object: str = LsxType.GUID
+
+                def __init__(self,
+                             *,
+                             Object: str = None):
+                    super().__init__(
+                        Object=Object,
+                    )
 
             AIFlags: int = LsxType.UINT16
             CasualExplorer: bool = LsxType.BOOL
@@ -141,28 +389,117 @@ class GameObjects(LsxNode):
             SpellCastingAbility: int = LsxType.UINT8
             StartRound: int = LsxType.INT32
             TacticianHardcore: bool = LsxType.BOOL
-            children: LsxChildren = (SourceConditions, TargetConditions, OnlyInNPCLoadout, ExcludeInNPCLoadout)
+            children: LsxChildren = (
+                SourceConditions,
+                TargetConditions,
+                OnlyInNPCLoadout,
+                ExcludeInNPCLoadout,
+            )
+
+            def __init__(self,
+                         *,
+                         AIFlags: int = None,
+                         CasualExplorer: bool = None,
+                         Classic: bool = None,
+                         FallbackStartRound: int = None,
+                         HonorHardcore: bool = None,
+                         LearningStrategy: int = None,
+                         MinimumImpact: int = None,
+                         OnlyCastOnSelf: bool = None,
+                         ScoreModifier: float = None,
+                         Skill: str = None,
+                         SpellCastingAbility: int = None,
+                         StartRound: int = None,
+                         TacticianHardcore: bool = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    AIFlags=AIFlags,
+                    CasualExplorer=CasualExplorer,
+                    Classic=Classic,
+                    FallbackStartRound=FallbackStartRound,
+                    HonorHardcore=HonorHardcore,
+                    LearningStrategy=LearningStrategy,
+                    MinimumImpact=MinimumImpact,
+                    OnlyCastOnSelf=OnlyCastOnSelf,
+                    ScoreModifier=ScoreModifier,
+                    Skill=Skill,
+                    SpellCastingAbility=SpellCastingAbility,
+                    StartRound=StartRound,
+                    TacticianHardcore=TacticianHardcore,
+                    children=children,
+                )
 
         children: LsxChildren = (Skill,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class StatusList(LsxNode):
         class Status(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (Status,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class Tags(LsxNode):
         class Tag(LsxNode):
             Object: str = LsxType.GUID
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (Tag,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class PickingPhysics(LsxNode):
         class PickingPhysicsTemplates(LsxNode):
             MapKey: str = LsxType.FIXEDSTRING
             MapValue: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         MapKey: str = None,
+                         MapValue: str = None):
+                super().__init__(
+                    MapKey=MapKey,
+                    MapValue=MapValue,
+                )
+
         children: LsxChildren = (PickingPhysicsTemplates,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class OnUsePeaceActions(LsxNode):
         class Action(LsxNode):
@@ -204,10 +541,103 @@ class GameObjects(LsxNode):
                 Type: int = LsxType.INT32
                 Visibility: int = LsxType.INT32
 
+                def __init__(self,
+                             *,
+                             AiUseInCombat: bool = None,
+                             AllowScaling: bool = None,
+                             Animation: str = None,
+                             BlockMapMarkerNavigation: bool = None,
+                             BookId: str = None,
+                             BotomHorizontalOffset: float = None,
+                             BotomVerticalOffset: float = None,
+                             ClassId: str = None,
+                             ClimbDirection: int = None,
+                             CombineSlots: int = None,
+                             Conditions: str = None,
+                             Consume: bool = None,
+                             EventID: str = None,
+                             FallbackPreviewRadius: float = None,
+                             Heal: float = None,
+                             InsertSlots: int = None,
+                             IsBase: bool = None,
+                             IsHiddenStatus: bool = None,
+                             NodeLadderOffest: float = None,
+                             RecipeID: str = None,
+                             SecretDoor: bool = None,
+                             SkillID: str = None,
+                             SnapToGround: bool = None,
+                             Source: str = None,
+                             SourceType: int = None,
+                             SpellId: str = None,
+                             StatsId: str = None,
+                             StatusDuration: int = None,
+                             Target: str = None,
+                             TopAttachNearOffset: float = None,
+                             TopDetachOffset: float = None,
+                             TopLineTolerance: float = None,
+                             TopMidOffset: float = None,
+                             TopMidToPlatformFixedLength: float = None,
+                             Type: int = None,
+                             Visibility: int = None):
+                    super().__init__(
+                        AiUseInCombat=AiUseInCombat,
+                        AllowScaling=AllowScaling,
+                        Animation=Animation,
+                        BlockMapMarkerNavigation=BlockMapMarkerNavigation,
+                        BookId=BookId,
+                        BotomHorizontalOffset=BotomHorizontalOffset,
+                        BotomVerticalOffset=BotomVerticalOffset,
+                        ClassId=ClassId,
+                        ClimbDirection=ClimbDirection,
+                        CombineSlots=CombineSlots,
+                        Conditions=Conditions,
+                        Consume=Consume,
+                        EventID=EventID,
+                        FallbackPreviewRadius=FallbackPreviewRadius,
+                        Heal=Heal,
+                        InsertSlots=InsertSlots,
+                        IsBase=IsBase,
+                        IsHiddenStatus=IsHiddenStatus,
+                        NodeLadderOffest=NodeLadderOffest,
+                        RecipeID=RecipeID,
+                        SecretDoor=SecretDoor,
+                        SkillID=SkillID,
+                        SnapToGround=SnapToGround,
+                        Source=Source,
+                        SourceType=SourceType,
+                        SpellId=SpellId,
+                        StatsId=StatsId,
+                        StatusDuration=StatusDuration,
+                        Target=Target,
+                        TopAttachNearOffset=TopAttachNearOffset,
+                        TopDetachOffset=TopDetachOffset,
+                        TopLineTolerance=TopLineTolerance,
+                        TopMidOffset=TopMidOffset,
+                        TopMidToPlatformFixedLength=TopMidToPlatformFixedLength,
+                        Type=Type,
+                        Visibility=Visibility,
+                    )
+
             ActionType: int = LsxType.INT32
             children: LsxChildren = (Attributes,)
 
+            def __init__(self,
+                         *,
+                         ActionType: int = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ActionType=ActionType,
+                    children=children,
+                )
+
         children: LsxChildren = (Action,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ConstellationConfigGlobalParameters(LsxNode):
         class ConstellationConfigParameter(LsxNode):
@@ -217,19 +647,70 @@ class GameObjects(LsxNode):
                         class String(LsxNode):
                             String: str = LsxType.LSSTRING_VALUE
 
+                            def __init__(self,
+                                         *,
+                                         String: str = None):
+                                super().__init__(
+                                    String=String,
+                                )
+
                         class double(LsxNode):
                             double: float = LsxType.DOUBLE
 
+                            def __init__(self,
+                                         *,
+                                         double: float = None):
+                                super().__init__(
+                                    double=double,
+                                )
+
                         children: LsxChildren = (String, double)
+
+                        def __init__(self,
+                                     *,
+                                     children: LsxChildren = None):
+                            super().__init__(
+                                children=children,
+                            )
 
                     children: LsxChildren = (Scalar,)
 
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
+
                 children: LsxChildren = (Scalar,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             Name: str = LsxType.LSSTRING_VALUE
             children: LsxChildren = (Value,)
 
+            def __init__(self,
+                         *,
+                         Name: str = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    Name=Name,
+                    children=children,
+                )
+
         children: LsxChildren = (ConstellationConfigParameter,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ExcludeInDifficulty(LsxNode):
         pass
@@ -238,7 +719,21 @@ class GameObjects(LsxNode):
         class InventoryItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (InventoryItem,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ItemList(LsxNode):
         class Item(LsxNode):
@@ -250,6 +745,17 @@ class GameObjects(LsxNode):
                 MinimumHealthPercentage: int = LsxType.INT32
                 children: LsxChildren = (Tags,)
 
+                def __init__(self,
+                             *,
+                             MaximumHealthPercentage: int = None,
+                             MinimumHealthPercentage: int = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MaximumHealthPercentage=MaximumHealthPercentage,
+                        MinimumHealthPercentage=MinimumHealthPercentage,
+                        children=children,
+                    )
+
             class TargetConditions(LsxNode):
                 class Tags(LsxNode):
                     pass
@@ -258,8 +764,26 @@ class GameObjects(LsxNode):
                 MinimumHealthPercentage: int = LsxType.INT32
                 children: LsxChildren = (Tags,)
 
+                def __init__(self,
+                             *,
+                             MaximumHealthPercentage: int = None,
+                             MinimumHealthPercentage: int = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MaximumHealthPercentage=MaximumHealthPercentage,
+                        MinimumHealthPercentage=MinimumHealthPercentage,
+                        children=children,
+                    )
+
             class OnlyInNPCLoadout(LsxNode):
                 Object: str = LsxType.GUID
+
+                def __init__(self,
+                             *,
+                             Object: str = None):
+                    super().__init__(
+                        Object=Object,
+                    )
 
             AIFlags: int = LsxType.UINT16
             Amount: int = LsxType.INT32
@@ -283,7 +807,61 @@ class GameObjects(LsxNode):
             UUID: str = LsxType.FIXEDSTRING
             children: LsxChildren = (SourceConditions, TargetConditions, OnlyInNPCLoadout)
 
+            def __init__(self,
+                         *,
+                         AIFlags: int = None,
+                         Amount: int = None,
+                         CanBePickpocketed: bool = None,
+                         CasualExplorer: bool = None,
+                         Classic: bool = None,
+                         FallbackStartRound: int = None,
+                         HonorHardcore: bool = None,
+                         IsDroppedOnDeath: bool = None,
+                         IsTradable: int = None,
+                         IsTradeable: bool = None,
+                         ItemName: str = None,
+                         LevelName: str = None,
+                         MinimumImpact: int = None,
+                         OnlyCastOnSelf: bool = None,
+                         ScoreModifier: float = None,
+                         StartRound: int = None,
+                         TacticianHardcore: bool = None,
+                         TemplateID: str = None,
+                         Type: int = None,
+                         UUID: str = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    AIFlags=AIFlags,
+                    Amount=Amount,
+                    CanBePickpocketed=CanBePickpocketed,
+                    CasualExplorer=CasualExplorer,
+                    Classic=Classic,
+                    FallbackStartRound=FallbackStartRound,
+                    HonorHardcore=HonorHardcore,
+                    IsDroppedOnDeath=IsDroppedOnDeath,
+                    IsTradable=IsTradable,
+                    IsTradeable=IsTradeable,
+                    ItemName=ItemName,
+                    LevelName=LevelName,
+                    MinimumImpact=MinimumImpact,
+                    OnlyCastOnSelf=OnlyCastOnSelf,
+                    ScoreModifier=ScoreModifier,
+                    StartRound=StartRound,
+                    TacticianHardcore=TacticianHardcore,
+                    TemplateID=TemplateID,
+                    Type=Type,
+                    UUID=UUID,
+                    children=children,
+                )
+
         children: LsxChildren = (Item,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class OnlyInDifficulty(LsxNode):
         pass
@@ -300,19 +878,72 @@ class GameObjects(LsxNode):
                             class ScriptVariables(LsxNode):
                                 Value: str = LsxType.LSSTRING_VALUE
 
+                                def __init__(self,
+                                             *,
+                                             Value: str = None):
+                                    super().__init__(
+                                        Value=Value,
+                                    )
+
                             MapKey: str = LsxType.FIXEDSTRING
                             children: LsxChildren = (ScriptVariables,)
 
+                            def __init__(self,
+                                         *,
+                                         MapKey: str = None,
+                                         children: LsxChildren = None):
+                                super().__init__(
+                                    MapKey=MapKey,
+                                    children=children,
+                                )
+
                         children: LsxChildren = (Object,)
 
+                        def __init__(self,
+                                     *,
+                                     children: LsxChildren = None):
+                            super().__init__(
+                                children=children,
+                            )
+
                     children: LsxChildren = (ScriptVariables,)
+
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
 
                 MapKey: str = LsxType.FIXEDSTRING
                 children: LsxChildren = (ScriptOverrides,)
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        children=children,
+                    )
+
             children: LsxChildren = (Object,)
 
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
+
         children: LsxChildren = (ScriptOverrides,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class Scripts(LsxNode):
         class Script(LsxNode):
@@ -322,12 +953,46 @@ class GameObjects(LsxNode):
                     Type: int = LsxType.INT32
                     Value: list[str] = LsxType.LSSTRING
 
+                    def __init__(self,
+                                 *,
+                                 MapKey: str = None,
+                                 Type: int = None,
+                                 Value: list[str] = None):
+                        super().__init__(
+                            MapKey=MapKey,
+                            Type=Type,
+                            Value=Value,
+                        )
+
                 children: LsxChildren = (Parameter,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             UUID: str = LsxType.FIXEDSTRING
             children: LsxChildren = (Parameters,)
 
+            def __init__(self,
+                         *,
+                         UUID: str = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    UUID=UUID,
+                    children=children,
+                )
+
         children: LsxChildren = (Script,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class Equipment_(LsxNode):
         _id_ = "Equipment"
@@ -337,90 +1002,296 @@ class GameObjects(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class AfroShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class CurlyLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class CurlyShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class DreadLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class DreadShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class LongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class ParentRace(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.GUID
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class ShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class Visuals(LsxNode):
             class Object(LsxNode):
                 class MapValue(LsxNode):
                     Object: str = LsxType.FIXEDSTRING
 
+                    def __init__(self,
+                                 *,
+                                 Object: str = None):
+                        super().__init__(
+                            Object=Object,
+                        )
+
                 MapKey: str = LsxType.GUID
                 children: LsxChildren = (MapValue,)
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        children=children,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class WavyLongHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class WavyShortHair(LsxNode):
             class Object(LsxNode):
                 MapKey: str = LsxType.GUID
                 MapValue: str = LsxType.FIXEDSTRING
 
+                def __init__(self,
+                             *,
+                             MapKey: str = None,
+                             MapValue: str = None):
+                    super().__init__(
+                        MapKey=MapKey,
+                        MapValue=MapValue,
+                    )
+
             children: LsxChildren = (Object,)
+
+            def __init__(self,
+                         *,
+                         children: LsxChildren = None):
+                super().__init__(
+                    children=children,
+                )
 
         class Slot(LsxNode):
             Object: str = LsxType.FIXEDSTRING
+
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
 
         class VisualSet(LsxNode):
             class MaterialOverrides(LsxNode):
@@ -431,7 +1302,27 @@ class GameObjects(LsxNode):
                         MapKey: str = LsxType.FIXEDSTRING
                         MaterialPresetResource: str = LsxType.FIXEDSTRING
 
+                        def __init__(self,
+                                     *,
+                                     ForcePresetValues: bool = None,
+                                     GroupName: str = None,
+                                     MapKey: str = None,
+                                     MaterialPresetResource: str = None):
+                            super().__init__(
+                                ForcePresetValues=ForcePresetValues,
+                                GroupName=GroupName,
+                                MapKey=MapKey,
+                                MaterialPresetResource=MaterialPresetResource,
+                            )
+
                     children: LsxChildren = (Object,)
+
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
 
                 class Vector3Parameters(LsxNode):
                     Color: bool = LsxType.BOOL
@@ -440,13 +1331,48 @@ class GameObjects(LsxNode):
                     Parameter: str = LsxType.FIXEDSTRING
                     Value: str = LsxType.FVEC3
 
+                    def __init__(self,
+                                 *,
+                                 Color: bool = None,
+                                 Custom: bool = None,
+                                 Enabled: bool = None,
+                                 Parameter: str = None,
+                                 Value: str = None):
+                        super().__init__(
+                            Color=Color,
+                            Custom=Custom,
+                            Enabled=Enabled,
+                            Parameter=Parameter,
+                            Value=Value,
+                        )
+
                 class ColorPreset(LsxNode):
                     ForcePresetValues: bool = LsxType.BOOL
                     GroupName: str = LsxType.FIXEDSTRING
                     MaterialPresetResource: str = LsxType.FIXEDSTRING
 
+                    def __init__(self,
+                                 *,
+                                 ForcePresetValues: bool = None,
+                                 GroupName: str = None,
+                                 MaterialPresetResource: str = None):
+                        super().__init__(
+                            ForcePresetValues=ForcePresetValues,
+                            GroupName=GroupName,
+                            MaterialPresetResource=MaterialPresetResource,
+                        )
+
                 MaterialResource: str = LsxType.FIXEDSTRING
                 children: LsxChildren = (MaterialPresets, Vector3Parameters, ColorPreset)
+
+                def __init__(self,
+                             *,
+                             MaterialResource: str = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        MaterialResource=MaterialResource,
+                        children=children,
+                    )
 
             class RealMaterialOverrides(LsxNode):
                 pass
@@ -454,6 +1380,17 @@ class GameObjects(LsxNode):
             BodySetVisual: str = LsxType.FIXEDSTRING
             ShowEquipmentVisuals: bool = LsxType.BOOL
             children: LsxChildren = (MaterialOverrides, RealMaterialOverrides)
+
+            def __init__(self,
+                         *,
+                         BodySetVisual: str = None,
+                         ShowEquipmentVisuals: bool = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    BodySetVisual=BodySetVisual,
+                    ShowEquipmentVisuals=ShowEquipmentVisuals,
+                    children=children,
+                )
 
         EquipmentSlots: int = LsxType.UINT32
         children: LsxChildren = (
@@ -473,12 +1410,35 @@ class GameObjects(LsxNode):
             VisualSet,
         )
 
+        def __init__(self,
+                     *,
+                     EquipmentSlots: int = None,
+                     children: LsxChildren = None):
+            super().__init__(
+                EquipmentSlots=EquipmentSlots,
+                children=children,
+            )
+
     class EquipmentTypes(LsxNode):
         class EquipmentType(LsxNode):
             _id_ = ""
             Object: str = LsxType.GUID
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (EquipmentType,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class FootStepInfos(LsxNode):
         class FootStepInfo(LsxNode):
@@ -491,7 +1451,35 @@ class GameObjects(LsxNode):
             FootSoundEventName: str = LsxType.FIXEDSTRING
             Name: str = LsxType.LSSTRING_VALUE
 
+            def __init__(self,
+                         *,
+                         FootBoneName: str = None,
+                         FootHearingEffectName: str = None,
+                         FootPrintEffectName: str = None,
+                         FootScuffEventName: str = None,
+                         FootSlideEffectName: str = None,
+                         FootSmearEffectName: str = None,
+                         FootSoundEventName: str = None,
+                         Name: str = None):
+                super().__init__(
+                    FootBoneName=FootBoneName,
+                    FootHearingEffectName=FootHearingEffectName,
+                    FootPrintEffectName=FootPrintEffectName,
+                    FootScuffEventName=FootScuffEventName,
+                    FootSlideEffectName=FootSlideEffectName,
+                    FootSmearEffectName=FootSmearEffectName,
+                    FootSoundEventName=FootSoundEventName,
+                    Name=Name,
+                )
+
         children: LsxChildren = (FootStepInfo,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class OnDeathActions(LsxNode):
         class Action(LsxNode):
@@ -509,22 +1497,95 @@ class GameObjects(LsxNode):
                 Timeout: float = LsxType.FLOAT
                 TotalCells: int = LsxType.INT32
 
+                def __init__(self,
+                             *,
+                             ActivateSoundEvent: str = None,
+                             Animation: str = None,
+                             ApplyDeathTypeBloodCheck: bool = None,
+                             CellAtGrow: int = None,
+                             Conditions: str = None,
+                             ExternalCauseAsSurfaceOwner: bool = None,
+                             GrowTimer: float = None,
+                             LifeTime: float = None,
+                             PlayOnHUD: bool = None,
+                             SurfaceType: str = None,
+                             Timeout: float = None,
+                             TotalCells: int = None):
+                    super().__init__(
+                        ActivateSoundEvent=ActivateSoundEvent,
+                        Animation=Animation,
+                        ApplyDeathTypeBloodCheck=ApplyDeathTypeBloodCheck,
+                        CellAtGrow=CellAtGrow,
+                        Conditions=Conditions,
+                        ExternalCauseAsSurfaceOwner=ExternalCauseAsSurfaceOwner,
+                        GrowTimer=GrowTimer,
+                        LifeTime=LifeTime,
+                        PlayOnHUD=PlayOnHUD,
+                        SurfaceType=SurfaceType,
+                        Timeout=Timeout,
+                        TotalCells=TotalCells,
+                    )
+
             ActionType: int = LsxType.INT32
             children: LsxChildren = (Attributes,)
 
+            def __init__(self,
+                         *,
+                         ActionType: int = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ActionType=ActionType,
+                    children=children,
+                )
+
         children: LsxChildren = (Action,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class TradeTreasures(LsxNode):
         class TreasureItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (TreasureItem,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class Treasures(LsxNode):
         class TreasureItem(LsxNode):
             Object: str = LsxType.FIXEDSTRING
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (TreasureItem,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ConstructionLines(LsxNode):
         class ConstructionLine(LsxNode):
@@ -532,18 +1593,62 @@ class GameObjects(LsxNode):
                 class ConstructionPoint(LsxNode):
                     ConstructionPointId: str = LsxType.GUID
 
+                    def __init__(self,
+                                 *,
+                                 ConstructionPointId: str = None):
+                        super().__init__(
+                            ConstructionPointId=ConstructionPointId,
+                        )
+
                 children: LsxChildren = (ConstructionPoint,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             class HelperEnd(LsxNode):
                 ConstructionPointId: str = LsxType.GUID
 
+                def __init__(self,
+                             *,
+                             ConstructionPointId: str = None):
+                    super().__init__(
+                        ConstructionPointId=ConstructionPointId,
+                    )
+
             class HelperStart(LsxNode):
                 ConstructionPointId: str = LsxType.GUID
+
+                def __init__(self,
+                             *,
+                             ConstructionPointId: str = None):
+                    super().__init__(
+                        ConstructionPointId=ConstructionPointId,
+                    )
 
             ConstructionLineGuid: str = LsxType.GUID
             children: LsxChildren = (ConstructionPoints, HelperEnd, HelperStart)
 
+            def __init__(self,
+                         *,
+                         ConstructionLineGuid: str = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ConstructionLineGuid=ConstructionLineGuid,
+                    children=children,
+                )
+
         children: LsxChildren = (ConstructionLine,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ConstructionPoints(LsxNode):
         class ConstructionPoint(LsxNode):
@@ -553,7 +1658,21 @@ class GameObjects(LsxNode):
                         class ConstructionPointNeighbour(LsxNode):
                             ConstructionPointId: str = LsxType.GUID
 
+                            def __init__(self,
+                                         *,
+                                         ConstructionPointId: str = None):
+                                super().__init__(
+                                    ConstructionPointId=ConstructionPointId,
+                                )
+
                         children: LsxChildren = (ConstructionPointNeighbour,)
+
+                        def __init__(self,
+                                     *,
+                                     children: LsxChildren = None):
+                            super().__init__(
+                                children=children,
+                            )
 
                     class ConstructionTileLists(LsxNode):
                         class ConstructionTileList(LsxNode):
@@ -561,19 +1680,61 @@ class GameObjects(LsxNode):
                                 class ConstructionPointLeftCornerTile(LsxNode):
                                     TileId: str = LsxType.GUID
 
+                                    def __init__(self,
+                                                 *,
+                                                 TileId: str = None):
+                                        super().__init__(
+                                            TileId=TileId,
+                                        )
+
                                 children: LsxChildren = (ConstructionPointLeftCornerTile,)
+
+                                def __init__(self,
+                                             *,
+                                             children: LsxChildren = None):
+                                    super().__init__(
+                                        children=children,
+                                    )
 
                             class ConstructionPointNeighbourTiles(LsxNode):
                                 class ConstructionPointNeighbourTile(LsxNode):
                                     ConstructionPointTile1Id: str = LsxType.GUID
 
+                                    def __init__(self,
+                                                 *,
+                                                 ConstructionPointTile1Id: str = None):
+                                        super().__init__(
+                                            ConstructionPointTile1Id=ConstructionPointTile1Id,
+                                        )
+
                                 children: LsxChildren = (ConstructionPointNeighbourTile,)
+
+                                def __init__(self,
+                                             *,
+                                             children: LsxChildren = None):
+                                    super().__init__(
+                                        children=children,
+                                    )
 
                             class ConstructionPointRightCornerTiles(LsxNode):
                                 class ConstructionPointRightCornerTile(LsxNode):
                                     TileId: str = LsxType.GUID
 
+                                    def __init__(self,
+                                                 *,
+                                                 TileId: str = None):
+                                        super().__init__(
+                                            TileId=TileId,
+                                        )
+
                                 children: LsxChildren = (ConstructionPointRightCornerTile,)
+
+                                def __init__(self,
+                                             *,
+                                             children: LsxChildren = None):
+                                    super().__init__(
+                                        children=children,
+                                    )
 
                             ConstructionNonOptimalTilesEnd: int = LsxType.INT32
                             ConstructionNonOptimalTilesStart: int = LsxType.INT32
@@ -584,17 +1745,69 @@ class GameObjects(LsxNode):
                                 ConstructionPointRightCornerTiles,
                             )
 
+                            def __init__(self,
+                                         *,
+                                         ConstructionNonOptimalTilesEnd: int = None,
+                                         ConstructionNonOptimalTilesStart: int = None,
+                                         Side: int = None,
+                                         children: LsxChildren = None):
+                                super().__init__(
+                                    ConstructionNonOptimalTilesEnd=ConstructionNonOptimalTilesEnd,
+                                    ConstructionNonOptimalTilesStart=ConstructionNonOptimalTilesStart,
+                                    Side=Side,
+                                    children=children,
+                                )
+
                         children: LsxChildren = (ConstructionTileList,)
+
+                        def __init__(self,
+                                     *,
+                                     children: LsxChildren = None):
+                            super().__init__(
+                                children=children,
+                            )
 
                     children: LsxChildren = (ConstructionPointNeighbours, ConstructionTileLists)
 
+                    def __init__(self,
+                                 *,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            children=children,
+                        )
+
                 children: LsxChildren = (ConstructionPointNeighbour,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             ConstructionPointId: str = LsxType.GUID
             ConstructionPointStop: bool = LsxType.BOOL
             children: LsxChildren = (ConstructionPointNeighbours,)
 
+            def __init__(self,
+                         *,
+                         ConstructionPointId: str = None,
+                         ConstructionPointStop: bool = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ConstructionPointId=ConstructionPointId,
+                    ConstructionPointStop=ConstructionPointStop,
+                    children=children,
+                )
+
         children: LsxChildren = (ConstructionPoint,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class ConstructionSpline(LsxNode):
         class ConstructionPoint(LsxNode):
@@ -602,8 +1815,24 @@ class GameObjects(LsxNode):
                 class ConstructionBranch(LsxNode):
                     ConstructionPointId: str = LsxType.GUID
 
+                    def __init__(self,
+                                 *,
+                                 ConstructionPointId: str = None):
+                        super().__init__(
+                            ConstructionPointId=ConstructionPointId,
+                        )
+
                 ConstructionBranchCount: int = LsxType.INT32
                 children: LsxChildren = (ConstructionBranch,)
+
+                def __init__(self,
+                             *,
+                             ConstructionBranchCount: int = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        ConstructionBranchCount=ConstructionBranchCount,
+                        children=children,
+                    )
 
             ConstructionHelperPoint: bool = LsxType.BOOL
             ConstructionPointId: str = LsxType.GUID
@@ -611,9 +1840,35 @@ class GameObjects(LsxNode):
             ConstructionPointTransform: str = LsxType.MAT4X4
             children: LsxChildren = (ConstructionBranches,)
 
+            def __init__(self,
+                         *,
+                         ConstructionHelperPoint: bool = None,
+                         ConstructionPointId: str = None,
+                         ConstructionPointStretch: bool = None,
+                         ConstructionPointTransform: str = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    ConstructionHelperPoint=ConstructionHelperPoint,
+                    ConstructionPointId=ConstructionPointId,
+                    ConstructionPointStretch=ConstructionPointStretch,
+                    ConstructionPointTransform=ConstructionPointTransform,
+                    children=children,
+                )
+
         ConstructionPointCount: int = LsxType.INT32
         id: str = LsxType.GUID
         children: LsxChildren = (ConstructionPoint,)
+
+        def __init__(self,
+                     *,
+                     ConstructionPointCount: int = None,
+                     id: str = None,
+                     children: LsxChildren = None):
+            super().__init__(
+                ConstructionPointCount=ConstructionPointCount,
+                id=id,
+                children=children,
+            )
 
     class Fillings(LsxNode):
         class Filling(LsxNode):
@@ -623,8 +1878,24 @@ class GameObjects(LsxNode):
                         class ConstructionBranch(LsxNode):
                             ConstructionPointId: str = LsxType.GUID
 
+                            def __init__(self,
+                                         *,
+                                         ConstructionPointId: str = None):
+                                super().__init__(
+                                    ConstructionPointId=ConstructionPointId,
+                                )
+
                         ConstructionBranchCount: int = LsxType.INT32
                         children: LsxChildren = (ConstructionBranch,)
+
+                        def __init__(self,
+                                     *,
+                                     ConstructionBranchCount: int = None,
+                                     children: LsxChildren = None):
+                            super().__init__(
+                                ConstructionBranchCount=ConstructionBranchCount,
+                                children=children,
+                            )
 
                     ConstructionHelperPoint: bool = LsxType.BOOL
                     ConstructionPointId: str = LsxType.GUID
@@ -632,9 +1903,35 @@ class GameObjects(LsxNode):
                     ConstructionPointTransform: str = LsxType.MAT4X4
                     children: LsxChildren = (ConstructionBranches,)
 
+                    def __init__(self,
+                                 *,
+                                 ConstructionHelperPoint: bool = None,
+                                 ConstructionPointId: str = None,
+                                 ConstructionPointStretch: bool = None,
+                                 ConstructionPointTransform: str = None,
+                                 children: LsxChildren = None):
+                        super().__init__(
+                            ConstructionHelperPoint=ConstructionHelperPoint,
+                            ConstructionPointId=ConstructionPointId,
+                            ConstructionPointStretch=ConstructionPointStretch,
+                            ConstructionPointTransform=ConstructionPointTransform,
+                            children=children,
+                        )
+
                 ConstructionPointCount: int = LsxType.INT32
                 id: str = LsxType.GUID
                 children: LsxChildren = (ConstructionPoint,)
+
+                def __init__(self,
+                             *,
+                             ConstructionPointCount: int = None,
+                             id: str = None,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        ConstructionPointCount=ConstructionPointCount,
+                        id=id,
+                        children=children,
+                    )
 
             class Exclusions(LsxNode):
                 pass
@@ -643,14 +1940,44 @@ class GameObjects(LsxNode):
                 class Index(LsxNode):
                     Object: int = LsxType.UINT16
 
+                    def __init__(self,
+                                 *,
+                                 Object: int = None):
+                        super().__init__(
+                            Object=Object,
+                        )
+
                 children: LsxChildren = (Index,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             class Vertices(LsxNode):
                 class Vertex(LsxNode):
                     Position: str = LsxType.FVEC3
                     UV: str = LsxType.FVEC2
 
+                    def __init__(self,
+                                 *,
+                                 Position: str = None,
+                                 UV: str = None):
+                        super().__init__(
+                            Position=Position,
+                            UV=UV,
+                        )
+
                 children: LsxChildren = (Vertex,)
+
+                def __init__(self,
+                             *,
+                             children: LsxChildren = None):
+                    super().__init__(
+                        children=children,
+                    )
 
             BoundMax: str = LsxType.FVEC3
             BoundMin: str = LsxType.FVEC3
@@ -673,7 +2000,59 @@ class GameObjects(LsxNode):
             WalkOn: bool = LsxType.BOOL
             children: LsxChildren = (ConstructionSpline, Exclusions, Indices, Vertices)
 
+            def __init__(self,
+                         *,
+                         BoundMax: str = None,
+                         BoundMin: str = None,
+                         FadeGroup: str = None,
+                         FadeIn: bool = None,
+                         Fadeable: bool = None,
+                         HierarchyOnlyFade: bool = None,
+                         Id: str = None,
+                         Material: str = None,
+                         Name: str = None,
+                         Opacity: float = None,
+                         Physics: str = None,
+                         Rotate: str = None,
+                         Scale: float = None,
+                         SeeThrough: bool = None,
+                         Tiling: float = None,
+                         Translate: str = None,
+                         UVOffset: str = None,
+                         UVRotation: float = None,
+                         WalkOn: bool = None,
+                         children: LsxChildren = None):
+                super().__init__(
+                    BoundMax=BoundMax,
+                    BoundMin=BoundMin,
+                    FadeGroup=FadeGroup,
+                    FadeIn=FadeIn,
+                    Fadeable=Fadeable,
+                    HierarchyOnlyFade=HierarchyOnlyFade,
+                    Id=Id,
+                    Material=Material,
+                    Name=Name,
+                    Opacity=Opacity,
+                    Physics=Physics,
+                    Rotate=Rotate,
+                    Scale=Scale,
+                    SeeThrough=SeeThrough,
+                    Tiling=Tiling,
+                    Translate=Translate,
+                    UVOffset=UVOffset,
+                    UVRotation=UVRotation,
+                    WalkOn=WalkOn,
+                    children=children,
+                )
+
         children: LsxChildren = (Filling,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class tiles(LsxNode):
         class tile(LsxNode):
@@ -696,6 +2075,47 @@ class GameObjects(LsxNode):
             WalkThrough: bool = LsxType.BOOL
             tile: str = LsxType.GUID
 
+            def __init__(self,
+                         *,
+                         CanSeeThrough: bool = None,
+                         ClickThrough: bool = None,
+                         Climbable: bool = None,
+                         Flip: bool = None,
+                         Point1: str = None,
+                         Point2: str = None,
+                         Rotate: str = None,
+                         Scale: float = None,
+                         ScaleZ: float = None,
+                         ShootThrough: bool = None,
+                         ShootThroughType: int = None,
+                         Stretchable: bool = None,
+                         Translate: str = None,
+                         TwoSidedTileCount: int = None,
+                         UUID: str = None,
+                         WalkOn: bool = None,
+                         WalkThrough: bool = None,
+                         tile: str = None):
+                super().__init__(
+                    CanSeeThrough=CanSeeThrough,
+                    ClickThrough=ClickThrough,
+                    Climbable=Climbable,
+                    Flip=Flip,
+                    Point1=Point1,
+                    Point2=Point2,
+                    Rotate=Rotate,
+                    Scale=Scale,
+                    ScaleZ=ScaleZ,
+                    ShootThrough=ShootThrough,
+                    ShootThroughType=ShootThroughType,
+                    Stretchable=Stretchable,
+                    Translate=Translate,
+                    TwoSidedTileCount=TwoSidedTileCount,
+                    UUID=UUID,
+                    WalkOn=WalkOn,
+                    WalkThrough=WalkThrough,
+                    tile=tile,
+                )
+
         CanSeeThrough: bool = LsxType.BOOL
         ClickThrough: bool = LsxType.BOOL
         Climbable: bool = LsxType.BOOL
@@ -715,17 +2135,86 @@ class GameObjects(LsxNode):
         WalkThrough: bool = LsxType.BOOL
         children: LsxChildren = (tile,)
 
+        def __init__(self,
+                     *,
+                     CanSeeThrough: bool = None,
+                     ClickThrough: bool = None,
+                     Climbable: bool = None,
+                     CollideWithCamera: bool = None,
+                     ConstructionBend: bool = None,
+                     ConstructionPlaceTwoTiles: bool = None,
+                     FadeGroup: str = None,
+                     FadeIn: bool = None,
+                     Fadeable: bool = None,
+                     HierarchyOnlyFade: bool = None,
+                     Opacity: float = None,
+                     SeeThrough: bool = None,
+                     ShootThrough: bool = None,
+                     ShootThroughType: int = None,
+                     TileSet: str = None,
+                     WalkOn: bool = None,
+                     WalkThrough: bool = None,
+                     children: LsxChildren = None):
+            super().__init__(
+                CanSeeThrough=CanSeeThrough,
+                ClickThrough=ClickThrough,
+                Climbable=Climbable,
+                CollideWithCamera=CollideWithCamera,
+                ConstructionBend=ConstructionBend,
+                ConstructionPlaceTwoTiles=ConstructionPlaceTwoTiles,
+                FadeGroup=FadeGroup,
+                FadeIn=FadeIn,
+                Fadeable=Fadeable,
+                HierarchyOnlyFade=HierarchyOnlyFade,
+                Opacity=Opacity,
+                SeeThrough=SeeThrough,
+                ShootThrough=ShootThrough,
+                ShootThroughType=ShootThroughType,
+                TileSet=TileSet,
+                WalkOn=WalkOn,
+                WalkThrough=WalkThrough,
+                children=children,
+            )
+
     class SpeakerGroupList(LsxNode):
         class SpeakerGroup(LsxNode):
             Object: str = LsxType.GUID
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (SpeakerGroup,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class InteractionFilterList(LsxNode):
         class InteractionFilter(LsxNode):
             Object: str = LsxType.GUID
 
+            def __init__(self,
+                         *,
+                         Object: str = None):
+                super().__init__(
+                    Object=Object,
+                )
+
         children: LsxChildren = (InteractionFilter,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     class FadeChildren(LsxNode):
         pass
@@ -757,7 +2246,43 @@ class GameObjects(LsxNode):
             StatusId: str = LsxType.FIXEDSTRING
             VanishOnApply: bool = LsxType.BOOL
 
+            def __init__(self,
+                         *,
+                         AffectedByRoll: bool = None,
+                         ApplyToCharacters: bool = None,
+                         ApplyToItems: bool = None,
+                         ApplyTypes: int = None,
+                         Chance: float = None,
+                         Duration: float = None,
+                         Force: bool = None,
+                         KeepAlive: bool = None,
+                         OnlyOncePerTurn: bool = None,
+                         Remove: bool = None,
+                         StatusId: str = None,
+                         VanishOnApply: bool = None):
+                super().__init__(
+                    AffectedByRoll=AffectedByRoll,
+                    ApplyToCharacters=ApplyToCharacters,
+                    ApplyToItems=ApplyToItems,
+                    ApplyTypes=ApplyTypes,
+                    Chance=Chance,
+                    Duration=Duration,
+                    Force=Force,
+                    KeepAlive=KeepAlive,
+                    OnlyOncePerTurn=OnlyOncePerTurn,
+                    Remove=Remove,
+                    StatusId=StatusId,
+                    VanishOnApply=VanishOnApply,
+                )
+
         children: LsxChildren = (StatusData,)
+
+        def __init__(self,
+                     *,
+                     children: LsxChildren = None):
+            super().__init__(
+                children=children,
+            )
 
     Acceleration: float = LsxType.FLOAT
     ActiveCharacterLightID: str = LsxType.FIXEDSTRING
@@ -813,8 +2338,8 @@ class GameObjects(LsxNode):
     DeathRaycastMinLength: float = LsxType.FLOAT
     DeathRaycastVerticalLength: float = LsxType.FLOAT
     DecalMaterial: str = LsxType.FIXEDSTRING
-    DefaultState_FixedString: str = LsxType.FIXEDSTRING  # DefaultState
     DefaultState_uint8: int = LsxType.UINT8  # DefaultState
+    DefaultState_FixedString: str = LsxType.FIXEDSTRING  # DefaultState
     Description: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
     DestroyTrailFXOnImpact: bool = LsxType.BOOL
     DestroyWithStack: bool = LsxType.BOOL
@@ -827,6 +2352,7 @@ class GameObjects(LsxNode):
     DirectionLightAttenuationSide: float = LsxType.FLOAT
     DirectionLightAttenuationStart: float = LsxType.FLOAT
     DirectionLightDimensions: str = LsxType.FVEC3
+    DisableEquipping: bool = LsxType.BOOL
     DisarmDifficultyClassID: str = LsxType.GUID
     DisintegratedResourceID: str = LsxType.FIXEDSTRING
     DisplayName: tuple[str, int] | str = LsxType.TRANSLATEDSTRING
@@ -849,7 +2375,8 @@ class GameObjects(LsxNode):
     FadeGroupOnly: bool = LsxType.BOOL
     FadeIn: bool = LsxType.BOOL
     Fadeable: bool = LsxType.BOOL
-    Flag: int = LsxType.INT32
+    Flag_int32: int = LsxType.INT32  # Flag
+    Flag_uint8: int = LsxType.UINT8  # Flag
     FlatFalloff: bool = LsxType.BOOL
     FoleyLongResourceID: str = LsxType.FIXEDSTRING
     FoleyMediumResourceID: str = LsxType.FIXEDSTRING
@@ -964,8 +2491,8 @@ class GameObjects(LsxNode):
     PreviewPathImpactFX: str = LsxType.FIXEDSTRING
     PreviewPathMaterial: str = LsxType.FIXEDSTRING
     PreviewPathRadius: float = LsxType.FLOAT
-    Race_guid: str = LsxType.GUID  # Race
     Race_int8: int = LsxType.INT8  # Race
+    Race_guid: str = LsxType.GUID  # Race
     Radius: float = LsxType.FLOAT
     ReadinessFlags: int = LsxType.UINT32
     RecieveDecal: bool = LsxType.BOOL
@@ -1122,6 +2649,665 @@ class GameObjects(LsxNode):
         IntroFX,
         StatusData,
     )
+
+    def __init__(self,
+                 *,
+                 Acceleration: float = None,
+                 ActiveCharacterLightID: str = None,
+                 AiHint: str = None,
+                 AiPathColor: str = None,
+                 AliveInventoryType: int = None,
+                 AllowSummonGenericUse: bool = None,
+                 Amount: float = None,
+                 Angle: str = None,
+                 AngleCutoff: float = None,
+                 AnimationSetResourceID: str = None,
+                 AnubisConfigName: str = None,
+                 Archetype: str = None,
+                 AttackableWhenClickThrough: bool = None,
+                 AvoidTraps: bool = None,
+                 BeamFX: str = None,
+                 BlockAoEDamage: bool = None,
+                 BloodSurfaceType: str = None,
+                 BloodType: str = None,
+                 BookType: int = None,
+                 CameraOffset: str = None,
+                 CanBeImprovisedWeapon: bool = None,
+                 CanBeMoved: bool = None,
+                 CanBePickedUp: bool = None,
+                 CanBePickpocketed: bool = None,
+                 CanBeTeleported: bool = None,
+                 CanClickThrough: bool = None,
+                 CanClimbLadders: bool = None,
+                 CanClimbOn: bool = None,
+                 CanConsumeItems: bool = None,
+                 CanFight: bool = None,
+                 CanJoinCombat: bool = None,
+                 CanOpenDoors: bool = None,
+                 CanShineThrough: bool = None,
+                 CanShootThrough: bool = None,
+                 CastBone: str = None,
+                 CastShadow: bool = None,
+                 CharacterVisualResourceID: str = None,
+                 CinematicArenaFlags: int = None,
+                 Color: str = None,
+                 Color4: str = None,
+                 ColorPreset: str = None,
+                 CombatGroupID: str = None,
+                 CombatName: str = None,
+                 ConstellationConfigName: str = None,
+                 ContainerAutoAddOnPickup: bool = None,
+                 CoverAmount: int = None,
+                 CriticalHitType: str = None,
+                 CurveResourceId: str = None,
+                 CustomPointTransform: str = None,
+                 DeathEffect: str = None,
+                 DeathRaycastMaxLength: float = None,
+                 DeathRaycastMinLength: float = None,
+                 DeathRaycastVerticalLength: float = None,
+                 DecalMaterial: str = None,
+                 DefaultState_uint8: int = None,
+                 DefaultState_FixedString: str = None,
+                 Description: tuple[str, int] | str = None,
+                 DestroyTrailFXOnImpact: bool = None,
+                 DestroyWithStack: bool = None,
+                 Destroyed: bool = None,
+                 DetachBeam: bool = None,
+                 DevComment: str = None,
+                 Dimensions: str = None,
+                 DirectionLightAttenuationEnd: float = None,
+                 DirectionLightAttenuationFunction: int = None,
+                 DirectionLightAttenuationSide: float = None,
+                 DirectionLightAttenuationStart: float = None,
+                 DirectionLightDimensions: str = None,
+                 DisableEquipping: bool = None,
+                 DisarmDifficultyClassID: str = None,
+                 DisintegratedResourceID: str = None,
+                 DisplayName: tuple[str, int] | str = None,
+                 DisplayNameAlchemy: tuple[str, int] | str = None,
+                 DistanceMax_Bezier3: float = None,
+                 DistanceMax_Bezier4: float = None,
+                 DistanceMin_Bezier3: float = None,
+                 DistanceMin_Bezier4: float = None,
+                 DropSound: str = None,
+                 Enabled: bool = None,
+                 EquipSound: str = None,
+                 Equipment_: str = None,
+                 EquipmentRace: str = None,
+                 EquipmentTypeID: str = None,
+                 ExamineRotation: str = None,
+                 ExplodedResourceID: str = None,
+                 ExplosionFX: str = None,
+                 Faction: str = None,
+                 FadeGroup: str = None,
+                 FadeGroupOnly: bool = None,
+                 FadeIn: bool = None,
+                 Fadeable: bool = None,
+                 Flag_int32: int = None,
+                 Flag_uint8: int = None,
+                 FlatFalloff: bool = None,
+                 FoleyLongResourceID: str = None,
+                 FoleyMediumResourceID: str = None,
+                 FoleyShortResourceID: str = None,
+                 ForceAffectedByAura: bool = None,
+                 ForceLifetimeDeath: bool = None,
+                 FreezeGravity: bool = None,
+                 Gain: float = None,
+                 GameplayCheckLOS: bool = None,
+                 GameplayDirectionalDimensions: str = None,
+                 GameplayEdgeSharpening: float = None,
+                 GameplayIsActive: bool = None,
+                 GameplayRadius: float = None,
+                 GameplaySpotlightAngle: float = None,
+                 GeneratePortrait: str = None,
+                 GizmoColorOverride: str = None,
+                 GravityType: int = None,
+                 GroundImpactFX: str = None,
+                 GroupID: int = None,
+                 GroupSizeMax: int = None,
+                 GroupSizeMin: int = None,
+                 GroupSpawnTimeMax: float = None,
+                 GroupSpawnTimeMin: float = None,
+                 HardcoreOnly: bool = None,
+                 HasCustomPoint: bool = None,
+                 HasGameplayValue: bool = None,
+                 HiddenFromMinimapRendering: bool = None,
+                 HierarchyOnlyFade: bool = None,
+                 Hostile: bool = None,
+                 Icon: str = None,
+                 IgnoreRoof: bool = None,
+                 ImpactFX: str = None,
+                 ImpactSound: str = None,
+                 ImpactSoundResourceID: str = None,
+                 InitialSpeed: float = None,
+                 Intensity: float = None,
+                 InteractionFilterRequirement: int = None,
+                 InteractionFilterType: int = None,
+                 InventoryMoveSound: str = None,
+                 InventoryType: int = None,
+                 IsBlocker: bool = None,
+                 IsBlueprintDisabledByDefault: bool = None,
+                 IsBoss: bool = None,
+                 IsCinematic: bool = None,
+                 IsDecorative: bool = None,
+                 IsDroppedOnDeath: bool = None,
+                 IsDynamicLayer: bool = None,
+                 IsEquipmentLootable: bool = None,
+                 IsFlickering: bool = None,
+                 IsHalfLit: bool = None,
+                 IsInspector: bool = None,
+                 IsInteractionDisabled: bool = None,
+                 IsKey: bool = None,
+                 IsLootable: bool = None,
+                 IsMoving: bool = None,
+                 IsPlayer: bool = None,
+                 IsPointerBlocker: bool = None,
+                 IsPortal: bool = None,
+                 IsPublicDomain: bool = None,
+                 IsScrollingObject: bool = None,
+                 IsShadowProxy: bool = None,
+                 IsSimpleCharacter: bool = None,
+                 IsSourceContainer: bool = None,
+                 IsSunlight: bool = None,
+                 IsSurfaceBlocker: bool = None,
+                 IsTrap: bool = None,
+                 JumpUpLadders: bool = None,
+                 Kelvin: float = None,
+                 LadderAttachOffset: float = None,
+                 LadderLoopSpeed: float = None,
+                 Layer: int = None,
+                 LevelName: str = None,
+                 LevelOverride: int = None,
+                 LevelTemplateType: int = None,
+                 LifeTime: float = None,
+                 LightChannel: int = None,
+                 LightChannelFlag: int = None,
+                 LightCookieResource: str = None,
+                 LightID: str = None,
+                 LightType: int = None,
+                 LightVolume: bool = None,
+                 LightVolumeSamplesCount: int = None,
+                 LoopSound: str = None,
+                 MapKey: str = None,
+                 Material: str = None,
+                 MaterialType: int = None,
+                 MaxCharacters: int = None,
+                 MeshProxy: str = None,
+                 MovablePlatformStartSound: str = None,
+                 MovablePlatformStopSound: str = None,
+                 MovementAmount: float = None,
+                 MovementSpeed: float = None,
+                 Name: str = None,
+                 NeedsImpactSFX: bool = None,
+                 NormalBlendingFactor: float = None,
+                 OffsetAMax_Bezier4: str = None,
+                 OffsetAMin_Bezier4: str = None,
+                 OffsetBMax_Bezier4: str = None,
+                 OffsetBMin_Bezier4: str = None,
+                 OffsetMax_Bezier3: str = None,
+                 OffsetMin_Bezier3: str = None,
+                 OnUseDescription: tuple[str, int] | str = None,
+                 Opacity: float = None,
+                 ParentTemplateId: str = None,
+                 PhysicsFollowAnimation: bool = None,
+                 PhysicsOpenTemplate: str = None,
+                 PhysicsTemplate: str = None,
+                 PhysicsType: int = None,
+                 PickupSound: str = None,
+                 PortraitVisualResourceID: str = None,
+                 PreExpose: bool = None,
+                 PreviewPathImpactFX: str = None,
+                 PreviewPathMaterial: str = None,
+                 PreviewPathRadius: float = None,
+                 Race_int8: int = None,
+                 Race_guid: str = None,
+                 Radius: float = None,
+                 ReadinessFlags: int = None,
+                 RecieveDecal: bool = None,
+                 RenderChannel: int = None,
+                 RollConditions: str = None,
+                 RotateImpact: bool = None,
+                 RotateMode: int = None,
+                 Scale: float = None,
+                 ScatteringScale: float = None,
+                 ScrollingDirection: str = None,
+                 ScrollingDistance: float = None,
+                 ScrollingOffset: float = None,
+                 ScrollingOrigin: str = None,
+                 ScrollingSpeed: float = None,
+                 SeeThrough: bool = None,
+                 Shadow: bool = None,
+                 ShadowPhysicsProxy: str = None,
+                 ShiftAMax_Bezier4: float = None,
+                 ShiftAMin_Bezier4: float = None,
+                 ShiftBMax_Bezier4: float = None,
+                 ShiftBMin_Bezier4: float = None,
+                 ShiftMax_Bezier3: float = None,
+                 ShiftMin_Bezier3: float = None,
+                 ShootThroughType: int = None,
+                 ShortDescription: tuple[str, int] | str = None,
+                 ShortDescriptionParams: str = None,
+                 ShowAttachedSpellDescriptions: bool = None,
+                 SoftBodyCollisionTemplate: str = None,
+                 SoundActivationRange: float = None,
+                 SoundAttenuation: int = None,
+                 SoundInitEvent: str = None,
+                 SoundMovementStartEvent: str = None,
+                 SoundMovementStopEvent: str = None,
+                 SoundObjectIndex: int = None,
+                 Speed: float = None,
+                 SpellSet: str = None,
+                 SpotSneakers: bool = None,
+                 StartCombatRange: float = None,
+                 StartingActive: bool = None,
+                 StartingLoaded: bool = None,
+                 Stats: str = None,
+                 StayInAiHints: bool = None,
+                 StoryItem: bool = None,
+                 SubLevelName: str = None,
+                 Summon: str = None,
+                 SurfaceCategory: int = None,
+                 SwarmGroup: str = None,
+                 TechnicalDescription: tuple[str, int] | str = None,
+                 TechnicalDescriptionParams: list[str] = None,
+                 TemplateAfterDestruction: str = None,
+                 TextureMapping: int = None,
+                 Tiling: str = None,
+                 Title: tuple[str, int] | str = None,
+                 Tooltip: int = None,
+                 TrailFX: str = None,
+                 TrajectoryType: int = None,
+                 TreasureOnDestroy: bool = None,
+                 TriggerGizmoOverride: str = None,
+                 TriggerType: str = None,
+                 Type: str = None,
+                 UnequipSound: str = None,
+                 Unimportant: bool = None,
+                 UnknownDescription: tuple[str, int] | str = None,
+                 UnknownDisplayName: tuple[str, int] | str = None,
+                 UseOcclusion: bool = None,
+                 UsePartyLevelForTreasureLevel: bool = None,
+                 UseRemotely: bool = None,
+                 UseSound: str = None,
+                 UseSoundClustering: bool = None,
+                 UseSoundOcclusion: bool = None,
+                 UseTemperature: bool = None,
+                 UsingGizmoColorOverride: bool = None,
+                 VFXScale: float = None,
+                 VelocityMode: int = None,
+                 VisualTemplate: str = None,
+                 VocalAlertResourceID: str = None,
+                 VocalAngryResourceID: str = None,
+                 VocalAnticipationResourceID: str = None,
+                 VocalAttackResourceID: str = None,
+                 VocalAwakeResourceID: str = None,
+                 VocalBoredResourceID: str = None,
+                 VocalBuffResourceID: str = None,
+                 VocalDeathResourceID: str = None,
+                 VocalDodgeResourceID: str = None,
+                 VocalEffortsResourceID: str = None,
+                 VocalExhaustedResourceID: str = None,
+                 VocalFallResourceID: str = None,
+                 VocalGaspResourceID: str = None,
+                 VocalIdle1ResourceID: str = None,
+                 VocalIdle2ResourceID: str = None,
+                 VocalIdle3ResourceID: str = None,
+                 VocalIdleCombat1ResourceID: str = None,
+                 VocalIdleCombat2ResourceID: str = None,
+                 VocalIdleCombat3ResourceID: str = None,
+                 VocalInitiativeResourceID: str = None,
+                 VocalLaughterManiacalResourceID: str = None,
+                 VocalLaughterResourceID: str = None,
+                 VocalNoneResourceID: str = None,
+                 VocalPainResourceID: str = None,
+                 VocalRebornResourceID: str = None,
+                 VocalRecoverResourceID: str = None,
+                 VocalRelaxedResourceID: str = None,
+                 VocalShoutResourceID: str = None,
+                 VocalSnoreResourceID: str = None,
+                 VocalSpawnResourceID: str = None,
+                 VocalVictoryResourceID: str = None,
+                 VocalWeakResourceID: str = None,
+                 VolumetricLightCollisionProbability: float = None,
+                 VolumetricLightIntensity: float = None,
+                 VolumetricShadow: bool = None,
+                 Wadable: bool = None,
+                 WadableSurfaceType: str = None,
+                 WalkOn: bool = None,
+                 WalkThrough: bool = None,
+                 _OriginalFileVersion_: int = None,
+                 maxStackAmount: int = None,
+                 offset: str = None,
+                 children: LsxChildren = None):
+        super().__init__(
+            Acceleration=Acceleration,
+            ActiveCharacterLightID=ActiveCharacterLightID,
+            AiHint=AiHint,
+            AiPathColor=AiPathColor,
+            AliveInventoryType=AliveInventoryType,
+            AllowSummonGenericUse=AllowSummonGenericUse,
+            Amount=Amount,
+            Angle=Angle,
+            AngleCutoff=AngleCutoff,
+            AnimationSetResourceID=AnimationSetResourceID,
+            AnubisConfigName=AnubisConfigName,
+            Archetype=Archetype,
+            AttackableWhenClickThrough=AttackableWhenClickThrough,
+            AvoidTraps=AvoidTraps,
+            BeamFX=BeamFX,
+            BlockAoEDamage=BlockAoEDamage,
+            BloodSurfaceType=BloodSurfaceType,
+            BloodType=BloodType,
+            BookType=BookType,
+            CameraOffset=CameraOffset,
+            CanBeImprovisedWeapon=CanBeImprovisedWeapon,
+            CanBeMoved=CanBeMoved,
+            CanBePickedUp=CanBePickedUp,
+            CanBePickpocketed=CanBePickpocketed,
+            CanBeTeleported=CanBeTeleported,
+            CanClickThrough=CanClickThrough,
+            CanClimbLadders=CanClimbLadders,
+            CanClimbOn=CanClimbOn,
+            CanConsumeItems=CanConsumeItems,
+            CanFight=CanFight,
+            CanJoinCombat=CanJoinCombat,
+            CanOpenDoors=CanOpenDoors,
+            CanShineThrough=CanShineThrough,
+            CanShootThrough=CanShootThrough,
+            CastBone=CastBone,
+            CastShadow=CastShadow,
+            CharacterVisualResourceID=CharacterVisualResourceID,
+            CinematicArenaFlags=CinematicArenaFlags,
+            Color=Color,
+            Color4=Color4,
+            ColorPreset=ColorPreset,
+            CombatGroupID=CombatGroupID,
+            CombatName=CombatName,
+            ConstellationConfigName=ConstellationConfigName,
+            ContainerAutoAddOnPickup=ContainerAutoAddOnPickup,
+            CoverAmount=CoverAmount,
+            CriticalHitType=CriticalHitType,
+            CurveResourceId=CurveResourceId,
+            CustomPointTransform=CustomPointTransform,
+            DeathEffect=DeathEffect,
+            DeathRaycastMaxLength=DeathRaycastMaxLength,
+            DeathRaycastMinLength=DeathRaycastMinLength,
+            DeathRaycastVerticalLength=DeathRaycastVerticalLength,
+            DecalMaterial=DecalMaterial,
+            DefaultState_uint8=DefaultState_uint8,
+            DefaultState_FixedString=DefaultState_FixedString,
+            Description=Description,
+            DestroyTrailFXOnImpact=DestroyTrailFXOnImpact,
+            DestroyWithStack=DestroyWithStack,
+            Destroyed=Destroyed,
+            DetachBeam=DetachBeam,
+            DevComment=DevComment,
+            Dimensions=Dimensions,
+            DirectionLightAttenuationEnd=DirectionLightAttenuationEnd,
+            DirectionLightAttenuationFunction=DirectionLightAttenuationFunction,
+            DirectionLightAttenuationSide=DirectionLightAttenuationSide,
+            DirectionLightAttenuationStart=DirectionLightAttenuationStart,
+            DirectionLightDimensions=DirectionLightDimensions,
+            DisableEquipping=DisableEquipping,
+            DisarmDifficultyClassID=DisarmDifficultyClassID,
+            DisintegratedResourceID=DisintegratedResourceID,
+            DisplayName=DisplayName,
+            DisplayNameAlchemy=DisplayNameAlchemy,
+            DistanceMax_Bezier3=DistanceMax_Bezier3,
+            DistanceMax_Bezier4=DistanceMax_Bezier4,
+            DistanceMin_Bezier3=DistanceMin_Bezier3,
+            DistanceMin_Bezier4=DistanceMin_Bezier4,
+            DropSound=DropSound,
+            Enabled=Enabled,
+            EquipSound=EquipSound,
+            Equipment_=Equipment_,
+            EquipmentRace=EquipmentRace,
+            EquipmentTypeID=EquipmentTypeID,
+            ExamineRotation=ExamineRotation,
+            ExplodedResourceID=ExplodedResourceID,
+            ExplosionFX=ExplosionFX,
+            Faction=Faction,
+            FadeGroup=FadeGroup,
+            FadeGroupOnly=FadeGroupOnly,
+            FadeIn=FadeIn,
+            Fadeable=Fadeable,
+            Flag_int32=Flag_int32,
+            Flag_uint8=Flag_uint8,
+            FlatFalloff=FlatFalloff,
+            FoleyLongResourceID=FoleyLongResourceID,
+            FoleyMediumResourceID=FoleyMediumResourceID,
+            FoleyShortResourceID=FoleyShortResourceID,
+            ForceAffectedByAura=ForceAffectedByAura,
+            ForceLifetimeDeath=ForceLifetimeDeath,
+            FreezeGravity=FreezeGravity,
+            Gain=Gain,
+            GameplayCheckLOS=GameplayCheckLOS,
+            GameplayDirectionalDimensions=GameplayDirectionalDimensions,
+            GameplayEdgeSharpening=GameplayEdgeSharpening,
+            GameplayIsActive=GameplayIsActive,
+            GameplayRadius=GameplayRadius,
+            GameplaySpotlightAngle=GameplaySpotlightAngle,
+            GeneratePortrait=GeneratePortrait,
+            GizmoColorOverride=GizmoColorOverride,
+            GravityType=GravityType,
+            GroundImpactFX=GroundImpactFX,
+            GroupID=GroupID,
+            GroupSizeMax=GroupSizeMax,
+            GroupSizeMin=GroupSizeMin,
+            GroupSpawnTimeMax=GroupSpawnTimeMax,
+            GroupSpawnTimeMin=GroupSpawnTimeMin,
+            HardcoreOnly=HardcoreOnly,
+            HasCustomPoint=HasCustomPoint,
+            HasGameplayValue=HasGameplayValue,
+            HiddenFromMinimapRendering=HiddenFromMinimapRendering,
+            HierarchyOnlyFade=HierarchyOnlyFade,
+            Hostile=Hostile,
+            Icon=Icon,
+            IgnoreRoof=IgnoreRoof,
+            ImpactFX=ImpactFX,
+            ImpactSound=ImpactSound,
+            ImpactSoundResourceID=ImpactSoundResourceID,
+            InitialSpeed=InitialSpeed,
+            Intensity=Intensity,
+            InteractionFilterRequirement=InteractionFilterRequirement,
+            InteractionFilterType=InteractionFilterType,
+            InventoryMoveSound=InventoryMoveSound,
+            InventoryType=InventoryType,
+            IsBlocker=IsBlocker,
+            IsBlueprintDisabledByDefault=IsBlueprintDisabledByDefault,
+            IsBoss=IsBoss,
+            IsCinematic=IsCinematic,
+            IsDecorative=IsDecorative,
+            IsDroppedOnDeath=IsDroppedOnDeath,
+            IsDynamicLayer=IsDynamicLayer,
+            IsEquipmentLootable=IsEquipmentLootable,
+            IsFlickering=IsFlickering,
+            IsHalfLit=IsHalfLit,
+            IsInspector=IsInspector,
+            IsInteractionDisabled=IsInteractionDisabled,
+            IsKey=IsKey,
+            IsLootable=IsLootable,
+            IsMoving=IsMoving,
+            IsPlayer=IsPlayer,
+            IsPointerBlocker=IsPointerBlocker,
+            IsPortal=IsPortal,
+            IsPublicDomain=IsPublicDomain,
+            IsScrollingObject=IsScrollingObject,
+            IsShadowProxy=IsShadowProxy,
+            IsSimpleCharacter=IsSimpleCharacter,
+            IsSourceContainer=IsSourceContainer,
+            IsSunlight=IsSunlight,
+            IsSurfaceBlocker=IsSurfaceBlocker,
+            IsTrap=IsTrap,
+            JumpUpLadders=JumpUpLadders,
+            Kelvin=Kelvin,
+            LadderAttachOffset=LadderAttachOffset,
+            LadderLoopSpeed=LadderLoopSpeed,
+            Layer=Layer,
+            LevelName=LevelName,
+            LevelOverride=LevelOverride,
+            LevelTemplateType=LevelTemplateType,
+            LifeTime=LifeTime,
+            LightChannel=LightChannel,
+            LightChannelFlag=LightChannelFlag,
+            LightCookieResource=LightCookieResource,
+            LightID=LightID,
+            LightType=LightType,
+            LightVolume=LightVolume,
+            LightVolumeSamplesCount=LightVolumeSamplesCount,
+            LoopSound=LoopSound,
+            MapKey=MapKey,
+            Material=Material,
+            MaterialType=MaterialType,
+            MaxCharacters=MaxCharacters,
+            MeshProxy=MeshProxy,
+            MovablePlatformStartSound=MovablePlatformStartSound,
+            MovablePlatformStopSound=MovablePlatformStopSound,
+            MovementAmount=MovementAmount,
+            MovementSpeed=MovementSpeed,
+            Name=Name,
+            NeedsImpactSFX=NeedsImpactSFX,
+            NormalBlendingFactor=NormalBlendingFactor,
+            OffsetAMax_Bezier4=OffsetAMax_Bezier4,
+            OffsetAMin_Bezier4=OffsetAMin_Bezier4,
+            OffsetBMax_Bezier4=OffsetBMax_Bezier4,
+            OffsetBMin_Bezier4=OffsetBMin_Bezier4,
+            OffsetMax_Bezier3=OffsetMax_Bezier3,
+            OffsetMin_Bezier3=OffsetMin_Bezier3,
+            OnUseDescription=OnUseDescription,
+            Opacity=Opacity,
+            ParentTemplateId=ParentTemplateId,
+            PhysicsFollowAnimation=PhysicsFollowAnimation,
+            PhysicsOpenTemplate=PhysicsOpenTemplate,
+            PhysicsTemplate=PhysicsTemplate,
+            PhysicsType=PhysicsType,
+            PickupSound=PickupSound,
+            PortraitVisualResourceID=PortraitVisualResourceID,
+            PreExpose=PreExpose,
+            PreviewPathImpactFX=PreviewPathImpactFX,
+            PreviewPathMaterial=PreviewPathMaterial,
+            PreviewPathRadius=PreviewPathRadius,
+            Race_int8=Race_int8,
+            Race_guid=Race_guid,
+            Radius=Radius,
+            ReadinessFlags=ReadinessFlags,
+            RecieveDecal=RecieveDecal,
+            RenderChannel=RenderChannel,
+            RollConditions=RollConditions,
+            RotateImpact=RotateImpact,
+            RotateMode=RotateMode,
+            Scale=Scale,
+            ScatteringScale=ScatteringScale,
+            ScrollingDirection=ScrollingDirection,
+            ScrollingDistance=ScrollingDistance,
+            ScrollingOffset=ScrollingOffset,
+            ScrollingOrigin=ScrollingOrigin,
+            ScrollingSpeed=ScrollingSpeed,
+            SeeThrough=SeeThrough,
+            Shadow=Shadow,
+            ShadowPhysicsProxy=ShadowPhysicsProxy,
+            ShiftAMax_Bezier4=ShiftAMax_Bezier4,
+            ShiftAMin_Bezier4=ShiftAMin_Bezier4,
+            ShiftBMax_Bezier4=ShiftBMax_Bezier4,
+            ShiftBMin_Bezier4=ShiftBMin_Bezier4,
+            ShiftMax_Bezier3=ShiftMax_Bezier3,
+            ShiftMin_Bezier3=ShiftMin_Bezier3,
+            ShootThroughType=ShootThroughType,
+            ShortDescription=ShortDescription,
+            ShortDescriptionParams=ShortDescriptionParams,
+            ShowAttachedSpellDescriptions=ShowAttachedSpellDescriptions,
+            SoftBodyCollisionTemplate=SoftBodyCollisionTemplate,
+            SoundActivationRange=SoundActivationRange,
+            SoundAttenuation=SoundAttenuation,
+            SoundInitEvent=SoundInitEvent,
+            SoundMovementStartEvent=SoundMovementStartEvent,
+            SoundMovementStopEvent=SoundMovementStopEvent,
+            SoundObjectIndex=SoundObjectIndex,
+            Speed=Speed,
+            SpellSet=SpellSet,
+            SpotSneakers=SpotSneakers,
+            StartCombatRange=StartCombatRange,
+            StartingActive=StartingActive,
+            StartingLoaded=StartingLoaded,
+            Stats=Stats,
+            StayInAiHints=StayInAiHints,
+            StoryItem=StoryItem,
+            SubLevelName=SubLevelName,
+            Summon=Summon,
+            SurfaceCategory=SurfaceCategory,
+            SwarmGroup=SwarmGroup,
+            TechnicalDescription=TechnicalDescription,
+            TechnicalDescriptionParams=TechnicalDescriptionParams,
+            TemplateAfterDestruction=TemplateAfterDestruction,
+            TextureMapping=TextureMapping,
+            Tiling=Tiling,
+            Title=Title,
+            Tooltip=Tooltip,
+            TrailFX=TrailFX,
+            TrajectoryType=TrajectoryType,
+            TreasureOnDestroy=TreasureOnDestroy,
+            TriggerGizmoOverride=TriggerGizmoOverride,
+            TriggerType=TriggerType,
+            Type=Type,
+            UnequipSound=UnequipSound,
+            Unimportant=Unimportant,
+            UnknownDescription=UnknownDescription,
+            UnknownDisplayName=UnknownDisplayName,
+            UseOcclusion=UseOcclusion,
+            UsePartyLevelForTreasureLevel=UsePartyLevelForTreasureLevel,
+            UseRemotely=UseRemotely,
+            UseSound=UseSound,
+            UseSoundClustering=UseSoundClustering,
+            UseSoundOcclusion=UseSoundOcclusion,
+            UseTemperature=UseTemperature,
+            UsingGizmoColorOverride=UsingGizmoColorOverride,
+            VFXScale=VFXScale,
+            VelocityMode=VelocityMode,
+            VisualTemplate=VisualTemplate,
+            VocalAlertResourceID=VocalAlertResourceID,
+            VocalAngryResourceID=VocalAngryResourceID,
+            VocalAnticipationResourceID=VocalAnticipationResourceID,
+            VocalAttackResourceID=VocalAttackResourceID,
+            VocalAwakeResourceID=VocalAwakeResourceID,
+            VocalBoredResourceID=VocalBoredResourceID,
+            VocalBuffResourceID=VocalBuffResourceID,
+            VocalDeathResourceID=VocalDeathResourceID,
+            VocalDodgeResourceID=VocalDodgeResourceID,
+            VocalEffortsResourceID=VocalEffortsResourceID,
+            VocalExhaustedResourceID=VocalExhaustedResourceID,
+            VocalFallResourceID=VocalFallResourceID,
+            VocalGaspResourceID=VocalGaspResourceID,
+            VocalIdle1ResourceID=VocalIdle1ResourceID,
+            VocalIdle2ResourceID=VocalIdle2ResourceID,
+            VocalIdle3ResourceID=VocalIdle3ResourceID,
+            VocalIdleCombat1ResourceID=VocalIdleCombat1ResourceID,
+            VocalIdleCombat2ResourceID=VocalIdleCombat2ResourceID,
+            VocalIdleCombat3ResourceID=VocalIdleCombat3ResourceID,
+            VocalInitiativeResourceID=VocalInitiativeResourceID,
+            VocalLaughterManiacalResourceID=VocalLaughterManiacalResourceID,
+            VocalLaughterResourceID=VocalLaughterResourceID,
+            VocalNoneResourceID=VocalNoneResourceID,
+            VocalPainResourceID=VocalPainResourceID,
+            VocalRebornResourceID=VocalRebornResourceID,
+            VocalRecoverResourceID=VocalRecoverResourceID,
+            VocalRelaxedResourceID=VocalRelaxedResourceID,
+            VocalShoutResourceID=VocalShoutResourceID,
+            VocalSnoreResourceID=VocalSnoreResourceID,
+            VocalSpawnResourceID=VocalSpawnResourceID,
+            VocalVictoryResourceID=VocalVictoryResourceID,
+            VocalWeakResourceID=VocalWeakResourceID,
+            VolumetricLightCollisionProbability=VolumetricLightCollisionProbability,
+            VolumetricLightIntensity=VolumetricLightIntensity,
+            VolumetricShadow=VolumetricShadow,
+            Wadable=Wadable,
+            WadableSurfaceType=WadableSurfaceType,
+            WalkOn=WalkOn,
+            WalkThrough=WalkThrough,
+            _OriginalFileVersion_=_OriginalFileVersion_,
+            maxStackAmount=maxStackAmount,
+            offset=offset,
+            children=children,
+        )
 
 
 class Templates(LsxDocument):

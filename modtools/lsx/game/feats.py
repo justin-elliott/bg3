@@ -18,6 +18,23 @@ class Feat(LsxNode):
     Selectors: list[str] = LsxType.LSSTRING
     UUID: str = LsxType.GUID
 
+    def __init__(self,
+                 *,
+                 CanBeTakenMultipleTimes: bool = None,
+                 Name: str = None,
+                 PassivesAdded: list[str] = None,
+                 Requirements: str = None,
+                 Selectors: list[str] = None,
+                 UUID: str = None):
+        super().__init__(
+            CanBeTakenMultipleTimes=CanBeTakenMultipleTimes,
+            Name=Name,
+            PassivesAdded=PassivesAdded,
+            Requirements=Requirements,
+            Selectors=Selectors,
+            UUID=UUID,
+        )
+
 
 class Feats(LsxDocument):
     path = "Public/{folder}/Feats/Feats.lsx"

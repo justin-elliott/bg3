@@ -15,6 +15,17 @@ class SpellList(LsxNode):
     Spells: list[str] = LsxType.LSSTRING
     UUID: str = LsxType.GUID
 
+    def __init__(self,
+                 *,
+                 Comment: str = None,
+                 Spells: list[str] = None,
+                 UUID: str = None):
+        super().__init__(
+            Comment=Comment,
+            Spells=Spells,
+            UUID=UUID,
+        )
+
 
 class SpellLists(LsxDocument):
     path = "Public/{folder}/Lists/SpellLists.lsx"

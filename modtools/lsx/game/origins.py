@@ -14,8 +14,22 @@ class Origin(LsxNode):
     class ReallyTags(LsxNode):
         Object: str = LsxType.GUID
 
+        def __init__(self,
+                     *,
+                     Object: str = None):
+            super().__init__(
+                Object=Object,
+            )
+
     class AppearanceTags(LsxNode):
         Object: str = LsxType.GUID
+
+        def __init__(self,
+                     *,
+                     Object: str = None):
+            super().__init__(
+                Object=Object,
+            )
 
     AppearanceLocked: bool = LsxType.BOOL
     AvailableInCharacterCreation: int = LsxType.UINT8
@@ -45,6 +59,67 @@ class Origin(LsxNode):
     Unique: bool = LsxType.BOOL
     VoiceTableUUID: str = LsxType.GUID
     children: LsxChildren = (ReallyTags, AppearanceTags)
+
+    def __init__(self,
+                 *,
+                 AppearanceLocked: bool = None,
+                 AvailableInCharacterCreation: int = None,
+                 BackgroundUUID: str = None,
+                 BodyShape: int = None,
+                 BodyType: int = None,
+                 ClassEquipmentOverride: str = None,
+                 ClassUUID: str = None,
+                 CloseUpA: str = None,
+                 CloseUpB: str = None,
+                 DefaultsTemplate: str = None,
+                 Description: tuple[str, int] | str = None,
+                 DisplayName: tuple[str, int] | str = None,
+                 ExcludesOriginUUID: str = None,
+                 GlobalTemplate: str = None,
+                 GodUUID: str = None,
+                 IntroDialogUUID: str = None,
+                 LockBody: bool = None,
+                 LockClass: bool = None,
+                 LockRace: bool = None,
+                 Name: str = None,
+                 Passives: list[str] = None,
+                 RaceUUID: str = None,
+                 SubClassUUID: str = None,
+                 SubRaceUUID: str = None,
+                 UUID: str = None,
+                 Unique: bool = None,
+                 VoiceTableUUID: str = None,
+                 children: LsxChildren = None):
+        super().__init__(
+            AppearanceLocked=AppearanceLocked,
+            AvailableInCharacterCreation=AvailableInCharacterCreation,
+            BackgroundUUID=BackgroundUUID,
+            BodyShape=BodyShape,
+            BodyType=BodyType,
+            ClassEquipmentOverride=ClassEquipmentOverride,
+            ClassUUID=ClassUUID,
+            CloseUpA=CloseUpA,
+            CloseUpB=CloseUpB,
+            DefaultsTemplate=DefaultsTemplate,
+            Description=Description,
+            DisplayName=DisplayName,
+            ExcludesOriginUUID=ExcludesOriginUUID,
+            GlobalTemplate=GlobalTemplate,
+            GodUUID=GodUUID,
+            IntroDialogUUID=IntroDialogUUID,
+            LockBody=LockBody,
+            LockClass=LockClass,
+            LockRace=LockRace,
+            Name=Name,
+            Passives=Passives,
+            RaceUUID=RaceUUID,
+            SubClassUUID=SubClassUUID,
+            SubRaceUUID=SubRaceUUID,
+            UUID=UUID,
+            Unique=Unique,
+            VoiceTableUUID=VoiceTableUUID,
+            children=children,
+        )
 
 
 class Origins(LsxDocument):

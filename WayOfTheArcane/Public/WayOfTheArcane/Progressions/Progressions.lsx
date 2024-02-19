@@ -188,7 +188,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_ArcaneManifestation" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,1,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,1,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="2843ad66-a79d-4357-9c34-877e443f9701" />
                 </node>

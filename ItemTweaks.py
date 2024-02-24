@@ -37,7 +37,7 @@ item_tweaks.add(Armor(
 ))
 
 loca["DEN_RaidingParty_GoblinCaptain_Gloves_Passive_Description"] = {"en": """
-    On a hit with a weapon or unarmed attack, possibly inflict a -[1] penalty to the target's
+    When making an attack, possibly inflict a [1] penalty to the target's
     <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> and <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
     """}
 
@@ -45,7 +45,7 @@ item_tweaks.add(PassiveData(
     "DEN_RaidingParty_GoblinCaptain_Gloves_Passive",
     using="DEN_RaidingParty_GoblinCaptain_Gloves_Passive",
     Description=loca["DEN_RaidingParty_GoblinCaptain_Gloves_Passive_Description"],
-    Conditions="(IsWeaponAttack() or IsUnarmedAttack()) and Character() and not Item()",
+    Conditions="IsAttack() and Character() and not Item()",
     StatsFunctors=["ApplyStatus(BANE,100,2,,,,not SavingThrow(Ability.Charisma,11))"],
 ))
 

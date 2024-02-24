@@ -3,6 +3,6 @@
 new entry "DEN_RaidingParty_GoblinCaptain_Gloves_Passive"
 type "PassiveData"
 using "DEN_RaidingParty_GoblinCaptain_Gloves_Passive"
-data "Conditions" "(IsWeaponAttack() or IsUnarmedAttack()) and Character() and not Item()"
+data "Conditions" "IsAttack() and Character() and not Item()"
 data "Description" "h3a39614cge109g78aag0ffeg836e2a23443d"
 data "StatsFunctors" "ApplyStatus(BANE,100,2,,,,not SavingThrow(Ability.Charisma,11))"

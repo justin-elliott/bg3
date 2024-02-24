@@ -15,7 +15,7 @@ from moddb import (
     multiply_resources,
     spells_always_prepared,
 )
-from modtools.gamedata import PassiveData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -49,7 +49,27 @@ class Pyromancy(Replacer):
     @cached_property
     def _firewalk(self) -> str:
         """Add the Firewalk spell, returning its name."""
-        pass
+        name = f"{self._mod.get_prefix()}_Firewalk"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Firewalk"}
+        loca[f"{name}_Description"] = {"en": """
+            You step through the hells, reappearing in another location.
+            """}
+
+        self._mod.add(SpellData(
+            name,
+            SpellType="Target",
+            using="Target_MAG_Legendary_HellCrawler",
+            Cooldown="",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams="",
+            SpellProperties=["GROUND:TeleportSource()"],
+            UseCosts=["Movement:Distance*0.5"],
+        ))
+
+        return name
 
     @cached_property
     def _forged_in_flames(self) -> str:
@@ -103,6 +123,34 @@ class Pyromancy(Replacer):
         return name
 
     @cached_property
+    def _hellfire(self) -> str:
+        """Add the Hellfire passive, returning its name."""
+        name = f"{self._mod.get_prefix()}_Hellfire"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Hellfire"}
+        loca[f"{name}_Description"] = {"en": """
+            Your fire spells burn as hot as the hells, overcoming resistance and immunity, and dealing additional damage
+            equal to twice your <LSTag Tooltip="Charisma">Charisma</LSTag>
+            <LSTag Tooltip="AbilityModifier">Modifier</LSTag>.
+            """}
+
+        self._mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="PassiveFeature_DraconicAncestry_Brass",
+            Properties=["Highlighted"],
+            Boosts=[
+                "IgnoreResistance(Fire,Immune)",
+                "IgnoreResistance(Fire,Resistant)",
+                "IF(IsSpell() and IsDamageTypeFire()):DamageBonus(max(0,CharismaModifier*2))",
+            ],
+        ))
+
+        return name
+
+    @cached_property
     def _level_1_spell_list(self) -> str:
         spelllist = str(self.make_uuid("level_1_spelllist"))
         self.mod.add(SpellList(
@@ -127,7 +175,7 @@ class Pyromancy(Replacer):
         spelllist = str(self.make_uuid("level_5_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Sorcerer level 5",
-            Spells=["Projectile_Fireball"],
+            Spells=["Projectile_Fireball", self._firewalk],
             UUID=spelllist,
         ))
         return spelllist
@@ -166,11 +214,8 @@ class Pyromancy(Replacer):
         loca = self.mod.get_localization()
         loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Pyromancy"}
         loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
-            Flickering flames dance in your fingertips, a primal power yearning to be unleashed. You are not just a
+            Flickering flames dance on your fingertips, a primal power yearning to be unleashed. You are not just a
             sorcerer, but a conduit, channeling the raw essence of fire into searing spells and devastating displays.
-            Heat thrums within you, a constant ember waiting to ignite. Are you a fiery prodigy, born with an innate
-            connection to the inferno? Or did you forge your bond through desperation, pushing the boundaries of magic
-            until it burned bright as the sun?
             """}
 
         class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
@@ -196,69 +241,79 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 1)
     def level_1(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        progression.PassivesAdded = [
             self._forged_in_flames,
             self._pack_mule,
             self._warding,
         ]
-        progression.Selectors = (progression.Selectors or []) + [
+        progression.Selectors = [
             f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)"
         ]
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 2)
     def level_2(self, progression: Progression) -> None:
-        pass
+        progression.PassivesAdded = ["JackOfAllTrades"]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 3)
     def level_3(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        progression.PassivesAdded = [
             "Blindsight",
             "SuperiorDarkvision",
         ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self._level_3_spell_list},3,0,,,,AlwaysPrepared)",
+        progression.Selectors = [
+            f"AddSpells({self._level_3_spell_list},,,,AlwaysPrepared)"
         ]
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 4)
     def level_4(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["JackOfAllTrades"]
+        progression.PassivesAdded = ["SculptSpells"]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 5)
     def level_5(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self._level_5_spell_list},1,0)",
+        progression.PassivesAdded = None
+        progression.Selectors = [
+            f"AddSpells({self._level_5_spell_list},,,,AlwaysPrepared)"
         ]
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 6)
     def level_6(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [self._overheat]
+        progression.PassivesAdded = [self._overheat]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 7)
     def level_7(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ImprovedCritical"]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self._level_7_spell_list},1,0)",
+        progression.PassivesAdded = ["ImprovedCritical"]
+        progression.Selectors = [
+            f"AddSpells({self._level_7_spell_list},,,,AlwaysPrepared)"
         ]
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 8)
     def level_8(self, progression: Progression) -> None:
-        pass
+        progression.PassivesAdded = None
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 9)
     def level_9(self, progression: Progression) -> None:
-        pass
+        progression.PassivesAdded = ["PotentCantrip"]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 10)
     def level_10(self, progression: Progression) -> None:
-        pass
+        progression.PassivesAdded = [self._hellfire]
+        progression.PassivesRemoved = [self._overheat]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 11)
     def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
+        progression.PassivesAdded = ["ReliableTalent"]
+        progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 12)
     def level_12(self, progression: Progression) -> None:
-        pass
+        progression.PassivesAdded = None
+        progression.Selectors = None
 
 
 def main():

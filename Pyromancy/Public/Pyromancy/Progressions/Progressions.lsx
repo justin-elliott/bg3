@@ -171,7 +171,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(TidesOfChaos,1,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
-                    <attribute id="PassivesAdded" type="LSString" value="TidesOfChaos;TidesOfChaos_Unlock;WildMagic;Pyromancy_ForgedInFlames;Pyromancy_PackMule_100;Pyromancy_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="Pyromancy_ForgedInFlames;Pyromancy_PackMule_100;Pyromancy_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(88554c82-f37e-b4e2-8994-ea381c8df909,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
@@ -180,6 +180,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="JackOfAllTrades" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="879ec4bd-e2ae-4e6c-b985-45d92e3258c4" />
@@ -189,14 +190,14 @@
                     <attribute id="Name" type="LSString" value="WildMagic" />
                     <attribute id="PassivesAdded" type="LSString" value="Blindsight;SuperiorDarkvision" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(d6a54351-c0b2-ae59-b219-dc72447e3f52,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d6a54351-c0b2-ae59-b219-dc72447e3f52,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="e6071ac3-9689-466f-80cd-9fd9e88a1e44" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
-                    <attribute id="PassivesAdded" type="LSString" value="JackOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="c376c2c8-a799-4d77-80f6-1c2e5c64424a" />
@@ -205,14 +206,14 @@
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(52ce1792-577a-c097-8d69-af342b9d150a,1,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(52ce1792-577a-c097-8d69-af342b9d150a,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="fb8380d3-922c-b7c0-2d9b-29cbd87e30af" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
-                    <attribute id="PassivesAdded" type="LSString" value="BendLuck;Pyromancy_Overheat" />
+                    <attribute id="PassivesAdded" type="LSString" value="Pyromancy_Overheat" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="10eceeb6-f206-47ce-8507-72491fcf3d20" />
@@ -222,7 +223,7 @@
                     <attribute id="Name" type="LSString" value="WildMagic" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(a1e3d45c-a063-8a17-4087-f4b632ff3989,1,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(a1e3d45c-a063-8a17-4087-f4b632ff3989,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="d614b31a-26fe-e593-8746-be0f55d3cd6a" />
                 </node>
@@ -236,6 +237,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="28bc949b-e4fb-2fe0-77a8-db367adfb901" />
@@ -243,6 +245,8 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="Pyromancy_Hellfire" />
+                    <attribute id="PassivesRemoved" type="LSString" value="Pyromancy_Overheat" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="64fd1f8c-ea7b-acf4-bffe-b8a3008ee639" />
@@ -250,7 +254,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
-                    <attribute id="PassivesAdded" type="LSString" value="ControlledChaos;ReliableTalent" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="dbf5281b-5a6e-486d-92db-ff67a0a3842b" />
                     <attribute id="UUID" type="guid" value="466ce7dc-1eec-44c5-a223-d652c7b1a5f2" />

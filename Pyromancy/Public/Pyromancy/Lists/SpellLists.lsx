@@ -17,7 +17,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 5" />
-                    <attribute id="Spells" type="LSString" value="Projectile_Fireball" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fireball;Pyromancy_Firewalk" />
                     <attribute id="UUID" type="guid" value="52ce1792-577a-c097-8d69-af342b9d150a" />
                 </node>
                 <node id="SpellList">

@@ -64,7 +64,9 @@ class Lsx:
 
             document = document_type()
 
-            if (children_node := root.find("children")) is not None:
+            if document_root == "Tags":
+                document.load(root)
+            elif (children_node := root.find("children")) is not None:
                 document.load(children_node)
 
             return document

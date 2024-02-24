@@ -44,7 +44,7 @@ class Tags(LsxDocument, LsxNode):
                      Name: str = None,
                      UUID: str = None,
                      children: LsxChildren = None):
-            super.__init__(
+            super().__init__(
                 Description=Description,
                 DisplayDescription=DisplayDescription,
                 DisplayName=DisplayName,
@@ -57,6 +57,12 @@ class Tags(LsxDocument, LsxNode):
     root = "Tags"
     path = "Public/{folder}/Tags/{tag_name}.lsf.lsx"
     children: LsxChildren = (Tags,)
+
+    def load(self, node: Element) -> None:
+        """Load the single child."""
+        child = Tags.Tags()
+        child.load(node)
+        self.children.append(child)
 
     def save(self, mod_path: os.PathLike, *,
              version: tuple[int, int, int, int] | None = None,

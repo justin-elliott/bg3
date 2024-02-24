@@ -21,11 +21,16 @@ from modtools.lsx.game import (
     CharacterClass,
     ClassDescription,
 )
-from modtools.lsx.game import Progression, SpellList
+from modtools.lsx.game import (
+    Progression,
+    SpellList,
+    Tags,
+)
 from modtools.replacers import (
     class_description,
     progression,
     Replacer,
+    tag,
 )
 
 
@@ -45,6 +50,21 @@ class Pyromancy(Replacer):
 
     # spells
     _bolster: str
+
+    @cached_property
+    def _pyromancy_display_name(self) -> str:
+        loca = self.mod.get_localization()
+        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Pyromancy"}
+        return loca[f"{self.mod.get_prefix()}_DisplayName"]
+
+    @cached_property
+    def _pyromancy_description(self) -> str:
+        loca = self.mod.get_localization()
+        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
+            Flickering flames dance on your fingertips, a primal power yearning to be unleashed. You are not just a
+            sorcerer, but a conduit, channeling the raw essence of fire into searing spells and devastating displays.
+            """}
+        return loca[f"{self.mod.get_prefix()}_Description"]
 
     @cached_property
     def _firewalk(self) -> str:
@@ -211,15 +231,13 @@ class Pyromancy(Replacer):
 
     @class_description(CharacterClass.SORCERER_WILDMAGIC)
     def sorcerer_pyromancy_description(self, class_description: ClassDescription) -> None:
-        loca = self.mod.get_localization()
-        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Pyromancy"}
-        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
-            Flickering flames dance on your fingertips, a primal power yearning to be unleashed. You are not just a
-            sorcerer, but a conduit, channeling the raw essence of fire into searing spells and devastating displays.
-            """}
+        class_description.DisplayName = self._pyromancy_display_name
+        class_description.Description = self._pyromancy_description
 
-        class_description.DisplayName = loca[f"{self.mod.get_prefix()}_DisplayName"]
-        class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
+    @tag("885f8675-e400-4d53-924d-6204ff1d9558")
+    def wild_magic_tag(self, tag: Tags.Tags) -> None:
+        tag.DisplayName = self._pyromancy_display_name
+        tag.DisplayDescription = self._pyromancy_description
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1_sorcerer(self, progression: Progression) -> None:

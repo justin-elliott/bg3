@@ -241,6 +241,7 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 1)
     def level_1(self, progression: Progression) -> None:
+        progression.Boosts = None
         progression.PassivesAdded = [
             self._forged_in_flames,
             self._pack_mule,

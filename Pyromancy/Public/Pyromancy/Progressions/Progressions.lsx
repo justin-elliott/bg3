@@ -168,7 +168,6 @@
                     <attribute id="UUID" type="guid" value="9c5f5645-ccb9-49c0-864c-2522aabff53e" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(TidesOfChaos,1,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
                     <attribute id="PassivesAdded" type="LSString" value="Pyromancy_ForgedInFlames;Pyromancy_PackMule_100;Pyromancy_Warding" />

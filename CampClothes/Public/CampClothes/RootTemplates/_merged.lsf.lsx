@@ -15,6 +15,86 @@
                     <attribute id="Stats" type="FixedString" value="CampClothes_ComfortableBoots" />
                     <attribute id="Type" type="FixedString" value="item" />
                 </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h631c509dgf041g9556g2eb0ge9e579d67e3d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5b175ce6gfb4fg55e9g031dg10f83fcec7c8" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="a215b535-aa96-da42-ef74-9cb24105d4ea" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Clothing" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Clothing" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="CampClothes_Clothing_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h204eca51g1130g6f4bg312eg3fb831b370c7" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h67e823f0g4148g0193g3751g6f684ca294c0" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="3aaeab65-750a-cfe0-22a4-c83690942930" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Dyes" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Dyes" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="CampClothes_Dyes_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h124d6129g961egef42g2c34g238b54f3a1f7" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h48be2429g2659gf923g3eb6g004a3f1b7a1f" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="dcb5b8e3-4b9e-a37b-9c17-266de7669ac8" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Shoes" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Shoes" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="CampClothes_Shoes_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h878383f0g3ba3g89d0g0686gbd5143107de7" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hba583e50g8c45gb821ged4ag4ee0aeee7814" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="5f4ad8a7-1bc9-cc0b-38a9-d066d1ea423e" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Underwear" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Underwear" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="CampClothes_Underwear_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
             </children>
         </node>
     </region>

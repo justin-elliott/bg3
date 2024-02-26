@@ -3,4 +3,17 @@
 <contentList>
     <content contentuid="h3b62d67bg3ac9gaa21ga1ceg65d16dd670bb" version="1">Comfortable Boots</content>
     <content contentuid="h4dc96120gb68bg720agaa81g0fde0aa2c22d" version="1">Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.</content>
+    <content contentuid="h5b175ce6gfb4fg55e9g031dg10f83fcec7c8" version="1">Camp Clothes</content>
+    <content contentuid="h631c509dgf041g9556g2eb0ge9e579d67e3d" version="1">Contains a selection of camp clothing.</content>
+    <content contentuid="h67e823f0g4148g0193g3751g6f684ca294c0" version="1">Dyes</content>
+    <content contentuid="h204eca51g1130g6f4bg312eg3fb831b370c7" version="1">Contains a selection of dyes.</content>
+    <content contentuid="h48be2429g2659gf923g3eb6g004a3f1b7a1f" version="1">Camp Shoes</content>
+    <content contentuid="h124d6129g961egef42g2c34g238b54f3a1f7" version="1">Contains a selection of camp shoes.</content>
+    <content contentuid="hba583e50g8c45gb821ged4ag4ee0aeee7814" version="1">Underwear</content>
+    <content contentuid="h878383f0g3ba3g89d0g0686gbd5143107de7" version="1">Contains a selection of underwear.</content>
+    <content contentuid="h2d53c34cg228dg19d7g0202gfc8f5cab47c7" version="1">Bolster</content>
+    <content contentuid="ha98ca916g17f9g2f75g570fg2b96068d5e26" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="h85af8b16gbecag7d13g87f2g553bab65f109" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>
+    <content contentuid="heae1917bge7d6g0070g253bg77c3ab1cc2f2" version="1">Your carrying capacity is increased by [1]%.</content>
 </contentList>

@@ -5,7 +5,8 @@ Generates files for the "CampClothes" mod.
 
 import os
 
-from modtools.gamedata import Armor
+from moddb import Bolster, PackMule
+from modtools.gamedata import Armor, ObjectData
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import TreasureTable
@@ -51,48 +52,63 @@ camp_clothes.add(Armor(
     RootTemplate=comfortable_boots_game_objects_uuid,
 ))
 
-shoes = [
-    "CampClothes_ComfortableBoots",
-    "ARM_Camp_Sandals_A1_Black",
-    "ARM_Camp_Sandals_A1",
-    "ARM_Camp_Sandals_B_Red",
-    "ARM_Camp_Sandals_B",
-    "ARM_Camp_Sandals_Blue",
-    "ARM_Camp_Sandals_C",
-    "ARM_Camp_Sandals",
-    "ARM_Camp_Shoes_B",
-    "ARM_Camp_Shoes_C",
-    "ARM_Camp_Shoes_E",
-    "ARM_Camp_Shoes_F",
-    "ARM_Camp_Shoes",
-    "ARM_Vanity_Deva_Shoes",
-    "ARM_Vanity_Shoes_Circus",
-]
+loot_gen_backpack_a_posed_a = UUID("47805d79-88f1-4933-86eb-f78f67cbc33f")
 
-underwear = [
-    "ARM_Underwear_Dragonborn_Bronze",
-    "ARM_Underwear_Dragonborn",
-    "ARM_Underwear_Dwarves_Green",
-    "ARM_Underwear_Dwarves",
-    "ARM_Underwear_Elves_Blue",
-    "ARM_Underwear_Elves_Purple",
-    "ARM_Underwear_Elves",
-    "ARM_Underwear_Githyanki_Black",
-    "ARM_Underwear_Githyanki",
-    "ARM_Underwear_Gnomes_Blue",
-    "ARM_Underwear_Gnomes",
-    "ARM_Underwear_Halflings",
-    "ARM_Underwear_HalfOrcs_Orange",
-    "ARM_Underwear_HalfOrcs",
-    "ARM_Underwear_Humans_B",
-    "ARM_Underwear_Humans_C",
-    "ARM_Underwear_Humans",
-    "ARM_Underwear_Incubus",
-    "ARM_Underwear_Tieflings",
-    "ARM_Underwear",
-]
 
-clothes = [
+def camp_clothes_container(name: str) -> None:
+    container_uuid = camp_clothes.make_uuid(name)
+
+    camp_clothes.add(GameObjects(
+        DisplayName=loca[f"{name}_DisplayName"],
+        Description=loca[f"{name}_Description"],
+        Icon="Item_CONT_GEN_Chest_Travel_A_Small_A",
+        LevelName="",
+        MapKey=container_uuid,
+        Name=name,
+        ParentTemplateId=loot_gen_backpack_a_posed_a,
+        Stats=name,
+        Type="item",
+        children=[
+            GameObjects.InventoryList(children=[
+                GameObjects.InventoryList.InventoryItem(
+                    Object=f"{name}_TreasureTable",
+                ),
+            ]),
+        ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using="_Container",
+        RootTemplate=container_uuid,
+    ))
+
+
+loca["CampClothes_Clothing_DisplayName"] = {"en": "Camp Clothes"}
+loca["CampClothes_Clothing_Description"] = {"en": """
+    Contains a selection of camp clothing.
+    """}
+camp_clothes_container("CampClothes_Clothing")
+
+loca["CampClothes_Dyes_DisplayName"] = {"en": "Dyes"}
+loca["CampClothes_Dyes_Description"] = {"en": """
+    Contains a selection of dyes.
+    """}
+camp_clothes_container("CampClothes_Dyes")
+
+loca["CampClothes_Shoes_DisplayName"] = {"en": "Camp Shoes"}
+loca["CampClothes_Shoes_Description"] = {"en": """
+    Contains a selection of camp shoes.
+    """}
+camp_clothes_container("CampClothes_Shoes")
+
+loca["CampClothes_Underwear_DisplayName"] = {"en": "Underwear"}
+loca["CampClothes_Underwear_Description"] = {"en": """
+    Contains a selection of underwear.
+    """}
+camp_clothes_container("CampClothes_Underwear")
+
+clothing = [
     "ARM_Vanity_Body_Aristocrat_Brown",
     "ARM_Vanity_Body_Aristocrat_White",
     "ARM_Vanity_Body_Aristocrat",
@@ -212,12 +228,65 @@ dyes = [
     "OBJ_Dye_Remover",
 ]
 
+shoes = [
+    "CampClothes_ComfortableBoots",
+    "ARM_Camp_Sandals_A1_Black",
+    "ARM_Camp_Sandals_A1",
+    "ARM_Camp_Sandals_B_Red",
+    "ARM_Camp_Sandals_B",
+    "ARM_Camp_Sandals_Blue",
+    "ARM_Camp_Sandals_C",
+    "ARM_Camp_Sandals",
+    "ARM_Camp_Shoes_B",
+    "ARM_Camp_Shoes_C",
+    "ARM_Camp_Shoes_E",
+    "ARM_Camp_Shoes_F",
+    "ARM_Camp_Shoes",
+    "ARM_Vanity_Deva_Shoes",
+    "ARM_Vanity_Shoes_Circus",
+]
+
+base_underwear = [
+    "ARM_Underwear_Dragonborn_Bronze",
+    "ARM_Underwear_Dragonborn",
+    "ARM_Underwear_Dwarves_Green",
+    "ARM_Underwear_Dwarves",
+    "ARM_Underwear_Elves_Blue",
+    "ARM_Underwear_Elves_Purple",
+    "ARM_Underwear_Elves",
+    "ARM_Underwear_Githyanki_Black",
+    "ARM_Underwear_Githyanki",
+    "ARM_Underwear_Gnomes_Blue",
+    "ARM_Underwear_Gnomes",
+    "ARM_Underwear_Halflings",
+    "ARM_Underwear_HalfOrcs_Orange",
+    "ARM_Underwear_HalfOrcs",
+    "ARM_Underwear_Humans_B",
+    "ARM_Underwear_Humans_C",
+    "ARM_Underwear_Humans",
+    "ARM_Underwear_Incubus",
+    "ARM_Underwear_Tieflings",
+]
+
+bolster = Bolster(camp_clothes).add_bolster()
+pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
+underwear = []
+
+for item in base_underwear:
+    name = "CampClothes" + item.removeprefix("ARM")
+    camp_clothes.add(Armor(
+        name,
+        using=item,
+        Boosts=[f"UnlockSpell({bolster})"],
+        PassivesOnEquip=[pack_mule],
+        Rarity="Rare",
+    ))
+    underwear.append(name)
+
 outfit_template = """\
 new subtable "1,1"
 object category I_{},1,0,0,0,0,0,0,0
 """
-
-outfit_entries = "".join(outfit_template.format(outfit) for outfit in shoes + underwear + clothes).rstrip()
 
 dye_template = """\
 new subtable "10,1"
@@ -226,13 +295,43 @@ object category I_{},1,0,0,0,0,0,0,0
 
 dye_entries = "".join(dye_template.format(dye) for dye in dyes).rstrip()
 
-camp_clothes.add(TreasureTable(f"""
+camp_clothes.add(TreasureTable("""
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
-{outfit_entries}
-{dye_entries}
+new subtable "1,1"
+object category "I_CampClothes_Clothing",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_CampClothes_Dyes",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Clothing_TreasureTable"
+CanMerge 1
+{"".join(outfit_template.format(outfit) for outfit in clothing).rstrip()}
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Dyes_TreasureTable"
+CanMerge 1
+{"".join(dye_template.format(dye) for dye in dyes).rstrip()}
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Shoes_TreasureTable"
+CanMerge 1
+{"".join(outfit_template.format(outfit) for outfit in shoes).rstrip()}
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Underwear_TreasureTable"
+CanMerge 1
+{"".join(outfit_template.format(outfit) for outfit in underwear).rstrip()}
 """))
 
 camp_clothes.build()

@@ -3,4 +3,4 @@
 new entry "ChromaticBlade_CriticalVsItems_Passive"
 type "PassiveData"
 using "UNI_Adamantine_CriticalVsItems_Passive"
-data "Description" "hde588378g48a2g9453g411agf432f91a7546"
+data "Description" "h474aa260gb3aaga3f2g1dcag937148023334"

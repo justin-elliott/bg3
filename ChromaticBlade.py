@@ -22,7 +22,6 @@ from uuid import UUID
 chromatic_blade = Mod(os.path.dirname(__file__),
                       author="justin-elliott",
                       name="ChromaticBlade",
-                      mod_uuid=UUID("ae8399a2-3445-4c0b-b9c4-4d77f3daf46c"),
                       description="Adds the sword, the Chromatic Blade.")
 chromatic_blade.add(character_level_range)
 
@@ -154,8 +153,8 @@ chromatic_blade.add(LevelMapSeries(
     UUID=chromatic_blade.make_uuid("ChromaticBlade_AttackRollBonus"),
 ))
 chromatic_blade.add(LevelMapSeries(
-    **{f"Level{level}": f"{int((level + 4) / 5)}d4" for level in range(1, 13)},
-    **{f"Level{level}": "3d4" for level in range(13, 21)},
+    **{f"Level{level}": f"1d{((level + 4) // 5) * 2 + 2}" for level in range(1, 13)},
+    **{f"Level{level}": "1d8" for level in range(13, 21)},
     Name="ChromaticBlade_DamageDice",
     UUID=chromatic_blade.make_uuid("ChromaticBlade_DamageDice"),
 ))
@@ -219,8 +218,8 @@ def add_chromatic_weapon_element(element: str,
         StackId="ELEMENTAL_WEAPON",
         Boosts=[
             f"IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,{title},Magical)",
-            f"IF(CharacterLevelRange(6,10)):WeaponDamage(2d4,{title},Magical)",
-            f"IF(CharacterLevelRange(11,20)):WeaponDamage(3d4,{title},Magical)",
+            f"IF(CharacterLevelRange(6,10)):WeaponDamage(1d6,{title},Magical)",
+            f"IF(CharacterLevelRange(11,20)):WeaponDamage(1d8,{title},Magical)",
         ],
         StatusGroups="SG_RemoveOnRespec",
         StatusEffect=StatusEffect,

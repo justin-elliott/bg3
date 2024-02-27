@@ -6,8 +6,8 @@
         <node id="Templates">
             <children>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h9334d51bg347bg5360ge04bgdd49e8f8f274" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h3a17a1fagf040g58bag72eeg005e2ba12d2f" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="hf09b8f32g7f36g35d5gcca0g146f62862e82" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcca74a3ag44e9gadafgfea5g2104e6ee6ae6" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="05b4b0c3-44cc-41da-a50b-a8cba6787e16" />
                     <attribute id="Name" type="LSString" value="ChromaticBlade_Sword" />

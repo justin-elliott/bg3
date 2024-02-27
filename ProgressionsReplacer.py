@@ -130,7 +130,7 @@ def main():
     parser.add_argument("-c", "--classes", type=class_list, default=set(),
                         help="Classes to include in the progression (defaulting to all)")
     parser.add_argument("-f", "--feats", type=level_list, default=set(),
-                        help="Feat progression every n levels (defaulting to 4; normal progression)")
+                        help="Feat progression every n levels (defaulting to normal progression)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=1,
                         help="Spell slot multiplier (defaulting to 1; normal spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=1,

@@ -11,6 +11,11 @@ from modtools.lsx.game import Progression
 from modtools.replacers.replacer import Replacer
 
 
+class DontIncludeProgression(BaseException):
+    """Raised to exclude a progression from being updated."""
+    pass
+
+
 class _Classification(IntEnum):
     CLASS = 1
     RACE = 2
@@ -80,10 +85,16 @@ def _update_progressions(replacer: Replacer,
             tableUuid[progression.Name] = progression.TableUUID
             progression_key = (progression.Name, progression.Level, progression.IsMulticlass or False)
             if builder_fns := builders.get(progression_key):
+                was_updated = False
                 for builder_fn in builder_fns:
-                    builder_fn(replacer, progression)
+                    try:
+                        builder_fn(replacer, progression)
+                        was_updated = True
+                    except DontIncludeProgression:  # Can still be updated by another builder_fn
+                        pass
                 del builders[progression_key]
-                updated_progressions.add(progression)
+                if was_updated:
+                    updated_progressions.add(progression)
 
 
 def _create_progressions(replacer: Replacer,

@@ -81,6 +81,7 @@ def camp_clothes_container(name: str) -> None:
         name,
         using="_Container",
         RootTemplate=container_uuid,
+        Weight=0.01,
     ))
 
 
@@ -108,7 +109,7 @@ loca["CampClothes_Underwear_Description"] = {"en": """
     """}
 camp_clothes_container("CampClothes_Underwear")
 
-clothing = [
+base_clothing = [
     "ARM_Vanity_Body_Aristocrat_Brown",
     "ARM_Vanity_Body_Aristocrat_White",
     "ARM_Vanity_Body_Aristocrat",
@@ -184,7 +185,7 @@ clothing = [
     "UNI_DaisyPlaysuit",
 ]
 
-dyes = [
+base_dyes = [
     "OBJ_Dye_Azure",
     "OBJ_Dye_BlackBlue",
     "OBJ_Dye_BlackGreen",
@@ -228,7 +229,7 @@ dyes = [
     "OBJ_Dye_Remover",
 ]
 
-shoes = [
+base_shoes = [
     "CampClothes_ComfortableBoots",
     "ARM_Camp_Sandals_A1_Black",
     "ARM_Camp_Sandals_A1",
@@ -270,18 +271,57 @@ base_underwear = [
 
 bolster = Bolster(camp_clothes).add_bolster()
 pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
+
+clothing = []
+dyes = []
+shoes = []
 underwear = []
 
-for item in base_underwear:
+for item in base_clothing:
     name = "CampClothes" + item.removeprefix("ARM")
     camp_clothes.add(Armor(
         name,
         using=item,
+        Weight=0.01,
+    ))
+    clothing.append(name)
+
+for item in base_dyes:
+    name = "CampClothes" + item.removeprefix("OBJ")
+    camp_clothes.add(ObjectData(
+        name,
+        using=item,
+        Weight=0.01,
+    ))
+    dyes.append(name)
+
+for item in base_shoes:
+    name = "CampClothes" + item.removeprefix("ARM")
+    camp_clothes.add(Armor(
+        name,
+        using=item,
+        Weight=0.01,
+    ))
+    shoes.append(name)
+
+for item in base_underwear:
+    basic_name = "CampClothes" + item.removeprefix("ARM")
+    camp_clothes.add(Armor(
+        basic_name,
+        using=item,
+        Weight=0.01,
+    ))
+    underwear.append(basic_name)
+
+    boosted_name = "CampClothes_Boost" + item.removeprefix("ARM")
+    camp_clothes.add(Armor(
+        boosted_name,
+        using=basic_name,
         Boosts=[f"UnlockSpell({bolster})"],
         PassivesOnEquip=[pack_mule],
         Rarity="Rare",
     ))
-    underwear.append(name)
+    underwear.append(boosted_name)
 
 outfit_template = """\
 new subtable "1,1"
@@ -332,7 +372,6 @@ camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Underwear_TreasureTable"
 CanMerge 1
 {"".join(outfit_template.format(outfit) for outfit in underwear).rstrip()}
-{"".join(outfit_template.format(outfit) for outfit in base_underwear).rstrip()}
 """))
 
 camp_clothes.build()

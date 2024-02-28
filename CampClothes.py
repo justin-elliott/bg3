@@ -332,6 +332,7 @@ camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Underwear_TreasureTable"
 CanMerge 1
 {"".join(outfit_template.format(outfit) for outfit in underwear).rstrip()}
+{"".join(outfit_template.format(outfit) for outfit in base_underwear).rstrip()}
 """))
 
 camp_clothes.build()

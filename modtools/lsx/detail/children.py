@@ -17,8 +17,10 @@ class LsxChildren[Node]:
     _types: tuple[type[Node], ...]  # The child types that the collection can contain.
     _children: list[Node]           # The list of children.
 
-    def __init__(self, children: Iterable[Node] = [], *, types: Iterable[Node]):
+    def __init__(self, children: Iterable[Node] = None, *, types: Iterable[Node]):
         """Initialize the collection, setting the expected child types and, optionally, the children."""
+        if children is None:
+            children = []
         self._types = tuple(types)
         self._check_child_types([type(child) for child in children])
         self._children = list(children)

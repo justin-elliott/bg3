@@ -12,6 +12,8 @@ import modtools.lsx.detail as detail
 class LsxChildren(detail.LsxChildren[LsxNode]):
     """A specialization of the LsxChildren generic class for LsxNode."""
 
-    def __init__(self, children: Iterable[LsxNode] = [], *, types: Iterable[LsxNode] = (LsxNode,)):
+    def __init__(self, children: Iterable[LsxNode] = None, *, types: Iterable[LsxNode] = (LsxNode,)):
         """Initialize the collection, optionally setting the children and allowed child types."""
+        if children is None:
+            children = []
         super().__init__(children, types=types)

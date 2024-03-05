@@ -13,6 +13,7 @@ from moddb import (
     Bolster,
     Defense,
     EmpoweredSpells,
+    Movement,
     PackMule,
     multiply_resources,
     spells_always_prepared,
@@ -90,6 +91,7 @@ class WayOfTheArcane(Replacer):
 
     # spells
     _bolster: str
+    _shadow_step: str
 
     @cached_property
     def _level_1_spell_list(self) -> str:
@@ -106,7 +108,7 @@ class WayOfTheArcane(Replacer):
         spelllist = str(self.make_uuid("level_5_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Monk level 5",
-            Spells=["Target_Counterspell"],
+            Spells=[self._shadow_step],
             UUID=spelllist,
         ))
         return spelllist
@@ -115,7 +117,7 @@ class WayOfTheArcane(Replacer):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="WayOfTheArcane",
-                         description="Upgrades the Way of Shadow Monk subclass.")
+                         description="Replaces the Way of Shadow Monk subclass with the Way of the Arcane.")
 
         self._args = args
         self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
@@ -127,6 +129,7 @@ class WayOfTheArcane(Replacer):
         self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
+        self._shadow_step = Movement(self.mod).add_shadow_step("Movement:Distance*0.5")
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:

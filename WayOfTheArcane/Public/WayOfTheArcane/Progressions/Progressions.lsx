@@ -188,7 +188,7 @@
                     <attribute id="UUID" type="guid" value="f399b41d-432f-688c-24d7-47096e2912f3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)ActionResource(SpellSlot,4,2)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;JackOfAllTrades" />
@@ -212,7 +212,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(1c440b37-ef87-61e6-70fc-b5f5082c9917,,,,AlwaysPrepared)SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(1c440b37-ef87-61e6-70fc-b5f5082c9917,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="62fa2d62-9cc9-4642-9d11-121ac5188875" />
                 </node>
@@ -247,7 +247,7 @@
                     <attribute id="UUID" type="guid" value="f0fdf4e5-72d4-3669-a623-947c5b2c558d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)ActionResource(SpellSlot,2,5)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />

@@ -205,7 +205,7 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 1)
     def level_1(self, progression: Progression) -> None:
         progression.Boosts = [
-            f"ActionResource(SpellSlot,{2 * self._args.spells},1)"
+            f"ActionResource(SpellSlot,{2 * self._args.spells},1)",
         ]
         progression.PassivesAdded = [
             "UnlockedSpellSlotLevel1",
@@ -213,7 +213,7 @@ class WayOfTheArcane(Replacer):
             "SuperiorDarkvision",
             self._battle_magic,
             self._pack_mule,
-            self._warding
+            self._warding,
         ]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
@@ -223,7 +223,7 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 2)
     def level_2(self, progression: Progression) -> None:
         progression.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},1)"
+            f"ActionResource(SpellSlot,{1 * self._args.spells},1)",
         ]
         progression.PassivesAdded = ["SculptSpells"]
         progression.Selectors = [
@@ -233,8 +233,8 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 3)
     def level_3(self, progression: Progression) -> None:
         progression.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},1)"
-            f"ActionResource(SpellSlot,{2 * self._args.spells},2)"
+            f"ActionResource(SpellSlot,{1 * self._args.spells},1)",
+            f"ActionResource(SpellSlot,{2 * self._args.spells},2)",
         ]
         progression.PassivesAdded = [
             "UnlockedSpellSlotLevel2",
@@ -258,7 +258,7 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{2 * self._args.spells},3)"]
         progression.PassivesAdded = ["UnlockedSpellSlotLevel3"]
         progression.Selectors = [
-            f"AddSpells({self._level_5_spell_list},,,,AlwaysPrepared)"
+            f"AddSpells({self._level_5_spell_list},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},2,0)",
         ]
 
@@ -286,8 +286,8 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 9)
     def level_9(self, progression: Progression) -> None:
         progression.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},4)"
-            f"ActionResource(SpellSlot,{1 * self._args.spells},5)"
+            f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
+            f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
         progression.PassivesAdded = ["BrutalCritical"]
         progression.Selectors = [f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},2,0)"]

@@ -193,7 +193,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;JackOfAllTrades" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9c25cae9-6c43-b7b4-3eb6-2bc004324034,,,,AlwaysPrepared)SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="077e6458-3b93-4820-88a7-bd7c9babbeae" />
                 </node>

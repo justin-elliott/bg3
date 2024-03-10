@@ -31,6 +31,7 @@ from modtools.replacers import (
     class_description,
     progression,
     Replacer,
+    spell_list,
 )
 from uuid import UUID
 
@@ -79,6 +80,8 @@ class WayOfTheArcane(Replacer):
     WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
     FLY_SPELL_LIST = UUID("12150e11-267a-4ecc-a3cc-292c9e2a198d")
 
+    ENHANCE_ABILITY = "Target_EnhanceAbility"
+
     _args: Args
     _feat_levels: set[int]
 
@@ -99,16 +102,6 @@ class WayOfTheArcane(Replacer):
         self.mod.add(SpellList(
             Comment="Spells gained at Monk level 1",
             Spells=[self._bolster],
-            UUID=spelllist,
-        ))
-        return spelllist
-
-    @cached_property
-    def _level_3_spell_list(self) -> str:
-        spelllist = str(self.make_uuid("level_3_spelllist"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Monk level 3",
-            Spells=["Target_EnhanceAbility"],
             UUID=spelllist,
         ))
         return spelllist
@@ -166,6 +159,15 @@ class WayOfTheArcane(Replacer):
         class_description.Description = loca[f"{self.mod.get_prefix()}_Description"]
 
         class_description.MustPrepareSpells = True
+
+    @spell_list(WIZARD_LEVEL_2_SPELL_LIST)
+    @spell_list(WIZARD_LEVEL_3_SPELL_LIST)
+    @spell_list(WIZARD_LEVEL_4_SPELL_LIST)
+    @spell_list(WIZARD_LEVEL_5_SPELL_LIST)
+    @spell_list(WIZARD_LEVEL_6_SPELL_LIST)
+    def wizard_enhance_ability(self, spells: SpellList) -> None:
+        if self.ENHANCE_ABILITY not in spells.Spells:
+            spells.Spells.append(self.ENHANCE_ABILITY)
 
     @progression(CharacterClass.MONK, 1)
     def level_1_monk(self, progression: Progression) -> None:
@@ -241,7 +243,6 @@ class WayOfTheArcane(Replacer):
             "JackOfAllTrades",
         ]
         progression.Selectors = [
-            f"AddSpells({self._level_3_spell_list},,,,AlwaysPrepared)"
             f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",
         ]
 

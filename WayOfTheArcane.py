@@ -80,8 +80,6 @@ class WayOfTheArcane(Replacer):
     WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
     FLY_SPELL_LIST = UUID("12150e11-267a-4ecc-a3cc-292c9e2a198d")
 
-    ENHANCE_ABILITY = "Target_EnhanceAbility"
-
     _args: Args
     _feat_levels: set[int]
 
@@ -166,8 +164,8 @@ class WayOfTheArcane(Replacer):
     @spell_list(WIZARD_LEVEL_5_SPELL_LIST)
     @spell_list(WIZARD_LEVEL_6_SPELL_LIST)
     def wizard_enhance_ability(self, spells: SpellList) -> None:
-        if self.ENHANCE_ABILITY not in spells.Spells:
-            spells.Spells.append(self.ENHANCE_ABILITY)
+        insert_index = spells.Spells.index("Target_EnlargeReduce")
+        spells.Spells.insert(insert_index, "Target_EnhanceAbility")
 
     @progression(CharacterClass.MONK, 1)
     def level_1_monk(self, progression: Progression) -> None:

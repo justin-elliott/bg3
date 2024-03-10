@@ -10,6 +10,16 @@
                     <attribute id="Spells" type="LSString" value="WayOfTheArcane_Bolster" />
                     <attribute id="UUID" type="guid" value="a4611a57-3729-7bcc-52cd-d4a85b4995fd" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Spells gained at Monk level 3" />
+                    <attribute id="Spells" type="LSString" value="Target_EnhanceAbility" />
+                    <attribute id="UUID" type="guid" value="9c25cae9-6c43-b7b4-3eb6-2bc004324034" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Spells gained at Monk level 5" />
+                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_ShadowStep" />
+                    <attribute id="UUID" type="guid" value="1c440b37-ef87-61e6-70fc-b5f5082c9917" />
+                </node>
             </children>
         </node>
     </region>

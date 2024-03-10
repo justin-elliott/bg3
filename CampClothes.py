@@ -273,7 +273,7 @@ bolster = Bolster(camp_clothes).add_bolster()
 pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
 
 clothing = []
-dyes = []
+dyes = [dye for dye in base_dyes]
 shoes = []
 underwear = []
 
@@ -285,15 +285,6 @@ for item in base_clothing:
         Weight=0.01,
     ))
     clothing.append(name)
-
-for item in base_dyes:
-    name = "CampClothes" + item.removeprefix("OBJ")
-    camp_clothes.add(ObjectData(
-        name,
-        using=item,
-        Weight=0.01,
-    ))
-    dyes.append(name)
 
 for item in base_shoes:
     name = "CampClothes" + item.removeprefix("ARM")

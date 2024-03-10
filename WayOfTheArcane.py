@@ -225,7 +225,7 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [
             f"ActionResource(SpellSlot,{1 * self._args.spells},1)"
         ]
-        progression.PassivesAdded = None
+        progression.PassivesAdded = ["SculptSpells"]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_1_SPELL_LIST},2,0)",
         ]

@@ -53,6 +53,7 @@
                     <attribute id="UUID" type="guid" value="ef18265f-dda6-4eb6-8dd0-b14c57202c33" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Cleric" />
@@ -73,6 +74,7 @@
                     <attribute id="UUID" type="guid" value="051cd419-b843-4996-807e-d0ac78084ef0" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Cleric" />
@@ -92,6 +94,7 @@
                     <attribute id="UUID" type="guid" value="1ba0c22a-2655-4f3c-8bf8-f3314587ccaa" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Cleric" />
@@ -110,6 +113,7 @@
                     <attribute id="UUID" type="guid" value="4cfd9e91-38ef-4b24-8a2a-9b736be91cf8" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Cleric" />
@@ -130,6 +134,7 @@
                     <attribute id="UUID" type="guid" value="0266b6b2-72d9-4319-84ae-afcdfc67b32b" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Cleric" />
@@ -147,66 +152,110 @@
                     <attribute id="UUID" type="guid" value="e209aba2-bb27-4416-af41-09ce37b7f08f" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(HeavyArmor);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="WrathOfTheStorm;DaughterOfDarkness_BattleMagic;SculptSpells" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(c4f85c4a-f233-9aa6-f327-b88309c8ee58,,,,AlwaysPrepared);SelectSpells(4823a292-f584-4f7f-8434-6630c72e5411,2,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="97ba481e-13d2-4a8c-8503-e1b146c21b7b" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="2" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DestructiveWrath" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="31ea2386-5ade-467d-9be4-33ce599ccec2" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(c35cb4e6-2690-4e1f-bd89-69f4f69ae818,,,,AlwaysPrepared);AddSpells(2dc120ff-903b-494b-8dc8-38721098ce38,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,2,WarlockInvocations);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3);SelectSpells(4823a292-f584-4f7f-8434-6630c72e5411,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="87609f34-d8c7-4ca6-88b3-6f2692286e44" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Initiative;Assassinate_Ambush;Assassinate_Resource;FastHands;PactOfTheBlade;SecondStoryWork" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(a05bd5e7-c815-4db7-9a21-66dc08d03e44,ClericTempestDomainSpells,,,AlwaysPrepared);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="9328822b-9140-401d-9273-cb1a4998c068" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(9f603ac8-2e51-4ce9-b924-c8093148bdf5,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSpells(835aeca7-c64a-4aaa-a25c-143aa14a5cec,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="90dafea8-c773-4dfa-b0c8-da4789122a0f" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="4" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(835aeca7-c64a-4aaa-a25c-143aa14a5cec,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="33627eb3-f6a0-4ddb-8f7c-0681d0d8cb71" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_45;ThirstingBlade_Blade;UncannyDodge" />
+                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="df047bb5-2337-4e0b-b50b-78d5b84fc6c4" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(8a9faf7a-aacf-43f4-a0dd-5ea7e72449f3,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectPassives(8adab8f9-e360-4f79-851b-2c7e050ca23d,1,WarlockInvocations);SelectSpells(5dec41aa-f16a-434e-b209-50c07e64e4ed,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="76b362f3-11f2-47a0-949e-6147d0fde794" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="6" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="7424ee22-a365-427e-be2f-40cd8b316ac1" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(fc1fa4ea-8294-4f3b-9df9-f5d64e528093,ClericTempestDomainSpells,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="51f4518f-5691-4fbf-8421-d2f31a0160e0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(18e97e4a-d97b-4595-af80-8eb43766386e,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectPassives(39efef92-9987-46e2-8c43-54052c1be535,1,WarlockInvocations);SelectSpells(7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="63a5476b-4e9e-45bd-97fd-9a88d46b9588" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="8" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="Divine_Strike_Trickery_Toggle;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(b5f88a1e-931f-4851-b86c-875f756b7313,,,,AlwaysPrepared);SelectSpells(7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="f39b339b-e367-403b-b33e-8191eb8363e0" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_60" />
+                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_45" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(154b461e-23c2-4147-97fd-b7892f031a50,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectPassives(a2d72748-0792-4f1e-a798-713a66d648eb,1,WarlockInvocations);SelectSpells(deab57bf-4eec-4085-82f7-87335bce3f5d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="5eff9cd1-2376-452a-bb09-93a6aa8ee8d0" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_EmpoweredSpells_Wisdom" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="8b31c926-5929-e259-421f-731ce52de008" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(deab57bf-4eec-4085-82f7-87335bce3f5d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="62fc57a8-b542-8113-a44c-9a04bd14809e" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="7339fa2d-9167-a671-464a-858984a3e407" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);SelectSpells(deab57bf-4eec-4085-82f7-87335bce3f5d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="02a8d0dd-e5fa-4e03-a9eb-efc612787e0e" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="12" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations);SelectSpells(deab57bf-4eec-4085-82f7-87335bce3f5d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="69ae95e5-c379-f0a7-843c-0f1af65cea57" />
                 </node>
             </children>
         </node>

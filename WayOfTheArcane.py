@@ -181,7 +181,7 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_multiclass(self, progression: Progression) -> None:
         progression.Selectors = (progression.Selectors or []) + [
-            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)"
+            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)",
         ]
         progression.children = [
             Progression.Subclasses(children=[

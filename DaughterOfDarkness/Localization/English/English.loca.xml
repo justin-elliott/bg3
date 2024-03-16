@@ -7,6 +7,11 @@
     <content contentuid="he5f83b48geaa6gea30g51d0g996d4c76c194" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h7eebffd9g0846g206fg6751ge34f5475acc0" version="1">Fast Movement</content>
     <content contentuid="h734eb3ddg5dc8gddfeg3729g6a3312605eae" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
-    <content contentuid="h28b2fae0gf6a7gb143g1a0fg5611bae166ac" version="1">Storm Bolt</content>
-    <content contentuid="hffc2e11cg9904gc316geda4g5e58ba5e1907" version="1">Project a bolt of lightning.</content>
+    <content contentuid="h9bb662faga9e3g7404g9822g33fa9b10e092" version="1">Pack Mule</content>
+    <content contentuid="hd0b8e994g0417gc811gb2e8g1efc535d7c66" version="1">Your carrying capacity is increased by [1]%.</content>
+    <content contentuid="he6fa50f9gb040g7f11g4d4bgbca454c05232" version="1">Bolster</content>
+    <content contentuid="h46b6b04fgdc51g3c7bg9438g2a3faf73210e" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="h99ed32a2g6c3ag3d6bg74f9g8dc5f399a67e" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h104b6645ga7aag5e21g84a1gb40e45cd389f" version="1">Warlock Spells</content>
+    <content contentuid="h1cc50fe9g3210ge438g158fg0c5d9be06a59" version="1">Choose additional spells from the Warlock spell list.</content>
 </contentList>

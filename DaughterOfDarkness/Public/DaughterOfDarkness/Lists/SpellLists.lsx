@@ -6,14 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 1" />
-                    <attribute id="Spells" type="LSString" value="Zone_Thunderwave;Target_FogCloud;DaughterOfDarkness_StormBolt" />
-                    <attribute id="UUID" type="guid" value="0888d55d-6382-4149-9b62-90a9579b0ec4" />
+                    <attribute id="Comment" type="LSString" value="Spells gained at Trickery Domain Cleric level 1" />
+                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_Bolster;DaughterOfDarkness_SneakAttackMelee;DaughterOfDarkness_SneakAttackRanged;Projectile_EldritchBlast" />
+                    <attribute id="UUID" type="guid" value="c4f85c4a-f233-9aa6-f327-b88309c8ee58" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Cleric Tempest Domain 5" />
-                    <attribute id="Spells" type="LSString" value="Target_CallLightning;Target_SleetStorm;Target_Counterspell" />
-                    <attribute id="UUID" type="guid" value="4bac4d53-69e6-4f7d-b935-cd38ca8c938d" />
+                    <attribute id="Comment" type="LSString" value="Spells gained at Trickery Domain Cleric level 6" />
+                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_ShadowStep" />
+                    <attribute id="UUID" type="guid" value="4aeeaa39-f85f-a6c8-20f6-e0956fb63836" />
                 </node>
             </children>
         </node>

@@ -30,6 +30,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Equipment
 
 
 class DaughterOfDarkness(Replacer):
@@ -191,6 +192,42 @@ class DaughterOfDarkness(Replacer):
         # Spells
         self._bolster = Bolster(self.mod).add_bolster()
 
+        # Shadowheart's equipment
+        self.mod.add(Equipment("""
+            new equipment "EQ_Shadowheart"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Shortsword"
+            add equipmentgroup
+            add equipment entry "WPN_Shortsword"
+            add equipmentgroup
+            add equipment entry "ARM_Boots_Leather"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "ARM_ChainShirt_Body_Shar"
+            add equipmentgroup
+            add equipment entry "UNI_ShadowheartCirclet"
+            add equipmentgroup
+            add equipment entry "OBJ_Camp_Pack"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body_Shadowheart"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes_Shadowheart"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+            add equipmentgroup
+            add equipment entry "ARM_Underwear_Shadowheart"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+        """))
+
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
@@ -199,6 +236,9 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC_TRICKERY, 1)
     def level_1(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            "Proficiency(MartialWeapons)",
+        ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._battle_magic,
             self._fast_movement_30,

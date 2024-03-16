@@ -152,6 +152,7 @@
                     <attribute id="UUID" type="guid" value="e209aba2-bb27-4416-af41-09ce37b7f08f" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;SculptSpells" />

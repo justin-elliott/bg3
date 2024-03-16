@@ -321,6 +321,9 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC_TRICKERY, 4)
     def level_4(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "JackOfAllTrades",
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             self._select_warlock_spells("835aeca7-c64a-4aaa-a25c-143aa14a5cec"),  # Fiend level 2 spells
         ]
@@ -342,6 +345,10 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC_TRICKERY, 6)
     def level_6(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ImprovedCritical",
+        ]
+
         # Remove Cloak of Shadows
         selectors = [sel for sel in progression.Selectors if "90acd47f-3475-4c85-99ea-7fd503591be4" not in sel]
 
@@ -389,7 +396,9 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC_TRICKERY, 10)
     def level_10(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [self._empowered_spells]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._empowered_spells,
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells
         ]
@@ -406,6 +415,9 @@ class DaughterOfDarkness(Replacer):
 
     @progression(CharacterClass.CLERIC_TRICKERY, 12)
     def level_12(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "BrutalCritical",
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations)",
             self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells

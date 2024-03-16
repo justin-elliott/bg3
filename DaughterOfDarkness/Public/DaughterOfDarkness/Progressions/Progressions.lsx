@@ -181,6 +181,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="JackOfAllTrades" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(835aeca7-c64a-4aaa-a25c-143aa14a5cec,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
@@ -199,6 +200,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
@@ -253,6 +255,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations);SelectSpells(deab57bf-4eec-4085-82f7-87335bce3f5d,1,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />

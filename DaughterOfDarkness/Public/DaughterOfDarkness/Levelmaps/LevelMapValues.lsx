@@ -42,9 +42,9 @@
                     <attribute id="Level10" type="LSString" value="5d6" />
                     <attribute id="Level11" type="LSString" value="6d6" />
                     <attribute id="Level12" type="LSString" value="6d6" />
-                    <attribute id="Name" type="FixedString" value="DaughterOfDarkness_SneakAttack" />
-                    <attribute id="PreferredClassUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="3f7c3b00-3ef1-a3e8-38f1-a15b2e1c67a6" />
+                    <attribute id="Name" type="FixedString" value="DaughterOfDarkness_SneakAttackLevel" />
+                    <attribute id="PreferredClassUUID" type="guid" value="114e7aee-d1d4-4371-8d90-8a2080592faf" />
+                    <attribute id="UUID" type="guid" value="04532a1d-4e41-7874-474d-afcfa048f07e" />
                 </node>
             </children>
         </node>

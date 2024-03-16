@@ -17,7 +17,7 @@ from moddb import (
     PackMule,
     multiply_resources,
 )
-from modtools.gamedata import SpellData
+from modtools.gamedata import InterruptData, PassiveData, SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -132,7 +132,7 @@ class DaughterOfDarkness(Replacer):
     @cached_property
     def _sneak_attack_melee(self) -> str:
         name = f"{self._mod.get_prefix()}_SneakAttackMelee"
-        self._mod.add(SpellData(
+        self.mod.add(SpellData(
             name,
             using="Target_SneakAttack",
             SpellType="Target",
@@ -149,7 +149,7 @@ class DaughterOfDarkness(Replacer):
     @cached_property
     def _sneak_attack_ranged(self) -> str:
         name = f"{self._mod.get_prefix()}_SneakAttackRanged"
-        self._mod.add(SpellData(
+        self.mod.add(SpellData(
             name,
             using="Projectile_SneakAttack",
             SpellType="Projectile",
@@ -165,13 +165,48 @@ class DaughterOfDarkness(Replacer):
 
     @cached_property
     def _sneak_attack_level(self) -> str:
-        name = f"{self._mod.get_prefix()}_SneakAttack"
+        name = f"{self._mod.get_prefix()}_SneakAttackLevel"
         self.mod.add(LevelMapSeries(
             **{f"Level{level}": f"{(level + 1) // 2}d6" for level in range(1, 13)},
             Name=name,
-            PreferredClassUUID="044e4e07-6980-479f-80e5-3c4a84e691d1",  # Trickery Domain
-            UUID=self.mod.make_uuid("SneakAttack"),
+            PreferredClassUUID="114e7aee-d1d4-4371-8d90-8a2080592faf",  # Cleric
+            UUID=self.mod.make_uuid("SneakAttackLevel"),
         ))
+        return name
+
+    @cached_property
+    def _sneak_attack_unlock(self) -> str:
+        name = f"{self._mod.get_prefix()}_SneakAttackUnlock"
+        interrupt_name = f"{self._mod.get_prefix()}_SneakAttackInterrupt"
+        critical_interrupt_name = f"{self._mod.get_prefix()}_SneakAttackCriticalInterrupt"
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName="hc4558204g2c77g4b58gafb6g0ba6b3995c49;1",
+            Properties="IsHidden",
+            Boosts=[
+                f"UnlockInterrupt({interrupt_name})",
+                f"UnlockInterrupt({critical_interrupt_name})",
+            ],
+        ))
+
+        damage_properties = [
+            f"IF(IsMeleeAttack()):DealDamage(LevelMapValue({self._sneak_attack_level}),MainMeleeWeaponDamageType)",
+            f"IF(IsRangedAttack()):DealDamage(LevelMapValue({self._sneak_attack_level}),MainRangedWeaponDamageType)",
+        ]
+
+        self.mod.add(InterruptData(
+            interrupt_name,
+            using="Interrupt_SneakAttack",
+            Properties=damage_properties,
+        ))
+
+        self.mod.add(InterruptData(
+            critical_interrupt_name,
+            using="Interrupt_SneakAttack_Critical",
+            Properties=damage_properties,
+        ))
+
         return name
 
     def __init__(self, args: Args):
@@ -240,12 +275,17 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 1)
     def level_1(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
-            "Proficiency(MartialWeapons)",
+            "Proficiency(HandCrossbows)",
+            "Proficiency(Longswords)",
+            "Proficiency(Rapiers)",
+            "Proficiency(Shortswords)",
+            "ActionResource(SneakAttack_Charge,1,0)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._battle_magic,
             self._fast_movement_30,
             self._pack_mule,
+            self._sneak_attack_unlock,
             self._warding,
             "SculptSpells",
         ]
@@ -289,7 +329,7 @@ class DaughterOfDarkness(Replacer):
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._fast_movement_45,
-            "ThirstingBlade_Blade",
+            "ExtraAttack",
             "UncannyDodge",
         ]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [

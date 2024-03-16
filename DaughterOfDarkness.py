@@ -101,7 +101,7 @@ class DaughterOfDarkness(Replacer):
         return name
 
     def _select_warlock_spells(self, list_uuid: str, count: int = 1) -> str:
-        return f"SelectSpells({list_uuid},{count},0,{self._warlock_spells_description},,,AlwaysPrepared)"
+        return f"SelectSpells({list_uuid},{count},0,{self._warlock_spells_description})"
 
     @cached_property
     def _shadow_step(self) -> str:
@@ -311,10 +311,10 @@ class DaughterOfDarkness(Replacer):
             "Assassinate_Ambush",
             "Assassinate_Resource",
             "FastHands",
-            "PactOfTheBlade",
             "SecondStoryWork",
         ]
         progression.Selectors = (progression.Selectors or []) + [
+            "SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,1,WarlockInvocations)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
             self._select_warlock_spells("835aeca7-c64a-4aaa-a25c-143aa14a5cec"),  # Fiend level 2 spells
         ]

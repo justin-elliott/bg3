@@ -31,7 +31,7 @@ class BattleMagic:
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
             Icon="PassiveFeature_WarMagic",
-            Properties="Highlighted",
+            Properties=["Highlighted", "OncePerTurn"],
             StatsFunctorContext="OnAttack",
             Conditions="IsWeaponAttack() or IsUnarmedAttack()",
             StatsFunctors=f"ApplyStatus(SELF,{name.upper()},100,1)"
@@ -48,6 +48,7 @@ class BattleMagic:
                 "UnlockSpellVariant(RangedSpellAttackCheck(),ModifySpellRoll('AttackType.RangedSpellAttack',"
                 + "'AttackType.MeleeSpellAttack'))"
             ],
+            RemoveEvents="OnSpellCast",
             StackId=name.upper(),
             StatusPropertyFlags=[
                 "DisableOverhead",

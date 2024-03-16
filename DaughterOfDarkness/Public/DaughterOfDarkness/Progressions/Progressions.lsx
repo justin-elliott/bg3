@@ -155,7 +155,7 @@
                     <attribute id="Boosts" type="LSString" value="Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;SculptSpells" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;DaughterOfDarkness_PackMule_100;DaughterOfDarkness_Warding;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(c4f85c4a-f233-9aa6-f327-b88309c8ee58,,,,AlwaysPrepared);SelectSpells(4823a292-f584-4f7f-8434-6630c72e5411,2,0,DaughterOfDarkness_WarlockSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />

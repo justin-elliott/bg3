@@ -11,6 +11,7 @@ from functools import cached_property
 from moddb import (
     BattleMagic,
     Bolster,
+    Defense,
     EmpoweredSpells,
     Movement,
     PackMule,
@@ -50,6 +51,7 @@ class DaughterOfDarkness(Replacer):
     _fast_movement_45: str
     _fast_movement_60: str
     _pack_mule: str
+    _warding: str
 
     # Spells
     _bolster: str
@@ -188,6 +190,7 @@ class DaughterOfDarkness(Replacer):
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
         self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
+        self._warding = Defense(self.mod).add_warding()
 
         # Spells
         self._bolster = Bolster(self.mod).add_bolster()
@@ -242,6 +245,8 @@ class DaughterOfDarkness(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._battle_magic,
             self._fast_movement_30,
+            self._pack_mule,
+            self._warding,
             "SculptSpells",
         ]
         progression.Selectors = (progression.Selectors or []) + [

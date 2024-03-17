@@ -202,7 +202,7 @@
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(4aeeaa39-f85f-a6c8-20f6-e0956fb63836,,,,AlwaysPrepared);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSpells(5dec41aa-f16a-434e-b209-50c07e64e4ed,1,0,DaughterOfDarkness_WarlockSpells)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="7424ee22-a365-427e-be2f-40cd8b316ac1" />
                 </node>

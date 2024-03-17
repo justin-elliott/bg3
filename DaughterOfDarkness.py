@@ -106,32 +106,35 @@ class DaughterOfDarkness(Replacer):
     @cached_property
     def _shadow_step(self) -> str:
         """A combined Shadow Step/Cloak of Shadows cantrip."""
-        name = f"{self._mod.get_prefix()}_ShadowStep"
-        self._mod.add(SpellData(
+        name = f"{self.mod.get_prefix()}_ShadowStep"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Shadow Step"}
+        loca[f"{name}_Description"] = {"en": """
+            Cloaking yourself in shadows, you teleport to an unoccupied space you can see.
+            """}
+
+        self.mod.add(SpellData(
             name,
-            using="Target_ShadowStep",
+            using="Target_MAG_Shadow_Shadowstep",
             SpellType="Target",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
             Level="",
-            SpellProperties="GROUND:TeleportSource();ApplyStatus(CLOAK_OF_SHADOWS,100,2)",
-            RequirementConditions="",
-            RequirementEvents="",
-            SpellFlags=[
-                "HasVerbalComponent",
-                "IsSpell",
-                "HasHighGroundRangeExtension",
-                "RangeIgnoreVerticalThreshold",
-                "Stealth",
-                "Invisible",
+            Cooldown="",
+            SpellProperties=[
+                "GROUND:TeleportSource()",
+                "GROUND:ApplyStatus(SELF,GREATER_INVISIBILITY,100,5)",
             ],
             TargetConditions="",
-            TooltipStatusApply="ApplyStatus(CLOAK_OF_SHADOWS,100,2)",
-            UseCosts="Movement:Distance*0.5",
+            TooltipStatusApply="ApplyStatus(GREATER_INVISIBILITY,100,5)",
+            UseCosts="BonusActionPoint:1",
         ))
         return name
 
     @cached_property
     def _sneak_attack_melee(self) -> str:
-        name = f"{self._mod.get_prefix()}_SneakAttackMelee"
+        name = f"{self.mod.get_prefix()}_SneakAttackMelee"
         self.mod.add(SpellData(
             name,
             using="Target_SneakAttack",
@@ -148,7 +151,7 @@ class DaughterOfDarkness(Replacer):
 
     @cached_property
     def _sneak_attack_ranged(self) -> str:
-        name = f"{self._mod.get_prefix()}_SneakAttackRanged"
+        name = f"{self.mod.get_prefix()}_SneakAttackRanged"
         self.mod.add(SpellData(
             name,
             using="Projectile_SneakAttack",
@@ -165,7 +168,7 @@ class DaughterOfDarkness(Replacer):
 
     @cached_property
     def _sneak_attack_level(self) -> str:
-        name = f"{self._mod.get_prefix()}_SneakAttackLevel"
+        name = f"{self.mod.get_prefix()}_SneakAttackLevel"
         self.mod.add(LevelMapSeries(
             **{f"Level{level}": f"{(level + 1) // 2}d6" for level in range(1, 13)},
             Name=name,
@@ -176,9 +179,9 @@ class DaughterOfDarkness(Replacer):
 
     @cached_property
     def _sneak_attack_unlock(self) -> str:
-        name = f"{self._mod.get_prefix()}_SneakAttackUnlock"
-        interrupt_name = f"{self._mod.get_prefix()}_SneakAttackInterrupt"
-        critical_interrupt_name = f"{self._mod.get_prefix()}_SneakAttackCriticalInterrupt"
+        name = f"{self.mod.get_prefix()}_SneakAttackUnlock"
+        interrupt_name = f"{self.mod.get_prefix()}_SneakAttackInterrupt"
+        critical_interrupt_name = f"{self.mod.get_prefix()}_SneakAttackCriticalInterrupt"
 
         self.mod.add(PassiveData(
             name,
@@ -351,13 +354,11 @@ class DaughterOfDarkness(Replacer):
 
         # Remove Cloak of Shadows
         selectors = [sel for sel in progression.Selectors if "90acd47f-3475-4c85-99ea-7fd503591be4" not in sel]
-
-        progression.Selectors = (progression.Selectors or []) + [
+        selectors += [
             f"AddSpells({self._level_6_spell_list},,,,AlwaysPrepared)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
             self._select_warlock_spells("5dec41aa-f16a-434e-b209-50c07e64e4ed"),  # Fiend level 3 spells
         ]
-
         progression.Selectors = selectors
 
     @progression(CharacterClass.CLERIC_TRICKERY, 7)

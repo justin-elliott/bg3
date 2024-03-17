@@ -7,6 +7,8 @@ data "Boosts" "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,B
 data "Description" "h21257219g93f3g488agddd6g9c03d33f12c3"
 data "DisplayName" "h26e7673agd5c4g29c5g7d8dgec72350f7aa3"
 data "Icon" "PassiveFeature_WarMagic"
+data "RemoveConditions" "IsSpell()"
+data "RemoveEvents" "OnSpellCast"
 data "StackId" "WAYOFTHEARCANE_BATTLEMAGIC"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 

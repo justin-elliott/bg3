@@ -130,7 +130,7 @@ class WayOfTheArcane(Replacer):
         self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
-        self._shadow_step = Movement(self.mod).add_shadow_step("Movement:Distance*0.5")
+        self._shadow_step = Movement(self.mod).add_shadow_step_monk("Movement:Distance*0.5")
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:

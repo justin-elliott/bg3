@@ -55,6 +55,7 @@ class DaughterOfDarkness(Replacer):
 
     # Spells
     _bolster: str
+    _shadow_step: str
 
     @cached_property
     def _level_1_spell_list(self) -> str:
@@ -102,35 +103,6 @@ class DaughterOfDarkness(Replacer):
 
     def _select_warlock_spells(self, list_uuid: str, count: int = 1) -> str:
         return f"SelectSpells({list_uuid},{count},0,{self._warlock_spells_description})"
-
-    @cached_property
-    def _shadow_step(self) -> str:
-        """A combined Shadow Step/Cloak of Shadows cantrip."""
-        name = f"{self.mod.get_prefix()}_ShadowStep"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Shadow Step"}
-        loca[f"{name}_Description"] = {"en": """
-            Cloaking yourself in shadows, you teleport to an unoccupied space you can see.
-            """}
-
-        self.mod.add(SpellData(
-            name,
-            using="Target_MAG_Shadow_Shadowstep",
-            SpellType="Target",
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            Level="",
-            Cooldown="",
-            SpellProperties=[
-                "GROUND:TeleportSource()",
-                "GROUND:ApplyStatus(SELF,GREATER_INVISIBILITY,100,5)",
-            ],
-            TargetConditions="",
-            TooltipStatusApply="ApplyStatus(GREATER_INVISIBILITY,100,5)",
-            UseCosts="BonusActionPoint:1",
-        ))
-        return name
 
     @cached_property
     def _sneak_attack_melee(self) -> str:
@@ -232,6 +204,7 @@ class DaughterOfDarkness(Replacer):
 
         # Spells
         self._bolster = Bolster(self.mod).add_bolster()
+        self._shadow_step = Movement(self.mod).add_shadow_step("Movement:Distance*0.5")
 
         # Shadowheart's equipment
         self.mod.add(Equipment("""

@@ -67,6 +67,31 @@ class Movement:
     def add_shadow_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Shadow Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_ShadowStep"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Shadow Step"}
+        loca[f"{name}_Description"] = {"en": """
+            Step through the shadows, teleporting to an unoccupied space you can see.
+            """}
+
+        self._mod.add(SpellData(
+            name,
+            using="Target_MAG_Shadow_Shadowstep",
+            SpellType="Target",
+            Cooldown="",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Level="",
+            SpellProperties=["GROUND:TeleportSource()"],
+            TargetConditions="",
+            UseCosts=use_costs,
+        ))
+
+        return name
+
+    def add_shadow_step_monk(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
+        """Add the Shadow Step cantrip, returning its name. This variant is only suitable for the Monk class."""
+        name = f"{self._mod.get_prefix()}_ShadowStepMonk"
         self._mod.add(SpellData(
             name,
             using="Target_ShadowStep",

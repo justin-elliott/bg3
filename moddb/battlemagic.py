@@ -48,6 +48,7 @@ class BattleMagic:
                 "UnlockSpellVariant(RangedSpellAttackCheck(),ModifySpellRoll('AttackType.RangedSpellAttack',"
                 + "'AttackType.MeleeSpellAttack'))"
             ],
+            RemoveConditions="IsSpell()",
             RemoveEvents="OnSpellCast",
             StackId=name.upper(),
             StatusPropertyFlags=[

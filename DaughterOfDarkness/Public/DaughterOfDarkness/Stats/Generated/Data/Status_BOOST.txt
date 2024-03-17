@@ -7,6 +7,7 @@ data "Boosts" "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,B
 data "Description" "h6bf3da46g160cg003agaec8ge05fffa94c67"
 data "DisplayName" "h13fda381g705dg4d54g4f01g1c45c8cf10f7"
 data "Icon" "PassiveFeature_WarMagic"
+data "RemoveConditions" "IsSpell()"
 data "RemoveEvents" "OnSpellCast"
 data "StackId" "DAUGHTEROFDARKNESS_BATTLEMAGIC"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"

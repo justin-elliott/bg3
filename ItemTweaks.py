@@ -49,4 +49,15 @@ item_tweaks.add(PassiveData(
     StatsFunctors=["ApplyStatus(BANE,100,2,,,,not SavingThrow(Ability.Charisma,11))"],
 ))
 
+# The Luminous Armour combines the effects of the Armour of Agility
+item_tweaks.add(Armor(
+    "MAG_Radiant_RadiatingOrb_Armor",
+    using="MAG_Radiant_RadiatingOrb_Armor",
+    Rarity="VeryRare",
+    Boosts=["RollBonus(SavingThrow, 2)"],
+    PassivesOnEquip=["MAG_ExoticMaterial_MediumArmor_Passive"],
+    StatusOnEquip=["MAG_EXOTIC_MATERIAL_ARMOR_TECHNICAL"],
+    Ability_Modifier_Cap="",
+))
+
 item_tweaks.build()

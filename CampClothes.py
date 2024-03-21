@@ -110,6 +110,16 @@ loca["CampClothes_Underwear_Description"] = {"en": """
 camp_clothes_container("CampClothes_Underwear")
 
 base_clothing = [
+    "ARM_Camp_Body_Astarion",
+    "ARM_Camp_Body_Gale",
+    "ARM_Camp_Body_Halsin",
+    "ARM_Camp_Body_Jaheira",
+    "ARM_Camp_Body_Karlach",
+    "ARM_Camp_Body_Laezel",
+    "ARM_Camp_Body_Minsc",
+    "ARM_Camp_Body_Minthara",
+    "ARM_Camp_Body_Shadowheart",
+    "ARM_Camp_Body_Wyll",
     "ARM_Vanity_Body_Aristocrat_Brown",
     "ARM_Vanity_Body_Aristocrat_White",
     "ARM_Vanity_Body_Aristocrat",
@@ -243,6 +253,16 @@ base_shoes = [
     "ARM_Camp_Shoes_E",
     "ARM_Camp_Shoes_F",
     "ARM_Camp_Shoes",
+    "ARM_Camp_Shoes_Astarion",
+    "ARM_Camp_Shoes_Gale",
+    "ARM_Camp_Shoes_Halsin",
+    "ARM_Camp_Shoes_Jaheira",
+    "ARM_Camp_Shoes_Karlach",
+    "ARM_Camp_Shoes_Laezel",
+    "ARM_Camp_Shoes_Minsc",
+    "ARM_Camp_Shoes_Minthara",
+    "ARM_Camp_Shoes_Shadowheart",
+    "ARM_Camp_Shoes_Wyll",
     "ARM_Vanity_Deva_Shoes",
     "ARM_Vanity_Shoes_Circus",
 ]
@@ -267,6 +287,16 @@ base_underwear = [
     "ARM_Underwear_Humans",
     "ARM_Underwear_Incubus",
     "ARM_Underwear_Tieflings",
+    "ARM_Underwear_Astarion",
+    "ARM_Underwear_Gale",
+    "ARM_Underwear_Halsin",
+    "ARM_Underwear_Jaheira",
+    "ARM_Underwear_Karlach",
+    "ARM_Underwear_Laezel",
+    "ARM_Underwear_Minsc",
+    "ARM_Underwear_Minthara",
+    "ARM_Underwear_Shadowheart",
+    "ARM_Underwear_Wyll",
 ]
 
 bolster = Bolster(camp_clothes).add_bolster()

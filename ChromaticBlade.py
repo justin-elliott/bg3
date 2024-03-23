@@ -309,15 +309,15 @@ chromatic_blade.add(SpellData(
     using="Rush_SpringAttack",
     DisplayName=loca["ChromaticBlade_Charge_DisplayName"],
     Description=loca["ChromaticBlade_Charge_Description"],
-    TooltipDamageList=["DealDamage(MainMeleeWeapon/2,MainWeaponDamageType)"],
+    TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
     TooltipAttackSave="",
     TooltipStatusApply="",
     Cooldown="None",
     SpellSuccess=[
-        "DealDamage(MainMeleeWeapon/2,MainWeaponDamageType)",
+        "DealDamage(MainMeleeWeapon,MainWeaponDamageType)",
         "GROUND:ExecuteWeaponFunctors(MainHand)",
     ],
-    UseCosts="BonusActionPoint:1",
+    UseCosts="ActionPoint:1",
 ))
 
 chromatic_blade.add(SpellData(

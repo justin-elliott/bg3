@@ -20,11 +20,17 @@
     <content contentuid="hf8cf41c5g402cg254dg9cdbg035c908a9217" version="1">Rare Feats: Abilities +16</content>
     <content contentuid="ha524d240g7c7bgde8fgacf8gadcbb5cad243" version="1">Increase all of your abilities by 16, to a maximum of 30.</content>
     <content contentuid="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1">Rare Feats: Ability Improvement</content>
-    <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Improve all of your abilities by a selected amount, to a maximum of 30.</content>
+    <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Increase all of your abilities by a selected amount, to a maximum of 30.</content>
     <content contentuid="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1">Rare Feats: Athlete</content>
     <content contentuid="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1">When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
+    <content contentuid="h7d5f9357g2881gd058ga24bg2e0e31d3c5ae" version="1">Rare Feats: Extra Attacks</content>
+    <content contentuid="h91b30b3dgb267gd5a7gda9bg84fee7ff0f6d" version="1">Gain &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt;.</content>
     <content contentuid="h3efe0374gc06ag71b8gfa9fg330a03b2ada6" version="1">Rare Feats: Fighting Style</content>
     <content contentuid="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1">Adopt a particular style of fighting as your specialty.</content>
+    <content contentuid="h33fb8886g1c6dge275g8d92gbc0b6a4e37d6" version="1">Rare Feats: Land's Stride</content>
+    <content contentuid="h50f29964g9722g85f2g9036g0fc472efa703" version="1">You gain additional movement speed, and &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down.</content>
+    <content contentuid="h5603bd54g3559g5d75g857eg65d2a409605f" version="1">Fast Movement</content>
+    <content contentuid="hd7811ba7g114fgf940g63ecg0402c67c273d" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="ha5825f85g4348gd9fag5af2g3cfd5d93c499" version="1">Rare Feats: Lightly Armoured</content>
     <content contentuid="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Light Armour.</content>
     <content contentuid="h0409311fg78f3g4b27g567bg60660e423c7a" version="1">Rare Feats: Moderately Armoured</content>

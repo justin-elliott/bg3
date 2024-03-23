@@ -5,6 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
+from moddb import Movement
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     FeatDescription,
@@ -80,7 +81,7 @@ asi_feat_uuid = rare_feats.make_uuid("RareFeats_ASI")
 
 loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
 loca["RareFeats_ASI_Description"] = {"en": """
-    Improve all of your abilities by a selected amount, to a maximum of 30.
+    Increase all of your abilities by a selected amount, to a maximum of 30.
     """}
 
 rare_feats.add(FeatDescription(
@@ -116,8 +117,41 @@ rare_feats.add(FeatDescription(
 
 rare_feats.add(Feat(
     Name="RareFeats_Athlete",
-    PassivesAdded="Athlete_StandUp",
+    PassivesAdded=["Athlete_StandUp"],
     UUID=athlete_uuid,
+))
+
+# Extra Attacks
+extra_attacks_uuid = rare_feats.make_uuid("RareFeats_ExtraAttacks")
+
+loca["RareFeats_ExtraAttacks_DisplayName"] = {"en": "Rare Feats: Extra Attacks"}
+loca["RareFeats_ExtraAttacks_Description"] = {"en": """
+    Gain <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>,
+    <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+    <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag>.
+    """}
+
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_ExtraAttacks_DisplayName"],
+    Description=loca["RareFeats_ExtraAttacks_Description"],
+    ExactMatch="RareFeats_ExtraAttacks",
+    FeatId=extra_attacks_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_ExtraAttacks_FeatDescription"),
+))
+
+rare_feats.add(Feat(
+    Name="RareFeats_ExtraAttacks",
+    PassivesAdded=["ExtraAttack", "FastHands", "RareFeats_ActionSurge_Unlock"],
+    UUID=extra_attacks_uuid,
+))
+
+rare_feats.add(PassiveData(
+    "RareFeats_ActionSurge_Unlock",
+    DisplayName="ha19696e1gf837g4665g86feg7e149abcfa12;1",
+    Description="h0ef20d23g3616g4c1cg8300gb41624ac5de7;7",
+    Icon="Skill_Fighter_ActionSurge",
+    Boosts=["UnlockSpell(Shout_ActionSurge)"],
+    Properties=["IsHidden"],
 ))
 
 # Fighting Style
@@ -141,6 +175,36 @@ rare_feats.add(Feat(
     Name="RareFeats_FightingStyle",
     Selectors=["SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)"],
     UUID=fighting_style_uuid,
+))
+
+# Land's Stride
+lands_stride_uuid = rare_feats.make_uuid("RareFeats_LandsStride")
+
+loca["RareFeats_LandsStride_DisplayName"] = {"en": "Rare Feats: Land's Stride"}
+loca["RareFeats_LandsStride_Description"] = {"en": """
+    You gain additional movement speed, and <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag>
+    no longer slows you down.
+    """}
+
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_LandsStride_DisplayName"],
+    Description=loca["RareFeats_LandsStride_Description"],
+    ExactMatch="RareFeats_LandsStride",
+    FeatId=lands_stride_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_LandsStride_FeatDescription"),
+))
+
+fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
+
+rare_feats.add(Feat(
+    Name="RareFeats_LandsStride",
+    PassivesAdded=[
+        fast_movement_30,
+        "LandsStride_DifficultTerrain",
+        "LandsStride_Surfaces",
+        "LandsStride_Advantage",
+    ],
+    UUID=lands_stride_uuid,
 ))
 
 # Lightly Armored without the ASI

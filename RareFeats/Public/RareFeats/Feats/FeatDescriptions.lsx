@@ -27,11 +27,25 @@
                     <attribute id="UUID" type="guid" value="391a4912-5d9b-728d-8527-9fa004f548bc" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h91b30b3dgb267gd5a7gda9bg84fee7ff0f6d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7d5f9357g2881gd058ga24bg2e0e31d3c5ae" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ExtraAttacks" />
+                    <attribute id="FeatId" type="guid" value="402c4c1c-d78e-5f7f-1116-899458e77347" />
+                    <attribute id="UUID" type="guid" value="39aab6df-364b-5bdc-1632-6d60dcca3bf1" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h3efe0374gc06ag71b8gfa9fg330a03b2ada6" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_FightingStyle" />
                     <attribute id="FeatId" type="guid" value="3fff4ae0-397f-d576-f1ff-4a355175e576" />
                     <attribute id="UUID" type="guid" value="3ad07a46-cb7c-8376-7187-b9d6be4b581f" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h50f29964g9722g85f2g9036g0fc472efa703" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h33fb8886g1c6dge275g8d92gbc0b6a4e37d6" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_LandsStride" />
+                    <attribute id="FeatId" type="guid" value="70ee90af-0f25-d136-25db-454141c8a09f" />
+                    <attribute id="UUID" type="guid" value="448be77a-e9cc-c001-ea06-c3b31d52a790" />
                 </node>
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1" />

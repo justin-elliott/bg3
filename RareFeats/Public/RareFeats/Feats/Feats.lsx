@@ -21,10 +21,20 @@
                     <attribute id="UUID" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_ExtraAttacks" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;FastHands;RareFeats_ActionSurge_Unlock" />
+                    <attribute id="UUID" type="guid" value="402c4c1c-d78e-5f7f-1116-899458e77347" />
+                </node>
+                <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_FightingStyle" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="UUID" type="guid" value="3fff4ae0-397f-d576-f1ff-4a355175e576" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_LandsStride" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_FastMovement_30;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="UUID" type="guid" value="70ee90af-0f25-d136-25db-454141c8a09f" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_LightlyArmored" />

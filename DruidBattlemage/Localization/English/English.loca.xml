@@ -3,19 +3,15 @@
 <contentList>
     <content contentuid="hb240fc1egfba0ge6c5g4d8bg0ec3f288fdd9" version="1">Battle Magic</content>
     <content contentuid="he186af21gd43cgb6ecg403bg32eb1854727b" version="1">After making a melee attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
-    <content contentuid="hbcdf2069gb838g4f18gdfdbg53d99d60fc8d" version="1">Bolster</content>
-    <content contentuid="h6f1b2a4dg035aga862g350agb8781ada2266" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="hd745afe2g4bc5g8d01g0d26gd6f7aedf1c5c" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h34c722feg242fg2c90geaffgf349874c6289" version="1">Empowered Spells</content>
     <content contentuid="h4dcf521bgee15g9369g8e3bge19ee68beeca" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h2ed85026gfae3gca5eg795eg998ee8473292" version="1">Fast Movement</content>
     <content contentuid="hf6f9dd49g35b3gb63bg2168g5f91e35395f9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="he64c36c7g8244gfcd7g0e79geaa9177de5be" version="1">Pack Mule</content>
+    <content contentuid="hcca1f710ge461g8500gbc26g9bec666cd9ff" version="1">Your carrying capacity is increased by [1]%.</content>
+    <content contentuid="hbcdf2069gb838g4f18gdfdbg53d99d60fc8d" version="1">Bolster</content>
+    <content contentuid="h6f1b2a4dg035aga862g350agb8781ada2266" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="hd745afe2g4bc5g8d01g0d26gd6f7aedf1c5c" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h713dfe33gaaa2gd5a3g6da3gfc1906bcbc80" version="1">Natural Resistance</content>
     <content contentuid="h965942f5gd823g810dg79e3g75c78e6c28d1" version="1">You are naturally resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="h91a6eb56g07eag45edg342cg2963998812d3" version="1">Tempest</content>
-    <content contentuid="hc170dfacg501cge41bgc11bgf79e53c7bcf7" version="1">Sparks of electrical energy dance along the length of the blade.</content>
-    <content contentuid="h6caecf47g4a31gb71cgc38bg64d9a493854e" version="1">Thunder</content>
-    <content contentuid="h9d9752d6g58a7gfbc4g15a6g244ebbb580a7" version="1">Sparks of electrical energy crash along the length of the blade.</content>
-    <content contentuid="hd6681274gdadeg5a31ga836g141f2104e9aa" version="1">Clash</content>
-    <content contentuid="h1fab21efg9c10gb312g48bcgcc4fd2cb62e2" version="1">When the wielder deals damage using this weapon, they inflict [1] turns of &lt;LSTag Type="Status" Tooltip="MAG_THUNDER_REVERBERATION"&gt;Reverberation&lt;/LSTag&gt; upon the target(s).</content>
 </contentList>

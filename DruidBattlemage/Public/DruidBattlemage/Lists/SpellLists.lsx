@@ -7,8 +7,13 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Druid level 1" />
-                    <attribute id="Spells" type="LSString" value="DruidBattlemage_Bolster" />
+                    <attribute id="Spells" type="LSString" value="DruidBattlemage_Bolster;Shout_Shield_Wizard" />
                     <attribute id="UUID" type="guid" value="65c6b9dc-e3e8-a85d-b35d-22447c0e170f" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Spells gained at Druid level 3" />
+                    <attribute id="Spells" type="LSString" value="Shout_Dash_BonusAction" />
+                    <attribute id="UUID" type="guid" value="cb621ee5-8261-919e-96c8-111b64141eff" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Druid level 5" />

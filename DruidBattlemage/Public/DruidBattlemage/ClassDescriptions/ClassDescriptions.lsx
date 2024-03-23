@@ -9,7 +9,7 @@
                     <attribute id="BaseHp" type="int32" value="10" />
                     <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
-                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_DruidBattlemage" />
+                    <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Druid" />
                     <attribute id="Description" type="TranslatedString" handle="h5b0ab964g6039g4146g971fg5d32dd440499" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h2e468028g9c89g4eaag94d7g52ee6ed46660" version="1" />
                     <attribute id="HpPerLevel" type="int32" value="6" />

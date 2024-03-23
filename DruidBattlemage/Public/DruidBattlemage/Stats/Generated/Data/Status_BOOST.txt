@@ -7,6 +7,8 @@ data "Boosts" "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,B
 data "Description" "he186af21gd43cgb6ecg403bg32eb1854727b"
 data "DisplayName" "hb240fc1egfba0ge6c5g4d8bg0ec3f288fdd9"
 data "Icon" "PassiveFeature_WarMagic"
+data "RemoveConditions" "IsSpell()"
+data "RemoveEvents" "OnSpellCast"
 data "StackId" "DRUIDBATTLEMAGE_BATTLEMAGIC"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 

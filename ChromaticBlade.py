@@ -42,7 +42,7 @@ chromatic_blade.add(GameObjects(
     LevelName="",
     MapKey=chromatic_blade_game_objects_uuid,
     Name="ChromaticBlade_Sword",
-    ParentTemplateId=katana_uuid,
+    ParentTemplateId=everburn_blade_uuid,
     Stats="ChromaticBlade_Sword",
     Type="item",
     children=[
@@ -57,12 +57,12 @@ chromatic_blade.add(GameObjects(
 
 chromatic_blade.add(Weapon(
     "ChromaticBlade_Sword",
-    using="WPN_Longsword",
+    using="WPN_Greatsword",
     RootTemplate=str(chromatic_blade_game_objects_uuid),
     Rarity="Legendary",
     BoostsOnEquipMainHand=[
         "CannotBeDisarmed()",
-        "Proficiency(Longswords)",
+        "Proficiency(Greatswords)",
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(ChromaticBlade_Charge)",
@@ -70,11 +70,12 @@ chromatic_blade.add(Weapon(
         "UnlockSpell(ChromaticBlade_ChromaticWeapon)",
     ],
     DefaultBoosts=[
-        "IF(CharacterLevelRange(7,11)):ReduceCriticalAttackThreshold(1)",
-        "IF(CharacterLevelRange(12,20)):ReduceCriticalAttackThreshold(2)",
-        "IF(CharacterLevelRange(1,5)):WeaponEnchantment(1)",
-        "IF(CharacterLevelRange(6,10)):WeaponEnchantment(2)",
-        "IF(CharacterLevelRange(11,20)):WeaponEnchantment(3)",
+        "WeaponProperty(Magical)",
+        "IF(CharacterLevelRange(7,9)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelRange(10,20)):ReduceCriticalAttackThreshold(2)",
+        "IF(CharacterLevelRange(4,6)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(7,9)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(10,20)):WeaponEnchantment(3)",
     ],
     PassivesOnEquip=[
         "ChromaticBlade_CriticalVsItems_Passive",
@@ -82,10 +83,10 @@ chromatic_blade.add(Weapon(
     ],
     Weapon_Properties=[
         "Dippable",
-        "Finesse",
+        "Heavy",
         "Magical",
         "Melee",
-        "Versatile",
+        "Twohanded",
     ],
     Unique="1",
 ))
@@ -329,6 +330,13 @@ chromatic_blade.add(SpellData(
 
 chromatic_blade.add(TreasureTable("""
 new treasuretable "TUT_Chest_Potions"
+CanMerge 1
+new subtable "1,1"
+object category "I_ChromaticBlade_Sword",1,0,0,0,0,0,0,0
+"""))
+
+chromatic_blade.add(TreasureTable("""
+new treasuretable "DEN_Entrance_Trade"
 CanMerge 1
 new subtable "1,1"
 object category "I_ChromaticBlade_Sword",1,0,0,0,0,0,0,0

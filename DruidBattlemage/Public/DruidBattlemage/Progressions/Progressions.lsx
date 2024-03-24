@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Wisdom);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="DruidBattlemage_BattleMagic;DruidBattlemage_FastMovement_30;DruidBattlemage_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="DruidBattlemage_BattleMagic;DruidBattlemage_FastMovement_30;DruidBattlemage_Warding;DruidBattlemage_PackMule_100" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,2,0,,,,AlwaysPrepared);AddSpells(2cd54137-2fe5-4100-aad3-df64735a8145);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);AddSpells(65c6b9dc-e3e8-a85d-b35d-22447c0e170f,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />
@@ -20,7 +20,7 @@
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Druid" />
-                    <attribute id="PassivesAdded" type="LSString" value="DruidBattlemage_BattleMagic;DruidBattlemage_FastMovement_30;DruidBattlemage_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="DruidBattlemage_BattleMagic;DruidBattlemage_FastMovement_30;DruidBattlemage_Warding;DruidBattlemage_PackMule_100" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,2,0,,,,AlwaysPrepared);AddSpells(2cd54137-2fe5-4100-aad3-df64735a8145);AddSpells(65c6b9dc-e3e8-a85d-b35d-22447c0e170f,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e7b7bad-e122-4679-8b3c-8f8987a9d466" />

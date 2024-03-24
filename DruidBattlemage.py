@@ -15,14 +15,16 @@ from moddb import (
     PackMule,
     multiply_resources,
 )
+from modtools.gamedata import SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
+    Progression,
+    SpellList,
 )
-from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     class_description,
     only_existing_progressions,
@@ -40,6 +42,18 @@ class DruidBattlemage(Replacer):
     _fast_movement_45: str
     _fast_movement_60: str
     _pack_mule: str
+
+    @cached_property
+    def _dash_bonus_action(self) -> str:
+        """Add the bonus action dash spell, returning its name."""
+        name = f"{self.mod.get_prefix()}_DashBonusAction"
+        self.mod.add(SpellData(
+            name,
+            using="Shout_Dash_BonusAction",
+            SpellType="Shout",
+            SpellFlags=["IgnoreSilence", "Stealth", "Invisible", "NoCameraMove"],
+        ))
+        return name
 
     @cached_property
     def _natural_resistance(self) -> str:
@@ -73,7 +87,7 @@ class DruidBattlemage(Replacer):
         spelllist = str(self.make_uuid("level_3_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Druid level 3",
-            Spells=["Shout_Dash_BonusAction"],
+            Spells=[self._dash_bonus_action],
             UUID=spelllist,
         ))
         return spelllist
@@ -147,6 +161,7 @@ class DruidBattlemage(Replacer):
             self._battle_magic,
             self._fast_movement_30,
             self._natural_resistance,
+            self._pack_mule,
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",

@@ -12,7 +12,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Druid level 3" />
-                    <attribute id="Spells" type="LSString" value="Shout_Dash_BonusAction" />
+                    <attribute id="Spells" type="LSString" value="DruidBattlemage_DashBonusAction" />
                     <attribute id="UUID" type="guid" value="cb621ee5-8261-919e-96c8-111b64141eff" />
                 </node>
                 <node id="SpellList">

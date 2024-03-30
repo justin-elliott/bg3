@@ -196,14 +196,68 @@ def add_potion_game_object(
     ))
 
 
+def add_agility_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_AgilityPotion"
+    agility_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Agility"}
+    loca[f"{name}_Description"] = {"en": """
+        Drinking this elixir grants you <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
+        <LSTag Tooltip="Dexterity">Dexterity</LSTag> Skills, and
+        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
+        <LSTag Tooltip="Advantage">Advantage</LSTag> on, Dexterity <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
+        """}
+
+    add_potion_game_object(
+        name,
+        uuid=agility_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_ALCH_Solution_Remedy",
+        status_id=name.upper(),
+    )
+
+    camp_clothes.add(StatusData(
+        name.upper(),
+        StatusType="BOOST",
+        DisplayName=loca[f"{name}_DisplayName"],
+        Description=loca[f"{name}_Description"],
+        Icon="Item_ALCH_Solution_Remedy",
+        Boosts=[
+            "ProficiencyBonus(SavingThrow,Dexterity)",
+            "Advantage(Ability,Dexterity)",
+            "ProficiencyBonus(Skill,Acrobatics)",
+            "ExpertiseBonus(Acrobatics)",
+            "ProficiencyBonus(Skill,SleightOfHand)",
+            "ExpertiseBonus(SleightOfHand)",
+            "ProficiencyBonus(Skill,Stealth)",
+            "ExpertiseBonus(Stealth)",
+        ],
+        StatusPropertyFlags=[
+            "DisableOverhead",
+            "IgnoreResting",
+            "DisableCombatlog",
+            "DisablePortraitIndicator"
+        ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using=base_potion_name,
+        RootTemplate=agility_potion_uuid,
+    ))
+
+    return name
+
+
 def add_bolster_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_BolsterPotion"
     bolster = Bolster(camp_clothes).add_bolster()
     bolster_potion_uuid = camp_clothes.make_uuid(name)
 
-    loca[f"{name}_DisplayName"] = {"en": "Bolstering Potion"}
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Bolstering"}
     loca[f"{name}_Description"] = {"en": f"""
-        Drinking this potion grants the <LSTag Type="Spell" Tooltip="{bolster}">Bolster</LSTag> spell.
+        Drinking this elixir grants the <LSTag Type="Spell" Tooltip="{bolster}">Bolster</LSTag> spell.
         """}
 
     add_potion_game_object(
@@ -246,9 +300,9 @@ def add_pack_mule_potion() -> str:
     pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
     pack_mule_potion_uuid = camp_clothes.make_uuid(name)
 
-    loca[f"{name}_DisplayName"] = {"en": "Pack Mule Potion"}
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of the Pack Mule"}
     loca[f"{name}_Description"] = {"en": f"""
-        Drinking this potion grants the <LSTag Type="Passive" Tooltip="{pack_mule}">Pack Mule</LSTag> passive.
+        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{pack_mule}">Pack Mule</LSTag> passive.
         """}
 
     add_potion_game_object(
@@ -281,6 +335,63 @@ def add_pack_mule_potion() -> str:
         name,
         using=base_potion_name,
         RootTemplate=pack_mule_potion_uuid,
+    ))
+
+    return name
+
+
+def add_persuasion_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_PersuasionPotion"
+    persuasion_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Persuasion"}
+    loca[f"{name}_Description"] = {"en": """
+        Drinking this elixir grants you <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
+        <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and
+        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
+        <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
+        """}
+
+    add_potion_game_object(
+        name,
+        uuid=persuasion_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_CONS_ElixirOfHealth",
+        status_id=name.upper(),
+    )
+
+    camp_clothes.add(StatusData(
+        name.upper(),
+        StatusType="BOOST",
+        DisplayName=loca[f"{name}_DisplayName"],
+        Description=loca[f"{name}_Description"],
+        Icon="Item_CONS_ElixirOfHealth",
+        Boosts=[
+            "Proficiency(MusicalInstrument)",
+            "ProficiencyBonus(SavingThrow,Charisma)",
+            "Advantage(Ability,Charisma)",
+            "ProficiencyBonus(Skill,Deception)",
+            "ExpertiseBonus(Deception)",
+            "ProficiencyBonus(Skill,Intimidation)",
+            "ExpertiseBonus(Intimidation)",
+            "ProficiencyBonus(Skill,Performance)",
+            "ExpertiseBonus(Performance)",
+            "ProficiencyBonus(Skill,Persuasion)",
+            "ExpertiseBonus(Persuasion)",
+        ],
+        StatusPropertyFlags=[
+            "DisableOverhead",
+            "IgnoreResting",
+            "DisableCombatlog",
+            "DisablePortraitIndicator"
+        ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using=base_potion_name,
+        RootTemplate=persuasion_potion_uuid,
     ))
 
     return name
@@ -514,8 +625,10 @@ base_underwear = [
 ]
 
 dyes = [dye for dye in base_dyes]
+agility_potion = add_agility_potion()
 bolster_potion = add_bolster_potion()
 pack_mule_potion = add_pack_mule_potion()
+persuasion_potion = add_persuasion_potion()
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
@@ -545,9 +658,13 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_{agility_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{persuasion_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))

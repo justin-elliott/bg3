@@ -177,6 +177,41 @@ rare_feats.add(Feat(
     UUID=fighting_style_uuid,
 ))
 
+# Jack of all Trades
+jack_of_all_trades_uuid = rare_feats.make_uuid("RareFeats_JackOfAllTrades")
+
+loca["RareFeats_JackOfAllTrades_DisplayName"] = {"en": "Rare Feats: Jack of All Trades"}
+loca["RareFeats_JackOfAllTrades_Description"] = {"en": """
+    Your vast experiences make you more likely to succeed in any undertaking. Add your
+    <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> to all
+    <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag>.
+    """}
+
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_JackOfAllTrades_DisplayName"],
+    Description=loca["RareFeats_JackOfAllTrades_Description"],
+    ExactMatch="RareFeats_JackOfAllTrades",
+    FeatId=jack_of_all_trades_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_FeatDescription_JackOfAllTrades"),
+))
+
+rare_feats.add(Feat(
+    Name="RareFeats_JackOfAllTrades",
+    PassivesAdded=["RareFeats_JackOfAllTrades"],
+    UUID=jack_of_all_trades_uuid,
+))
+
+rare_feats.add(PassiveData(
+    "RareFeats_JackOfAllTrades",
+    DisplayName=loca["RareFeats_JackOfAllTrades_DisplayName"],
+    Description=loca["RareFeats_JackOfAllTrades_Description"],
+    Icon="PassiveFeature_JackOfAllTrades",
+    Boosts=[
+        "RollBonus(SkillCheck,ProficiencyBonus)",
+        "RollBonus(RawAbility,ProficiencyBonus)",
+    ],
+))
+
 # Land's Stride
 lands_stride_uuid = rare_feats.make_uuid("RareFeats_LandsStride")
 

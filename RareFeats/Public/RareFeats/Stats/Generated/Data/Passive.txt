@@ -72,6 +72,13 @@ data "DisplayName" "ha19696e1gf837g4665g86feg7e149abcfa12;1"
 data "Icon" "Skill_Fighter_ActionSurge"
 data "Properties" "IsHidden"
 
+new entry "RareFeats_JackOfAllTrades"
+type "PassiveData"
+data "Boosts" "RollBonus(SkillCheck,ProficiencyBonus);RollBonus(RawAbility,ProficiencyBonus)"
+data "Description" "h763a12a2gbc82g828dg48fcg1a525b71a5d2"
+data "DisplayName" "h80e22e75gee20gc0efg055cg2681d75dde78"
+data "Icon" "PassiveFeature_JackOfAllTrades"
+
 new entry "RareFeats_FastMovement_30"
 type "PassiveData"
 data "BoostContext" "OnEquip;OnCreate"

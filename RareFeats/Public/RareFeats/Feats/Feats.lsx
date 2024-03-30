@@ -32,6 +32,11 @@
                     <attribute id="UUID" type="guid" value="3fff4ae0-397f-d576-f1ff-4a355175e576" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_JackOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_JackOfAllTrades" />
+                    <attribute id="UUID" type="guid" value="2029a4cd-7bb8-1012-d649-01f8c6098a4d" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_LandsStride" />
                     <attribute id="PassivesAdded" type="LSString" value="RareFeats_FastMovement_30;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
                     <attribute id="UUID" type="guid" value="70ee90af-0f25-d136-25db-454141c8a09f" />

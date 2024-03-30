@@ -27,6 +27,8 @@
     <content contentuid="h91b30b3dgb267gd5a7gda9bg84fee7ff0f6d" version="1">Gain &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt;.</content>
     <content contentuid="h3efe0374gc06ag71b8gfa9fg330a03b2ada6" version="1">Rare Feats: Fighting Style</content>
     <content contentuid="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1">Adopt a particular style of fighting as your specialty.</content>
+    <content contentuid="h80e22e75gee20gc0efg055cg2681d75dde78" version="1">Rare Feats: Jack of All Trades</content>
+    <content contentuid="h763a12a2gbc82g828dg48fcg1a525b71a5d2" version="1">Your vast experiences make you more likely to succeed in any undertaking. Add your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; to all &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt;.</content>
     <content contentuid="h33fb8886g1c6dge275g8d92gbc0b6a4e37d6" version="1">Rare Feats: Land's Stride</content>
     <content contentuid="h50f29964g9722g85f2g9036g0fc472efa703" version="1">You gain additional movement speed, and &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down.</content>
     <content contentuid="h5603bd54g3559g5d75g857eg65d2a409605f" version="1">Fast Movement</content>

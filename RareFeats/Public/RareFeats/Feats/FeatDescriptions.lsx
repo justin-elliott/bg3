@@ -41,6 +41,13 @@
                     <attribute id="UUID" type="guid" value="3ad07a46-cb7c-8376-7187-b9d6be4b581f" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h763a12a2gbc82g828dg48fcg1a525b71a5d2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h80e22e75gee20gc0efg055cg2681d75dde78" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_JackOfAllTrades" />
+                    <attribute id="FeatId" type="guid" value="2029a4cd-7bb8-1012-d649-01f8c6098a4d" />
+                    <attribute id="UUID" type="guid" value="5f0d7810-14f4-856b-22c8-420771d62bea" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h50f29964g9722g85f2g9036g0fc472efa703" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h33fb8886g1c6dge275g8d92gbc0b6a4e37d6" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_LandsStride" />

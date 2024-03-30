@@ -51,7 +51,18 @@ class DruidBattlemage(Replacer):
             name,
             using="Shout_Dash_BonusAction",
             SpellType="Shout",
+            SpellProperties=[
+                "IF(HasStatus('DASH_STACKED')):ApplyStatus(DASH_STACKED_2,100,1)",
+                "IF(not HasStatus('DASH_STACKED_2') and HasStatus('DASH')):ApplyStatus(DASH_STACKED,100,1)",
+                "IF(not HasStatus('DASH_STACKED_2') and not HasStatus('DASH_STACKED') and not HasStatus('DASH')):"
+                + "ApplyStatus(DASH,100,1)",
+                "ApplyStatus(STEP_OF_THE_WIND,100,1)",
+            ],
             SpellFlags=["IgnoreSilence", "Stealth", "Invisible", "NoCameraMove"],
+            TooltipStatusApply=[
+                "ApplyStatus(DASH,100,1)",
+                "ApplyStatus(STEP_OF_THE_WIND,100,1)",
+            ],
         ))
         return name
 

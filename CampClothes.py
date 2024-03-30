@@ -6,7 +6,7 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import Bolster, PackMule
-from modtools.gamedata import Armor, ObjectData
+from modtools.gamedata import Armor, ObjectData, StatusData
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import TreasureTable
@@ -83,6 +83,220 @@ def camp_clothes_container(name: str) -> None:
         RootTemplate=container_uuid,
         Weight=0.01,
     ))
+
+
+base_potion_name = f"{camp_clothes.get_prefix()}_BasePotion"
+camp_clothes.add(ObjectData(
+    base_potion_name,
+    using="OBJ_Bottle",
+    ValueUUID="4c5217d8-0232-4592-9e32-2fd729123f53",
+    ValueOverride="3",
+    Rarity="Legendary",
+    ObjectCategory="",
+))
+
+potion_parent_template_id = UUID("8e660fd9-489d-42ff-a762-e4392e826666")
+
+
+def add_potion_game_object(
+        name: str,
+        *,
+        uuid: UUID,
+        display_name: str,
+        description: str,
+        icon: str,
+        status_id: str) -> None:
+    camp_clothes.add(GameObjects(
+        DisplayName=display_name,
+        Description=description,
+        Flag_int32=0,
+        Icon=icon,
+        LevelName="",
+        MapKey=uuid,
+        Name=name,
+        OnUseDescription=("hc857245cg5f9dg4f90g88d4g604f596d85ca", 1),
+        ParentTemplateId=potion_parent_template_id,
+        Stats=name,
+        Type="item",
+        VisualTemplate="a93bcc13-e31b-f6a6-7076-e64fe7771d9e",
+        children=[
+            GameObjects.Bounds(children=[
+                GameObjects.Bounds.Bound(
+                    Height=0.418184,
+                    Max="0.21 0.62 0.2",
+                    Min="-0.21 0 -0.2",
+                    Radius=0.114147,
+                    Shape=1,
+                    Type=1,
+                ),
+                GameObjects.Bounds.Bound(
+                    Height=0.418184,
+                    Max="0.21 0.62 0.2",
+                    Min="-0.21 0 -0.2",
+                    Radius=0.114147,
+                    Shape=1,
+                    Type=2,
+                ),
+                GameObjects.Bounds.Bound(
+                    Height=0.418184,
+                    Max="0.21 0.62 0.2",
+                    Min="-0.21 0 -0.2",
+                    Radius=0.114147,
+                    Shape=1,
+                    Type=0,
+                ),
+            ]),
+            GameObjects.InventoryList(),
+            GameObjects.OnDestroyActions(children=[
+                GameObjects.OnDestroyActions.Action(
+                    ActionType=26,
+                    children=[
+                        GameObjects.OnDestroyActions.Action.Attributes(
+                            ActivateSoundEvent="3ea82655-5140-4287-9ab8-794559f182d3",
+                            Animation="",
+                            Conditions="",
+                            PlayOnHUD=False,
+                        ),
+                    ],
+                ),
+                GameObjects.OnDestroyActions.Action(
+                    ActionType=5,
+                    children=[
+                        GameObjects.OnDestroyActions.Action.Attributes(
+                            Animation="",
+                            Conditions="",
+                            ExplodeFX="df744de3-fb7f-4808-6881-fd466107d27f",
+                            FadeOutDelay=0,
+                            FadeOutFX="",
+                            SnapToGround=True,
+                            TargetItemState=0,
+                            VisualWithDynamicPhysics="",
+                            templateAfterDestruction="",
+                            visualDestruction="00000000-0000-0000-0000-000000000000",
+                        ),
+                    ],
+                ),
+            ]),
+            GameObjects.OnUsePeaceActions(children=[
+                GameObjects.OnUsePeaceActions.Action(
+                    ActionType=7,
+                    children=[
+                        GameObjects.OnUsePeaceActions.Action.Attributes(
+                            Animation="",
+                            Conditions="",
+                            Consume=True,
+                            IsHiddenStatus=True,
+                            StatsId=status_id,
+                            StatusDuration=-1,
+                        ),
+                    ],
+                ),
+            ]),
+        ],
+    ))
+
+
+def add_bolster_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_BolsterPotion"
+    bolster = Bolster(camp_clothes).add_bolster()
+    bolster_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Bolstering Potion"}
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this potion grants the <LSTag Type="Spell" Tooltip="{bolster}">Bolster</LSTag> spell.
+        """}
+
+    add_potion_game_object(
+        name,
+        uuid=bolster_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_CONS_Drink_Potion_B",
+        status_id=name.upper(),
+    )
+
+    camp_clothes.add(StatusData(
+        name.upper(),
+        StatusType="BOOST",
+        DisplayName=loca[f"{name}_DisplayName"],
+        Description=loca[f"{name}_Description"],
+        Icon="Item_CONS_Drink_Potion_B",
+        Boosts=[
+            f"UnlockSpell({bolster})",
+        ],
+        StatusPropertyFlags=[
+            "DisableOverhead",
+            "IgnoreResting",
+            "DisableCombatlog",
+            "DisablePortraitIndicator"
+        ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using=base_potion_name,
+        RootTemplate=bolster_potion_uuid,
+    ))
+
+    return name
+
+
+def add_pack_mule_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_PackMulePotion"
+    pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
+    pack_mule_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Pack Mule Potion"}
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this potion grants the <LSTag Type="Passive" Tooltip="{pack_mule}">Pack Mule</LSTag> passive.
+        """}
+
+    add_potion_game_object(
+        name,
+        uuid=pack_mule_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_CONS_Drink_Potion_A",
+        status_id=name.upper(),
+    )
+
+    camp_clothes.add(StatusData(
+        name.upper(),
+        StatusType="BOOST",
+        DisplayName=loca[f"{name}_DisplayName"],
+        Description=loca[f"{name}_Description"],
+        Icon="Item_CONS_Drink_Potion_A",
+        Passives=[
+            pack_mule,
+        ],
+        StatusPropertyFlags=[
+            "DisableOverhead",
+            "IgnoreResting",
+            "DisableCombatlog",
+            "DisablePortraitIndicator"
+        ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using=base_potion_name,
+        RootTemplate=pack_mule_potion_uuid,
+    ))
+
+    return name
+
+
+def reduce_weight(items: list[str]) -> list[str]:
+    new_items = []
+    for item in items:
+        name = "CampClothes" + item.removeprefix("ARM")
+        camp_clothes.add(Armor(
+            name,
+            using=item,
+            Weight=0.01,
+        ))
+        new_items.append(name)
+    return new_items
 
 
 loca["CampClothes_Clothing_DisplayName"] = {"en": "Camp Clothes"}
@@ -299,50 +513,13 @@ base_underwear = [
     "ARM_Underwear_Wyll",
 ]
 
-bolster = Bolster(camp_clothes).add_bolster()
-pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
-
-clothing = []
 dyes = [dye for dye in base_dyes]
-shoes = []
-underwear = []
+bolster_potion = add_bolster_potion()
+pack_mule_potion = add_pack_mule_potion()
 
-for item in base_clothing:
-    name = "CampClothes" + item.removeprefix("ARM")
-    camp_clothes.add(Armor(
-        name,
-        using=item,
-        Weight=0.01,
-    ))
-    clothing.append(name)
-
-for item in base_shoes:
-    name = "CampClothes" + item.removeprefix("ARM")
-    camp_clothes.add(Armor(
-        name,
-        using=item,
-        Weight=0.01,
-    ))
-    shoes.append(name)
-
-for item in base_underwear:
-    basic_name = "CampClothes" + item.removeprefix("ARM")
-    camp_clothes.add(Armor(
-        basic_name,
-        using=item,
-        Weight=0.01,
-    ))
-    underwear.append(basic_name)
-
-    boosted_name = "CampClothes_Boost" + item.removeprefix("ARM")
-    camp_clothes.add(Armor(
-        boosted_name,
-        using=basic_name,
-        Boosts=[f"UnlockSpell({bolster})"],
-        PassivesOnEquip=[pack_mule],
-        Rarity="Rare",
-    ))
-    underwear.append(boosted_name)
+clothing = reduce_weight(base_clothing)
+shoes = reduce_weight(base_shoes)
+underwear = reduce_weight(base_underwear)
 
 outfit_template = """\
 new subtable "1,1"
@@ -356,7 +533,7 @@ object category I_{},1,0,0,0,0,0,0,0
 
 dye_entries = "".join(dye_template.format(dye) for dye in dyes).rstrip()
 
-camp_clothes.add(TreasureTable("""
+camp_clothes.add(TreasureTable(f"""
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
@@ -367,6 +544,10 @@ new subtable "1,1"
 object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))

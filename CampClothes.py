@@ -5,7 +5,7 @@ Generates files for the "CampClothes" mod.
 
 import os
 
-from moddb import Bolster, PackMule
+from moddb import Bolster, Defense, PackMule
 from modtools.gamedata import Armor, ObjectData, StatusData
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
@@ -96,16 +96,25 @@ camp_clothes.add(ObjectData(
 ))
 
 potion_parent_template_id = UUID("8e660fd9-489d-42ff-a762-e4392e826666")
+POTION_STATUS_PROPERTY_FLAGS = [
+    "DisableOverhead",
+    "IgnoreResting",
+    "DisableCombatlog",
+    "DisablePortraitIndicator",
+]
 
 
-def add_potion_game_object(
+def add_potion(
         name: str,
         *,
         uuid: UUID,
         display_name: str,
         description: str,
         icon: str,
-        status_id: str) -> None:
+        status_duration: int = -1,
+        boosts: list[str] = None,
+        passives: list[str] = None,
+        status_property_flags: list[str] = POTION_STATUS_PROPERTY_FLAGS) -> None:
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
         Description=description,
@@ -186,13 +195,30 @@ def add_potion_game_object(
                             Conditions="",
                             Consume=True,
                             IsHiddenStatus=True,
-                            StatsId=status_id,
-                            StatusDuration=-1,
+                            StatsId=name.upper(),
+                            StatusDuration=status_duration,
                         ),
                     ],
                 ),
             ]),
         ],
+    ))
+
+    camp_clothes.add(ObjectData(
+        name,
+        using=base_potion_name,
+        RootTemplate=uuid,
+    ))
+
+    camp_clothes.add(StatusData(
+        name.upper(),
+        StatusType="BOOST",
+        DisplayName=display_name,
+        Description=description,
+        Icon=icon,
+        Boosts=boosts,
+        Passives=passives,
+        StatusPropertyFlags=status_property_flags,
     ))
 
 
@@ -208,22 +234,13 @@ def add_agility_potion() -> str:
         <LSTag Tooltip="Advantage">Advantage</LSTag> on, Dexterity <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
         """}
 
-    add_potion_game_object(
+    add_potion(
         name,
         uuid=agility_potion_uuid,
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_ALCH_Solution_Remedy",
-        status_id=name.upper(),
-    )
-
-    camp_clothes.add(StatusData(
-        name.upper(),
-        StatusType="BOOST",
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        Icon="Item_ALCH_Solution_Remedy",
-        Boosts=[
+        boosts=[
             "ProficiencyBonus(SavingThrow,Dexterity)",
             "Advantage(Ability,Dexterity)",
             "ProficiencyBonus(Skill,Acrobatics)",
@@ -233,19 +250,7 @@ def add_agility_potion() -> str:
             "ProficiencyBonus(Skill,Stealth)",
             "ExpertiseBonus(Stealth)",
         ],
-        StatusPropertyFlags=[
-            "DisableOverhead",
-            "IgnoreResting",
-            "DisableCombatlog",
-            "DisablePortraitIndicator"
-        ],
-    ))
-
-    camp_clothes.add(ObjectData(
-        name,
-        using=base_potion_name,
-        RootTemplate=agility_potion_uuid,
-    ))
+    )
 
     return name
 
@@ -260,37 +265,40 @@ def add_bolster_potion() -> str:
         Drinking this elixir grants the <LSTag Type="Spell" Tooltip="{bolster}">Bolster</LSTag> spell.
         """}
 
-    add_potion_game_object(
+    add_potion(
         name,
         uuid=bolster_potion_uuid,
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Drink_Potion_B",
-        status_id=name.upper(),
+        boosts=[f"UnlockSpell({bolster})"],
     )
 
-    camp_clothes.add(StatusData(
-        name.upper(),
-        StatusType="BOOST",
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        Icon="Item_CONS_Drink_Potion_B",
-        Boosts=[
-            f"UnlockSpell({bolster})",
-        ],
-        StatusPropertyFlags=[
-            "DisableOverhead",
-            "IgnoreResting",
-            "DisableCombatlog",
-            "DisablePortraitIndicator"
-        ],
-    ))
+    return name
 
-    camp_clothes.add(ObjectData(
+
+def add_overpowering_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_OverpoweringPotion"
+    persuasion_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Potion of Overpowering"}
+    loca[f"{name}_Description"] = {"en": """
+        Temporarily gain a significant boost to your attack and damage rolls.
+        """}
+
+    add_potion(
         name,
-        using=base_potion_name,
-        RootTemplate=bolster_potion_uuid,
-    ))
+        uuid=persuasion_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_CONS_Drug_Dreammist_A",
+        status_duration=10,
+        boosts=[
+            "RollBonus(Attack,20)",
+            "DamageBonus(20)",
+        ],
+        status_property_flags=None,
+    )
 
     return name
 
@@ -305,37 +313,14 @@ def add_pack_mule_potion() -> str:
         Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{pack_mule}">Pack Mule</LSTag> passive.
         """}
 
-    add_potion_game_object(
+    add_potion(
         name,
         uuid=pack_mule_potion_uuid,
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Drink_Potion_A",
-        status_id=name.upper(),
+        passives=[pack_mule],
     )
-
-    camp_clothes.add(StatusData(
-        name.upper(),
-        StatusType="BOOST",
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        Icon="Item_CONS_Drink_Potion_A",
-        Passives=[
-            pack_mule,
-        ],
-        StatusPropertyFlags=[
-            "DisableOverhead",
-            "IgnoreResting",
-            "DisableCombatlog",
-            "DisablePortraitIndicator"
-        ],
-    ))
-
-    camp_clothes.add(ObjectData(
-        name,
-        using=base_potion_name,
-        RootTemplate=pack_mule_potion_uuid,
-    ))
 
     return name
 
@@ -352,22 +337,13 @@ def add_persuasion_potion() -> str:
         <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
         """}
 
-    add_potion_game_object(
+    add_potion(
         name,
         uuid=persuasion_potion_uuid,
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_CONS_ElixirOfHealth",
-        status_id=name.upper(),
-    )
-
-    camp_clothes.add(StatusData(
-        name.upper(),
-        StatusType="BOOST",
-        DisplayName=loca[f"{name}_DisplayName"],
-        Description=loca[f"{name}_Description"],
-        Icon="Item_CONS_ElixirOfHealth",
-        Boosts=[
+        boosts=[
             "Proficiency(MusicalInstrument)",
             "ProficiencyBonus(SavingThrow,Charisma)",
             "Advantage(Ability,Charisma)",
@@ -380,19 +356,29 @@ def add_persuasion_potion() -> str:
             "ProficiencyBonus(Skill,Persuasion)",
             "ExpertiseBonus(Persuasion)",
         ],
-        StatusPropertyFlags=[
-            "DisableOverhead",
-            "IgnoreResting",
-            "DisableCombatlog",
-            "DisablePortraitIndicator"
-        ],
-    ))
+    )
 
-    camp_clothes.add(ObjectData(
+    return name
+
+
+def add_warding_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_WardingPotion"
+    warding = Defense(camp_clothes).add_warding()
+    warding_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passive.
+        """}
+
+    add_potion(
         name,
-        using=base_potion_name,
-        RootTemplate=persuasion_potion_uuid,
-    ))
+        uuid=warding_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_UNI_Apprentice_Antidote",
+        passives=[warding],
+    )
 
     return name
 
@@ -627,8 +613,10 @@ base_underwear = [
 dyes = [dye for dye in base_dyes]
 agility_potion = add_agility_potion()
 bolster_potion = add_bolster_potion()
+overpowering_potion = add_overpowering_potion()
 pack_mule_potion = add_pack_mule_potion()
 persuasion_potion = add_persuasion_potion()
+warding_potion = add_warding_potion()
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
@@ -662,9 +650,13 @@ object category "I_{agility_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{persuasion_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{warding_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))

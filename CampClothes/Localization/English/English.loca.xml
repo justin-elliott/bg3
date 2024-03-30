@@ -18,10 +18,16 @@
     <content contentuid="h85af8b16gbecag7d13g87f2g553bab65f109" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h59d742ebgfff5gef8dgcf9cg738570dc4670" version="1">Elixir of Bolstering</content>
     <content contentuid="heb703554g55e8gada6g8ff0gdf23e8880ffc" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="CampClothes_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
+    <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your attack and damage rolls.</content>
     <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>
     <content contentuid="heae1917bge7d6g0070g253bg77c3ab1cc2f2" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="hcab5885fg7d1dgb4e8g51efg1f188c8d5b15" version="1">Elixir of the Pack Mule</content>
     <content contentuid="hbd5ebd64ga8b8g22fbg734cg73095f810db3" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_PackMule_100"&gt;Pack Mule&lt;/LSTag&gt; passive.</content>
     <content contentuid="h8837a5f6gc8fcgdb31g4065g6423696df06c" version="1">Elixir of Persuasion</content>
     <content contentuid="hc914b31egcbf6gcb28g563dg203ccedb3ef2" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in, and &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on, Charisma &lt;LSTag Tooltip="AbilityCheck"&gt;Checks&lt;/LSTag&gt;.</content>
+    <content contentuid="hfef8f4cfg44f0ge10bgdf3ag7215598aac2e" version="1">Warding</content>
+    <content contentuid="he7284105gddf7g3090g129bgc40f1687e8dc" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
+    <content contentuid="h5f7485d3gd0fagb6b7g4909ge78cf34d8235" version="1">Elixir of Warding</content>
+    <content contentuid="h37297145gad39gcc16gf073g5d8584792c88" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_Warding"&gt;Warding&lt;/LSTag&gt; passive.</content>
 </contentList>

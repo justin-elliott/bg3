@@ -22,12 +22,13 @@ from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
+    ClassDescription,
     LevelMapSeries,
-    ProgressionDescription,
     SpellList,
 )
 from modtools.lsx.game import Progression
 from modtools.replacers import (
+    class_description,
     progression,
     Replacer,
 )
@@ -67,6 +68,7 @@ class DaughterOfDarkness(Replacer):
                 self._sneak_attack_melee,
                 self._sneak_attack_ranged,
                 "Projectile_EldritchBlast",
+                "Shout_Shield_Wizard",
             ],
             UUID=spell_list_id,
         ))
@@ -77,32 +79,13 @@ class DaughterOfDarkness(Replacer):
         spell_list_id = str(self.make_uuid("level_6_spell_list"))
         self.mod.add(SpellList(
             Comment="Spells gained at Trickery Domain Cleric level 6",
-            Spells=[self._shadow_step],
+            Spells=[
+                self._shadow_step,
+                "Target_Counterspell",
+            ],
             UUID=spell_list_id,
         ))
         return spell_list_id
-
-    @cached_property
-    def _warlock_spells_description(self) -> str:
-        name = f"{self.mod.get_prefix()}_WarlockSpells"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Warlock Spells"}
-        loca[f"{name}_Description"] = {"en": """
-            Choose additional spells from the Warlock spell list.
-            """}
-
-        self.mod.add(ProgressionDescription(
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            SelectorId=name,
-            UUID=self.make_uuid("WarlockSpells"),
-        ))
-
-        return name
-
-    def _select_warlock_spells(self, list_uuid: str, count: int = 1) -> str:
-        return f"SelectSpells({list_uuid},{count},0,{self._warlock_spells_description})"
 
     @cached_property
     def _sneak_attack_melee(self) -> str:
@@ -211,9 +194,7 @@ class DaughterOfDarkness(Replacer):
             new equipment "EQ_Shadowheart"
             add initialweaponset "Melee"
             add equipmentgroup
-            add equipment entry "WPN_Shortsword"
-            add equipmentgroup
-            add equipment entry "WPN_Shortsword"
+            add equipment entry "WPN_Longsword"
             add equipmentgroup
             add equipment entry "ARM_Boots_Leather"
             add equipmentgroup
@@ -221,7 +202,7 @@ class DaughterOfDarkness(Replacer):
             add equipmentgroup
             add equipment entry "OBJ_Potion_Healing"
             add equipmentgroup
-            add equipment entry "ARM_ChainShirt_Body_Shar"
+            add equipment entry "ARM_Padded_Body"
             add equipmentgroup
             add equipment entry "UNI_ShadowheartCirclet"
             add equipmentgroup
@@ -242,6 +223,15 @@ class DaughterOfDarkness(Replacer):
             add equipment entry "OBJ_Scroll_Revivify"
         """))
 
+    @class_description(CharacterClass.CLERIC)
+    def druid_description(self, class_description: ClassDescription) -> None:
+        class_description.CanLearnSpells = True
+        class_description.BaseHp = 10
+        class_description.HpPerLevel = 6
+        class_description.children.append(
+            ClassDescription.Tags(Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"),  # WIZARD
+        )
+
     @progression(CharacterClass.CLERIC, range(1, 13))
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
@@ -251,10 +241,9 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 1)
     def level_1(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
-            "Proficiency(HandCrossbows)",
-            "Proficiency(Longswords)",
-            "Proficiency(Rapiers)",
-            "Proficiency(Shortswords)",
+            "Proficiency(SimpleWeapons)",
+            "Proficiency(MartialWeapons)",
+            "ProficiencyBonus(SavingThrow,Constitution)",
             "ActionResource(SneakAttack_Charge,1,0)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
@@ -267,7 +256,6 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)",
-            self._select_warlock_spells("4823a292-f584-4f7f-8434-6630c72e5411", 2),  # Fiend level 1 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 2)
@@ -277,7 +265,6 @@ class DaughterOfDarkness(Replacer):
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
             "SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,2,WarlockInvocations)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
-            self._select_warlock_spells("4823a292-f584-4f7f-8434-6630c72e5411"),  # Fiend level 1 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 3)
@@ -292,16 +279,12 @@ class DaughterOfDarkness(Replacer):
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,1,WarlockInvocations)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            self._select_warlock_spells("835aeca7-c64a-4aaa-a25c-143aa14a5cec"),  # Fiend level 2 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 4)
     def level_4(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "JackOfAllTrades",
-        ]
         progression.Selectors = (progression.Selectors or []) + [
-            self._select_warlock_spells("835aeca7-c64a-4aaa-a25c-143aa14a5cec"),  # Fiend level 2 spells
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 5)
@@ -316,7 +299,6 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(8adab8f9-e360-4f79-851b-2c7e050ca23d,1,WarlockInvocations)",
-            self._select_warlock_spells("5dec41aa-f16a-434e-b209-50c07e64e4ed"),  # Fiend level 3 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 6)
@@ -330,7 +312,6 @@ class DaughterOfDarkness(Replacer):
         selectors += [
             f"AddSpells({self._level_6_spell_list},,,,AlwaysPrepared)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            self._select_warlock_spells("5dec41aa-f16a-434e-b209-50c07e64e4ed"),  # Fiend level 3 spells
         ]
         progression.Selectors = selectors
 
@@ -341,7 +322,6 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(39efef92-9987-46e2-8c43-54052c1be535,1,WarlockInvocations)",
-            self._select_warlock_spells("7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d"),  # Fiend level 4 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 8)
@@ -350,9 +330,6 @@ class DaughterOfDarkness(Replacer):
             "LandsStride_DifficultTerrain",
             "LandsStride_Surfaces",
             "LandsStride_Advantage",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            self._select_warlock_spells("7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d"),  # Fiend level 4 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 9)
@@ -365,16 +342,12 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(a2d72748-0792-4f1e-a798-713a66d648eb,1,WarlockInvocations)",
-            self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 10)
     def level_10(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._empowered_spells,
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 11)
@@ -384,7 +357,6 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
-            self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 12)
@@ -394,7 +366,6 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations)",
-            self._select_warlock_spells("deab57bf-4eec-4085-82f7-87335bce3f5d"),  # Fiend level 5 spells
         ]
 
 

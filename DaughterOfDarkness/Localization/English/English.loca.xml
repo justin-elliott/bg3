@@ -16,6 +16,4 @@
     <content contentuid="h99ed32a2g6c3ag3d6bg74f9g8dc5f399a67e" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="ha0aba48fg4020ge4d6gae4egaf8e54f90023" version="1">Shadow Step</content>
     <content contentuid="h3b30df8dg4a5eg62c6gad82g96a3c6a13574" version="1">Step through the shadows, teleporting to an unoccupied space you can see.</content>
-    <content contentuid="h104b6645ga7aag5e21g84a1gb40e45cd389f" version="1">Warlock Spells</content>
-    <content contentuid="h1cc50fe9g3210ge438g158fg0c5d9be06a59" version="1">Choose additional spells from the Warlock spell list.</content>
 </contentList>

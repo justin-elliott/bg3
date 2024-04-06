@@ -283,7 +283,7 @@ def add_overpowering_potion() -> str:
 
     loca[f"{name}_DisplayName"] = {"en": "Potion of Overpowering"}
     loca[f"{name}_Description"] = {"en": """
-        Temporarily gain a significant boost to your attack and damage rolls.
+        Temporarily gain a significant boost to your armor class, attack rolls, damage rolls, and saving throws.
         """}
 
     add_potion(
@@ -292,10 +292,12 @@ def add_overpowering_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Drug_Dreammist_A",
-        status_duration=10,
+        status_duration=20,
         boosts=[
-            "RollBonus(Attack,20)",
+            "AC(20)",
             "DamageBonus(20)",
+            "RollBonus(Attack,20)",
+            "RollBonus(SavingThrow,20)"
         ],
         status_property_flags=None,
     )

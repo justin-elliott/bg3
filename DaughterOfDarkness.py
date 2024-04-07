@@ -15,14 +15,22 @@ from moddb import (
     EmpoweredSpells,
     Movement,
     PackMule,
+    character_level_range,
     multiply_resources,
 )
-from modtools.gamedata import InterruptData, PassiveData, SpellData
+from modtools.gamedata import (
+    InterruptData,
+    PassiveData,
+    SpellData,
+    StatusData,
+    Weapon,
+)
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     ClassDescription,
+    GameObjects,
     LevelMapSeries,
     SpellList,
 )
@@ -33,6 +41,7 @@ from modtools.replacers import (
     Replacer,
 )
 from modtools.text import Equipment
+from uuid import UUID
 
 
 class DaughterOfDarkness(Replacer):
@@ -67,6 +76,7 @@ class DaughterOfDarkness(Replacer):
                 self._bolster,
                 self._sneak_attack_melee,
                 self._sneak_attack_ranged,
+                self._summon_evenfall,
                 "Projectile_EldritchBlast",
                 "Shout_Shield_Wizard",
             ],
@@ -167,6 +177,125 @@ class DaughterOfDarkness(Replacer):
 
         return name
 
+    @cached_property
+    def _summon_evenfall(self) -> str:
+        name = f"{self.mod.get_prefix()}_Evenfall"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Evenfall"}
+        loca[f"{name}_Description"] = {"en": """
+            Shadows chase along the length of this blade.
+            """}
+
+        katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+
+        evenfall_uuid = self.make_uuid(name)
+        self.mod.add(GameObjects(
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            LevelName="",
+            MapKey=evenfall_uuid,
+            Name=name,
+            ParentTemplateId=katana_uuid,
+            Stats=name,
+            Type="item",
+            children=[
+                GameObjects.StatusList(
+                    children=[
+                        GameObjects.StatusList.Status(Object="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"),
+                    ],
+                ),
+            ],
+        ))
+
+        self.mod.add(Weapon(
+            name,
+            using="WPN_Longsword",
+            RootTemplate=str(evenfall_uuid),
+            Rarity="Legendary",
+            Weapon_Properties=[
+                "Dippable",
+                "Finesse",
+                "Magical",
+                "Melee",
+                "Versatile",
+            ],
+            Unique="1",
+        ))
+
+        summon_evenfall = f"{self.mod.get_prefix()}_SummonEvenfall"
+
+        loca[f"{summon_evenfall}_DisplayName"] = {"en": "Summon Evenfall"}
+        loca[f"{summon_evenfall}_Description"] = {"en": """
+            Summon the blade, Evenfall.
+            """}
+
+        self.mod.add(SpellData(
+            summon_evenfall,
+            SpellType="Shout",
+            Cooldown="OncePerCombat",
+            TargetConditions="Self()",
+            Icon="Action_WildMagic_Enchant",
+            DisplayName=loca[f"{summon_evenfall}_DisplayName"],
+            Description=loca[f"{summon_evenfall}_Description"],
+            CastSound="Action_Cast_PactOfTheBlade",
+            CastTextEvent="Cast",
+            UseCosts="",
+            SpellAnimation=[
+                "f489d217-b699-4e8e-bf22-6ef539c5d65b,,",
+                ",,",
+                "7a343ea7-1330-428a-b0b1-9f6dc7f2a91c,,",
+                "0f872585-3c6e-4493-a0b5-5acc882b7aaf,,",
+                "f9414915-2da7-4f40-bcbd-90e956461246,,",
+                ",,",
+                "f2a62277-c87a-4ec7-b4f2-c3c37e6e30ae,,",
+                ",,",
+                ",,",
+            ],
+            SpellProperties=f"SummonInInventory({evenfall_uuid},Permanent,1,true,true,true,,,Evenfall,{name.upper()})",
+            VerbalIntent="Summon",
+            SpellStyleGroup="Class",
+            SpellAnimationIntentType="Aggressive",
+            PrepareEffect="d9038b21-f4cc-4c8a-99c1-6168e1fe46ba",
+            CastEffect="135cb448-04f9-4543-b670-7bebea4ae21d",
+            Sheathing="Sheathed",
+        ))
+
+        self.mod.add(character_level_range)
+        self.mod.add(StatusData(
+            name.upper(),
+            StatusType="BOOST",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="Action_WildMagic_Enchant",
+            StackId=name.upper(),
+            Boosts=[
+                "Attribute(InventoryBound)",
+                "CannotBeDisarmed()",
+                "ItemReturnToOwner()",
+                "WeaponProperty(Magical)",
+                "IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,Psychic,Magical)",
+                "IF(CharacterLevelRange(6,10)):WeaponDamage(1d6,Psychic,Magical)",
+                "IF(CharacterLevelRange(11,20)):WeaponDamage(1d8,Psychic,Magical)",
+                "IF(CharacterLevelRange(7,9)):ReduceCriticalAttackThreshold(1)",
+                "IF(CharacterLevelRange(10,20)):ReduceCriticalAttackThreshold(2)",
+                "IF(CharacterLevelRange(4,6)):WeaponEnchantment(1)",
+                "IF(CharacterLevelRange(7,9)):WeaponEnchantment(2)",
+                "IF(CharacterLevelRange(10,20)):WeaponEnchantment(3)",
+            ],
+            StatusPropertyFlags=[
+                "DisableOverhead",
+                "DisableCombatlog",
+                "DisablePortraitIndicator",
+                "IgnoreResting",
+            ],
+            StatusGroups="SG_RemoveOnRespec",
+            IsUnique="1",
+            ApplyEffect="63760e78-ec10-4c41-a097-173a6f1fe536",
+        ))
+
+        return summon_evenfall
+
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -194,9 +323,11 @@ class DaughterOfDarkness(Replacer):
             new equipment "EQ_Shadowheart"
             add initialweaponset "Melee"
             add equipmentgroup
-            add equipment entry "WPN_Longsword"
+            add equipment entry "WPN_Shortsword"
             add equipmentgroup
-            add equipment entry "ARM_Boots_Leather"
+            add equipment entry "WPN_Shortsword"
+            add equipmentgroup
+            add equipment entry "ARM_Boots_Leather_A"
             add equipmentgroup
             add equipment entry "OBJ_Potion_Healing"
             add equipmentgroup
@@ -357,6 +488,7 @@ class DaughterOfDarkness(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
+            "AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)",  # Volley, Whirlwind
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 12)

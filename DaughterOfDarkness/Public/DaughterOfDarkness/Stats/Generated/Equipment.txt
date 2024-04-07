@@ -3,9 +3,11 @@
 new equipment "EQ_Shadowheart"
 add initialweaponset "Melee"
 add equipmentgroup
-add equipment entry "WPN_Longsword"
+add equipment entry "WPN_Shortsword"
 add equipmentgroup
-add equipment entry "ARM_Boots_Leather"
+add equipment entry "WPN_Shortsword"
+add equipmentgroup
+add equipment entry "ARM_Boots_Leather_A"
 add equipmentgroup
 add equipment entry "OBJ_Potion_Healing"
 add equipmentgroup

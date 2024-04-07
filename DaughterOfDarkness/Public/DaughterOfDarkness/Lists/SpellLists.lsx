@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Trickery Domain Cleric level 1" />
-                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_Bolster;DaughterOfDarkness_SneakAttackMelee;DaughterOfDarkness_SneakAttackRanged;Projectile_EldritchBlast;Shout_Shield_Wizard" />
+                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_Bolster;DaughterOfDarkness_SneakAttackMelee;DaughterOfDarkness_SneakAttackRanged;DaughterOfDarkness_SummonEvenfall;Projectile_EldritchBlast;Shout_Shield_Wizard" />
                     <attribute id="UUID" type="guid" value="c4f85c4a-f233-9aa6-f327-b88309c8ee58" />
                 </node>
                 <node id="SpellList">

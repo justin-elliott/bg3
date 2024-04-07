@@ -3,6 +3,7 @@
 new entry "DaughterOfDarkness_Evenfall"
 type "Weapon"
 using "WPN_Longsword"
+data "PassivesOnEquip" "MAG_IgnoreSlashingResistance_Passive"
 data "Rarity" "Legendary"
 data "RootTemplate" "4fded697-1528-0ff3-7a2e-2f33964920d0"
 data "Unique" "1"

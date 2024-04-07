@@ -213,6 +213,9 @@ class DaughterOfDarkness(Replacer):
             using="WPN_Longsword",
             RootTemplate=str(evenfall_uuid),
             Rarity="Legendary",
+            PassivesOnEquip=[
+                "MAG_IgnoreSlashingResistance_Passive",
+            ],
             Weapon_Properties=[
                 "Dippable",
                 "Finesse",

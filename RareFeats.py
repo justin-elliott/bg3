@@ -17,6 +17,7 @@ from modtools.lsx.game import (
     PassiveList,
 )
 from modtools.mod import Mod
+from typing import Callable
 from uuid import UUID
 
 rare_feats = Mod(os.path.dirname(__file__),
@@ -29,6 +30,12 @@ loca = rare_feats.get_localization()
 loca.add_language("en", "English")
 
 
+def iife(fn: Callable[[], None]) -> Callable[[], None]:
+    """Immediate invoke our decorated function."""
+    fn()
+
+
+@iife
 def no_feat() -> None:
     """A feat for when you don't wish to select a feat."""
     no_feat_uuid = rare_feats.make_uuid("RareFeats_Feat_NoFeat")
@@ -51,6 +58,7 @@ def no_feat() -> None:
     ))
 
 
+@iife
 def asi_feat() -> None:
     """Ability Score Improvement (ASI) feat."""
     ABILITIES = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
@@ -101,6 +109,7 @@ def asi_feat() -> None:
     ))
 
 
+@iife
 def athlete_feat() -> None:
     """Athlete without the ASI."""
     athlete_uuid = rare_feats.make_uuid("RareFeats_Athlete")
@@ -126,6 +135,7 @@ def athlete_feat() -> None:
     ))
 
 
+@iife
 def battle_magic_feat() -> None:
     """Battle Magic."""
     battle_magic = BattleMagic(rare_feats).add_battle_magic()
@@ -151,6 +161,7 @@ def battle_magic_feat() -> None:
     ))
 
 
+@iife
 def cunning_actions_feat() -> None:
     """Cunning actions."""
     cunning_actions = CunningActions(rare_feats)
@@ -178,6 +189,7 @@ def cunning_actions_feat() -> None:
     ))
 
 
+@iife
 def extra_attacks_feat() -> None:
     """Extra Attacks."""
     extra_attacks_uuid = rare_feats.make_uuid("RareFeats_ExtraAttacks")
@@ -213,6 +225,7 @@ def extra_attacks_feat() -> None:
     ))
 
 
+@iife
 def fighting_style_feat() -> None:
     """Fighting Style."""
     fighting_style_uuid = rare_feats.make_uuid("RareFeats_FightingStyle")
@@ -238,6 +251,7 @@ def fighting_style_feat() -> None:
     ))
 
 
+@iife
 def jack_of_all_trades_feat() -> None:
     """Jack of all Trades."""
     jack_of_all_trades_uuid = rare_feats.make_uuid("RareFeats_JackOfAllTrades")
@@ -275,6 +289,7 @@ def jack_of_all_trades_feat() -> None:
     ))
 
 
+@iife
 def lands_stride_feat() -> None:
     """Land's Stride."""
     lands_stride_uuid = rare_feats.make_uuid("RareFeats_LandsStride")
@@ -307,6 +322,7 @@ def lands_stride_feat() -> None:
     ))
 
 
+@iife
 def lightly_armored_feat() -> None:
     """Lightly Armored without the ASI."""
     lightly_armored_uuid = rare_feats.make_uuid("RareFeats_LightlyArmored")
@@ -331,6 +347,7 @@ def lightly_armored_feat() -> None:
     ))
 
 
+@iife
 def moderately_armored_feat() -> None:
     """Moderately Armored without the ASI."""
     moderately_armored_uuid = rare_feats.make_uuid("RareFeats_ModeratelyArmored")
@@ -356,6 +373,7 @@ def moderately_armored_feat() -> None:
     ))
 
 
+@iife
 def performer_feat() -> None:
     """Performer without the ASI."""
     performer_uuid = rare_feats.make_uuid("RareFeats_Performer")
@@ -380,6 +398,7 @@ def performer_feat() -> None:
     ))
 
 
+@iife
 def tavern_brawler_feat() -> None:
     """Tavern Brawler without the ASI."""
     tavern_brawler_uuid = rare_feats.make_uuid("RareFeats_TavernBrawler")
@@ -406,6 +425,7 @@ def tavern_brawler_feat() -> None:
     ))
 
 
+@iife
 def weapon_master_feat() -> None:
     """Weapon Master without the ASI."""
     weapon_master_uuid = rare_feats.make_uuid("RareFeats_WeaponMaster")
@@ -430,20 +450,5 @@ def weapon_master_feat() -> None:
         UUID=weapon_master_uuid,
     ))
 
-
-no_feat()
-asi_feat()
-athlete_feat()
-battle_magic_feat()
-cunning_actions_feat()
-extra_attacks_feat()
-fighting_style_feat()
-jack_of_all_trades_feat()
-lands_stride_feat()
-lightly_armored_feat()
-moderately_armored_feat()
-performer_feat()
-tavern_brawler_feat()
-weapon_master_feat()
 
 rare_feats.build()

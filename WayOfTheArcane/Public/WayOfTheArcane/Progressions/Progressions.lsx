@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(a4611a57-3729-7bcc-52cd-d4a85b4995fd,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e" />
                     <children>
@@ -37,7 +37,6 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(a4611a57-3729-7bcc-52cd-d4a85b4995fd,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="297e0cb5-9743-4ae8-b053-b3850f0fa134" />
                     <children>
@@ -173,7 +172,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;Blindsight;SuperiorDarkvision;WayOfTheArcane_BattleMagic;WayOfTheArcane_PackMule_100;WayOfTheArcane_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,6,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b89e7f30-badf-ef8b-656a-dc0d0eb93283,4,0,,,,AlwaysPrepared);AddSpells(2c47db3d-429b-0bb0-427f-b137d63fd80a)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="196e7e5d-1c16-22cc-498e-d85a46d2c09c" />
                 </node>
@@ -183,7 +182,6 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="f399b41d-432f-688c-24d7-47096e2912f3" />
                 </node>
@@ -191,9 +189,10 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;JackOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;FastHands" />
+                    <attribute id="PassivesRemoved" type="LSString" value="FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(44f77e79-132a-5d5e-d740-f22283a493bd);AddSpells(6566d841-ef96-4e13-ac40-c40f44c5e08b,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="077e6458-3b93-4820-88a7-bd7c9babbeae" />
                 </node>
@@ -202,7 +201,7 @@
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b89e7f30-badf-ef8b-656a-dc0d0eb93283,1,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="7b4be74d-4f0c-5807-95d6-a5d90c65aec0" />
                 </node>
@@ -212,7 +211,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(1c440b37-ef87-61e6-70fc-b5f5082c9917,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(393cd164-5efd-3f69-024e-3cdaa6fee129);AddSpells(b15221c0-aa9a-a01b-2a5b-7eb3b5798812,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="62fa2d62-9cc9-4642-9d11-121ac5188875" />
                 </node>
@@ -222,7 +221,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_ArcaneManifestation" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="2843ad66-a79d-4357-9c34-877e443f9701" />
                 </node>
@@ -232,7 +231,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(f4bb2572-a565-69fa-41eb-656703a4b5e5)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="e330a6ec-c666-491e-ef45-72d777929e90" />
                 </node>
@@ -240,9 +239,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="FastHands" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="f0fdf4e5-72d4-3669-a623-947c5b2c558d" />
                 </node>
@@ -252,7 +249,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(039ad925-8243-2fad-643a-39aa1db41c2a)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="43ce9738-a0ed-4bf9-0f50-bf24070e8a15" />
                 </node>
@@ -262,7 +259,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_EmpoweredSpells_Wisdom" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(b89e7f30-badf-ef8b-656a-dc0d0eb93283,1,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="5c34aa0e-a4cb-8322-5b07-cc26408f8b0b" />
                 </node>
@@ -273,7 +270,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);AddSpells(5518d07c-0575-d7c8-99a1-79002ab682ed)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="9d7ed30f-fd99-4d5d-b190-8f781f9cb6a9" />
                 </node>
@@ -283,7 +280,6 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="a66b490b-4cf9-04b3-2fea-dd503f587318" />
                 </node>

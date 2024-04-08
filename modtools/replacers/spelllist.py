@@ -10,6 +10,11 @@ from modtools.replacers.replacer import Replacer
 from uuid import UUID
 
 
+class DontIncludeSpellList(BaseException):
+    """Raised to exclude a spell list from being updated."""
+    pass
+
+
 type SpellListBuilder = Callable[[Replacer, SpellList], None]
 type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
@@ -57,14 +62,20 @@ def _update_spell_lists(replacer: Replacer,
 
     for spell_list in spell_lists:
         if builder_fns := builders.get(spell_list.Comment) or builders.get(spell_list.UUID):
+            was_updated = False
             for builder_fn in builder_fns:
-                builder_fn(replacer, spell_list)
+                try:
+                    builder_fn(replacer, spell_list)
+                    was_updated = True
+                except DontIncludeSpellList:  # Can still be updated by another builder_fn
+                    pass
                 if spell_list.Comment in unused_spell_lists:
                     unused_spell_lists.remove(spell_list.Comment)
                 else:
                     unused_spell_lists.remove(spell_list.UUID)
 
-            updated_spell_lists.add(spell_list)
+            if was_updated:
+                updated_spell_lists.add(spell_list)
 
     if len(unused_spell_lists) > 0:
         raise KeyError(f"Unmatched spell_list(s): {", ".join(sorted(unused_spell_lists))}")

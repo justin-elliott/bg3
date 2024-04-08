@@ -74,9 +74,10 @@ class WayOfTheArcane(Replacer):
     WIZARD_LEVEL_5_SPELL_LIST = UUID("f781a25e-d288-43b4-bf5d-3d8d98846687")
     WIZARD_LEVEL_6_SPELL_LIST = UUID("bc917f22-7f71-4a25-9a77-7d2f91a96a65")
 
+    ACTION_SURGE_SPELL_LIST = UUID("964e765d-5881-463e-b1b0-4fc6b8035aa8")
     FLURRY_OF_BLOWS_SPELL_LIST = UUID("6566d841-ef96-4e13-ac40-c40f44c5e08b")
-    WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
     FLY_SPELL_LIST = UUID("12150e11-267a-4ecc-a3cc-292c9e2a198d")
+    WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
 
     _args: Args
     _feat_levels: set[int]
@@ -405,7 +406,9 @@ class WayOfTheArcane(Replacer):
     def level_8(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
         progression.PassivesAdded = None
-        progression.Selectors = None
+        progression.Selectors = [
+            f"AddSpells({self.ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_SHADOW, 9)
     def level_9(self, progression: Progression) -> None:

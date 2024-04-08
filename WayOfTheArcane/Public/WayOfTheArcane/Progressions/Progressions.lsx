@@ -240,6 +240,7 @@
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="f0fdf4e5-72d4-3669-a623-947c5b2c558d" />
                 </node>

@@ -21,6 +21,11 @@
                     <attribute id="UUID" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_CunningActions" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(b44c4267-51ae-70c6-3482-bd8b10f12206,,,,AlwaysPrepared)" />
+                    <attribute id="UUID" type="guid" value="2a8e042e-d6f8-2b60-f7f1-55f554b72464" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_ExtraAttacks" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;FastHands;RareFeats_ActionSurge_Unlock" />
                     <attribute id="UUID" type="guid" value="402c4c1c-d78e-5f7f-1116-899458e77347" />

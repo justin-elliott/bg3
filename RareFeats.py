@@ -5,7 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
-from moddb import Movement
+from moddb import CunningActions, Movement
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     FeatDescription,
@@ -119,6 +119,31 @@ rare_feats.add(Feat(
     Name="RareFeats_Athlete",
     PassivesAdded=["Athlete_StandUp"],
     UUID=athlete_uuid,
+))
+
+# Cunning actions
+cunning_actions = CunningActions(rare_feats)
+cunning_actions_uuid = rare_feats.make_uuid("RareFeats_CunningActions")
+
+loca["RareFeats_CunningActions_DisplayName"] = {"en": "Rare Feats: Cunning Actions"}
+loca["RareFeats_CunningActions_Description"] = {"en": f"""
+    Adds <LSTag Type="Spell" Tooltip="{cunning_actions.cunning_action_dash}">Cunning Action: Dash</LSTag>,
+    <LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction">Cunning Action: Hide</LSTag>, and
+    <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>.
+    """}
+
+rare_feats.add(FeatDescription(
+    DisplayName=loca["RareFeats_CunningActions_DisplayName"],
+    Description=loca["RareFeats_CunningActions_Description"],
+    ExactMatch="RareFeats_CunningActions",
+    FeatId=cunning_actions_uuid,
+    UUID=rare_feats.make_uuid("RareFeats_FeatDescription_CunningActions"),
+))
+
+rare_feats.add(Feat(
+    Name="RareFeats_CunningActions",
+    Selectors=[f"AddSpells({cunning_actions.spell_list()},,,,AlwaysPrepared)"],
+    UUID=cunning_actions_uuid,
 ))
 
 # Extra Attacks

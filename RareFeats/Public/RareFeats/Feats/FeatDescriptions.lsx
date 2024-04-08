@@ -27,6 +27,13 @@
                     <attribute id="UUID" type="guid" value="391a4912-5d9b-728d-8527-9fa004f548bc" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h5d71b742g06d3gb669g93ccgd638ab745699" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h05dd3872gf3d2g341eg658dgcf27378fcf36" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_CunningActions" />
+                    <attribute id="FeatId" type="guid" value="2a8e042e-d6f8-2b60-f7f1-55f554b72464" />
+                    <attribute id="UUID" type="guid" value="f9bdb461-a30e-a785-7261-0aa516c3e26b" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h91b30b3dgb267gd5a7gda9bg84fee7ff0f6d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h7d5f9357g2881gd058ga24bg2e0e31d3c5ae" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_ExtraAttacks" />

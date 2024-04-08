@@ -7,6 +7,7 @@ BG3 moddb definitions package.
 from .battlemagic import *
 from .bolster import *
 from .boosts import *
+from .cunningactions import *
 from .defense import *
 from .empoweredspells import *
 from .movement import *

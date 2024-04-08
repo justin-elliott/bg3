@@ -238,7 +238,6 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesAdded = [
             "UnlockedSpellSlotLevel2",
-            "JackOfAllTrades",
         ]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",

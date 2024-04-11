@@ -88,6 +88,7 @@ data "Boosts" "RollBonus(SkillCheck,ProficiencyBonus);RollBonus(RawAbility,Profi
 data "Description" "h763a12a2gbc82g828dg48fcg1a525b71a5d2"
 data "DisplayName" "h80e22e75gee20gc0efg055cg2681d75dde78"
 data "Icon" "PassiveFeature_JackOfAllTrades"
+data "Properties" "Highlighted"
 
 new entry "RareFeats_FastMovement_30"
 type "PassiveData"

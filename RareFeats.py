@@ -286,6 +286,7 @@ def jack_of_all_trades_feat() -> None:
             "RollBonus(SkillCheck,ProficiencyBonus)",
             "RollBonus(RawAbility,ProficiencyBonus)",
         ],
+        Properties=["Highlighted"],
     ))
 
 

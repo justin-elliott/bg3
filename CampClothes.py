@@ -297,7 +297,10 @@ def add_overpowering_potion() -> str:
             "AC(20)",
             "DamageBonus(20)",
             "RollBonus(Attack,20)",
-            "RollBonus(SavingThrow,20)"
+            "RollBonus(SavingThrow,20)",
+            "IgnoreResistance(Bludgeoning,Resistant)",
+            "IgnoreResistance(Piercing,Resistant)",
+            "IgnoreResistance(Slashing,Resistant)",
         ],
         status_property_flags=None,
     )

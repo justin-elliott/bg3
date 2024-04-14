@@ -6,6 +6,7 @@ A decorator for origin replacement.
 from collections.abc import Callable
 from modtools.lsx import Lsx
 from modtools.lsx.game import SpellList
+from modtools.gamedata import GameSpellLists
 from modtools.replacers.replacer import Replacer
 from uuid import UUID
 
@@ -19,10 +20,6 @@ type SpellListBuilder = Callable[[Replacer, SpellList], None]
 type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
 
-_SPELL_LISTS_LSX_PATH = "Shared.pak/Public/Shared/Lists/SpellLists.lsx"
-_SPELL_LISTS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Lists/SpellLists.lsx"
-
-
 def _by_comment(spell_list: SpellList) -> str:
     return spell_list.Comment.lower()
 
@@ -33,11 +30,7 @@ def _by_uuid(spell_list: SpellList) -> str:
 
 def _load_spell_lists(replacer: Replacer) -> list[SpellList]:
     """Load the game's SpellLists from the .pak cache."""
-    spell_lists_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_LSX_PATH))
-    spell_lists_dev_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_DEV_LSX_PATH))
-    spell_lists_lsx.children.update(spell_lists_dev_lsx.children, key=_by_uuid)
-    spell_lists_lsx.children.sort(key=_by_comment)
-    return list(spell_lists_lsx.children)
+    return GameSpellLists(replacer.mod).spell_lists.children
 
 
 def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuilderDict:

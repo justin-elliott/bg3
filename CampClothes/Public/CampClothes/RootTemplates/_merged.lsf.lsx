@@ -369,7 +369,7 @@
                                             <attribute id="Consume" type="bool" value="true" />
                                             <attribute id="IsHiddenStatus" type="bool" value="true" />
                                             <attribute id="StatsId" type="FixedString" value="CAMPCLOTHES_OVERPOWERINGPOTION" />
-                                            <attribute id="StatusDuration" type="int32" value="20" />
+                                            <attribute id="StatusDuration" type="int32" value="16" />
                                         </node>
                                     </children>
                                 </node>

@@ -9,7 +9,6 @@ from .character import *
 from .collection import *
 from .criticalhittypedata import *
 from .gamedata import *
-from .gamespelllists import *
 from .interruptdata import *
 from .objectdata import *
 from .passivedata import *

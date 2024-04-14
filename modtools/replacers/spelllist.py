@@ -4,10 +4,11 @@ A decorator for origin replacement.
 """
 
 from collections.abc import Callable
+from functools import cache
 from modtools.lsx import Lsx
-from modtools.lsx.game import SpellList
-from modtools.gamedata import GameSpellLists
+from modtools.lsx.game import SpellList, SpellLists
 from modtools.replacers.replacer import Replacer
+from typing import Iterable
 from uuid import UUID
 
 
@@ -16,21 +17,35 @@ class DontIncludeSpellList(BaseException):
     pass
 
 
+_SPELL_LISTS_LSX_PATH = "Shared.pak/Public/Shared/Lists/SpellLists.lsx"
+_SPELL_LISTS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Lists/SpellLists.lsx"
+
 type SpellListBuilder = Callable[[Replacer, SpellList], None]
 type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
 
-def _by_comment(spell_list: SpellList) -> str:
+def _key_by_comment(spell_list: SpellList) -> str:
     return spell_list.Comment.lower()
 
 
-def _by_uuid(spell_list: SpellList) -> str:
+def _key_by_uuid(spell_list: SpellList) -> str:
     return spell_list.UUID
 
 
-def _load_spell_lists(replacer: Replacer) -> list[SpellList]:
-    """Load the game's SpellLists from the .pak cache."""
-    return GameSpellLists(replacer.mod).spell_lists.children
+@cache
+def _load_spell_lists(replacer: Replacer) -> SpellLists:
+    spell_lists_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_LSX_PATH))
+    spell_lists_dev_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_DEV_LSX_PATH))
+    spell_lists_lsx.children.update(spell_lists_dev_lsx.children, key=_key_by_uuid)
+    spell_lists_lsx.children.sort(key=_key_by_comment)
+    return spell_lists_lsx
+
+
+@cache
+def _find_by_uuid(replacer: Replacer, uuid: UUID) -> SpellList:
+    def by_uuid(spell_list: SpellList) -> bool:
+        return spell_list.UUID == uuid
+    return _load_spell_lists(replacer).children.find(by_uuid)
 
 
 def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuilderDict:
@@ -47,7 +62,7 @@ def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuil
 
 
 def _update_spell_lists(replacer: Replacer,
-                        spell_lists: list[SpellList],
+                        spell_lists: Iterable[SpellList],
                         builders: SpellListBuilderDict,
                         updated_spell_lists: set[SpellList]):
     """Update spell lists that match our builder names."""
@@ -78,13 +93,13 @@ def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListB
     """Update existing spell lists."""
     builders = _make_builders(spell_list_builders)
 
-    spell_lists = _load_spell_lists(replacer)
+    spell_lists = _load_spell_lists(replacer).children
     updated_spell_lists: set[SpellList] = set()
 
     _update_spell_lists(replacer, spell_lists, builders, updated_spell_lists)
 
     # Save the updated origins
-    for spell_list in sorted(updated_spell_lists, key=_by_comment):
+    for spell_list in sorted(updated_spell_lists, key=_key_by_comment):
         replacer.mod.add(spell_list)
 
 
@@ -101,3 +116,123 @@ def spell_list(comment_or_uuid: str) -> SpellListBuilder:
         return fn
 
     return decorate
+
+
+# Cleric Spells
+
+
+def cleric_cantrips(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("2f43a103-5bf1-4534-b14f-663decc0c525"))
+
+
+def cleric_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("269d1a3b-eed8-4131-8901-a562238f5289"))
+
+
+def cleric_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac"))
+
+
+def cleric_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("21be0992-499f-4c7a-a77a-4430085e947a"))
+
+
+def cleric_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("37e9b20b-5fd1-45c5-b1c5-159c42397c83"))
+
+
+def cleric_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2"))
+
+
+def cleric_level_6_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("f8ba7b05-1237-4eaa-97fa-1d3623d5862b"))
+
+
+# Druid Spells
+
+
+def druid_cantrips(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("b8faf12f-ca42-45c0-84f8-6951b526182a"))
+
+
+def druid_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("2cd54137-2fe5-4100-aad3-df64735a8145"))
+
+
+def druid_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("92126d17-7f1a-41d2-ae6c-a8d254d2b135"))
+
+
+def druid_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("3156daf5-9266-41d0-b52c-5bc559a98654"))
+
+
+def druid_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("09c326c9-672c-4198-a4c0-6f07323bde27"))
+
+
+def druid_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("ff711c12-b59f-4fde-b9ea-6e5c38ec8f23"))
+
+
+def druid_level_6_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("6a4e2167-55f3-4ba8-900f-14666b293e93"))
+
+
+# Warlock Spells
+
+
+def warlock_cantrips(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("f5c4af9c-5d8d-4526-9057-94a4b243cd40"))
+
+
+def warlock_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("4823a292-f584-4f7f-8434-6630c72e5411"))
+
+
+def warlock_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("835aeca7-c64a-4aaa-a25c-143aa14a5cec"))
+
+
+def warlock_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("5dec41aa-f16a-434e-b209-50c07e64e4ed"))
+
+
+def warlock_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d"))
+
+
+def warlock_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("deab57bf-4eec-4085-82f7-87335bce3f5d"))
+
+
+# Wizard Spells
+
+
+def wizard_cantrips(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("3cae2e56-9871-4cef-bba6-96845ea765fa"))
+
+
+def wizard_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("11f331b0-e8b7-473b-9d1f-19e8e4178d7d"))
+
+
+def wizard_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("80c6b070-c3a6-4864-84ca-e78626784eb4"))
+
+
+def wizard_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("22755771-ca11-49f4-b772-13d8b8fecd93"))
+
+
+def wizard_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("820b1220-0385-426d-ae15-458dc8a6f5c0"))
+
+
+def wizard_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("f781a25e-d288-43b4-bf5d-3d8d98846687"))
+
+
+def wizard_level_6_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("bc917f22-7f71-4a25-9a77-7d2f91a96a65"))

@@ -42,7 +42,7 @@ chromatic_blade.add(GameObjects(
     LevelName="",
     MapKey=chromatic_blade_game_objects_uuid,
     Name="ChromaticBlade_Sword",
-    ParentTemplateId=everburn_blade_uuid,
+    ParentTemplateId=katana_uuid,
     Stats="ChromaticBlade_Sword",
     Type="item",
     children=[
@@ -57,12 +57,12 @@ chromatic_blade.add(GameObjects(
 
 chromatic_blade.add(Weapon(
     "ChromaticBlade_Sword",
-    using="WPN_Greatsword",
+    using="WPN_Longsword",
     RootTemplate=str(chromatic_blade_game_objects_uuid),
     Rarity="Legendary",
     BoostsOnEquipMainHand=[
         "CannotBeDisarmed()",
-        "Proficiency(Greatswords)",
+        "Proficiency(Longswords)",
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(ChromaticBlade_Charge)",
@@ -83,10 +83,10 @@ chromatic_blade.add(Weapon(
     ],
     Weapon_Properties=[
         "Dippable",
-        "Heavy",
+        "Finesse",
         "Magical",
         "Melee",
-        "Twohanded",
+        "Versatile",
     ],
     Unique="1",
 ))

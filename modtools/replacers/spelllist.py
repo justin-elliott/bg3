@@ -6,7 +6,8 @@ A decorator for origin replacement.
 from collections.abc import Callable
 from functools import cache
 from modtools.lsx import Lsx
-from modtools.lsx.game import SpellList, SpellLists
+from modtools.lsx.children import LsxChildren
+from modtools.lsx.game import SpellList
 from modtools.replacers.replacer import Replacer
 from typing import Iterable
 from uuid import UUID
@@ -33,19 +34,19 @@ def _key_by_uuid(spell_list: SpellList) -> str:
 
 
 @cache
-def _load_spell_lists(replacer: Replacer) -> SpellLists:
+def _load_spell_lists(replacer: Replacer) -> LsxChildren:
     spell_lists_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_LSX_PATH))
     spell_lists_dev_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_DEV_LSX_PATH))
     spell_lists_lsx.children.update(spell_lists_dev_lsx.children, key=_key_by_uuid)
     spell_lists_lsx.children.sort(key=_key_by_comment)
-    return spell_lists_lsx
+    return spell_lists_lsx.children
 
 
 @cache
 def _find_by_uuid(replacer: Replacer, uuid: UUID) -> SpellList:
     def by_uuid(spell_list: SpellList) -> bool:
-        return spell_list.UUID == uuid
-    return _load_spell_lists(replacer).children.find(by_uuid)
+        return spell_list.UUID == str(uuid)
+    return _load_spell_lists(replacer).find(by_uuid)
 
 
 def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuilderDict:
@@ -93,7 +94,7 @@ def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListB
     """Update existing spell lists."""
     builders = _make_builders(spell_list_builders)
 
-    spell_lists = _load_spell_lists(replacer).children
+    spell_lists = _load_spell_lists(replacer)
     updated_spell_lists: set[SpellList] = set()
 
     _update_spell_lists(replacer, spell_lists, builders, updated_spell_lists)

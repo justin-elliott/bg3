@@ -184,7 +184,7 @@ def cunning_actions_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_CunningActions",
-        Selectors=[f"AddSpells({cunning_actions.spell_list()},,,,AlwaysPrepared)"],
+        Selectors=[f"AddSpells({cunning_actions.spell_list().UUID},,,,AlwaysPrepared)"],
         UUID=cunning_actions_uuid,
     ))
 

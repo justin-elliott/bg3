@@ -10,38 +10,41 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     BattleMagic,
-    Bolster,
-    Defense,
+    CunningActions,
     EmpoweredSpells,
     Movement,
-    PackMule,
-    character_level_range,
     multiply_resources,
 )
 from modtools.gamedata import (
     InterruptData,
     PassiveData,
     SpellData,
-    StatusData,
-    Weapon,
 )
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
-    ClassDescription,
-    GameObjects,
     LevelMapSeries,
     SpellList,
 )
 from modtools.lsx.game import Progression
 from modtools.replacers import (
-    class_description,
+    cleric_cantrips,
+    cleric_level_1_spells,
+    cleric_level_2_spells,
+    cleric_level_3_spells,
+    cleric_level_4_spells,
+    cleric_level_5_spells,
+    cleric_level_6_spells,
     progression,
+    warlock_cantrips,
+    warlock_level_1_spells,
+    warlock_level_2_spells,
+    warlock_level_3_spells,
+    warlock_level_4_spells,
+    warlock_level_5_spells,
     Replacer,
 )
-from modtools.text import Equipment
-from uuid import UUID
 
 
 class DaughterOfDarkness(Replacer):
@@ -60,42 +63,121 @@ class DaughterOfDarkness(Replacer):
     _fast_movement_30: str
     _fast_movement_45: str
     _fast_movement_60: str
-    _pack_mule: str
-    _warding: str
 
-    # Spells
-    _bolster: str
-    _shadow_step: str
+    # Spell lists
+    _cunning_actions: SpellList
 
     @cached_property
-    def _level_1_spell_list(self) -> str:
-        spell_list_id = str(self.make_uuid("level_1_spell_list"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Trickery Domain Cleric level 1",
+    def _cantrips(self) -> SpellList:
+        cantrips = SpellList(
+            Comment="Trickery Domain Cleric cantrips",
+            Spells=sorted(set([
+                *cleric_cantrips(self).Spells,
+                *warlock_cantrips(self).Spells,
+            ])),
+            UUID=self.make_uuid("cantrips"),
+        )
+        self.mod.add(cantrips)
+        return cantrips
+
+    @cached_property
+    def _level_1_abilities(self) -> SpellList:
+        abilities = SpellList(
+            Comment="Trickery Domain Cleric level 1 abilities",
             Spells=[
-                self._bolster,
                 self._sneak_attack_melee,
                 self._sneak_attack_ranged,
-                self._summon_evenfall,
-                "Projectile_EldritchBlast",
-                "Shout_Shield_Wizard",
             ],
-            UUID=spell_list_id,
-        ))
-        return spell_list_id
+            UUID=self.make_uuid("level_1_abilities"),
+        )
+        self.mod.add(abilities)
+        return abilities
 
     @cached_property
-    def _level_6_spell_list(self) -> str:
-        spell_list_id = str(self.make_uuid("level_6_spell_list"))
-        self.mod.add(SpellList(
-            Comment="Spells gained at Trickery Domain Cleric level 6",
-            Spells=[
-                self._shadow_step,
-                "Target_Counterspell",
-            ],
-            UUID=spell_list_id,
-        ))
-        return spell_list_id
+    def _level_1_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 1 spells",
+            Spells=sorted(set([
+                "Shout_Shield_Wizard",
+                *cleric_level_1_spells(self).Spells,
+                *warlock_level_1_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_1_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _level_2_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 2 spells",
+            Spells=sorted(set([
+                *cleric_level_2_spells(self).Spells,
+                *warlock_level_2_spells(self).Spells,
+            ]) - set([
+                *warlock_level_1_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_2_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _level_3_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 3 spells",
+            Spells=sorted(set([
+                *cleric_level_3_spells(self).Spells,
+                *warlock_level_3_spells(self).Spells,
+            ]) - set([
+                *warlock_level_2_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_3_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _level_4_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 4 spells",
+            Spells=sorted(set([
+                *cleric_level_4_spells(self).Spells,
+                *warlock_level_4_spells(self).Spells,
+            ]) - set([
+                *warlock_level_3_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_4_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _level_5_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 5 spells",
+            Spells=sorted(set([
+                *cleric_level_5_spells(self).Spells,
+                *warlock_level_5_spells(self).Spells,
+            ]) - set([
+                *warlock_level_4_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_5_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _level_6_spells(self) -> SpellList:
+        spells = SpellList(
+            Comment="Trickery Domain Cleric level 6 spells",
+            Spells=sorted(set([
+                *cleric_level_6_spells(self).Spells,
+            ])),
+            UUID=self.make_uuid("level_6_spells"),
+        )
+        self.mod.add(spells)
+        return spells
 
     @cached_property
     def _sneak_attack_melee(self) -> str:
@@ -177,128 +259,6 @@ class DaughterOfDarkness(Replacer):
 
         return name
 
-    @cached_property
-    def _summon_evenfall(self) -> str:
-        name = f"{self.mod.get_prefix()}_Evenfall"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Evenfall"}
-        loca[f"{name}_Description"] = {"en": """
-            Shadows chase along the length of this blade.
-            """}
-
-        katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
-
-        evenfall_uuid = self.make_uuid(name)
-        self.mod.add(GameObjects(
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            LevelName="",
-            MapKey=evenfall_uuid,
-            Name=name,
-            ParentTemplateId=katana_uuid,
-            Stats=name,
-            Type="item",
-            children=[
-                GameObjects.StatusList(
-                    children=[
-                        GameObjects.StatusList.Status(Object="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"),
-                    ],
-                ),
-            ],
-        ))
-
-        self.mod.add(Weapon(
-            name,
-            using="WPN_Longsword",
-            RootTemplate=str(evenfall_uuid),
-            Rarity="Legendary",
-            PassivesOnEquip=[
-                "MAG_IgnoreSlashingResistance_Passive",
-            ],
-            Weapon_Properties=[
-                "Dippable",
-                "Finesse",
-                "Magical",
-                "Melee",
-                "Versatile",
-            ],
-            Unique="1",
-        ))
-
-        summon_evenfall = f"{self.mod.get_prefix()}_SummonEvenfall"
-
-        loca[f"{summon_evenfall}_DisplayName"] = {"en": "Summon Evenfall"}
-        loca[f"{summon_evenfall}_Description"] = {"en": """
-            Summon the blade, Evenfall.
-            """}
-
-        self.mod.add(SpellData(
-            summon_evenfall,
-            SpellType="Shout",
-            Cooldown="OncePerCombat",
-            TargetConditions="Self()",
-            Icon="Action_WildMagic_Enchant",
-            DisplayName=loca[f"{summon_evenfall}_DisplayName"],
-            Description=loca[f"{summon_evenfall}_Description"],
-            CastSound="Action_Cast_PactOfTheBlade",
-            CastTextEvent="Cast",
-            UseCosts="",
-            SpellAnimation=[
-                "f489d217-b699-4e8e-bf22-6ef539c5d65b,,",
-                ",,",
-                "7a343ea7-1330-428a-b0b1-9f6dc7f2a91c,,",
-                "0f872585-3c6e-4493-a0b5-5acc882b7aaf,,",
-                "f9414915-2da7-4f40-bcbd-90e956461246,,",
-                ",,",
-                "f2a62277-c87a-4ec7-b4f2-c3c37e6e30ae,,",
-                ",,",
-                ",,",
-            ],
-            SpellProperties=f"SummonInInventory({evenfall_uuid},Permanent,1,true,true,true,,,Evenfall,{name.upper()})",
-            VerbalIntent="Summon",
-            SpellStyleGroup="Class",
-            SpellAnimationIntentType="Aggressive",
-            PrepareEffect="d9038b21-f4cc-4c8a-99c1-6168e1fe46ba",
-            CastEffect="135cb448-04f9-4543-b670-7bebea4ae21d",
-            Sheathing="Sheathed",
-        ))
-
-        self.mod.add(character_level_range)
-        self.mod.add(StatusData(
-            name.upper(),
-            StatusType="BOOST",
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            Icon="Action_WildMagic_Enchant",
-            StackId=name.upper(),
-            Boosts=[
-                "Attribute(InventoryBound)",
-                "CannotBeDisarmed()",
-                "ItemReturnToOwner()",
-                "WeaponProperty(Magical)",
-                "IF(CharacterLevelRange(1,5)):WeaponDamage(1d4,Psychic,Magical)",
-                "IF(CharacterLevelRange(6,10)):WeaponDamage(1d6,Psychic,Magical)",
-                "IF(CharacterLevelRange(11,20)):WeaponDamage(1d8,Psychic,Magical)",
-                "IF(CharacterLevelRange(7,9)):ReduceCriticalAttackThreshold(1)",
-                "IF(CharacterLevelRange(10,20)):ReduceCriticalAttackThreshold(2)",
-                "IF(CharacterLevelRange(4,6)):WeaponEnchantment(1)",
-                "IF(CharacterLevelRange(7,9)):WeaponEnchantment(2)",
-                "IF(CharacterLevelRange(10,20)):WeaponEnchantment(3)",
-            ],
-            StatusPropertyFlags=[
-                "DisableOverhead",
-                "DisableCombatlog",
-                "DisablePortraitIndicator",
-                "IgnoreResting",
-            ],
-            StatusGroups="SG_RemoveOnRespec",
-            IsUnique="1",
-            ApplyEffect="63760e78-ec10-4c41-a097-173a6f1fe536",
-        ))
-
-        return summon_evenfall
-
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -314,63 +274,115 @@ class DaughterOfDarkness(Replacer):
         self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
-        self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
-        self._warding = Defense(self.mod).add_warding()
 
-        # Spells
-        self._bolster = Bolster(self.mod).add_bolster()
-        self._shadow_step = Movement(self.mod).add_shadow_step("Movement:Distance*0.5")
-
-        # Shadowheart's equipment
-        self.mod.add(Equipment("""
-            new equipment "EQ_Shadowheart"
-            add initialweaponset "Melee"
-            add equipmentgroup
-            add equipment entry "WPN_Shortsword"
-            add equipmentgroup
-            add equipment entry "WPN_Shortsword"
-            add equipmentgroup
-            add equipment entry "ARM_Boots_Leather_A"
-            add equipmentgroup
-            add equipment entry "OBJ_Potion_Healing"
-            add equipmentgroup
-            add equipment entry "OBJ_Potion_Healing"
-            add equipmentgroup
-            add equipment entry "ARM_Padded_Body"
-            add equipmentgroup
-            add equipment entry "UNI_ShadowheartCirclet"
-            add equipmentgroup
-            add equipment entry "OBJ_Camp_Pack"
-            add equipmentgroup
-            add equipment entry "OBJ_Keychain"
-            add equipmentgroup
-            add equipment entry "OBJ_Bag_AlchemyPouch"
-            add equipmentgroup
-            add equipment entry "ARM_Camp_Body_Shadowheart"
-            add equipmentgroup
-            add equipment entry "ARM_Camp_Shoes_Shadowheart"
-            add equipmentgroup
-            add equipment entry "OBJ_Backpack_CampSupplies"
-            add equipmentgroup
-            add equipment entry "ARM_Underwear_Shadowheart"
-            add equipmentgroup
-            add equipment entry "OBJ_Scroll_Revivify"
-        """))
-
-    @class_description(CharacterClass.CLERIC)
-    def druid_description(self, class_description: ClassDescription) -> None:
-        class_description.CanLearnSpells = True
-        class_description.BaseHp = 10
-        class_description.HpPerLevel = 6
-        class_description.children.append(
-            ClassDescription.Tags(Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"),  # WIZARD
-        )
+        # Spell lists
+        self._cunning_actions = CunningActions(self.mod).spell_list()
 
     @progression(CharacterClass.CLERIC, range(1, 13))
+    @progression(CharacterClass.CLERIC, 1, is_multiclass=True)
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
         multiply_resources(progression, [ActionResource.CHANNEL_DIVINITY_CHARGES], self._args.actions)
+        progression.Selectors = [
+            selector for selector in (progression.Selectors or [])
+            if not selector.startswith(f"SelectSpells({cleric_cantrips(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_1_spells(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_2_spells(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_3_spells(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_4_spells(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_5_spells(self).UUID}")
+            and not selector.startswith(f"AddSpells({cleric_level_6_spells(self).UUID}")
+        ] or None
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 1)
+    @progression(CharacterClass.CLERIC_LIFE, 1)
+    @progression(CharacterClass.CLERIC_LIGHT, 1)
+    @progression(CharacterClass.CLERIC_NATURE, 1)
+    @progression(CharacterClass.CLERIC_TEMPEST, 1)
+    @progression(CharacterClass.CLERIC_WAR, 1)
+    def move_spells_1(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({cleric_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"AddSpells({cleric_level_1_spells(self).UUID})",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 3)
+    @progression(CharacterClass.CLERIC_LIFE, 3)
+    @progression(CharacterClass.CLERIC_LIGHT, 3)
+    @progression(CharacterClass.CLERIC_NATURE, 3)
+    @progression(CharacterClass.CLERIC_TEMPEST, 3)
+    @progression(CharacterClass.CLERIC_WAR, 3)
+    def move_spells_3(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({cleric_level_2_spells(self).UUID})",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 4)
+    @progression(CharacterClass.CLERIC_LIFE, 4)
+    @progression(CharacterClass.CLERIC_LIGHT, 4)
+    @progression(CharacterClass.CLERIC_NATURE, 4)
+    @progression(CharacterClass.CLERIC_TEMPEST, 4)
+    @progression(CharacterClass.CLERIC_WAR, 4)
+    def move_spells_4(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({cleric_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 5)
+    @progression(CharacterClass.CLERIC_LIFE, 5)
+    @progression(CharacterClass.CLERIC_LIGHT, 5)
+    @progression(CharacterClass.CLERIC_NATURE, 5)
+    @progression(CharacterClass.CLERIC_TEMPEST, 5)
+    @progression(CharacterClass.CLERIC_WAR, 5)
+    def move_spells_5(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({cleric_level_3_spells(self).UUID})",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 7)
+    @progression(CharacterClass.CLERIC_LIFE, 7)
+    @progression(CharacterClass.CLERIC_LIGHT, 7)
+    @progression(CharacterClass.CLERIC_NATURE, 7)
+    @progression(CharacterClass.CLERIC_TEMPEST, 7)
+    @progression(CharacterClass.CLERIC_WAR, 7)
+    def move_spells_7(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({cleric_level_4_spells(self).UUID})",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 9)
+    @progression(CharacterClass.CLERIC_LIFE, 9)
+    @progression(CharacterClass.CLERIC_LIGHT, 9)
+    @progression(CharacterClass.CLERIC_NATURE, 9)
+    @progression(CharacterClass.CLERIC_TEMPEST, 9)
+    @progression(CharacterClass.CLERIC_WAR, 9)
+    def move_spells_9(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({cleric_level_5_spells(self).UUID})",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 10)
+    @progression(CharacterClass.CLERIC_LIFE, 10)
+    @progression(CharacterClass.CLERIC_LIGHT, 10)
+    @progression(CharacterClass.CLERIC_NATURE, 10)
+    @progression(CharacterClass.CLERIC_TEMPEST, 10)
+    @progression(CharacterClass.CLERIC_WAR, 10)
+    def move_spells_10(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({cleric_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
+        ]
+
+    @progression(CharacterClass.CLERIC_KNOWLEDGE, 11)
+    @progression(CharacterClass.CLERIC_LIFE, 11)
+    @progression(CharacterClass.CLERIC_LIGHT, 11)
+    @progression(CharacterClass.CLERIC_NATURE, 11)
+    @progression(CharacterClass.CLERIC_TEMPEST, 11)
+    @progression(CharacterClass.CLERIC_WAR, 11)
+    def move_spells_11(self, progression: Progression) -> None:
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({cleric_level_6_spells(self).UUID})",
+        ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 1)
     def level_1(self, progression: Progression) -> None:
@@ -383,42 +395,42 @@ class DaughterOfDarkness(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._battle_magic,
             self._fast_movement_30,
-            self._pack_mule,
             self._sneak_attack_unlock,
-            self._warding,
+            "Blindsight",
             "SculptSpells",
+            "SuperiorDarkvision",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)",
+            f"SelectSpells({self._cantrips.UUID},4,0,,,,AlwaysPrepared)",
+            f"AddSpells({self._level_1_abilities.UUID},,,,AlwaysPrepared)",
+            f"AddSpells({self._level_1_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 2)
     def level_2(self, progression: Progression) -> None:
         progression.Selectors = (progression.Selectors or []) + [
-            "AddSpells(2dc120ff-903b-494b-8dc8-38721098ce38,,,,AlwaysPrepared)",  # Rogue cunning actions
+            f"AddSpells({self._cunning_actions.UUID},,,,AlwaysPrepared)",
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
-            "SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,2,WarlockInvocations)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 3)
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "Assassinate_Initiative",
-            "Assassinate_Ambush",
-            "Assassinate_Resource",
             "FastHands",
             "SecondStoryWork",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectPassives(333fb1b0-9398-4ca8-953e-6c0f9a59bbed,1,WarlockInvocations)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            f"AddSpells({self._level_2_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 4)
     def level_4(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "Assassinate_Initiative",
+            "Assassinate_Ambush",
+            "Assassinate_Resource",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 5)
@@ -432,7 +444,7 @@ class DaughterOfDarkness(Replacer):
             self._fast_movement_30,
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectPassives(8adab8f9-e360-4f79-851b-2c7e050ca23d,1,WarlockInvocations)",
+            f"AddSpells({self._level_3_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 6)
@@ -441,21 +453,13 @@ class DaughterOfDarkness(Replacer):
             "ImprovedCritical",
         ]
 
-        # Remove Cloak of Shadows
-        selectors = [sel for sel in progression.Selectors if "90acd47f-3475-4c85-99ea-7fd503591be4" not in sel]
-        selectors += [
-            f"AddSpells({self._level_6_spell_list},,,,AlwaysPrepared)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-        ]
-        progression.Selectors = selectors
-
     @progression(CharacterClass.CLERIC_TRICKERY, 7)
     def level_7(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Evasion",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectPassives(39efef92-9987-46e2-8c43-54052c1be535,1,WarlockInvocations)",
+            f"AddSpells({self._level_4_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 8)
@@ -475,7 +479,7 @@ class DaughterOfDarkness(Replacer):
             self._fast_movement_45,
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectPassives(a2d72748-0792-4f1e-a798-713a66d648eb,1,WarlockInvocations)",
+            f"AddSpells({self._level_5_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 10)
@@ -492,15 +496,16 @@ class DaughterOfDarkness(Replacer):
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
             "AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)",  # Volley, Whirlwind
+            f"AddSpells({self._level_6_spells.UUID})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 12)
     def level_12(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
+        ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "BrutalCritical",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations)",
         ]
 
 

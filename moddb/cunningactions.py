@@ -17,18 +17,18 @@ class CunningActions:
         """Initialize."""
         self._mod = mod
 
-    def spell_list(self, *, step_of_the_wind=True) -> str:
+    def spell_list(self, *, step_of_the_wind=True) -> SpellList:
         """Adds the cunning actions spell list, returning its name."""
-        cunning_actions = str(self._mod.make_uuid(f"{self._mod.get_prefix()}_CunningActions_SpellList"))
-        self._mod.add(SpellList(
+        cunning_actions = SpellList(
             Comment="Cunning Actions",
             Spells=[
                 self.cunning_action_dash if step_of_the_wind else "Shout_Dash_CunningAction",
                 "Shout_Hide_BonusAction",
                 "Shout_Disengage_CunningAction",
             ],
-            UUID=cunning_actions,
-        ))
+            UUID=self._mod.make_uuid(f"{self._mod.get_prefix()}_CunningActions_SpellList"),
+        )
+        self._mod.add(cunning_actions)
         return cunning_actions
 
     @cached_property

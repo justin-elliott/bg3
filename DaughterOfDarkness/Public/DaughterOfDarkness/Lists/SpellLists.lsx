@@ -6,14 +6,49 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Trickery Domain Cleric level 1" />
-                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_Bolster;DaughterOfDarkness_SneakAttackMelee;DaughterOfDarkness_SneakAttackRanged;DaughterOfDarkness_SummonEvenfall;Projectile_EldritchBlast;Shout_Shield_Wizard" />
-                    <attribute id="UUID" type="guid" value="c4f85c4a-f233-9aa6-f327-b88309c8ee58" />
+                    <attribute id="Comment" type="LSString" value="Cunning Actions" />
+                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_CunningActionDash;Shout_Hide_BonusAction;Shout_Disengage_CunningAction" />
+                    <attribute id="UUID" type="guid" value="3d131759-fecf-f3ea-96aa-245ccf250e39" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Trickery Domain Cleric level 6" />
-                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_ShadowStep;Target_Counterspell" />
-                    <attribute id="UUID" type="guid" value="4aeeaa39-f85f-a6c8-20f6-e0956fb63836" />
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric cantrips" />
+                    <attribute id="Spells" type="LSString" value="Projectile_EldritchBlast;Projectile_PoisonSpray;Shout_BladeWard;Shout_ProduceFlame;Shout_Thaumaturgy;Target_ChillTouch;Target_Friends;Target_Guidance;Target_Light;Target_MageHand;Target_MinorIllusion;Target_Resistance;Target_SacredFlame;Target_TrueStrike" />
+                    <attribute id="UUID" type="guid" value="b457436f-3443-7ce5-ac03-14fb8d02ad5e" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 1 abilities" />
+                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_SneakAttackMelee;DaughterOfDarkness_SneakAttackRanged" />
+                    <attribute id="UUID" type="guid" value="8d3d5f19-534a-9809-13c7-281e8b7a0efe" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 1 spells" />
+                    <attribute id="Spells" type="LSString" value="Projectile_GuidingBolt;Projectile_WitchBolt;Shout_ArmorOfAgathys;Shout_ArmsOfHadar;Shout_ExpeditiousRetreat;Shout_HellishRebuke;Shout_Shield_Wizard;Target_Bane;Target_Bless;Target_CharmPerson;Target_Command_Container;Target_CreateDestroyWater;Target_CureWounds;Target_HealingWord;Target_Hex;Target_InflictWounds;Target_ProtectionFromEvilAndGood;Target_Sanctuary;Target_ShieldOfFaith;Zone_BurningHands" />
+                    <attribute id="UUID" type="guid" value="7b0c5905-7a98-43f4-a843-f3195a7dc012" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 2 spells" />
+                    <attribute id="Spells" type="LSString" value="Projectile_RayOfEnfeeblement;Projectile_ScorchingRay;Shout_Aid;Shout_MirrorImage;Shout_PrayerOfHealing;Target_Blindness;Target_CalmEmotions;Target_CloudOfDaggers;Target_CrownOfMadness;Target_Darkness;Target_EnhanceAbility;Target_Enthrall;Target_HoldPerson;Target_Invisibility;Target_LesserRestoration;Target_MistyStep;Target_ProtectionFromPoison;Target_Shatter;Target_Silence;Target_SpiritualWeapon;Target_WardingBond" />
+                    <attribute id="UUID" type="guid" value="8b1ca933-d18d-1254-9f09-8c33a6f52556" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 3 spells" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fireball;Shout_BeaconOfHope;Shout_HealingWord_Mass;Shout_SpiritGuardians;Target_AnimateDead;Target_BestowCurse;Target_Counterspell;Target_Daylight_Container;Target_FeignDeath;Target_Fly;Target_GaseousForm;Target_GlyphOfWarding;Target_HungerOfHadar;Target_HypnoticPattern;Target_ProtectionFromEnergy;Target_RemoveCurse;Target_SpeakWithDead;Target_StinkingCloud;Target_VampiricTouch;Teleportation_Revivify;Zone_Fear" />
+                    <attribute id="UUID" type="guid" value="8c1c335a-468c-63bb-4dc1-6b40eeed1232" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 4 spells" />
+                    <attribute id="Spells" type="LSString" value="Shout_FireShield;Target_Banishment;Target_Blight;Target_DeathWard;Target_FreedomOfMovement;Target_GuardianOfFaith;Teleportation_DimensionDoor;Wall_WallOfFire" />
+                    <attribute id="UUID" type="guid" value="26dd2913-59c8-4c9c-4292-4e755ab6712c" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 5 spells" />
+                    <attribute id="Spells" type="LSString" value="Shout_DispelEvilAndGood;Target_Contagion;Target_CureWounds_Mass;Target_FlameStrike;Target_GreaterRestoration;Target_HoldMonster;Target_InsectPlague;Target_PlanarBinding;Zone_ConeOfCold" />
+                    <attribute id="UUID" type="guid" value="ef4666d9-be73-866c-fcbc-e5a6bddf6d2a" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Trickery Domain Cleric level 6 spells" />
+                    <attribute id="Spells" type="LSString" value="Shout_HeroesFeast;Target_CreateUndead;Target_Harm;Target_Heal;Target_PlanarAlly_Container;Wall_BladeBarrier" />
+                    <attribute id="UUID" type="guid" value="c9a7f0f7-a407-b6ab-4c7e-60d79c5572fd" />
                 </node>
             </children>
         </node>

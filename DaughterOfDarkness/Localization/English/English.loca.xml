@@ -7,17 +7,4 @@
     <content contentuid="he5f83b48geaa6gea30g51d0g996d4c76c194" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h7eebffd9g0846g206fg6751ge34f5475acc0" version="1">Fast Movement</content>
     <content contentuid="h734eb3ddg5dc8gddfeg3729g6a3312605eae" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
-    <content contentuid="h9bb662faga9e3g7404g9822g33fa9b10e092" version="1">Pack Mule</content>
-    <content contentuid="hd0b8e994g0417gc811gb2e8g1efc535d7c66" version="1">Your carrying capacity is increased by [1]%.</content>
-    <content contentuid="hddd1c481g2a19g8814g020dgf854ea7cba9c" version="1">Warding</content>
-    <content contentuid="h076f895cgceb4g78a3g8632g10da28986c16" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="he6fa50f9gb040g7f11g4d4bgbca454c05232" version="1">Bolster</content>
-    <content contentuid="h46b6b04fgdc51g3c7bg9438g2a3faf73210e" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="h99ed32a2g6c3ag3d6bg74f9g8dc5f399a67e" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="ha0aba48fg4020ge4d6gae4egaf8e54f90023" version="1">Shadow Step</content>
-    <content contentuid="h3b30df8dg4a5eg62c6gad82g96a3c6a13574" version="1">Step through the shadows, teleporting to an unoccupied space you can see.</content>
-    <content contentuid="he2501f43g13d2g015dg0733g65eb51971763" version="1">Evenfall</content>
-    <content contentuid="hdfa24168g4226g3ec7g3b54g66878fd72e45" version="1">Shadows chase along the length of this blade.</content>
-    <content contentuid="hcd20bc06gc73bgb5f8ga6aagffcddf9669f4" version="1">Summon Evenfall</content>
-    <content contentuid="h1ac8bee2g7e43g9213g3325g35d02480d3e4" version="1">Summon the blade, Evenfall.</content>
 </contentList>

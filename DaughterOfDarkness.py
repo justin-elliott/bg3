@@ -24,11 +24,13 @@ from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
+    ClassDescription,
     LevelMapSeries,
     SpellList,
 )
 from modtools.lsx.game import Progression
 from modtools.replacers import (
+    class_description,
     cleric_cantrips,
     cleric_level_1_spells,
     cleric_level_2_spells,
@@ -37,12 +39,12 @@ from modtools.replacers import (
     cleric_level_5_spells,
     cleric_level_6_spells,
     progression,
-    warlock_cantrips,
-    warlock_level_1_spells,
-    warlock_level_2_spells,
-    warlock_level_3_spells,
-    warlock_level_4_spells,
-    warlock_level_5_spells,
+    wizard_cantrips,
+    wizard_level_1_spells,
+    wizard_level_2_spells,
+    wizard_level_3_spells,
+    wizard_level_4_spells,
+    wizard_level_5_spells,
     Replacer,
 )
 
@@ -73,7 +75,7 @@ class DaughterOfDarkness(Replacer):
             Comment="Trickery Domain Cleric cantrips",
             Spells=sorted(set([
                 *cleric_cantrips(self).Spells,
-                *warlock_cantrips(self).Spells,
+                *wizard_cantrips(self).Spells,
             ])),
             UUID=self.make_uuid("cantrips"),
         )
@@ -98,9 +100,8 @@ class DaughterOfDarkness(Replacer):
         spells = SpellList(
             Comment="Trickery Domain Cleric level 1 spells",
             Spells=sorted(set([
-                "Shout_Shield_Wizard",
                 *cleric_level_1_spells(self).Spells,
-                *warlock_level_1_spells(self).Spells,
+                *wizard_level_1_spells(self).Spells,
             ])),
             UUID=self.make_uuid("level_1_spells"),
         )
@@ -113,9 +114,9 @@ class DaughterOfDarkness(Replacer):
             Comment="Trickery Domain Cleric level 2 spells",
             Spells=sorted(set([
                 *cleric_level_2_spells(self).Spells,
-                *warlock_level_2_spells(self).Spells,
+                *wizard_level_2_spells(self).Spells,
             ]) - set([
-                *warlock_level_1_spells(self).Spells,
+                *wizard_level_1_spells(self).Spells,
             ])),
             UUID=self.make_uuid("level_2_spells"),
         )
@@ -128,9 +129,9 @@ class DaughterOfDarkness(Replacer):
             Comment="Trickery Domain Cleric level 3 spells",
             Spells=sorted(set([
                 *cleric_level_3_spells(self).Spells,
-                *warlock_level_3_spells(self).Spells,
+                *wizard_level_3_spells(self).Spells,
             ]) - set([
-                *warlock_level_2_spells(self).Spells,
+                *wizard_level_2_spells(self).Spells,
             ])),
             UUID=self.make_uuid("level_3_spells"),
         )
@@ -143,9 +144,9 @@ class DaughterOfDarkness(Replacer):
             Comment="Trickery Domain Cleric level 4 spells",
             Spells=sorted(set([
                 *cleric_level_4_spells(self).Spells,
-                *warlock_level_4_spells(self).Spells,
+                *wizard_level_4_spells(self).Spells,
             ]) - set([
-                *warlock_level_3_spells(self).Spells,
+                *wizard_level_3_spells(self).Spells,
             ])),
             UUID=self.make_uuid("level_4_spells"),
         )
@@ -158,9 +159,9 @@ class DaughterOfDarkness(Replacer):
             Comment="Trickery Domain Cleric level 5 spells",
             Spells=sorted(set([
                 *cleric_level_5_spells(self).Spells,
-                *warlock_level_5_spells(self).Spells,
+                *wizard_level_5_spells(self).Spells,
             ]) - set([
-                *warlock_level_4_spells(self).Spells,
+                *wizard_level_4_spells(self).Spells,
             ])),
             UUID=self.make_uuid("level_5_spells"),
         )
@@ -263,7 +264,7 @@ class DaughterOfDarkness(Replacer):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="DaughterOfDarkness",
-                         description="Changes Trickery Domain Cleric to a Cleric/Rogue/Warlock hybrid.")
+                         description="Changes Trickery Domain Cleric to a Cleric/Rogue/Wizard hybrid.")
 
         self._args = args
         self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
@@ -277,6 +278,22 @@ class DaughterOfDarkness(Replacer):
 
         # Spell lists
         self._cunning_actions = CunningActions(self.mod).spell_list()
+
+    @class_description(CharacterClass.CLERIC)
+    def cleric_description(self, class_description: ClassDescription) -> None:
+        class_description.BaseHp = 10
+        class_description.HpPerLevel = 6
+        class_description.children.append(ClassDescription.Tags(
+            Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
+        ))
+
+    @progression(CharacterClass.CLERIC, 1)
+    def level_1_cleric(self, progression: Progression) -> None:
+        progression.Selectors = [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills(")],
+        ]
 
     @progression(CharacterClass.CLERIC, range(1, 13))
     @progression(CharacterClass.CLERIC, 1, is_multiclass=True)
@@ -411,7 +428,6 @@ class DaughterOfDarkness(Replacer):
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._cunning_actions.UUID},,,,AlwaysPrepared)",
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 3)
@@ -421,7 +437,6 @@ class DaughterOfDarkness(Replacer):
             "SecondStoryWork",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
             f"AddSpells({self._level_2_spells.UUID})",
         ]
 

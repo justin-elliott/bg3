@@ -6,12 +6,12 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Wisdom);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(Morningstars);Proficiency(Flails)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Wisdom);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(Morningstars);Proficiency(Flails);ProficiencyBonus(SavingThrow,Constitution);ActionResource(SneakAttack_Charge,1,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Cleric" />
-                    <attribute id="PassivesAdded" type="LSString" value="DomainSpells;UnlockedSpellSlotLevel1" />
+                    <attribute id="PassivesAdded" type="LSString" value="DomainSpells;UnlockedSpellSlotLevel1;DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSpells(b457436f-3443-7ce5-ac03-14fb8d02ad5e,4,0,,,,AlwaysPrepared);AddSpells(20fab5e4-7ac9-c08a-425c-581a91484285,,,,AlwaysPrepared);AddSpells(7b0c5905-7a98-43f4-a843-f3195a7dc012)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="1dbce574-fff1-49be-b7da-704f9b73cad9" />
                     <children>
@@ -84,8 +84,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="AgonizingBlast;RepellingBlast" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(239cc7cc-f642-4ddc-b091-498d81612c51,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(239cc7cc-f642-4ddc-b091-498d81612c51,,,,AlwaysPrepared);AddSpells(3d131759-fecf-f3ea-96aa-245ccf250e39,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="ef18265f-dda6-4eb6-8dd0-b14c57202c33" />
                 </node>
@@ -94,8 +95,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Cleric" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;FastHands" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(8b1ca933-d18d-1254-9f09-8c33a6f52556)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="4d9072bb-7b14-43b9-afb2-0d7e89f90c65" />
                 </node>
@@ -104,6 +106,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="051cd419-b843-4996-807e-d0ac78084ef0" />
@@ -113,8 +116,10 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Cleric" />
-                    <attribute id="PassivesAdded" type="LSString" value="DestroyUndead;UnlockedSpellSlotLevel3" />
+                    <attribute id="PassivesAdded" type="LSString" value="DestroyUndead;UnlockedSpellSlotLevel3;DaughterOfDarkness_FastMovement_45;ExtraAttack" />
+                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(8c1c335a-468c-63bb-4dc1-6b40eeed1232)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="078b465a-f79d-44cd-bdfa-9a9c51579b33" />
                 </node>
@@ -123,6 +128,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="1ba0c22a-2655-4f3c-8bf8-f3314587ccaa" />
@@ -133,6 +139,7 @@
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(26dd2913-59c8-4c9c-4292-4e755ab6712c)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="fe851490-be41-44f9-a7b9-1744c0948ce0" />
                 </node>
@@ -141,6 +148,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="4cfd9e91-38ef-4b24-8a2a-9b736be91cf8" />
@@ -150,7 +158,10 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_60" />
+                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_45" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(ef4666d9-be73-866c-fcbc-e5a6bddf6d2a)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="4472e936-7c8e-40a1-a818-49117fc03361" />
                 </node>
@@ -159,7 +170,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Cleric" />
-                    <attribute id="PassivesAdded" type="LSString" value="DivineIntervention" />
+                    <attribute id="PassivesAdded" type="LSString" value="DivineIntervention;NaturesWard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="0266b6b2-72d9-4319-84ae-afcdfc67b32b" />
@@ -170,520 +181,19 @@
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared);AddSpells(c9a7f0f7-a407-b6ab-4c7e-60d79c5572fd)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="92bb47c7-6798-4952-a45d-e4b4693f0f9c" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="Cleric" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="e209aba2-bb27-4416-af41-09ce37b7f08f" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(6c7083cd-e957-449d-a652-33dfbd9785e6,ClericKnowledgeDomainSpells,,,AlwaysPrepared);SelectSkillsExpertise(b0b9bc80-8468-4a53-b9ca-6d9146f23801,2,false);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="2a780e20-d5a7-436e-9331-433ee8847db8" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(2fbc1acc-ea80-4b61-9bed-e5e7dd50ad16,ClericKnowledgeDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="8072ab7b-1371-4acf-aaf5-9f95c7a5a51a" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="e05319dd-96cd-a789-8fe2-d3bb521deebd" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(1ff2f87b-4570-4553-a5fa-f7b1cab557fc,ClericKnowledgeDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="0d8952a8-7ea3-4516-9b77-78d8662b6c9a" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(46b54ac1-7add-4ef3-8610-558aee8c4dda,ClericKnowledgeDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="b6fe729a-a8df-4081-8121-5855bf7128e9" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(db3bbbe0-01cc-4e35-8186-0c6757182ec4,ClericKnowledgeDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="aa87cb08-6669-4ee8-9b17-e3f977c2c3b2" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="dd701679-adcb-d82b-23fa-30aad4642c51" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="KnowledgeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="4709e126-1b45-4baf-93a2-be66ed4487d2" />
-                    <attribute id="UUID" type="guid" value="f56d9e6e-ef6d-09cb-7518-b21d50e6f85b" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(HeavyArmor)" />
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DiscipleOfLife" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(26ffbe70-23c6-4918-9e6a-a3e556a9d355,ClericLifeDomainSpells,,,AlwaysPrepared);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="87f501ae-c909-4f30-852b-98bdc72c0248" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(bbaf0bab-b0b3-44c9-a567-304e35c063c9,ClericLifeDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="8355f4fe-7d7f-4132-8d57-7ca17e3c4ab4" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="5185d0d0-1c03-4595-8304-91bdbf6da836" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(a9ff6ed3-050e-4963-b37b-c083285d6214,ClericLifeDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="dc935315-0534-4629-a7b4-41c67dd2b246" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(28d41365-bc69-437a-a968-cac8f3b4b2c6,ClericLifeDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="13eecc52-a474-444c-b77c-52e5cd7eceb0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(1b8b6282-c1f2-4095-89ab-aaefdf234317,ClericLifeDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="b3a95e65-8ba5-4e32-ba5a-6e2c745c237a" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="2e9f639b-ab13-7a72-898e-211754857890" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="LifeDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="9b56beb6-2a68-42a4-b81b-7a890a1b6b99" />
-                    <attribute id="UUID" type="guid" value="30449164-2415-c956-dc9e-9b672803bc60" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="WardingFlare" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(e2464518-2484-436e-9153-864c9dd05a7d,ClericLightDomainSpells,,,AlwaysPrepared);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="18b60150-3f77-4f5d-9c67-b25c3b7ce404" />
-                </node>
-                <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="false" />
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(31037493-7a57-4dce-9412-4689c010199c,ClericLightDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="21725b6d-71f5-4df9-b828-b31bb20794cd" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="b839fdb5-e6e0-4b88-8fc3-ab133f1a2d97" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(1a50d25a-27b5-4789-b2d6-532fac4437c6,ClericLightDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="caf6d4b9-4233-4d67-af18-3a4ba3ea9996" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(41ded14f-d752-42c0-8405-be0e7b0f2177,ClericLightDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="1fe99c00-3bd1-476f-865b-c121617d7d6b" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(5675d0b3-8a2c-4658-bfe3-42abbc0bdcfd,ClericLightDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="00479bc3-396b-4738-9ccf-f00d7087374f" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="daa678c5-5ede-603c-0d7e-a2fe7d1c2f2c" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="0fc6ffd4-72b2-126e-bf86-1cca04ef87d7" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(HeavyArmor)" />
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="AcolyteOfNature" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(889d3b97-5975-4c1c-bcc3-925521935a65,1);SelectSpells(b8faf12f-ca42-45c0-84f8-6951b526182a,1,0,,,,AlwaysPrepared);AddSpells(cba2f112-697f-4611-ae1d-758bf25ab3fd,ClericNatureDomainSpells,,,AlwaysPrepared);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="9c544341-fc87-446d-b77d-0b6948eeb0f3" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(dd2b48a8-3e62-435e-8107-0d48f51dc555,ClericNatureDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="3cfbe3e0-47ef-4f5d-8bd4-d7fac84903d2" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="657384d5-c84d-1119-67a2-c6a9291d9189" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(90e89ac3-c805-4214-a73e-817c366ba8b2,ClericNatureDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="6d1b973f-1f6f-45e8-9e22-1b50241b8f17" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(cc45c1a8-ec0c-4da9-9d65-0e2ef36558d8,ClericNatureDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="ddba6768-5c17-4853-b241-e2020a2d18b2" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f5609f93-a17c-456c-a7bb-3b4203bb2eea,ClericNatureDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="82cbf414-345f-4e1c-9ebb-ba9d49f52fa2" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="59e7dc37-b2b8-dc64-d90e-1cd9f4490a20" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="NatureDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="c668b65d-2848-4feb-981f-eb54cc5ceb15" />
-                    <attribute id="UUID" type="guid" value="d4e562da-9651-50f3-73ed-d543757027ba" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(HeavyArmor);Proficiency(MartialWeapons)" />
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="WrathOfTheStorm" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(0888d55d-6382-4149-9b62-90a9579b0ec4,ClericTempestDomainSpells,,,AlwaysPrepared);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="6634d63a-07a6-4a4b-95cd-96852396dc39" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(a05bd5e7-c815-4db7-9a21-66dc08d03e44,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="9328822b-9140-401d-9273-cb1a4998c068" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="40d3fb2c-9c54-624c-84ad-8da51383dd68" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4bac4d53-69e6-4f7d-b935-cd38ca8c938d,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="df047bb5-2337-4e0b-b50b-78d5b84fc6c4" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(fc1fa4ea-8294-4f3b-9df9-f5d64e528093,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="51f4518f-5691-4fbf-8421-d2f31a0160e0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(87d05f19-7198-424a-93ac-cf222ca25fc7,ClericTempestDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="1e4d3a2f-e712-4135-bc6a-569c169ea15f" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="8b31c926-5929-e259-421f-731ce52de008" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="TempestDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="0630b55b-36f4-41d2-aacc-28e99d6ae252" />
-                    <attribute id="UUID" type="guid" value="7339fa2d-9167-a671-464a-858984a3e407" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(SimpleWeapons);Proficiency(MartialWeapons);ProficiencyBonus(SavingThrow,Constitution);ActionResource(SneakAttack_Charge,1,0)" />
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_BattleMagic;DaughterOfDarkness_FastMovement_30;DaughterOfDarkness_SneakAttackUnlock;Blindsight;SculptSpells;SuperiorDarkvision" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);SelectSpells(b457436f-3443-7ce5-ac03-14fb8d02ad5e,4,0,,,,AlwaysPrepared);AddSpells(8d3d5f19-534a-9809-13c7-281e8b7a0efe,,,,AlwaysPrepared);AddSpells(7b0c5905-7a98-43f4-a843-f3195a7dc012)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="97ba481e-13d2-4a8c-8503-e1b146c21b7b" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="2" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(c35cb4e6-2690-4e1f-bd89-69f4f69ae818,,,,AlwaysPrepared);AddSpells(3d131759-fecf-f3ea-96aa-245ccf250e39,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="87609f34-d8c7-4ca6-88b3-6f2692286e44" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="FastHands;SecondStoryWork" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9f603ac8-2e51-4ce9-b924-c8093148bdf5,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(8b1ca933-d18d-1254-9f09-8c33a6f52556)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="90dafea8-c773-4dfa-b0c8-da4789122a0f" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Initiative;Assassinate_Ambush;Assassinate_Resource" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="33627eb3-f6a0-4ddb-8f7c-0681d0d8cb71" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_45;ExtraAttack;UncannyDodge" />
-                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_30" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(8a9faf7a-aacf-43f4-a0dd-5ea7e72449f3,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(8c1c335a-468c-63bb-4dc1-6b40eeed1232)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="76b362f3-11f2-47a0-949e-6147d0fde794" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="6" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(90acd47f-3475-4c85-99ea-7fd503591be4,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="7424ee22-a365-427e-be2f-40cd8b316ac1" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="Evasion" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(18e97e4a-d97b-4595-af80-8eb43766386e,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(26dd2913-59c8-4c9c-4292-4e755ab6712c)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="63a5476b-4e9e-45bd-97fd-9a88d46b9588" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="8" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="Divine_Strike_Trickery_Toggle;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(b5f88a1e-931f-4851-b86c-875f756b7313,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="f39b339b-e367-403b-b33e-8191eb8363e0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_FastMovement_60" />
-                    <attribute id="PassivesRemoved" type="LSString" value="DaughterOfDarkness_FastMovement_45" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(154b461e-23c2-4147-97fd-b7892f031a50,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(ef4666d9-be73-866c-fcbc-e5a6bddf6d2a)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="5eff9cd1-2376-452a-bb09-93a6aa8ee8d0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_EmpoweredSpells_Wisdom" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="62fc57a8-b542-8113-a44c-9a04bd14809e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared);AddSpells(c9a7f0f7-a407-b6ab-4c7e-60d79c5572fd)" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="02a8d0dd-e5fa-4e03-a9eb-efc612787e0e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
-                    <attribute id="Level" type="uint8" value="12" />
-                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
-                    <attribute id="UUID" type="guid" value="69ae95e5-c379-f0a7-843c-0f1af65cea57" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,3,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons)" />
-                    <attribute id="Level" type="uint8" value="1" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="WarPriest" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(e785b163-bff3-4134-978c-20b654dc7203,ClericWarDomainSpells,,,AlwaysPrepared);SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,3,0,,,,AlwaysPrepared);AddSpells(269d1a3b-eed8-4131-8901-a562238f5289)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="61eb9c49-e4c7-42f1-a6e6-9d059eb71669" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(921a657e-e210-4657-9e65-1e9748626354,ClericWarDomainSpells,,,AlwaysPrepared);AddSpells(2968a3e6-6c8a-4c2e-882a-ad295a2ad8ac)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="59fd6b2d-dcf6-4aa2-a439-22700f68b68b" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="d035e03d-6e05-9267-bd71-2df116a31da4" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,1,0)" />
-                    <attribute id="Level" type="uint8" value="5" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9846b998-4672-4427-821f-c3647aff5e22,ClericWarDomainSpells,,,AlwaysPrepared);AddSpells(21be0992-499f-4c7a-a77a-4430085e947a)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="1f223e87-1921-47d3-afeb-3a339b5d0cca" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4c779ace-7ff1-461c-abc4-13182424b89a,ClericWarDomainSpells,,,AlwaysPrepared);AddSpells(37e9b20b-5fd1-45c5-b1c5-159c42397c83)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="a6de4198-b729-4105-a2da-163b925508c3" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(8e4db6a6-fbfd-42eb-9e76-de00c0e4517a,ClericWarDomainSpells,,,AlwaysPrepared);AddSpells(b73aeea5-1ff9-4cac-b61d-b5aa6dfe31c2)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="3939ff20-9ff5-43f0-bc1b-34bc4e4018db" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(2f43a103-5bf1-4534-b14f-663decc0c525,1,0,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="53905c06-0af1-4c5d-a624-1074a7cb8d44" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,1,0)" />
-                    <attribute id="Level" type="uint8" value="11" />
-                    <attribute id="Name" type="LSString" value="WarDomain" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f8ba7b05-1237-4eaa-97fa-1d3623d5862b)" />
-                    <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
-                    <attribute id="UUID" type="guid" value="247968f5-8b1a-4ff0-8ec0-a1cbea4b8aa6" />
                 </node>
             </children>
         </node>

@@ -27,11 +27,11 @@
                     <attribute id="UUID" type="guid" value="391a4912-5d9b-728d-8527-9fa004f548bc" />
                 </node>
                 <node id="FeatDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h15fd0445gf943g3557ge584g4a739490f532" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h6705adecg4dbdg915bg0bf8gb07efa3b63e8" version="1" />
-                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_BattleMagic" />
-                    <attribute id="FeatId" type="guid" value="3d96815e-5414-7b44-7060-a50b8a235415" />
-                    <attribute id="UUID" type="guid" value="8cf63d0b-2fe7-895c-a48f-8e47874c3baf" />
+                    <attribute id="Description" type="TranslatedString" handle="h6b264cfdgbcf7g4ba2g6f02ge9369019c02b" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb5787576g0947gbdcbge493g07b5875eed71" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_BattleMagicFeat" />
+                    <attribute id="FeatId" type="guid" value="a0662ca6-f4b7-9cd0-4582-3f72da3e16de" />
+                    <attribute id="UUID" type="guid" value="762b8219-41ef-7c15-ee40-756f79ca0b45" />
                 </node>
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h5d71b742g06d3gb669g93ccgd638ab745699" version="1" />

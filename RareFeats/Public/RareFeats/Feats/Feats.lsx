@@ -21,9 +21,9 @@
                     <attribute id="UUID" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
                 </node>
                 <node id="Feat">
-                    <attribute id="Name" type="FixedString" value="RareFeats_BattleMagic" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_BattleMagicFeat" />
                     <attribute id="PassivesAdded" type="LSString" value="RareFeats_BattleMagic" />
-                    <attribute id="UUID" type="guid" value="3d96815e-5414-7b44-7060-a50b8a235415" />
+                    <attribute id="UUID" type="guid" value="a0662ca6-f4b7-9cd0-4582-3f72da3e16de" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_CunningActions" />

@@ -23,8 +23,10 @@
     <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Increase all of your abilities by a selected amount, to a maximum of 30.</content>
     <content contentuid="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1">Rare Feats: Athlete</content>
     <content contentuid="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1">When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
-    <content contentuid="h6705adecg4dbdg915bg0bf8gb07efa3b63e8" version="1">Rare Feats: Battle Magic</content>
-    <content contentuid="h15fd0445gf943g3557ge584g4a739490f532" version="1">Gain &lt;LSTag Type="Passive" Tooltip="RareFeats_BattleMagic"&gt;Battle Magic&lt;/LSTag&gt;.</content>
+    <content contentuid="h6705adecg4dbdg915bg0bf8gb07efa3b63e8" version="1">Battle Magic</content>
+    <content contentuid="h15fd0445gf943g3557ge584g4a739490f532" version="1">After making a melee attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="hb5787576g0947gbdcbge493g07b5875eed71" version="1">Rare Feats: Battle Magic</content>
+    <content contentuid="h6b264cfdgbcf7g4ba2g6f02ge9369019c02b" version="1">Gain &lt;LSTag Type="Passive" Tooltip="RareFeats_BattleMagic"&gt;Battle Magic&lt;/LSTag&gt;.</content>
     <content contentuid="h05dd3872gf3d2g341eg658dgcf27378fcf36" version="1">Rare Feats: Cunning Actions</content>
     <content contentuid="h5d71b742g06d3gb669g93ccgd638ab745699" version="1">Gain &lt;LSTag Type="Spell" Tooltip="RareFeats_CunningActionDash"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
     <content contentuid="h7d5f9357g2881gd058ga24bg2e0e31d3c5ae" version="1">Rare Feats: Extra Attacks</content>

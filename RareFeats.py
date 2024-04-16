@@ -139,23 +139,23 @@ def athlete_feat() -> None:
 def battle_magic_feat() -> None:
     """Battle Magic."""
     battle_magic = BattleMagic(rare_feats).add_battle_magic()
-    battle_magic_uuid = rare_feats.make_uuid("RareFeats_BattleMagic")
+    battle_magic_uuid = rare_feats.make_uuid("RareFeats_BattleMagicFeat")
 
-    loca["RareFeats_BattleMagic_DisplayName"] = {"en": "Rare Feats: Battle Magic"}
-    loca["RareFeats_BattleMagic_Description"] = {"en": f"""
+    loca["RareFeats_BattleMagicFeat_DisplayName"] = {"en": "Rare Feats: Battle Magic"}
+    loca["RareFeats_BattleMagicFeat_Description"] = {"en": f"""
         Gain <LSTag Type="Passive" Tooltip="{battle_magic}">Battle Magic</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
-        DisplayName=loca["RareFeats_BattleMagic_DisplayName"],
-        Description=loca["RareFeats_BattleMagic_Description"],
-        ExactMatch="RareFeats_BattleMagic",
+        DisplayName=loca["RareFeats_BattleMagicFeat_DisplayName"],
+        Description=loca["RareFeats_BattleMagicFeat_Description"],
+        ExactMatch="RareFeats_BattleMagicFeat",
         FeatId=battle_magic_uuid,
-        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_BattleMagic"),
+        UUID=rare_feats.make_uuid("RareFeats_BattleMagicFeatDescription"),
     ))
 
     rare_feats.add(Feat(
-        Name="RareFeats_BattleMagic",
+        Name="RareFeats_BattleMagicFeat",
         PassivesAdded=[battle_magic],
         UUID=battle_magic_uuid,
     ))

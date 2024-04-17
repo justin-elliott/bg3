@@ -59,7 +59,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Metamagic" />
                     <attribute id="PassivesAdded" type="LSString" value="RareFeats_SorceryPoints" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared);SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)" />
                     <attribute id="UUID" type="guid" value="b343d3fd-1a68-1a83-7517-f78bad53149c" />
                 </node>
                 <node id="Feat">

@@ -389,7 +389,10 @@ def metamagic_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_Metamagic",
         PassivesAdded=["RareFeats_SorceryPoints"],
-        Selectors=["SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)"],
+        Selectors=[
+            "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)",  # Create Sorcery, Spell Points
+            "SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)",
+        ],
         UUID=metamagic_uuid,
     ))
 

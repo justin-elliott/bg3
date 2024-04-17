@@ -57,6 +57,12 @@
                     <attribute id="UUID" type="guid" value="89035b8f-c2d2-259c-194d-71e20b966217" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_Metamagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_SorceryPoints" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)" />
+                    <attribute id="UUID" type="guid" value="b343d3fd-1a68-1a83-7517-f78bad53149c" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_ModeratelyArmored" />
                     <attribute id="PassivesAdded" type="LSString" value="ModeratelyArmored" />
                     <attribute id="Requirements" type="LSString" value="FeatRequirementProficiency('LightArmor')" />

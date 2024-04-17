@@ -9,6 +9,7 @@ from moddb import (
     BattleMagic,
     CunningActions,
     Movement,
+    character_level_range,
 )
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
@@ -345,6 +346,51 @@ def lightly_armored_feat() -> None:
         Name="RareFeats_LightlyArmored",
         PassivesAdded="LightlyArmored",
         UUID=lightly_armored_uuid,
+    ))
+
+
+@iife
+def metamagic_feat() -> None:
+    """Metamagic."""
+    metamagic_uuid = rare_feats.make_uuid("RareFeats_Metamagic")
+
+    loca["RareFeats_SorceryPoints_DisplayName"] = {"en": "Sorcery Points"}
+    loca["RareFeats_SorceryPoints_Description"] = {"en": """
+        You gain <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
+        which can be used to alter spells.
+        """}
+
+    rare_feats.add(character_level_range)
+    rare_feats.add(PassiveData(
+        "RareFeats_SorceryPoints",
+        DisplayName=loca["RareFeats_SorceryPoints_DisplayName"],
+        Description=loca["RareFeats_SorceryPoints_Description"],
+        Icon="statIcons_WildMagic_SorceryPoints",
+        Boosts=[
+            "ActionResource(SorceryPoint,2,0)",
+            *[f"IF(CharacterLevelRange({level},12)):ActionResource(SorceryPoint,2,0)" for level in range(2, 13)],
+        ],
+        Properties=["IsHidden"],
+    ))
+
+    loca["RareFeats_Metamagic_DisplayName"] = {"en": "Rare Feats: Metamagic"}
+    loca["RareFeats_Metamagic_Description"] = {"en": """
+        You gain Metamagic abilities, which can be used to alter spells.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_Metamagic_DisplayName"],
+        Description=loca["RareFeats_Metamagic_Description"],
+        ExactMatch="RareFeats_Metamagic",
+        FeatId=metamagic_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_MetamagicFeatDescription"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_Metamagic",
+        PassivesAdded=["RareFeats_SorceryPoints"],
+        Selectors=["SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)"],
+        UUID=metamagic_uuid,
     ))
 
 

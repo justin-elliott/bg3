@@ -11,7 +11,11 @@ from moddb import (
     Movement,
     character_level_range,
 )
-from modtools.gamedata import PassiveData
+from modtools.gamedata import (
+    InterruptData,
+    PassiveData,
+    StatusData,
+)
 from modtools.lsx.game import (
     FeatDescription,
     Feat,
@@ -373,6 +377,70 @@ def metamagic_feat() -> None:
         Properties=["IsHidden"],
     ))
 
+    loca["RareFeats_IntensifiedSpell_DisplayName"] = {"en": "Metamagic: Intensified Spell"}
+    loca["RareFeats_IntensifiedSpell_Description"] = {"en": """
+        When you deal damage with a spell of level 1 or higher, you can use your
+        <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag> to deal maximum damage instead.
+        """}
+
+    rare_feats.add(PassiveData(
+        "RareFeats_IntensifiedSpell",
+        DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
+        Description=loca["RareFeats_IntensifiedSpell_Description"],
+        TooltipUseCosts="SorceryPoint:3",
+        Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
+        Boosts="UnlockInterrupt(RareFeats_IntensifiedSpellInterrupt)",
+        Properties="IsHidden",
+        StatsFunctorContext="OnCastResolved",
+        StatsFunctors="RemoveStatus(RAREFEATS_INTENSIFIED_SPELL)",
+    ))
+
+    rare_feats.add(InterruptData(
+        "RareFeats_IntensifiedSpellInterrupt",
+        DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
+        Description=loca["RareFeats_IntensifiedSpell_Description"],
+        Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
+        InterruptContext="OnSpellCast",
+        InterruptContextScope="Self",
+        Container="YesNoDecision",
+        Conditions=[
+            "Self(context.Source,context.Observer) "
+            "and HasFunctor(StatsFunctorType.DealDamage) "
+            "and HasSpellFlag(SpellFlags.Spell) "
+            "and not IsCantrip() "
+            "and not AnyEntityIsItem()",
+        ],
+        Properties="ApplyStatus(OBSERVER_OBSERVER,RAREFEATS_INTENSIFIED_SPELL,100,1)",
+        Cost="SorceryPoint:3",
+        InterruptDefaultValue=["Ask", "Enabled"],
+        EnableCondition="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')",
+        EnableContext=["OnStatusApplied", "OnStatusRemoved"],
+    ))
+
+    rare_feats.add(StatusData(
+        "RAREFEATS_INTENSIFIED_SPELL",
+        StatusType="BOOST",
+        DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
+        StackId="RAREFEATS_INTENSIFIED_SPELL",
+        Boosts="MinimumRollResult(Damage,20)",
+        StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
+    ))
+
+    metamagic_passives_uuid = rare_feats.make_uuid("RareFeats_Metamagic_Passives")
+    rare_feats.add(PassiveList(
+        Passives=[
+            "Metamagic_Careful",
+            "Metamagic_Distant",
+            "Metamagic_Extended",
+            "Metamagic_Heightened",
+            "RareFeats_IntensifiedSpell",
+            "Metamagic_Quickened",
+            "Metamagic_Subtle",
+            "Metamagic_Twinned",
+        ],
+        UUID=metamagic_passives_uuid,
+    ))
+
     loca["RareFeats_Metamagic_DisplayName"] = {"en": "Rare Feats: Metamagic"}
     loca["RareFeats_Metamagic_Description"] = {"en": """
         You gain Metamagic abilities, which can be used to alter spells.
@@ -391,7 +459,7 @@ def metamagic_feat() -> None:
         PassivesAdded=["RareFeats_SorceryPoints"],
         Selectors=[
             "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)",  # Create Sorcery, Spell Points
-            "SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)",
+            f"SelectPassives({metamagic_passives_uuid},4,Metamagic)",
         ],
         UUID=metamagic_uuid,
     ))

@@ -17,6 +17,7 @@ data "Description" "h85af8b16gbecag7d13g87f2g553bab65f109"
 data "DescriptionParams" "LevelMapValue(CampClothes_Bolster_AidValue);Distance(12)"
 data "DisplayName" "h2d53c34cg228dg19d7g0202gfc8f5cab47c7"
 data "Icon" "Spell_Abjuration_Aid"
+data "Passives" "Blindsight"
 data "StackId" "AID"
 data "StatusGroups" "SG_RemoveOnRespec"
 

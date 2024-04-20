@@ -84,6 +84,9 @@ class Bolster:
                 "DarkvisionRangeMin(12)",
                 "ActiveCharacterLight(051648e6-f05a-e41f-e398-ffd5cd148989)",
             ],
+            Passives=[
+                "Blindsight",
+            ],
             StatusGroups="SG_RemoveOnRespec",
         ))
 

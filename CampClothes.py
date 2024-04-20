@@ -374,7 +374,14 @@ def add_warding_potion() -> str:
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
     loca[f"{name}_Description"] = {"en": f"""
-        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passive.
+        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="Tough">Tough</LSTag>,
+        <LSTag Type="Passive" Tooltip="UnarmouredDefence_Barbarian">Unarmoured Defence</LSTag>, and
+        <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passives.
+
+        You gain <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>
+        to maintain <LSTag Tooltip="Concentration">Concentration</LSTag> on a spell, and
+        <LSTag Tooltip="Proficiency">Proficiency</LSTag> in Constitution
+        <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
         """}
 
     add_potion(
@@ -383,7 +390,15 @@ def add_warding_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_UNI_Apprentice_Antidote",
-        passives=[warding],
+        boosts=[
+            "Advantage(Concentration)",
+            "ProficiencyBonus(SavingThrow,Constitution)",
+        ],
+        passives=[
+            "Tough",
+            "UnarmouredDefence_Barbarian",
+            warding,
+        ],
     )
 
     return name

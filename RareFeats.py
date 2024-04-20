@@ -375,6 +375,8 @@ def metamagic_feat() -> None:
             *[f"IF(CharacterLevelRange({level},12)):ActionResource(SorceryPoint,2,0)" for level in range(2, 13)],
         ],
         Properties=["IsHidden"],
+        StatsFunctorContext=["OnShortRest"],
+        StatsFunctors=["RestoreResource(SorceryPoint,100%,0)"],
     ))
 
     loca["RareFeats_IntensifiedSpell_DisplayName"] = {"en": "Metamagic: Intensified Spell"}
@@ -457,10 +459,7 @@ def metamagic_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_Metamagic",
         PassivesAdded=["RareFeats_SorceryPoints"],
-        Selectors=[
-            "AddSpells(979e37ad-05fa-466c-af99-9eb104a6e876,,,,AlwaysPrepared)",  # Create Sorcery, Spell Points
-            f"SelectPassives({metamagic_passives_uuid},4,Metamagic)",
-        ],
+        Selectors=[f"SelectPassives({metamagic_passives_uuid},4,Metamagic)"],
         UUID=metamagic_uuid,
     ))
 

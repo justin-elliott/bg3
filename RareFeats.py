@@ -379,8 +379,6 @@ def metamagic_feat() -> None:
             *[f"IF(CharacterLevelRange({level},12)):ActionResource(SorceryPoint,2,0)" for level in range(2, 13)],
         ],
         Properties=["IsHidden"],
-        StatsFunctorContext=["OnShortRest"],
-        StatsFunctors=["RestoreResource(SorceryPoint,100%,0)"],
     ))
 
     loca["RareFeats_IntensifiedSpell_DisplayName"] = {"en": "Metamagic: Intensified Spell"}

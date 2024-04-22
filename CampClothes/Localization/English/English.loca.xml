@@ -18,6 +18,8 @@
     <content contentuid="h85af8b16gbecag7d13g87f2g553bab65f109" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h59d742ebgfff5gef8dgcf9cg738570dc4670" version="1">Elixir of Bolstering</content>
     <content contentuid="heb703554g55e8gada6g8ff0gdf23e8880ffc" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="CampClothes_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="hab6f905fgd7e3g6d61g7debg7ccd35829eda" version="1">Elixir of Flying</content>
+    <content contentuid="h6854c269ge35dg4a5fg045agcf424e52856a" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
     <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>

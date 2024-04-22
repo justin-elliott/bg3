@@ -42,6 +42,11 @@ type "Object"
 using "CampClothes_BasePotion"
 data "RootTemplate" "b25c0f9e-c96a-6fb2-ea12-fd434f6ebc1b"
 
+new entry "CampClothes_FlyingPotion"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "8f1465e7-e57e-7198-6b84-42802897e38f"
+
 new entry "CampClothes_OverpoweringPotion"
 type "Object"
 using "CampClothes_BasePotion"

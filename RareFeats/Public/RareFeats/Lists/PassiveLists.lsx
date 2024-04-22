@@ -10,6 +10,10 @@
                     <attribute id="UUID" type="guid" value="2b78e87f-99ca-872d-e4c1-1423b014d5dc" />
                 </node>
                 <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_Athlete_Strength,RareFeats_Athlete_Dexterity,RareFeats_Athlete_None" />
+                    <attribute id="UUID" type="guid" value="a88aa6c1-778a-0ad9-1594-9cf39ad7c47e" />
+                </node>
+                <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="Metamagic_Careful,Metamagic_Distant,Metamagic_Extended,Metamagic_Heightened,RareFeats_IntensifiedSpell,Metamagic_Quickened,Metamagic_Subtle,Metamagic_Twinned" />
                     <attribute id="UUID" type="guid" value="be55ddd8-a21a-6ec3-3d25-cf5208b7e83e" />
                 </node>

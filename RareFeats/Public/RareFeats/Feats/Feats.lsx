@@ -18,6 +18,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Athlete" />
                     <attribute id="PassivesAdded" type="LSString" value="Athlete_StandUp;RareFeats_FastMovement_30;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(a88aa6c1-778a-0ad9-1594-9cf39ad7c47e,1,RareFeats_Athlete)" />
                     <attribute id="UUID" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
                 </node>
                 <node id="Feat">

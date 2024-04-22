@@ -23,6 +23,12 @@
     <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Increase all of your abilities by a selected amount, to a maximum of 30.</content>
     <content contentuid="h5603bd54g3559g5d75g857eg65d2a409605f" version="1">Fast Movement</content>
     <content contentuid="hd7811ba7g114fgf940g63ecg0402c67c273d" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h7ad2c73cg823fg4b4bgabfbg6dbe54aa8f52" version="1">Strength</content>
+    <content contentuid="h2c6931bfg1a70g7c99gd03fg60a1556184cd" version="1">Increase your Strength by 1, to a maximum of 30.</content>
+    <content contentuid="he07663bfg6a71g64d1g40abga38a643c1a48" version="1">Dexterity</content>
+    <content contentuid="h64d78626g81a5g06bag4a52g8b9a0b84be70" version="1">Increase your Dexterity by 1, to a maximum of 30.</content>
+    <content contentuid="h75be843cg9407gad13g22fcg36e1c61f7ca8" version="1">None</content>
+    <content contentuid="hf92fc7acge6f1ge408g8c7egc4e9d0fc9d91" version="1">No ability increase.</content>
     <content contentuid="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1">Rare Feats: Athlete</content>
     <content contentuid="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1">You gain additional movement speed, and &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down. When you are Prone, standing up uses significantly less movement. Your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance also increases by 50%.</content>
     <content contentuid="h6705adecg4dbdg915bg0bf8gb07efa3b63e8" version="1">Battle Magic</content>

@@ -116,9 +116,34 @@ def asi_feat() -> None:
 
 @iife
 def athlete_feat() -> None:
-    """Athlete without the ASI, with additional movement speed and land's stride."""
+    """Athlete with additional movement speed and land's stride."""
     athlete_uuid = rare_feats.make_uuid("RareFeats_Athlete")
     fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
+
+    ABILITIES = ["Strength", "Dexterity", "None"]
+
+    athlete_passive_list = PassiveList(
+        Passives=[],
+        UUID=rare_feats.make_uuid("RareFeats_Athlete_PassiveList"),
+    )
+    rare_feats.add(athlete_passive_list)
+
+    for ability in ABILITIES:
+        athlete_passive = f"RareFeats_Athlete_{ability}"
+        athlete_passive_list.Passives.append(athlete_passive)
+
+        loca[f"{athlete_passive}_DisplayName"] = {"en": ability}
+        loca[f"{athlete_passive}_Description"] = {"en": f"Increase your {ability} by 1, to a maximum of 30."
+                                                  if ability != "None" else "No ability increase."}
+
+        rare_feats.add(PassiveData(
+            athlete_passive,
+            DisplayName=loca[f"{athlete_passive}_DisplayName"],
+            Description=loca[f"{athlete_passive}_Description"],
+            Icon="Spell_Transmutation_EnhanceAbility",
+            Boosts=f"Ability({ability},1,30)" if ability != "None" else None,
+            Properties=["IsHidden"],
+        ))
 
     loca["RareFeats_Athlete_DisplayName"] = {"en": "Rare Feats: Athlete"}
     loca["RareFeats_Athlete_Description"] = {"en": """
@@ -145,6 +170,7 @@ def athlete_feat() -> None:
             "LandsStride_Surfaces",
             "LandsStride_Advantage",
         ],
+        Selectors=f"SelectPassives({athlete_passive_list.UUID},1,RareFeats_Athlete)",
         UUID=athlete_uuid,
     ))
 

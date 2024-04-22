@@ -45,7 +45,8 @@ class Defense:
         loca[f"{name}_DisplayName"] = {"en": "Unarmored Defense"}
         loca[f"{name}_Description"] = {"en": f"""
             Your body is as resilient as any armour.
-            While not wearing armour, you add your {ability_name} <LSTag Tooltip="AbilityModifier">Modifier</LSTag>
+            While not wearing armour, you add {"twice" if ability == CharacterAbility.DEXTERITY else ""}
+            your {ability_name} <LSTag Tooltip="AbilityModifier">Modifier</LSTag>
             to your <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.
             """}
 

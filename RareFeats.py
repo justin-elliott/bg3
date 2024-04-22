@@ -116,11 +116,14 @@ def asi_feat() -> None:
 
 @iife
 def athlete_feat() -> None:
-    """Athlete without the ASI."""
+    """Athlete without the ASI, with additional movement speed and land's stride."""
     athlete_uuid = rare_feats.make_uuid("RareFeats_Athlete")
+    fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
 
     loca["RareFeats_Athlete_DisplayName"] = {"en": "Rare Feats: Athlete"}
     loca["RareFeats_Athlete_Description"] = {"en": """
+        You gain additional movement speed, and
+        <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down.
         When you are Prone, standing up uses significantly less movement.
         Your <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance also increases by 50%.
         """}
@@ -135,7 +138,13 @@ def athlete_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_Athlete",
-        PassivesAdded=["Athlete_StandUp"],
+        PassivesAdded=[
+            "Athlete_StandUp",
+            fast_movement_30,
+            "LandsStride_DifficultTerrain",
+            "LandsStride_Surfaces",
+            "LandsStride_Advantage",
+        ],
         UUID=athlete_uuid,
     ))
 
@@ -175,8 +184,9 @@ def cunning_actions_feat() -> None:
     loca["RareFeats_CunningActions_DisplayName"] = {"en": "Rare Feats: Cunning Actions"}
     loca["RareFeats_CunningActions_Description"] = {"en": f"""
         Gain <LSTag Type="Spell" Tooltip="{cunning_actions.cunning_action_dash}">Cunning Action: Dash</LSTag>,
-        <LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction">Cunning Action: Hide</LSTag>, and
-        <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>.
+        <LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction">Cunning Action: Hide</LSTag>,
+        <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>, and
+        <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
@@ -189,6 +199,7 @@ def cunning_actions_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_CunningActions",
+        PassivesAdded=["FastHands"],
         Selectors=[f"AddSpells({cunning_actions.spell_list().UUID},,,,AlwaysPrepared)"],
         UUID=cunning_actions_uuid,
     ))
@@ -292,39 +303,6 @@ def jack_of_all_trades_feat() -> None:
             "RollBonus(RawAbility,ProficiencyBonus)",
         ],
         Properties=["Highlighted"],
-    ))
-
-
-@iife
-def lands_stride_feat() -> None:
-    """Land's Stride."""
-    lands_stride_uuid = rare_feats.make_uuid("RareFeats_LandsStride")
-
-    loca["RareFeats_LandsStride_DisplayName"] = {"en": "Rare Feats: Land's Stride"}
-    loca["RareFeats_LandsStride_Description"] = {"en": """
-        You gain additional movement speed, and
-        <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down.
-        """}
-
-    rare_feats.add(FeatDescription(
-        DisplayName=loca["RareFeats_LandsStride_DisplayName"],
-        Description=loca["RareFeats_LandsStride_Description"],
-        ExactMatch="RareFeats_LandsStride",
-        FeatId=lands_stride_uuid,
-        UUID=rare_feats.make_uuid("RareFeats_LandsStride_FeatDescription"),
-    ))
-
-    fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
-
-    rare_feats.add(Feat(
-        Name="RareFeats_LandsStride",
-        PassivesAdded=[
-            fast_movement_30,
-            "LandsStride_DifficultTerrain",
-            "LandsStride_Surfaces",
-            "LandsStride_Advantage",
-        ],
-        UUID=lands_stride_uuid,
     ))
 
 

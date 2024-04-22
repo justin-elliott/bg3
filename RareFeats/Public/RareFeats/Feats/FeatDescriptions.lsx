@@ -62,13 +62,6 @@
                     <attribute id="UUID" type="guid" value="5f0d7810-14f4-856b-22c8-420771d62bea" />
                 </node>
                 <node id="FeatDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h50f29964g9722g85f2g9036g0fc472efa703" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h33fb8886g1c6dge275g8d92gbc0b6a4e37d6" version="1" />
-                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_LandsStride" />
-                    <attribute id="FeatId" type="guid" value="70ee90af-0f25-d136-25db-454141c8a09f" />
-                    <attribute id="UUID" type="guid" value="448be77a-e9cc-c001-ea06-c3b31d52a790" />
-                </node>
-                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h58b1bbb2g274fg206cgd929g263bb767e53b" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="ha5825f85g4348gd9fag5af2g3cfd5d93c499" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_LightlyArmored" />

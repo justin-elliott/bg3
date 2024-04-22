@@ -7,7 +7,7 @@ import os
 
 from moddb import Bolster, Defense, PackMule
 from modtools.gamedata import Armor, ObjectData, StatusData
-from modtools.lsx.game import GameObjects
+from modtools.lsx.game import CharacterAbility, GameObjects
 from modtools.mod import Mod
 from modtools.text import TreasureTable
 from uuid import UUID
@@ -369,13 +369,15 @@ def add_persuasion_potion() -> str:
 
 def add_warding_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_WardingPotion"
-    warding = Defense(camp_clothes).add_warding()
+    defense = Defense(camp_clothes)
+    unarmored_defence = defense.add_unarmored_defense(CharacterAbility.DEXTERITY)
+    warding = defense.add_warding()
     warding_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
     loca[f"{name}_Description"] = {"en": f"""
         Drinking this elixir grants the <LSTag Type="Passive" Tooltip="Tough">Tough</LSTag>,
-        <LSTag Type="Passive" Tooltip="UnarmouredDefence_Barbarian">Unarmoured Defence</LSTag>, and
+        <LSTag Type="Passive" Tooltip="{unarmored_defence}">Unarmoured Defence</LSTag>, and
         <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passives.
 
         You gain <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>
@@ -396,7 +398,7 @@ def add_warding_potion() -> str:
         ],
         passives=[
             "Tough",
-            "UnarmouredDefence_Barbarian",
+            unarmored_defence,
             warding,
         ],
     )

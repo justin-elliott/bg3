@@ -63,5 +63,5 @@ data "Boosts" "Advantage(Concentration);ProficiencyBonus(SavingThrow,Constitutio
 data "Description" "h37297145gad39gcc16gf073g5d8584792c88"
 data "DisplayName" "h5f7485d3gd0fagb6b7g4909ge78cf34d8235"
 data "Icon" "Item_UNI_Apprentice_Antidote"
-data "Passives" "Tough;UnarmouredDefence_Barbarian;CampClothes_Warding"
+data "Passives" "Tough;CampClothes_UnarmoredDefense_Dexterity;CampClothes_Warding"
 data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;DisablePortraitIndicator"

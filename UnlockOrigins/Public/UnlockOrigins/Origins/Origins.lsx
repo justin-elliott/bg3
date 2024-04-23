@@ -19,6 +19,7 @@
                     <attribute id="GlobalTemplate" type="guid" value="c7c13742-bacd-460a-8f65-f864fe41f255" />
                     <attribute id="IntroDialogUUID" type="guid" value="0985c3fd-2506-7d59-1146-bff949492a88" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Astarion" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows" />
                     <attribute id="RaceUUID" type="guid" value="6c038dcb-7eb5-431d-84f8-cecfaf1c0c5a" />
@@ -45,6 +46,7 @@
                     <attribute id="GlobalTemplate" type="guid" value="ad9af97d-75da-406a-ae13-7071c563f604" />
                     <attribute id="IntroDialogUUID" type="guid" value="6202aa53-97d7-86a6-4eac-d39d43e367d4" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Gale" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows" />
                     <attribute id="RaceUUID" type="guid" value="0eb594cb-8820-4be6-a58d-8be7a1a98fba" />
@@ -71,6 +73,7 @@
                     <attribute id="GlobalTemplate" type="guid" value="2c76687d-93a2-477b-8b18-8a14b549304c" />
                     <attribute id="IntroDialogUUID" type="guid" value="efee0c73-4b51-f0e7-0cbd-32e12be6efdd" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Karlach" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows" />
                     <attribute id="RaceUUID" type="guid" value="b6dccbed-30f3-424b-a181-c4540cf38197" />
@@ -96,6 +99,7 @@
                     <attribute id="GlobalTemplate" type="guid" value="58a69333-40bf-8358-1d17-fff240d7fb12" />
                     <attribute id="IntroDialogUUID" type="guid" value="c1794155-017b-d953-171f-93e3499dc545" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Laezel" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows" />
                     <attribute id="RaceUUID" type="guid" value="bdf9b779-002c-4077-b377-8ea7c1faa795" />
@@ -122,6 +126,7 @@
                     <attribute id="GodUUID" type="guid" value="2eb3557f-7ada-41d6-a892-e02def72ef77" />
                     <attribute id="IntroDialogUUID" type="guid" value="9e2f1b19-cfac-b601-a1a8-8b901679826a" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Shadowheart" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows" />
                     <attribute id="RaceUUID" type="guid" value="45f4ac10-3c89-4fb2-b37d-f973bb9110c0" />
@@ -149,6 +154,7 @@
                     <attribute id="GlobalTemplate" type="guid" value="c774d764-4a17-48dc-b470-32ace9ce447d" />
                     <attribute id="IntroDialogUUID" type="guid" value="22e1f2cd-17ab-0c1b-e679-015faa6456dd" />
                     <attribute id="LockBody" type="bool" value="true" />
+                    <attribute id="LockRace" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Wyll" />
                     <attribute id="Passives" type="LSString" value="DeathSavingThrows;BladeOfFrontiers" />
                     <attribute id="RaceUUID" type="guid" value="0eb594cb-8820-4be6-a58d-8be7a1a98fba" />

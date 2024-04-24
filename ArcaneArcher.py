@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from moddb import (
     BattleMagic,
     EmpoweredSpells,
+    Movement,
     multiply_resources,
     spells_always_prepared,
 )
@@ -45,8 +46,14 @@ class ArcaneArcher(Replacer):
 
     _args: Args
     _feat_levels: set[int]
+
     _spell_slots: dict[int, list[str]]
+
+    _battle_magic: str
     _empowered_spells: str
+    _fast_movement_30: str
+    _fast_movement_45: str
+    _fast_movement_60: str
 
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
@@ -56,9 +63,16 @@ class ArcaneArcher(Replacer):
 
         self._args = args
         self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
+
         self._spell_slots = {}
+
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
+
+        movement = Movement(self.mod)
+        self._fast_movement_30 = movement.add_fast_movement(3.0)
+        self._fast_movement_45 = movement.add_fast_movement(4.5)
+        self._fast_movement_60 = movement.add_fast_movement(6.0)
 
     @class_description(CharacterClass.RANGER)
     def ranger_description(self, class_description: ClassDescription) -> None:
@@ -117,6 +131,7 @@ class ArcaneArcher(Replacer):
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._battle_magic,
+            self._fast_movement_30,
             "SculptSpells",
             "UnlockedSpellSlotLevel2",
         ]
@@ -149,7 +164,13 @@ class ArcaneArcher(Replacer):
         progression.Boosts = (progression.Boosts or []) + [
             f"ActionResource(SpellSlot,{1 * self._args.spells},3)",
         ]
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._fast_movement_45,
+            "PotentCantrip",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._fast_movement_30,
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},1,0)",
         ]
@@ -179,7 +200,13 @@ class ArcaneArcher(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._fast_movement_60,
+            "BrutalCritical",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._fast_movement_45,
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},1,0)",
         ]

@@ -255,7 +255,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="ArcaneArcher_BattleMagic;SculptSpells;UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArcaneArcher_BattleMagic;ArcaneArcher_FastMovement_30;SculptSpells;UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(26b53d40-13eb-4db6-80f4-bde7bd09c52d,1,HuntersPrey);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,4,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0)" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
@@ -284,7 +284,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArcaneArcher_FastMovement_45;PotentCantrip" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ArcaneArcher_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,1,0)" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
@@ -313,7 +314,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArcaneArcher_FastMovement_60;BrutalCritical" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ArcaneArcher_FastMovement_45" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,1,0)" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />

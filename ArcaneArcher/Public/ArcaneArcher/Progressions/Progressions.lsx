@@ -255,7 +255,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArcaneArcher_BattleMagic;SculptSpells;UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(26b53d40-13eb-4db6-80f4-bde7bd09c52d,1,HuntersPrey);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,4,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0)" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />

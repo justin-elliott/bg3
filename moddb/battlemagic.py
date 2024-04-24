@@ -22,7 +22,7 @@ class BattleMagic:
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Battle Magic"}
         loca[f"{name}_Description"] = {"en": """
-            After making a melee attack, you can cast a spell as a
+            After making a weapon or unarmed attack, you can cast a spell as a
             <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
             """}
 

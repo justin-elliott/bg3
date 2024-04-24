@@ -8,6 +8,7 @@ import os
 
 from dataclasses import dataclass
 from moddb import (
+    BattleMagic,
     EmpoweredSpells,
     multiply_resources,
     spells_always_prepared,
@@ -56,6 +57,7 @@ class ArcaneArcher(Replacer):
         self._args = args
         self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
         self._spell_slots = {}
+        self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
 
     @class_description(CharacterClass.RANGER)
@@ -114,6 +116,7 @@ class ArcaneArcher(Replacer):
             f"ActionResource(SpellSlot,{2 * self._args.spells},2)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._battle_magic,
             "SculptSpells",
             "UnlockedSpellSlotLevel2",
         ]

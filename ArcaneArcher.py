@@ -83,6 +83,10 @@ class ArcaneArcher(Replacer):
             Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
         ))
 
+    @class_description(CharacterClass.RANGER_HUNTER)
+    def hunter_description(self, class_description: ClassDescription) -> None:
+        class_description.MustPrepareSpells = True
+
     @progression(CharacterClass.RANGER, 1)
     def level_1_ranger(self, progression: Progression) -> None:
         selectors = progression.Selectors or []

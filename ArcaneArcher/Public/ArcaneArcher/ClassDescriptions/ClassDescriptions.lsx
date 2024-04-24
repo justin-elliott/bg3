@@ -6,6 +6,25 @@
         <node id="root">
             <children>
                 <node id="ClassDescription">
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
+                    <attribute id="Description" type="TranslatedString" handle="h6b51c4d5g4778g4f65g999eg5fe728ecf064" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2969047eg0207g40f8gb6dfg0b261003ebf2" version="1" />
+                    <attribute id="LearningStrategy" type="uint8" value="1" />
+                    <attribute id="MustPrepareSpells" type="bool" value="true" />
+                    <attribute id="Name" type="FixedString" value="Hunter" />
+                    <attribute id="ParentGuid" type="guid" value="36be18ba-23db-4dff-bfa6-ae105ce43144" />
+                    <attribute id="PrimaryAbility" type="uint8" value="2" />
+                    <attribute id="ProgressionTableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
+                    <attribute id="SoundClassType" type="FixedString" value="Ranger" />
+                    <attribute id="SpellCastingAbility" type="uint8" value="5" />
+                    <attribute id="UUID" type="guid" value="0aa1cff9-c45f-4d00-a95b-99a7aa96dd06" />
+                    <children>
+                        <node id="Tags">
+                            <attribute id="Object" type="guid" value="5727fd64-090f-4932-a31c-c0e078b2146a" />
+                        </node>
+                    </children>
+                </node>
+                <node id="ClassDescription">
                     <attribute id="BaseHp" type="int32" value="10" />
                     <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />

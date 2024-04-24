@@ -6,7 +6,7 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import Bolster, Defense, PackMule
-from modtools.gamedata import Armor, ObjectData, StatusData
+from modtools.gamedata import Armor, ObjectData, PassiveData, StatusData
 from modtools.lsx.game import CharacterAbility, GameObjects
 from modtools.mod import Mod
 from modtools.text import TreasureTable
@@ -279,6 +279,7 @@ def add_bolster_potion() -> str:
 
 def add_flying_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_FlyingPotion"
+    fly_passive = f"{camp_clothes.get_prefix()}_Fly"
     flying_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Flying"}
@@ -292,8 +293,26 @@ def add_flying_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_ALCH_Solution_Potion_Flying",
-        boosts=["UnlockSpell(Projectile_Fly)"],
+        passives=[fly_passive],
     )
+
+    loca[f"{fly_passive}_DisplayName"] = {"en": "Fly"}
+    loca[f"{fly_passive}_Description"] = {"en": """
+        You are able to <LSTag Type="Spell" Tooltip="Projectile_Fly">Fly</LSTag> at will.
+        """}
+
+    camp_clothes.add(PassiveData(
+        fly_passive,
+        DisplayName=loca[f"{fly_passive}_DisplayName"],
+        Description=loca[f"{fly_passive}_Description"],
+        Icon="Action_Fly",
+        Properties=[
+            "Highlighted",
+            "IsToggled",
+            "ToggledDefaultAddToHotbar",
+        ],
+        Boosts=["UnlockSpell(Projectile_Fly)"],
+    ))
 
     return name
 

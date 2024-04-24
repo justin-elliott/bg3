@@ -33,10 +33,10 @@ data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;Disab
 new entry "CAMPCLOTHES_FLYINGPOTION"
 type "StatusData"
 data "StatusType" "BOOST"
-data "Boosts" "UnlockSpell(Projectile_Fly)"
 data "Description" "h6854c269ge35dg4a5fg045agcf424e52856a"
 data "DisplayName" "hab6f905fgd7e3g6d61g7debg7ccd35829eda"
 data "Icon" "Item_ALCH_Solution_Potion_Flying"
+data "Passives" "CampClothes_Fly"
 data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;DisablePortraitIndicator"
 
 new entry "CAMPCLOTHES_OVERPOWERINGPOTION"

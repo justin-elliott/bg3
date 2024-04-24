@@ -20,6 +20,8 @@
     <content contentuid="heb703554g55e8gada6g8ff0gdf23e8880ffc" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="CampClothes_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
     <content contentuid="hab6f905fgd7e3g6d61g7debg7ccd35829eda" version="1">Elixir of Flying</content>
     <content contentuid="h6854c269ge35dg4a5fg045agcf424e52856a" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
+    <content contentuid="h628c8cc0g0b08g0824gf872ge15e0805bfaf" version="1">Fly</content>
+    <content contentuid="hc619d315gcd61g3615g4b45g46b9a32cf2b5" version="1">You are able to &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt; at will.</content>
     <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
     <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>

@@ -21,13 +21,18 @@ def multiply_resources(progression: Progression,
                                                      lambda _resource, count, _level: count * multiplier)
 
 
-def spells_always_prepared(progression: Progression) -> None:
+def spells_always_prepared(progression: Progression) -> bool:
     """Ensure that spells gained with AddSpells() are AlwaysPrepared."""
+    was_updated = False
+
     if progression.Selectors:
         selectors = []
         for selector in progression.Selectors:
             if match := _ADD_SPELLS_REGEX.match(selector):
                 args = match.groups("")
                 selector = f"AddSpells({args[0]},{args[1]},{args[2]},{args[3]},{args[4] or "AlwaysPrepared"})"
+                was_updated = True
             selectors.append(selector)
         progression.Selectors = selectors
+
+    return was_updated

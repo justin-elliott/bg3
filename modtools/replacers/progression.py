@@ -120,10 +120,18 @@ def _create_progressions(replacer: Replacer,
             TableUUID=tableUuid[name],
             UUID=replacer.make_uuid(f"Progression:{name}:{level}")
         )
+        was_updated = False
+
         for builder_fn in builder_fns:
             if not getattr(builder_fn, "only_existing_progressions", False):
-                builder_fn(replacer, progression)
-                updated_progressions.add(progression)
+                try:
+                    builder_fn(replacer, progression)
+                    was_updated = True
+                except DontIncludeProgression:  # Can still be updated by another builder_fn
+                    pass
+
+        if was_updated:
+            updated_progressions.add(progression)
 
 
 def _progression_builder(replacer: Replacer, progression_builders: list[ProgressionBuilder]) -> None:

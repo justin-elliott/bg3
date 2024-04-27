@@ -6,16 +6,15 @@
         <node id="Templates">
             <children>
                 <node id="GameObjects">
-                    <attribute id="DisplayName" type="TranslatedString" handle="hbec48023g69a4g100bg46c2g56ea55b615a8" version="1" />
-                    <attribute id="Description" type="TranslatedString" handle="h311d033ege26cg4ecege5b6g01f6bdc69577" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h61d3df08gabc7g7009g2132ga73da259083c" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hed0cd8d7g99abga34fgd024g5b62f49f1e9c" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5" />
-                    <attribute id="Name" type="LSString" value="ARM_Instrument_Lute_Serenade" />
+                    <attribute id="MapKey" type="FixedString" value="b5157cac-7ec9-f682-73ff-28858a1944fb" />
+                    <attribute id="Name" type="LSString" value="Serenade_ARM_Instrument_Lute" />
                     <attribute id="ParentTemplateId" type="FixedString" value="f2487101-548f-4494-9ec8-b20fa3ad6f7b" />
                     <attribute id="PhysicsTemplate" type="FixedString" value="5d5007e5-cb6f-30ad-3d20-f762ea437673" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <attribute id="VisualTemplate" type="FixedString" value="cfae4ff4-56ac-7bb8-9073-d732ef510c05" />
-                    <attribute id="_OriginalFileVersion_" type="int64" value="1" />
                 </node>
             </children>
         </node>

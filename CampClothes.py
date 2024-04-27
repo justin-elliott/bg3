@@ -351,7 +351,7 @@ def add_overpowering_potion() -> str:
 
 def add_pack_mule_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_PackMulePotion"
-    pack_mule = PackMule(camp_clothes).add_pack_mule(2.0)
+    pack_mule = PackMule(camp_clothes).add_pack_mule(5.0)
     pack_mule_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of the Pack Mule"}
@@ -674,12 +674,12 @@ base_underwear = [
 ]
 
 dyes = [dye for dye in base_dyes]
-agility_potion = add_agility_potion()
+# agility_potion = add_agility_potion()
 bolster_potion = add_bolster_potion()
 flying_potion = add_flying_potion()
 overpowering_potion = add_overpowering_potion()
 pack_mule_potion = add_pack_mule_potion()
-persuasion_potion = add_persuasion_potion()
+# persuasion_potion = add_persuasion_potion()
 warding_potion = add_warding_potion()
 
 clothing = reduce_weight(base_clothing)
@@ -710,8 +710,6 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_{agility_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{flying_potion}",1,0,0,0,0,0,0,0
@@ -719,8 +717,6 @@ new subtable "1,1"
 object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{persuasion_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{warding_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"

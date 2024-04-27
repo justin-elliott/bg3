@@ -11,8 +11,6 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_CampClothes_AgilityPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_CampClothes_BolsterPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_FlyingPotion",1,0,0,0,0,0,0,0
@@ -20,8 +18,6 @@ new subtable "1,1"
 object category "I_CampClothes_OverpoweringPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_PackMulePotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_PersuasionPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_WardingPotion",1,0,0,0,0,0,0,0
 new subtable "1600,1"

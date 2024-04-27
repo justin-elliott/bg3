@@ -5,18 +5,50 @@ Generates files for the "Serenade" mod.
 
 import os
 
-from modtools.lsx import Lsx
+from dataclasses import dataclass
+from modtools.gamedata import Armor, PassiveData
+from modtools.lsx.game import CharacterAbility, GameObjects
 from modtools.mod import Mod
-from uuid import UUID
+from modtools.text import TreasureTable
 
-serenade = Mod(os.path.dirname(__file__), "justin-elliott", "Serenade", UUID("fd8733d8-e1bd-4a41-9a54-40bc97ea99f0"),
+
+@dataclass
+class ProficiencyGroup:
+    name: str
+    ability: CharacterAbility
+    skills: list[str]
+
+
+proficiency_groups: list[ProficiencyGroup] = [
+    ProficiencyGroup("Strong",
+                     CharacterAbility.STRENGTH,
+                     ["Athletics"]),
+    ProficiencyGroup("Agile",
+                     CharacterAbility.DEXTERITY,
+                     ["Acrobatics", "SleightOfHand", "Stealth"]),
+    ProficiencyGroup("Hardy",
+                     CharacterAbility.CONSTITUTION,
+                     []),
+    ProficiencyGroup("Intelligent",
+                     CharacterAbility.INTELLIGENCE,
+                     ["Arcana", "History", "Investigation", "Nature", "Religion"]),
+    ProficiencyGroup("Wise",
+                     CharacterAbility.WISDOM,
+                     ["AnimalHandling", "Insight", "Medicine", "Perception", "Survival"]),
+    ProficiencyGroup("Charismatic",
+                     CharacterAbility.CHARISMA,
+                     ["Deception", "Intimidation", "Performance", "Persuasion"]),
+]
+
+serenade = Mod(os.path.dirname(__file__),
+               author="justin-elliott",
+               name="Serenade",
                description="Adds the lute, Serenade.")
 
 loca = serenade.get_localization()
-loca.add_language("en", "English")
 
-loca["Serenade_DisplayName"] = {"en": "Serenade"}
-loca["Serenade_Description"] = {"en": """
+loca[f"{serenade.get_prefix()}_DisplayName"] = {"en": "Serenade"}
+loca[f"{serenade.get_prefix()}_Description"] = {"en": """
     Curved wood and strings of gold,
     a treasure to behold.
     Fingertips on frets alight,
@@ -27,144 +59,85 @@ loca["Serenade_Description"] = {"en": """
     the lute's melody, truly divine.
     """}
 
-serenade.add_root_templates([
-    Lsx.Node("GameObjects", [
-        Lsx.Attribute("DisplayName", "TranslatedString", handle=loca["Serenade_DisplayName"], version="1"),
-        Lsx.Attribute("Description", "TranslatedString", handle=loca["Serenade_Description"], version="1"),
-        Lsx.Attribute("LevelName", "FixedString", value=""),
-        Lsx.Attribute("MapKey", "FixedString", value="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5"),
-        Lsx.Attribute("Name", "LSString", value="ARM_Instrument_Lute_Serenade"),
-        Lsx.Attribute("ParentTemplateId", "FixedString", value="f2487101-548f-4494-9ec8-b20fa3ad6f7b"),
-        Lsx.Attribute("PhysicsTemplate", "FixedString", value="5d5007e5-cb6f-30ad-3d20-f762ea437673"),
-        Lsx.Attribute("Type", "FixedString", value="item"),
-        Lsx.Attribute("VisualTemplate", "FixedString", value="cfae4ff4-56ac-7bb8-9073-d732ef510c05"),
-        Lsx.Attribute("_OriginalFileVersion_", "int64", value="1"),
-    ])
-])
+serenade_name = f"{serenade.get_prefix()}_ARM_Instrument_Lute"
+serenade_game_objects_uuid = serenade.make_uuid("Serenade Game Objects")
 
-serenade.add_treasure_table("""\
+serenade.add(GameObjects(
+    DisplayName=loca[f"{serenade.get_prefix()}_DisplayName"],
+    Description=loca[f"{serenade.get_prefix()}_Description"],
+    LevelName="",
+    MapKey=serenade_game_objects_uuid,
+    Name=serenade_name,
+    ParentTemplateId="f2487101-548f-4494-9ec8-b20fa3ad6f7b",
+    PhysicsTemplate="5d5007e5-cb6f-30ad-3d20-f762ea437673",
+    Type="item",
+    VisualTemplate="cfae4ff4-56ac-7bb8-9073-d732ef510c05",
+))
+
+proficiency_passives = []
+
+for proficiency_group in proficiency_groups:
+    ability_name = CharacterAbility(proficiency_group.ability).name.title()
+    passive_name = f"{serenade.get_prefix()}_{ability_name}Expertise"
+    proficiency_passives.append(passive_name)
+
+    loca[f"{passive_name}_DisplayName"] = {"en": proficiency_group.name}
+    loca[f"{passive_name}_Description"] = {"en": f"""
+        You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
+        <LSTag Tooltip="{ability_name}">{ability_name}</LSTag> Skills, and have
+        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in
+        {ability_name} <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
+        """}
+
+    serenade.add(PassiveData(
+        passive_name,
+        DisplayName=loca[f"{passive_name}_DisplayName"],
+        Description=loca[f"{passive_name}_Description"],
+        Icon="Action_Song_SingForMe",
+        Properties=["IsHidden"],
+        Boosts=[
+            f"ProficiencyBonus(SavingThrow,{ability_name})",
+            *[f"ProficiencyBonus(Skill,{skill})" for skill in proficiency_group.skills],
+            *[f"ExpertiseBonus({skill})" for skill in proficiency_group.skills],
+        ],
+    ))
+
+virtuoso = f"{serenade.get_prefix()}_Virtuoso"
+
+loca[f"{virtuoso}_DisplayName"] = {"en": "Virtuoso"}
+loca[f"{virtuoso}_Description"] = {"en": """
+    You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all skills, and
+    <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in
+    all <LSTag Tooltip="AbilityCheck">ability checks</LSTag>.
+    """}
+
+serenade.add(PassiveData(
+    virtuoso,
+    DisplayName=loca[f"{virtuoso}_DisplayName"],
+    Description=loca[f"{virtuoso}_Description"],
+    Icon="Action_Song_SingForMe",
+    Properties=["Highlighted"],
+))
+
+serenade.add(Armor(
+    serenade_name,
+    using="ARM_Instrument_Lute_B",
+    Flags=["Unbreakable"],
+    Rarity="Legendary",
+    RootTemplate=serenade_game_objects_uuid,
+    Boosts=[
+        "Proficiency(MusicalInstrument)",
+        "UnlockSpell(Shout_Bard_Perform_Lute)",
+    ],
+    PassivesOnEquip=[virtuoso, *proficiency_passives],
+    Weight="0.01",
+))
+
+serenade.add(TreasureTable(f"""\
 new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
-object category "I_ARM_Instrument_Lute_Serenade",1,0,0,0,0,0,0,0
-""")
-
-loca["Medley_DisplayName"] = {"en": "Medley"}
-loca["Medley_Description"] = {"en": "Perform a medley of songs to inspire and fortify your allies."}
-loca["MEDLEY_Description"] = {"en": """
-    Hit point maximum increased by [1].
-
-    When you roll a 1 on an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>,
-    <LSTag Tooltip="AbilityCheck">Ability Check</LSTag>, or
-    <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>,
-    you can reroll the die and must use the new roll.
-
-    You can see in the dark up to [2].
-    """}
-
-serenade.add_spell_data(
-    "Serenade_Medley",
-    SpellType="Shout",
-    using="Shout_SongOfRest",
-    AreaRadius="9",
-    Cooldown="None",
-    DisplayName=loca["Medley_DisplayName"],
-    Description=loca["Medley_Description"],
-    Icon="Action_Song_SingForMe",
-    Level="0",
-    RequirementConditions="",
-    Requirements="!Combat",
-    SpellProperties=[
-        "ApplyStatus(SERENADE_MEDLEY,100,-1)",
-        "ApplyStatus(LONGSTRIDER,100,-1)",
-        "ApplyStatus(PETPAL,100,-1)",
-        "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)",
-    ],
-    TargetConditions="Party() and not Dead()",
-    TooltipStatusApply=[
-        "ApplyStatus(SERENADE_MEDLEY,100,-1)",
-        "ApplyStatus(LONGSTRIDER,100,-1)",
-        "ApplyStatus(PETPAL,100,-1)",
-        "ApplyStatus(MAGE_ARMOR,100,-1)",
-    ],
-    VerbalIntent="Buff",
-)
-
-serenade.add_status_data(
-    "SERENADE_MEDLEY",
-    StatusType="BOOST",
-    DisplayName=loca["Medley_DisplayName"],
-    Description=loca["MEDLEY_Description"],
-    DescriptionParams=[
-        "LevelMapValue(Serenade_AidValue)",
-        "Distance(18)",
-    ],
-    Icon="Action_Song_SingForMe",
-    StackId="AID",  # Mutually exclusive with AID stacks
-    Boosts=[
-        "IncreaseMaxHP(LevelMapValue(Serenade_AidValue))",
-        "Reroll(Attack,1,true)",
-        "Reroll(SkillCheck,1,true)",
-        "Reroll(RawAbility,1,true)",
-        "Reroll(SavingThrow,1,true)",
-        "DarkvisionRangeMin(18)",
-        "ActiveCharacterLight(c46e7ba8-e746-7020-5146-287474d7b9f7)",
-    ],
-    StatusGroups="SG_RemoveOnRespec",
-)
-
-serenade.add_armor(
-    "ARM_Instrument_Lute_Serenade",
-    using="ARM_Instrument_Lute_B",
-    Flags="Unbreakable",
-    Rarity="Legendary",
-    RootTemplate="06b0b5a6-4f6c-4ee8-b4e1-6f65866b3ec5",
-    Boosts=[
-        "UnlockSpell(Serenade_Medley)",
-        "UnlockSpell(Shout_Bard_Perform_Lute)",
-    ],
-    PassivesOnEquip=[
-        "Serenade_Retune",
-        "Serenade_Virtuoso",
-    ],
-    Weight="0.01",
-)
-
-loca["Virtuoso_DisplayName"] = {"en": "Virtuoso"}
-loca["Virtuoso_Description"] = {"en": """
-    You gain <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
-    <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and have
-    <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
-    <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
-    """}
-
-serenade.add_passive_data(
-    "Serenade_Virtuoso",
-    DisplayName=loca["Virtuoso_DisplayName"],
-    Description=loca["Virtuoso_Description"],
-    Icon="Action_Song_SingForMe",
-    Properties="Highlighted",
-    Boosts=[
-        "Proficiency(MusicalInstrument)",
-        "ProficiencyBonus(SavingThrow,Charisma)",
-        "Advantage(Ability,Charisma)",
-        "ProficiencyBonus(Skill,Deception)",
-        "ExpertiseBonus(Deception)",
-        "ProficiencyBonus(Skill,Intimidation)",
-        "ExpertiseBonus(Intimidation)",
-        "ProficiencyBonus(Skill,Performance)",
-        "ExpertiseBonus(Performance)",
-        "ProficiencyBonus(Skill,Persuasion)",
-        "ExpertiseBonus(Persuasion)",
-    ],
-)
-
-serenade.add_level_maps([
-    Lsx.Node("LevelMapSeries", [
-        *[Lsx.Attribute(f"Level{level}", "LSString", value=f"{int(level * 2.5)}") for level in range(1, 21)],
-        Lsx.Attribute("Name", "FixedString", value="Serenade_AidValue"),
-        Lsx.Attribute("UUID", "guid", value="c0f41731-9b3b-4828-9092-3e104096938a"),
-    ]),
-])
+object category "I_{serenade_name}",1,0,0,0,0,0,0,0
+"""))
 
 serenade.build()

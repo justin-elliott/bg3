@@ -7,7 +7,7 @@
             <children>
                 <node id="ClassDescription">
                     <attribute id="BaseHp" type="int32" value="10" />
-                    <attribute id="CanLearnSpells" type="bool" value="false" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Monk" />
                     <attribute id="Description" type="TranslatedString" handle="h565bd24cg663cg4506g9244g42b57c697ef1" version="2" />

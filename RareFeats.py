@@ -397,7 +397,7 @@ def metamagic_feat() -> None:
         TooltipUseCosts="SorceryPoint:3",
         Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
         Boosts="UnlockInterrupt(RareFeats_IntensifiedSpellInterrupt)",
-        Properties="IsHidden",
+        Properties="MetaMagic",
         StatsFunctorContext="OnCastResolved",
         StatsFunctors="RemoveStatus(RAREFEATS_INTENSIFIED_SPELL)",
     ))

@@ -52,6 +52,11 @@ type "Object"
 using "CampClothes_BasePotion"
 data "RootTemplate" "bbdb61ab-fd8a-ff3f-8fe6-7155bbb40de1"
 
+new entry "CampClothes_RitualsPotion"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "0a6652c6-d882-29a8-d4b0-6e8c69f8cb6a"
+
 new entry "CampClothes_WardingPotion"
 type "Object"
 using "CampClothes_BasePotion"

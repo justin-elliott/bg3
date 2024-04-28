@@ -19,6 +19,8 @@ object category "I_CampClothes_OverpoweringPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_PackMulePotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_CampClothes_RitualsPotion",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_CampClothes_WardingPotion",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0

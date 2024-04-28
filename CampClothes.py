@@ -6,7 +6,7 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import Bolster, Defense, PackMule
-from modtools.gamedata import Armor, ObjectData, StatusData
+from modtools.gamedata import Armor, ObjectData, SpellData, StatusData
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import Text, TreasureTable
@@ -388,6 +388,54 @@ def add_persuasion_potion() -> str:
     return name
 
 
+def add_rituals_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_RitualsPotion"
+    rituals_potion_uuid = camp_clothes.make_uuid(name)
+
+    disguise_self = f"{camp_clothes.get_prefix()}_RitualDisguiseSelf"
+    enhance_leap = f"{camp_clothes.get_prefix()}_RitualEnhanceLeap"
+    feather_fall = f"{camp_clothes.get_prefix()}_RitualFeatherFall"
+    detect_thoughts = f"{camp_clothes.get_prefix()}_RitualDetectThoughts"
+    speak_with_dead = f"{camp_clothes.get_prefix()}_RitualSpeakWithDead"
+
+    ritual_spells: list[tuple[str, str]] = [
+        (disguise_self, "Shout_DisguiseSelf"),
+        (enhance_leap, "Target_Jump"),
+        (feather_fall, "Shout_FeatherFall"),
+        (detect_thoughts, "Shout_DetectThoughts"),
+        (speak_with_dead, "Target_SpeakWithDead"),
+    ]
+
+    for ritual_spell, source_spell in ritual_spells:
+        camp_clothes.add(SpellData(
+            ritual_spell,
+            SpellType=source_spell.partition("_")[0],
+            using=source_spell,
+            Level="",
+            MemoryCost="",
+            RitualCosts="ActionPoint:1",
+            UseCosts="ActionPoint:1",
+        ))
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Rituals"}
+    loca[f"{name}_Description"] = {"en": """
+        Drinking this elixir grants you
+        """}
+
+    add_potion(
+        name,
+        uuid=rituals_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_CONS_Poison_Malice",
+        boosts=[
+            f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells
+        ],
+    )
+
+    return name
+
+
 def add_warding_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_WardingPotion"
     warding = Defense(camp_clothes).add_warding()
@@ -644,6 +692,7 @@ flying_potion = add_flying_potion()
 overpowering_potion = add_overpowering_potion()
 pack_mule_potion = add_pack_mule_potion()
 # persuasion_potion = add_persuasion_potion()
+rituals_potion = add_rituals_potion()
 warding_potion = add_warding_potion()
 
 clothing = reduce_weight(base_clothing)
@@ -695,6 +744,8 @@ new subtable "1,1"
 object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{rituals_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{warding_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"

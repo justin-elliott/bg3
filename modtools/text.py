@@ -5,7 +5,7 @@ Text-based Baldur's Gate 3 mod files.
 
 import os
 
-from abc import ABC, abstractproperty
+from abc import ABC, abstractmethod
 from modtools.prologue import LUA_PROLOGUE, TXT_PROLOGUE
 from textwrap import dedent
 
@@ -16,7 +16,8 @@ class Text(ABC):
     def __init__(self, text: str):
         self.text = dedent(text).strip()
 
-    @abstractproperty
+    @property
+    @abstractmethod
     def path(self) -> str:
         """The path to the file that should contain this text."""
         pass

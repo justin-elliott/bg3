@@ -9,14 +9,14 @@ from moddb import Bolster, Defense, PackMule
 from modtools.gamedata import Armor, ObjectData, StatusData
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
-from modtools.text import TreasureTable
+from modtools.text import Text, TreasureTable
 from uuid import UUID
 
-# <attribute id="([^"]*)"\s*type="([^"]*)"\s*value="([^"]*)"\s*/>
-# Lsx.Attribute("$1", "$2", value="$3"),
 
-# data\s*"([^"]*)"\s*"([^"]*)"
-# $1="$2",
+class ItemCombinations(Text):
+    @property
+    def path(self) -> str:
+        return "Public/{folder}/Stats/Generated/ItemCombos.txt"
 
 
 camp_clothes = Mod(os.path.dirname(__file__),
@@ -534,47 +534,47 @@ base_clothing = [
 ]
 
 base_dyes = [
-    "OBJ_Dye_Azure",
-    "OBJ_Dye_BlackBlue",
-    "OBJ_Dye_BlackGreen",
-    "OBJ_Dye_BlackPink",
-    "OBJ_Dye_BlackRed",
-    "OBJ_Dye_BlackTeal",
-    "OBJ_Dye_Blue",
-    "OBJ_Dye_BlueGreen",
-    "OBJ_Dye_BluePurple",
-    "OBJ_Dye_BlueYellow",
-    "OBJ_Dye_BlueYellow_02",
-    "OBJ_Dye_Golden",
-    "OBJ_Dye_Green",
-    "OBJ_Dye_Green_02",
-    "OBJ_Dye_GreenSage",
-    "OBJ_Dye_GreenSwamp",
-    "OBJ_Dye_GreenPink",
-    "OBJ_Dye_IceCream",
-    "OBJ_Dye_IceCream_02",
-    "OBJ_Dye_IceCream_03",
-    "OBJ_Dye_IceCream_04",
-    "OBJ_Dye_Maroon",
-    "OBJ_Dye_Ocean",
-    "OBJ_Dye_Orange",
-    "OBJ_Dye_OrangeBlue",
-    "OBJ_Dye_Pink",
-    "OBJ_Dye_Purple",
-    "OBJ_Dye_Purple_02",
-    "OBJ_Dye_Purple_03",
-    "OBJ_Dye_Purple_04",
-    "OBJ_Dye_PurpleRed",
-    "OBJ_Dye_Red",
-    "OBJ_Dye_RedBrown",
-    "OBJ_Dye_RedWhite",
-    "OBJ_Dye_RichRed",
-    "OBJ_Dye_RoyalBlue",
-    "OBJ_Dye_Teal",
-    "OBJ_Dye_WhiteBlack",
-    "OBJ_Dye_WhiteBrown",
-    "OBJ_Dye_WhiteRed",
-    "OBJ_Dye_Remover",
+    ("OBJ_Dye_Azure", "85fc7553-b1ca-cb0c-600c-2d0a1fb4c06c"),
+    ("OBJ_Dye_BlackBlue", "3a87940e-c9a2-494c-0026-a94a2087e128"),
+    ("OBJ_Dye_BlackGreen", "88d7c30f-c736-cc70-d005-d1169f73a58f"),
+    ("OBJ_Dye_BlackPink", "cfada95a-0ef4-0e97-5330-42fff41a7cbe"),
+    ("OBJ_Dye_BlackRed", "59e211f9-38bf-2013-a66b-27f075a7a057"),
+    ("OBJ_Dye_BlackTeal", "5f97bbfc-7dca-37b4-0285-768fd66f11e8"),
+    ("OBJ_Dye_Blue", "5bf267b7-cbba-02f6-64f1-6b7600b6d641"),
+    ("OBJ_Dye_BlueGreen", "9b822fd0-36ea-d24f-efff-f24e2b1c78c7"),
+    ("OBJ_Dye_BluePurple", "854e37e1-a840-ac3f-948b-a6630187d3e7"),
+    ("OBJ_Dye_BlueYellow", "ddc1e83b-8727-7900-94bc-72dc6e78d89a"),
+    ("OBJ_Dye_BlueYellow_02", "9d88e168-e638-65fa-feb3-9573ba3e3608"),
+    ("OBJ_Dye_Golden", "4157e913-f20d-037e-db5c-33a38d2b1e81"),
+    ("OBJ_Dye_Green", "a8690bc5-9f17-5672-28e2-41c1ab3018ea"),
+    ("OBJ_Dye_Green_02", "ea44dc42-196e-5bbf-56e3-10fe5a21eb82"),
+    ("OBJ_Dye_GreenSage", "a9895745-150c-5621-bc1a-c05ea59224e1"),
+    ("OBJ_Dye_GreenSwamp", "7922733b-ebb1-1d40-2e5d-f68a1a450571"),
+    ("OBJ_Dye_GreenPink", "84b1e032-4013-a304-5e1b-867c4c07fc72"),
+    ("OBJ_Dye_IceCream", "baf0cd87-d867-0e2a-570f-67162f0c242b"),
+    ("OBJ_Dye_IceCream_02", "428e99ed-6fd8-c81a-d856-be32f8d2df84"),
+    ("OBJ_Dye_IceCream_03", "7c32bee2-2804-ba2f-9421-479fb068dd74"),
+    ("OBJ_Dye_IceCream_04", "16febc6c-1fb8-970f-9d3d-73ab5bc3dc73"),
+    ("OBJ_Dye_Maroon", "1cdd0db3-f51e-b310-1cf8-06b05ae6213b"),
+    ("OBJ_Dye_Ocean", "8b2bc234-5b59-1dac-ad0b-981dcaadf1f8"),
+    ("OBJ_Dye_Orange", "d5c2b4ee-0d01-35c4-efe1-97a590cf1b33"),
+    ("OBJ_Dye_OrangeBlue", "81347759-e898-e086-4e85-8ff9b006f3de"),
+    ("OBJ_Dye_Pink", "dcda84b0-4981-90a0-0372-626285920845"),
+    ("OBJ_Dye_Purple", "27e27bb5-ec6d-f79d-6144-ab19625f99ee"),
+    ("OBJ_Dye_Purple_02", "323abe30-af8f-38b1-a0bd-bdbf1f30a4ac"),
+    ("OBJ_Dye_Purple_03", "3973c28b-e2ce-0fe6-0548-d8e9157a4b0e"),
+    ("OBJ_Dye_Purple_04", "7c8ae356-9720-d6b2-02e6-70479f45adec"),
+    ("OBJ_Dye_PurpleRed", "cca868e6-4720-6a07-8db7-1c117564e4e4"),
+    ("OBJ_Dye_Red", "980bdb9c-b9d0-5c57-8b9b-e4ac0db125ec"),
+    ("OBJ_Dye_RedBrown", "86668c08-3811-9f97-1a82-a7a2bc3da66d"),
+    ("OBJ_Dye_RedWhite", "ef743f2d-2d6c-74a9-c1e7-8f477269e6be"),
+    ("OBJ_Dye_RichRed", "51d9244b-3f97-a169-63bb-cd5773dfc47a"),
+    ("OBJ_Dye_RoyalBlue", "25f9b6dc-e7ab-ac6a-1d5a-529d02a36358"),
+    ("OBJ_Dye_Teal", "8b78d035-f64f-5e03-9fa9-ec44a3dc7832"),
+    ("OBJ_Dye_WhiteBlack", "455c4b21-4cda-3fec-7425-a557d140b972"),
+    ("OBJ_Dye_WhiteBrown", "612865e1-ac2c-30b7-dc50-207c95d3901f"),
+    ("OBJ_Dye_WhiteRed", "33f7e7b9-7e66-7893-b18f-e080f39fe3e3"),
+    ("OBJ_Dye_Remover", None),
 ]
 
 base_shoes = [
@@ -656,11 +656,25 @@ object category I_{},1,0,0,0,0,0,0,0
 """
 
 dye_template = """\
-new subtable "10,1"
+new subtable "1,1"
 object category I_{},1,0,0,0,0,0,0,0
 """
 
-dye_entries = "".join(dye_template.format(dye) for dye in dyes).rstrip()
+for dye, dye_resource in dyes:
+    camp_clothes.add(ItemCombinations(f"""
+    new ItemCombination "{dye}"
+    data "Type 1" "Object"
+    data "Object 1" "{dye}"
+    data "Transform 1" "None"
+    data "Type 2" "Category"
+    data "Object 2" "DyableArmor"
+    data "Transform 2" "Dye"
+    {f'data "DyeColorPresetResource" "{dye_resource}"' if dye_resource else ''}
+    """))
+    camp_clothes.add(ItemCombinations(f"""
+    new ItemCombinationResult "{dye}_1"
+    data "ResultAmount 1" "1"
+    """))
 
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "TUT_Chest_Potions"
@@ -696,7 +710,7 @@ CanMerge 1
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Dyes_TreasureTable"
 CanMerge 1
-{"".join(dye_template.format(dye) for dye in dyes).rstrip()}
+{"".join(dye_template.format(dye) for dye, _ in dyes).rstrip()}
 """))
 
 camp_clothes.add(TreasureTable(f"""

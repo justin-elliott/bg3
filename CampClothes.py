@@ -418,8 +418,13 @@ def add_rituals_potion() -> str:
         ))
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Rituals"}
-    loca[f"{name}_Description"] = {"en": """
-        Drinking this elixir grants you
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this elixir grants you the
+        <LSTag Type="Spell" Tooltip="{disguise_self}">Disguise Self</LSTag>,
+        <LSTag Type="Spell" Tooltip="{enhance_leap}">Enhance Leap</LSTag>,
+        <LSTag Type="Spell" Tooltip="{feather_fall}">Feather Fall</LSTag>,
+        <LSTag Type="Spell" Tooltip="{detect_thoughts}">Detect Thoughts</LSTag>, and
+        <LSTag Type="Spell" Tooltip="{speak_with_dead}">Speak with Dead</LSTag> ritual spells.
         """}
 
     add_potion(

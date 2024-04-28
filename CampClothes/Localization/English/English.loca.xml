@@ -25,7 +25,7 @@
     <content contentuid="hcab5885fg7d1dgb4e8g51efg1f188c8d5b15" version="1">Elixir of the Pack Mule</content>
     <content contentuid="hbd5ebd64ga8b8g22fbg734cg73095f810db3" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_PackMule_400"&gt;Pack Mule&lt;/LSTag&gt; passive.</content>
     <content contentuid="h73ad4e13gff8bga8c3g23cdgfd0b60069d01" version="1">Elixir of Rituals</content>
-    <content contentuid="hd8341414g47f2g93ffgdb07gbabdedd2eca5" version="1">Drinking this elixir grants you</content>
+    <content contentuid="hd8341414g47f2g93ffgdb07gbabdedd2eca5" version="1">Drinking this elixir grants you the &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDisguiseSelf"&gt;Disguise Self&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualEnhanceLeap"&gt;Enhance Leap&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualFeatherFall"&gt;Feather Fall&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDetectThoughts"&gt;Detect Thoughts&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualSpeakWithDead"&gt;Speak with Dead&lt;/LSTag&gt; ritual spells.</content>
     <content contentuid="hfef8f4cfg44f0ge10bgdf3ag7215598aac2e" version="1">Warding</content>
     <content contentuid="he7284105gddf7g3090g129bgc40f1687e8dc" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="h5f7485d3gd0fagb6b7g4909ge78cf34d8235" version="1">Elixir of Warding</content>

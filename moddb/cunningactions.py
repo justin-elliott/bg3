@@ -4,7 +4,7 @@ Cunning action spells for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import SpellData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import SpellList
 from modtools.mod import Mod
 
@@ -22,7 +22,7 @@ class CunningActions:
         cunning_actions = SpellList(
             Comment="Cunning Actions",
             Spells=[
-                self.cunning_action_dash if step_of_the_wind else "Shout_Dash_CunningAction",
+                "Shout_Dash_CunningAction",
                 "Shout_Hide_BonusAction",
                 "Shout_Disengage_CunningAction",
             ],
@@ -32,24 +32,18 @@ class CunningActions:
         return cunning_actions
 
     @cached_property
-    def cunning_action_dash(self) -> str:
-        """Add the Cunning Action: Dash + Step of the Wind spell, returning its name."""
-        name = f"{self._mod.get_prefix()}_CunningActionDash"
-        self._mod.add(SpellData(
-            name,
-            using="Shout_Dash_CunningAction",
-            SpellType="Shout",
-            SpellProperties=[
-                "IF(HasStatus('DASH_STACKED')):ApplyStatus(DASH_STACKED_2,100,1)",
-                "IF(not HasStatus('DASH_STACKED_2') and HasStatus('DASH')):ApplyStatus(DASH_STACKED,100,1)",
-                "IF(not HasStatus('DASH_STACKED_2') and not HasStatus('DASH_STACKED') and not HasStatus('DASH')):"
-                + "ApplyStatus(DASH,100,1)",
-                "ApplyStatus(STEP_OF_THE_WIND,100,1)",
-            ],
-            SpellFlags=["IgnoreSilence", "Stealth", "Invisible", "NoCameraMove"],
-            TooltipStatusApply=[
-                "ApplyStatus(DASH,100,1)",
-                "ApplyStatus(STEP_OF_THE_WIND,100,1)",
-            ],
+    def running_jump(self) -> str:
+        running_jump = f"{self._mod.get_prefix()}_RunningJump"
+        loca = self._mod.get_localization()
+        loca[f"{running_jump}_DisplayName"] = {"en": "Running Jump"}
+        loca[f"{running_jump}_Description"] = {"en": """
+            Once per turn, after <LSTag Type="Spell" Tooltip="Shout_Dash">Dashing</LSTag> or taking a similar action,
+            you can <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> without using a bonus action.
+            """}
+        self._mod.add(PassiveData(
+            running_jump,
+            using="MAG_Mobility_JumpOnDash_Passive",
+            DisplayName=loca[f"{running_jump}_DisplayName"],
+            Description=loca[f"{running_jump}_Description"],
         ))
-        return name
+        return running_jump

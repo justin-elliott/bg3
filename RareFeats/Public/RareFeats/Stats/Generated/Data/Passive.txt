@@ -107,6 +107,12 @@ data "Properties" "Highlighted;OncePerTurn"
 data "StatsFunctorContext" "OnAttack"
 data "StatsFunctors" "ApplyStatus(SELF,RAREFEATS_BATTLEMAGIC,100,1)"
 
+new entry "RareFeats_RunningJump"
+type "PassiveData"
+using "MAG_Mobility_JumpOnDash_Passive"
+data "Description" "h86cc8195gb8d1gc674g7b72ge747e2bd3907"
+data "DisplayName" "he9888a31g63e5ge095gb0edg76bd3952494e"
+
 new entry "RareFeats_ActionSurge_Unlock"
 type "PassiveData"
 data "Boosts" "UnlockSpell(Shout_ActionSurge)"

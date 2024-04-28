@@ -209,9 +209,10 @@ def cunning_actions_feat() -> None:
 
     loca["RareFeats_CunningActions_DisplayName"] = {"en": "Rare Feats: Cunning Actions"}
     loca["RareFeats_CunningActions_Description"] = {"en": f"""
-        Gain <LSTag Type="Spell" Tooltip="{cunning_actions.cunning_action_dash}">Cunning Action: Dash</LSTag>,
+        Gain <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>,
         <LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction">Cunning Action: Hide</LSTag>,
-        <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>, and
+        <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>,
+        <LSTag Type="Passive" Tooltip="{cunning_actions.running_jump}">Running Jump</LSTag>, and
         <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>.
         """}
 
@@ -225,7 +226,7 @@ def cunning_actions_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_CunningActions",
-        PassivesAdded=["FastHands"],
+        PassivesAdded=["FastHands", cunning_actions.running_jump],
         Selectors=[f"AddSpells({cunning_actions.spell_list().UUID},,,,AlwaysPrepared)"],
         UUID=cunning_actions_uuid,
     ))

@@ -6,8 +6,8 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import Bolster, Defense, PackMule
-from modtools.gamedata import Armor, ObjectData, PassiveData, StatusData
-from modtools.lsx.game import CharacterAbility, GameObjects
+from modtools.gamedata import Armor, ObjectData, StatusData
+from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import TreasureTable
 from uuid import UUID
@@ -279,7 +279,6 @@ def add_bolster_potion() -> str:
 
 def add_flying_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_FlyingPotion"
-    fly_passive = f"{camp_clothes.get_prefix()}_Fly"
     flying_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Flying"}
@@ -293,26 +292,8 @@ def add_flying_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_ALCH_Solution_Potion_Flying",
-        passives=[fly_passive],
+        boosts=["UnlockSpell(Projectile_Fly)"],
     )
-
-    loca[f"{fly_passive}_DisplayName"] = {"en": "Fly"}
-    loca[f"{fly_passive}_Description"] = {"en": """
-        You are able to <LSTag Type="Spell" Tooltip="Projectile_Fly">Fly</LSTag> at will.
-        """}
-
-    camp_clothes.add(PassiveData(
-        fly_passive,
-        DisplayName=loca[f"{fly_passive}_DisplayName"],
-        Description=loca[f"{fly_passive}_Description"],
-        Icon="Action_Fly",
-        Properties=[
-            "Highlighted",
-            "IsToggled",
-            "ToggledDefaultAddToHotbar",
-        ],
-        Boosts=["UnlockSpell(Projectile_Fly)"],
-    ))
 
     return name
 
@@ -409,21 +390,12 @@ def add_persuasion_potion() -> str:
 
 def add_warding_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_WardingPotion"
-    defense = Defense(camp_clothes)
-    unarmored_defence = defense.add_unarmored_defense(CharacterAbility.DEXTERITY)
-    warding = defense.add_warding()
+    warding = Defense(camp_clothes).add_warding()
     warding_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
     loca[f"{name}_Description"] = {"en": f"""
-        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="Tough">Tough</LSTag>,
-        <LSTag Type="Passive" Tooltip="{unarmored_defence}">Unarmoured Defence</LSTag>, and
-        <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passives.
-
-        You gain <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>
-        to maintain <LSTag Tooltip="Concentration">Concentration</LSTag> on a spell, and
-        <LSTag Tooltip="Proficiency">Proficiency</LSTag> in Constitution
-        <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
+        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passive.
         """}
 
     add_potion(
@@ -432,15 +404,7 @@ def add_warding_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_UNI_Apprentice_Antidote",
-        boosts=[
-            "Advantage(Concentration)",
-            "ProficiencyBonus(SavingThrow,Constitution)",
-        ],
-        passives=[
-            "Tough",
-            unarmored_defence,
-            warding,
-        ],
+        passives=[warding],
     )
 
     return name

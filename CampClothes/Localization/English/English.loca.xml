@@ -18,18 +18,14 @@
     <content contentuid="heb703554g55e8gada6g8ff0gdf23e8880ffc" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="CampClothes_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
     <content contentuid="hab6f905fgd7e3g6d61g7debg7ccd35829eda" version="1">Elixir of Flying</content>
     <content contentuid="h6854c269ge35dg4a5fg045agcf424e52856a" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
-    <content contentuid="h628c8cc0g0b08g0824gf872ge15e0805bfaf" version="1">Fly</content>
-    <content contentuid="hc619d315gcd61g3615g4b45g46b9a32cf2b5" version="1">You are able to &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt; at will.</content>
     <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
     <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>
     <content contentuid="heae1917bge7d6g0070g253bg77c3ab1cc2f2" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="hcab5885fg7d1dgb4e8g51efg1f188c8d5b15" version="1">Elixir of the Pack Mule</content>
     <content contentuid="hbd5ebd64ga8b8g22fbg734cg73095f810db3" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_PackMule_400"&gt;Pack Mule&lt;/LSTag&gt; passive.</content>
-    <content contentuid="h04bc65afg6756g50f3ge07cg8d29ff616bc7" version="1">Unarmored Defense</content>
-    <content contentuid="h66f27ae1g0ce4g3b4dgece4g58c5125d3660" version="1">Your body is as resilient as any armour. While not wearing armour, you add twice your Dexterity &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt;.</content>
     <content contentuid="hfef8f4cfg44f0ge10bgdf3ag7215598aac2e" version="1">Warding</content>
     <content contentuid="he7284105gddf7g3090g129bgc40f1687e8dc" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="h5f7485d3gd0fagb6b7g4909ge78cf34d8235" version="1">Elixir of Warding</content>
-    <content contentuid="h37297145gad39gcc16gf073g5d8584792c88" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="Tough"&gt;Tough&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="CampClothes_UnarmoredDefense_Dexterity"&gt;Unarmoured Defence&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="CampClothes_Warding"&gt;Warding&lt;/LSTag&gt; passives.&lt;br&gt;&lt;br&gt;You gain &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt; to maintain &lt;LSTag Tooltip="Concentration"&gt;Concentration&lt;/LSTag&gt; on a spell, and &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; in Constitution &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
+    <content contentuid="h37297145gad39gcc16gf073g5d8584792c88" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_Warding"&gt;Warding&lt;/LSTag&gt; passive.</content>
 </contentList>

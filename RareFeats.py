@@ -5,6 +5,7 @@ Generates files for the "RareFeats" mod.
 
 import os
 
+from functools import cache
 from moddb import (
     BattleMagic,
     CunningActions,
@@ -17,6 +18,7 @@ from modtools.gamedata import (
     StatusData,
 )
 from modtools.lsx.game import (
+    CharacterAbility,
     FeatDescription,
     Feat,
     PassiveList,
@@ -38,6 +40,59 @@ loca.add_language("en", "English")
 def iife(fn: Callable[[], None]) -> Callable[[], None]:
     """Immediate invoke our decorated function."""
     fn()
+
+
+@cache
+def boost_ability_none_passive() -> str:
+    """Return the name of a passive for no ability increase."""
+    boost_ability_none = f"{rare_feats.get_prefix()}_BoostAbility_None"
+
+    loca[f"{boost_ability_none}_DisplayName"] = {"en": "None"}
+    loca[f"{boost_ability_none}_Description"] = {"en": "No ability increase."}
+
+    rare_feats.add(PassiveData(
+        boost_ability_none,
+        DisplayName=loca[f"{boost_ability_none}_DisplayName"],
+        Description=loca[f"{boost_ability_none}_Description"],
+        Icon="Spell_Transmutation_EnhanceAbility",
+        Properties=["IsHidden"],
+    ))
+
+    return boost_ability_none
+
+
+@cache
+def boost_ability_passive(ability: CharacterAbility | None, boost: int) -> str:
+    """Return the name of a passive to increase an ability by the given boost."""
+    if ability is None:
+        return boost_ability_none_passive()
+
+    ability_name = CharacterAbility(ability).name.title()
+    boost_ability = f"{rare_feats.get_prefix()}_BoostAbility_{ability_name}_{boost}"
+
+    loca[f"{boost_ability}_DisplayName"] = {"en": f"{ability_name} +{boost}"}
+    loca[f"{boost_ability}_Description"] = {"en": f"Increase your {ability_name} by {boost}, to a maximum of 30."}
+
+    rare_feats.add(PassiveData(
+        boost_ability,
+        DisplayName=loca[f"{boost_ability}_DisplayName"],
+        Description=loca[f"{boost_ability}_Description"],
+        Icon="Spell_Transmutation_EnhanceAbility",
+        Boosts=[f"Ability({ability_name},1,30)"],
+        Properties=["IsHidden"],
+    ))
+
+    return boost_ability
+
+
+def boost_abilities_passive_list(abilities: list[CharacterAbility | None], boost: int) -> UUID:
+    """Create a PassiveList to boost the given abilities, returning its UUID."""
+    passive_list = PassiveList(
+        Passives=[boost_ability_passive(ability, boost) for ability in abilities],
+        UUID=rare_feats.make_uuid(f"RareFeats Boost Abilities Passive List {abilities}"),
+    )
+    rare_feats.add(passive_list)
+    return passive_list.UUID
 
 
 @iife
@@ -120,30 +175,8 @@ def athlete_feat() -> None:
     athlete_uuid = rare_feats.make_uuid("RareFeats_Athlete")
     fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
 
-    ABILITIES = ["Strength", "Dexterity", "None"]
-
-    athlete_passive_list = PassiveList(
-        Passives=[],
-        UUID=rare_feats.make_uuid("RareFeats_Athlete_PassiveList"),
-    )
-    rare_feats.add(athlete_passive_list)
-
-    for ability in ABILITIES:
-        athlete_passive = f"RareFeats_Athlete_{ability}"
-        athlete_passive_list.Passives.append(athlete_passive)
-
-        loca[f"{athlete_passive}_DisplayName"] = {"en": ability}
-        loca[f"{athlete_passive}_Description"] = {"en": f"Increase your {ability} by 1, to a maximum of 30."
-                                                  if ability != "None" else "No ability increase."}
-
-        rare_feats.add(PassiveData(
-            athlete_passive,
-            DisplayName=loca[f"{athlete_passive}_DisplayName"],
-            Description=loca[f"{athlete_passive}_Description"],
-            Icon="Spell_Transmutation_EnhanceAbility",
-            Boosts=f"Ability({ability},1,30)" if ability != "None" else None,
-            Properties=["IsHidden"],
-        ))
+    athlete_passive_list = boost_abilities_passive_list(
+        [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 1)
 
     loca["RareFeats_Athlete_DisplayName"] = {"en": "Rare Feats: Athlete"}
     loca["RareFeats_Athlete_Description"] = {"en": """
@@ -170,7 +203,7 @@ def athlete_feat() -> None:
             "LandsStride_Surfaces",
             "LandsStride_Advantage",
         ],
-        Selectors=f"SelectPassives({athlete_passive_list.UUID},1,RareFeats_Athlete)",
+        Selectors=f"SelectPassives({athlete_passive_list},1,RareFeats_Athlete)",
         UUID=athlete_uuid,
     ))
 
@@ -525,8 +558,11 @@ def performer_feat() -> None:
 
 @iife
 def tavern_brawler_feat() -> None:
-    """Tavern Brawler without the ASI."""
+    """Tavern Brawler with optional ASI."""
     tavern_brawler_uuid = rare_feats.make_uuid("RareFeats_TavernBrawler")
+
+    tavern_brawler_passive_list = boost_abilities_passive_list(
+        [CharacterAbility.STRENGTH, CharacterAbility.CONSTITUTION, None], 1)
 
     loca["RareFeats_TavernBrawler_DisplayName"] = {"en": "Rare Feats: Tavern Brawler"}
     loca["RareFeats_TavernBrawler_Description"] = {"en": """
@@ -546,6 +582,7 @@ def tavern_brawler_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_TavernBrawler",
         PassivesAdded="TavernBrawler",
+        Selectors=f"SelectPassives({tavern_brawler_passive_list},1,RareFeats_TavernBrawler)",
         UUID=tavern_brawler_uuid,
     ))
 

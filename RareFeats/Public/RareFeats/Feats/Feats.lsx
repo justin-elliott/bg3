@@ -18,7 +18,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Athlete" />
                     <attribute id="PassivesAdded" type="LSString" value="Athlete_StandUp;RareFeats_FastMovement_30;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(5b0c49cf-2297-64de-a8ef-661455f858ea,1,RareFeats_Athlete)" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(633ed002-a150-7f1a-504e-e3cf1bebee46,1,RareFeats_Athlete)" />
                     <attribute id="UUID" type="guid" value="f295c533-7af6-6499-dc1b-d43bd0b4f68c" />
                 </node>
                 <node id="Feat">
@@ -73,7 +73,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_TavernBrawler" />
                     <attribute id="PassivesAdded" type="LSString" value="TavernBrawler" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(c63f5d55-12f1-b50d-07d5-409d968b5ff3,1,RareFeats_TavernBrawler)" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(1f8c2e0d-e74c-32ad-a2f5-504023a84e1f,1,RareFeats_TavernBrawler)" />
                     <attribute id="UUID" type="guid" value="bf0bdace-f36c-d316-dd36-9de499eec73f" />
                 </node>
                 <node id="Feat">

@@ -23,10 +23,10 @@
     <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Increase all of your abilities by a selected amount, to a maximum of 30.</content>
     <content contentuid="h5603bd54g3559g5d75g857eg65d2a409605f" version="1">Fast Movement</content>
     <content contentuid="hd7811ba7g114fgf940g63ecg0402c67c273d" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
-    <content contentuid="h676b9380g7ca7g6718gf21fg1fc9e01a6087" version="1">Strength +1</content>
-    <content contentuid="hcd1ed454gfc28gf173gcc3cgf75d8ccdeebc" version="1">Increase your Strength by 1, to a maximum of 30.</content>
-    <content contentuid="h6067cbacg2dbeg6eb0g0731g85e5c4adb4b8" version="1">Dexterity +1</content>
-    <content contentuid="hc4e6015cg1379ga698gf6b1ga90fdcd3c7b0" version="1">Increase your Dexterity by 1, to a maximum of 30.</content>
+    <content contentuid="hda484d60g2be9g29e9g8d22g024ee04b61ed" version="1">Strength +1</content>
+    <content contentuid="hc9e226bega99bg4036g92dbg0c49db42d1b7" version="1">Increase your Strength by 1, to a maximum of 30.</content>
+    <content contentuid="hd083d8e8g9b7cg3e07gc4d0gc1351324c306" version="1">Dexterity +1</content>
+    <content contentuid="h7ef6c87dg2c40g0d51g7d3cg1784999c0085" version="1">Increase your Dexterity by 1, to a maximum of 30.</content>
     <content contentuid="h9988bd61g71d0g070bg5b71g5a21f03a90a2" version="1">None</content>
     <content contentuid="hfd21e5bag41abgd7fbg057dg5e2fa2197a40" version="1">No ability increase.</content>
     <content contentuid="hb282cae0g9bc0gd3f9g7bd1g907418d7d637" version="1">Rare Feats: Athlete</content>
@@ -56,8 +56,10 @@
     <content contentuid="h7438d601g230agd911g19f1g7552a3e6018b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Medium Armour and shields.</content>
     <content contentuid="h999658bdg279cgc24cg74d7gf4a54644069e" version="1">Rare Feats: Performer</content>
     <content contentuid="hc44e1a34gf457g286cg6fc5g7438c5c40eb8" version="1">You gain &lt;LSTag Tooltip="MusicalInstrumentProficiency"&gt;Musical Instrument Proficiency&lt;/LSTag&gt;.</content>
-    <content contentuid="he3809658g24d3g8cd8g23d7gc0fc9122b53f" version="1">Constitution +1</content>
-    <content contentuid="h5ac2eaadg2bb8g17e7g47d5g183eee2a8f02" version="1">Increase your Constitution by 1, to a maximum of 30.</content>
+    <content contentuid="h0978934dgeb6eg3a95g72b6g0bbdf70e571c" version="1">Strength +1</content>
+    <content contentuid="hfafa6662g1275g6de8g0ff9g12d351e3f01b" version="1">Increase your Strength by 1, to a maximum of 30.</content>
+    <content contentuid="he28492e6gad3eg31ecg7595g09f8c4cc561e" version="1">Constitution +1</content>
+    <content contentuid="h55c33afbg4fafg7bf1ge76dgb98278156857" version="1">Increase your Constitution by 1, to a maximum of 30.</content>
     <content contentuid="hc1c143f6g5ca4gfb4fg34d5g476efe0c0813" version="1">Rare Feats: Tavern Brawler</content>
     <content contentuid="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1">When you make an unarmed attack, use an improvised weapon, or throw something, your Strength &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
     <content contentuid="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1">Rare Feats: Weapon Master</content>

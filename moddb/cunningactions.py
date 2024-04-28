@@ -4,7 +4,7 @@ Cunning action spells for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import PassiveData, SpellData
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import SpellList
 from modtools.mod import Mod
 

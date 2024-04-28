@@ -6,11 +6,6 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Cunning Actions" />
-                    <attribute id="Spells" type="LSString" value="DaughterOfDarkness_CunningActionDash;Shout_Hide_BonusAction;Shout_Disengage_CunningAction" />
-                    <attribute id="UUID" type="guid" value="3d131759-fecf-f3ea-96aa-245ccf250e39" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Cleric cantrips" />
                     <attribute id="Spells" type="LSString" value="Projectile_AcidSplash;Projectile_FireBolt;Projectile_PoisonSpray;Projectile_RayOfFrost;Shout_BladeWard;Shout_ProduceFlame;Shout_Thaumaturgy;Target_ChillTouch;Target_DancingLights;Target_Friends;Target_Guidance;Target_Light;Target_MageHand;Target_MinorIllusion;Target_Resistance;Target_SacredFlame;Target_ShockingGrasp;Target_TrueStrike" />
                     <attribute id="UUID" type="guid" value="b457436f-3443-7ce5-ac03-14fb8d02ad5e" />

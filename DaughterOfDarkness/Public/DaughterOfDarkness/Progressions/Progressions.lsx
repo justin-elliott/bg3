@@ -86,7 +86,7 @@
                     <attribute id="Name" type="LSString" value="Cleric" />
                     <attribute id="PassivesAdded" type="LSString" value="AgonizingBlast;RepellingBlast" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(239cc7cc-f642-4ddc-b091-498d81612c51,,,,AlwaysPrepared);AddSpells(3d131759-fecf-f3ea-96aa-245ccf250e39,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(239cc7cc-f642-4ddc-b091-498d81612c51,,,,AlwaysPrepared);AddSpells(2dc120ff-903b-494b-8dc8-38721098ce38,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="TableUUID" type="guid" value="64474b62-b4f5-46b3-b94a-c676c6da3116" />
                     <attribute id="UUID" type="guid" value="ef18265f-dda6-4eb6-8dd0-b14c57202c33" />
                 </node>

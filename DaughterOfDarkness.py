@@ -187,9 +187,6 @@ class DaughterOfDarkness(Replacer):
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
 
-        # Spell lists
-        self._cunning_actions = CunningActions(self.mod).spell_list()
-
     @origin("Shadowheart")
     def shadowheart(self, origin: Origin) -> None:
         origin.LockClass = None
@@ -246,7 +243,7 @@ class DaughterOfDarkness(Replacer):
             "RepellingBlast",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            f"AddSpells({self._cunning_actions.UUID},,,,AlwaysPrepared)",
+            f"AddSpells({CunningActions.SPELL_LIST},,,,AlwaysPrepared)",
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
         ]
 

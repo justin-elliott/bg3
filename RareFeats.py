@@ -205,6 +205,7 @@ def battle_magic_feat() -> None:
 def cunning_actions_feat() -> None:
     """Cunning actions."""
     cunning_actions = CunningActions(rare_feats)
+    running_jump = cunning_actions.add_running_jump()
     cunning_actions_uuid = rare_feats.make_uuid("RareFeats_CunningActions")
 
     loca["RareFeats_CunningActions_DisplayName"] = {"en": "Rare Feats: Cunning Actions"}
@@ -212,7 +213,7 @@ def cunning_actions_feat() -> None:
         Gain <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>,
         <LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction">Cunning Action: Hide</LSTag>,
         <LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction">Cunning Action: Disengage</LSTag>,
-        <LSTag Type="Passive" Tooltip="{cunning_actions.running_jump}">Running Jump</LSTag>, and
+        <LSTag Type="Passive" Tooltip="{running_jump}">Running Jump</LSTag>, and
         <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>.
         """}
 
@@ -226,8 +227,8 @@ def cunning_actions_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_CunningActions",
-        PassivesAdded=["FastHands", cunning_actions.running_jump],
-        Selectors=[f"AddSpells({cunning_actions.spell_list().UUID},,,,AlwaysPrepared)"],
+        PassivesAdded=["FastHands", running_jump],
+        Selectors=[f"AddSpells({cunning_actions.SPELL_LIST},,,,AlwaysPrepared)"],
         UUID=cunning_actions_uuid,
     ))
 

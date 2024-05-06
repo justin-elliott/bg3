@@ -181,6 +181,21 @@ def druid_level_6_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("6a4e2167-55f3-4ba8-900f-14666b293e93"))
 
 
+# Ranger Spells
+
+
+def ranger_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("458be063-60d4-4548-ae7d-50117fa0226f"))
+
+
+def ranger_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("e7cfb80a-f5c2-4304-8446-9b00ea6a9814"))
+
+
+def ranger_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("9a60f649-7f82-4152-90b1-0499c5c9f3e2"))
+
+
 # Warlock Spells
 
 

@@ -78,6 +78,31 @@ class Brawler(Replacer):
 
         return name
 
+    @cached_property
+    def iron_fists(self) -> str:
+        name = f"{self.mod.get_prefix()}_IronFists"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Iron Fists"}
+        loca[f"{name}_Description"] = {"en": """
+            Your unarmed attacks ignore Bludgeoning <LSTag Tooltip="Resistant">Resistance</LSTag>, and deal additional
+            damage equal to your Constitution <LSTag Tooltip="AbilityModifier">Modifier</LSTag>.
+            """}
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="PassiveFeature_MartialArts_BonusUnarmedStrike",
+            Properties=["Highlighted", "ForceShowInCC"],
+            Boosts=[
+                "IF(IsMeleeUnarmedAttack()):IgnoreResistance(Bludgeoning,Resistant)",
+                "IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(max(0,ConstitutionModifier))",
+            ],
+        ))
+
+        return name
+
     @class_description(CharacterClass.BARBARIAN_BERSERKER)
     def brawler_description(self, class_description: ClassDescription) -> None:
         loca = self.mod.get_localization()
@@ -101,6 +126,7 @@ class Brawler(Replacer):
     def feature_test(self, progression: Progression):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self.unarmed_damage,
+            self.iron_fists,
         ]
 
     @progression(CharacterClass.BARBARIAN_BERSERKER, 3)
@@ -118,6 +144,7 @@ class Brawler(Replacer):
         progression.Boosts = [
         ]
         progression.PassivesAdded = [
+            self.iron_fists,
         ]
         progression.Selectors = [
         ]

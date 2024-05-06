@@ -434,7 +434,9 @@ def add_rituals_potion() -> str:
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Poison_Malice",
         boosts=[
-            f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells
+            "UnlockSpell(Target_Guidance)",
+            "UnlockSpell(Target_Resistance)",
+            *[f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells],
         ],
     )
 

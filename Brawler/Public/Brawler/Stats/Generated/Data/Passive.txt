@@ -8,3 +8,11 @@ data "DescriptionParams" "DealDamage(LevelMapValue(Brawler_UnarmedDamage_Level),
 data "DisplayName" "ha738bfbeg3f66g9ccagac44gda93cb3f1f21"
 data "Icon" "PassiveFeature_MartialArts_UnarmedDamage"
 data "Properties" "Highlighted;ForceShowInCC"
+
+new entry "Brawler_IronFists"
+type "PassiveData"
+data "Boosts" "IF(IsMeleeUnarmedAttack()):IgnoreResistance(Bludgeoning,Resistant);IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(max(0,ConstitutionModifier))"
+data "Description" "h26bc519dg60fagc9edgf159gf2c0cba9b372"
+data "DisplayName" "hdc2b40f7gc942g538fg514fg9705f1095dcc"
+data "Icon" "PassiveFeature_MartialArts_BonusUnarmedStrike"
+data "Properties" "Highlighted;ForceShowInCC"

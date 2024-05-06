@@ -5,4 +5,6 @@
     <content contentuid="h222d21c9gb5f8g3982g938cg7f240372c3fe" version="1">Forget fancy footwork and glittering swords. Brawlers are the bare-knuckle bruisers of the adventuring world. They specialize in raw, brutal fighting, turning their bodies into weapons and dominating the battlefield with punches, throws, and anything they can grab.</content>
     <content contentuid="ha738bfbeg3f66g9ccagac44gda93cb3f1f21" version="1">Unarmed Damage</content>
     <content contentuid="hc5aa0a6dg9b8ag6d5dgcf6fg97c4dfd7a8dc" version="1">Unarmed attacks, and attacks with weapons with which you have &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt;, and which do not have the &lt;LSTag Tooltip="TwoHanded"&gt;two-handed weapon&lt;/LSTag&gt; or &lt;LSTag Tooltip="Heavy"&gt;heavy&lt;/LSTag&gt; properties, deal [1], unless their normal damage is higher.</content>
+    <content contentuid="hdc2b40f7gc942g538fg514fg9705f1095dcc" version="1">Iron Fists</content>
+    <content contentuid="h26bc519dg60fagc9edgf159gf2c0cba9b372" version="1">Your unarmed attacks ignore Bludgeoning &lt;LSTag Tooltip="Resistant"&gt;Resistance&lt;/LSTag&gt;, and deal additional damage equal to your Constitution &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt;.</content>
 </contentList>

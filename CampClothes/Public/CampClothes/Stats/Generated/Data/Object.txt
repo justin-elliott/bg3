@@ -32,6 +32,11 @@ using "_Container"
 data "RootTemplate" "5f4ad8a7-1bc9-cc0b-38a9-d066d1ea423e"
 data "Weight" "0.01"
 
+new entry "CampClothes_AgilityPotion"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "3621445e-da0e-3aaf-fdf7-373bb48149d3"
+
 new entry "CampClothes_BolsterPotion"
 type "Object"
 using "CampClothes_BasePotion"
@@ -51,6 +56,11 @@ new entry "CampClothes_PackMulePotion"
 type "Object"
 using "CampClothes_BasePotion"
 data "RootTemplate" "bbdb61ab-fd8a-ff3f-8fe6-7155bbb40de1"
+
+new entry "CampClothes_PersuasionPotion"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "33dbe7c8-8b51-1c19-6ed7-f70a6d6cca94"
 
 new entry "CampClothes_RitualsPotion"
 type "Object"

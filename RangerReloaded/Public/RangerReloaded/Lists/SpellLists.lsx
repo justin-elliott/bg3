@@ -12,17 +12,17 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Ranger level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_EnsnaringStrike_Container;Projectile_HailOfThorns;Projectile_IceKnife;Shout_SpeakWithAnimals;Target_AnimalFriendship;Target_CharmPerson;Target_CreateDestroyWater;Target_CureWounds;Target_Entangle;Target_FaerieFire;Target_FogCloud;Target_Goodberry;Target_HealingWord;Target_HuntersMark;Target_Jump;Target_Longstrider;Zone_Thunderwave" />
+                    <attribute id="Spells" type="LSString" value="Projectile_EnsnaringStrike_Container;Projectile_HailOfThorns;Projectile_IceKnife;Shout_Shield_Wizard;Shout_SpeakWithAnimals;Target_AnimalFriendship;Target_CharmPerson;Target_CreateDestroyWater;Target_CureWounds;Target_Entangle;Target_FaerieFire;Target_FogCloud;Target_Goodberry;Target_HealingWord;Target_HuntersMark;Target_Jump;Target_Longstrider;Zone_Thunderwave" />
                     <attribute id="UUID" type="guid" value="3a4d263d-d0f2-b8cc-67d1-b528f8bd2f62" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Ranger level 2 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_EnsnaringStrike_Container;Projectile_HailOfThorns;Shout_FlameBlade;Shout_PassWithoutTrace;Shout_SpeakWithAnimals;Target_AnimalFriendship;Target_Barkskin;Target_CureWounds;Target_Darkvision;Target_EnhanceAbility;Target_FlamingSphere;Target_FogCloud;Target_Goodberry;Target_HeatMetal;Target_HoldPerson;Target_HuntersMark;Target_Jump;Target_LesserRestoration;Target_Longstrider;Target_Moonbeam;Target_ProtectionFromPoison;Target_Silence;Target_SpikeGrowth;Zone_GustOfWind" />
+                    <attribute id="Spells" type="LSString" value="Shout_FlameBlade;Shout_PassWithoutTrace;Target_Barkskin;Target_Darkvision;Target_EnhanceAbility;Target_FlamingSphere;Target_HeatMetal;Target_HoldPerson;Target_LesserRestoration;Target_Moonbeam;Target_ProtectionFromPoison;Target_Silence;Target_SpikeGrowth;Zone_GustOfWind" />
                     <attribute id="UUID" type="guid" value="4021cc73-39e1-882d-9c90-21ec7d48df41" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Ranger level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_EnsnaringStrike_Container;Projectile_HailOfThorns;Projectile_LightningArrow;Shout_PassWithoutTrace;Shout_SpeakWithAnimals;Target_AnimalFriendship;Target_Barkskin;Target_CallLightning;Target_Counterspell;Target_CureWounds;Target_Darkvision;Target_Daylight_Container;Target_FeignDeath;Target_FogCloud;Target_Goodberry;Target_HuntersMark;Target_Jump;Target_LesserRestoration;Target_Longstrider;Target_PlantGrowth;Target_ProtectionFromEnergy;Target_ProtectionFromPoison;Target_Silence;Target_SleetStorm;Target_SpikeGrowth;Zone_ConjureBarrage" />
+                    <attribute id="Spells" type="LSString" value="Projectile_LightningArrow;Target_CallLightning;Target_Counterspell;Target_Daylight_Container;Target_FeignDeath;Target_PlantGrowth;Target_ProtectionFromEnergy;Target_SleetStorm;Zone_ConjureBarrage" />
                     <attribute id="UUID" type="guid" value="927521db-9cdc-b147-e29b-5fff6026e9df" />
                 </node>
                 <node id="SpellList">

@@ -434,9 +434,7 @@ def add_rituals_potion() -> str:
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Poison_Malice",
         boosts=[
-            "UnlockSpell(Target_Guidance)",
-            "UnlockSpell(Target_Resistance)",
-            *[f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells],
+            f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells
         ],
     )
 
@@ -693,12 +691,12 @@ base_underwear = [
 ]
 
 dyes = [dye for dye in base_dyes]
-# agility_potion = add_agility_potion()
+agility_potion = add_agility_potion()
 bolster_potion = add_bolster_potion()
 flying_potion = add_flying_potion()
 overpowering_potion = add_overpowering_potion()
 pack_mule_potion = add_pack_mule_potion()
-# persuasion_potion = add_persuasion_potion()
+persuasion_potion = add_persuasion_potion()
 rituals_potion = add_rituals_potion()
 warding_potion = add_warding_potion()
 
@@ -744,6 +742,8 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_{agility_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{flying_potion}",1,0,0,0,0,0,0,0
@@ -751,6 +751,8 @@ new subtable "1,1"
 object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{persuasion_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{rituals_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"

@@ -3,4 +3,6 @@
 <contentList>
     <content contentuid="h4190e679gf29fg6023gd699gd26c3d0b68fb" version="1">Fast Movement</content>
     <content contentuid="hf79c2f43g4206g7f60gf097ge7016a1b1038" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h7b63a731g9febg386fg7f1fg0e27e32471b1" version="1">Holy Warrior</content>
+    <content contentuid="ha60cabddgc134gcb87g2294g4d1dfd2acddb" version="1">Your &lt;LSTag Tooltip="HitPoints"&gt;hit point&lt;/LSTag&gt; maximum increases by 1 for each Cleric level.</content>
 </contentList>

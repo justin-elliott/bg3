@@ -190,7 +190,7 @@
                     <attribute id="UUID" type="guid" value="e209aba2-bb27-4416-af41-09ce37b7f08f" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,3,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(SavingThrow,Constitution);IncreaseMaxHP(ClassLevel(Cleric))" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,6,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(SavingThrow,Constitution);IncreaseMaxHP(ClassLevel(Cleric))" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WarPriest;HolyWarrior_FastMovement_30" />
@@ -224,7 +224,7 @@
                     <attribute id="UUID" type="guid" value="4e1518d7-4f10-12b4-877d-193c598d9e2f" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,1,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="HolyWarrior_FastMovement_45;ExtraAttack" />
@@ -252,7 +252,7 @@
                     <attribute id="UUID" type="guid" value="a6de4198-b729-4105-a2da-163b925508c3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,1,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="Divine_Strike_War_Toggle" />
@@ -279,7 +279,7 @@
                     <attribute id="UUID" type="guid" value="53905c06-0af1-4c5d-a624-1074a7cb8d44" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,1,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />

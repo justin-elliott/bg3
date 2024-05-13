@@ -18,8 +18,8 @@ from modtools.lsx.game import (
     CharacterClass,
     SpellList,
 )
-from modtools.lsx.game import Progression
-from modtools.replacers import Replacer, progression
+from modtools.lsx.game import Origin, Progression, ProgressionDescription
+from modtools.replacers import Replacer, origin, progression
 
 
 class HolyWarrior(Replacer):
@@ -150,15 +150,20 @@ class HolyWarrior(Replacer):
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
 
+    @origin("Shadowheart")
+    def shadowheart(self, origin: Origin) -> None:
+        origin.LockClass = None
+
     @progression(CharacterClass.CLERIC, range(1, 13))
     @progression(CharacterClass.CLERIC, 1, is_multiclass=True)
     def level_1_to_12_cleric(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
-        multiply_resources(progression,
-                           [ActionResource.CHANNEL_DIVINITY_CHARGES,
-                            ActionResource.WAR_PRIEST_CHARGES],
-                           self._args.actions)
+        multiply_resources(progression, [ActionResource.CHANNEL_DIVINITY_CHARGES], self._args.actions)
+
+    @progression(CharacterClass.CLERIC_WAR, range(1, 13))
+    def level_1_to_12_war_domain(self, progression: Progression) -> None:
+        multiply_resources(progression, [ActionResource.WAR_PRIEST_CHARGES], self._args.actions)
 
     @progression(CharacterClass.CLERIC_WAR, 1)
     def level_1(self, progression: Progression) -> None:
@@ -169,6 +174,18 @@ class HolyWarrior(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._fast_movement_30,
         ]
+        loca = self.mod.get_localization()
+        loca[f"{self.mod.get_prefix()}_DisplayName"] = {"en": "Holy Warrior"}
+        loca[f"{self.mod.get_prefix()}_Description"] = {"en": """
+            Your <LSTag Tooltip="HitPoints">hit point</LSTag> maximum increases by 1 for each Cleric level.
+            """}
+        self.mod.add(ProgressionDescription(
+            DisplayName=loca[f"{self.mod.get_prefix()}_DisplayName"],
+            Description=loca[f"{self.mod.get_prefix()}_Description"],
+            ExactMatch="IncreaseMaxHP(ClassLevel(Cleric))",
+            ProgressionId=progression.UUID,
+            UUID=self.mod.make_uuid("IncreaseMaxHP"),
+        ))
 
     @progression(CharacterClass.CLERIC_WAR, 2)
     def level_2(self, progression: Progression) -> None:

@@ -217,6 +217,7 @@
                     <attribute id="UUID" type="guid" value="59fd6b2d-dcf6-4aa2-a439-22700f68b68b" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -252,7 +253,7 @@
                     <attribute id="UUID" type="guid" value="a6de4198-b729-4105-a2da-163b925508c3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,2,0);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="Divine_Strike_War_Toggle" />
@@ -272,6 +273,7 @@
                     <attribute id="UUID" type="guid" value="3939ff20-9ff5-43f0-bc1b-34bc4e4018db" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -288,7 +290,7 @@
                     <attribute id="UUID" type="guid" value="247968f5-8b1a-4ff0-8ec0-a1cbea4b8aa6" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(ChannelDivinity,2,0)" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />

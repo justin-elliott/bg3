@@ -203,7 +203,9 @@ class HolyWarrior(Replacer):
 
     @progression(CharacterClass.CLERIC_WAR, 4)
     def level_4(self, progression: Progression) -> None:
-        pass
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(ChannelDivinity,{self._args.actions},0)",
+        ]
 
     @progression(CharacterClass.CLERIC_WAR, 5)
     def level_5(self, progression: Progression) -> None:
@@ -235,7 +237,9 @@ class HolyWarrior(Replacer):
 
     @progression(CharacterClass.CLERIC_WAR, 8)
     def level_8(self, progression: Progression) -> None:
-        pass
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(ChannelDivinity,{self._args.actions},0)",
+        ]
 
     @progression(CharacterClass.CLERIC_WAR, 9)
     def level_9(self, progression: Progression) -> None:
@@ -248,7 +252,9 @@ class HolyWarrior(Replacer):
 
     @progression(CharacterClass.CLERIC_WAR, 10)
     def level_10(self, progression: Progression) -> None:
-        pass
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(ChannelDivinity,{self._args.actions},0)",
+        ]
 
     @progression(CharacterClass.CLERIC_WAR, 11)
     def level_11(self, progression: Progression) -> None:
@@ -260,6 +266,7 @@ class HolyWarrior(Replacer):
     def level_12(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
             f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
+            f"ActionResource(ChannelDivinity,{self._args.actions},0)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "BrutalCritical",

@@ -10,6 +10,16 @@
                     <attribute id="Spells" type="LSString" value="Target_Counterspell" />
                     <attribute id="UUID" type="guid" value="96208b9f-a8bd-cc4c-ea83-a6e655d530b0" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="War Domain Cleric Aura of Protection" />
+                    <attribute id="Spells" type="LSString" value="HolyWarrior_AuraOfProtection" />
+                    <attribute id="UUID" type="guid" value="787e251a-c043-a2c0-efc5-51d8f19ff89a" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="War Domain Cleric Aura of Warding" />
+                    <attribute id="Spells" type="LSString" value="HolyWarrior_AuraOfWarding" />
+                    <attribute id="UUID" type="guid" value="989ee559-d169-4efc-34a2-0c1eba26960c" />
+                </node>
             </children>
         </node>
     </region>

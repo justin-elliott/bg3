@@ -12,6 +12,7 @@ from moddb import (
     Movement,
     multiply_resources,
 )
+from modtools.gamedata import SpellData, StatusData
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -28,6 +29,8 @@ class HolyWarrior(Replacer):
         spells: int   # Multiplier for spell slots
         actions: int  # Multiplier for other action resources (Channel Divinity, War Priest charges)
 
+    AURA_RADIUS = 9
+
     _args: Args
     _feat_levels: set[int]
 
@@ -35,6 +38,93 @@ class HolyWarrior(Replacer):
     _fast_movement_30: str
     _fast_movement_45: str
     _fast_movement_60: str
+
+    @cached_property
+    def _aura_of_protection(self) -> SpellList:
+        shout_name = f"{self.mod.get_prefix()}_AuraOfProtection"
+        status_name = shout_name.upper()
+
+        boosts = [
+            "RollBonus(SavingThrow,max(1,Cause.WisdomModifier))",
+            "RollBonus(DeathSavingThrow,max(1,Cause.WisdomModifier))",
+        ]
+
+        self.mod.add(SpellData(
+            shout_name,
+            using="Shout_AuraOf_Protection",
+            SpellType="Shout",
+            AreaRadius=self.AURA_RADIUS,
+            SpellProperties=f"ApplyStatus({status_name},100,-1)",
+            DescriptionParams="max(1,WisdomModifier)",
+            TooltipStatusApply=f"ApplyStatus({status_name},100,-1)",
+            RequirementConditions=f"not HasStatus('{status_name}')",
+        ))
+
+        self.mod.add(StatusData(
+            status_name,
+            using="AURA_OF_PROTECTION",
+            StatusType="BOOST",
+            DescriptionParams="max(1,Cause.WisdomModifier)",
+            AuraRadius=self.AURA_RADIUS,
+            AuraStatuses=f"IF(Ally() and not Tagged('INANIMATE')):ApplyStatus({status_name}_BUFF)",
+            Boosts=boosts,
+        ))
+
+        self.mod.add(StatusData(
+            f"{status_name}_BUFF",
+            using="AURA_OF_PROTECTION_BUFF",
+            StatusType="BOOST",
+            DescriptionParams=[
+                f"Distance({self.AURA_RADIUS})",
+                "max(1,Cause.WisdomModifier)",
+            ],
+            Boosts=boosts,
+        ))
+
+        spells = SpellList(
+            Comment="War Domain Cleric Aura of Protection",
+            Spells=[shout_name],
+            UUID=self.make_uuid(shout_name),
+        )
+        self.mod.add(spells)
+        return spells
+
+    @cached_property
+    def _aura_of_warding(self) -> SpellList:
+        shout_name = f"{self.mod.get_prefix()}_AuraOfWarding"
+        status_name = shout_name.upper()
+
+        self.mod.add(SpellData(
+            shout_name,
+            using="Shout_AuraOf_Warding",
+            SpellType="Shout",
+            AreaRadius=self.AURA_RADIUS,
+            SpellProperties=f"ApplyStatus({status_name},100,-1)",
+            TooltipStatusApply=f"ApplyStatus({status_name},100,-1)",
+            RequirementConditions=f"not HasStatus('{status_name}')",
+        ))
+
+        self.mod.add(StatusData(
+            status_name,
+            using="AURA_OF_WARDING",
+            StatusType="BOOST",
+            AuraRadius=self.AURA_RADIUS,
+        ))
+
+        self.mod.add(StatusData(
+            f"{status_name}_BUFF",
+            using="AURA_OF_WARDING_BUFF",
+            StatusType="BOOST",
+            DescriptionParams=f"Distance({self.AURA_RADIUS})",
+        ))
+
+        spells = SpellList(
+            Comment="War Domain Cleric Aura of Warding",
+            Spells=[shout_name],
+            UUID=self.make_uuid(shout_name),
+        )
+        self.mod.add(spells)
+        return spells
 
     @cached_property
     def _counterspell(self) -> SpellList:
@@ -74,6 +164,7 @@ class HolyWarrior(Replacer):
     def level_1(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
             "ProficiencyBonus(SavingThrow,Constitution)",
+            "IncreaseMaxHP(ClassLevel(Cleric))",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._fast_movement_30,
@@ -115,10 +206,15 @@ class HolyWarrior(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "ImprovedCritical",
         ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._aura_of_protection.UUID},,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.CLERIC_WAR, 7)
     def level_7(self, progression: Progression) -> None:
-        pass
+        progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._aura_of_warding.UUID},,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.CLERIC_WAR, 8)
     def level_8(self, progression: Progression) -> None:

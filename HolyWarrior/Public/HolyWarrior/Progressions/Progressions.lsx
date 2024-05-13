@@ -190,7 +190,7 @@
                     <attribute id="UUID" type="guid" value="e209aba2-bb27-4416-af41-09ce37b7f08f" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,3,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(SavingThrow,Constitution)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarPriestActionPoint,3,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(SavingThrow,Constitution);IncreaseMaxHP(ClassLevel(Cleric))" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WarPriest;HolyWarrior_FastMovement_30" />
@@ -239,6 +239,7 @@
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WarGodsBlessing;ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(787e251a-c043-a2c0-efc5-51d8f19ff89a,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
                     <attribute id="UUID" type="guid" value="ae84bf7c-cfc4-4fcc-a736-8ef20a8b976c" />
                 </node>
@@ -246,7 +247,7 @@
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="WarDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(4c779ace-7ff1-461c-abc4-13182424b89a,ClericWarDomainSpells,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(4c779ace-7ff1-461c-abc4-13182424b89a,ClericWarDomainSpells,,,AlwaysPrepared);AddSpells(989ee559-d169-4efc-34a2-0c1eba26960c,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="8f6048bc-47b8-49fa-956a-8a364807f6ec" />
                     <attribute id="UUID" type="guid" value="a6de4198-b729-4105-a2da-163b925508c3" />
                 </node>

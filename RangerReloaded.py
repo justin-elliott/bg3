@@ -207,7 +207,6 @@ class RangerReloaded(Replacer):
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
             f"SelectSpells({self._cantrips.UUID},2,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self._cantrips.UUID},2,0,,,,AlwaysPrepared)",
             f"AddSpells({self._level_1_spells.UUID})",
         ]
 

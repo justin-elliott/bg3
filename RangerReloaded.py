@@ -351,7 +351,6 @@ class RangerReloaded(Replacer):
     @progression(CharacterClass.RANGER_HUNTER, 5)
     def level_5_hunter(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "FastHands",
             "ImprovedCritical",
         ]
         progression.Selectors = (progression.Selectors or []) + [

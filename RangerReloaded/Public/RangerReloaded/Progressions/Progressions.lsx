@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Ranger" />
                     <attribute id="PassivesAdded" type="LSString" value="RangerReloaded_FastMovement_30;UnlockedSpellSlotLevel1" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(9e31661e-4c14-499d-98ca-9e00b20faf07,3);SelectPassives(d0f13dda-eb37-41f5-aea5-2683f0229e2e,1,FavoredEnemy);SelectPassives(72c63024-60af-486e-a180-c7aeee5d77c1,1,NaturalExplorer);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSpells(c858343b-e2bf-dd9b-9b99-b216c67921cd,2,0,,,,AlwaysPrepared);AddSpells(3a4d263d-d0f2-b8cc-67d1-b528f8bd2f62)" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(d0f13dda-eb37-41f5-aea5-2683f0229e2e,1,FavoredEnemy);SelectPassives(72c63024-60af-486e-a180-c7aeee5d77c1,1,NaturalExplorer);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSpells(c858343b-e2bf-dd9b-9b99-b216c67921cd,2,0,,,,AlwaysPrepared);SelectSpells(c858343b-e2bf-dd9b-9b99-b216c67921cd,2,0,,,,AlwaysPrepared);AddSpells(3a4d263d-d0f2-b8cc-67d1-b528f8bd2f62)" />
                     <attribute id="TableUUID" type="guid" value="8f068974-ed32-43fc-a9d9-028be1c01a9c" />
                     <attribute id="UUID" type="guid" value="ad1084b1-b99f-6720-cfdd-cf82ad44345b" />
                 </node>
@@ -151,25 +151,52 @@
                     <attribute id="UUID" type="guid" value="0bf247c5-2217-409e-8f88-eee095448f32" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Hunter" />
+                    <attribute id="PassivesAdded" type="LSString" value="ColossusSlayer;GiantKiller;HordeBreaker" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
+                    <attribute id="UUID" type="guid" value="c38e8775-d886-49d8-ba53-0b70a9fbe306" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Hunter" />
+                    <attribute id="PassivesAdded" type="LSString" value="FastHands;ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(2c1243b1-eb2c-6c99-3177-c9dc976e09cc,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
                     <attribute id="UUID" type="guid" value="16b50b46-f62a-4ca1-e7f9-0643f3b681be" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="Hunter" />
+                    <attribute id="PassivesAdded" type="LSString" value="EscapeTheHorde;SteelWill;MultiattackDefense" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
+                    <attribute id="UUID" type="guid" value="b998b7f5-335a-47d8-b026-438f0ea10b4c" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
                     <attribute id="UUID" type="guid" value="7a5e8782-f115-2bf9-d25f-8cb91e481199" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Hunter" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a)" />
+                    <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
+                    <attribute id="UUID" type="guid" value="6b85e5f7-73d9-4a4b-97a6-7fd4d7df0d66" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="Hunter" />
-                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="b19bc1ec-d7ee-4023-9f58-5056fd99be24" />
                     <attribute id="UUID" type="guid" value="01d9c3ca-0989-0666-1665-4727962d5e34" />

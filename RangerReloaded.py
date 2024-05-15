@@ -51,6 +51,9 @@ class RangerReloaded(Replacer):
     _fast_movement_45: str
     _fast_movement_60: str
 
+    # Spells
+    _misty_step: str
+
     @cached_property
     def _cantrips(self) -> SpellList:
         cantrips = SpellList(
@@ -136,6 +139,16 @@ class RangerReloaded(Replacer):
         self.mod.add(spells)
         return spells
 
+    @cached_property
+    def _misty_step_spell_list(self) -> SpellList:
+        spells = SpellList(
+            Comment="Hunter misty step",
+            Spells=[self._misty_step],
+            UUID=self.make_uuid(self._misty_step),
+        )
+        self.mod.add(spells)
+        return spells
+
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -145,10 +158,15 @@ class RangerReloaded(Replacer):
         self._args = args
         self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
 
+        movement = Movement(self.mod)
+
         # Passives
-        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
-        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
-        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
+        self._fast_movement_30 = movement.add_fast_movement(3.0)
+        self._fast_movement_45 = movement.add_fast_movement(4.5)
+        self._fast_movement_60 = movement.add_fast_movement(6.0)
+
+        # Spells
+        self._misty_step = movement.add_misty_step()
 
     @class_description(CharacterClass.RANGER)
     @class_description(CharacterClass.RANGER_BEASTMASTER)
@@ -184,7 +202,11 @@ class RangerReloaded(Replacer):
             self._fast_movement_30,
             "UnlockedSpellSlotLevel1",
         ]
-        progression.Selectors = (progression.Selectors or []) + [
+        progression.Selectors = [
+            *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills")],
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            f"SelectSpells({self._cantrips.UUID},2,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._cantrips.UUID},2,0,,,,AlwaysPrepared)",
             f"AddSpells({self._level_1_spells.UUID})",
         ]
@@ -317,22 +339,54 @@ class RangerReloaded(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
         ]
 
+    @progression(CharacterClass.RANGER_HUNTER, 3)
+    def level_3_hunter(self, progression: Progression) -> None:
+        progression.PassivesAdded = [
+            "ColossusSlayer",
+            "GiantKiller",
+            "HordeBreaker",
+        ]
+        progression.Selectors = None
+
     @progression(CharacterClass.RANGER_HUNTER, 5)
     def level_5_hunter(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "FastHands",
+            "ImprovedCritical",
+        ]
         progression.Selectors = (progression.Selectors or []) + [
+            f"AddSpells({self._misty_step_spell_list.UUID},,,,AlwaysPrepared)",
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
         ]
+
+    @progression(CharacterClass.RANGER_HUNTER, 7)
+    def level_7_hunter(self, progression: Progression) -> None:
+        progression.PassivesAdded = [
+            "EscapeTheHorde",
+            "SteelWill",
+            "MultiattackDefense",
+        ]
+        progression.Selectors = None
 
     @progression(CharacterClass.RANGER_HUNTER, 9)
     def level_9_hunter(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "ImprovedCritical",
+            "BrutalCritical",
+        ]
+
+    @progression(CharacterClass.RANGER_HUNTER, 11)
+    def level_11_hunter(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ExtraAttack_2",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            "ExtraAttack",
         ]
 
     @progression(CharacterClass.RANGER_HUNTER, 12)
     def level_12_hunter(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "BrutalCritical",
+            "ReliableTalent",
         ]
 
 

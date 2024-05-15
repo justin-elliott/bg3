@@ -40,6 +40,11 @@
                     <attribute id="Spells" type="LSString" value="Shout_HeroesFeast;Shout_WindWalk;Target_Heal;Wall_WallOfThorns;Zone_Sunbeam" />
                     <attribute id="UUID" type="guid" value="a458ec45-2bf4-15d6-27eb-bc6401172863" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Hunter misty step" />
+                    <attribute id="Spells" type="LSString" value="RangerReloaded_MistyStep" />
+                    <attribute id="UUID" type="guid" value="2c1243b1-eb2c-6c99-3177-c9dc976e09cc" />
+                </node>
             </children>
         </node>
     </region>

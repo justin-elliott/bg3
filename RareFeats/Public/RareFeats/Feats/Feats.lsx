@@ -77,6 +77,11 @@
                     <attribute id="UUID" type="guid" value="bf0bdace-f36c-d316-dd36-9de499eec73f" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_Volley" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)" />
+                    <attribute id="UUID" type="guid" value="7a4ce2cd-1d59-95fc-7267-6fe08aa44f52" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_WeaponMaster" />
                     <attribute id="PassivesAdded" type="LSString" value="WeaponMaster" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies)" />

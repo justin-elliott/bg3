@@ -588,6 +588,32 @@ def tavern_brawler_feat() -> None:
 
 
 @iife
+def volley_feat() -> None:
+    """Volley and Whirlwind from the Ranger Hunter subclass."""
+    volley_uuid = rare_feats.make_uuid("RareFeats_Volley")
+
+    loca["RareFeats_Volley_DisplayName"] = {"en": "Rare Feats: Volley"}
+    loca["RareFeats_Volley_Description"] = {"en": """
+        You gain the <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag> and
+        <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag> abilities.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_Volley_DisplayName"],
+        Description=loca["RareFeats_Volley_Description"],
+        ExactMatch="RareFeats_Volley",
+        FeatId=volley_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_Volley"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_Volley",
+        Selectors=["AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a,,,,AlwaysPrepared)"],
+        UUID=volley_uuid,
+    ))
+
+
+@iife
 def weapon_master_feat() -> None:
     """Weapon Master without the ASI."""
     weapon_master_uuid = rare_feats.make_uuid("RareFeats_WeaponMaster")

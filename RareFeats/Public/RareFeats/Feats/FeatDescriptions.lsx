@@ -97,6 +97,13 @@
                     <attribute id="UUID" type="guid" value="03aa37d0-d378-5420-2dfb-e470e11a3855" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hcdf3a30agaa59g5505g5f6fg7bf760748254" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2aa8fd9egfc0cg798eg8cc4g807ee017404c" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_Volley" />
+                    <attribute id="FeatId" type="guid" value="7a4ce2cd-1d59-95fc-7267-6fe08aa44f52" />
+                    <attribute id="UUID" type="guid" value="a83ac161-247b-9ccc-d5d7-fabd577f1076" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h702d115ag660fga66cg6151gf37ce87cf6ac" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_WeaponMaster" />

@@ -62,6 +62,8 @@
     <content contentuid="h55c33afbg4fafg7bf1ge76dgb98278156857" version="1">Increase your Constitution by 1, to a maximum of 30.</content>
     <content contentuid="hc1c143f6g5ca4gfb4fg34d5g476efe0c0813" version="1">Rare Feats: Tavern Brawler</content>
     <content contentuid="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1">When you make an unarmed attack, use an improvised weapon, or throw something, your Strength &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
+    <content contentuid="h2aa8fd9egfc0cg798eg8cc4g807ee017404c" version="1">Rare Feats: Volley</content>
+    <content contentuid="hcdf3a30agaa59g5505g5f6fg7bf760748254" version="1">You gain the &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt; abilities.</content>
     <content contentuid="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1">Rare Feats: Weapon Master</content>
     <content contentuid="h702d115ag660fga66cg6151gf37ce87cf6ac" version="1">You gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; with four weapons of your choice.</content>
 </contentList>

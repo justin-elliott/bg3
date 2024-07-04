@@ -390,8 +390,8 @@ class RangerReloaded(Replacer):
 
 def main():
     parser = argparse.ArgumentParser(description="Enhancements for the Ranger class.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
-                        help="Feat progression every n levels (defaulting to 2; feat every other level)")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
+                        help="Feat progression every n levels (defaulting to 1; feat every level)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     args = RangerReloaded.Args(**vars(parser.parse_args()))

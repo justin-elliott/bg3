@@ -37,6 +37,7 @@
                     <attribute id="UUID" type="guid" value="b9c3b0e1-38e6-4383-90d5-cb7e65348474" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Ranger" />
@@ -72,6 +73,7 @@
                     <attribute id="UUID" type="guid" value="69c0c0a3-d22a-4f5e-ac64-3a972b58d848" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Ranger" />
@@ -93,6 +95,7 @@
                     <attribute id="UUID" type="guid" value="774f7a73-3a29-404c-898b-e8810f41a8ba" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Ranger" />
@@ -112,6 +115,7 @@
                     <attribute id="UUID" type="guid" value="12b9a506-33c9-4dcf-81a1-ab8df2023e8e" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Ranger" />
@@ -133,6 +137,7 @@
                     <attribute id="UUID" type="guid" value="26e69682-2b1b-48c5-ad8d-6e6e31601a8b" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Ranger" />

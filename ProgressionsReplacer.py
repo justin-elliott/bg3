@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates files for the "Pyromancy" mod.
+Generates files for the "ProgressionsReplacer" mod.
 """
 
 import argparse
@@ -124,7 +124,7 @@ def level_list(s: str) -> set[int]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="A replacer for Wild Magic Sorcery.")
+    parser = argparse.ArgumentParser(description="A replacer for class progressions.")
     parser.add_argument("-n", "--name", type=str, default=None,
                         help="Progression name (optional)")
     parser.add_argument("-c", "--classes", type=class_list, default=set(),

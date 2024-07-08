@@ -410,8 +410,8 @@ def metamagic_feat() -> None:
         Description=loca["RareFeats_SorceryPoints_Description"],
         Icon="statIcons_WildMagic_SorceryPoints",
         Boosts=[
-            "ActionResource(SorceryPoint,2,0)",
-            *[f"IF(CharacterLevelRange({level},12)):ActionResource(SorceryPoint,2,0)" for level in range(2, 13)],
+            "ActionResource(SorceryPoint,3,0)",
+            *[f"IF(CharacterLevelRange({level},12)):ActionResource(SorceryPoint,3,0)" for level in range(2, 13)],
         ],
         Properties=["IsHidden"],
     ))

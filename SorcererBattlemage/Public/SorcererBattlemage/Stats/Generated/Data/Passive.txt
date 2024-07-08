@@ -6,7 +6,7 @@ data "Conditions" "IsWeaponAttack() or IsUnarmedAttack()"
 data "Description" "h92eb7a05g1410g7f31gb726gf7b549fc0148"
 data "DisplayName" "h38bce3dcgf99fgb440gb017g56e48188d693"
 data "Icon" "PassiveFeature_WarMagic"
-data "Properties" "Highlighted"
+data "Properties" "Highlighted;OncePerTurn"
 data "StatsFunctorContext" "OnAttack"
 data "StatsFunctors" "ApplyStatus(SELF,SORCERERBATTLEMAGE_BATTLEMAGIC,100,1)"
 

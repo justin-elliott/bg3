@@ -6,6 +6,7 @@ Movement-related spells and passives for Baldur's Gate 3 mods.
 from functools import cached_property
 from modtools.gamedata import PassiveData, SpellData
 from modtools.mod import Mod
+from typing import Optional
 
 
 class Movement:
@@ -34,12 +35,12 @@ class Movement:
             """}
         return loca[description]
 
-    def add_fast_movement(self, meters_per_round: float) -> str:
+    def add_fast_movement(self, meters_per_round: float, display_name: Optional[str] = None) -> str:
         """Add a fast movement passive, returning its name."""
         name = f"{self._mod.get_prefix()}_FastMovement_{int(meters_per_round*10)}"
         self._mod.add(PassiveData(
             name,
-            DisplayName=self._fast_movement_display_name,
+            DisplayName=display_name or self._fast_movement_display_name,
             Description=self._fast_movement_description,
             DescriptionParams=[f"Distance({meters_per_round})"],
             Icon="PassiveFeature_FastMovement",

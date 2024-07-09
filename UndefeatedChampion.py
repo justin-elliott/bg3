@@ -225,6 +225,7 @@ class UndefeatedChampion(Replacer):
     @progression(CharacterClass.FIGHTER_CHAMPION, 12)
     def level_12(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ReliableTalent",
         ]
         progression.Selectors = (progression.Selectors or []) + [
         ]

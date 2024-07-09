@@ -148,7 +148,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="Champion" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />

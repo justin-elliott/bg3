@@ -174,6 +174,7 @@ class UndefeatedChampion(Replacer):
     @progression(CharacterClass.FIGHTER_CHAMPION, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "UncannyDodge",
         ]
         progression.Selectors = (progression.Selectors or []) + [
         ]
@@ -189,6 +190,7 @@ class UndefeatedChampion(Replacer):
     @progression(CharacterClass.FIGHTER_CHAMPION, 7)
     def level_7(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "Evasion",
         ]
         progression.Selectors = (progression.Selectors or []) + [
         ]

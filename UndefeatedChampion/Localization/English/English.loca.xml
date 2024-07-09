@@ -4,4 +4,7 @@
     <content contentuid="heb569575g1a43g6485gfc87g431821978407" version="1">Remarkable Athlete: Run</content>
     <content contentuid="hccc287e9g112dgd460g0daagc2eb3b5ee27b" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h89598554g1f1fg3a68g65b1gd7eb320a9ccd" version="1">Brutal Cleave</content>
+    <content contentuid="hac54a550g6a47g23c0gba9fg7cef8289c2e7" version="1">Mighty Throw</content>
+    <content contentuid="hcbe2d076g21a6ge74cgbf94g6d516749494b" version="1">Precise Attacks</content>
+    <content contentuid="h035fdc0ag957eg77f3g8edaga33e6d65b27c" version="1">When you make a melee attack, your Strength &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
 </contentList>

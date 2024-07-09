@@ -16,18 +16,67 @@
                     <attribute id="UUID" type="guid" value="dfb2fd83-9849-4c2d-be84-adedb81a867a" />
                 </node>
                 <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="2" />
+                    <attribute id="Name" type="LSString" value="Fighter" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8)" />
+                    <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
+                    <attribute id="UUID" type="guid" value="aafbbc41-16e8-4296-a283-a2c5fdd0625b" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Fighter" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
+                    <attribute id="UUID" type="guid" value="23eacff0-9efe-4ea6-b031-19075cc96b63" />
+                    <children>
+                        <node id="SubClasses">
+                            <children>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="e668c6f1-5149-4b10-ab7e-3637ed444066" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="b722614a-303f-411a-bb19-a1882ad1f4cc" />
+                                </node>
+                                <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="0a01dc6b-ab1a-4c0e-8a5e-4787fe1f2caf" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="Fighter" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
+                    <attribute id="UUID" type="guid" value="3b20daaa-91e3-45ec-ad66-69763bc5ab2d" />
+                </node>
+                <node id="Progression">
+                    <attribute id="AllowImprovement" type="bool" value="true" />
+                    <attribute id="Level" type="uint8" value="10" />
+                    <attribute id="Name" type="LSString" value="Fighter" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
+                    <attribute id="UUID" type="guid" value="7535f41a-d360-4adc-8166-9d2e29660b1d" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Champion" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;UndefeatedChampion_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(5f50a71a-8dc0-f141-9140-37b02fb3593c)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(b8a2e309-f481-dd52-9c1f-9ce573b0cb72)" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />
                     <attribute id="UUID" type="guid" value="cbd87913-03ee-484b-bc62-57d6867e8aca" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Champion" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="FeralInstinct" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />
@@ -45,7 +94,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Champion" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="UndefeatedChampion_PreciseAttacks" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />
@@ -72,7 +121,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Champion" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="9b2ff703-7924-4a66-b119-ae4d716a4522" />

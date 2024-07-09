@@ -6,9 +6,9 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Champion Brutal Cleave" />
-                    <attribute id="Spells" type="LSString" value="UndefeatedChampion_BrutalCleave" />
-                    <attribute id="UUID" type="guid" value="5f50a71a-8dc0-f141-9140-37b02fb3593c" />
+                    <attribute id="Comment" type="LSString" value="Champion level 3 abilities" />
+                    <attribute id="Spells" type="LSString" value="UndefeatedChampion_BrutalCleave;UndefeatedChampion_MightyThrow;Shout_WeaponBond" />
+                    <attribute id="UUID" type="guid" value="b8a2e309-f481-dd52-9c1f-9ce573b0cb72" />
                 </node>
             </children>
         </node>

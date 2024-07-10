@@ -42,7 +42,7 @@ class UndefeatedChampion(Replacer):
             twice to the <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
             """}
 
-        precise_attacks = PassiveData(
+        self.mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
@@ -51,8 +51,7 @@ class UndefeatedChampion(Replacer):
             Boosts=[
                 "IF(IsMeleeAttack()):RollBonus(Attack,StrengthModifier)",
             ],
-        )
-        self.mod.add(precise_attacks)
+        ))
 
         return name
 
@@ -63,7 +62,7 @@ class UndefeatedChampion(Replacer):
         name = f"{self._mod.get_prefix()}_BrutalCleave"
         loca[name] = {"en": "Brutal Cleave"}
 
-        cleave = SpellData(
+        self.mod.add(SpellData(
             name,
             using="Zone_Cleave",
             SpellType="Zone",
@@ -75,8 +74,7 @@ class UndefeatedChampion(Replacer):
             TooltipDamageList=[
                 "DealDamage(MainMeleeWeapon,MainWeaponDamageType)",
             ],
-        )
-        self.mod.add(cleave)
+        ))
 
         return name
 
@@ -87,36 +85,44 @@ class UndefeatedChampion(Replacer):
         name = f"{self._mod.get_prefix()}_MightyThrow"
         loca[name] = {"en": "Mighty Throw"}
 
-        mighty_throw = SpellData(
+        self.mod.add(SpellData(
             name,
             using="Throw_FrenziedThrow",
             SpellType="Throw",
             DisplayName=loca[name],
             RequirementConditions=[],
-        )
-        self.mod.add(mighty_throw)
+        ))
 
         return name
 
-    def _permanent_weapon_bond(self) -> None:
-        name = "WEAPON_BOND"
-        weapon_bond = StatusData(
+    @cached_property
+    def _weapon_bond(self) -> str:
+        name = f"{self.mod.get_prefix()}_WeaponBond"
+        self.mod.add(SpellData(
             name,
-            using=name,
+            using="Shout_WeaponBond",
+            SpellType="Shout",
+            SpellProperties=f"ApplyEquipmentStatus(MainHand,{name.upper()},100,-1)",
+            TooltipStatusApply=f"ApplyStatus({name.upper()},100,-1)",
+            RequirementConditions=f"not Unarmed() and not Tagged('{name.upper()}',GetActiveWeapon())",
+        ))
+        self.mod.add(StatusData(
+            name.upper(),
+            using="WEAPON_BOND",
             StatusType="BOOST",
             StatusPropertyFlags=["IgnoreResting"],
-        )
-        self.mod.add(weapon_bond)
+            StackId=name.upper(),
+        ))
+        return name
 
     @cached_property
     def _level_3_spell_list(self) -> SpellList:
-        self._permanent_weapon_bond()
         spells = SpellList(
             Comment="Champion level 3 abilities",
             Spells=[
                 self._cleave_spell,
                 self._mighty_throw_spell,
-                "Shout_WeaponBond",
+                self._weapon_bond,
             ],
             UUID=self.make_uuid("Champion level 3 abilities"),
         )

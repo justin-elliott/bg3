@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Champion level 3 abilities" />
-                    <attribute id="Spells" type="LSString" value="UndefeatedChampion_BrutalCleave;UndefeatedChampion_MightyThrow;UndefeatedChampion_WeaponBond" />
+                    <attribute id="Spells" type="LSString" value="UndefeatedChampion_BrutalCleave;UndefeatedChampion_MightyThrow" />
                     <attribute id="UUID" type="guid" value="b8a2e309-f481-dd52-9c1f-9ce573b0cb72" />
                 </node>
             </children>

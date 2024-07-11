@@ -9,7 +9,7 @@ import os
 from dataclasses import dataclass
 from functools import cached_property
 from moddb import Movement
-from modtools.gamedata import PassiveData, SpellData, StatusData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import CharacterClass, Progression, SpellList
 from modtools.replacers import progression, DontIncludeProgression, Replacer
 
@@ -96,33 +96,12 @@ class UndefeatedChampion(Replacer):
         return name
 
     @cached_property
-    def _weapon_bond(self) -> str:
-        name = f"{self.mod.get_prefix()}_WeaponBond"
-        self.mod.add(SpellData(
-            name,
-            using="Shout_WeaponBond",
-            SpellType="Shout",
-            SpellProperties=f"ApplyEquipmentStatus(MainHand,{name.upper()},100,-1)",
-            TooltipStatusApply=f"ApplyStatus({name.upper()},100,-1)",
-            RequirementConditions=f"not Unarmed() and not Tagged('{name.upper()}',GetActiveWeapon())",
-        ))
-        self.mod.add(StatusData(
-            name.upper(),
-            using="WEAPON_BOND",
-            StatusType="BOOST",
-            StatusPropertyFlags=["IgnoreResting"],
-            StackId=name.upper(),
-        ))
-        return name
-
-    @cached_property
     def _level_3_spell_list(self) -> SpellList:
         spells = SpellList(
             Comment="Champion level 3 abilities",
             Spells=[
                 self._cleave_spell,
                 self._mighty_throw_spell,
-                self._weapon_bond,
             ],
             UUID=self.make_uuid("Champion level 3 abilities"),
         )

@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Sorcerer cantrips" />
-                    <attribute id="Spells" type="LSString" value="Shout_BladeWard;Projectile_AcidSplash;Target_MageHand;Projectile_PoisonSpray;Target_TrueStrike;Target_Friends;Target_DancingLights;Projectile_FireBolt;Target_Light;Projectile_RayOfFrost;Target_ShockingGrasp;Target_MinorIllusion;Target_ChillTouch;Target_Guidance;SorcererBattlemage_StormBolt" />
+                    <attribute id="Spells" type="LSString" value="Shout_BladeWard;Projectile_AcidSplash;Target_MageHand;Projectile_PoisonSpray;Target_TrueStrike;Target_Friends;Target_DancingLights;Projectile_FireBolt;Target_Light;Projectile_RayOfFrost;Target_ShockingGrasp;Target_MinorIllusion;Target_ChillTouch;Target_Guidance;Target_Resistance;SorcererBattlemage_StormBolt" />
                     <attribute id="UUID" type="guid" value="485a68b4-c678-4888-be63-4a702efbe391" />
                 </node>
                 <node id="SpellList">
@@ -42,7 +42,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="SorcererBattlemage level 1 Storm Sorcery spells" />
-                    <attribute id="Spells" type="LSString" value="SorcererBattlemage_StormBolt" />
+                    <attribute id="Spells" type="LSString" value="Target_ShockingGrasp;SorcererBattlemage_StormBolt;Projectile_WitchBolt" />
                     <attribute id="UUID" type="guid" value="ebff5998-d0e4-869d-8f56-df2ac4ae6f71" />
                 </node>
             </children>

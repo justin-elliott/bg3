@@ -40,9 +40,10 @@ class SorcererBattlemage(Replacer):
     # Passives
     _battle_magic: str
     _empowered_spells: str
-    _fast_movement: str
+    _fast_movement_30: str
+    _fast_movement_45: str
+    _fast_movement_60: str
     _pack_mule: str
-    _unarmored_defense: str
     _warding: str
 
     # Spells
@@ -64,7 +65,7 @@ class SorcererBattlemage(Replacer):
         spell_list = str(self.make_uuid("level_1_storm_sorcery_spell_list"))
         self.mod.add(SpellList(
             Comment="SorcererBattlemage level 1 Storm Sorcery spells",
-            Spells=[self._storm_bolt],
+            Spells=["Target_ShockingGrasp", self._storm_bolt, "Projectile_WitchBolt"],
             UUID=spell_list,
         ))
         return spell_list
@@ -77,11 +78,13 @@ class SorcererBattlemage(Replacer):
 
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
-        self._fast_movement = Movement(self.mod).add_fast_movement(3.0)
         self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
 
+        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
+        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
+        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
+
         defense = Defense(self.mod)
-        self._unarmored_defense = defense.add_unarmored_defense(CharacterAbility.CHARISMA)
         self._warding = defense.add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
@@ -99,7 +102,7 @@ class SorcererBattlemage(Replacer):
 
     @spell_list("Sorcerer cantrips")
     def cantrips(self, spell_list: SpellList) -> None:
-        spell_list.Spells += ["Target_Guidance", self._storm_bolt]
+        spell_list.Spells += ["Target_Guidance", "Target_Resistance", self._storm_bolt]
 
     @spell_list("Sorcerer SLevel 2 expanded")
     @spell_list("Sorcerer SLevel 3")
@@ -121,11 +124,12 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1(self, progression: Progression) -> None:
-        progression.Boosts.append("Proficiency(SimpleWeapons)")
-        progression.Boosts.append("Proficiency(MartialWeapons)")
-        progression.Boosts.remove("Proficiency(Daggers)")
-        progression.Boosts.remove("Proficiency(Quarterstaffs)")
-        progression.Boosts.remove("Proficiency(LightCrossbows)")
+        for proficiency in ["LightArmor", "MediumArmor", "HeavyArmor", "Shields", "SimpleWeapons", "MartialWeapons"]:
+            progression.Boosts.append(f"Proficiency({proficiency})")
+
+        for proficiency in ["Daggers", "Quarterstaffs", "LightCrossbows"]:
+            progression.Boosts.remove(f"Proficiency({proficiency})")
+
         selectors = [selector for selector in progression.Selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
             "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
@@ -139,9 +143,9 @@ class SorcererBattlemage(Replacer):
     def level_1_multiclass(self, progression: Progression) -> None:
         progression.PassivesAdded += [
             self._battle_magic,
+            self._fast_movement_30,
             self._pack_mule,
             "SculptSpells",
-            self._unarmored_defense,
             self._warding,
         ]
         progression.Selectors += [
@@ -168,7 +172,8 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 5)
     def level_5(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", self._fast_movement]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack", self._fast_movement_45]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [self._fast_movement_30]
 
     @progression(CharacterClass.SORCERER, 6)
     def level_6(self, progression: Progression) -> None:
@@ -185,7 +190,8 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 9)
     def level_9(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["BrutalCritical", self._fast_movement_60]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [self._fast_movement_45]
 
     @progression(CharacterClass.SORCERER, 10)
     def level_10(self, progression: Progression) -> None:
@@ -201,6 +207,7 @@ class SorcererBattlemage(Replacer):
 
     @progression(CharacterClass.SORCERER, 12)
     def level_12(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)",  # Action Surge
         ]

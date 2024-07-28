@@ -17,14 +17,16 @@ from moddb import (
     PackMule,
     spells_always_prepared,
 )
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
+    Progression,
+    SpellList,
 )
-from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     class_description,
     only_existing_progressions,
@@ -72,6 +74,35 @@ class SorcererBattlemage(Replacer):
         return spell_list
 
     @cached_property
+    def _empowered_quarterstaffs(self) -> str:
+        """Add the Empowered Quarterstaffs passive, returning its name."""
+        name = f"{self._mod.get_prefix()}_EmpoweredQuarterstaffs"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Empowered Quarterstaffs"}
+        loca[f"{name}_Description"] = {"en": """
+            When you make a melee attack with a Quarterstaff, add your Charisma
+            <LSTag Tooltip="AbilityModifier">Modifier</LSTag> to the damage and
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
+            """}
+
+        self._mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="Spell_Abjuration_Transmutation_Shillelagh",
+            Properties=["Highlighted"],
+            Boosts=[
+                "IF(IsMeleeAttack() and IsWeaponOfProficiencyGroup('Quarterstaffs',GetActiveWeapon())):"
+                + "RollBonus(Attack,CharismaModifier)",
+                "IF(IsMeleeAttack() and IsWeaponOfProficiencyGroup('Quarterstaffs',GetActiveWeapon())):"
+                + "DamageBonus(CharismaModifier)",
+            ],
+        ))
+
+        return name
+
+    @cached_property
     def _class_equipment(self) -> str:
         name = f"{self.mod.get_prefix()}_ClassEquipment"
 
@@ -79,7 +110,7 @@ class SorcererBattlemage(Replacer):
             new equipment "{name}"
             add initialweaponset "Melee"
             add equipmentgroup
-            add equipment entry "WPN_Katana"
+            add equipment entry "WPN_Quarterstaff"
             add equipmentgroup
             add equipment entry "OBJ_Potion_Healing"
             add equipmentgroup
@@ -183,6 +214,7 @@ class SorcererBattlemage(Replacer):
     def level_1_multiclass(self, progression: Progression) -> None:
         progression.PassivesAdded += [
             self._battle_magic,
+            self._empowered_quarterstaffs,
             self._fast_movement_30,
             self._pack_mule,
             "SculptSpells",

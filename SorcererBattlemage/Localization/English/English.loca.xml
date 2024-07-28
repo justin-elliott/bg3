@@ -16,4 +16,6 @@
     <content contentuid="h3d6602bcg927fg57d8gbcfdgde5d00a03b75" version="1">Bolster</content>
     <content contentuid="h94fdf31cg6280gf09bgccbcg3d8490165fd2" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h65785112gb53cg764dg0161g8e65b7ee51d1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h3179f481gc280g66fcg978fg512808c83376" version="1">Empowered Quarterstaffs</content>
+    <content contentuid="h80b38320gdae7g2ce6g9703ga66efcaff66a" version="1">When you make a melee attack with a Quarterstaff, add your Charisma &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
 </contentList>

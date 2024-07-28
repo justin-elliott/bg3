@@ -3,7 +3,7 @@
 new equipment "SorcererBattlemage_ClassEquipment"
 add initialweaponset "Melee"
 add equipmentgroup
-add equipment entry "WPN_Katana"
+add equipment entry "WPN_Quarterstaff"
 add equipmentgroup
 add equipment entry "OBJ_Potion_Healing"
 add equipmentgroup

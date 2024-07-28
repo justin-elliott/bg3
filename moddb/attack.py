@@ -37,7 +37,7 @@ class Attack:
     def add_brutal_cleave(self, *,
                           display_name_handle: str = None,
                           description_handle: str = None,
-                          icon: str = "Action_Cleave_New") -> None:
+                          icon: str = "Action_Cleave_New") -> str:
         """Add the Brutal Cleave attack, returning its name."""
         name = f"{self._mod.get_prefix()}_BrutalCleave"
 

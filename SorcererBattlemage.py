@@ -7,6 +7,7 @@ import os
 
 from functools import cached_property
 from moddb import (
+    Attack,
     BattleMagic,
     Bolster,
     Defense,
@@ -15,7 +16,6 @@ from moddb import (
     multiply_resources,
     PackMule,
     spells_always_prepared,
-    storm_bolt,
 )
 from modtools.lsx.game import (
     ActionResource,
@@ -32,6 +32,7 @@ from modtools.replacers import (
     Replacer,
     spell_list
 )
+from modtools.text import Equipment
 
 
 class SorcererBattlemage(Replacer):
@@ -39,6 +40,7 @@ class SorcererBattlemage(Replacer):
 
     # Passives
     _battle_magic: str
+    _brutal_cleave: str
     _empowered_spells: str
     _fast_movement_30: str
     _fast_movement_45: str
@@ -48,14 +50,13 @@ class SorcererBattlemage(Replacer):
 
     # Spells
     _bolster: str
-    _storm_bolt: str
 
     @cached_property
     def _level_1_spell_list(self) -> str:
         spell_list = str(self.make_uuid("level_1_spell_list"))
         self.mod.add(SpellList(
             Comment="SorcererBattlemage level 1 spells",
-            Spells=[self._bolster],
+            Spells=[self._bolster, self._brutal_cleave],
             UUID=spell_list,
         ))
         return spell_list
@@ -65,10 +66,43 @@ class SorcererBattlemage(Replacer):
         spell_list = str(self.make_uuid("level_1_storm_sorcery_spell_list"))
         self.mod.add(SpellList(
             Comment="SorcererBattlemage level 1 Storm Sorcery spells",
-            Spells=["Target_ShockingGrasp", self._storm_bolt, "Projectile_WitchBolt"],
+            Spells=["Target_ShockingGrasp", "Projectile_WitchBolt"],
             UUID=spell_list,
         ))
         return spell_list
+
+    @cached_property
+    def _class_equipment(self) -> str:
+        name = f"{self.mod.get_prefix()}_ClassEquipment"
+
+        self.mod.add(Equipment(f"""
+            new equipment "{name}"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Katana"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "ARM_Shoes"
+            add equipmentgroup
+            add equipment entry "ARM_HalfPlate_Body"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+            """))
+
+        return name
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
@@ -77,8 +111,9 @@ class SorcererBattlemage(Replacer):
                          description="Upgrades the Sorcerer class to a Battlemage.")
 
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
+        self._brutal_cleave = Attack(self.mod).add_brutal_cleave()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
-        self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
+        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
 
         self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
@@ -88,21 +123,26 @@ class SorcererBattlemage(Replacer):
         self._warding = defense.add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
-        self._storm_bolt = storm_bolt(self.mod)
 
     @class_description(CharacterClass.SORCERER)
     def sorcerer_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
+        class_description.ClassEquipment = self._class_equipment
         class_description.BaseHp = 10
         class_description.HpPerLevel = 6
         class_description.MustPrepareSpells = True
-        class_description.children.append(ClassDescription.Tags(
-            Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
-        ))
+
+    @class_description(CharacterClass.SORCERER_DRACONIC)
+    @class_description(CharacterClass.SORCERER_STORM)
+    @class_description(CharacterClass.SORCERER_WILDMAGIC)
+    def sorcerer_subclass_description(self, class_description: ClassDescription) -> None:
+        class_description.CanLearnSpells = True
+        class_description.ClassEquipment = self._class_equipment
+        class_description.MustPrepareSpells = True
 
     @spell_list("Sorcerer cantrips")
     def cantrips(self, spell_list: SpellList) -> None:
-        spell_list.Spells += ["Target_Guidance", "Target_Resistance", self._storm_bolt]
+        spell_list.Spells += ["Target_Guidance", "Target_Resistance"]
 
     @spell_list("Sorcerer SLevel 2 expanded")
     @spell_list("Sorcerer SLevel 3")

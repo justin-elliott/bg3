@@ -3,6 +3,8 @@
 <contentList>
     <content contentuid="h38bce3dcgf99fgb440gb017g56e48188d693" version="1">Battle Magic</content>
     <content contentuid="h92eb7a05g1410g7f31gb726gf7b549fc0148" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="h4c12a42fg8e21g4f03g29f7ga86e82ed8d44" version="1">Brutal Cleave</content>
+    <content contentuid="h74a4c764g37eeg4ee3gee18g208201db6517" version="1">Swing your weapon in a large arc to attack up to [1] enemies at once.</content>
     <content contentuid="h01451159ga315g2d60g4a52gcb5947c4c619" version="1">Empowered Spells</content>
     <content contentuid="h0cda15a9g2604gfd19gb990g2556bebdb058" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h37b22663gaa3cg665agb9c4ga30ec47b5881" version="1">Pack Mule</content>
@@ -14,6 +16,4 @@
     <content contentuid="h3d6602bcg927fg57d8gbcfdgde5d00a03b75" version="1">Bolster</content>
     <content contentuid="h94fdf31cg6280gf09bgccbcg3d8490165fd2" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h65785112gb53cg764dg0161g8e65b7ee51d1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="h30c0418egff5eg6ba3g57afg7fa0426dbefb" version="1">Storm Bolt</content>
-    <content contentuid="h55410927g9a9fgc4d7gfa1egf5a580843cf3" version="1">Project a bolt of lightning.</content>
 </contentList>

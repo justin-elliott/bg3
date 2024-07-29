@@ -8,9 +8,10 @@ import os
 
 from dataclasses import dataclass
 from functools import cached_property
+from moddb import multiply_resources
 from modtools.gamedata import PassiveData, SpellData
-from modtools.lsx.game import CharacterClass, Progression, SpellList
-from modtools.replacers import progression, DontIncludeProgression, Replacer
+from modtools.lsx.game import ActionResource, CharacterClass, Progression, SpellList
+from modtools.replacers import progression, Replacer
 
 
 class OpenHand(Replacer):
@@ -163,12 +164,10 @@ class OpenHand(Replacer):
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ]
 
-    @progression(CharacterClass.MONK, range(2, 13))
-    def level_2_to_12_monk(self, progression: Progression) -> None:
-        previous_improvement = progression.AllowImprovement or None
+    @progression(CharacterClass.MONK, range(1, 13))
+    def level_1_to_12_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        if progression.AllowImprovement == previous_improvement:
-            raise DontIncludeProgression
+        multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)
 
     @progression(CharacterClass.MONK_OPENHAND, 3)
     def level_3(self, progression: Progression) -> None:

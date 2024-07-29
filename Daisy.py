@@ -48,4 +48,15 @@ new subtable "1,1"
 object category "I_Daisy_Clothing_Gloves",1,0,0,0,0,0,0,0
 """))
 
+daisy.add(TreasureTable("""
+new treasuretable "DEN_Entrance_Trade"
+CanMerge 1
+new subtable "1,1"
+object category "I_Daisy_Clothing_Armor",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_Daisy_Clothing_Boots",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_Daisy_Clothing_Gloves",1,0,0,0,0,0,0,0
+"""))
+
 daisy.build()

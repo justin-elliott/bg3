@@ -107,7 +107,7 @@
                     <attribute id="Name" type="LSString" value="OpenHand" />
                     <attribute id="PassivesAdded" type="LSString" value="" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)" />
                     <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
                     <attribute id="UUID" type="guid" value="9c2e5654-50cf-88be-653c-5fe68821fcca" />
                 </node>

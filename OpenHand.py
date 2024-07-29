@@ -219,6 +219,7 @@ class OpenHand(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
         ]
         progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 9)

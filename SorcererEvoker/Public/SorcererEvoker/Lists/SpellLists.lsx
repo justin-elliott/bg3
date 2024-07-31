@@ -37,13 +37,8 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="SorcererEvoker level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="SorcererEvoker_Bolster;Projectile_EldritchBlast" />
+                    <attribute id="Spells" type="LSString" value="SorcererEvoker_Bolster" />
                     <attribute id="UUID" type="guid" value="91a2aebd-1852-6786-4fb6-c3d2230b88e1" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="SorcererEvoker level 1 Storm Sorcery spells" />
-                    <attribute id="Spells" type="LSString" value="Target_ShockingGrasp;Projectile_WitchBolt" />
-                    <attribute id="UUID" type="guid" value="b1b6ebfe-739a-9743-fc43-c7bcd1f89305" />
                 </node>
             </children>
         </node>

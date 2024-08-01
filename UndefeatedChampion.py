@@ -8,7 +8,7 @@ import os
 
 from dataclasses import dataclass
 from functools import cached_property
-from moddb import Movement
+from moddb import Attack, Movement
 from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import CharacterClass, Progression, SpellList
 from modtools.replacers import progression, DontIncludeProgression, Replacer
@@ -56,29 +56,6 @@ class UndefeatedChampion(Replacer):
         return name
 
     @cached_property
-    def _cleave_spell(self) -> str:
-        loca = self.mod.get_localization()
-
-        name = f"{self._mod.get_prefix()}_BrutalCleave"
-        loca[name] = {"en": "Brutal Cleave"}
-
-        self.mod.add(SpellData(
-            name,
-            using="Zone_Cleave",
-            SpellType="Zone",
-            Cooldown="",
-            DisplayName=loca[name],
-            SpellSuccess=[
-                "DealDamage(MainMeleeWeapon,MainWeaponDamageType);GROUND:ExecuteWeaponFunctors(MainHand)",
-            ],
-            TooltipDamageList=[
-                "DealDamage(MainMeleeWeapon,MainWeaponDamageType)",
-            ],
-        ))
-
-        return name
-
-    @cached_property
     def _mighty_throw_spell(self) -> str:
         loca = self.mod.get_localization()
 
@@ -100,7 +77,7 @@ class UndefeatedChampion(Replacer):
         spells = SpellList(
             Comment="Champion level 3 abilities",
             Spells=[
-                self._cleave_spell,
+                Attack(self.mod).add_brutal_cleave(),
                 self._mighty_throw_spell,
             ],
             UUID=self.make_uuid("Champion level 3 abilities"),

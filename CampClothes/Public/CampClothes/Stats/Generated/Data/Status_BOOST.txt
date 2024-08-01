@@ -42,7 +42,7 @@ data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;Disab
 new entry "CAMPCLOTHES_OVERPOWERINGPOTION"
 type "StatusData"
 data "StatusType" "BOOST"
-data "Boosts" "AC(20);DamageBonus(20);IncreaseMaxHP(50);RollBonus(Attack,20);RollBonus(SavingThrow,20);IgnoreResistance(Bludgeoning,Resistant);IgnoreResistance(Piercing,Resistant);IgnoreResistance(Slashing,Resistant)"
+data "Boosts" "AC(20);DamageBonus(8d4);IncreaseMaxHP(50);RollBonus(Attack,20);RollBonus(SavingThrow,20);SpellSaveDC(20);IgnoreResistance(Bludgeoning,Resistant);IgnoreResistance(Piercing,Resistant);IgnoreResistance(Slashing,Resistant)"
 data "Description" "h755da482gc219g9c92gf17eg287298c0c6cc"
 data "DisplayName" "h7fdb7774g23b1gd577gc8c8g613629011381"
 data "Icon" "Item_CONS_Drug_Dreammist_A"

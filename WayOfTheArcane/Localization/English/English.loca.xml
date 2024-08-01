@@ -9,8 +9,15 @@
     <content contentuid="h00eb1e7fg293eg011eg34fag10abd7580fa9" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="h45218d71gc5a5g9136g4aa1g4fbc3ced6fda" version="1">Warding</content>
     <content contentuid="h806735d4g66cag5ccegf6e5g8bc0d04e700d" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
+    <content contentuid="h5546baa6gc7d7g2df4g3ea1g1009fc7f841c" version="1">Bolster</content>
+    <content contentuid="h153cac16g325fg2496gb4eeg8bbab1ea6bf3" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="h4ee01658gea87g9d0dg898fg6854ac2e6854" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hbfe8c88eg0f92gf4c0ga6edg447691180dcf" version="1">Way of the Arcane</content>
     <content contentuid="h9685107cgcb88g2d04gdf1fgb98a3c888033" version="1">You seek mastery over mind and body. Your Ki connects you to the Weave.</content>
+    <content contentuid="h88032cbagdbfdg7798g87bagcdd86a78b7d0" version="1">Stillness of Mind</content>
+    <content contentuid="h141f6a62gb228g243fg94abg38fdefe80224" version="1">You are immune to being &lt;LSTag Tooltip="CharmedGroup"&gt;Charmed&lt;/LSTag&gt; or &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frightened&lt;/LSTag&gt;.</content>
     <content contentuid="h3e92ae6dga7e8ga97dg9b67ge3b5feaea397" version="1">Arcane Manifestation</content>
-    <content contentuid="h7c87f2d9gc2feg6785g510fg3e0d3d70a8df" version="1">Arcane energy infuses your strikes. Your unarmed attacks deal an additional [1].</content>
+    <content contentuid="h7c87f2d9gc2feg6785g510fg3e0d3d70a8df" version="1">Arcane energy infuses your strikes. Your melee unarmed attacks deal an additional [1].&lt;br&gt;&lt;br&gt;Whenever you deal damage with a melee unarmed attack, you gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt; for 2 turns.</content>
+    <content contentuid="h244ed4d4ge754gfbb1g1a15g355533863119" version="1">Wholeness of Body</content>
+    <content contentuid="h815c6a94g1d20g7f32gd505gf607b3ad63c1" version="1">Gain an additional bonus action.&lt;br&gt;&lt;br&gt;While in combat, you heal [1] every turn, and restore [2] &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point(s)&lt;/LSTag&gt;.</content>
 </contentList>

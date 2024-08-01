@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     BattleMagic,
+    Bolster,
     Defense,
     EmpoweredSpells,
     PackMule,
@@ -22,6 +23,7 @@ from modtools.lsx.game import (
     CharacterAbility,
     CharacterClass,
     ClassDescription,
+    SpellList,
 )
 from modtools.lsx.game import Progression
 from modtools.replacers import (
@@ -61,6 +63,9 @@ class WayOfTheArcane(Replacer):
     _pack_mule: str
     _warding: str
 
+    # Spells
+    _bolster: str
+
     @cached_property
     def _arcane_manifestation(self) -> str:
         """Add the Arcane Manifestation passive, returning its name."""
@@ -69,23 +74,106 @@ class WayOfTheArcane(Replacer):
         loca = self.mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Arcane Manifestation"}
         loca[f"{name}_Description"] = {"en": """
-            Arcane energy infuses your strikes. Your unarmed attacks deal an additional [1].
+            Arcane energy infuses your strikes. Your melee unarmed attacks deal an additional [1].
+
+            Whenever you deal damage with a melee unarmed attack, you gain
+            <LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY">Arcane Acuity</LSTag> for 2 turns.
             """}
 
         self.mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            DescriptionParams="DealDamage(1d4+WisdomModifier,Force)",
+            DescriptionParams=["DealDamage(1d4+WisdomModifier,Force)"],
             Icon="Action_Barbarian_MagicAwareness",
             Properties="Highlighted",
             Boosts=[
                 "IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(1d4+WisdomModifier,Force)",
                 "UnlockSpellVariant(MeleeUnarmedAttackCheck(),ModifyTargetRadius(Multiplicative,1))",
             ],
+            StatsFunctorContext="OnDamage",
+            Conditions="IsMeleeUnarmedAttack()",
+            StatsFunctors=[
+                "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY,100,2)",
+                "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY_DURATION_TECHNICAL,100,1)",
+            ],
         ))
 
         return name
+
+    @cached_property
+    def _stillness_of_mind(self) -> str:
+        """The Stillness of Mind class feature as a passive."""
+        name = f"{self.mod.get_prefix()}_StillnessOfMind"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Stillness of Mind"}
+        loca[f"{name}_Description"] = {"en": """
+            You are immune to being <LSTag Tooltip="CharmedGroup">Charmed</LSTag> or
+            <LSTag Type="Status" Tooltip="FRIGHTENED">Frightened</LSTag>.
+            """}
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="PassiveFeature_StillnessOfMind",
+            Properties=["Highlighted"],
+            Boosts=[
+                "StatusImmunity(SG_Charmed)",
+                "StatusImmunity(SG_Frightened)",
+            ],
+        ))
+
+        return name
+
+    @cached_property
+    def _wholeness_of_body(self) -> str:
+        """The Wholeness of Body subclass feature as a passive."""
+        name = f"{self.mod.get_prefix()}_WholenessOfBody"
+
+        HEALTH_PER_TURN = "1d4"
+        KI_PER_TURN = "1"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Wholeness of Body"}
+        loca[f"{name}_Description"] = {"en": """
+            Gain an additional bonus action.
+
+            While in combat, you heal [1] every turn, and restore [2]
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Point(s)</LSTag>.
+            """}
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams=[
+                f"RegainHitPoints({HEALTH_PER_TURN})",
+                str(KI_PER_TURN),
+            ],
+            Icon="Action_Monk_WholenessOfBody",
+            Properties=["Highlighted", "OncePerTurn"],
+            Boosts=["ActionResource(BonusActionPoint,1,0)"],
+            StatsFunctorContext=["OnTurn"],
+            Conditions=["not HasStatus('DOWNED') and not Dead() and Combat()"],
+            StatsFunctors=[
+                f"RegainHitPoints({HEALTH_PER_TURN})",
+                f"RestoreResource(KiPoint,{KI_PER_TURN},0)",
+            ],
+        ))
+
+        return name
+
+    @cached_property
+    def _level_1_spell_list(self) -> str:
+        spell_list = str(self.make_uuid("level_1_spell_list"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 1 spells",
+            Spells=[self._bolster],
+            UUID=spell_list,
+        ))
+        return spell_list
 
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
@@ -94,12 +182,21 @@ class WayOfTheArcane(Replacer):
                          description="Replaces the Way of Shadow Monk subclass with the Way of the Arcane.")
 
         self._args = args
-        self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
+
+        if len(args.feats) == 0:
+            self._feat_levels = frozenset(range(2, 13, 1))
+        elif len(args.feats) == 1:
+            feat_level = next(level for level in args.feats)
+            self._feat_levels = frozenset(range(max(feat_level, 2), 13, feat_level))
+        else:
+            self._feat_levels = args.feats - frozenset([1])
 
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._warding = Defense(self.mod).add_warding()
+
+        self._bolster = Bolster(self.mod).add_bolster()
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:
@@ -175,6 +272,7 @@ class WayOfTheArcane(Replacer):
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_1_SPELL_LIST},6,0)",
+            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 2)
@@ -231,10 +329,17 @@ class WayOfTheArcane(Replacer):
             f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},2,0)",
         ]
 
+    @progression(CharacterClass.MONK, 7)
+    def level_7_monk(self, progression: Progression) -> None:
+        progression.PassivesAdded = [
+            *[passive for passive in progression.PassivesAdded if not passive == "StillnessOfMind"],
+            self._stillness_of_mind,
+        ]
+
     @progression(CharacterClass.MONK_SHADOW, 7)
     def level_7(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
-        progression.PassivesAdded = ["ImprovedCritical"]
+        progression.PassivesAdded = [self._wholeness_of_body]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
         ]
@@ -246,6 +351,7 @@ class WayOfTheArcane(Replacer):
         progression.Selectors = [
             f"AddSpells({self.ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 9)
@@ -254,7 +360,7 @@ class WayOfTheArcane(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
-        progression.PassivesAdded = ["BrutalCritical"]
+        progression.PassivesAdded = ["ImprovedCritical"]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},2,0)",
         ]
@@ -287,10 +393,17 @@ class WayOfTheArcane(Replacer):
         ]
 
 
+def level_list(s: str) -> set[int]:
+    levels = frozenset([int(level) for level in s.split(",")])
+    if not levels.issubset(frozenset(range(1, 12))):
+        raise "Invalid levels"
+    return levels
+
+
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Way of Shadow Monks.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
-                        help="Feat progression every n levels (defaulting to 1; feat every level)")
+    parser.add_argument("-f", "--feats", type=level_list, default=set(),
+                        help="Feat progression every n levels (defaulting to double progression)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,

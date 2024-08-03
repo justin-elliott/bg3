@@ -102,6 +102,28 @@ class WayOfTheArcane(Replacer):
         return name
 
     @cached_property
+    def _slow_fall(self) -> str:
+        """The Slow Fall class feature as a passive."""
+        name = f"{self.mod.get_prefix()}_SlowFall"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Slow Fall"}
+        loca[f"{name}_Description"] = {"en": """
+            You only take half damage from falling.
+            """}
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="PassiveFeature_SlowFall",
+            Properties=["Highlighted"],
+            Boosts=["FallDamageMultiplier(0.5)"],
+        ))
+
+        return name
+
+    @cached_property
     def _stillness_of_mind(self) -> str:
         """The Stillness of Mind class feature as a passive."""
         name = f"{self.mod.get_prefix()}_StillnessOfMind"
@@ -301,6 +323,13 @@ class WayOfTheArcane(Replacer):
         progression.Selectors = [
             f"AddSpells({self.FLURRY_OF_BLOWS_SPELL_LIST},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK, 4)
+    def level_4_monk(self, progression: Progression) -> None:
+        progression.PassivesAdded = [
+            *[passive for passive in progression.PassivesAdded if not passive == "SlowFall"],
+            self._slow_fall,
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 4)

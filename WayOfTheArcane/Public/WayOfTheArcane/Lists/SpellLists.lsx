@@ -6,6 +6,11 @@
         <node id="root">
             <children>
                 <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Way of the Arcane Flurry of Blows" />
+                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_FlurryOfBlows;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push" />
+                    <attribute id="UUID" type="guid" value="7b304523-6625-66c1-b0e1-754a0c1abb9f" />
+                </node>
+                <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Way of the Arcane level 1 spells" />
                     <attribute id="Spells" type="LSString" value="WayOfTheArcane_Bolster" />
                     <attribute id="UUID" type="guid" value="2c47db3d-429b-0bb0-427f-b137d63fd80a" />

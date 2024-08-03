@@ -17,7 +17,7 @@ from moddb import (
     multiply_resources,
     spells_always_prepared,
 )
-from modtools.gamedata import PassiveData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.lsx.game import (
     ActionResource,
     CharacterAbility,
@@ -50,9 +50,7 @@ class WayOfTheArcane(Replacer):
     WIZARD_LEVEL_6_SPELL_LIST = UUID("bc917f22-7f71-4a25-9a77-7d2f91a96a65")
 
     ACTION_SURGE_SPELL_LIST = UUID("964e765d-5881-463e-b1b0-4fc6b8035aa8")
-    FLURRY_OF_BLOWS_SPELL_LIST = UUID("6566d841-ef96-4e13-ac40-c40f44c5e08b")
     FLY_SPELL_LIST = UUID("12150e11-267a-4ecc-a3cc-292c9e2a198d")
-    WHOLENESS_OF_BODY_SPELL_LIST = UUID("9487f3bd-1763-4c7f-913d-8cb7eb9052c5")
 
     _args: Args
     _feat_levels: set[int]
@@ -97,6 +95,21 @@ class WayOfTheArcane(Replacer):
                 "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY,100,2)",
                 "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY_DURATION_TECHNICAL,100,1)",
             ],
+        ))
+
+        return name
+
+    @cached_property
+    def _flurry_of_blows(self) -> str:
+        """The Flurry of Blows class feature as a replacement for attack + bonus unarmed strike."""
+        name = f"{self.mod.get_prefix()}_FlurryOfBlows"
+
+        self.mod.add(SpellData(
+            name,
+            using="Target_FlurryOfBlows",
+            SpellType="Target",
+            UseCosts=["ActionPoint:1", "BonusActionPoint:1"],
+            SpellFlags=["IsAttack", "IsMelee", "IsHarmful", "DisableBlood"],
         ))
 
         return name
@@ -193,6 +206,21 @@ class WayOfTheArcane(Replacer):
         self.mod.add(SpellList(
             Comment="Way of the Arcane level 1 spells",
             Spells=[self._bolster],
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _flurry_of_blows_spell_list(self) -> str:
+        spell_list = str(self.make_uuid("flurry_of_blows_spell_list"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane Flurry of Blows",
+            Spells=[
+                self._flurry_of_blows,
+                "Target_OpenHandTechnique_Knock",
+                "Target_OpenHandTechnique_NoReactions",
+                "Target_OpenHandTechnique_Push",
+            ],
             UUID=spell_list,
         ))
         return spell_list
@@ -319,9 +347,10 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesRemoved = [
             "FlurryOfBlowsUnlock",
+            "MartialArts_BonusUnarmedStrike",
         ]
         progression.Selectors = [
-            f"AddSpells({self.FLURRY_OF_BLOWS_SPELL_LIST},,,,AlwaysPrepared)",
+            f"AddSpells({self._flurry_of_blows_spell_list},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",
         ]
 
@@ -354,7 +383,6 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},3)"]
         progression.PassivesAdded = [self._arcane_manifestation]
         progression.Selectors = [
-            f"AddSpells({self.WHOLENESS_OF_BODY_SPELL_LIST},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},2,0)",
         ]
 

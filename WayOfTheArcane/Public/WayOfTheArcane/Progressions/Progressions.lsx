@@ -191,9 +191,9 @@
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;FastHands" />
-                    <attribute id="PassivesRemoved" type="LSString" value="FlurryOfBlowsUnlock" />
+                    <attribute id="PassivesRemoved" type="LSString" value="FlurryOfBlowsUnlock;MartialArts_BonusUnarmedStrike" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(6566d841-ef96-4e13-ac40-c40f44c5e08b,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(7b304523-6625-66c1-b0e1-754a0c1abb9f,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="077e6458-3b93-4820-88a7-bd7c9babbeae" />
                 </node>
@@ -222,7 +222,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_ArcaneManifestation" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="2843ad66-a79d-4357-9c34-877e443f9701" />
                 </node>

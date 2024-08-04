@@ -187,7 +187,7 @@ class WayOfTheArcane(Replacer):
                 str(KI_PER_TURN),
             ],
             Icon="Action_Monk_WholenessOfBody",
-            Properties=["Highlighted", "OncePerTurn"],
+            Properties=["ForceShowInCC", "Highlighted", "OncePerTurn"],
             Boosts=["ActionResource(BonusActionPoint,1,0)"],
             StatsFunctorContext=["OnTurn"],
             Conditions=["not HasStatus('DOWNED') and not Dead() and Combat()"],

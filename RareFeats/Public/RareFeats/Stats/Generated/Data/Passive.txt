@@ -153,7 +153,7 @@ data "Properties" "IsHidden"
 
 new entry "RareFeats_IntensifiedSpell"
 type "PassiveData"
-data "Boosts" "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0));IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)"
+data "Boosts" "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0),ModifyIconGlow(),ModifyTooltipDescription());IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)"
 data "Description" "hded06039g5f54gd803g149cg75a59ef68368"
 data "DescriptionParams" "1"
 data "DisplayName" "h426c6a3ag43c5g329fg643cg097c1dabc14b"

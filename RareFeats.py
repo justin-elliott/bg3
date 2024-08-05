@@ -435,7 +435,8 @@ def metamagic_feat() -> None:
         EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
         Properties=["IsToggled", "ToggledDefaultAddToHotbar", "MetaMagic"],
         Boosts=[
-            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0))",
+            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0),"
+            + "ModifyIconGlow(),ModifyTooltipDescription())",
             "IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)",
         ],
         ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Empowered_HeadFX_01:Dummy_HeadFX",

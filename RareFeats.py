@@ -13,9 +13,7 @@ from moddb import (
     character_level_range,
 )
 from modtools.gamedata import (
-    InterruptData,
     PassiveData,
-    StatusData,
 )
 from modtools.lsx.game import (
     CharacterAbility,
@@ -24,6 +22,7 @@ from modtools.lsx.game import (
     PassiveList,
 )
 from modtools.mod import Mod
+from modtools.text import Script
 from typing import Callable
 from uuid import UUID
 
@@ -428,46 +427,29 @@ def metamagic_feat() -> None:
         "RareFeats_IntensifiedSpell",
         DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
         Description=loca["RareFeats_IntensifiedSpell_Description"],
-        DescriptionParams=["3"],
-        TooltipUseCosts="SorceryPoint:3",
+        DescriptionParams=["1"],
+        TooltipUseCosts="SorceryPoint:1",
         Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
-        Boosts="UnlockInterrupt(RareFeats_IntensifiedSpellInterrupt)",
-        Properties="MetaMagic",
-        StatsFunctorContext="OnCastResolved",
-        StatsFunctors="RemoveStatus(RAREFEATS_INTENSIFIED_SPELL)",
-    ))
-
-    rare_feats.add(InterruptData(
-        "RareFeats_IntensifiedSpellInterrupt",
-        DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
-        Description=loca["RareFeats_IntensifiedSpell_Description"],
-        DescriptionParams=["3"],
-        Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
-        InterruptContext="OnSpellCast",
-        InterruptContextScope="Self",
-        Container="YesNoDecision",
-        Conditions=[
-            "Self(context.Source,context.Observer) "
-            "and HasFunctor(StatsFunctorType.DealDamage) "
-            "and HasSpellFlag(SpellFlags.Spell) "
-            "and not IsCantrip() "
-            "and not AnyEntityIsItem()",
+        EnabledConditions=["HasActionResource('SorceryPoint',1,0,false,false,context.Source)"],
+        EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
+        Properties=["IsToggled", "ToggledDefaultAddToHotbar", "MetaMagic"],
+        Boosts=[
+            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0))",
+            "IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)",
         ],
-        Properties="ApplyStatus(OBSERVER_OBSERVER,RAREFEATS_INTENSIFIED_SPELL,100,1)",
-        Cost="SorceryPoint:3",
-        InterruptDefaultValue=["Ask", "Enabled"],
-        EnableCondition="not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER') or HasStatus('SG_Disguise')",
-        EnableContext=["OnStatusApplied", "OnStatusRemoved"],
+        ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Empowered_HeadFX_01:Dummy_HeadFX",
+        ToggleOffContext="OnCastResolved",
+        ToggleGroup="Metamagic",
     ))
 
-    rare_feats.add(StatusData(
-        "RAREFEATS_INTENSIFIED_SPELL",
-        StatusType="BOOST",
-        DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
-        StackId="RAREFEATS_INTENSIFIED_SPELL",
-        Boosts="MinimumRollResult(Damage,20)",
-        StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
-    ))
+    rare_feats.add(Script("""
+        -- Check that the current action represents a spell that can be intensified.
+        function RareFeats_IntensifiedSpellCheck()
+            return HasFunctor(StatsFunctorType.DealDamage) &
+                   HasSpellFlag(SpellFlags.Spell) &
+                   ~IsCantrip()
+        end
+        """))
 
     metamagic_passives_uuid = rare_feats.make_uuid("RareFeats_Metamagic_Passives")
     rare_feats.add(PassiveList(

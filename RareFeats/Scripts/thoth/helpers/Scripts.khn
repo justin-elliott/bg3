@@ -5,3 +5,10 @@ function CharacterLevelRange(firstLevel, lastLevel, entity)
     entity = entity or context.Source
     return ConditionResult(entity.Level >= firstLevel and entity.Level <= lastLevel)
 end
+
+-- Check that the current action represents a spell that can be intensified.
+function RareFeats_IntensifiedSpellCheck()
+    return HasFunctor(StatsFunctorType.DealDamage) &
+           HasSpellFlag(SpellFlags.Spell) &
+           ~IsCantrip()
+end

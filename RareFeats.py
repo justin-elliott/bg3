@@ -20,6 +20,7 @@ from modtools.lsx.game import (
     FeatDescription,
     Feat,
     PassiveList,
+    ProgressionDescription,
 )
 from modtools.mod import Mod
 from modtools.text import Script
@@ -440,6 +441,13 @@ def metamagic_feat() -> None:
         ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Empowered_HeadFX_01:Dummy_HeadFX",
         ToggleOffContext="OnCastResolved",
         ToggleGroup="Metamagic",
+    ))
+
+    rare_feats.add(ProgressionDescription(
+        Hidden=True,
+        PassivePrototype="RareFeats_IntensifiedSpell",
+        Type="UnlockSpellVariant",
+        UUID=rare_feats.make_uuid("RareFeats_IntensifiedSpell_ProgressionDescription"),
     ))
 
     rare_feats.add(Script("""

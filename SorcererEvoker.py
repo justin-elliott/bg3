@@ -96,16 +96,6 @@ class SorcererEvoker(Replacer):
             "Target_Resistance",
         ]
 
-    @spell_list("Sorcerer SLevel 2 expanded")
-    @spell_list("Sorcerer SLevel 3")
-    @spell_list("Sorcerer SLevel 4")
-    @spell_list("Sorcerer SLevel 5")
-    @spell_list("Sorcerer SLevel 6")
-    def spell_lists_with_enhance_ability(self, spell_list: SpellList) -> None:
-        spell_list.Spells += [
-            "Target_EnhanceAbility",
-        ]
-
     @progression(CharacterSubclasses.SORCERER, range(1, 13))
     @only_existing_progressions
     def level_1_to_12_resources(self, progression: Progression) -> None:
@@ -118,6 +108,12 @@ class SorcererEvoker(Replacer):
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1(self, progression: Progression) -> None:
+        for proficiency in ["Daggers", "Quarterstaffs", "LightCrossbows"]:
+            progression.Boosts.remove(f"Proficiency({proficiency})")
+
+        for proficiency in ["LightArmor", "MediumArmor", "HeavyArmor", "Shields", "SimpleWeapons", "MartialWeapons"]:
+            progression.Boosts.append(f"Proficiency({proficiency})")
+
         selectors = [selector for selector in progression.Selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
@@ -139,7 +135,15 @@ class SorcererEvoker(Replacer):
 
     @progression(CharacterClass.SORCERER, 2)
     def level_2(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["DevilsSight", "SculptSpells"]
+        progression.Boosts = (progression.Boosts or []) + [
+            "Savant(Evocation)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "DevilsSight",
+            "ExperimentalAlchemy",
+            "GrimHarvest",
+            "SculptSpells",
+        ]
 
     @progression(CharacterClass.SORCERER, 3)
     def level_3(self, progression: Progression) -> None:
@@ -157,6 +161,9 @@ class SorcererEvoker(Replacer):
     @progression(CharacterClass.SORCERER, 6)
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + ["PotentCantrip"]
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
+        ]
 
     @progression(CharacterClass.SORCERER, 7)
     def level_7(self, progression: Progression) -> None:

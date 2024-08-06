@@ -50,7 +50,7 @@
     <content contentuid="hb1fa6e0cg6071g6969g57bdg477739b5f4a0" version="1">Sorcery Points</content>
     <content contentuid="h25f928a2g6806g863ag889fg6bc2416a8b9b" version="1">You gain &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt;, which can be used to alter spells.</content>
     <content contentuid="h426c6a3ag43c5g329fg643cg097c1dabc14b" version="1">Metamagic: Intensified Spell</content>
-    <content contentuid="hded06039g5f54gd803g149cg75a59ef68368" version="1">When you deal damage with a spell of level 1 or higher, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.&lt;br&gt;&lt;br&gt;Costs [1] Sorcery Points per spell.</content>
+    <content contentuid="hded06039g5f54gd803g149cg75a59ef68368" version="1">When you deal damage with a spell of level 1 or higher, you can use your &lt;LSTag Type="ActionResource" Tooltip="SorceryPoint"&gt;Sorcery Points&lt;/LSTag&gt; to deal maximum damage instead.&lt;br&gt;&lt;br&gt;Costs 1 Sorcery Point per &lt;LSTag Tooltip="SpellSlot"&gt;spell slot&lt;/LSTag&gt; level used.</content>
     <content contentuid="hc01ed66eg19dbg68fdgd1f0g123ff52983f1" version="1">Rare Feats: Metamagic</content>
     <content contentuid="h407e13e8gfde3g84b8g450ag3a40a8258f69" version="1">You gain Metamagic abilities, which can be used to alter spells.</content>
     <content contentuid="h0409311fg78f3g4b27g567bg60660e423c7a" version="1">Rare Feats: Moderately Armoured</content>

@@ -421,21 +421,19 @@ def metamagic_feat() -> None:
         When you deal damage with a spell of level 1 or higher, you can use your
         <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag> to deal maximum damage instead.
 
-        Costs [1] Sorcery Points per spell.
+        Costs 1 Sorcery Point per <LSTag Tooltip="SpellSlot">spell slot</LSTag> level used.
         """}
 
     rare_feats.add(PassiveData(
         "RareFeats_IntensifiedSpell",
         DisplayName=loca["RareFeats_IntensifiedSpell_DisplayName"],
         Description=loca["RareFeats_IntensifiedSpell_Description"],
-        DescriptionParams=["1"],
-        TooltipUseCosts="SorceryPoint:1",
         Icon="Skill_Sorcerer_Passive_Metamagic_EmpoweredSpell",
         EnabledConditions=["HasActionResource('SorceryPoint',1,0,false,false,context.Source)"],
         EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
         Properties=["IsToggled", "ToggledDefaultAddToHotbar", "MetaMagic"],
         Boosts=[
-            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,1,0),"
+            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,SpellPowerLevel,0),"
             + "ModifyIconGlow(),ModifyTooltipDescription())",
             "IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)",
         ],

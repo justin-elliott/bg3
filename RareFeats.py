@@ -433,9 +433,11 @@ def metamagic_feat() -> None:
         EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
         Properties=["IsToggled", "ToggledDefaultAddToHotbar", "MetaMagic"],
         Boosts=[
-            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),ModifyUseCosts(Add,SorceryPoint,SpellPowerLevel,0),"
-            + "ModifyIconGlow(),ModifyTooltipDescription())",
-            "IF(RareFeats_IntensifiedSpellCheck()):MinimumRollResult(Damage,20)",
+            "MinimumRollResult(Damage,20)",
+            "UnlockSpellVariant(RareFeats_IntensifiedSpellCheck(),"
+            + "ModifyUseCosts(Add,SorceryPoint,SpellPowerLevel,0),"
+            + "ModifyIconGlow(),"
+            + "ModifyTooltipDescription())",
         ],
         ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Empowered_HeadFX_01:Dummy_HeadFX",
         ToggleOffContext="OnCastResolved",
@@ -452,8 +454,9 @@ def metamagic_feat() -> None:
     rare_feats.add(Script("""
         -- Check that the current action represents a spell that can be intensified.
         function RareFeats_IntensifiedSpellCheck()
-            return HasFunctor(StatsFunctorType.DealDamage) &
-                   HasSpellFlag(SpellFlags.Spell) &
+            return HasSpellFlag(SpellFlags.Spell) &
+                   (HasFunctor(StatsFunctorType.DealDamage) | SpellId('Projectile_ChromaticOrb')) &
+                   ~HasFunctor(StatsFunctorType.Summon) &
                    ~IsCantrip()
         end
         """))

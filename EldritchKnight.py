@@ -11,13 +11,12 @@ from functools import cached_property
 from moddb import (
     ActionResource,
     Attack,
-    BattleMagic,
     Movement,
     PackMule,
     multiply_resources,
     spells_always_prepared,
 )
-from modtools.gamedata import SpellData
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     CharacterClass,
     ClassDescription,
@@ -59,20 +58,53 @@ class EldritchKnight(Replacer):
         return Movement(self.mod).add_fast_movement(3.0, loca[name])
 
     @cached_property
-    def _mighty_throw_spell(self) -> str:
+    def _quickened_spell(self) -> str:
         loca = self.mod.get_localization()
-
-        name = f"{self._mod.get_prefix()}_MightyThrow"
-        loca[name] = {"en": "Mighty Throw"}
-
-        self.mod.add(SpellData(
+        name = f"{self.mod.get_prefix()}_QuickenedSpell"
+        loca[f"{name}_DisplayName"] = {"en": "Eldritch: Quickened Spell"}
+        loca[f"{name}_Description"] = {"en": """
+            Spells that cost an action cost a bonus action instead.
+            """}
+        self.mod.add(PassiveData(
             name,
-            using="Throw_FrenziedThrow",
-            SpellType="Throw",
-            DisplayName=loca[name],
-            RequirementConditions=[],
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="Skill_Sorcerer_Passive_Metamagic_QuickenedSpell",
+            EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
+            Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
+            Boosts=[
+                "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))",
+            ],
+            ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Quickened_HeadFX_01:Dummy_HeadFX",
+            ToggleOffContext="OnCastResolved",
         ))
+        return name
 
+    @cached_property
+    def _twinned_spell(self) -> str:
+        loca = self.mod.get_localization()
+        name = f"{self.mod.get_prefix()}_TwinnedSpell"
+        loca[f"{name}_DisplayName"] = {"en": "Eldritch: Twinned Spell"}
+        loca[f"{name}_Description"] = {"en": """
+            Spells that only target 1 creature can target an additional creature.
+            """}
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            ExtraDescription="h7f172d6cg6359g4158gb711gcd159662cc53;1",
+            ExtraDescriptionParams="Distance(1.5)",
+            Icon="Skill_Sorcerer_Passive_Metamagic_TwinnedSpell",
+            EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
+            Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
+            Boosts=[
+                "UnlockSpellVariant(TwinnedProjectileSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+                "UnlockSpellVariant(TwinnedTargetSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+                "UnlockSpellVariant(TwinnedTargetTouchSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+            ],
+            ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Twinned_HeadFX_01:Dummy_HeadFX",
+            ToggleOffContext="OnCastResolved",
+        ))
         return name
 
     @cached_property
@@ -80,9 +112,7 @@ class EldritchKnight(Replacer):
         spells = SpellList(
             Comment="Eldritch Knight level 3 abilities",
             Spells=[
-                "Projectile_EldritchBlast",
                 Attack(self.mod).add_brutal_cleave(),
-                self._mighty_throw_spell,
             ],
             UUID=self.make_uuid("Eldritch Knight level 3 abilities"),
         )
@@ -141,18 +171,19 @@ class EldritchKnight(Replacer):
         progression.Boosts = (progression.Boosts or []) + [
             f"ActionResource(SpellSlot,{4 * self._args.spells},1)",
             f"ActionResource(SpellSlot,{2 * self._args.spells},2)",
+            "Tag(WIZARD)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            BattleMagic(self.mod).add_battle_magic(),
             PackMule(self.mod).add_pack_mule(5.0),
-            self._remarkable_athlete_run,
+            self._quickened_spell,
+            self._twinned_spell,
             "SculptSpells",
             "UnlockedSpellSlotLevel1",
             "UnlockedSpellSlotLevel2",
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_3_spell_list.UUID},,,,AlwaysPrepared)",
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI)",
+            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
             f"SelectSpells({wizard_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},3,0,,,,AlwaysPrepared)",
@@ -164,10 +195,13 @@ class EldritchKnight(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},2)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "DevilsSight",
+            "ImprovedCritical",
+            "JackOfAllTrades",
             "FeralInstinct",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 
@@ -181,7 +215,7 @@ class EldritchKnight(Replacer):
             "UnlockedSpellSlotLevel3",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI)",
+            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
             f"SelectSpells({wizard_level_3_spells(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 
@@ -205,9 +239,12 @@ class EldritchKnight(Replacer):
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "Evasion",
+            "RemarkableAthlete_Jump",
+            "RemarkableAthlete_Proficiency",
+            self._remarkable_athlete_run,
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI)",
+            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
             f"SelectSpells({wizard_level_4_spells(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 
@@ -220,6 +257,7 @@ class EldritchKnight(Replacer):
             "LandsStride_DifficultTerrain",
             "LandsStride_Surfaces",
             "LandsStride_Advantage",
+            "FOR_NightWalkers_WebImmunity",
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_level_4_spells(self).UUID},3,0,,,,AlwaysPrepared)",
@@ -235,7 +273,7 @@ class EldritchKnight(Replacer):
             "BrutalCritical",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI)",
+            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
             f"SelectSpells({wizard_level_5_spells(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 
@@ -262,7 +300,7 @@ class EldritchKnight(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI)",
+            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
             f"SelectSpells({wizard_level_6_spells(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 

@@ -165,12 +165,12 @@
                     <attribute id="UUID" type="guid" value="0743e55d-73b9-4812-9c18-dcd1983eceac" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,1);ActionResource(SpellSlot,4,2)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,1);ActionResource(SpellSlot,4,2);Tag(WIZARD)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnight_BattleMagic;EldritchKnight_PackMule_400;EldritchKnight_FastMovement_30;SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnight_PackMule_400;EldritchKnight_QuickenedSpell;EldritchKnight_TwinnedSpell;SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);AddSpells(1af00a9f-2af9-d550-58b9-4b3c62c02c9e,,,,AlwaysPrepared);SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);AddSpells(1af00a9f-2af9-d550-58b9-4b3c62c02c9e,,,,AlwaysPrepared);SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="77ef26e6-6872-4f9c-82eb-a0640a49030d" />
                 </node>
@@ -179,9 +179,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="FeralInstinct" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;ImprovedCritical;JackOfAllTrades;FeralInstinct" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="6300c505-0bb1-4c73-9565-ab155bec4e1f" />
                 </node>
@@ -191,7 +191,7 @@
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="UncannyDodge;UnlockedSpellSlotLevel3" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="56bf6e19-7b63-456d-b696-ee47ead4f24a" />
                 </node>
@@ -210,9 +210,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="WarMagic;Evasion" />
+                    <attribute id="PassivesAdded" type="LSString" value="WarMagic;Evasion;RemarkableAthlete_Jump;RemarkableAthlete_Proficiency;EldritchKnight_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI);SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI);SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="6b099a1b-dd6c-4b6a-a0b5-70fa86dbe6d3" />
                 </node>
@@ -221,7 +221,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage;FOR_NightWalkers_WebImmunity" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -233,7 +233,7 @@
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="e1f144e6-b72d-4904-818b-ae77c4244205" />
                 </node>
@@ -253,7 +253,7 @@
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,4,2,FeatASI);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared);SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="d393b47c-629b-4c26-a857-741f9ef2eff2" />
                 </node>

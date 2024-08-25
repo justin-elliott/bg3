@@ -181,6 +181,21 @@ def druid_level_6_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("6a4e2167-55f3-4ba8-900f-14666b293e93"))
 
 
+# Druid Spells
+
+
+def eldritch_knight_cantrips(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("6529c75a-d8cd-4ddb-a1b1-f55cb1e66d9f"))
+
+
+def eldritch_knight_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("32aeba85-13bd-4a6f-8e06-cd4447b746d8"))
+
+
+def eldritch_knight_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("4a86443c-6a21-4b8d-b1bf-55a99e021354"))
+
+
 # Ranger Spells
 
 

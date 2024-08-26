@@ -14,7 +14,11 @@ from moddb import (
     PackMule,
     multiply_resources,
 )
-from modtools.gamedata import PassiveData
+from modtools.gamedata import (
+    PassiveData,
+    SpellData,
+    StatusData,
+)
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -127,23 +131,116 @@ class Battlemage(Replacer):
     def _arcane_weapon(self) -> str:
         loca = self.mod.get_localization()
         name = f"{self.mod.get_prefix()}_ArcaneWeapon"
+
         loca[f"{name}_DisplayName"] = {"en": "Arcane Weapon"}
         loca[f"{name}_Description"] = {"en": """
             Infuse the weapon in your main hand with arcane energy. The weapon becomes magical, preventing it from being
-            disarmed. It receives a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack</LSTag> and Damage Rolls, and deals
-            an additional [2].
+            disarmed. It receives a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
+            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>, and Damage Rolls, and deals an additional [2].
             """}
-
+        loca[f"{name}_StatusDescription"] = {"en": """
+            Weapon has become magical, preventing it from being disarmed. It receives a +[1] bonus to
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
+            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>, and Damage Rolls, and deals an additional [2].
+            """}
         loca[f"{name}_UpcastDescription"] = {"en": """
             Casting this spell using a 4th or 5th level spell slot will increase the Attack and Damage bonus to [1], and
             a 6th level spell slot will increase it to [2].
             """}
+
         upcast_description = TooltipUpcastDescription(
             Name="Arcane Weapon",
             Text=loca[f"{name}_UpcastDescription"],
             UUID=self.make_uuid("Upcast Arcane Weapon"),
         )
         self.mod.add(upcast_description)
+
+        self.mod.add(SpellData(
+            name,
+            SpellType="Shout",
+            Level="2",
+            SpellSchool="Abjuration",
+            AIFlags="CanNotUse",
+            SpellProperties=[
+                f"ApplyStatus({name.upper()}_CASTER,100,-1)",
+                f"ApplyEquipmentStatus(MainHand,{name.upper()}_WEAPON,100,-1)",
+            ],
+            TargetConditions="Self() and HasWeaponInMainHand()",
+            Icon="Spell_Transmutation_MagicWeapon",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams=["1", "DealDamage(1d4,Force)"],
+            TooltipStatusApply=f"ApplyStatus({name.upper()}_WEAPON,100,-1)",
+            TooltipUpcastDescription=upcast_description.UUID,
+            TooltipUpcastDescriptionParams=["2", "3"],
+            PrepareSound="Spell_Prepare_Buff_Gen_L1to3_01",
+            PrepareLoopSound="Spell_Prepare_Buff_Gen_L1to3_01_Loop",
+            CastSound="Spell_Cast_Buff_MagicWeapon_L1to3",
+            TargetSound="Spell_Impact_Buff_MagicWeapon_L1to3",
+            VocalComponentSound="Vocal_Component_EnchantWeapon",
+            PreviewCursor="Cast",
+            CastTextEvent="Cast",
+            UseCosts="ActionPoint:1;SpellSlotsGroup:1:1:2",
+            SpellAnimation=[
+                "554a18f7-952e-494a-b301-7702a85d4bc9,,",
+                ",,",
+                "a4da186a-0872-461e-ae5e-93d5b32b9bef,,",
+                "527ca082-4ffa-4edb-a23f-5e7fa798a6ce,,",
+                "22dfbbf4-f417-4c84-b39e-2039315961e6,,",
+                ",,",
+                "5bfbe9f9-4fc3-4f26-b112-43d404db6a89,,",
+                "499b7945-9eff-40a2-9911-73b8963108e4,,",
+                "1d3a29f0-9409-462e-81cd-3f24944f63ca,,",
+            ],
+            VerbalIntent="Buff",
+            SpellFlags=["IsSpell", "HasVerbalComponent", "HasSomaticComponent"],
+            PrepareEffect="33302a46-4a12-41dd-8845-6b7314d50022",
+            CastEffect="bcd66fb0-b0bc-41d0-abba-ad443d63dd72",
+        ))
+
+        self.mod.add(StatusData(
+            f"{name.upper()}_CASTER",
+            StatusType="BOOST",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_StatusDescription"],
+            DescriptionParams=["1", "DealDamage(1d4,Force)"],
+            Icon="Spell_Transmutation_MagicWeapon",
+            SoundLoop="Spell_Status_MagicWeapon_MO",
+            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
+            StackId=f"{name.upper()}_CASTER",
+            StackPriority="0",
+            Boosts=[
+                "SpellSaveDC(1)",
+                "RollBonus(MeleeSpellAttack,1)",
+                "RollBonus(RangedSpellAttack,1)",
+            ],
+            StatusGroups="SG_RemoveOnRespec",
+            StatusPropertyFlags=["DisableCombatlog", "DisableOverhead", "DisablePortraitIndicator"],
+            ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
+        ))
+
+        self.mod.add(StatusData(
+            f"{name.upper()}_WEAPON",
+            StatusType="BOOST",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_StatusDescription"],
+            DescriptionParams=["1", "DealDamage(1d4,Force)"],
+            Icon="Spell_Transmutation_MagicWeapon",
+            SoundLoop="Spell_Status_MagicWeapon_MO",
+            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
+            StackId=f"{name.upper()}_WEAPON",
+            StackPriority="0",
+            Boosts=[
+                "CannotBeDisarmed()",
+                "WeaponDamage(1d4,Force,Magical)",
+                "WeaponEnchantment(1)",
+                "WeaponProperty(Magical)",
+            ],
+            Passives=["MAG_ArcaneEnchantment_Lesser_Passive"],
+            StatusGroups="SG_RemoveOnRespec",
+            ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
+            StatusEffect="359918c9-0c9a-4714-a032-0deac359d00b",
+        ))
 
         return name
 

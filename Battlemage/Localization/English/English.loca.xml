@@ -16,6 +16,7 @@
     <content contentuid="h60195be9gcb5dgc038gf5adge9bf7b866416" version="1">Advancement</content>
     <content contentuid="h1ab3f2c5gafadgeb03ge62bgea89eacc221d" version="1">Your abilities improve by 2 at Battlemage levels 3, 5, 7, 9, and 11.</content>
     <content contentuid="hb9d85cceg7df0g2ff7g539dgae1e122c27a3" version="1">Arcane Weapon</content>
-    <content contentuid="h14a56ed8g40cag7e54gb6cag3e75e0693267" version="1">Infuse the weapon in your main hand with arcane energy. The weapon becomes magical, preventing it from being disarmed. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack&lt;/LSTag&gt; and Damage Rolls, and deals an additional [2].</content>
+    <content contentuid="h14a56ed8g40cag7e54gb6cag3e75e0693267" version="1">Infuse the weapon in your main hand with arcane energy. The weapon becomes magical, preventing it from being disarmed. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Spell Save DC&lt;/LSTag&gt;, and Damage Rolls, and deals an additional [2].</content>
+    <content contentuid="h7dc31a08g1167gd0fdg6b29g05f7d4c32bb1" version="1">Weapon has become magical, preventing it from being disarmed. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Spell Save DC&lt;/LSTag&gt;, and Damage Rolls, and deals an additional [2].</content>
     <content contentuid="h947f5a93ge661gb959gc5fcg1791cbabb4b9" version="1">Casting this spell using a 4th or 5th level spell slot will increase the Attack and Damage bonus to [1], and a 6th level spell slot will increase it to [2].</content>
 </contentList>

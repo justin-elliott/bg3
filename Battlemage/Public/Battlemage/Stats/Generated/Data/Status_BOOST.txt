@@ -29,7 +29,7 @@ data "SoundLoop" "Spell_Status_MagicWeapon_MO"
 data "SoundStop" "Spell_Status_MagicWeapon_MO_Stop"
 data "StackId" "BATTLEMAGE_ARCANEWEAPON_WEAPON"
 data "StackPriority" "0"
-data "StatusEffect" "359918c9-0c9a-4714-a032-0deac359d00b"
+data "StatusEffect" "ae580720-fde4-4596-b671-b5280cdbe9eb"
 data "StatusGroups" "SG_RemoveOnRespec"
 
 new entry "BATTLEMAGE_ARCANEWEAPON_CASTER_3"

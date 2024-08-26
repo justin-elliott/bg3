@@ -86,6 +86,7 @@ class Battlemage(Replacer):
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
             Icon="Skill_Sorcerer_Passive_Metamagic_QuickenedSpell",
+            EnabledConditions="HasActionResource('BonusActionPoint',1,0,false,false,context.Source)",
             EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
             Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
             Boosts=[
@@ -112,6 +113,7 @@ class Battlemage(Replacer):
             ExtraDescription="h7f172d6cg6359g4158gb711gcd159662cc53;1",
             ExtraDescriptionParams="Distance(1.5)",
             Icon="Skill_Sorcerer_Passive_Metamagic_TwinnedSpell",
+            EnabledConditions="HasActionResource('ActionPoint',1,0,false,false,context.Source)",
             EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
             Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
             Boosts=[
@@ -236,7 +238,7 @@ class Battlemage(Replacer):
             ],
             StatusGroups="SG_RemoveOnRespec",
             ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
-            StatusEffect="359918c9-0c9a-4714-a032-0deac359d00b",
+            StatusEffect="ae580720-fde4-4596-b671-b5280cdbe9eb",
         ))
 
         for level in range(3, 7):

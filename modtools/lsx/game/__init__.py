@@ -19,3 +19,4 @@ from .progressions import *
 from .roottemplates import *
 from .spelllists import *
 from .tags import *
+from .tooltipupcastdescriptions import *

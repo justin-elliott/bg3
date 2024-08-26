@@ -9,11 +9,9 @@ import os
 from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
-    ActionResource,
     Attack,
     Movement,
     PackMule,
-    multiply_resources,
     spells_always_prepared,
 )
 from modtools.gamedata import PassiveData
@@ -56,6 +54,37 @@ class EldritchKnight(Replacer):
         name = f"{self.mod.get_prefix()}_RemarkableAthlete_Run"
         loca[name] = {"en": "Remarkable Athlete: Run"}
         return Movement(self.mod).add_fast_movement(3.0, loca[name])
+
+    @cached_property
+    def _advancement(self) -> dict[int, str]:
+        loca = self.mod.get_localization()
+        name = f"{self.mod.get_prefix()}_Advancement"
+        loca[f"{name}_DisplayName"] = {"en": "Advancement"}
+        loca[f"{name}_Description"] = {"en": """
+            Your abilities improve by 2 at Eldritch Knight levels 3, 5, 7, 9, and 11.
+            """}
+
+        advancement_names = {}
+
+        for level in [3, 5, 7, 9, 11]:
+            advancement_names[level] = f"{name}_{level}"
+            self.mod.add(PassiveData(
+                advancement_names[level],
+                DisplayName=loca[f"{name}_DisplayName"],
+                Description=loca[f"{name}_Description"],
+                Icon="Spell_Transmutation_EnhanceAbility",
+                Properties=["ForceShowInCC", "Highlighted"] if level == 3 else ["IsHidden"],
+                Boosts=[
+                    "Ability(Strength,2)",
+                    "Ability(Dexterity,2)",
+                    "Ability(Constitution,2)",
+                    "Ability(Intelligence,2)",
+                    "Ability(Wisdom,2)",
+                    "Ability(Charisma,2)",
+                ],
+            ))
+
+        return advancement_names
 
     @cached_property
     def _quickened_spell(self) -> str:
@@ -136,26 +165,30 @@ class EldritchKnight(Replacer):
             self._feat_levels = args.feats - frozenset([1])
 
     @class_description(CharacterClass.FIGHTER)
+    def fighter_description(self, class_description: ClassDescription) -> None:
+        class_description.MustPrepareSpells = True
+        class_description.SpellCastingAbility = 4
+
     @class_description(CharacterClass.FIGHTER_ELDRITCHKNIGHT)
-    def ranger_description(self, class_description: ClassDescription) -> None:
+    def eldritch_knight_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
+        class_description.SpellList = "beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"
 
     @progression(CharacterClass.FIGHTER, range(1, 13))
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, range(1, 13))
     @progression(CharacterClass.FIGHTER, 1, is_multiclass=True)
     @only_existing_progressions
-    def level_1_to_12_ranger(self, progression: Progression) -> None:
+    def level_1_to_12_fighter(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
         spells_always_prepared(progression)
         progression.Boosts = [
             boost for boost in (progression.Boosts or []) if not boost.startswith("ActionResource(SpellSlot,")
-        ]
+        ] or None
         progression.PassivesAdded = [
             passive for passive in (progression.PassivesAdded or []) if not passive.startswith("UnlockedSpellSlotLevel")
-        ]
+        ] or None
         progression.Selectors = [
             selector for selector in (progression.Selectors or [])
             if not selector.startswith(f"SelectSpells({eldritch_knight_cantrips(self).UUID}")
@@ -175,6 +208,7 @@ class EldritchKnight(Replacer):
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             PackMule(self.mod).add_pack_mule(5.0),
+            self._advancement[3],
             self._quickened_spell,
             self._twinned_spell,
             "SculptSpells",
@@ -183,10 +217,9 @@ class EldritchKnight(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_3_spell_list.UUID},,,,AlwaysPrepared)",
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
             f"SelectSpells({wizard_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
-            f"SelectSpells({wizard_level_2_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_2_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 4)
@@ -202,7 +235,7 @@ class EldritchKnight(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
-            f"SelectSpells({wizard_level_2_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_2_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 5)
@@ -211,12 +244,12 @@ class EldritchKnight(Replacer):
             f"ActionResource(SpellSlot,{2 * self._args.spells},3)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._advancement[5],
             "UncannyDodge",
             "UnlockedSpellSlotLevel3",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
-            f"SelectSpells({wizard_level_3_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_3_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 6)
@@ -229,7 +262,7 @@ class EldritchKnight(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({wizard_level_3_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_3_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 7)
@@ -238,14 +271,14 @@ class EldritchKnight(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._advancement[7],
             "Evasion",
             "RemarkableAthlete_Jump",
             "RemarkableAthlete_Proficiency",
             self._remarkable_athlete_run,
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
-            f"SelectSpells({wizard_level_4_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_4_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 8)
@@ -260,7 +293,7 @@ class EldritchKnight(Replacer):
             "FOR_NightWalkers_WebImmunity",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({wizard_level_4_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_4_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 9)
@@ -270,11 +303,11 @@ class EldritchKnight(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._advancement[9],
             "BrutalCritical",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
-            f"SelectSpells({wizard_level_5_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_5_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 10)
@@ -287,7 +320,7 @@ class EldritchKnight(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({wizard_level_5_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_5_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 11)
@@ -296,12 +329,12 @@ class EldritchKnight(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+            self._advancement[11],
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
-            "SelectAbilities(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,6,2,FeatASI)",
-            f"SelectSpells({wizard_level_6_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            "SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle)",
+            f"SelectSpells({wizard_level_6_spells(self).UUID},3,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 12)
@@ -314,7 +347,7 @@ class EldritchKnight(Replacer):
             "ReliableTalent",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({wizard_level_6_spells(self).UUID},3,0,,,,AlwaysPrepared)",
+            f"SelectSpells({wizard_level_6_spells(self).UUID},3,0)",
         ]
 
 

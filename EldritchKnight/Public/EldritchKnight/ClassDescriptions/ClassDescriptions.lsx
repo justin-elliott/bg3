@@ -24,6 +24,7 @@
                 </node>
                 <node id="ClassDescription">
                     <attribute id="BaseHp" type="int32" value="10" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Fighter" />
                     <attribute id="ClassHotbarColumns" type="int32" value="5" />
@@ -33,6 +34,7 @@
                     <attribute id="HpPerLevel" type="int32" value="6" />
                     <attribute id="ItemsHotbarColumns" type="int32" value="2" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
+                    <attribute id="MulticlassSpellcasterModifier" type="double" value="1.0" />
                     <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Fighter" />
                     <attribute id="PrimaryAbility" type="uint8" value="1" />

@@ -166,6 +166,8 @@ class EldritchKnight(Replacer):
 
     @class_description(CharacterClass.FIGHTER)
     def fighter_description(self, class_description: ClassDescription) -> None:
+        class_description.CanLearnSpells = True
+        class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
         class_description.SpellCastingAbility = 4
 
@@ -174,6 +176,7 @@ class EldritchKnight(Replacer):
         class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
+        class_description.SpellCastingAbility = 4
         class_description.SpellList = "beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"
 
     @progression(CharacterClass.FIGHTER, range(1, 13))

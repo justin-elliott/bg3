@@ -12,7 +12,6 @@ from moddb import (
     Attack,
     Movement,
     PackMule,
-    multiply_resources,
 )
 from modtools.gamedata import (
     PassiveData,
@@ -20,7 +19,6 @@ from modtools.gamedata import (
     StatusData,
 )
 from modtools.lsx.game import (
-    ActionResource,
     CharacterClass,
     ClassDescription,
     Progression,
@@ -29,7 +27,7 @@ from modtools.lsx.game import (
 )
 from modtools.replacers import (
     class_description,
-    only_existing_progressions,
+    DontIncludeProgression,
     progression,
     Replacer,
 )
@@ -336,16 +334,17 @@ class Battlemage(Replacer):
         class_description.Description = loca[f"{name}_Description"]
 
     @progression(CharacterClass.WIZARD, range(1, 13))
-    @progression(CharacterClass.WIZARD_ABJURATION, range(1, 13))
     @progression(CharacterClass.WIZARD, 1, is_multiclass=True)
-    @only_existing_progressions
     def level_1_to_12_wizard(self, progression: Progression) -> None:
+        previous_improvement = progression.AllowImprovement or None
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
+        if progression.AllowImprovement == previous_improvement:
+            raise DontIncludeProgression
 
     @progression(CharacterClass.WIZARD_ABJURATION, 2)
     def level_2(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{3 * (self._args.spells - 1)},1)",
             "ProficiencyBonus(SavingThrow,Strength)",
             "ProficiencyBonus(SavingThrow,Dexterity)",
             "ProficiencyBonus(SavingThrow,Constitution)",
@@ -373,6 +372,8 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 3)
     def level_3(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},1)",
+            f"ActionResource(SpellSlot,{2 * (self._args.spells - 1)},2)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[3],
@@ -387,6 +388,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 4)
     def level_4(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},2)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "ImprovedCritical",
@@ -398,6 +400,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 5)
     def level_5(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{2 * (self._args.spells - 1)},3)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[5],
@@ -409,6 +412,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 6)
     def level_6(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},3)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "PotentCantrip",
@@ -420,6 +424,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 7)
     def level_7(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},4)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[7],
@@ -431,6 +436,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 8)
     def level_8(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},4)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "LandsStride_DifficultTerrain",
@@ -444,6 +450,8 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 9)
     def level_9(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},4)",
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},5)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[9],
@@ -455,6 +463,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 10)
     def level_10(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},5)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "EmpoweredEvocation",
@@ -465,6 +474,7 @@ class Battlemage(Replacer):
     @progression(CharacterClass.WIZARD_ABJURATION, 11)
     def level_11(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * (self._args.spells - 1)},6)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[11],

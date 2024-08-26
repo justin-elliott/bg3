@@ -236,11 +236,50 @@ class Battlemage(Replacer):
                 "WeaponEnchantment(1)",
                 "WeaponProperty(Magical)",
             ],
-            Passives=["MAG_ArcaneEnchantment_Lesser_Passive"],
             StatusGroups="SG_RemoveOnRespec",
             ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
             StatusEffect="359918c9-0c9a-4714-a032-0deac359d00b",
         ))
+
+        for level in range(3, 7):
+            self.mod.add(SpellData(
+                f"{name}_{level}",
+                using=name,
+                SpellType="Shout",
+                PowerLevel=f"{level}",
+                RootSpellID=name,
+                SpellProperties=[
+                    f"ApplyStatus({name.upper()}_CASTER_{level},100,-1)",
+                    f"ApplyEquipmentStatus(MainHand,{name.upper()}_WEAPON_{level},100,-1)",
+                ],
+                TooltipStatusApply=f"ApplyStatus({name.upper()}_WEAPON_{level},100,-1)",
+                UseCosts=["ActionPoint:1", f"SpellSlotsGroup:1:1:{level}"],
+            ))
+
+            self.mod.add(StatusData(
+                f"{name.upper()}_CASTER_{level}",
+                using=f"{name.upper()}_CASTER",
+                StatusType="BOOST",
+                DescriptionParams=[f"{level // 2}", f"DealDamage({level - 1}d4,Force)"],
+                Boosts=[
+                    f"SpellSaveDC({level // 2})",
+                    f"RollBonus(MeleeSpellAttack,{level // 2})",
+                    f"RollBonus(RangedSpellAttack,{level // 2})",
+                ],
+            ))
+
+            self.mod.add(StatusData(
+                f"{name.upper()}_WEAPON_{level}",
+                using=f"{name.upper()}_WEAPON",
+                StatusType="BOOST",
+                DescriptionParams=[f"{level // 2}", f"DealDamage({level - 1}d4,Force)"],
+                Boosts=[
+                    "CannotBeDisarmed()",
+                    f"WeaponDamage({level - 1}d4,Force,Magical)",
+                    f"WeaponEnchantment({level // 2})",
+                    "WeaponProperty(Magical)",
+                ],
+            ))
 
         return name
 

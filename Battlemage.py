@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     Attack,
+    BattleMagic,
     Movement,
     PackMule,
 )
@@ -19,6 +20,7 @@ from modtools.gamedata import (
     StatusData,
 )
 from modtools.lsx.game import (
+    CharacterAbility,
     CharacterClass,
     ClassDescription,
     Progression,
@@ -61,42 +63,10 @@ class Battlemage(Replacer):
                 Description=loca[f"{name}_Description"],
                 Icon="Spell_Transmutation_EnhanceAbility",
                 Properties=["ForceShowInCC", "Highlighted"] if level == 3 else ["IsHidden"],
-                Boosts=[
-                    "Ability(Strength,2)",
-                    "Ability(Dexterity,2)",
-                    "Ability(Constitution,2)",
-                    "Ability(Intelligence,2)",
-                    "Ability(Wisdom,2)",
-                    "Ability(Charisma,2)",
-                ],
+                Boosts=[f"Ability({ability.name.title()},{level - 1},30)" for ability in CharacterAbility],
             ))
 
         return advancement_names
-
-    @cached_property
-    def _quickened_spell(self) -> str:
-        loca = self.mod.get_localization()
-        name = f"{self.mod.get_prefix()}_QuickenedSpell"
-        loca[f"{name}_DisplayName"] = {"en": "Battlemage: Quickened Spell"}
-        loca[f"{name}_Description"] = {"en": """
-            Spells that cost an action cost a bonus action instead.
-            """}
-        self.mod.add(PassiveData(
-            name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            Icon="Skill_Sorcerer_Passive_Metamagic_QuickenedSpell",
-            EnabledConditions="HasActionResource('BonusActionPoint',1,0,false,false,context.Source)",
-            EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
-            Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
-            Boosts=[
-                "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))",
-            ],
-            ToggleGroup=f"{self.mod.get_prefix()}_Metamagic",
-            ToggleOnEffect="VFX_Spells_Cast_Sorcerer_Metamagic_Quickened_HeadFX_01:Dummy_HeadFX",
-            ToggleOffContext="OnCastResolved",
-        ))
-        return name
 
     @cached_property
     def _twinned_spell(self) -> str:
@@ -113,7 +83,6 @@ class Battlemage(Replacer):
             ExtraDescription="h7f172d6cg6359g4158gb711gcd159662cc53;1",
             ExtraDescriptionParams="Distance(1.5)",
             Icon="Skill_Sorcerer_Passive_Metamagic_TwinnedSpell",
-            EnabledConditions="HasActionResource('ActionPoint',1,0,false,false,context.Source)",
             EnabledContext=["OnCastResolved", "OnLongRest", "OnActionResourcesChanged"],
             Properties=["IsToggled", "ToggledDefaultAddToHotbar"],
             Boosts=[
@@ -359,9 +328,9 @@ class Battlemage(Replacer):
             "Proficiency(MartialWeapons)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            BattleMagic(self.mod).add_battle_magic(),
             Movement(self.mod).add_fast_movement(3.0),
             PackMule(self.mod).add_pack_mule(5.0),
-            self._quickened_spell,
             self._twinned_spell,
             "SculptSpells",
         ]
@@ -408,6 +377,9 @@ class Battlemage(Replacer):
             self._advancement[5],
             "UncannyDodge",
         ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._advancement[3],
+        ]
         progression.Selectors = (progression.Selectors or []) + [
         ]
 
@@ -431,6 +403,9 @@ class Battlemage(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[7],
             "Evasion",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._advancement[5],
         ]
         progression.Selectors = (progression.Selectors or []) + [
         ]
@@ -459,6 +434,9 @@ class Battlemage(Replacer):
             self._advancement[9],
             "BrutalCritical",
         ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._advancement[7],
+        ]
         progression.Selectors = (progression.Selectors or []) + [
         ]
 
@@ -481,6 +459,9 @@ class Battlemage(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._advancement[11],
             "ReliableTalent",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._advancement[9],
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly

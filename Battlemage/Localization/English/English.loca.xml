@@ -3,12 +3,12 @@
 <contentList>
     <content contentuid="h46b942bcgb5e9g9bd6gb6f7g4b0f5521bf59" version="1">Battlemage</content>
     <content contentuid="h8e06894dg24b9g01afgb584gddf525034bc7" version="1">You twist and harden the Weave into arcane wards, while wading into the thick of battle. Learning Abjuration spells from scrolls only costs you 25g per spell level, not 50.</content>
+    <content contentuid="h0af46fbcg75dag71b8g0b70g2259edfaa1f8" version="1">Battle Magic</content>
+    <content contentuid="hf0290551g2ecfgba69gbd33g9e5a7ca3b88a" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="he11952f2ge22fg2997g59dbgc0c59baa48f0" version="1">Fast Movement</content>
     <content contentuid="h294addb1g672aga753ge594gf08df1ccb9db" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h2273e8cbg097cg01d2g707fgacff087db7fd" version="1">Pack Mule</content>
     <content contentuid="ha7c18884gcc76ge6d8gafdcge9ba2b6b2bdb" version="1">Your carrying capacity is increased by [1]%.</content>
-    <content contentuid="h1313ef08g584eg8269g4aa7g057e7d4e30b4" version="1">Battlemage: Quickened Spell</content>
-    <content contentuid="h70971a1bg9beagaa90gc593g889da5861506" version="1">Spells that cost an action cost a bonus action instead.</content>
     <content contentuid="h919e2a6fg383eg8af5gc909g15d9b0dccdd1" version="1">Battlemage: Twinned Spell</content>
     <content contentuid="h28ddae1fg08d7g819dg24d4gc83842283e6f" version="1">Spells that only target 1 creature can target an additional creature.</content>
     <content contentuid="h9db3a2a5g89a0gbf0bgc013g5653de0468c3" version="1">Brutal Cleave</content>

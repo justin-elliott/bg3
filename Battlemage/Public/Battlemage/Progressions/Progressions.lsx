@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="Savant(Abjuration);ActionResource(SpellSlot,3,1);ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Charisma);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="AbjurationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="ArcaneWard;ArcaneWard_Cast;Battlemage_FastMovement_30;Battlemage_PackMule_400;Battlemage_QuickenedSpell;Battlemage_TwinnedSpell;SculptSpells" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArcaneWard;ArcaneWard_Cast;Battlemage_BattleMagic;Battlemage_FastMovement_30;Battlemage_PackMule_400;Battlemage_TwinnedSpell;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);AddSpells(acef541c-2e77-fa88-2ad7-6ba0596971f9,,,,AlwaysPrepared);SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)" />
                     <attribute id="TableUUID" type="guid" value="9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3" />
@@ -40,6 +40,7 @@
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="AbjurationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="Battlemage_Advancement_5;UncannyDodge" />
+                    <attribute id="PassivesRemoved" type="LSString" value="Battlemage_Advancement_3" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3" />
@@ -60,6 +61,7 @@
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="AbjurationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="Battlemage_Advancement_7;Evasion" />
+                    <attribute id="PassivesRemoved" type="LSString" value="Battlemage_Advancement_5" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
                     <attribute id="TableUUID" type="guid" value="9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3" />
@@ -80,6 +82,7 @@
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="AbjurationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="Battlemage_Advancement_9;BrutalCritical" />
+                    <attribute id="PassivesRemoved" type="LSString" value="Battlemage_Advancement_7" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
                     <attribute id="TableUUID" type="guid" value="9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3" />
@@ -100,6 +103,7 @@
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="AbjurationSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="Battlemage_Advancement_11;ReliableTalent" />
+                    <attribute id="PassivesRemoved" type="LSString" value="Battlemage_Advancement_9" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0);AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3" />

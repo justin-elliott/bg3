@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates files for the "UndefeatedChampion" mod.
+Generates files for the "UndisputedChampion" mod.
 """
 
 import argparse
@@ -14,7 +14,7 @@ from modtools.lsx.game import CharacterClass, Progression, SpellList
 from modtools.replacers import progression, DontIncludeProgression, Replacer
 
 
-class UndefeatedChampion(Replacer):
+class UndisputedChampion(Replacer):
     @dataclass
     class Args:
         feats: set[int]  # Feat improvement levels
@@ -88,7 +88,7 @@ class UndefeatedChampion(Replacer):
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
-                         name="UndefeatedChampion",
+                         name="UndisputedChampion",
                          description="Enhancements for the Champion subclass.")
 
         self._args = args
@@ -210,10 +210,10 @@ def main():
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
                         help="Action resource multiplier (defaulting to 2; double resources)")
-    args = UndefeatedChampion.Args(**vars(parser.parse_args()))
+    args = UndisputedChampion.Args(**vars(parser.parse_args()))
 
-    undefeated_champion = UndefeatedChampion(args)
-    undefeated_champion.build()
+    undisputed_champion = UndisputedChampion(args)
+    undisputed_champion.build()
 
 
 if __name__ == "__main__":

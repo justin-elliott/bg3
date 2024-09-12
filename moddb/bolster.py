@@ -49,6 +49,7 @@ class Bolster:
             Requirements="!Combat",
             SpellProperties=[
                 f"ApplyStatus({name.upper()},100,-1)",
+                "ApplyStatus(FEATHER_FALL,100,-1)",
                 "ApplyStatus(LONGSTRIDER,100,-1)",
                 "ApplyStatus(PETPAL,100,-1)",
                 "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)",
@@ -56,6 +57,7 @@ class Bolster:
             TargetConditions="Party() and not Dead()",
             TooltipStatusApply=[
                 f"ApplyStatus({name.upper()},100,-1)",
+                "ApplyStatus(FEATHER_FALL,100,-1)",
                 "ApplyStatus(LONGSTRIDER,100,-1)",
                 "ApplyStatus(PETPAL,100,-1)",
                 "ApplyStatus(MAGE_ARMOR,100,-1)",

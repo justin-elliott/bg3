@@ -282,7 +282,7 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 8)
     def level_8(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + []
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["UncannyDodge"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 9)
     def level_9(self, progression: Progression) -> None:
@@ -291,17 +291,17 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 10)
     def level_10(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + []
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["Evasion"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 11)
     def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + []
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
         progression.Selectors = (progression.Selectors or []) + [
         ]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 12)
     def level_12(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ReliableTalent"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["IronMind"]
         progression.Selectors = (progression.Selectors or []) + [
         ]
 

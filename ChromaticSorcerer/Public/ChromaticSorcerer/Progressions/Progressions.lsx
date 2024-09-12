@@ -277,7 +277,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
                     <attribute id="UUID" type="guid" value="a9502d3b-3be7-dd56-7616-bae18f6346b7" />
@@ -294,7 +294,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
                     <attribute id="UUID" type="guid" value="a1ed8ce1-d18e-2663-844f-4a484f29ae20" />
@@ -302,7 +302,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
-                    <attribute id="PassivesAdded" type="LSString" value="" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
@@ -311,7 +311,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
-                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
+                    <attribute id="PassivesAdded" type="LSString" value="IronMind" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />

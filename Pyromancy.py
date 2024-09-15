@@ -432,6 +432,7 @@ class Pyromancy(Replacer):
 
     @class_description(CharacterClass.SORCERER_WILDMAGIC)
     def sorcerer_pyromancy_description(self, class_description: ClassDescription) -> None:
+        class_description.ClassEquipment = self._class_equipment
         class_description.DisplayName = self._pyromancy_display_name
         class_description.Description = self._pyromancy_description
 
@@ -545,8 +546,8 @@ class Pyromancy(Replacer):
 
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Wild Magic Sorcery.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
-                        help="Feat progression every n levels (defaulting to 2; feat every other level)")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
+                        help="Feat progression every n levels (defaulting to 1; feat every level)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,

@@ -28,8 +28,10 @@ type ProgressionBuilder = Callable[[Replacer, Progression], None]
 type ProgressionBuilderDict = dict[NameLevelKey, list[ProgressionBuilder]]
 
 
-_PROGRESSIONS_LSX_PATH = "Shared.pak/Public/Shared/Progressions/Progressions.lsx"
-_PROGRESSIONS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx"
+_progression_lsx_paths = [
+    "Shared.pak/Public/Shared/Progressions/Progressions.lsx",
+    "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx",
+]
 
 
 def _by_uuid(progression: Progression) -> str:
@@ -52,9 +54,10 @@ def _progression_order(progression: Progression) -> tuple[str, int, bool]:
 
 def _load_progressions(replacer: Replacer) -> list[Progression]:
     """Load the game's Progressions from the .pak cache."""
-    progressions_lsx = Lsx.load(replacer.get_cache_path(_PROGRESSIONS_LSX_PATH))
-    progressions_dev_lsx = Lsx.load(replacer.get_cache_path(_PROGRESSIONS_DEV_LSX_PATH))
-    progressions_lsx.children.update(progressions_dev_lsx.children, key=_by_uuid)
+    progressions_lsx = Lsx.load(replacer.get_cache_path(_progression_lsx_paths[0]))
+    for lsx_path in _progression_lsx_paths[1:]:
+        lsx = Lsx.load(replacer.get_cache_path(lsx_path))
+        progressions_lsx.children.update(lsx.children, key=_by_uuid)
     progressions_lsx.children.sort(key=_progression_order)
     return list(progressions_lsx.children)
 
@@ -168,6 +171,9 @@ def progression(names: str | Iterable[str],
         return fn
 
     return decorate
+
+
+progression.include = lambda pak_path: _progression_lsx_paths.append(pak_path)
 
 
 def only_existing_progressions(fn: ProgressionBuilder) -> ProgressionBuilder:

@@ -70,10 +70,15 @@ class Unpak:
         """Get the path of a pak directory in the cache, unpacking it if necessary."""
         cached_pak_dir = os.path.join(self._unpak_dir, pak_name)
         cached_file_path = os.path.join(cached_pak_dir, relative_path)
-        pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
 
         # If there is a cached file, and it is still current, return its path
-        pak_stat_result = os.stat(pak_filename)
+        try:
+            pak_filename = os.path.join(self._get_bg3_data_dir(), f"{pak_name}.pak")
+            pak_stat_result = os.stat(pak_filename)
+        except FileNotFoundError:
+            pak_filename = os.path.join(self._get_bg3_mod_dir(), f"{pak_name}.pak")
+            pak_stat_result = os.stat(pak_filename)
+
         try:
             file_stat_result = os.stat(cached_file_path)
             if file_stat_result.st_mtime >= pak_stat_result.st_mtime:
@@ -147,3 +152,8 @@ class Unpak:
                 if (match := self._INSTALLDIR_REGEX.match(line)):
                     return match[1]
         raise KeyError("Installdir not found in manifest")
+
+    def _get_bg3_mod_dir(self) -> os.PathLike:
+        """Get the BG3 mod directory."""
+        local_app_data = os.getenv("LOCALAPPDATA")
+        return os.path.join(local_app_data, "Larian Studios", "Baldur's Gate 3", "Mods")

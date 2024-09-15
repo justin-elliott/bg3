@@ -11,11 +11,13 @@ from functools import cached_property
 from moddb import (
     Bolster,
     Defense,
-    PackMule,
     multiply_resources,
-    spells_always_prepared,
 )
-from modtools.gamedata import PassiveData, SpellData
+from modtools.gamedata import (
+    PassiveData,
+    SpellData,
+    StatusData,
+)
 from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
@@ -25,12 +27,20 @@ from modtools.lsx.game import (
     Progression,
     SpellList,
     Tags,
+    TooltipUpcastDescription,
 )
 from modtools.replacers import (
     class_description,
     progression,
     Replacer,
     tag,
+)
+from modtools.text import Equipment
+
+
+progression.include(
+    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
 )
 
 
@@ -45,7 +55,6 @@ class Pyromancy(Replacer):
     _feat_levels: set[int]
 
     # Passives
-    _pack_mule: str
     _warding: str
 
     # spells
@@ -110,7 +119,9 @@ class Pyromancy(Replacer):
             Icon="PassiveFeature_DraconicAncestry_Gold",
             Properties=["Highlighted"],
             Boosts=[
-                "Resistance(Fire,Resistant);StatusImmunity(BURNING)",
+                "Resistance(Fire,Resistant)",
+                "StatusImmunity(BURNING)",
+                "StatusImmunity(WILD_MAGIC_BURNING)",
             ],
         ))
 
@@ -136,7 +147,7 @@ class Pyromancy(Replacer):
             Properties=["Highlighted"],
             Boosts=[
                 "IgnoreResistance(Fire,Resistant)",
-                "IF(IsSpell() and IsDamageTypeFire()):DamageBonus(max(0,CharismaModifier))",
+                "IF(SpellDamageTypeIs(DamageType.Fire)):DamageBonus(max(0,CharismaModifier))",
             ],
         ))
 
@@ -164,9 +175,198 @@ class Pyromancy(Replacer):
             Boosts=[
                 "IgnoreResistance(Fire,Immune)",
                 "IgnoreResistance(Fire,Resistant)",
-                "IF(IsSpell() and IsDamageTypeFire()):DamageBonus(max(0,CharismaModifier*2))",
+                "IF(SpellDamageTypeIs(DamageType.Fire)):DamageBonus(max(0,CharismaModifier*2))",
             ],
         ))
+
+        return name
+
+    @cached_property
+    def _ignite_weapon(self) -> str:
+        loca = self.mod.get_localization()
+        name = f"{self.mod.get_prefix()}_IgniteWeapon"
+
+        loca[f"{name}_DisplayName"] = {"en": "Ignite Weapon"}
+        loca[f"{name}_Description"] = {"en": """
+            Infuse the weapon in your main hand with fire. The weapon becomes magical, preventing it from being
+            disarmed. It receives a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
+            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>, and Damage Rolls, and deals an additional [2].
+            """}
+        loca[f"{name}_StatusDescription"] = {"en": """
+            Weapon has become magical, preventing it from being disarmed. It receives a +[1] bonus to
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>,
+            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>, and Damage Rolls, and deals an additional [2].
+            """}
+        loca[f"{name}_UpcastDescription"] = {"en": """
+            Casting this spell using a 4th or 5th level spell slot will increase the Attack and Damage bonus to [1], and
+            a 6th level spell slot will increase it to [2].
+            """}
+
+        upcast_description = TooltipUpcastDescription(
+            Name="Ignite Weapon",
+            Text=loca[f"{name}_UpcastDescription"],
+            UUID=self.make_uuid("Upcast Ignite Weapon"),
+        )
+        self.mod.add(upcast_description)
+
+        self.mod.add(SpellData(
+            name,
+            SpellType="Shout",
+            Level="2",
+            SpellSchool="Abjuration",
+            AIFlags="CanNotUse",
+            SpellProperties=[
+                f"ApplyStatus({name.upper()}_CASTER,100,-1)",
+                f"ApplyEquipmentStatus(MainHand,{name.upper()}_WEAPON,100,-1)",
+            ],
+            TargetConditions="Self() and HasWeaponInMainHand()",
+            Icon="Spell_Evocation_FlameBlade",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams=["1", "DealDamage(1d4,Fire)"],
+            TooltipStatusApply=f"ApplyStatus({name.upper()}_WEAPON,100,-1)",
+            TooltipUpcastDescription=upcast_description.UUID,
+            TooltipUpcastDescriptionParams=["2", "3"],
+            PrepareSound="Spell_Prepare_Buff_ElementalWeaponFire_L1to3",
+            PrepareLoopSound="Spell_Loop_Buff_ElementalWeaponFire_L1to3L1to3",
+            CastSound="Spell_Cast_Buff_ElementalWeaponFire_L1to3",
+            TargetSound="Spell_Impact_Buff_ElementalWeaponFire_L1to3",
+            VocalComponentSound="Vocal_Component_EnchantWeapon",
+            PreviewCursor="Cast",
+            CastTextEvent="Cast",
+            UseCosts="ActionPoint:1;SpellSlotsGroup:1:1:2",
+            SpellAnimation=[
+                "554a18f7-952e-494a-b301-7702a85d4bc9,,",
+                ",,",
+                "a4da186a-0872-461e-ae5e-93d5b32b9bef,,",
+                "527ca082-4ffa-4edb-a23f-5e7fa798a6ce,,",
+                "22dfbbf4-f417-4c84-b39e-2039315961e6,,",
+                ",,",
+                "5bfbe9f9-4fc3-4f26-b112-43d404db6a89,,",
+                "499b7945-9eff-40a2-9911-73b8963108e4,,",
+                "1d3a29f0-9409-462e-81cd-3f24944f63ca,,",
+            ],
+            VerbalIntent="Buff",
+            SpellFlags=["IsSpell", "HasVerbalComponent", "HasSomaticComponent"],
+            PrepareEffect="6e0c79d5-f724-4628-8669-da3d766e9b83",
+            CastEffect="d8ed1647-82eb-4079-a914-1b2c2a89f153",
+        ))
+
+        self.mod.add(StatusData(
+            f"{name.upper()}_CASTER",
+            StatusType="BOOST",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_StatusDescription"],
+            DescriptionParams=["1", "DealDamage(1d4,Fire)"],
+            Icon="Spell_Transmutation_MagicWeapon",
+            SoundLoop="Spell_Status_MagicWeapon_MO",
+            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
+            StackId=f"{name.upper()}_CASTER",
+            StackPriority="0",
+            Boosts=[
+                "SpellSaveDC(1)",
+                "RollBonus(MeleeSpellAttack,1)",
+                "RollBonus(RangedSpellAttack,1)",
+            ],
+            StatusGroups="SG_RemoveOnRespec",
+            StatusPropertyFlags=["DisableCombatlog", "DisableOverhead", "DisablePortraitIndicator"],
+            ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
+        ))
+
+        self.mod.add(StatusData(
+            f"{name.upper()}_WEAPON",
+            StatusType="BOOST",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_StatusDescription"],
+            DescriptionParams=["1", "DealDamage(1d4,Fire)"],
+            Icon="Spell_Transmutation_MagicWeapon",
+            SoundLoop="Spell_Status_MagicWeapon_MO",
+            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
+            StackId=f"{name.upper()}_WEAPON",
+            StackPriority="0",
+            Boosts=[
+                "CannotBeDisarmed()",
+                "WeaponDamage(1d4,Fire,Magical)",
+                "WeaponEnchantment(1)",
+                "WeaponProperty(Magical)",
+            ],
+            StatusGroups="SG_RemoveOnRespec",
+            ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
+            StatusEffect="8a4c7e6e-a629-4765-9c5d-d354838703d8",
+        ))
+
+        for level in range(3, 7):
+            self.mod.add(SpellData(
+                f"{name}_{level}",
+                using=name,
+                SpellType="Shout",
+                PowerLevel=f"{level}",
+                RootSpellID=name,
+                SpellProperties=[
+                    f"ApplyStatus({name.upper()}_CASTER_{level},100,-1)",
+                    f"ApplyEquipmentStatus(MainHand,{name.upper()}_WEAPON_{level},100,-1)",
+                ],
+                TooltipStatusApply=f"ApplyStatus({name.upper()}_WEAPON_{level},100,-1)",
+                UseCosts=["ActionPoint:1", f"SpellSlotsGroup:1:1:{level}"],
+            ))
+
+            self.mod.add(StatusData(
+                f"{name.upper()}_CASTER_{level}",
+                using=f"{name.upper()}_CASTER",
+                StatusType="BOOST",
+                DescriptionParams=[f"{level // 2}", f"DealDamage({level - 1}d4,Fire)"],
+                Boosts=[
+                    f"SpellSaveDC({level // 2})",
+                    f"RollBonus(MeleeSpellAttack,{level // 2})",
+                    f"RollBonus(RangedSpellAttack,{level // 2})",
+                ],
+            ))
+
+            self.mod.add(StatusData(
+                f"{name.upper()}_WEAPON_{level}",
+                using=f"{name.upper()}_WEAPON",
+                StatusType="BOOST",
+                DescriptionParams=[f"{level // 2}", f"DealDamage({level - 1}d4,Fire)"],
+                Boosts=[
+                    "CannotBeDisarmed()",
+                    f"WeaponDamage({level - 1}d4,Fire,Magical)",
+                    f"WeaponEnchantment({level // 2})",
+                    "WeaponProperty(Magical)",
+                ],
+            ))
+
+        return name
+
+    @cached_property
+    def _class_equipment(self) -> str:
+        name = f"{self.mod.get_prefix()}_ClassEquipment"
+
+        self.mod.add(Equipment(f"""
+            new equipment "{name}"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Katana"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "ARM_Boots_Metal"
+            add equipmentgroup
+            add equipment entry "ARM_Breastplate_Body_1"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+            """))
 
         return name
 
@@ -185,7 +385,7 @@ class Pyromancy(Replacer):
         spelllist = str(self.make_uuid("level_3_spelllist"))
         self.mod.add(SpellList(
             Comment="Spells gained at Sorcerer level 3",
-            Spells=["Target_HeatMetal", "Projectile_ScorchingRay"],
+            Spells=["Target_HeatMetal", self._ignite_weapon, "Projectile_ScorchingRay"],
             UUID=spelllist,
         ))
         return spelllist
@@ -217,11 +417,12 @@ class Pyromancy(Replacer):
                          description="A replacer for Wild Magic Sorcery.")
 
         self._args = args
-        self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
+        self._feat_levels = {*range(max(args.feats, 2), 21, args.feats)}
+        if 20 in self._feat_levels:
+            self._feat_levels.remove(20)
+            self._feat_levels.add(19)
 
-        self._pack_mule = PackMule(self.mod).add_pack_mule(2.0)
         self._warding = Defense(self.mod).add_warding()
-
         self._bolster = Bolster(self.mod).add_bolster()
 
     @class_description(CharacterClass.SORCERER)
@@ -249,20 +450,25 @@ class Pyromancy(Replacer):
         ])
         progression.Selectors = selectors
 
-    @progression(CharacterClass.SORCERER, range(1, 13))
+    @progression(CharacterClass.SORCERER, range(1, 21))
     @progression(CharacterClass.SORCERER, 1, is_multiclass=True)
-    def level_1_to_12_sorcerer(self, progression: Progression) -> None:
+    def level_1_to_20_sorcerer(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
         multiply_resources(progression, [ActionResource.SORCERY_POINTS], self._args.actions)
-        spells_always_prepared(progression)
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 1)
     def level_1(self, progression: Progression) -> None:
-        progression.Boosts = None
+        progression.Boosts = [
+            "Proficiency(LightArmor)",
+            "Proficiency(MediumArmor)",
+            "Proficiency(HeavyArmor)",
+            "Proficiency(Shields)",
+            "Proficiency(SimpleWeapons)",
+            "Proficiency(MartialWeapons)",
+        ]
         progression.PassivesAdded = [
             self._forged_in_flames,
-            self._pack_mule,
             self._warding,
         ]
         progression.Selectors = [
@@ -276,10 +482,7 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 3)
     def level_3(self, progression: Progression) -> None:
-        progression.PassivesAdded = [
-            "Blindsight",
-            "SuperiorDarkvision",
-        ]
+        progression.PassivesAdded = ["DevilsSight"]
         progression.Selectors = [
             f"AddSpells({self._level_3_spell_list},,,,AlwaysPrepared)"
         ]
@@ -310,7 +513,12 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 8)
     def level_8(self, progression: Progression) -> None:
-        progression.PassivesAdded = None
+        progression.PassivesAdded = [
+            "LandsStride_DifficultTerrain",
+            "LandsStride_Surfaces",
+            "LandsStride_Advantage",
+            "FOR_NightWalkers_WebImmunity",
+        ]
         progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 9)
@@ -337,8 +545,8 @@ class Pyromancy(Replacer):
 
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Wild Magic Sorcery.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
-                        help="Feat progression every n levels (defaulting to 1; feat every level)")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
+                        help="Feat progression every n levels (defaulting to 2; feat every other level)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,

@@ -12,7 +12,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 3" />
-                    <attribute id="Spells" type="LSString" value="Target_HeatMetal;Projectile_ScorchingRay" />
+                    <attribute id="Spells" type="LSString" value="Target_HeatMetal;Pyromancy_IgniteWeapon;Projectile_ScorchingRay" />
                     <attribute id="UUID" type="guid" value="d6a54351-c0b2-ae59-b219-dc72447e3f52" />
                 </node>
                 <node id="SpellList">

@@ -259,8 +259,6 @@ class Pyromancy(Replacer):
             Description=loca[f"{name}_StatusDescription"],
             DescriptionParams=["1", "DealDamage(1d4,Fire)"],
             Icon="Spell_Transmutation_MagicWeapon",
-            SoundLoop="Spell_Status_MagicWeapon_MO",
-            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
             StackId=f"{name.upper()}_CASTER",
             StackPriority="0",
             Boosts=[
@@ -280,8 +278,6 @@ class Pyromancy(Replacer):
             Description=loca[f"{name}_StatusDescription"],
             DescriptionParams=["1", "DealDamage(1d4,Fire)"],
             Icon="Spell_Transmutation_MagicWeapon",
-            SoundLoop="Spell_Status_MagicWeapon_MO",
-            SoundStop="Spell_Status_MagicWeapon_MO_Stop",
             StackId=f"{name.upper()}_WEAPON",
             StackPriority="0",
             Boosts=[

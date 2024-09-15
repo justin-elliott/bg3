@@ -292,7 +292,7 @@ class Pyromancy(Replacer):
             ],
             StatusGroups="SG_RemoveOnRespec",
             ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
-            StatusEffect="8a4c7e6e-a629-4765-9c5d-d354838703d8",
+            StatusEffect="44d77ebf-fc9e-407d-b20f-257019351f2a",
         ))
 
         for level in range(3, 7):

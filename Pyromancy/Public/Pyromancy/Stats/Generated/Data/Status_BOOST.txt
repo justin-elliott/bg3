@@ -41,7 +41,7 @@ data "SoundLoop" "Spell_Status_MagicWeapon_MO"
 data "SoundStop" "Spell_Status_MagicWeapon_MO_Stop"
 data "StackId" "PYROMANCY_IGNITEWEAPON_WEAPON"
 data "StackPriority" "0"
-data "StatusEffect" "8a4c7e6e-a629-4765-9c5d-d354838703d8"
+data "StatusEffect" "44d77ebf-fc9e-407d-b20f-257019351f2a"
 data "StatusGroups" "SG_RemoveOnRespec"
 
 new entry "PYROMANCY_IGNITEWEAPON_CASTER_3"

@@ -37,6 +37,8 @@ class ProgressionsReplacer(Replacer):
         feats: set[int]               # Feat improvement levels
         spells: int                   # Multiplier for spell slots
         actions: int                  # Multiplier for other action resources
+        skills: int                   # Number of skills to select at character creation
+        expertise: int                # Number of skill expertises to select at character creation
 
     SPELL_SLOTS = frozenset([
         ActionResource.SPELL_SLOTS,
@@ -85,6 +87,10 @@ class ProgressionsReplacer(Replacer):
 
         if not args.name:
             args.name = f"Progressions-{class_names}-{feat_levels}S{args.spells}-A{args.actions}"
+            if args.skills is not None:
+                args.name += f"-K{args.skills}"
+            if args.expertise is not None:
+                args.name += f"-E{args.expertise}"
 
         super().__init__(os.path.join(os.path.dirname(__file__), "Progressions"),
                          author="justin-elliott",
@@ -116,6 +122,21 @@ class ProgressionsReplacer(Replacer):
         if boosts == progression.Boosts:
             raise DontIncludeProgression()
 
+    @progression(BASE_CHARACTER_CLASSES, 1, is_multiclass=False)
+    def increase_skills(self, progression: Progression) -> None:
+        if CharacterClass(progression.Name) not in self._args.classes:
+            raise DontIncludeProgression()
+        selectors = progression.Selectors
+        if self._args.skills is not None:
+            selectors = [selector for selector in selectors if not selector.startswith("SelectSkills(")]
+            selectors.append(f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})")
+        if self._args.expertise is not None:
+            selectors = [selector for selector in selectors if not selector.startswith("SelectSkillsExpertise(")]
+            selectors.append(f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.expertise})")
+        if progression.Selectors == selectors:
+            raise DontIncludeProgression
+        progression.Selectors = selectors
+
 
 def class_list(s: str) -> set[str]:
     classes = frozenset([CharacterClass(cc) for cc in s.split(",")])
@@ -143,6 +164,10 @@ def main():
                         help="Spell slot multiplier (defaulting to 1; normal spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=1,
                         help="Action resource multiplier (defaulting to 1; normal resources)")
+    parser.add_argument("-k", "--skills", type=int,
+                        help="Number of skills to select at character creation")
+    parser.add_argument("-e", "--expertise", type=int,
+                        help="Number of skill expertises to select at character creation")
     args = ProgressionsReplacer.Args(**vars(parser.parse_args()))
 
     progressions_replacer = ProgressionsReplacer(args)

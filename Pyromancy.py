@@ -281,12 +281,16 @@ class Pyromancy(Replacer):
             StackId=f"{name.upper()}_WEAPON",
             StackPriority="0",
             Boosts=[
+                "Attribute(InventoryBound)",
                 "CannotBeDisarmed()",
+                "ItemReturnToOwner()",
+                "WeaponAttackRollAbilityOverride(Charisma)",
                 "WeaponDamage(1d4,Fire,Magical)",
                 "WeaponEnchantment(1)",
                 "WeaponProperty(Magical)",
             ],
             StatusGroups="SG_RemoveOnRespec",
+            StatusPropertyFlags=[],
             ApplyEffect="6994e8dc-14ac-48a5-9c8e-c1925031e852",
             StatusEffect="44d77ebf-fc9e-407d-b20f-257019351f2a",
         ))

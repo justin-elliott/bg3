@@ -23,6 +23,12 @@ from modtools.replacers import (
 )
 
 
+progression.include(
+    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
+)
+
+
 class ProgressionsReplacer(Replacer):
     @dataclass
     class Args:
@@ -58,9 +64,9 @@ class ProgressionsReplacer(Replacer):
         if len(args.feats) == 1:
             feat_level = next(level for level in args.feats)
             feat_levels = str(feat_level)
-            args.feats = frozenset(range(max(feat_level, 2), 13, feat_level))
+            args.feats = frozenset({*range(max(feat_level, 2), 20, feat_level)} | {19} if 20 % feat_level == 0 else {})
         else:
-            args.feats = args.feats - frozenset([1])
+            args.feats = args.feats - frozenset([1, 20])
             feat_levels = "_".join(str(level) for level in sorted(args.feats))
 
         if len(feat_levels) > 0:
@@ -87,9 +93,11 @@ class ProgressionsReplacer(Replacer):
 
         self._args = args
 
-    @progression(BASE_CHARACTER_CLASSES, range(2, 13))
+    @progression(BASE_CHARACTER_CLASSES, range(2, 21))
     @only_existing_progressions
     def allow_improvement(self, progression: Progression) -> None:
+        if (len(self._args.feats) == 0):
+            raise DontIncludeProgression()
         if CharacterClass(progression.Name) not in self._args.classes:
             raise DontIncludeProgression()
         allow_improvement = progression.AllowImprovement
@@ -97,7 +105,7 @@ class ProgressionsReplacer(Replacer):
         if allow_improvement == progression.AllowImprovement:
             raise DontIncludeProgression()
 
-    @progression(CharacterSubclasses.ALL, range(1, 13))
+    @progression(CharacterSubclasses.ALL, range(1, 21))
     @only_existing_progressions
     def increase_resources(self, progression: Progression) -> None:
         if CharacterClass(progression.Name) not in self._args.classes:
@@ -118,7 +126,7 @@ def class_list(s: str) -> set[str]:
 
 def level_list(s: str) -> set[int]:
     levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 12))):
+    if not levels.issubset(frozenset(range(1, 21))):
         raise "Invalid levels"
     return levels
 

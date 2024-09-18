@@ -6,6 +6,8 @@
     <content contentuid="hc525d3bcg2aa6g3f56g7c0fg83d7f3671e0f" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h449b647bg9cc6g1595ga2f0g1f4c1ec1db4e" version="1">Elixir of Bolstering</content>
     <content contentuid="h6978dd6cgf1c6g9ac8g4cabg380118ddb5da" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="PotablePotions_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="hb9068d53gb25ag4106g6949g73edee1a498b" version="1">Elixir of Flying</content>
+    <content contentuid="hcf89c5d3gc5a5g71e5g69f5g401963c4d50e" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="h4fc76dd6g7be5gbce9g68a5g087c2d712ace" version="1">Potion of Overpowering</content>
     <content contentuid="h751cb018gd60ag155ag5f92g642175410ddd" version="1">Temporarily gain a significant boost to your health, armor class, attack rolls, damage rolls, and saving throws.</content>
 </contentList>

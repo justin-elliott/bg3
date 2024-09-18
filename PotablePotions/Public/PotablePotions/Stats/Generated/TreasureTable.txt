@@ -5,6 +5,8 @@ CanMerge 1
 new subtable "1,1"
 object category "I_PotablePotions_BolsterPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_PotablePotions_FlyingPotion",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_PotablePotions_OverpoweringPotion",1,0,0,0,0,0,0,0
 new subtable "1600,1"
 object category "Gold",1,0,0,0,0,0,0,0

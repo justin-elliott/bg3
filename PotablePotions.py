@@ -193,6 +193,27 @@ def add_bolster_potion() -> str:
     return name
 
 
+def add_flying_potion() -> str:
+    name = f"{potable_potions.get_prefix()}_FlyingPotion"
+    flying_potion_uuid = potable_potions.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Flying"}
+    loca[f"{name}_Description"] = {"en": """
+        Drinking this elixir grants <LSTag Type="Spell" Tooltip="Projectile_Fly">Fly</LSTag>.
+        """}
+
+    add_potion(
+        name,
+        uuid=flying_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_ALCH_Solution_Potion_Flying",
+        boosts=["UnlockSpell(Projectile_Fly)"],
+    )
+
+    return name
+
+
 def add_overpowering_potion() -> str:
     name = f"{potable_potions.get_prefix()}_OverpoweringPotion"
     persuasion_potion_uuid = potable_potions.make_uuid(name)
@@ -227,6 +248,7 @@ def add_overpowering_potion() -> str:
 
 
 bolster_potion = add_bolster_potion()
+flying_potion = add_flying_potion()
 overpowering_potion = add_overpowering_potion()
 
 potable_potions.add(TreasureTable(f"""
@@ -234,6 +256,8 @@ new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
 object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_{flying_potion}",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
 new subtable "1600,1"

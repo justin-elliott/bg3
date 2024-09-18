@@ -13,6 +13,11 @@ type "Object"
 using "PotablePotions_BasePotion"
 data "RootTemplate" "f5d230d9-ccc8-1ae2-12e7-2b76eee7b70d"
 
+new entry "PotablePotions_FlyingPotion"
+type "Object"
+using "PotablePotions_BasePotion"
+data "RootTemplate" "364765a9-1a90-901e-b24e-444a67af011b"
+
 new entry "PotablePotions_OverpoweringPotion"
 type "Object"
 using "PotablePotions_BasePotion"

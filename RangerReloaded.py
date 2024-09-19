@@ -10,11 +10,9 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     Movement,
-    multiply_resources,
     spells_always_prepared,
 )
 from modtools.lsx.game import (
-    ActionResource,
     CharacterClass,
     ClassDescription,
     SpellList,
@@ -34,6 +32,12 @@ from modtools.replacers import (
     ranger_level_2_spells,
     ranger_level_3_spells,
     Replacer,
+)
+
+
+progression.include(
+    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
 )
 
 
@@ -156,7 +160,8 @@ class RangerReloaded(Replacer):
                          description="Enhancements for the Ranger class.")
 
         self._args = args
-        self._feat_levels = frozenset(range(max(args.feats, 2), 13, args.feats))
+        self._feat_levels = frozenset(
+            {*range(max(args.feats, 2), 20, args.feats)} | ({19} if 20 % args.feats == 0 else {}))
 
         movement = Movement(self.mod)
 
@@ -176,11 +181,10 @@ class RangerReloaded(Replacer):
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
 
-    @progression(CharacterClass.RANGER, range(1, 13))
+    @progression(CharacterClass.RANGER, range(1, 21))
     @progression(CharacterClass.RANGER, 1, is_multiclass=True)
-    def level_1_to_12_ranger(self, progression: Progression) -> None:
+    def level_1_to_20_ranger(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
         spells_always_prepared(progression)
         progression.Boosts = [
             boost for boost in (progression.Boosts or []) if not boost.startswith("ActionResource(SpellSlot,")
@@ -194,7 +198,7 @@ class RangerReloaded(Replacer):
 
     @progression(CharacterClass.RANGER, 1)
     def level_1(self, progression: Progression) -> None:
-        progression.Boosts += (progression.Boosts or []) + [
+        progression.Boosts = (progression.Boosts or []) + [
             f"ActionResource(SpellSlot,{2 * self._args.spells},1)",
             "ProficiencyBonus(SavingThrow,Constitution)",
         ]
@@ -205,7 +209,6 @@ class RangerReloaded(Replacer):
         progression.Selectors = [
             *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills")],
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
             f"SelectSpells({self._cantrips.UUID},2,0,,,,AlwaysPrepared)",
             f"AddSpells({self._level_1_spells.UUID})",
         ]
@@ -285,7 +288,9 @@ class RangerReloaded(Replacer):
         ]
         progression.PassivesAdded = [
             passive for passive in progression.PassivesAdded if passive != "UnlockedSpellSlotLevel2"
-        ] or None
+        ] + [
+            "UnlockedSpellSlotLevel4",
+        ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_4_spells.UUID})",
         ]
@@ -306,6 +311,7 @@ class RangerReloaded(Replacer):
             passive for passive in progression.PassivesAdded if passive != "UnlockedSpellSlotLevel3"
         ] + [
             self._fast_movement_60,
+            "UnlockedSpellSlotLevel5",
         ]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             self._fast_movement_45,
@@ -332,10 +338,40 @@ class RangerReloaded(Replacer):
             f"AddSpells({self._level_6_spells.UUID})",
         ]
 
-    @progression(CharacterClass.RANGER, 12)
-    def level_12(self, progression: Progression) -> None:
+    @progression(CharacterClass.RANGER, 13)
+    def level_13(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
+        ]
+        progression.PassivesAdded = [
+            passive for passive in progression.PassivesAdded if passive != "UnlockedSpellSlotLevel4"
+        ] or None
+
+    @progression(CharacterClass.RANGER, 15)
+    def level_15(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},8)",
+        ]
+
+    @progression(CharacterClass.RANGER, 17)
+    def level_17(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},9)",
+        ]
+        progression.PassivesAdded = [
+            passive for passive in progression.PassivesAdded if passive != "UnlockedSpellSlotLevel5"
+        ] or None
+
+    @progression(CharacterClass.RANGER, 19)
+    def level_19(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
             f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
+        ]
+
+    @progression(CharacterClass.RANGER, 19)
+    def level_20(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
         ]
 
     @progression(CharacterClass.RANGER_HUNTER, 3)
@@ -345,7 +381,9 @@ class RangerReloaded(Replacer):
             "GiantKiller",
             "HordeBreaker",
         ]
-        progression.Selectors = None
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
+        ]
 
     @progression(CharacterClass.RANGER_HUNTER, 5)
     def level_5_hunter(self, progression: Progression) -> None:
@@ -385,6 +423,15 @@ class RangerReloaded(Replacer):
     def level_12_hunter(self, progression: Progression) -> None:
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "ReliableTalent",
+        ]
+
+    @progression(CharacterClass.RANGER_HUNTER, 20)
+    def level_20_hunter(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ExtraAttack_3",
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            "ExtraAttack_2",
         ]
 
 

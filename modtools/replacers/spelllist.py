@@ -26,7 +26,7 @@ type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
 
 def _key_by_comment(spell_list: SpellList) -> str:
-    return spell_list.Comment.lower()
+    return (spell_list.Comment or "").lower()
 
 
 def _key_by_uuid(spell_list: SpellList) -> str:

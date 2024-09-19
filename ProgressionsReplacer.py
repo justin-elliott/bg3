@@ -66,7 +66,8 @@ class ProgressionsReplacer(Replacer):
         if len(args.feats) == 1:
             feat_level = next(level for level in args.feats)
             feat_levels = str(feat_level)
-            args.feats = frozenset({*range(max(feat_level, 2), 20, feat_level)} | {19} if 20 % feat_level == 0 else {})
+            args.feats = frozenset(
+                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
         else:
             args.feats = args.feats - frozenset([1, 20])
             feat_levels = "_".join(str(level) for level in sorted(args.feats))

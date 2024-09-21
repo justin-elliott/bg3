@@ -217,7 +217,7 @@ class EldritchBattlemage(Replacer):
         class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
-        class_description.SpellCastingAbility = CharacterAbility.INTELLIGENCE
+        class_description.SpellCastingAbility = CharacterAbility.CONSTITUTION
         class_description.SpellList = "beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"
 
     @progression(CharacterClass.FIGHTER, range(2, 21))
@@ -263,7 +263,7 @@ class EldritchBattlemage(Replacer):
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"AddSpells({self._level_3_spell_list.UUID},,,,AlwaysPrepared)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
             f"SelectSpells({wizard_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},6,0)",
         ]
@@ -281,7 +281,7 @@ class EldritchBattlemage(Replacer):
             "FeralInstinct",
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},2,0)",
         ]
 

@@ -232,7 +232,7 @@ def add_overpowering_potion() -> str:
         status_duration=16,
         boosts=[
             "AC(20)",
-            "DamageBonus(8d4)",
+            "DamageBonus(666)",
             "IncreaseMaxHP(50)",
             "RollBonus(Attack,20)",
             "RollBonus(SavingThrow,20)",

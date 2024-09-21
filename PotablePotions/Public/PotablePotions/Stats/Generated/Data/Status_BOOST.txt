@@ -33,7 +33,7 @@ data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;Disab
 new entry "POTABLEPOTIONS_OVERPOWERINGPOTION"
 type "StatusData"
 data "StatusType" "BOOST"
-data "Boosts" "AC(20);DamageBonus(8d4);IncreaseMaxHP(50);RollBonus(Attack,20);RollBonus(SavingThrow,20);SpellSaveDC(20);IgnoreResistance(Bludgeoning,Resistant);IgnoreResistance(Piercing,Resistant);IgnoreResistance(Slashing,Resistant)"
+data "Boosts" "AC(20);DamageBonus(666);IncreaseMaxHP(50);RollBonus(Attack,20);RollBonus(SavingThrow,20);SpellSaveDC(20);IgnoreResistance(Bludgeoning,Resistant);IgnoreResistance(Piercing,Resistant);IgnoreResistance(Slashing,Resistant)"
 data "Description" "h751cb018gd60ag155ag5f92g642175410ddd"
 data "DisplayName" "h4fc76dd6g7be5gbce9g68a5g087c2d712ace"
 data "Icon" "Item_CONS_Drug_Dreammist_A"

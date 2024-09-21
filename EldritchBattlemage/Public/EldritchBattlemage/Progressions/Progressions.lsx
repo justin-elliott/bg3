@@ -217,7 +217,7 @@
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);AddSpells(b0c48349-1b33-0aa4-3a99-0038efa39883,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,6,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);AddSpells(b0c48349-1b33-0aa4-3a99-0038efa39883,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,6,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="77ef26e6-6872-4f9c-82eb-a0640a49030d" />
                 </node>
@@ -227,7 +227,7 @@
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="EldritchBattlemage_Enhancement_4;DevilsSight;ImprovedCritical;JackOfAllTrades;FeralInstinct" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="UUID" type="guid" value="6300c505-0bb1-4c73-9565-ab155bec4e1f" />
                 </node>

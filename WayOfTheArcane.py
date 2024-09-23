@@ -11,9 +11,7 @@ from functools import cached_property
 from moddb import (
     BattleMagic,
     Bolster,
-    Defense,
     EmpoweredSpells,
-    PackMule,
     multiply_resources,
     spells_always_prepared,
 )
@@ -32,6 +30,12 @@ from modtools.replacers import (
     progression,
 )
 from uuid import UUID
+
+
+progression.include(
+    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
+)
 
 
 class WayOfTheArcane(Replacer):
@@ -58,8 +62,6 @@ class WayOfTheArcane(Replacer):
     # Passives
     _battle_magic: str
     _empowered_spells: str
-    _pack_mule: str
-    _warding: str
 
     # Spells
     _bolster: str
@@ -233,18 +235,16 @@ class WayOfTheArcane(Replacer):
         self._args = args
 
         if len(args.feats) == 0:
-            self._feat_levels = frozenset(range(2, 13, 1))
+            self._feat_levels = frozenset({*range(2, 20, 2)} | {19})
         elif len(args.feats) == 1:
             feat_level = next(level for level in args.feats)
-            self._feat_levels = frozenset(range(max(feat_level, 2), 13, feat_level))
+            self._feat_levels = frozenset(
+                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
         else:
             self._feat_levels = args.feats - frozenset([1])
 
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
-        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
-        self._warding = Defense(self.mod).add_warding()
-
         self._bolster = Bolster(self.mod).add_bolster()
 
     @class_description(CharacterClass.MONK)
@@ -278,8 +278,8 @@ class WayOfTheArcane(Replacer):
         selectors = progression.Selectors or []
         selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ])
         progression.Selectors = selectors
 
@@ -294,7 +294,7 @@ class WayOfTheArcane(Replacer):
             ]),
         ]
 
-    @progression(CharacterClass.MONK, range(1, 13))
+    @progression(CharacterClass.MONK, range(1, 21))
     @progression(CharacterClass.MONK, 1, is_multiclass=True)
     def level_1_to_12_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
@@ -315,8 +315,6 @@ class WayOfTheArcane(Replacer):
             "Blindsight",
             "SuperiorDarkvision",
             self._battle_magic,
-            self._pack_mule,
-            self._warding,
         ]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
@@ -451,7 +449,7 @@ class WayOfTheArcane(Replacer):
 
 def level_list(s: str) -> set[int]:
     levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 12))):
+    if not levels.issubset(frozenset(range(1, 21))):
         raise "Invalid levels"
     return levels
 

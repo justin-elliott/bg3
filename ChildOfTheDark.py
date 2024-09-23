@@ -134,7 +134,7 @@ class ChildOfTheDark(Replacer):
         ]
         progression.PassivesAdded = [self._child_of_the_dark[1], self._harrowing_words]
         progression.Selectors = [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5,ChildOfTheDark)",
+            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self.EXTRA_SKILLS},ChildOfTheDark)",
             f"AddSpells({self._vicious_mockery_spell_list.UUID},,,,AlwaysPrepared,OncePerTurn)",
         ]
 
@@ -146,14 +146,14 @@ class ChildOfTheDark(Replacer):
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded = ["SculptSpells"]
 
+    @progression(CharacterRace.HALF_ELF_DROW, 5)
+    def level_5(self, progression: Progression) -> None:
+        progression.PassivesAdded = ["ExtraAttack", "UncannyDodge"]
+
     @progression(CharacterRace.HALF_ELF_DROW, 6)
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = [self._child_of_the_dark[6], "PotentCantrip"]
         progression.PassivesRemoved = [self._child_of_the_dark[1]]
-
-    @progression(CharacterRace.HALF_ELF_DROW, 5)
-    def level_5(self, progression: Progression) -> None:
-        progression.PassivesAdded = ["ExtraAttack", "UncannyDodge"]
 
     @progression(CharacterRace.HALF_ELF_DROW, 7)
     def level_7(self, progression: Progression) -> None:

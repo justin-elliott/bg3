@@ -36,7 +36,7 @@ class Demigod(Mod):
         loca[description] = {"en": """
             Your abilities are increased by [1], and you have <LSTag Tooltip="Advantage">Advantage</LSTag> on
             <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>,
-            as well as <LSTag Tooltip="ProficiencyBonus">Proficiency</LSTag> in Constitutation saving throws.
+            as well as <LSTag Tooltip="ProficiencyBonus">Proficiency</LSTag> in Constitution saving throws.
             Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> is increased by [2], your
             <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance is increased by [3]%,
             and your carrying capacity is increased by [4]%.

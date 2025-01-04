@@ -259,7 +259,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;FastHands" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
                     <attribute id="PassivesRemoved" type="LSString" value="FlurryOfBlowsUnlock;MartialArts_BonusUnarmedStrike" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(7b304523-6625-66c1-b0e1-754a0c1abb9f,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />

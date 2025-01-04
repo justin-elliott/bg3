@@ -340,7 +340,6 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesAdded = [
             "UnlockedSpellSlotLevel2",
-            "FastHands",
         ]
         progression.PassivesRemoved = [
             "FlurryOfBlowsUnlock",

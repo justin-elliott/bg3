@@ -4,7 +4,7 @@ Attack-related functionality for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import SpellData
+from modtools.gamedata import PassiveData, SpellData
 from modtools.mod import Mod
 
 
@@ -62,4 +62,22 @@ class Attack:
             ],
         ))
 
+        return name
+
+    def add_brutal_cleave_passive(self, *,
+                                  display_name_handle: str = None,
+                                  description_handle: str = None,
+                                  icon: str = "Action_Cleave_New") -> str:
+        """Add a passive to unlock Brutal Cleave, returning its name."""
+        name = f"{self._mod.get_prefix()}_BrutalCleaveUnlock"
+        brutal_cleave = self.add_brutal_cleave(display_name_handle=display_name_handle,
+                                               description_handle=description_handle,
+                                               icon=icon)
+        self._mod.add(PassiveData(
+            name,
+            Icon=icon,
+            Properties=["IsHidden"],
+            BoostContext=["OnEquip", "OnCreate"],
+            Boosts=[f"UnlockSpell({brutal_cleave})"],
+        ))
         return name

@@ -34,7 +34,9 @@ class Demigod(Mod):
         loca = self.get_localization()
         loca[display_name] = {"en": "Divine Heritage"}
         loca[description] = {"en": """
-            Your abilities are increased by [1].
+            Your abilities are increased by [1], and you have <LSTag Tooltip="Advantage">Advantage</LSTag> on
+            <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>,
+            as well as <LSTag Tooltip="ProficiencyBonus">Proficiency</LSTag> in Constitutation saving throws.
             Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> is increased by [2], your
             <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance is increased by [3]%,
             and your carrying capacity is increased by [4]%.
@@ -63,6 +65,9 @@ class Demigod(Mod):
                 f"Ability(Intelligence,{ability_bonus})",
                 f"Ability(Wisdom,{ability_bonus})",
                 f"Ability(Charisma,{ability_bonus})",
+                "Advantage(AllAbilities)",
+                "Advantage(AllSavingThrows)",
+                "ProficiencyBonus(SavingThrow,Constitution)",
                 f"ActionResource(Movement,{movement_bonus},0)",
                 f"JumpMaxDistanceMultiplier({jump_bonus})",
                 f"CarryCapacityMultiplier({carry_bonus})",
@@ -90,8 +95,6 @@ class Demigod(Mod):
             Name="Demigod",
             Passives=[
                 "DeathSavingThrows",
-                "Gnome_Cunning",
-                "Halfling_Lucky",
                 "HumanMilitia",
                 "SuperiorDarkvision",
                 self.divine_heritage,

@@ -90,6 +90,7 @@ class Demigod(Mod):
             Name="Demigod",
             Passives=[
                 "DeathSavingThrows",
+                "HumanMilitia",
                 "SuperiorDarkvision",
                 self.divine_heritage,
             ],

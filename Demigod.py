@@ -25,7 +25,7 @@ class Demigod(Mod):
         display_name = f"{name}_DisplayName"
         description = f"{name}_Description"
 
-        ability_bonus = 4
+        ability_bonus = 6
         initiative_bonus = 3
         movement_bonus = 4.5
         jump_bonus = 2
@@ -56,8 +56,7 @@ class Demigod(Mod):
                 initiative_bonus
             ],
             Icon="Action_SightOfTheSeelie_BestialCommunion_Wildshape",
-            Properties=["Highlighted", "ForceShowInCC"],
-            BoostContext=["OnEquip", "OnCreate"],
+            Properties=["Highlighted"],
             Boosts=[
                 f"Ability(Strength,{ability_bonus})",
                 f"Ability(Dexterity,{ability_bonus})",

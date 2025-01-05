@@ -2,9 +2,11 @@
 
 new entry "Demigod_DivineHeritage"
 type "PassiveData"
-data "Boosts" "Ability(Strength,6);Ability(Dexterity,6);Ability(Constitution,6);Ability(Intelligence,6);Ability(Wisdom,6);Ability(Charisma,6);Advantage(AllAbilities);Advantage(AllSavingThrows);ProficiencyBonus(SavingThrow,Constitution);ActionResource(Movement,4.5,0);JumpMaxDistanceMultiplier(2);CarryCapacityMultiplier(4);Initiative(3);StatusImmunity(SURPRISED)"
+data "Boosts" "Advantage(AllAbilities);Advantage(AllSavingThrows);ProficiencyBonus(SavingThrow,Constitution);ActionResource(Movement,4.5,0);JumpMaxDistanceMultiplier(2);CarryCapacityMultiplier(4);Initiative(3);StatusImmunity(SURPRISED)"
 data "Description" "he3a67da1ge702g4e99gac7fg894ec4f52c9a"
 data "DescriptionParams" "6;Distance(4.5);100;300;3"
 data "DisplayName" "hca582dd6g0fd1gf581g275cg3f1161883041"
 data "Icon" "Action_SightOfTheSeelie_BestialCommunion_Wildshape"
 data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnCreate;OnLongRest;OnShortRest"
+data "StatsFunctors" "ApplyStatus(Demigod_DIVINE_HERITAGE,100,-1)"

@@ -6,12 +6,18 @@ Generates files for the "Demigod" mod.
 import os
 
 from functools import cached_property
-from modtools.gamedata import PassiveData
+from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import Origin
 from modtools.mod import Mod
 
 
 class Demigod(Mod):
+    ABILITY_BONUS = 6
+    INITIATIVE_BONUS = 3
+    MOVEMENT_BONUS = 4.5
+    JUMP_BONUS = 2
+    CARRY_BONUS = 4
+
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -24,12 +30,6 @@ class Demigod(Mod):
         name = f"{self.get_prefix()}_DivineHeritage"
         display_name = f"{name}_DisplayName"
         description = f"{name}_Description"
-
-        ability_bonus = 6
-        initiative_bonus = 3
-        movement_bonus = 4.5
-        jump_bonus = 2
-        carry_bonus = 4
 
         loca = self.get_localization()
         loca[display_name] = {"en": "Divine Heritage"}
@@ -49,30 +49,64 @@ class Demigod(Mod):
             DisplayName=loca[display_name],
             Description=loca[description],
             DescriptionParams=[
-                ability_bonus,
-                f"Distance({movement_bonus})",
-                (jump_bonus - 1) * 100,
-                (carry_bonus - 1) * 100,
-                initiative_bonus
+                self.ABILITY_BONUS,
+                f"Distance({self.MOVEMENT_BONUS})",
+                (self.JUMP_BONUS - 1) * 100,
+                (self.CARRY_BONUS - 1) * 100,
+                self.INITIATIVE_BONUS
             ],
             Icon="Action_SightOfTheSeelie_BestialCommunion_Wildshape",
             Properties=["Highlighted"],
             Boosts=[
-                f"Ability(Strength,{ability_bonus})",
-                f"Ability(Dexterity,{ability_bonus})",
-                f"Ability(Constitution,{ability_bonus})",
-                f"Ability(Intelligence,{ability_bonus})",
-                f"Ability(Wisdom,{ability_bonus})",
-                f"Ability(Charisma,{ability_bonus})",
                 "Advantage(AllAbilities)",
                 "Advantage(AllSavingThrows)",
                 "ProficiencyBonus(SavingThrow,Constitution)",
-                f"ActionResource(Movement,{movement_bonus},0)",
-                f"JumpMaxDistanceMultiplier({jump_bonus})",
-                f"CarryCapacityMultiplier({carry_bonus})",
-                f"Initiative({initiative_bonus})",
+                f"ActionResource(Movement,{self.MOVEMENT_BONUS},0)",
+                f"JumpMaxDistanceMultiplier({self.JUMP_BONUS})",
+                f"CarryCapacityMultiplier({self.CARRY_BONUS})",
+                f"Initiative({self.INITIATIVE_BONUS})",
                 "StatusImmunity(SURPRISED)",
             ],
+            StatsFunctors=[f"ApplyStatus({self.divine_heritage_status},100,-1)"],
+            StatsFunctorContext=["OnCreate", "OnLongRest", "OnShortRest"],
+        ))
+        return name
+
+    @cached_property
+    def divine_heritage_status(self) -> str:
+        name = f"{self.get_prefix()}_DIVINE_HERITAGE"
+        display_name = f"{name}_DisplayName"
+        description = f"{name}_Description"
+
+        loca = self.get_localization()
+        loca[display_name] = {"en": "Divine Heritage"}
+        loca[description] = {"en": """
+            Your abilities are increased by [1].
+            """}
+
+        self.add(StatusData(
+            name,
+            StatusType="BOOST",
+            DisplayName=loca[display_name],
+            Description=loca[description],
+            DescriptionParams=[self.ABILITY_BONUS],
+            Icon="Action_SightOfTheSeelie_BestialCommunion_Wildshape",
+            Boosts=[
+                f"Ability(Strength,{self.ABILITY_BONUS})",
+                f"Ability(Dexterity,{self.ABILITY_BONUS})",
+                f"Ability(Constitution,{self.ABILITY_BONUS})",
+                f"Ability(Intelligence,{self.ABILITY_BONUS})",
+                f"Ability(Wisdom,{self.ABILITY_BONUS})",
+                f"Ability(Charisma,{self.ABILITY_BONUS})",
+            ],
+            StackId=name,
+            StatusPropertyFlags=[
+                "ApplyToDead",
+                "DisableCombatlog",
+                "DisableOverhead",
+                "DisablePortraitIndicator",
+                "IgnoreResting",
+            ]
         ))
         return name
 

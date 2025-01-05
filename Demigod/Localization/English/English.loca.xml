@@ -5,4 +5,6 @@
     <content contentuid="h819fc681g57b2gcdaeg4a57g90a1ebb618d7" version="1">You are descended from a divine being, granting you superior abilities.</content>
     <content contentuid="hca582dd6g0fd1gf581g275cg3f1161883041" version="1">Divine Heritage</content>
     <content contentuid="he3a67da1ge702g4e99gac7fg894ec4f52c9a" version="1">Your abilities are increased by [1], and you have &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt; and &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;, as well as &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in Constitution saving throws. Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; is increased by [2], your &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; distance is increased by [3]%, and your carrying capacity is increased by [4]%. You gain a +[5] bonus to Initiative, and can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
+    <content contentuid="hfd39810agc0c3g9a46gd5abgfca5339cebd5" version="1">Divine Heritage</content>
+    <content contentuid="hb4a6be03gcc77gf607g8846g1ba7d162ed60" version="1">Your abilities are increased by [1].</content>
 </contentList>

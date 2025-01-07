@@ -13,11 +13,11 @@
     <content contentuid="h6ec9d740gb3c1g9046g3c1dgd68b4f3028bb" version="1">Elemental Affinity: Fire Resistance</content>
     <content contentuid="hdb5f4e20gdff4ga00dge222g10d63276cdd4" version="1">Elemental Affinity: Lightning Resistance</content>
     <content contentuid="hb9e51696g6fc0g75b1gaa3eg42997741b626" version="1">Elemental Affinity: Poison Resistance</content>
+    <content contentuid="h815efbf9g6ef1g87adg7bf2g76b747c13a46" version="1">Battle Magic</content>
+    <content contentuid="h8e0f18b8g7139ge92dg4609g16b01c143f72" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hbdfb156dgbdb3g39c1g4e10gb47b5a1f40c4" version="1">Fast Movement</content>
     <content contentuid="hefe8e398gd5e5gc5b8g9239gcf7d9f9a2ee2" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="heb072c7bg66e7g8173g466cgd5976e6dba01" version="1">Bolster</content>
     <content contentuid="h2a50ca1cge18egc147g964dga1dfe848899a" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h5400c603g9fb0g194bg8a78g3cff265baf8f" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="h1d54e566g2399g7cecgd3c4gc69b4f4e782a" version="1">Draconic Abilities</content>
-    <content contentuid="hd07c6450g1f29g6381g093dgddce254de57b" version="1">Due to your draconic ancestry, all of your &lt;LSTag Tooltip="AbilityScore"&gt;Ability Scores&lt;/LSTag&gt; are increased by [1].</content>
 </contentList>

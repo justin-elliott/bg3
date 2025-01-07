@@ -18,7 +18,7 @@
                     <attribute id="PrimaryAbility" type="uint8" value="1" />
                     <attribute id="ProgressionTableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
                     <attribute id="SoundClassType" type="FixedString" value="Fighter" />
-                    <attribute id="SpellCastingAbility" type="uint8" value="3" />
+                    <attribute id="SpellCastingAbility" type="uint8" value="6" />
                     <attribute id="SpellList" type="guid" value="beb9389e-24f8-49b0-86a5-e8d08b6fdc2e" />
                     <attribute id="UUID" type="guid" value="b722614a-303f-411a-bb19-a1882ad1f4cc" />
                 </node>
@@ -40,7 +40,7 @@
                     <attribute id="PrimaryAbility" type="uint8" value="1" />
                     <attribute id="ProgressionTableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
                     <attribute id="SoundClassType" type="FixedString" value="Fighter" />
-                    <attribute id="SpellCastingAbility" type="uint8" value="0" />
+                    <attribute id="SpellCastingAbility" type="uint8" value="6" />
                     <attribute id="UUID" type="guid" value="721dfac3-92d4-41f5-b773-b7072a86232f" />
                     <children>
                         <node id="Tags">

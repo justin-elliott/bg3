@@ -8,12 +8,8 @@ import os
 
 from dataclasses import dataclass
 from functools import cached_property
-from moddb import (
-    Attack,
-    Movement,
-    spells_always_prepared,
-)
-from modtools.gamedata import PassiveData, StatusData
+from moddb import Movement, spells_always_prepared
+from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
     CharacterAbility,
     CharacterClass,
@@ -40,7 +36,7 @@ from modtools.replacers import (
 
 
 progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    "unlocklevelcurve_a2ffd0e4-c407-4fh7.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
     + "Progressions/Progressions.lsx"
 )
 
@@ -60,38 +56,6 @@ class EldritchBattlemage(Replacer):
         name = f"{self.mod.get_prefix()}_RemarkableAthlete_Run"
         loca[name] = {"en": "Remarkable Athlete: Run"}
         return Movement(self.mod).add_fast_movement(3.0, loca[name])
-
-    @cached_property
-    def _enhancement(self) -> dict[int, str]:
-        loca = self.mod.get_localization()
-        name = f"{self.mod.get_prefix()}_Enhancement"
-        loca[f"{name}_DisplayName"] = {"en": "Enhancement"}
-        loca[f"{name}_Description"] = {"en": """
-            Your abilities improve by 2 at Eldritch Knight levels 4, 8, 12 and 16.
-            """}
-
-        enhancement_names = {}
-
-        for i in range(1, 5):
-            level = i * 4
-            enhancement_names[level] = f"{name}_{level}"
-            self.mod.add(PassiveData(
-                enhancement_names[level],
-                DisplayName=loca[f"{name}_DisplayName"],
-                Description=loca[f"{name}_Description"],
-                Icon="Spell_Transmutation_EnhanceAbility",
-                Properties=["ForceShowInCC", "Highlighted"] if level == 3 else ["IsHidden"],
-                Boosts=[
-                    f"Ability(Strength,{i * 2})",
-                    f"Ability(Dexterity,{i * 2})",
-                    f"Ability(Constitution,{i * 2})",
-                    f"Ability(Intelligence,{i * 2})",
-                    f"Ability(Wisdom,{i * 2})",
-                    f"Ability(Charisma,{i * 2})",
-                ],
-            ))
-
-        return enhancement_names
 
     @cached_property
     def _war_magic(self) -> str:
@@ -176,12 +140,32 @@ class EldritchBattlemage(Replacer):
 
         return name
 
+    def _dual_weapon_bond(self) -> None:
+        weapon_bond_offhand = f"{self.mod.get_prefix()}_WEAPON_BOND_OFFHAND"
+
+        self.mod.add(SpellData(
+            "Shout_WeaponBond",
+            using="Shout_WeaponBond",
+            SpellType="Shout",
+            SpellProperties=[
+                "ApplyEquipmentStatus(MainHand,WEAPON_BOND,100,-1)",
+                f"ApplyEquipmentStatus(OffHand,{weapon_bond_offhand},100,-1)",
+            ],
+        ))
+
+        self.mod.add(StatusData(
+            weapon_bond_offhand,
+            using="WEAPON_BOND",
+            StatusType="BOOST",
+            StackId=weapon_bond_offhand,
+        ))
+
     @cached_property
     def _level_3_spell_list(self) -> SpellList:
         spells = SpellList(
             Comment="Eldritch Knight level 3 abilities",
             Spells=[
-                Attack(self.mod).add_brutal_cleave(),
+                "Projectile_EldritchBlast",
             ],
             UUID=self.make_uuid("Eldritch Knight level 3 abilities"),
         )
@@ -205,19 +189,21 @@ class EldritchBattlemage(Replacer):
         else:
             self._feat_levels = args.feats - frozenset([1])
 
+        self._dual_weapon_bond()
+
     @class_description(CharacterClass.FIGHTER)
     def fighter_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
-        class_description.SpellCastingAbility = 0
+        class_description.SpellCastingAbility = CharacterAbility.CHARISMA
 
     @class_description(CharacterClass.FIGHTER_ELDRITCHKNIGHT)
     def eldritch_knight_description(self, class_description: ClassDescription) -> None:
         class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
-        class_description.SpellCastingAbility = CharacterAbility.CONSTITUTION
+        class_description.SpellCastingAbility = CharacterAbility.CHARISMA
         class_description.SpellList = "beb9389e-24f8-49b0-86a5-e8d08b6fdc2e"
 
     @progression(CharacterClass.FIGHTER, range(2, 21))
@@ -257,6 +243,7 @@ class EldritchBattlemage(Replacer):
             "Tag(WIZARD)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "AgonizingBlast",
             "SculptSpells",
             "UnlockedSpellSlotLevel1",
             "UnlockedSpellSlotLevel2",
@@ -274,11 +261,8 @@ class EldritchBattlemage(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},2)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._enhancement[4],
             "DevilsSight",
             "ImprovedCritical",
-            "JackOfAllTrades",
-            "FeralInstinct",
         ]
         progression.Selectors = (progression.Selectors or []) + [
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
@@ -334,14 +318,10 @@ class EldritchBattlemage(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._enhancement[8],
             "LandsStride_DifficultTerrain",
             "LandsStride_Surfaces",
             "LandsStride_Advantage",
             "FOR_NightWalkers_WebImmunity",
-        ]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
-            self._enhancement[4],
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_level_4_spells(self).UUID},2,0)",
@@ -391,11 +371,7 @@ class EldritchBattlemage(Replacer):
         progression.Boosts = (progression.Boosts or []) + [
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._enhancement[12],
             "ReliableTalent",
-        ]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
-            self._enhancement[8],
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
@@ -438,10 +414,6 @@ class EldritchBattlemage(Replacer):
         progression.Boosts = (progression.Boosts or []) + [
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._enhancement[16],
-        ]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
-            self._enhancement[12],
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",

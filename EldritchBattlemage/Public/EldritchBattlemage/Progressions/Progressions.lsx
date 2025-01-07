@@ -138,7 +138,7 @@
                     <attribute id="PassivesRemoved" type="LSString" value="Indomitable" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="735ec676-d3a7-4203-94cc-3bca46f85d38" />
+                    <attribute id="UUID" type="guid" value="30bc922d-9cb5-4761-8d5c-7a2a18867fde" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
@@ -146,14 +146,14 @@
                     <attribute id="Name" type="LSString" value="Fighter" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="1aff8ec0-8d9c-40c5-9e2b-ee924fe929b5" />
+                    <attribute id="UUID" type="guid" value="a80d65ca-db24-4398-a3aa-62dfdfcf874c" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="15" />
                     <attribute id="Name" type="LSString" value="Fighter" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="da026b26-aba9-4727-8348-8cfd999436af" />
+                    <attribute id="UUID" type="guid" value="ee7d20f2-e3cd-48f3-a254-82a27c90c94d" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
@@ -161,7 +161,7 @@
                     <attribute id="Name" type="LSString" value="Fighter" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="9d097d3e-5354-43f8-8715-d1636a679471" />
+                    <attribute id="UUID" type="guid" value="7c469977-c4fd-4146-86e7-ebbad6df6501" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="17" />
@@ -170,7 +170,7 @@
                     <attribute id="PassivesRemoved" type="LSString" value="Indomitable_2" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="683c8152-7ca5-4a66-a826-bf9283a02a2e" />
+                    <attribute id="UUID" type="guid" value="4008a42a-777c-4f3c-b180-f88e5ab85a93" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
@@ -178,7 +178,7 @@
                     <attribute id="Name" type="LSString" value="Fighter" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="403927b8-96fc-4c62-a733-9faab0f01047" />
+                    <attribute id="UUID" type="guid" value="ee6dffc7-962c-4ed6-8426-6b74537573f3" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
@@ -186,7 +186,7 @@
                     <attribute id="Name" type="LSString" value="Fighter" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="85fd45f1-61ad-46f6-97ea-28613028fd53" />
+                    <attribute id="UUID" type="guid" value="fd8c7802-f1b9-4d0c-b2e9-191c3e7dd193" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="20" />
@@ -195,7 +195,7 @@
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack_2" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="ba4e707e-4bbd-4630-963b-ce2f2947f971" />
-                    <attribute id="UUID" type="guid" value="2f5494c6-0351-4911-93ec-e75ede30a7d8" />
+                    <attribute id="UUID" type="guid" value="6f96237b-2d98-4083-a8b6-1719c8100098" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
@@ -215,7 +215,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,1);ActionResource(SpellSlot,4,2);Tag(WIZARD)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="AgonizingBlast;SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);AddSpells(b0c48349-1b33-0aa4-3a99-0038efa39883,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,6,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -225,7 +225,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchBattlemage_Enhancement_4;DevilsSight;ImprovedCritical;JackOfAllTrades;FeralInstinct" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -265,8 +265,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchBattlemage_Enhancement_8;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage;FOR_NightWalkers_WebImmunity" />
-                    <attribute id="PassivesRemoved" type="LSString" value="EldritchBattlemage_Enhancement_4" />
+                    <attribute id="PassivesAdded" type="LSString" value="LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage;FOR_NightWalkers_WebImmunity" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -306,8 +305,7 @@
                     <attribute id="Boosts" type="LSString" value="" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchBattlemage_Enhancement_12;ReliableTalent" />
-                    <attribute id="PassivesRemoved" type="LSString" value="EldritchBattlemage_Enhancement_8" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -321,7 +319,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="5813c370-0f53-4460-8b28-67863988bd6a" />
+                    <attribute id="UUID" type="guid" value="f2a6dc02-58e8-4450-91c1-f8937ab77391" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="" />
@@ -331,7 +329,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="06837244-375d-4dfe-b8ad-f48028496d31" />
+                    <attribute id="UUID" type="guid" value="5b6c3c53-cc63-4a37-853c-4adf021e196b" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,8)" />
@@ -341,18 +339,17 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="280b52ce-e592-457f-9ad7-9c83dee8b9f3" />
+                    <attribute id="UUID" type="guid" value="327dac29-ac1c-4427-b205-b21b9e5c71fc" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="" />
                     <attribute id="Level" type="uint8" value="16" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchBattlemage_Enhancement_16" />
-                    <attribute id="PassivesRemoved" type="LSString" value="EldritchBattlemage_Enhancement_12" />
+                    <attribute id="PassivesAdded" type="LSString" value="" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="10bc614b-6e2a-4b02-810a-53ce709fe8ed" />
+                    <attribute id="UUID" type="guid" value="3f4e9ded-d563-4256-b301-9c83dbf19c8b" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,9)" />
@@ -362,7 +359,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="b3a40e88-5f30-4871-af79-b785db8d9fc5" />
+                    <attribute id="UUID" type="guid" value="f632e3b2-a116-470b-a276-648df25ccf70" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="" />
@@ -373,7 +370,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="f043d6c1-acc4-484b-8446-0690e6a98c0b" />
+                    <attribute id="UUID" type="guid" value="41573256-04b6-409e-b780-aa7dd3ae9d56" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
@@ -383,7 +380,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="1492e413-b9e8-4251-8d56-62308114636a" />
+                    <attribute id="UUID" type="guid" value="ed52aeca-1466-406b-90ea-22a9ff3810da" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7)" />
@@ -393,7 +390,7 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
-                    <attribute id="UUID" type="guid" value="caabb7dd-0f01-4cbc-965e-2561f9c723ce" />
+                    <attribute id="UUID" type="guid" value="073dc7e1-dc55-40db-8159-e6c92e936104" />
                 </node>
             </children>
         </node>

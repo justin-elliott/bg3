@@ -7,6 +7,7 @@ import os
 
 from functools import cached_property
 from moddb import (
+    BattleMagic,
     Bolster,
     Movement,
     multiply_resources,
@@ -15,7 +16,6 @@ from moddb import (
 from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import (
     ActionResource,
-    CharacterAbility,
     CharacterClass,
     CharacterSubclasses,
     ClassDescription,
@@ -34,6 +34,7 @@ class ChromaticSorcerer(Replacer):
     _ACTION_RESOURCES = frozenset([ActionResource.SPELL_SLOTS, ActionResource.SORCERY_POINTS])
 
     # Passives
+    _battle_magic: str
     _fast_movement_30: str
     _fast_movement_45: str
     _fast_movement_60: str
@@ -165,29 +166,6 @@ class ChromaticSorcerer(Replacer):
             ))
 
     @cached_property
-    def _draconic_abilities(self) -> str:
-        name = f"{self._mod.get_prefix()}_DraconicAbilities"
-
-        loca = self._mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Draconic Abilities"}
-        loca[f"{name}_Description"] = {"en": """
-            Due to your draconic ancestry, all of your <LSTag Tooltip="AbilityScore">Ability Scores</LSTag> are
-            increased by [1].
-            """}
-
-        self._mod.add(PassiveData(
-            name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            DescriptionParams=["4"],
-            Icon="Spell_Transmutation_EnhanceAbility",
-            Properties=["Highlighted"],
-            Boosts=[f"Ability({ability.name.title()},4)" for ability in CharacterAbility],
-        ))
-
-        return name
-
-    @cached_property
     def _level_1_spell_list(self) -> str:
         spell_list = str(self.make_uuid("level_1_spell_list"))
         self.mod.add(SpellList(
@@ -206,6 +184,8 @@ class ChromaticSorcerer(Replacer):
         self._draconic_ancestry()
         self._draconic_resilience()
         self._elemental_affinity()
+
+        self._battle_magic = BattleMagic(self.mod).add_battle_magic()
 
         self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
@@ -241,7 +221,7 @@ class ChromaticSorcerer(Replacer):
             progression.Boosts.append(f"Proficiency({proficiency})")
 
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._draconic_abilities,
+            self._battle_magic,
             self._fast_movement_30,
         ]
         progression.Selectors += [

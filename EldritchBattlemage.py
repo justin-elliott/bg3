@@ -8,7 +8,7 @@ import os
 
 from dataclasses import dataclass
 from functools import cached_property
-from moddb import Movement, spells_always_prepared
+from moddb import EmpoweredSpells, Movement, spells_always_prepared
 from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
     CharacterAbility,
@@ -49,6 +49,7 @@ class EldritchBattlemage(Replacer):
 
     _args: Args
     _feat_levels: set[int]
+    _empowered_spells: str
 
     @cached_property
     def _remarkable_athlete_run(self) -> str:
@@ -190,6 +191,7 @@ class EldritchBattlemage(Replacer):
             self._feat_levels = args.feats - frozenset([1])
 
         self._dual_weapon_bond()
+        self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
 
     @class_description(CharacterClass.FIGHTER)
     def fighter_description(self, class_description: ClassDescription) -> None:
@@ -346,7 +348,7 @@ class EldritchBattlemage(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "EmpoweredEvocation",
+            self._empowered_spells,
         ]
         progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",

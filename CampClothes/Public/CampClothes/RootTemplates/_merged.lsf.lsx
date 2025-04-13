@@ -96,6 +96,26 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hc7ea4575gee65gca50g058bg95687ed5ef5b" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd61749bbgfd79gbbb0gefbbg6890beda9d74" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="65bfa86f-454f-3d47-3a36-8234e5a2760d" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Potions" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Potions" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="CampClothes_Potions_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hbcf57a29gfa75g5f94g4f6cgfe03da633e24" version="1" />
                     <attribute id="Flag_int32" type="int32" value="0" />

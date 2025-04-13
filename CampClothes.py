@@ -501,6 +501,12 @@ loca["CampClothes_Underwear_Description"] = {"en": """
     """}
 camp_clothes_container("CampClothes_Underwear")
 
+loca["CampClothes_Potions_DisplayName"] = {"en": "Potions"}
+loca["CampClothes_Potions_Description"] = {"en": """
+    Contains a selection of potions.
+    """}
+camp_clothes_container("CampClothes_Potions")
+
 base_clothing = [
     "ARM_Camp_Body_Astarion",
     "ARM_Camp_Body_Gale",
@@ -692,18 +698,21 @@ base_underwear = [
 ]
 
 dyes = [dye for dye in base_dyes]
-agility_potion = add_agility_potion()
-bolster_potion = add_bolster_potion()
-flying_potion = add_flying_potion()
-overpowering_potion = add_overpowering_potion()
-pack_mule_potion = add_pack_mule_potion()
-persuasion_potion = add_persuasion_potion()
-rituals_potion = add_rituals_potion()
-warding_potion = add_warding_potion()
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
 underwear = reduce_weight(base_underwear)
+
+potions = [
+    add_agility_potion(),
+    add_bolster_potion(),
+    add_flying_potion(),
+    add_overpowering_potion(),
+    add_pack_mule_potion(),
+    add_persuasion_potion(),
+    add_rituals_potion(),
+    add_warding_potion(),
+]
 
 outfit_template = """\
 new subtable "1,1"
@@ -714,6 +723,12 @@ dye_template = """\
 new subtable "1,1"
 object category I_{},1,0,0,0,0,0,0,0
 """
+
+potion_template = """\
+new subtable "1,1"
+object category I_{},1,0,0,0,0,0,0,0
+"""
+
 
 for dye, dye_resource in dyes:
     camp_clothes.add(ItemCombinations(f"""
@@ -743,22 +758,8 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_{agility_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{bolster_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{flying_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{overpowering_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{pack_mule_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{persuasion_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{rituals_potion}",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_{warding_potion}",1,0,0,0,0,0,0,0
-new subtable "1600,1"
+object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
+new subtable "8000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))
 
@@ -784,6 +785,12 @@ camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Underwear_TreasureTable"
 CanMerge 1
 {"".join(outfit_template.format(outfit) for outfit in underwear).rstrip()}
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Potions_TreasureTable"
+CanMerge 1
+{"".join(potion_template.format(potion) for potion in potions).rstrip()}
 """))
 
 camp_clothes.build()

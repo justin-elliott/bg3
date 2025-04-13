@@ -14,6 +14,12 @@ from modtools.lsx.game import ActionResource, CharacterClass, Progression, Spell
 from modtools.replacers import progression, Replacer
 
 
+progression.include(
+    "unlocklevelcurve_a2ffd0e4-c407-4fh7.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
+)
+
+
 class OpenHand(Replacer):
     @dataclass
     class Args:
@@ -149,10 +155,10 @@ class OpenHand(Replacer):
         self._args = args
 
         if len(args.feats) == 0:
-            self._feat_levels = frozenset(range(2, 13, 2))
+            self._feat_levels = frozenset(range(2, 21, 2))
         elif len(args.feats) == 1:
             feat_level = next(level for level in args.feats)
-            self._feat_levels = frozenset(range(max(feat_level, 2), 13, feat_level))
+            self._feat_levels = frozenset(range(max(feat_level, 2), 21, feat_level))
         else:
             self._feat_levels = args.feats - frozenset([1])
 
@@ -160,12 +166,12 @@ class OpenHand(Replacer):
     def level_1(self, progression: Progression) -> None:
         progression.Selectors = [
             *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills")],
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
         ]
 
-    @progression(CharacterClass.MONK, range(1, 13))
-    def level_1_to_12_monk(self, progression: Progression) -> None:
+    @progression(CharacterClass.MONK, range(1, 21))
+    def level_1_to_20_monk(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)
 
@@ -218,7 +224,6 @@ class OpenHand(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
         ]
         progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 9)

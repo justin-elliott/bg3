@@ -32,6 +32,12 @@ using "_Container"
 data "RootTemplate" "5f4ad8a7-1bc9-cc0b-38a9-d066d1ea423e"
 data "Weight" "0.01"
 
+new entry "CampClothes_Potions"
+type "Object"
+using "_Container"
+data "RootTemplate" "65bfa86f-454f-3d47-3a36-8234e5a2760d"
+data "Weight" "0.01"
+
 new entry "CampClothes_AgilityPotion"
 type "Object"
 using "CampClothes_BasePotion"

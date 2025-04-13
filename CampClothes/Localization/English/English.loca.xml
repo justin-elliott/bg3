@@ -11,6 +11,8 @@
     <content contentuid="h124d6129g961egef42g2c34g238b54f3a1f7" version="1">Contains a selection of camp shoes.</content>
     <content contentuid="hba583e50g8c45gb821ged4ag4ee0aeee7814" version="1">Underwear</content>
     <content contentuid="h878383f0g3ba3g89d0g0686gbd5143107de7" version="1">Contains a selection of underwear.</content>
+    <content contentuid="hd61749bbgfd79gbbb0gefbbg6890beda9d74" version="1">Potions</content>
+    <content contentuid="hc7ea4575gee65gca50g058bg95687ed5ef5b" version="1">Contains a selection of potions.</content>
     <content contentuid="hbcf57a29gfa75g5f94g4f6cgfe03da633e24" version="1">Elixir of Agility</content>
     <content contentuid="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in, and &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on, Dexterity &lt;LSTag Tooltip="AbilityCheck"&gt;Checks&lt;/LSTag&gt;.</content>
     <content contentuid="h2d53c34cg228dg19d7g0202gfc8f5cab47c7" version="1">Bolster</content>

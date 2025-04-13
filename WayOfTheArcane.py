@@ -7,7 +7,7 @@ import argparse
 import os
 
 from dataclasses import dataclass
-from functools import cached_property
+from functools import cache, cached_property
 from moddb import (
     BattleMagic,
     Bolster,
@@ -33,7 +33,7 @@ from uuid import UUID
 
 
 progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    "unlocklevelcurve_a2ffd0e4-c407-4fh7.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
     + "Progressions/Progressions.lsx"
 )
 
@@ -164,26 +164,41 @@ class WayOfTheArcane(Replacer):
         return name
 
     @cached_property
-    def _wholeness_of_body(self) -> str:
-        """The Wholeness of Body subclass feature as a passive."""
-        name = f"{self.mod.get_prefix()}_WholenessOfBody"
-
-        HEALTH_PER_TURN = "1d4"
-        KI_PER_TURN = "1"
-
+    def _wholeness_of_body_display_name(self) -> str:
         loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Wholeness of Body"}
-        loca[f"{name}_Description"] = {"en": """
+        name = f"{self.mod.get_prefix()}_WholenessOfBody_DisplayName"
+        loca[name] = {"en": "Wholeness of Body"}
+        return loca[name]
+
+    @cached_property
+    def _wholeness_of_body_description(self) -> str:
+        loca = self.mod.get_localization()
+        name = f"{self.mod.get_prefix()}_WholenessOfBody_Description"
+        loca[name] = {"en": """
             Gain an additional bonus action.
 
             While in combat, you heal [1] every turn, and restore [2]
             <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Point(s)</LSTag>.
             """}
+        return loca[name]
+
+    @cache
+    def _wholeness_of_body(self, level: int) -> str:
+        """The Wholeness of Body subclass feature as a passive."""
+        name = f"{self.mod.get_prefix()}_WholenessOfBody_{level}"
+
+        HEALTH_BY_LEVEL = {
+            1: "1d4",
+            2: "1d6",
+            3: "1d8",
+        }
+        HEALTH_PER_TURN = HEALTH_BY_LEVEL[level]
+        KI_PER_TURN = level
 
         self.mod.add(PassiveData(
             name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
+            DisplayName=self._wholeness_of_body_display_name,
+            Description=self._wholeness_of_body_description,
             DescriptionParams=[
                 f"RegainHitPoints({HEALTH_PER_TURN})",
                 str(KI_PER_TURN),
@@ -275,13 +290,11 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK, 1)
     def level_1_monk(self, progression: Progression) -> None:
-        selectors = progression.Selectors or []
-        selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
-        selectors.extend([
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
-        ])
-        progression.Selectors = selectors
+        progression.Selectors = [
+            "SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+        ]
 
     @progression(CharacterClass.MONK, 1)
     @progression(CharacterClass.MONK, 1, is_multiclass=True)
@@ -392,7 +405,7 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 7)
     def level_7(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
-        progression.PassivesAdded = [self._wholeness_of_body]
+        progression.PassivesAdded = [self._wholeness_of_body(1)]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
         ]
@@ -400,7 +413,7 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 8)
     def level_8(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
-        progression.PassivesAdded = None
+        progression.PassivesAdded = ["ImprovedCritical"]
         progression.Selectors = [
             f"AddSpells({self.ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
             f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
@@ -413,7 +426,7 @@ class WayOfTheArcane(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
             f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
         ]
-        progression.PassivesAdded = ["ImprovedCritical"]
+        progression.PassivesAdded = ["Indomitable"]
         progression.Selectors = [
             f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},2,0)",
         ]
@@ -440,8 +453,115 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 12)
     def level_12(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},6)"]
-        progression.PassivesAdded = ["ReliableTalent"]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ReliableTalent",
+            self._wholeness_of_body(2),
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._wholeness_of_body(1),
+        ]
         progression.Selectors = [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 13)
+    def level_13(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "Indomitable_2"
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            "Indomitable"
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 14)
+    def level_14(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 15)
+    def level_15(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},8)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 16)
+    def level_16(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 17)
+    def level_17(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},9)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "Indomitable_3"
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            "Indomitable_2"
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 18)
+    def level_18(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            self._wholeness_of_body(3),
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            self._wholeness_of_body(2),
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 19)
+    def level_19(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+        ]
+
+    @progression(CharacterClass.MONK_SHADOW, 20)
+    def level_20(self, progression: Progression) -> None:
+        progression.Boosts = (progression.Boosts or []) + [
+            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
+        ]
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+            "ExtraAttack_3"
+        ]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
+            "ExtraAttack_2"
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
             f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 

@@ -479,7 +479,7 @@ def level_list(s: str) -> set[int]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Enhancements for the Ranger class.")
+    parser = argparse.ArgumentParser(description="Enhancements for the Fighter Eldritch Knight subclass.")
     parser.add_argument("-f", "--feats", type=level_list, default=frozenset([2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 19]),
                         help="Feat progression every n levels (defaulting to double progression)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,

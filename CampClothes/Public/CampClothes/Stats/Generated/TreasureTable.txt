@@ -11,22 +11,8 @@ object category "I_CampClothes_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_CampClothes_AgilityPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_BolsterPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_FlyingPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_OverpoweringPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_PackMulePotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_PersuasionPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_RitualsPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_CampClothes_WardingPotion",1,0,0,0,0,0,0,0
-new subtable "1600,1"
+object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
+new subtable "8000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 
 new treasuretable "CampClothes_Clothing_TreasureTable"
@@ -396,3 +382,22 @@ new subtable "1,1"
 object category I_CampClothes_Underwear_Shadowheart,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Underwear_Wyll,1,0,0,0,0,0,0,0
+
+new treasuretable "CampClothes_Potions_TreasureTable"
+CanMerge 1
+new subtable "1,1"
+object category I_CampClothes_AgilityPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_BolsterPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_FlyingPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_OverpoweringPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_PackMulePotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_PersuasionPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_RitualsPotion,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_WardingPotion,1,0,0,0,0,0,0,0

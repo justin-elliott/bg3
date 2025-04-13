@@ -40,7 +40,7 @@ class Bolster:
             name,
             using="Shout_Aid",
             SpellType="Shout",
-            AreaRadius="9",
+            AreaRadius="36",
             Cooldown="None",
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],

@@ -106,11 +106,36 @@ class WayOfTheArcane(Replacer):
         """Replaces the bonus unarmed strike class feature."""
         name = f"{self.mod.get_prefix()}_BonusUnarmedStrike"
 
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Unarmed Strike"}
+        loca[f"{name}_Description"] = {"en": """
+            Strike out at all nearby foes, making separate
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> against each target.
+            """}
+
         self.mod.add(SpellData(
             name,
-            using="Target_UnarmedStrike_Monk",
-            SpellType="Target",
+            using="Shout_Whirlwind",
+            SpellType="Shout",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="Action_Monk_FreeUnarmedStrike",
+            PrepareSound="Vocal_Component_Monk_Damage",
+            CastSound="Spell_Cast_Monk_FlurryofBlows_L1to3",
+            HitAnimationType="PhysicalDamage",
             SpellFlags=["IsMelee", "IsHarmful", "DisableBlood"],
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
+            SpellSuccess=["DealDamage(UnarmedDamage,Bludgeoning)"],
+            TooltipAttackSave="MeleeUnarmedAttack",
+            TooltipDamageList=["DealDamage(UnarmedDamage,Bludgeoning)"],
+            DamageType="Bludgeoning",
+            Sheathing="Sheathed",
+            VerbalIntent="Damage",
+            WeaponTypes=[],
+            PrepareEffect="85386181-e9ec-4996-a1dd-7f09f3013189",
+            CastEffect="208b02ef-5847-493d-94b8-a901691979ef",
+            TargetEffect="82b8aad9-5031-41f8-a871-dc55eb52af88",
+            UseCosts=["BonusActionPoint:1"],
         ))
 
         return name

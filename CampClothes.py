@@ -114,6 +114,7 @@ def add_potion(
         status_duration: int = -1,
         boosts: list[str] = None,
         passives: list[str] = None,
+        stack_id: str = None,
         status_property_flags: list[str] = POTION_STATUS_PROPERTY_FLAGS) -> None:
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
@@ -193,7 +194,7 @@ def add_potion(
                         GameObjects.OnUsePeaceActions.Action.Attributes(
                             Animation="",
                             Conditions="",
-                            Consume=True,
+                            Consume=False,
                             IsHiddenStatus=True,
                             StatsId=name.upper(),
                             StatusDuration=status_duration,
@@ -218,8 +219,53 @@ def add_potion(
         Icon=icon,
         Boosts=boosts,
         Passives=passives,
+        StackId=name.upper() if stack_id is None else stack_id,
         StatusPropertyFlags=status_property_flags,
     ))
+
+
+abilities_potion_base_name = f"{camp_clothes.get_prefix()}_AbilitiesPotion"
+loca[f"{abilities_potion_base_name}_DisplayName"] = {"en": f"Elixir of Abilities"}
+
+abilities_potion_icons = [
+    "Item_CONS_Potion_Acid_Resistance_2",
+    "Item_CONS_Potion_Cold_Resistance_2",
+    "Item_CONS_Potion_Fire_Resistance_2",
+    "Item_CONS_Potion_Force_Resistance_2",
+    "Item_CONS_Potion_Lightning_Resistance_2",
+    "Item_CONS_Potion_Necrotic_Resistance_2",
+    "Item_CONS_Potion_Poison_Resistance_2",
+    "Item_CONS_Potion_Psychic_Resistance_2",
+    "Item_CONS_Potion_Radiant_Resistance_2",
+    "Item_CONS_Potion_Thunder_Resistance_2",
+]
+
+def add_abilities_potion(bonus: int) -> str:
+    name = f"{abilities_potion_base_name}_{bonus}"
+    ability_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this elixir grants you +{bonus} on all of your ability scores.
+        """}
+
+    add_potion(
+        name,
+        uuid=ability_potion_uuid,
+        display_name=loca[f"{abilities_potion_base_name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon=abilities_potion_icons.pop(0) if len(abilities_potion_icons) > 0 else "Item_CONS_Potion_Resistance",
+        boosts=[
+            f"Ability(Strength,{bonus})",
+            f"Ability(Dexterity,{bonus})",
+            f"Ability(Constitution,{bonus})",
+            f"Ability(Intelligence,{bonus})",
+            f"Ability(Wisdom,{bonus})",
+            f"Ability(Charisma,{bonus})",
+        ],
+        stack_id=abilities_potion_base_name,
+    )
+
+    return name
 
 
 def add_agility_potion() -> str:
@@ -230,8 +276,8 @@ def add_agility_potion() -> str:
     loca[f"{name}_Description"] = {"en": """
         Drinking this elixir grants you <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
         <LSTag Tooltip="Dexterity">Dexterity</LSTag> Skills, and
-        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
-        <LSTag Tooltip="Advantage">Advantage</LSTag> on, Dexterity <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
+        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in
+        Dexterity <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
         """}
 
     add_potion(
@@ -242,7 +288,6 @@ def add_agility_potion() -> str:
         icon="Item_ALCH_Solution_Remedy",
         boosts=[
             "ProficiencyBonus(SavingThrow,Dexterity)",
-            "Advantage(Ability,Dexterity)",
             "ProficiencyBonus(Skill,Acrobatics)",
             "ExpertiseBonus(Acrobatics)",
             "ProficiencyBonus(Skill,SleightOfHand)",
@@ -313,11 +358,12 @@ def add_overpowering_potion() -> str:
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Drug_Dreammist_A",
-        status_duration=16,
+        status_duration=10,
         boosts=[
             "AC(20)",
-            "DamageBonus(8d4)",
+            "DamageBonus(200)",
             "IncreaseMaxHP(50)",
+            "Initiative(10)",
             "RollBonus(Attack,20)",
             "RollBonus(SavingThrow,20)",
             "SpellSaveDC(20)",
@@ -360,9 +406,7 @@ def add_persuasion_potion() -> str:
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Persuasion"}
     loca[f"{name}_Description"] = {"en": """
         Drinking this elixir grants you <LSTag Type="Tooltip" Tooltip="Expertise">Expertise</LSTag> in all
-        <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and
-        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in, and
-        <LSTag Tooltip="Advantage">Advantage</LSTag> on, Charisma <LSTag Tooltip="AbilityCheck">Checks</LSTag>.
+        <LSTag Tooltip="Charisma">Charisma</LSTag> Skills, and the ability to play Musical Instruments.
         """}
 
     add_potion(
@@ -373,8 +417,6 @@ def add_persuasion_potion() -> str:
         icon="Item_CONS_ElixirOfHealth",
         boosts=[
             "Proficiency(MusicalInstrument)",
-            "ProficiencyBonus(SavingThrow,Charisma)",
-            "Advantage(Ability,Charisma)",
             "ProficiencyBonus(Skill,Deception)",
             "ExpertiseBonus(Deception)",
             "ProficiencyBonus(Skill,Intimidation)",
@@ -395,14 +437,12 @@ def add_rituals_potion() -> str:
 
     disguise_self = f"{camp_clothes.get_prefix()}_RitualDisguiseSelf"
     enhance_leap = f"{camp_clothes.get_prefix()}_RitualEnhanceLeap"
-    feather_fall = f"{camp_clothes.get_prefix()}_RitualFeatherFall"
     detect_thoughts = f"{camp_clothes.get_prefix()}_RitualDetectThoughts"
     speak_with_dead = f"{camp_clothes.get_prefix()}_RitualSpeakWithDead"
 
     ritual_spells: list[tuple[str, str]] = [
         (disguise_self, "Shout_DisguiseSelf"),
         (enhance_leap, "Target_Jump"),
-        (feather_fall, "Shout_FeatherFall"),
         (detect_thoughts, "Shout_DetectThoughts"),
         (speak_with_dead, "Target_SpeakWithDead"),
     ]
@@ -423,7 +463,6 @@ def add_rituals_potion() -> str:
         Drinking this elixir grants you the
         <LSTag Type="Spell" Tooltip="{disguise_self}">Disguise Self</LSTag>,
         <LSTag Type="Spell" Tooltip="{enhance_leap}">Enhance Leap</LSTag>,
-        <LSTag Type="Spell" Tooltip="{feather_fall}">Feather Fall</LSTag>,
         <LSTag Type="Spell" Tooltip="{detect_thoughts}">Detect Thoughts</LSTag>, and
         <LSTag Type="Spell" Tooltip="{speak_with_dead}">Speak with Dead</LSTag> ritual spells.
         """}
@@ -449,7 +488,9 @@ def add_warding_potion() -> str:
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
     loca[f"{name}_Description"] = {"en": f"""
-        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passive.
+        Drinking this elixir grants the <LSTag Type="Passive" Tooltip="{warding}">Warding</LSTag> passive, and
+        <LSTag Type="Tooltip" Tooltip="ProficiencyBonus">Proficiency</LSTag> in
+        Constitution <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
         """}
 
     add_potion(
@@ -459,6 +500,7 @@ def add_warding_potion() -> str:
         description=loca[f"{name}_Description"],
         icon="Item_UNI_Apprentice_Antidote",
         passives=[warding],
+        boosts=["ProficiencyBonus(SavingThrow,Constitution)"],
     )
 
     return name
@@ -507,6 +549,12 @@ loca["CampClothes_Potions_Description"] = {"en": """
     """}
 camp_clothes_container("CampClothes_Potions")
 
+camp_clothes.add(Armor(
+    "CampClothes_DaisyBody",
+    using="ARM_Camp_Body",
+    RootTemplate="aa0917ea-5f66-4a22-97de-654228484128",
+))
+
 base_clothing = [
     "ARM_Camp_Body_Astarion",
     "ARM_Camp_Body_Gale",
@@ -518,6 +566,7 @@ base_clothing = [
     "ARM_Camp_Body_Minthara",
     "ARM_Camp_Body_Shadowheart",
     "ARM_Camp_Body_Wyll",
+    "CampClothes_DaisyBody",
     "ARM_Vanity_Body_Aristocrat_Brown",
     "ARM_Vanity_Body_Aristocrat_White",
     "ARM_Vanity_Body_Aristocrat",
@@ -637,8 +686,15 @@ base_dyes = [
     ("OBJ_Dye_Remover", None),
 ]
 
+camp_clothes.add(Armor(
+    "CampClothes_DaisyBoots",
+    using="ARM_Camp_Shoes",
+    RootTemplate="216f0362-f77b-420c-84cb-d84853aa173d",
+))
+
 base_shoes = [
     "CampClothes_ComfortableBoots",
+    "CampClothes_DaisyBoots",
     "ARM_Camp_Sandals_A1_Black",
     "ARM_Camp_Sandals_A1",
     "ARM_Camp_Sandals_B_Red",
@@ -664,6 +720,12 @@ base_shoes = [
     "ARM_Vanity_Deva_Shoes",
     "ARM_Vanity_Shoes_Circus",
 ]
+
+camp_clothes.add(Armor(
+    "CampClothes_DaisyGloves",
+    using="ARM_Underwear",
+    RootTemplate="5a0ee632-9145-48b2-9b92-97c32c2ccbd9",
+))
 
 base_underwear = [
     "ARM_Underwear_Dragonborn_Bronze",
@@ -695,6 +757,7 @@ base_underwear = [
     "ARM_Underwear_Minthara",
     "ARM_Underwear_Shadowheart",
     "ARM_Underwear_Wyll",
+    "CampClothes_DaisyGloves",
 ]
 
 dyes = [dye for dye in base_dyes]
@@ -704,6 +767,11 @@ shoes = reduce_weight(base_shoes)
 underwear = reduce_weight(base_underwear)
 
 potions = [
+    add_abilities_potion(2),
+    add_abilities_potion(4),
+    add_abilities_potion(6),
+    add_abilities_potion(8),
+    add_abilities_potion(10),
     add_agility_potion(),
     add_bolster_potion(),
     add_flying_potion(),

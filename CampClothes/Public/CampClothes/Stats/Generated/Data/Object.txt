@@ -38,6 +38,31 @@ using "_Container"
 data "RootTemplate" "65bfa86f-454f-3d47-3a36-8234e5a2760d"
 data "Weight" "0.01"
 
+new entry "CampClothes_AbilitiesPotion_2"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "4c47a27d-5c5f-9b2a-e8bc-1195e1cfe2b4"
+
+new entry "CampClothes_AbilitiesPotion_4"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "690d2fbd-57d4-7a5c-7213-ef5eb68f6755"
+
+new entry "CampClothes_AbilitiesPotion_6"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "4c6601db-49aa-1b63-d9a1-7af63ee2e8b0"
+
+new entry "CampClothes_AbilitiesPotion_8"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "180ef856-505d-6e61-2b9c-2d171b0d633c"
+
+new entry "CampClothes_AbilitiesPotion_10"
+type "Object"
+using "CampClothes_BasePotion"
+data "RootTemplate" "8620930c-8cf4-6d91-1094-d9d21726f2cb"
+
 new entry "CampClothes_AgilityPotion"
 type "Object"
 using "CampClothes_BasePotion"

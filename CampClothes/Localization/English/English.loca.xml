@@ -3,6 +3,7 @@
 <contentList>
     <content contentuid="h3b62d67bg3ac9gaa21ga1ceg65d16dd670bb" version="1">Comfortable Boots</content>
     <content contentuid="h4dc96120gb68bg720agaa81g0fde0aa2c22d" version="1">Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.</content>
+    <content contentuid="hdc0930a1gc49bg8d5dgd3a9g4abff9fb0238" version="1">Elixir of Abilities</content>
     <content contentuid="h5b175ce6gfb4fg55e9g031dg10f83fcec7c8" version="1">Camp Clothes</content>
     <content contentuid="h631c509dgf041g9556g2eb0ge9e579d67e3d" version="1">Contains a selection of camp clothing.</content>
     <content contentuid="h67e823f0g4148g0193g3751g6f684ca294c0" version="1">Dyes</content>
@@ -13,8 +14,13 @@
     <content contentuid="h878383f0g3ba3g89d0g0686gbd5143107de7" version="1">Contains a selection of underwear.</content>
     <content contentuid="hd61749bbgfd79gbbb0gefbbg6890beda9d74" version="1">Potions</content>
     <content contentuid="hc7ea4575gee65gca50g058bg95687ed5ef5b" version="1">Contains a selection of potions.</content>
+    <content contentuid="h8681d3e0g1a21gd178g975eg86011a688b6f" version="1">Drinking this elixir grants you +2 on all of your ability scores.</content>
+    <content contentuid="h62e48131g5e35g337egd4d7g5852066296ab" version="1">Drinking this elixir grants you +4 on all of your ability scores.</content>
+    <content contentuid="hb2bb0ce2g2814gef39g904dgf1e03537728c" version="1">Drinking this elixir grants you +6 on all of your ability scores.</content>
+    <content contentuid="h4cc6f060g8f03g72c7g2b5cg454896e11af5" version="1">Drinking this elixir grants you +8 on all of your ability scores.</content>
+    <content contentuid="h5af4adbcg3e9dg0b17gec7ag53e7614b644c" version="1">Drinking this elixir grants you +10 on all of your ability scores.</content>
     <content contentuid="hbcf57a29gfa75g5f94g4f6cgfe03da633e24" version="1">Elixir of Agility</content>
-    <content contentuid="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in, and &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on, Dexterity &lt;LSTag Tooltip="AbilityCheck"&gt;Checks&lt;/LSTag&gt;.</content>
+    <content contentuid="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in Dexterity &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
     <content contentuid="h2d53c34cg228dg19d7g0202gfc8f5cab47c7" version="1">Bolster</content>
     <content contentuid="ha98ca916g17f9g2f75g570fg2b96068d5e26" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h85af8b16gbecag7d13g87f2g553bab65f109" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
@@ -29,11 +35,11 @@
     <content contentuid="hcab5885fg7d1dgb4e8g51efg1f188c8d5b15" version="1">Elixir of the Pack Mule</content>
     <content contentuid="hbd5ebd64ga8b8g22fbg734cg73095f810db3" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_PackMule_400"&gt;Pack Mule&lt;/LSTag&gt; passive.</content>
     <content contentuid="h8837a5f6gc8fcgdb31g4065g6423696df06c" version="1">Elixir of Persuasion</content>
-    <content contentuid="hc914b31egcbf6gcb28g563dg203ccedb3ef2" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in, and &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on, Charisma &lt;LSTag Tooltip="AbilityCheck"&gt;Checks&lt;/LSTag&gt;.</content>
+    <content contentuid="hc914b31egcbf6gcb28g563dg203ccedb3ef2" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; Skills, and the ability to play Musical Instruments.</content>
     <content contentuid="h73ad4e13gff8bga8c3g23cdgfd0b60069d01" version="1">Elixir of Rituals</content>
-    <content contentuid="hd8341414g47f2g93ffgdb07gbabdedd2eca5" version="1">Drinking this elixir grants you the &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDisguiseSelf"&gt;Disguise Self&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualEnhanceLeap"&gt;Enhance Leap&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualFeatherFall"&gt;Feather Fall&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDetectThoughts"&gt;Detect Thoughts&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualSpeakWithDead"&gt;Speak with Dead&lt;/LSTag&gt; ritual spells.</content>
+    <content contentuid="hd8341414g47f2g93ffgdb07gbabdedd2eca5" version="1">Drinking this elixir grants you the &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDisguiseSelf"&gt;Disguise Self&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualEnhanceLeap"&gt;Enhance Leap&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualDetectThoughts"&gt;Detect Thoughts&lt;/LSTag&gt;, and &lt;LSTag Type="Spell" Tooltip="CampClothes_RitualSpeakWithDead"&gt;Speak with Dead&lt;/LSTag&gt; ritual spells.</content>
     <content contentuid="hfef8f4cfg44f0ge10bgdf3ag7215598aac2e" version="1">Warding</content>
     <content contentuid="he7284105gddf7g3090g129bgc40f1687e8dc" version="1">Your magic protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="h5f7485d3gd0fagb6b7g4909ge78cf34d8235" version="1">Elixir of Warding</content>
-    <content contentuid="h37297145gad39gcc16gf073g5d8584792c88" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_Warding"&gt;Warding&lt;/LSTag&gt; passive.</content>
+    <content contentuid="h37297145gad39gcc16gf073g5d8584792c88" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_Warding"&gt;Warding&lt;/LSTag&gt; passive, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in Constitution &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
 </contentList>

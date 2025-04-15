@@ -20,6 +20,7 @@ class DontIncludeSpellList(BaseException):
 
 _SPELL_LISTS_LSX_PATH = "Shared.pak/Public/Shared/Lists/SpellLists.lsx"
 _SPELL_LISTS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/Lists/SpellLists.lsx"
+_SPELL_LISTS_GUSTAVX_LSX_PATH = "GustavX.pak/Public/GustavX/Lists/SpellLists.lsx"
 
 type SpellListBuilder = Callable[[Replacer, SpellList], None]
 type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
@@ -37,7 +38,9 @@ def _key_by_uuid(spell_list: SpellList) -> str:
 def _load_spell_lists(replacer: Replacer) -> LsxChildren:
     spell_lists_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_LSX_PATH))
     spell_lists_dev_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_DEV_LSX_PATH))
+    spell_lists_gustavx_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_GUSTAVX_LSX_PATH))
     spell_lists_lsx.children.update(spell_lists_dev_lsx.children, key=_key_by_uuid)
+    spell_lists_lsx.children.update(spell_lists_gustavx_lsx.children, key=_key_by_uuid)
     spell_lists_lsx.children.sort(key=_key_by_comment)
     return spell_lists_lsx.children
 

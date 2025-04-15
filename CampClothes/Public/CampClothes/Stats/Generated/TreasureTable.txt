@@ -12,7 +12,7 @@ new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
-new subtable "8000,1"
+new subtable "16000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 
 new treasuretable "CampClothes_Clothing_TreasureTable"

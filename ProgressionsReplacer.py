@@ -24,7 +24,7 @@ from modtools.replacers import (
 
 
 progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-4fh7.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
     + "Progressions/Progressions.lsx"
 )
 
@@ -36,28 +36,31 @@ class ProgressionsReplacer(Replacer):
         classes: set[CharacterClass]  # Class progressions to replace
         feats: set[int]               # Feat improvement levels
         spells: int                   # Multiplier for spell slots
+        warlock_spells: int           # Multiplier for Warlock spell slots
         actions: int                  # Multiplier for other action resources
         skills: int                   # Number of skills to select at character creation
         expertise: int                # Number of skill expertises to select at character creation
 
-    SPELL_SLOTS = frozenset([
-        ActionResource.SPELL_SLOTS,
-        ActionResource.WARLOCK_SPELL_SLOTS
-    ])
     ACTION_RESOURCES = frozenset([
         ActionResource.ARCANE_RECOVERY_CHARGES,
+        ActionResource.ARCANE_SHOT_CHARGES,
         ActionResource.BARDIC_INSPIRATION_CHARGES,
+        ActionResource.BLADESONG_CHARGES,
         ActionResource.CHANNEL_DIVINITY_CHARGES,
         ActionResource.CHANNEL_OATH_CHARGES,
+        ActionResource.COSMIC_OMEN_POINTS,
         ActionResource.FUNGAL_INFESTATION_CHARGES,
         ActionResource.KI_POINTS,
         ActionResource.LAY_ON_HANDS_CHARGES,
         ActionResource.NATURAL_RECOVERY_CHARGES,
         ActionResource.RAGE_CHARGES,
         ActionResource.SORCERY_POINTS,
+        ActionResource.STAR_MAP_POINTS,
         ActionResource.SUPERIORITY_DICE,
+        ActionResource.SWARM_CHARGES,
         ActionResource.WAR_PRIEST_CHARGES,
         ActionResource.WILD_SHAPE_CHARGES,
+        ActionResource.WRITHING_TIDE_POINTS,
     ])
 
     _args: Args
@@ -87,7 +90,7 @@ class ProgressionsReplacer(Replacer):
             args.classes = subclasses
 
         if not args.name:
-            args.name = f"Progressions-{class_names}-{feat_levels}S{args.spells}-A{args.actions}"
+            args.name = f"Progressions-{class_names}-{feat_levels}S{args.spells}-W{args.warlock_spells}-A{args.actions}"
             if args.skills is not None:
                 args.name += f"-K{args.skills}"
             if args.expertise is not None:
@@ -118,7 +121,8 @@ class ProgressionsReplacer(Replacer):
         if CharacterClass(progression.Name) not in self._args.classes:
             raise DontIncludeProgression()
         boosts = progression.Boosts
-        multiply_resources(progression, self.SPELL_SLOTS, self._args.spells)
+        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
+        multiply_resources(progression, [ActionResource.WARLOCK_SPELL_SLOTS], self._args.warlock_spells)
         multiply_resources(progression, self.ACTION_RESOURCES, self._args.actions)
         if boosts == progression.Boosts:
             raise DontIncludeProgression()
@@ -129,7 +133,7 @@ class ProgressionsReplacer(Replacer):
             raise DontIncludeProgression()
         selectors = progression.Selectors
         if self._args.skills is not None:
-            selectors = [selector for selector in selectors if not selector.startswith("SelectSkills(")]
+            selectors = [selector for selector in (selectors or []) if not selector.startswith("SelectSkills(")]
             selectors.append(f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})")
         if self._args.expertise is not None:
             selectors = [selector for selector in selectors if not selector.startswith("SelectSkillsExpertise(")]
@@ -163,6 +167,8 @@ def main():
                         help="Feat progression every n levels (defaulting to normal progression)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=1,
                         help="Spell slot multiplier (defaulting to 1; normal spell slots)")
+    parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 9), default=1,
+                        help="Warlock spell slot multiplier (defaulting to 1; normal spell slots)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=1,
                         help="Action resource multiplier (defaulting to 1; normal resources)")
     parser.add_argument("-k", "--skills", type=int,

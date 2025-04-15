@@ -31,6 +31,7 @@ type ProgressionBuilderDict = dict[NameLevelKey, list[ProgressionBuilder]]
 _progression_lsx_paths = [
     "Shared.pak/Public/Shared/Progressions/Progressions.lsx",
     "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx",
+    "GustavX.pak/Public/GustavX/Progressions/Progressions.lsx",
 ]
 
 

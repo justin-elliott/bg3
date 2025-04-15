@@ -13,9 +13,12 @@ from typing import Callable, Final
 class ActionResource(StrEnum):
     """Baldur's Gate 3 action resources."""
     ARCANE_RECOVERY_CHARGES = "ArcaneRecoveryPoint"
+    ARCANE_SHOT_CHARGES = "ArcaneShot"
     BARDIC_INSPIRATION_CHARGES = "BardicInspiration"
+    BLADESONG_CHARGES = "Bladesong"
     CHANNEL_DIVINITY_CHARGES = "ChannelDivinity"
     CHANNEL_OATH_CHARGES = "ChannelOath"
+    COSMIC_OMEN_POINTS = "CosmicOmen"
     FUNGAL_INFESTATION_CHARGES = "FungalInfestationCharge"
     KI_POINTS = "KiPoint"
     LAY_ON_HANDS_CHARGES = "LayOnHandsCharge"
@@ -23,10 +26,13 @@ class ActionResource(StrEnum):
     RAGE_CHARGES = "Rage"
     SORCERY_POINTS = "SorceryPoint"
     SPELL_SLOTS = "SpellSlot"
+    STAR_MAP_POINTS = "StarMapPoint"
     SUPERIORITY_DICE = "SuperiorityDie"
+    SWARM_CHARGES = "SwarmCharge"
     WARLOCK_SPELL_SLOTS = "WarlockSpellSlot"
     WAR_PRIEST_CHARGES = "WarPriestActionPoint"
     WILD_SHAPE_CHARGES = "WildShape"
+    WRITHING_TIDE_POINTS = "WrithingTidePoint"
 
 
 _ACTION_RESOURCE_REGEX: Final = re.compile(r"^\s*ActionResource\((\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$")

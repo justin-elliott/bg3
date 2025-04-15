@@ -35,13 +35,16 @@ class CharacterClass(StrEnum):
 
     # Subclasses
     BARBARIAN_BERSERKER = "BerserkerPath"
+    BARBARIAN_GIANT = "GiantPath"
     BARBARIAN_WILDHEART = "TotemWarriorPath"
     BARBARIAN_WILDMAGIC = "WildMagicPath"
 
+    BARD_GLAMOUR = "GlamourCollege"
     BARD_LORE = "LoreCollege"
     BARD_SWORDS = "SwordsCollege"
     BARD_VALOR = "ValorCollege"
 
+    CLERIC_DEATH = "DeathDomain"
     CLERIC_KNOWLEDGE = "KnowledgeDomain"
     CLERIC_LIFE = "LifeDomain"
     CLERIC_LIGHT = "LightDomain"
@@ -53,16 +56,20 @@ class CharacterClass(StrEnum):
     DRUID_LAND = "CircleOfTheLand"
     DRUID_MOON = "CircleOfTheMoon"
     DRUID_SPORES = "CircleOfTheSpores"
+    DRUID_STARS = "CircleOfStars"
 
+    FIGHTER_ARCANEARCHER = "ArcaneArcher"
     FIGHTER_BATTLEMASTER = "BattleMaster"
     FIGHTER_CHAMPION = "Champion"
     FIGHTER_ELDRITCHKNIGHT = "EldritchKnight"
 
+    MONK_DRUNKENMASTER = "DrunkenMaster"
     MONK_FOURELEMENTS = "FourElements"
     MONK_OPENHAND = "OpenHand"
     MONK_SHADOW = "Shadow"
 
     PALADIN_ANCIENTS = "Ancients"
+    PALADIN_CROWN = "Crown"
     PALADIN_DEVOTION = "Devotion"
     PALADIN_OATHBREAKER = "Oathbreaker"
     PALADIN_VENGEANCE = "Vengeance"
@@ -70,20 +77,25 @@ class CharacterClass(StrEnum):
     RANGER_BEASTMASTER = "BeastMaster"
     RANGER_GLOOMSTALKER = "GloomStalker"
     RANGER_HUNTER = "Hunter"
+    RANGER_SWARMKEEPER = "Swarmkeeper"
 
     ROGUE_ARCANETRICKSTER = "ArcaneTrickster"
     ROGUE_ASSASSIN = "Assassin"
     ROGUE_THIEF = "Thief"
+    ROGUE_SWASHBUCKLER = "Swashbuckler"
 
     SORCERER_DRACONIC = "DraconicBloodline"
+    SORCERER_SHADOWMAGIC = "ShadowMagic"
     SORCERER_STORM = "StormSorcery"
     SORCERER_WILDMAGIC = "WildMagic"
 
     WARLOCK_ARCHFEY = "Archfey"
     WARLOCK_FIEND = "Fiend"
     WARLOCK_GREATOLDONE = "GreatOldOne"
+    WARLOCK_HEXBLADE = "Hexblade"
 
     WIZARD_ABJURATION = "AbjurationSchool"
+    WIZARD_BLADESINGING = "BladesingingSchool"
     WIZARD_CONJURATION = "ConjurationSchool"
     WIZARD_DIVINATION = "DivinationSchool"
     WIZARD_ENCHANTMENT = "EnchantmentSchool"
@@ -118,17 +130,20 @@ class CharacterSubclasses:
     BARBARIAN: Final = frozenset([
         CharacterClass.BARBARIAN,
         CharacterClass.BARBARIAN_BERSERKER,
+        CharacterClass.BARBARIAN_GIANT,
         CharacterClass.BARBARIAN_WILDHEART,
         CharacterClass.BARBARIAN_WILDMAGIC,
     ])
     BARD: Final = frozenset([
         CharacterClass.BARD,
+        CharacterClass.BARD_GLAMOUR,
         CharacterClass.BARD_LORE,
         CharacterClass.BARD_SWORDS,
         CharacterClass.BARD_VALOR,
     ])
     CLERIC: Final = frozenset([
         CharacterClass.CLERIC,
+        CharacterClass.CLERIC_DEATH,
         CharacterClass.CLERIC_KNOWLEDGE,
         CharacterClass.CLERIC_LIFE,
         CharacterClass.CLERIC_LIGHT,
@@ -142,15 +157,18 @@ class CharacterSubclasses:
         CharacterClass.DRUID_LAND,
         CharacterClass.DRUID_MOON,
         CharacterClass.DRUID_SPORES,
+        CharacterClass.DRUID_STARS,
     ])
     FIGHTER: Final = frozenset([
         CharacterClass.FIGHTER,
+        CharacterClass.FIGHTER_ARCANEARCHER,
         CharacterClass.FIGHTER_BATTLEMASTER,
         CharacterClass.FIGHTER_CHAMPION,
         CharacterClass.FIGHTER_ELDRITCHKNIGHT,
     ])
     MONK: Final = frozenset([
         CharacterClass.MONK,
+        CharacterClass.MONK_DRUNKENMASTER,
         CharacterClass.MONK_FOURELEMENTS,
         CharacterClass.MONK_OPENHAND,
         CharacterClass.MONK_SHADOW,
@@ -158,6 +176,7 @@ class CharacterSubclasses:
     PALADIN: Final = frozenset([
         CharacterClass.PALADIN,
         CharacterClass.PALADIN_ANCIENTS,
+        CharacterClass.PALADIN_CROWN,
         CharacterClass.PALADIN_DEVOTION,
         CharacterClass.PALADIN_OATHBREAKER,
         CharacterClass.PALADIN_VENGEANCE,
@@ -167,16 +186,19 @@ class CharacterSubclasses:
         CharacterClass.RANGER_BEASTMASTER,
         CharacterClass.RANGER_GLOOMSTALKER,
         CharacterClass.RANGER_HUNTER,
+        CharacterClass.RANGER_SWARMKEEPER,
     ])
     ROGUE: Final = frozenset([
         CharacterClass.ROGUE,
         CharacterClass.ROGUE_ARCANETRICKSTER,
         CharacterClass.ROGUE_ASSASSIN,
         CharacterClass.ROGUE_THIEF,
+        CharacterClass.ROGUE_SWASHBUCKLER,
     ])
     SORCERER: Final = frozenset([
         CharacterClass.SORCERER,
         CharacterClass.SORCERER_DRACONIC,
+        CharacterClass.SORCERER_SHADOWMAGIC,
         CharacterClass.SORCERER_STORM,
         CharacterClass.SORCERER_WILDMAGIC,
     ])
@@ -185,10 +207,12 @@ class CharacterSubclasses:
         CharacterClass.WARLOCK_ARCHFEY,
         CharacterClass.WARLOCK_FIEND,
         CharacterClass.WARLOCK_GREATOLDONE,
+        CharacterClass.WARLOCK_HEXBLADE,
     ])
     WIZARD: Final = frozenset([
         CharacterClass.WIZARD,
         CharacterClass.WIZARD_ABJURATION,
+        CharacterClass.WIZARD_BLADESINGING,
         CharacterClass.WIZARD_CONJURATION,
         CharacterClass.WIZARD_DIVINATION,
         CharacterClass.WIZARD_ENCHANTMENT,

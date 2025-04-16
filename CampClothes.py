@@ -6,7 +6,7 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import Bolster, Defense, PackMule
-from modtools.gamedata import Armor, ObjectData, SpellData, StatusData
+from modtools.gamedata import Armor, ObjectData, SpellData, StatusData, Weapon
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import Text, TreasureTable
@@ -549,6 +549,12 @@ loca["CampClothes_Potions_Description"] = {"en": """
     """}
 camp_clothes_container("CampClothes_Potions")
 
+loca["CampClothes_Weapons_DisplayName"] = {"en": "Weapons"}
+loca["CampClothes_Weapons_Description"] = {"en": """
+    Contains a selection of weapons.
+    """}
+camp_clothes_container("CampClothes_Weapons")
+
 camp_clothes.add(Armor(
     "CampClothes_DaisyBody",
     using="ARM_Camp_Body",
@@ -782,21 +788,38 @@ potions = [
     add_warding_potion(),
 ]
 
-outfit_template = """\
+camp_clothes.add(Weapon(
+    "CampClothes_Crimson_Shortsword",
+    using="MAG_TheCrimson_Shortsword",
+    PassivesMainHand=["MAG_TheCrimson_Vicious_Passive"],
+    PassivesOffHand=[],
+))
+
+camp_clothes.add(Weapon(
+    "CampClothes_Belm_Shortsword",
+    using="MAG_PHB_OfSpeed_Scimitar",
+    BoostsOnEquipMainHand=[],
+    BoostsOnEquipOffHand=["UnlockSpell(Shout_Whirlwind)"],
+    Proficiency_Group=["Shortswords", "MartialWeapons", "Scimitars"],
+    RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
+))
+
+camp_clothes.add(SpellData(
+    "Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
+    using="Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
+    SpellType="Target",
+    SpellFlags=["IsAttack", "IsMelee", "IsHarmful"],
+))
+
+weapons = [
+    "CampClothes_Crimson_Shortsword",
+    "CampClothes_Belm_Shortsword",
+]
+
+item_template = """\
 new subtable "1,1"
 object category I_{},1,0,0,0,0,0,0,0
 """
-
-dye_template = """\
-new subtable "1,1"
-object category I_{},1,0,0,0,0,0,0,0
-"""
-
-potion_template = """\
-new subtable "1,1"
-object category I_{},1,0,0,0,0,0,0,0
-"""
-
 
 for dye, dye_resource in dyes:
     camp_clothes.add(ItemCombinations(f"""
@@ -827,6 +850,8 @@ new subtable "1,1"
 object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_CampClothes_Weapons",1,0,0,0,0,0,0,0
 new subtable "16000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))
@@ -834,31 +859,37 @@ object category "Gold",1,0,0,0,0,0,0,0
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Clothing_TreasureTable"
 CanMerge 1
-{"".join(outfit_template.format(outfit) for outfit in clothing).rstrip()}
+{"".join(item_template.format(outfit) for outfit in clothing).rstrip()}
 """))
 
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Dyes_TreasureTable"
 CanMerge 1
-{"".join(dye_template.format(dye) for dye, _ in dyes).rstrip()}
+{"".join(item_template.format(dye) for dye, _ in dyes).rstrip()}
 """))
 
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Shoes_TreasureTable"
 CanMerge 1
-{"".join(outfit_template.format(outfit) for outfit in shoes).rstrip()}
+{"".join(item_template.format(outfit) for outfit in shoes).rstrip()}
 """))
 
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Underwear_TreasureTable"
 CanMerge 1
-{"".join(outfit_template.format(outfit) for outfit in underwear).rstrip()}
+{"".join(item_template.format(outfit) for outfit in underwear).rstrip()}
 """))
 
 camp_clothes.add(TreasureTable(f"""
 new treasuretable "CampClothes_Potions_TreasureTable"
 CanMerge 1
-{"".join(potion_template.format(potion) for potion in potions).rstrip()}
+{"".join(item_template.format(potion) for potion in potions).rstrip()}
+"""))
+
+camp_clothes.add(TreasureTable(f"""
+new treasuretable "CampClothes_Weapons_TreasureTable"
+CanMerge 1
+{"".join(item_template.format(weapon) for weapon in weapons).rstrip()}
 """))
 
 camp_clothes.build()

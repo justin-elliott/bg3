@@ -35,6 +35,7 @@ class Mod:
 
     _localization: Localization
 
+    _dependencies: Dependencies
     _game_data: GameDataCollection
     _lsx: Lsx
     _text: TextCollection
@@ -78,6 +79,7 @@ class Mod:
         self._localization = Localization(self._uuid)
         self._localization.add_language("en", "English")
 
+        self._dependencies = Dependencies()
         self._game_data = GameDataCollection()
         self._lsx = Lsx()
         self._text = TextCollection()
@@ -122,7 +124,9 @@ class Mod:
 
     def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""
-        if isinstance(item, GameData):
+        if isinstance(item, Dependencies.ShortModuleDesc):
+            self._dependencies.children.append(item)
+        elif isinstance(item, GameData):
             self._game_data.add(item)
         elif isinstance(item, LsxNode):
             self._lsx.children.append(item)
@@ -135,7 +139,7 @@ class Mod:
         """Add the meta definition."""
         build_version = str(time.time_ns())
 
-        self.add(Dependencies())
+        self.add(self._dependencies)
         self.add(ModuleInfo(
             Author=self._author,
             CharacterCreationLevelName="",

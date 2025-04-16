@@ -14,7 +14,7 @@ from modtools.lsx.game import (
     CharacterClass,
     CharacterSubclasses,
 )
-from modtools.lsx.game import Progression
+from modtools.lsx.game import Dependencies, Progression
 from modtools.replacers import (
     DontIncludeProgression,
     only_existing_progressions,
@@ -101,6 +101,15 @@ class ProgressionsReplacer(Replacer):
                          name=args.name,
                          description="A class progressions replacer.")
 
+        self.mod.add(Dependencies.ShortModuleDesc(
+            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            MD5="f94d034502139cf8b65a1597554e7236",
+            Name="UnlockLevelCurve",
+            PublishHandle=4166963,
+            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            Version64=72057594037927960,
+        ))
+    
         self._args = args
 
     @progression(BASE_CHARACTER_CLASSES, range(2, 21))

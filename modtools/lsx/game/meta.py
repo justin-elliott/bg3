@@ -11,7 +11,39 @@ from modtools.lsx.type import LsxType
 
 
 class Dependencies(LsxNode):
-    pass
+    class ShortModuleDesc(LsxNode):
+        Folder: str = LsxType.LSSTRING_VALUE
+        MD5: str = LsxType.LSSTRING_VALUE
+        Name: str = LsxType.LSSTRING_VALUE
+        PublishHandle: int = LsxType.UINT64
+        UUID: str = LsxType.FIXEDSTRING
+        Version64: int = LsxType.INT64
+
+        def __init__(self,
+                     *,
+                     Folder: str = None,
+                     MD5: str = None,
+                     Name: str = None,
+                     PublishHandle: int = None,
+                     UUID: str = None,
+                     Version64: int = None):
+            super().__init__(
+                Folder=Folder,
+                MD5=MD5,
+                Name=Name,
+                PublishHandle=PublishHandle,
+                UUID=UUID,
+                Version64=Version64,
+            )
+
+    children: LsxChildren = (ShortModuleDesc,)
+
+    def __init__(self,
+                 *,
+                 children: LsxChildren = None):
+        super().__init__(
+            children=children,
+        )
 
 
 class ModuleInfo(LsxNode):

@@ -23,11 +23,18 @@ from modtools.lsx.game import (
     ClassDescription,
     SpellList,
 )
-from modtools.lsx.game import Progression
+from modtools.lsx.game import Dependencies, Progression
 from modtools.replacers import (
     Replacer,
     class_description,
     progression,
+    wizard_cantrips,
+    wizard_level_1_spells,
+    wizard_level_2_spells,
+    wizard_level_3_spells,
+    wizard_level_4_spells,
+    wizard_level_5_spells,
+    wizard_level_6_spells,
 )
 from uuid import UUID
 
@@ -217,11 +224,84 @@ class WayOfTheArcane(Replacer):
         return name
 
     @cached_property
-    def _level_1_spell_list(self) -> str:
-        spell_list = str(self.make_uuid("level_1_spell_list"))
+    def _cantrips(self) -> str:
+        spell_list = str(self.make_uuid("cantrips"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane cantrips",
+            Spells=wizard_cantrips(self).Spells + [
+                "Target_Guidance",
+                "Target_Resistance",
+            ],
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_1_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_1_spells"))
         self.mod.add(SpellList(
             Comment="Way of the Arcane level 1 spells",
+            Spells=sorted(wizard_level_1_spells(self).Spells),
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_1_spells_always_prepared(self) -> str:
+        spell_list = str(self.make_uuid("level_1_spells_always_prepared"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 1 spells that are always prepared",
             Spells=[self._bolster],
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_2_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_2_spells"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 2 spells",
+            Spells=list(set(wizard_level_2_spells(self).Spells) - set(wizard_level_1_spells(self).Spells)),
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_3_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_3_spells"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 3 spells",
+            Spells=list(set(wizard_level_3_spells(self).Spells) - set(wizard_level_2_spells(self).Spells)),
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_4_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_4_spells"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 4 spells",
+            Spells=list(set(wizard_level_4_spells(self).Spells) - set(wizard_level_3_spells(self).Spells)),
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_5_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_5_spells"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 5 spells",
+            Spells=list(set(wizard_level_5_spells(self).Spells) - set(wizard_level_4_spells(self).Spells)),
+            UUID=spell_list,
+        ))
+        return spell_list
+
+    @cached_property
+    def _level_6_spells(self) -> str:
+        spell_list = str(self.make_uuid("level_6_spells"))
+        self.mod.add(SpellList(
+            Comment="Way of the Arcane level 6 spells",
+            Spells=list(set(wizard_level_6_spells(self).Spells) - set(wizard_level_5_spells(self).Spells)),
             UUID=spell_list,
         ))
         return spell_list
@@ -247,6 +327,15 @@ class WayOfTheArcane(Replacer):
                          name="WayOfTheArcane",
                          description="Replaces the Way of Shadow Monk subclass with the Way of the Arcane.")
 
+        self.mod.add(Dependencies.ShortModuleDesc(
+            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            MD5="f94d034502139cf8b65a1597554e7236",
+            Name="UnlockLevelCurve",
+            PublishHandle=4166963,
+            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            Version64=72057594037927960,
+        ))
+
         self._args = args
 
         if len(args.feats) == 0:
@@ -267,7 +356,6 @@ class WayOfTheArcane(Replacer):
         class_description.BaseHp = 10
         class_description.HpPerLevel = 6
 
-        class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
 
@@ -291,9 +379,9 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK, 1)
     def level_1_monk(self, progression: Progression) -> None:
         progression.Selectors = [
-            "SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,3,2)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+            "SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ]
 
     @progression(CharacterClass.MONK, 1)
@@ -304,6 +392,7 @@ class WayOfTheArcane(Replacer):
                 Progression.Subclasses.Subclass(Object="22894c32-54cf-49ea-b366-44bfcf01bb2a"),
                 Progression.Subclasses.Subclass(Object="2a5e3097-384c-4d29-8d6e-054fdfd26b80"),
                 Progression.Subclasses.Subclass(Object="bf46d73f-d406-4cb8-9a1d-e6e758ca02c7"),
+                Progression.Subclasses.Subclass(Object="d8d9e1e3-cbd6-4240-ab1e-bd3626cb5532"),
             ]),
         ]
 
@@ -330,9 +419,9 @@ class WayOfTheArcane(Replacer):
             self._battle_magic,
         ]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_1_SPELL_LIST},6,0)",
-            f"AddSpells({self._level_1_spell_list},,,,AlwaysPrepared)",
+            f"SelectSpells({self._cantrips},3,0,,,,AlwaysPrepared)",
+            f"AddSpells({self._level_1_spells})",
+            f"AddSpells({self._level_1_spells_always_prepared},,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 2)
@@ -341,9 +430,7 @@ class WayOfTheArcane(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},1)",
         ]
         progression.PassivesAdded = ["SculptSpells"]
-        progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_1_SPELL_LIST},2,0)",
-        ]
+        progression.Selectors = []
 
     @progression(CharacterClass.MONK_SHADOW, 3)
     def level_3(self, progression: Progression) -> None:
@@ -360,7 +447,7 @@ class WayOfTheArcane(Replacer):
         ]
         progression.Selectors = [
             f"AddSpells({self._flurry_of_blows_spell_list},,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",
+            f"AddSpells({self._level_2_spells})",
         ]
 
     @progression(CharacterClass.MONK, 4)
@@ -375,8 +462,7 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},2)"]
         progression.PassivesAdded = None
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_2_SPELL_LIST},2,0)",
+            f"SelectSpells({self._cantrips},1,0,,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 5)
@@ -384,16 +470,14 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{2 * self._args.spells},3)"]
         progression.PassivesAdded = ["UnlockedSpellSlotLevel3"]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},2,0)",
+            f"AddSpells({self._level_3_spells})",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 6)
     def level_6(self, progression: Progression) -> None:
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},3)"]
         progression.PassivesAdded = [self._arcane_manifestation]
-        progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_3_SPELL_LIST},2,0)",
-        ]
+        progression.Selectors = []
 
     @progression(CharacterClass.MONK, 7)
     def level_7_monk(self, progression: Progression) -> None:
@@ -407,7 +491,7 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},4)"]
         progression.PassivesAdded = [self._wholeness_of_body(1)]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
+            f"AddSpells({self._level_4_spells})",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 8)
@@ -416,8 +500,6 @@ class WayOfTheArcane(Replacer):
         progression.PassivesAdded = ["ImprovedCritical"]
         progression.Selectors = [
             f"AddSpells({self.ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_4_SPELL_LIST},2,0)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 9)
@@ -428,7 +510,7 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesAdded = ["Indomitable"]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},2,0)",
+            f"AddSpells({self._level_5_spells})",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 10)
@@ -436,8 +518,7 @@ class WayOfTheArcane(Replacer):
         progression.Boosts = [f"ActionResource(SpellSlot,{1 * self._args.spells},5)"]
         progression.PassivesAdded = [self._empowered_spells]
         progression.Selectors = [
-            f"SelectSpells({self.WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_5_SPELL_LIST},2,0)",
+            f"SelectSpells({self._cantrips},1,0,,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 11)
@@ -447,7 +528,7 @@ class WayOfTheArcane(Replacer):
         progression.PassivesRemoved = ["ExtraAttack"]
         progression.Selectors = [
             f"AddSpells({self.FLY_SPELL_LIST},,,,AlwaysPrepared)",
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
+            f"AddSpells({self._level_6_spells})",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 12)
@@ -460,9 +541,7 @@ class WayOfTheArcane(Replacer):
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             self._wholeness_of_body(1),
         ]
-        progression.Selectors = [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
-        ]
+        progression.Selectors = []
 
     @progression(CharacterClass.MONK_SHADOW, 13)
     def level_13(self, progression: Progression) -> None:
@@ -475,18 +554,12 @@ class WayOfTheArcane(Replacer):
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             "Indomitable"
         ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
-        ]
 
     @progression(CharacterClass.MONK_SHADOW, 14)
     def level_14(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 15)
@@ -496,18 +569,12 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
         ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
-        ]
 
     @progression(CharacterClass.MONK_SHADOW, 16)
     def level_16(self, progression: Progression) -> None:
         progression.Boosts = (progression.Boosts or []) + [
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 17)
@@ -521,9 +588,6 @@ class WayOfTheArcane(Replacer):
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             "Indomitable_2"
         ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
-        ]
 
     @progression(CharacterClass.MONK_SHADOW, 18)
     def level_18(self, progression: Progression) -> None:
@@ -535,9 +599,6 @@ class WayOfTheArcane(Replacer):
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             self._wholeness_of_body(2),
         ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
-        ]
 
     @progression(CharacterClass.MONK_SHADOW, 19)
     def level_19(self, progression: Progression) -> None:
@@ -545,9 +606,6 @@ class WayOfTheArcane(Replacer):
             f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
         ]
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 20)
@@ -560,9 +618,6 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesRemoved = (progression.PassivesRemoved or []) + [
             "ExtraAttack_2"
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            f"SelectSpells({self.WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
 

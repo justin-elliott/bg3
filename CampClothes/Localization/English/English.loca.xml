@@ -14,13 +14,15 @@
     <content contentuid="h878383f0g3ba3g89d0g0686gbd5143107de7" version="1">Contains a selection of underwear.</content>
     <content contentuid="hd61749bbgfd79gbbb0gefbbg6890beda9d74" version="1">Potions</content>
     <content contentuid="hc7ea4575gee65gca50g058bg95687ed5ef5b" version="1">Contains a selection of potions.</content>
-    <content contentuid="hda6971cbgff05g9a2fgfb2egd1e151a5eda4" version="1">Weapons</content>
-    <content contentuid="h4ea2c7deg2d3cg8fcdg7539gc547568823b1" version="1">Contains a selection of weapons.</content>
+    <content contentuid="ha3a21fc3gc019ge490g2ca2gb13073d866cb" version="1">Equipment</content>
+    <content contentuid="h9eef8661g5c0age22bg80fcgf796a320ca3b" version="1">Contains a selection of equipment.</content>
     <content contentuid="h8681d3e0g1a21gd178g975eg86011a688b6f" version="1">Drinking this elixir grants you +2 on all of your ability scores.</content>
     <content contentuid="h62e48131g5e35g337egd4d7g5852066296ab" version="1">Drinking this elixir grants you +4 on all of your ability scores.</content>
     <content contentuid="hb2bb0ce2g2814gef39g904dgf1e03537728c" version="1">Drinking this elixir grants you +6 on all of your ability scores.</content>
     <content contentuid="h4cc6f060g8f03g72c7g2b5cg454896e11af5" version="1">Drinking this elixir grants you +8 on all of your ability scores.</content>
     <content contentuid="h5af4adbcg3e9dg0b17gec7ag53e7614b644c" version="1">Drinking this elixir grants you +10 on all of your ability scores.</content>
+    <content contentuid="hdd4b8265g1401g7148g9dcfge50a9e3777f8" version="1">Elixir of Action</content>
+    <content contentuid="h058d36dfgd3e0g2d5dgbb2fga433b250ef77" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt; ability. Additionally, you gain the &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt; passives.</content>
     <content contentuid="hbcf57a29gfa75g5f94g4f6cgfe03da633e24" version="1">Elixir of Agility</content>
     <content contentuid="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in Dexterity &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
     <content contentuid="h2d53c34cg228dg19d7g0202gfc8f5cab47c7" version="1">Bolster</content>

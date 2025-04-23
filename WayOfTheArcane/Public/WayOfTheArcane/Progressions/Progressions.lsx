@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,16);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,8)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e" />
                     <children>
@@ -245,7 +245,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;Blindsight;SuperiorDarkvision;WayOfTheArcane_BattleMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;DevilsSight;WayOfTheArcane_BattleMagic;WayOfTheArcane_PackMule_400" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(3a67ad15-9eed-a2e4-9a9e-00eb69f3ff0e,3,0,,,,AlwaysPrepared);AddSpells(a60add86-4918-c6ed-670a-9bb346a41886);AddSpells(8fc3ad4f-77dc-53c9-1421-157bbba3d2bb,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />

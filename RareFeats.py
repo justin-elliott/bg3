@@ -78,7 +78,7 @@ def boost_ability_passive(feat: str, ability: CharacterAbility | None, boost: in
         DisplayName=loca[f"{boost_ability}_DisplayName"],
         Description=loca[f"{boost_ability}_Description"],
         Icon="Spell_Transmutation_EnhanceAbility",
-        Boosts=[f"Ability({ability_name},1,30)"],
+        Boosts=[f"Ability({ability_name},{boost},30)"],
         Properties=["IsHidden"],
     ))
 
@@ -176,7 +176,7 @@ def athlete_feat() -> None:
     fast_movement_30 = Movement(rare_feats).add_fast_movement(3.0)
 
     athlete_passive_list = boost_abilities_passive_list(
-        "Athlete", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 1)
+        "Athlete", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 2)
 
     loca["RareFeats_Athlete_DisplayName"] = {"en": "Rare Feats: Athlete"}
     loca["RareFeats_Athlete_Description"] = {"en": """
@@ -554,7 +554,7 @@ def tavern_brawler_feat() -> None:
     tavern_brawler_uuid = rare_feats.make_uuid("RareFeats_TavernBrawler")
 
     tavern_brawler_passive_list = boost_abilities_passive_list(
-        "TavernBrawler", [CharacterAbility.STRENGTH, CharacterAbility.CONSTITUTION, None], 1)
+        "TavernBrawler", [CharacterAbility.STRENGTH, CharacterAbility.CONSTITUTION, None], 2)
 
     loca["RareFeats_TavernBrawler_DisplayName"] = {"en": "Rare Feats: Tavern Brawler"}
     loca["RareFeats_TavernBrawler_Description"] = {"en": """

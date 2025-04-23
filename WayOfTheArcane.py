@@ -13,6 +13,7 @@ from moddb import (
     Bolster,
     EmpoweredSpells,
     multiply_resources,
+    PackMule,
     spells_always_prepared,
 )
 from modtools.gamedata import PassiveData, SpellData
@@ -69,6 +70,7 @@ class WayOfTheArcane(Replacer):
     # Passives
     _battle_magic: str
     _empowered_spells: str
+    _pack_mule: str
 
     # Spells
     _bolster: str
@@ -228,10 +230,7 @@ class WayOfTheArcane(Replacer):
         spell_list = str(self.make_uuid("cantrips"))
         self.mod.add(SpellList(
             Comment="Way of the Arcane cantrips",
-            Spells=wizard_cantrips(self).Spells + [
-                "Target_Guidance",
-                "Target_Resistance",
-            ],
+            Spells=wizard_cantrips(self).Spells,
             UUID=spell_list,
         ))
         return spell_list
@@ -241,7 +240,7 @@ class WayOfTheArcane(Replacer):
         spell_list = str(self.make_uuid("level_1_spells"))
         self.mod.add(SpellList(
             Comment="Way of the Arcane level 1 spells",
-            Spells=sorted(wizard_level_1_spells(self).Spells),
+            Spells=wizard_level_1_spells(self).Spells,
             UUID=spell_list,
         ))
         return spell_list
@@ -350,6 +349,7 @@ class WayOfTheArcane(Replacer):
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
         self._bolster = Bolster(self.mod).add_bolster()
+        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
 
     @class_description(CharacterClass.MONK)
     def monk_description(self, class_description: ClassDescription) -> None:
@@ -380,8 +380,8 @@ class WayOfTheArcane(Replacer):
     def level_1_monk(self, progression: Progression) -> None:
         progression.Selectors = [
             "SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,16)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,8)",
         ]
 
     @progression(CharacterClass.MONK, 1)
@@ -414,9 +414,9 @@ class WayOfTheArcane(Replacer):
         ]
         progression.PassivesAdded = [
             "UnlockedSpellSlotLevel1",
-            "Blindsight",
-            "SuperiorDarkvision",
+            "DevilsSight",
             self._battle_magic,
+            self._pack_mule,
         ]
         progression.Selectors = [
             f"SelectSpells({self._cantrips},3,0,,,,AlwaysPrepared)",

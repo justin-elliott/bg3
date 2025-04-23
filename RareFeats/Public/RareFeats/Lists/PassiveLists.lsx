@@ -10,7 +10,7 @@
                     <attribute id="UUID" type="guid" value="2b78e87f-99ca-872d-e4c1-1423b014d5dc" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_Athlete_BoostAbility_Strength_1,RareFeats_Athlete_BoostAbility_Dexterity_1,RareFeats_BoostAbility_None" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_Athlete_BoostAbility_Strength_2,RareFeats_Athlete_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />
                     <attribute id="UUID" type="guid" value="633ed002-a150-7f1a-504e-e3cf1bebee46" />
                 </node>
                 <node id="PassiveList">
@@ -18,7 +18,7 @@
                     <attribute id="UUID" type="guid" value="be55ddd8-a21a-6ec3-3d25-cf5208b7e83e" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_TavernBrawler_BoostAbility_Strength_1,RareFeats_TavernBrawler_BoostAbility_Constitution_1,RareFeats_BoostAbility_None" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_TavernBrawler_BoostAbility_Strength_2,RareFeats_TavernBrawler_BoostAbility_Constitution_2,RareFeats_BoostAbility_None" />
                     <attribute id="UUID" type="guid" value="1f8c2e0d-e74c-32ad-a2f5-504023a84e1f" />
                 </node>
             </children>

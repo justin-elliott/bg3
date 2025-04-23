@@ -268,6 +268,30 @@ def add_abilities_potion(bonus: int) -> str:
     return name
 
 
+def add_action_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_ActionPotion"
+    action_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Action"}
+    loca[f"{name}_Description"] = {"en": """
+        Drinking this elixir grants the <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag> ability.
+        Additionally, you gain the <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag> and
+        <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag> passives.
+        """}
+
+    add_potion(
+        name,
+        uuid=action_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_ALCH_Solution_Elixir_Darkvision",
+        boosts=["UnlockSpell(Shout_ActionSurge)"],
+        passives=["ExtraAttack", "FastHands"],
+    )
+
+    return name
+
+
 def add_agility_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_AgilityPotion"
     agility_potion_uuid = camp_clothes.make_uuid(name)
@@ -549,11 +573,11 @@ loca["CampClothes_Potions_Description"] = {"en": """
     """}
 camp_clothes_container("CampClothes_Potions")
 
-loca["CampClothes_Weapons_DisplayName"] = {"en": "Weapons"}
-loca["CampClothes_Weapons_Description"] = {"en": """
-    Contains a selection of weapons.
+loca["CampClothes_Equipment_DisplayName"] = {"en": "Equipment"}
+loca["CampClothes_Equipment_Description"] = {"en": """
+    Contains a selection of equipment.
     """}
-camp_clothes_container("CampClothes_Weapons")
+camp_clothes_container("CampClothes_Equipment")
 
 camp_clothes.add(Armor(
     "CampClothes_DaisyBody",
@@ -778,6 +802,7 @@ potions = [
     add_abilities_potion(6),
     add_abilities_potion(8),
     add_abilities_potion(10),
+    add_action_potion(),
     add_agility_potion(),
     add_bolster_potion(),
     add_flying_potion(),
@@ -791,15 +816,31 @@ potions = [
 camp_clothes.add(Weapon(
     "CampClothes_Crimson_Shortsword",
     using="MAG_TheCrimson_Shortsword",
-    PassivesMainHand=["MAG_TheCrimson_Vicious_Passive"],
+    BoostsOnEquipMainHand=["UnlockSpell(Target_OpeningAttack)", "UnlockSpell(Target_Slash_New)"],
+    PassivesMainHand=["MAG_TheCrimson_Vicious_Passive", "MAG_IgnorePiercingResistance_Passive"],
     PassivesOffHand=[],
+))
+
+camp_clothes.add(SpellData(
+    "CampClothes_Belm_Cleave",
+    SpellType="Zone",
+    using="Zone_Cleave",
+    Cooldown="None",
+))
+
+camp_clothes.add(SpellData(
+    "CampClothes_Belm_Dash",
+    SpellType="Shout",
+    using="Shout_Dash_StepOfTheWind",
+    UseCosts=["BonusActionPoint:1"],
 ))
 
 camp_clothes.add(Weapon(
     "CampClothes_Belm_Shortsword",
     using="MAG_PHB_OfSpeed_Scimitar",
     BoostsOnEquipMainHand=[],
-    BoostsOnEquipOffHand=["UnlockSpell(Shout_Whirlwind)"],
+    BoostsOnEquipOffHand=["UnlockSpell(CampClothes_Belm_Cleave)", "UnlockSpell(CampClothes_Belm_Dash)"],
+    PassivesOffHand=["MAG_IgnorePiercingResistance_Passive"],
     Proficiency_Group=["Shortswords", "MartialWeapons", "Scimitars"],
     RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
 ))
@@ -811,7 +852,7 @@ camp_clothes.add(SpellData(
     SpellFlags=["IsAttack", "IsMelee", "IsHarmful"],
 ))
 
-weapons = [
+equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
 ]
@@ -851,7 +892,7 @@ object category "I_CampClothes_Underwear",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_CampClothes_Weapons",1,0,0,0,0,0,0,0
+object category "I_CampClothes_Equipment",1,0,0,0,0,0,0,0
 new subtable "16000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))
@@ -887,9 +928,9 @@ CanMerge 1
 """))
 
 camp_clothes.add(TreasureTable(f"""
-new treasuretable "CampClothes_Weapons_TreasureTable"
+new treasuretable "CampClothes_Equipment_TreasureTable"
 CanMerge 1
-{"".join(item_template.format(weapon) for weapon in weapons).rstrip()}
+{"".join(item_template.format(equip) for equip in equipment).rstrip()}
 """))
 
 camp_clothes.build()

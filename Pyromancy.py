@@ -11,6 +11,7 @@ from functools import cached_property
 from moddb import (
     Bolster,
     Defense,
+    Movement,
     multiply_resources,
 )
 from modtools.gamedata import (
@@ -39,7 +40,7 @@ from modtools.text import Equipment
 
 
 progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-g265.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
     + "Progressions/Progressions.lsx"
 )
 
@@ -55,6 +56,7 @@ class Pyromancy(Replacer):
     _feat_levels: set[int]
 
     # Passives
+    _fast_movement: str
     _warding: str
 
     # spells
@@ -422,8 +424,9 @@ class Pyromancy(Replacer):
             self._feat_levels.remove(20)
             self._feat_levels.add(19)
 
-        self._warding = Defense(self.mod).add_warding()
         self._bolster = Bolster(self.mod).add_bolster()
+        self._fast_movement = Movement(self.mod).add_fast_movement(3)
+        self._warding = Defense(self.mod).add_warding()
 
     @class_description(CharacterClass.SORCERER)
     def sorcerer_description(self, class_description: ClassDescription) -> None:
@@ -446,8 +449,8 @@ class Pyromancy(Replacer):
         selectors = progression.Selectors or []
         selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,5)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,16)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
         ])
         progression.Selectors = selectors
 
@@ -478,7 +481,7 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 2)
     def level_2(self, progression: Progression) -> None:
-        progression.PassivesAdded = ["JackOfAllTrades"]
+        progression.PassivesAdded = [self._fast_movement]
         progression.Selectors = None
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 3)
@@ -540,18 +543,18 @@ class Pyromancy(Replacer):
 
     @progression(CharacterClass.SORCERER_WILDMAGIC, 12)
     def level_12(self, progression: Progression) -> None:
-        progression.PassivesAdded = None
+        progression.PassivesAdded = ["Indomitable"]
         progression.Selectors = None
 
 
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Wild Magic Sorcery.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=1,
-                        help="Feat progression every n levels (defaulting to 1; feat every level)")
+    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
+                        help="Feat progression every n levels (defaulting to 2; feat every other level)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")
-    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
-                        help="Action resource (Sorcery Points) multiplier (defaulting to 2; double points)")
+    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=4,
+                        help="Action resource (Sorcery Points) multiplier (defaulting to 4; quadruple points)")
     args = Pyromancy.Args(**vars(parser.parse_args()))
 
     pyromancy = Pyromancy(args)

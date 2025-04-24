@@ -96,76 +96,81 @@ def boost_abilities_passive_list(feat: str, abilities: list[CharacterAbility | N
 
 
 @iife
-def no_feat() -> None:
-    """A feat for when you don't wish to select a feat."""
-    no_feat_uuid = rare_feats.make_uuid("RareFeats_Feat_NoFeat")
-
-    loca["RareFeats_NoFeat_DisplayName"] = {"en": "Rare Feats: No Feat"}
-    loca["RareFeats_NoFeat_Description"] = {"en": "Do not select a feat."}
-
-    rare_feats.add(FeatDescription(
-        DisplayName=loca["RareFeats_NoFeat_DisplayName"],
-        Description=loca["RareFeats_NoFeat_Description"],
-        ExactMatch="RareFeats_NoFeat",
-        FeatId=no_feat_uuid,
-        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_NoFeat"),
-    ))
-
-    rare_feats.add(Feat(
-        CanBeTakenMultipleTimes=True,
-        Name="RareFeats_NoFeat",
-        UUID=no_feat_uuid,
-    ))
-
-
-@iife
 def asi_feat() -> None:
     """Ability Score Improvement (ASI) feat."""
-    ABILITIES = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+    BONUS = 2
 
-    asi_passive_list = PassiveList(
-        Passives=[],
-        UUID=rare_feats.make_uuid("RareFeats_ASI_PassiveList"),
-    )
-    rare_feats.add(asi_passive_list)
+    asi_uuid = rare_feats.make_uuid("RareFeats_ASI")
+    asi_passive_list = boost_abilities_passive_list(
+        "ASI", [*[ability for ability in CharacterAbility], None], BONUS)
 
-    for bonus in range(2, 18, 2):
-        asi_passive = f"RareFeats_ASI_{bonus}"
-        asi_passive_list.Passives.append(asi_passive)
-
-        loca[f"{asi_passive}_DisplayName"] = {"en": f"Rare Feats: Abilities +{bonus}"}
-        loca[f"{asi_passive}_Description"] = {"en": f"""
-            Increase all of your abilities by {bonus}, to a maximum of 30.
-            """}
-
-        rare_feats.add(PassiveData(
-            asi_passive,
-            DisplayName=loca[f"{asi_passive}_DisplayName"],
-            Description=loca[f"{asi_passive}_Description"],
-            Icon="Spell_Transmutation_EnhanceAbility",
-            Boosts=[f"Ability({ability},{bonus},30)" for ability in ABILITIES],
-            Properties=["IsHidden"],
-        ))
-
-    asi_feat_uuid = rare_feats.make_uuid("RareFeats_ASI")
-
-    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
-    loca["RareFeats_ASI_Description"] = {"en": """
-        Increase all of your abilities by a selected amount, to a maximum of 30.
+    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Increase"}
+    loca["RareFeats_ASI_Description"] = {"en": f"""
+        Increase one of your abilities by {BONUS}, to a maximum of 30.
         """}
-
+    
     rare_feats.add(FeatDescription(
         DisplayName=loca["RareFeats_ASI_DisplayName"],
         Description=loca["RareFeats_ASI_Description"],
         ExactMatch="RareFeats_ASI",
-        FeatId=asi_feat_uuid,
+        FeatId=asi_uuid,
         UUID=rare_feats.make_uuid("RareFeats_ASI_FeatDescription"),
     ))
 
     rare_feats.add(Feat(
+        CanBeTakenMultipleTimes=True,
         Name="RareFeats_ASI",
-        Selectors=f"SelectPassives({asi_passive_list.UUID},1,RareFeats_ASI)",
-        UUID=asi_feat_uuid,
+        Selectors=f"SelectPassives({asi_passive_list},1,RareFeats_ASI)",
+        UUID=asi_uuid,
+    ))
+
+
+@iife
+def ability_boost_feat() -> None:
+    """Ability Boost feat."""
+    ability_boost_passive_list = PassiveList(
+        Passives=[],
+        UUID=rare_feats.make_uuid("RareFeats_AbilityBoost_PassiveList"),
+    )
+    rare_feats.add(ability_boost_passive_list)
+
+    for bonus in range(2, 18, 2):
+        ability_boost_passive = f"RareFeats_AbilityBoost_{bonus}"
+        ability_boost_passive_list.Passives.append(ability_boost_passive)
+
+        loca[f"{ability_boost_passive}_DisplayName"] = {"en": f"Rare Feats: Abilities +{bonus}"}
+        loca[f"{ability_boost_passive}_Description"] = {"en": f"""
+            Increase all of your abilities by {bonus}, to a maximum of 30.
+            """}
+
+        rare_feats.add(PassiveData(
+            ability_boost_passive,
+            DisplayName=loca[f"{ability_boost_passive}_DisplayName"],
+            Description=loca[f"{ability_boost_passive}_Description"],
+            Icon="Spell_Transmutation_EnhanceAbility",
+            Boosts=[f"Ability({ability.name.title()},{bonus},30)" for ability in CharacterAbility],
+            Properties=["IsHidden"],
+        ))
+
+    ability_boost_feat_uuid = rare_feats.make_uuid("RareFeats_AbilityBoost")
+
+    loca["RareFeats_AbilityBoost_DisplayName"] = {"en": "Rare Feats: Ability Boost"}
+    loca["RareFeats_AbilityBoost_Description"] = {"en": """
+        Increase all of your abilities by a selected amount, to a maximum of 30.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_AbilityBoost_DisplayName"],
+        Description=loca["RareFeats_AbilityBoost_Description"],
+        ExactMatch="RareFeats_AbilityBoost",
+        FeatId=ability_boost_feat_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_AbilityBoost_FeatDescription"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_AbilityBoost",
+        Selectors=f"SelectPassives({ability_boost_passive_list.UUID},1,RareFeats_AbilityBoost)",
+        UUID=ability_boost_feat_uuid,
     ))
 
 

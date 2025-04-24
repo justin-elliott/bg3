@@ -429,8 +429,8 @@ class Pyromancy(Replacer):
         selectors = progression.Selectors or []
         selectors = [selector for selector in selectors if not selector.startswith("SelectSkills")]
         selectors.extend([
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,16)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ])
         progression.Selectors = selectors
 
@@ -449,6 +449,7 @@ class Pyromancy(Replacer):
             "Proficiency(Shields)",
             "Proficiency(SimpleWeapons)",
             "Proficiency(MartialWeapons)",
+            "Proficiency(MusicalInstrument)",
         ]
         progression.PassivesAdded = [
             self._forged_in_flames,

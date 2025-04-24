@@ -7,13 +7,14 @@
             <children>
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_NoFeat" />
-                    <attribute id="UUID" type="guid" value="f933f19f-6196-7c5e-ee79-a16b318f24ba" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(39870e3d-d797-1e7d-89b2-4706b711fc9c,1,RareFeats_ASI)" />
+                    <attribute id="UUID" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
                 </node>
                 <node id="Feat">
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b78e87f-99ca-872d-e4c1-1423b014d5dc,1,RareFeats_ASI)" />
-                    <attribute id="UUID" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_AbilityBoost" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(ac44677f-9301-cb4c-5944-99e48ed91734,1,RareFeats_AbilityBoost)" />
+                    <attribute id="UUID" type="guid" value="ae9b068b-c966-134b-d824-954441d1841a" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Athlete" />

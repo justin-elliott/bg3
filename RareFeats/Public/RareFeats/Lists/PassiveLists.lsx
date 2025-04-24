@@ -6,8 +6,12 @@
         <node id="root">
             <children>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_2,RareFeats_ASI_4,RareFeats_ASI_6,RareFeats_ASI_8,RareFeats_ASI_10,RareFeats_ASI_12,RareFeats_ASI_14,RareFeats_ASI_16" />
-                    <attribute id="UUID" type="guid" value="2b78e87f-99ca-872d-e4c1-1423b014d5dc" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_BoostAbility_Strength_2,RareFeats_ASI_BoostAbility_Dexterity_2,RareFeats_ASI_BoostAbility_Constitution_2,RareFeats_ASI_BoostAbility_Intelligence_2,RareFeats_ASI_BoostAbility_Wisdom_2,RareFeats_ASI_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="39870e3d-d797-1e7d-89b2-4706b711fc9c" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_AbilityBoost_2,RareFeats_AbilityBoost_4,RareFeats_AbilityBoost_6,RareFeats_AbilityBoost_8,RareFeats_AbilityBoost_10,RareFeats_AbilityBoost_12,RareFeats_AbilityBoost_14,RareFeats_AbilityBoost_16" />
+                    <attribute id="UUID" type="guid" value="ac44677f-9301-cb4c-5944-99e48ed91734" />
                 </node>
                 <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="RareFeats_Athlete_BoostAbility_Strength_2,RareFeats_Athlete_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />

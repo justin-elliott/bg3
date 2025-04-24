@@ -374,8 +374,10 @@ def jack_of_all_trades_feat() -> None:
 
 @iife
 def lightly_armored_feat() -> None:
-    """Lightly Armored without the ASI."""
+    """Lightly Armored with optional ASI."""
     lightly_armored_uuid = rare_feats.make_uuid("RareFeats_LightlyArmored")
+    lightly_armored_passive_list = boost_abilities_passive_list(
+        "LightlyArmored", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 2)
 
     loca["RareFeats_LightlyArmored_DisplayName"] = {"en": "Rare Feats: Lightly Armoured"}
     loca["RareFeats_LightlyArmored_Description"] = {"en": """
@@ -393,6 +395,7 @@ def lightly_armored_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_LightlyArmored",
         PassivesAdded="LightlyArmored",
+        Selectors=f"SelectPassives({lightly_armored_passive_list},1,RareFeats_LightlyArmored)",
         UUID=lightly_armored_uuid,
     ))
 
@@ -504,8 +507,10 @@ def metamagic_feat() -> None:
 
 @iife
 def moderately_armored_feat() -> None:
-    """Moderately Armored without the ASI."""
+    """Moderately Armored with optional ASI."""
     moderately_armored_uuid = rare_feats.make_uuid("RareFeats_ModeratelyArmored")
+    moderately_armored_passive_list = boost_abilities_passive_list(
+        "ModeratelyArmored", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 2)
 
     loca["RareFeats_ModeratelyArmored_DisplayName"] = {"en": "Rare Feats: Moderately Armoured"}
     loca["RareFeats_ModeratelyArmored_Description"] = {"en": """
@@ -524,14 +529,17 @@ def moderately_armored_feat() -> None:
         Name="RareFeats_ModeratelyArmored",
         PassivesAdded="ModeratelyArmored",
         Requirements="FeatRequirementProficiency('LightArmor')",
+        Selectors=f"SelectPassives({moderately_armored_passive_list},1,RareFeats_ModeratelyArmored)",
         UUID=moderately_armored_uuid,
     ))
 
 
 @iife
 def performer_feat() -> None:
-    """Performer without the ASI."""
+    """Performer with optional ASI."""
     performer_uuid = rare_feats.make_uuid("RareFeats_Performer")
+    performer_passive_list = boost_abilities_passive_list(
+        "Performer", [CharacterAbility.CHARISMA, None], 2)
 
     loca["RareFeats_Performer_DisplayName"] = {"en": "Rare Feats: Performer"}
     loca["RareFeats_Performer_Description"] = {"en": """
@@ -549,6 +557,7 @@ def performer_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_Performer",
         PassivesAdded="Performer",
+        Selectors=f"SelectPassives({performer_passive_list},1,RareFeats_Performer)",
         UUID=performer_uuid,
     ))
 
@@ -612,8 +621,10 @@ def volley_feat() -> None:
 
 @iife
 def weapon_master_feat() -> None:
-    """Weapon Master without the ASI."""
+    """Weapon Master with optional ASI."""
     weapon_master_uuid = rare_feats.make_uuid("RareFeats_WeaponMaster")
+    weapon_master_passive_list = boost_abilities_passive_list(
+        "WeaponMaster", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 2)
 
     loca["RareFeats_WeaponMaster_DisplayName"] = {"en": "Rare Feats: Weapon Master"}
     loca["RareFeats_WeaponMaster_Description"] = {"en": """
@@ -631,7 +642,10 @@ def weapon_master_feat() -> None:
     rare_feats.add(Feat(
         Name="RareFeats_WeaponMaster",
         PassivesAdded="WeaponMaster",
-        Selectors="SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies)",
+        Selectors=[
+            "SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies)",
+            f"SelectPassives({weapon_master_passive_list},1,RareFeats_WeaponMaster)",
+        ],
         UUID=weapon_master_uuid,
     ))
 

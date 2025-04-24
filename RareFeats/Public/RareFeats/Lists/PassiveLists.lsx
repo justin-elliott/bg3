@@ -18,8 +18,16 @@
                     <attribute id="UUID" type="guid" value="633ed002-a150-7f1a-504e-e3cf1bebee46" />
                 </node>
                 <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_LightlyArmored_BoostAbility_Strength_2,RareFeats_LightlyArmored_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="035ecf1b-f447-6074-18d5-c5a22116ad4e" />
+                </node>
+                <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="Metamagic_Careful,Metamagic_Distant,Metamagic_Extended,Metamagic_Heightened,RareFeats_IntensifiedSpell,Metamagic_Quickened,Metamagic_Subtle,Metamagic_Twinned" />
                     <attribute id="UUID" type="guid" value="be55ddd8-a21a-6ec3-3d25-cf5208b7e83e" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_ModeratelyArmored_BoostAbility_Strength_2,RareFeats_ModeratelyArmored_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="5d9e3052-f6f5-adc4-3dac-55f7d553d899" />
                 </node>
                 <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="RareFeats_TavernBrawler_BoostAbility_Strength_2,RareFeats_TavernBrawler_BoostAbility_Constitution_2,RareFeats_BoostAbility_None" />

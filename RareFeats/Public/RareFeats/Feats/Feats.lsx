@@ -71,6 +71,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Performer" />
                     <attribute id="PassivesAdded" type="LSString" value="Performer" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(b8b37a6d-15aa-384a-85b7-eb1cf6add01d,1,RareFeats_Performer)" />
                     <attribute id="UUID" type="guid" value="fabd93ce-594c-81fb-2eb8-f5648b560d39" />
                 </node>
                 <node id="Feat">
@@ -87,7 +88,7 @@
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_WeaponMaster" />
                     <attribute id="PassivesAdded" type="LSString" value="WeaponMaster" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies)" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies);SelectPassives(81885297-d6d3-519c-9c68-e54e70d3db73,1,RareFeats_WeaponMaster)" />
                     <attribute id="UUID" type="guid" value="1d26fb7d-98e3-205a-839e-bd751d53cc93" />
                 </node>
             </children>

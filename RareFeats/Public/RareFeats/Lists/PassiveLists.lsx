@@ -30,8 +30,16 @@
                     <attribute id="UUID" type="guid" value="5d9e3052-f6f5-adc4-3dac-55f7d553d899" />
                 </node>
                 <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_Performer_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="b8b37a6d-15aa-384a-85b7-eb1cf6add01d" />
+                </node>
+                <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="RareFeats_TavernBrawler_BoostAbility_Strength_2,RareFeats_TavernBrawler_BoostAbility_Constitution_2,RareFeats_BoostAbility_None" />
                     <attribute id="UUID" type="guid" value="1f8c2e0d-e74c-32ad-a2f5-504023a84e1f" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_WeaponMaster_BoostAbility_Strength_2,RareFeats_WeaponMaster_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="81885297-d6d3-519c-9c68-e54e70d3db73" />
                 </node>
             </children>
         </node>

@@ -15,7 +15,7 @@
     <content contentuid="h79020dd7g9d52gf89cg1d5agba5346af6545" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
     <content contentuid="h9988bd61g71d0g070bg5b71g5a21f03a90a2" version="1">None</content>
     <content contentuid="hfd21e5bag41abgd7fbg057dg5e2fa2197a40" version="1">No ability increase.</content>
-    <content contentuid="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1">Rare Feats: Ability Increase</content>
+    <content contentuid="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1">Rare Feats: Ability Improvement</content>
     <content contentuid="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1">Increase one of your abilities by 2, to a maximum of 30.</content>
     <content contentuid="hfb8dbdb8ga133g233dg603dgfe7176e52176" version="1">Rare Feats: Abilities +2</content>
     <content contentuid="h3911e7b6g66c5g62e5g238agedade6fe6168" version="1">Increase all of your abilities by 2, to a maximum of 30.</content>
@@ -75,6 +75,8 @@
     <content contentuid="hfb836724gbc55gaa28g63e4g43a6f9f87672" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
     <content contentuid="h0409311fg78f3g4b27g567bg60660e423c7a" version="1">Rare Feats: Moderately Armoured</content>
     <content contentuid="h7438d601g230agd911g19f1g7552a3e6018b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Medium Armour and shields.</content>
+    <content contentuid="h1afbe757g07f2g9440g5d7bga20450a3a9af" version="1">Charisma +2</content>
+    <content contentuid="hc5b93b24gad4bgb3f4g8dbegef9f5a2d8f98" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
     <content contentuid="h999658bdg279cgc24cg74d7gf4a54644069e" version="1">Rare Feats: Performer</content>
     <content contentuid="hc44e1a34gf457g286cg6fc5g7438c5c40eb8" version="1">You gain &lt;LSTag Tooltip="MusicalInstrumentProficiency"&gt;Musical Instrument Proficiency&lt;/LSTag&gt;.</content>
     <content contentuid="h14ee0345g1e42g97f7g539cg6a6bd224c3bc" version="1">Strength +2</content>
@@ -85,6 +87,10 @@
     <content contentuid="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1">When you make an unarmed attack, use an improvised weapon, or throw something, your Strength &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;.</content>
     <content contentuid="h2aa8fd9egfc0cg798eg8cc4g807ee017404c" version="1">Rare Feats: Volley</content>
     <content contentuid="hcdf3a30agaa59g5505g5f6fg7bf760748254" version="1">You gain the &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt; abilities.</content>
+    <content contentuid="h20681e42gde55ga823gd0c5gb51c352059fa" version="1">Strength +2</content>
+    <content contentuid="h03e21a20g307eg98eegcc56g1d4163515804" version="1">Increase your Strength by 2, to a maximum of 30.</content>
+    <content contentuid="h9a6db1e2g66bbgb3eegf44ag57686343052e" version="1">Dexterity +2</content>
+    <content contentuid="h0e3b2c1dg222eg7158g5f0cg1ffb2033fcbd" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
     <content contentuid="hf225cfceg8233g1b2cg98d7g5c6d61c594e5" version="1">Rare Feats: Weapon Master</content>
     <content contentuid="h702d115ag660fga66cg6151gf37ce87cf6ac" version="1">You gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; with four weapons of your choice.</content>
 </contentList>

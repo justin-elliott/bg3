@@ -104,7 +104,7 @@ def asi_feat() -> None:
     asi_passive_list = boost_abilities_passive_list(
         "ASI", [*[ability for ability in CharacterAbility], None], BONUS)
 
-    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Increase"}
+    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
     loca["RareFeats_ASI_Description"] = {"en": f"""
         Increase one of your abilities by {BONUS}, to a maximum of 30.
         """}

@@ -16,6 +16,7 @@ type ClassDescriptionBuilderDict = dict[CharacterClass, ClassDescriptionBuilder]
 
 _CLASS_DESCRIPTIONS_LSX_PATH = "Shared.pak/Public/Shared/ClassDescriptions/ClassDescriptions.lsx"
 _CLASS_DESCRIPTIONS_DEV_LSX_PATH = "Shared.pak/Public/SharedDev/ClassDescriptions/ClassDescriptions.lsx"
+_CLASS_DESCRIPTIONS_GUSTAVX_LSX_PATH = "GustavX.pak/Public/GustavX/ClassDescriptions/ClassDescriptions.lsx"
 
 
 def _by_name(class_description: ClassDescription) -> str:
@@ -30,8 +31,12 @@ def _load_class_descriptions(replacer: Replacer) -> list[ClassDescription]:
     """Load the game's Progressions from the .pak cache."""
     class_descriptions_lsx = Lsx.load(replacer.get_cache_path(_CLASS_DESCRIPTIONS_LSX_PATH))
     class_descriptions_dev_lsx = Lsx.load(replacer.get_cache_path(_CLASS_DESCRIPTIONS_DEV_LSX_PATH))
+    class_descriptions_gustavx_lsx = Lsx.load(replacer.get_cache_path(_CLASS_DESCRIPTIONS_GUSTAVX_LSX_PATH))
+
     class_descriptions_lsx.children.update(class_descriptions_dev_lsx.children, key=_by_uuid)
+    class_descriptions_lsx.children.update(class_descriptions_gustavx_lsx.children, key=_by_uuid)
     class_descriptions_lsx.children.sort(key=_by_name)
+
     return list(class_descriptions_lsx.children)
 
 

@@ -23,6 +23,7 @@ from modtools.lsx.game import (
     ActionResource,
     CharacterClass,
     ClassDescription,
+    Dependencies,
 )
 from modtools.lsx.game import (
     Progression,
@@ -36,7 +37,6 @@ from modtools.replacers import (
     Replacer,
     tag,
 )
-from modtools.text import Equipment
 
 
 progression.include(
@@ -340,39 +340,6 @@ class Pyromancy(Replacer):
         return name
 
     @cached_property
-    def _class_equipment(self) -> str:
-        name = f"{self.mod.get_prefix()}_ClassEquipment"
-
-        self.mod.add(Equipment(f"""
-            new equipment "{name}"
-            add initialweaponset "Melee"
-            add equipmentgroup
-            add equipment entry "WPN_Katana"
-            add equipmentgroup
-            add equipment entry "OBJ_Potion_Healing"
-            add equipmentgroup
-            add equipment entry "OBJ_Potion_Healing"
-            add equipmentgroup
-            add equipment entry "ARM_Boots_Metal"
-            add equipmentgroup
-            add equipment entry "ARM_Breastplate_Body_1"
-            add equipmentgroup
-            add equipment entry "OBJ_Scroll_Revivify"
-            add equipmentgroup
-            add equipment entry "OBJ_Keychain"
-            add equipmentgroup
-            add equipment entry "OBJ_Bag_AlchemyPouch"
-            add equipmentgroup
-            add equipment entry "ARM_Camp_Body"
-            add equipmentgroup
-            add equipment entry "ARM_Camp_Shoes"
-            add equipmentgroup
-            add equipment entry "OBJ_Backpack_CampSupplies"
-            """))
-
-        return name
-
-    @cached_property
     def _level_1_spell_list(self) -> str:
         spelllist = str(self.make_uuid("level_1_spelllist"))
         self.mod.add(SpellList(
@@ -418,11 +385,25 @@ class Pyromancy(Replacer):
                          name="Pyromancy",
                          description="A replacer for Wild Magic Sorcery.")
 
+        self.mod.add(Dependencies.ShortModuleDesc(
+            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            MD5="f94d034502139cf8b65a1597554e7236",
+            Name="UnlockLevelCurve",
+            PublishHandle=4166963,
+            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            Version64=72057594037927960,
+        ))
+
         self._args = args
-        self._feat_levels = {*range(max(args.feats, 2), 21, args.feats)}
-        if 20 in self._feat_levels:
-            self._feat_levels.remove(20)
-            self._feat_levels.add(19)
+
+        if len(args.feats) == 0:
+            self._feat_levels = frozenset({*range(2, 20, 2)} | {19})
+        elif len(args.feats) == 1:
+            feat_level = next(level for level in args.feats)
+            self._feat_levels = frozenset(
+                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
+        else:
+            self._feat_levels = args.feats - frozenset([1])
 
         self._bolster = Bolster(self.mod).add_bolster()
         self._fast_movement = Movement(self.mod).add_fast_movement(3)
@@ -435,7 +416,6 @@ class Pyromancy(Replacer):
 
     @class_description(CharacterClass.SORCERER_WILDMAGIC)
     def sorcerer_pyromancy_description(self, class_description: ClassDescription) -> None:
-        class_description.ClassEquipment = self._class_equipment
         class_description.DisplayName = self._pyromancy_display_name
         class_description.Description = self._pyromancy_description
 
@@ -466,7 +446,6 @@ class Pyromancy(Replacer):
         progression.Boosts = [
             "Proficiency(LightArmor)",
             "Proficiency(MediumArmor)",
-            "Proficiency(HeavyArmor)",
             "Proficiency(Shields)",
             "Proficiency(SimpleWeapons)",
             "Proficiency(MartialWeapons)",
@@ -547,9 +526,16 @@ class Pyromancy(Replacer):
         progression.Selectors = None
 
 
+def level_list(s: str) -> set[int]:
+    levels = frozenset([int(level) for level in s.split(",")])
+    if not levels.issubset(frozenset(range(1, 21))):
+        raise "Invalid levels"
+    return levels
+
+
 def main():
     parser = argparse.ArgumentParser(description="A replacer for Wild Magic Sorcery.")
-    parser.add_argument("-f", "--feats", type=int, choices=range(1, 5), default=2,
+    parser.add_argument("-f", "--feats", type=level_list, default=set(),
                         help="Feat progression every n levels (defaulting to 2; feat every other level)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
                         help="Spell slot multiplier (defaulting to 2; double spell slots)")

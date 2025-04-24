@@ -246,7 +246,7 @@
                     <attribute id="UUID" type="guid" value="dc1bb28a-90d2-420f-9164-5cdc48fa3b5d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
+                    <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="WildMagic" />
                     <attribute id="PassivesAdded" type="LSString" value="Pyromancy_ForgedInFlames;Pyromancy_Warding" />

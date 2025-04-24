@@ -29,7 +29,6 @@
                 </node>
                 <node id="ClassDescription">
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
-                    <attribute id="ClassEquipment" type="FixedString" value="Pyromancy_ClassEquipment" />
                     <attribute id="Description" type="TranslatedString" handle="h617c6c7ag7bb5g297ag23c2g0ae0eb99c093" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hda15ca28ga0b0g4933g1133g6da9a06d2199" version="1" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />

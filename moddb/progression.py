@@ -9,7 +9,7 @@ from collections.abc import Container
 from modtools.lsx.game import ActionResource, Progression, update_action_resources
 
 # AddSpells(UUID[,a][,b][,c][,d])
-_ADD_SPELLS_REGEX = re.compile(r"AddSpells\(([^,)]*)(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?\)")
+_ADD_SPELLS_REGEX = re.compile(r"AddSpells\(([^,)]+)(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?(?:,([^,)]*))?\)")
 
 
 def multiply_resources(progression: Progression,

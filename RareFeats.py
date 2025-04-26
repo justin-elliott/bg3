@@ -204,6 +204,7 @@ def athlete_feat() -> None:
         PassivesAdded=[
             "Athlete_StandUp",
             fast_movement_30,
+            "FOR_NightWalkers_WebImmunity",
             "LandsStride_DifficultTerrain",
             "LandsStride_Surfaces",
             "LandsStride_Advantage",

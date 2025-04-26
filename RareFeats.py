@@ -154,7 +154,7 @@ def ability_boost_feat() -> None:
 
     ability_boost_feat_uuid = rare_feats.make_uuid("RareFeats_AbilityBoost")
 
-    loca["RareFeats_AbilityBoost_DisplayName"] = {"en": "Rare Feats: Ability Boost"}
+    loca["RareFeats_AbilityBoost_DisplayName"] = {"en": "Rare Feats: Abilities Boost"}
     loca["RareFeats_AbilityBoost_Description"] = {"en": """
         Increase all of your abilities by a selected amount, to a maximum of 30.
         """}
@@ -265,9 +265,21 @@ def cunning_actions_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_CunningActions",
-        PassivesAdded=["FastHands", running_jump],
-        Selectors=[f"AddSpells({cunning_actions.SPELL_LIST},,,,AlwaysPrepared)"],
+        PassivesAdded=["FastHands", "RareFeats_CunningActions_Unlock", running_jump],
         UUID=cunning_actions_uuid,
+    ))
+
+    rare_feats.add(PassiveData(
+        "RareFeats_CunningActions_Unlock",
+        DisplayName=loca["RareFeats_CunningActions_DisplayName"],
+        Description=loca["RareFeats_CunningActions_Description"],
+        Icon="Action_Dash_Bonus",
+        Boosts=[
+            "UnlockSpell(Shout_Dash_CunningAction)",
+            "UnlockSpell(Shout_Hide_BonusAction)",
+            "UnlockSpell(Shout_Disengage_CunningAction)",
+        ],
+        Properties=["IsHidden"],
     ))
 
 

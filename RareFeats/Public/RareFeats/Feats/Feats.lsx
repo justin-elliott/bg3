@@ -6,15 +6,15 @@
         <node id="root">
             <children>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_AbilityBoost" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(ac44677f-9301-cb4c-5944-99e48ed91734,1,RareFeats_AbilityBoost)" />
+                    <attribute id="UUID" type="guid" value="ae9b068b-c966-134b-d824-954441d1841a" />
+                </node>
+                <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_ASI" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(39870e3d-d797-1e7d-89b2-4706b711fc9c,1,RareFeats_ASI)" />
                     <attribute id="UUID" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
-                </node>
-                <node id="Feat">
-                    <attribute id="Name" type="FixedString" value="RareFeats_AbilityBoost" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(ac44677f-9301-cb4c-5944-99e48ed91734,1,RareFeats_AbilityBoost)" />
-                    <attribute id="UUID" type="guid" value="ae9b068b-c966-134b-d824-954441d1841a" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Athlete" />
@@ -72,6 +72,12 @@
                     <attribute id="PassivesAdded" type="LSString" value="Performer" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(b8b37a6d-15aa-384a-85b7-eb1cf6add01d,1,RareFeats_Performer)" />
                     <attribute id="UUID" type="guid" value="fabd93ce-594c-81fb-2eb8-f5648b560d39" />
+                </node>
+                <node id="Feat">
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_Skilled" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)" />
+                    <attribute id="UUID" type="guid" value="e04acda2-c2f4-4ae9-2d3b-d7437215b00f" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_TavernBrawler" />

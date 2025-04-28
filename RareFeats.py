@@ -96,36 +96,6 @@ def boost_abilities_passive_list(feat: str, abilities: list[CharacterAbility | N
 
 
 @iife
-def asi_feat() -> None:
-    """Ability Score Improvement (ASI) feat."""
-    BONUS = 2
-
-    asi_uuid = rare_feats.make_uuid("RareFeats_ASI")
-    asi_passive_list = boost_abilities_passive_list(
-        "ASI", [*[ability for ability in CharacterAbility], None], BONUS)
-
-    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
-    loca["RareFeats_ASI_Description"] = {"en": f"""
-        Increase one of your abilities by {BONUS}, to a maximum of 30.
-        """}
-    
-    rare_feats.add(FeatDescription(
-        DisplayName=loca["RareFeats_ASI_DisplayName"],
-        Description=loca["RareFeats_ASI_Description"],
-        ExactMatch="RareFeats_ASI",
-        FeatId=asi_uuid,
-        UUID=rare_feats.make_uuid("RareFeats_ASI_FeatDescription"),
-    ))
-
-    rare_feats.add(Feat(
-        CanBeTakenMultipleTimes=True,
-        Name="RareFeats_ASI",
-        Selectors=f"SelectPassives({asi_passive_list},1,RareFeats_ASI)",
-        UUID=asi_uuid,
-    ))
-
-
-@iife
 def ability_boost_feat() -> None:
     """Ability Boost feat."""
     ability_boost_passive_list = PassiveList(
@@ -171,6 +141,36 @@ def ability_boost_feat() -> None:
         Name="RareFeats_AbilityBoost",
         Selectors=f"SelectPassives({ability_boost_passive_list.UUID},1,RareFeats_AbilityBoost)",
         UUID=ability_boost_feat_uuid,
+    ))
+
+
+@iife
+def asi_feat() -> None:
+    """Ability Score Improvement (ASI) feat."""
+    BONUS = 2
+
+    asi_uuid = rare_feats.make_uuid("RareFeats_ASI")
+    asi_passive_list = boost_abilities_passive_list(
+        "ASI", [*[ability for ability in CharacterAbility], None], BONUS)
+
+    loca["RareFeats_ASI_DisplayName"] = {"en": "Rare Feats: Ability Improvement"}
+    loca["RareFeats_ASI_Description"] = {"en": f"""
+        Increase one of your abilities by {BONUS}, to a maximum of 30.
+        """}
+    
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_ASI_DisplayName"],
+        Description=loca["RareFeats_ASI_Description"],
+        ExactMatch="RareFeats_ASI",
+        FeatId=asi_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_ASI_FeatDescription"),
+    ))
+
+    rare_feats.add(Feat(
+        CanBeTakenMultipleTimes=True,
+        Name="RareFeats_ASI",
+        Selectors=f"SelectPassives({asi_passive_list},1,RareFeats_ASI)",
+        UUID=asi_uuid,
     ))
 
 
@@ -572,6 +572,35 @@ def performer_feat() -> None:
         PassivesAdded="Performer",
         Selectors=f"SelectPassives({performer_passive_list},1,RareFeats_Performer)",
         UUID=performer_uuid,
+    ))
+
+
+@iife
+def skilled_feat() -> None:
+    """Skilled with additional selections."""
+    skilled_uuid = rare_feats.make_uuid("RareFeats_Skilled")
+
+    loca["RareFeats_Skilled_DisplayName"] = {"en": "Rare Feats: Skilled"}
+    loca["RareFeats_Skilled_Description"] = {"en": """
+        You gain <LSTag Tooltip="Proficiency">Proficiency</LSTag> in 6 <LSTag Tooltip="Skill">Skills</LSTag> of your
+        choice.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_Skilled_DisplayName"],
+        Description=loca["RareFeats_Skilled_Description"],
+        ExactMatch="RareFeats_Skilled",
+        FeatId=skilled_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_Skilled"),
+    ))
+
+    rare_feats.add(Feat(
+        CanBeTakenMultipleTimes=True,
+        Name="RareFeats_Skilled",
+        Selectors=[
+            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)",
+        ],
+        UUID=skilled_uuid,
     ))
 
 

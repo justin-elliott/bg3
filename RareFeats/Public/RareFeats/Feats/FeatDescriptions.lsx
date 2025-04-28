@@ -6,18 +6,18 @@
         <node id="root">
             <children>
                 <node id="FeatDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
-                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI" />
-                    <attribute id="FeatId" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
-                    <attribute id="UUID" type="guid" value="f89f224d-8294-3d61-142c-a8625cbae3dc" />
-                </node>
-                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h5695352ag17d7ga5c8gbe78gb78149422015" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h0f8bc8d5ge254gb9cdgbdb4g644fb7d0a803" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_AbilityBoost" />
                     <attribute id="FeatId" type="guid" value="ae9b068b-c966-134b-d824-954441d1841a" />
                     <attribute id="UUID" type="guid" value="c4209639-81b1-3456-0a3c-90f5492da214" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI" />
+                    <attribute id="FeatId" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
+                    <attribute id="UUID" type="guid" value="f89f224d-8294-3d61-142c-a8625cbae3dc" />
                 </node>
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1" />
@@ -88,6 +88,13 @@
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_Performer" />
                     <attribute id="FeatId" type="guid" value="fabd93ce-594c-81fb-2eb8-f5648b560d39" />
                     <attribute id="UUID" type="guid" value="a7b864d7-531a-2e4e-e03a-d1127995f3c3" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h34f1f61egaecfg9095gcbcdgcbe8bde9b8dc" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h50c4428cgb4efg1aa7g1b32gac7c4b443231" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_Skilled" />
+                    <attribute id="FeatId" type="guid" value="e04acda2-c2f4-4ae9-2d3b-d7437215b00f" />
+                    <attribute id="UUID" type="guid" value="4ddad92c-a164-3b42-393a-9ed237172dab" />
                 </node>
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h27dbf189g7ef4gbd65ge180g1e7f3a9aa5a1" version="1" />

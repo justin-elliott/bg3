@@ -50,6 +50,35 @@ class MonkExpanded(Replacer):
     _bolster_spell_list: str
 
     @cached_property
+    def _awareness(self) -> str:
+        """The Awareness passive, a variant of Alert."""
+        name = f"{self.mod.get_prefix()}_Awareness"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Awareness"}
+        loca[f"{name}_Description"] = {"en": """
+            You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be
+            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>, and attackers can't land
+            <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
+            """}
+
+        self.mod.add(PassiveData(
+            name,
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams=["3"],
+            Icon="Action_Barbarian_MagicAwareness",
+            Properties=["ForceShowInCC", "Highlighted"],
+            Boosts=[
+                "Initiative(3)",
+                "StatusImmunity(SURPRISED)",
+                "CriticalHit(AttackTarget,Success,Never)",
+            ],
+        ))
+
+        return name
+
+    @cached_property
     def _ki_empowered_strikes(self) -> str:
         """Ki-Empowered strikes incorporating a manifestation bonus."""
         name = f"{self.mod.get_prefix()}_KiEmpoweredStrikes"
@@ -71,6 +100,7 @@ class MonkExpanded(Replacer):
                 "IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(1d4+WisdomModifier,Force)",
                 "UnlockSpellVariant(MeleeUnarmedAttackCheck(),ModifyTargetRadius(Multiplicative,1))",
             ],
+            Properties=["ForceShowInCC", "Highlighted"],
         ))
 
         return name
@@ -114,27 +144,43 @@ class MonkExpanded(Replacer):
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
             Icon="PassiveFeature_StillnessOfMind",
-            Properties=["Highlighted"],
-            Boosts=[
-                "StatusImmunity(SG_Charmed)",
-                "StatusImmunity(SG_Frightened)",
-            ],
+            Properties=["ForceShowInCC", "Highlighted"],
+            Boosts=["StatusImmunity(SG_Charmed)", "StatusImmunity(SG_Frightened)"],
         ))
 
         return name
 
     @cached_property
-    def _vigilance(self) -> str:
-        """The Vigilance passive, a variant of Alert."""
-        name = f"{self.mod.get_prefix()}_Vigilance"
+    def _wholeness_of_body(self) -> str:
+        """The Wholeness of Body subclass feature as a passive."""
+        name = f"{self.mod.get_prefix()}_WholenessOfBody"
 
         loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Vigilance"}
+        loca[f"{name}_DisplayName"] = {"en": "Wholeness of Body"}
+        loca[f"{name}_Description"] = {"en": """
+            While in combat, you heal [1] every turn, and restore [2]
+            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Point(s)</LSTag>.
+            """}
+    
+        HEALTH_PER_TURN = "1d4"
+        KI_PER_TURN = 1
 
         self.mod.add(PassiveData(
             name,
-            using="FeralInstinct",
             DisplayName=loca[f"{name}_DisplayName"],
+            Description=[f"{name}_Description"],
+            DescriptionParams=[
+                f"RegainHitPoints({HEALTH_PER_TURN})",
+                str(KI_PER_TURN),
+            ],
+            Icon="Action_Monk_WholenessOfBody",
+            Properties=["ForceShowInCC", "Highlighted", "OncePerTurn"],
+            StatsFunctorContext=["OnTurn"],
+            Conditions=["not HasStatus('DOWNED') and not Dead() and Combat()"],
+            StatsFunctors=[
+                f"RegainHitPoints({HEALTH_PER_TURN})",
+                f"RestoreResource(KiPoint,{KI_PER_TURN},0)",
+            ],
         ))
 
         return name
@@ -206,12 +252,14 @@ class MonkExpanded(Replacer):
     def level_6(self, progression: Progression) -> None:
         progression.PassivesAdded = [
             *[passive for passive in progression.PassivesAdded if not passive == "KiEmpoweredStrikes"],
+            self._awareness,
             self._ki_empowered_strikes,
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 6)
     def level_6_open_hand(self, progression: Progression) -> None:
-        progression.PassivesAdded = [self._vigilance]
+        progression.PassivesAdded = [self._wholeness_of_body]
+        progression.Selectors = None
 
     @progression(CharacterClass.MONK, 7)
     def level_7_monk(self, progression: Progression) -> None:

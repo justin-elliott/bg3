@@ -88,7 +88,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Monk" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_2;MonkExpanded_KiEmpoweredStrikes" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_2;MonkExpanded_Awareness;MonkExpanded_KiEmpoweredStrikes" />
                     <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_1" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
@@ -230,9 +230,8 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="OpenHand" />
-                    <attribute id="PassivesAdded" type="LSString" value="MonkExpanded_Vigilance" />
+                    <attribute id="PassivesAdded" type="LSString" value="MonkExpanded_WholenessOfBody" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(9487f3bd-1763-4c7f-913d-8cb7eb9052c5)" />
                     <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
                     <attribute id="UUID" type="guid" value="fd86d0cd-791d-49a1-8d99-402c15f5f77d" />
                 </node>

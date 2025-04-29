@@ -8,8 +8,11 @@
     <content contentuid="h84d13094ge8a9gbc45g558eg3458bf875d56" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="hd8511daeg0ab2gf409g0b52g15050fbb629c" version="1">Slow Fall</content>
     <content contentuid="h50316ef1gaf49gd8b1g5422g3f3b23376440" version="1">You only take half damage from falling.</content>
+    <content contentuid="he47646f9g6300gcbb5g78ebg7339d06ea7c8" version="1">Awareness</content>
+    <content contentuid="h0517356bg89dag8a7eg268dg7990e77dca36" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h3c4be2b9g4a4dg0807gf362ge3fe97dcc4c1" version="1">Your unarmed attacks deal an additional [1] and count as magical for the purpose of overcoming enemies' &lt;LSTag Tooltip="Resistant"&gt;Resistance&lt;/LSTag&gt; and &lt;LSTag Tooltip="Immune"&gt;Immunity&lt;/LSTag&gt; to non-magical damage.</content>
     <content contentuid="hcff27c33g1525gb32fg3a43g67f8b79fd2aa" version="1">Stillness of Mind</content>
     <content contentuid="h92c32e05ged1bg97c6g9343g75dfd0b3e050" version="1">You are immune to being &lt;LSTag Tooltip="CharmedGroup"&gt;Charmed&lt;/LSTag&gt; or &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frightened&lt;/LSTag&gt;.</content>
-    <content contentuid="he1f947bbg3d8fgf78dgdaccg958e704d843a" version="1">Vigilance</content>
+    <content contentuid="hda7f0c29g594ag31e7g3c2egf11f950a2182" version="1">Wholeness of Body</content>
+    <content contentuid="h80f419fcg6b10ge394ge1d9gd500d59917ae" version="1">While in combat, you heal [1] every turn, and restore [2] &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point(s)&lt;/LSTag&gt;.</content>
 </contentList>

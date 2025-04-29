@@ -2,10 +2,11 @@
 """
 Bolster for Baldur's Gate 3 mods.
 """
+from functools import cache
 
 from modtools.gamedata import SpellData, StatusData
 from modtools.mod import Mod
-from modtools.lsx.game import LevelMapSeries
+from modtools.lsx.game import LevelMapSeries, SpellList
 
 
 class Bolster:
@@ -16,6 +17,7 @@ class Bolster:
         """Initialize."""
         self._mod = mod
 
+    @cache
     def add_bolster(self) -> str:
         """Add the Bolster spell, returning its name."""
         name = f"{self._mod.get_prefix()}_Bolster"
@@ -86,9 +88,6 @@ class Bolster:
                 "DarkvisionRangeMin(12)",
                 "ActiveCharacterLight(051648e6-f05a-e41f-e398-ffd5cd148989)",
             ],
-            Passives=[
-                "Blindsight",
-            ],
             StatusGroups="SG_RemoveOnRespec",
         ))
 
@@ -99,3 +98,14 @@ class Bolster:
         ))
 
         return name
+
+    @cache
+    def add_bolster_spell_list(self) -> str:
+        """Add a spell list containing the Bolster spell."""
+        spell_list = str(self._mod.make_uuid("bolster_spell_list"))
+        self._mod.add(SpellList(
+            Comment="Bolster spell list",
+            Spells=[self.add_bolster()],
+            UUID=spell_list,
+        ))
+        return spell_list

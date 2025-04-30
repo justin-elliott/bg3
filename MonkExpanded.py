@@ -168,7 +168,7 @@ class MonkExpanded(Replacer):
         self.mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
-            Description=[f"{name}_Description"],
+            Description=loca[f"{name}_Description"],
             DescriptionParams=[
                 f"RegainHitPoints({HEALTH_PER_TURN})",
                 str(KI_PER_TURN),

@@ -29,6 +29,7 @@ from modtools.lsx.game import Dependencies, Progression
 from modtools.replacers import (
     Replacer,
     class_description,
+    only_existing_progressions,
     progression,
 )
 from uuid import UUID
@@ -61,91 +62,6 @@ class HexbladeExtended(Replacer):
     # Spells
     _bolster: str
 
-    @cached_property
-    def _eldritch_strike(self) -> str:
-        """Adds the Eldritch Strike spell."""
-        name = f"{self.mod.get_prefix()}_EldritchStrike"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Eldritch Strike"}
-        loca[f"{name}_Description"] = {"en": """
-            Strike with your melee weapon, empowering the blow with eldritch force.
-            """}
-
-        self.mod.add(SpellData(
-            name,
-            using="Target_MainHandAttack",
-            SpellType="Target",
-            Level=1,
-            SpellProperties=[
-                "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "GROUND:ExecuteWeaponFunctors(MainHand)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                "GROUND:DealDamage(1d8,Force)",
-            ],
-            SpellRoll="Attack(AttackType.MeleeWeaponAttack)",
-            SpellSuccess=[
-                "DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)",
-                "ExecuteWeaponFunctors(MainHand)",
-                "DealDamage(1d8,Force,Magical)",
-            ],
-            TargetConditions="not Self()",
-            Icon="Action_Charger_Attack",
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            TooltipDamageList=[
-                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "DealDamage(1d8,Force)",
-            ],
-            TooltipOnMiss="4639a885-0f45-4bc9-93c7-1e0c39eb39ec",
-            TooltipUpcastDescription="66388a6f-44dd-4c9f-a9e7-910c50e70755",
-            TooltipUpcastDescriptionParams="DealDamage(1d8,Force)",
-            CastSound="Spell_Cast_Damage_Thunder_ThunderousSmite_L1to3",
-            TargetSound="Spell_Impact_Damage_Thunder_ThunderousSmite_L1to3",
-            HitCosts="SpellSlotsGroup:1:1:1",
-            SpellAnimation=[
-                "71369b20-18f1-4d33-89ad-a99b10f0444c,,;48beee2b-7124-4fa1-b820-dab4d89198d4,,;bcecc5ce-e7c9-4391-b4b6-5f93872ba2e6,,;9add032c-e500-4e88-a2ea-ef6c905bd656,,;3b9da8d4-3eff-43bd-9eaa-1c13fba0045e,,;d9feef5a-3726-4e23-95e5-6ec295efdc96,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,,",
-            ],
-            DualWieldingSpellAnimation=[
-                "71369b20-18f1-4d33-89ad-a99b10f0444c,,;48beee2b-7124-4fa1-b820-dab4d89198d4,,;bcecc5ce-e7c9-4391-b4b6-5f93872ba2e6,,;9add032c-e500-4e88-a2ea-ef6c905bd656,,;3b9da8d4-3eff-43bd-9eaa-1c13fba0045e,,;d9feef5a-3726-4e23-95e5-6ec295efdc96,,;0b07883a-08b8-43b6-ac18-84dc9e84ff50,,;,,;,,",
-            ],
-            VerbalIntent="Damage",
-            SpellStyleGroup="Class",
-            SpellFlags=["IsMelee", "IsHarmful"],
-            HitAnimationType="MagicalDamage_Electric",
-            PrepareEffect="3dd8cb62-d04e-449c-bd94-ed59f472ec5a",
-            CastEffect="da03ffe6-2e75-4070-be9d-a637666f2e9e",
-            TargetEffect="288e0f80-7d7c-4f36-b748-17182318180e",
-            DamageType="Force",
-        ))
-
-        for spell_level in range(2, 7):
-            self._mod.add(SpellData(
-                f"{name}_{spell_level}",
-                using=name,
-                SpellType="Target",
-                SpellProperties=[
-                    "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                    "GROUND:ExecuteWeaponFunctors(MainHand)",
-                    "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                    f"GROUND:DealDamage({spell_level}d8,Force)",
-                ],
-                SpellSuccess=[
-                    "DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType)",
-                    "ExecuteWeaponFunctors(MainHand)",
-                    f"DealDamage({spell_level}d8,Force,Magical)",
-                ],
-                TooltipDamageList=[
-                    "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                    "DealDamage(1d8,Force)",
-                ],
-                HitCosts=f"SpellSlotsGroup:1:1:{spell_level}",
-                RootSpellID=name,
-                PowerLevel=spell_level,
-            ))
-
-        return name
-
     def _select_to_add_spells(self, progression: Progression) -> bool:
         """Change spell selection to adding the entire spell list."""
         was_updated = False
@@ -168,7 +84,7 @@ class HexbladeExtended(Replacer):
         spell_list = str(self.make_uuid("level_1_spells_always_prepared"))
         self.mod.add(SpellList(
             Comment="Hexblade Extended level 1 spells that are always prepared",
-            Spells=[self._bolster, self._eldritch_strike],
+            Spells=[self._bolster],
             UUID=spell_list,
         ))
         return spell_list
@@ -205,23 +121,15 @@ class HexbladeExtended(Replacer):
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
 
     @class_description(CharacterClass.WARLOCK)
+    @class_description(CharacterClass.WARLOCK_HEXBLADE)
+    @class_description(CharacterClass.WARLOCK_ARCHFEY)
+    @class_description(CharacterClass.WARLOCK_FIEND)
+    @class_description(CharacterClass.WARLOCK_GREATOLDONE)
     def warlock_description(self, class_description: ClassDescription) -> None:
         class_description.BaseHp = 10
         class_description.HpPerLevel = 6
         class_description.CanLearnSpells = True
         class_description.MustPrepareSpells = True
-
-    @class_description(CharacterClass.WARLOCK_HEXBLADE)
-    def warlock_hexblade_description(self, class_description: ClassDescription) -> None:
-        class_description.CanLearnSpells = True
-        class_description.MustPrepareSpells = True
-
-    @class_description(CharacterClass.WARLOCK_ARCHFEY)
-    @class_description(CharacterClass.WARLOCK_FIEND)
-    @class_description(CharacterClass.WARLOCK_GREATOLDONE)
-    def warlock_other_descriptions(self, class_description: ClassDescription) -> None:
-        class_description.CanLearnSpells = False
-        class_description.MustPrepareSpells = False
 
     @progression(CharacterClass.WARLOCK, range(1, 21))
     @progression(CharacterClass.WARLOCK, 1, is_multiclass=True)
@@ -231,17 +139,27 @@ class HexbladeExtended(Replacer):
 
     @progression(CharacterClass.WARLOCK, range(1, 21))
     @progression(CharacterClass.WARLOCK_HEXBLADE, range(1, 21))
+    @progression(CharacterClass.WARLOCK_ARCHFEY, range(1, 21))
+    @progression(CharacterClass.WARLOCK_FIEND, range(1, 21))
+    @progression(CharacterClass.WARLOCK_GREATOLDONE, range(1, 21))
     @progression(CharacterClass.WARLOCK, 1, is_multiclass=True)
+    @only_existing_progressions
     def level_1_to_20_prepared(self, progression: Progression) -> None:
         spells_always_prepared(progression)
 
+    @progression(CharacterClass.WARLOCK, range(1, 21))
     @progression(CharacterClass.WARLOCK_HEXBLADE, range(1, 21))
+    @progression(CharacterClass.WARLOCK_ARCHFEY, range(1, 21))
+    @progression(CharacterClass.WARLOCK_FIEND, range(1, 21))
+    @progression(CharacterClass.WARLOCK_GREATOLDONE, range(1, 21))
+    @progression(CharacterClass.WARLOCK, 1, is_multiclass=True)
+    @only_existing_progressions
     def level_1_to_20_select_to_add(self, progression: Progression) -> None:
         self._select_to_add_spells(progression)
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 1)
     def level_1(self, progression: Progression) -> None:
-        progression.PassivesAdded = [
+        progression.PassivesAdded = progression.PassivesAdded + [
             self._battle_magic,
             self._pack_mule,
         ]
@@ -251,15 +169,11 @@ class HexbladeExtended(Replacer):
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 2)
     def level_2(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,14)",
-        ]
+        progression.PassivesAdded = ["SculptSpells"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 3)
     def level_3(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
-        ]
+        ...
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 4)
     def level_4(self, progression: Progression) -> None:
@@ -329,17 +243,15 @@ class HexbladeExtended(Replacer):
     def level_20(self, progression: Progression) -> None:
         ...
 
-    @progression(CharacterClass.WARLOCK, 11)
-    def upgrade_to_level_6_spell_slots(self, progression: Progression) -> None:
-        progression.Boosts = [
-            f"ActionResource(WarlockSpellSlot,{3 * self._args.spells},6)",
-            "ActionResourceOverride(WarlockSpellSlot,0,5)"
-        ]
-    
     @progression(CharacterClass.WARLOCK, [11, 13, 15, 17])
     def remove_mystic_arcanum(self, progression: Progression) -> None:
+        spell_level = (progression.Level - 11) // 2 + 6
+        progression.Boosts = [
+            f"ActionResource(WarlockSpellSlot,{3 * self._args.spells},{spell_level})",
+            f"ActionResourceOverride(WarlockSpellSlot,0,{spell_level - 1})"
+        ]
         progression.Selectors = [
-            selector for selector in progression.Selectors if not selector.startswith("SelectSpells(")
+            selector for selector in (progression.Selectors or []) if not selector.startswith("SelectSpells(")
         ] or None
 
 
@@ -355,7 +267,7 @@ def main():
     parser.add_argument("-f", "--feats", type=level_list, default=set(),
                         help="Feat progression every n levels (defaulting to double progression)")
     parser.add_argument("-s", "--spells", type=int, choices=range(1, 17), default=8,
-                        help="Spell slot multiplier (defaulting to 8; octuple spell slots)")
+                        help="Spell slot multiplier (defaulting to 8)")
     args = HexbladeExtended.Args(**vars(parser.parse_args()))
 
     hexblade_extended = HexbladeExtended(args)

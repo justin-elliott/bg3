@@ -6,12 +6,14 @@
         <node id="root">
             <children>
                 <node id="ClassDescription">
-                    <attribute id="CanLearnSpells" type="bool" value="false" />
+                    <attribute id="BaseHp" type="int32" value="10" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="h751d5f52g977fg43a0g913bg536fdb5a87f7" version="2" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h1ddc9804g4d3eg450fgb46cg8c10926de1cd" version="1" />
+                    <attribute id="HpPerLevel" type="int32" value="6" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
-                    <attribute id="MustPrepareSpells" type="bool" value="false" />
+                    <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Archfey" />
                     <attribute id="ParentGuid" type="guid" value="b4225a4b-4bbe-4d97-9e3c-4719dbd1487c" />
                     <attribute id="PrimaryAbility" type="uint8" value="6" />
@@ -27,12 +29,14 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
-                    <attribute id="CanLearnSpells" type="bool" value="false" />
+                    <attribute id="BaseHp" type="int32" value="10" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="h77ad8d20g255bg475egbfcfgf3a5ea0dc4d0" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h90e380a7g9f24g4ee6gb1a1g34eac5619afa" version="1" />
+                    <attribute id="HpPerLevel" type="int32" value="6" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
-                    <attribute id="MustPrepareSpells" type="bool" value="false" />
+                    <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Fiend" />
                     <attribute id="ParentGuid" type="guid" value="b4225a4b-4bbe-4d97-9e3c-4719dbd1487c" />
                     <attribute id="PrimaryAbility" type="uint8" value="6" />
@@ -48,12 +52,14 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
-                    <attribute id="CanLearnSpells" type="bool" value="false" />
+                    <attribute id="BaseHp" type="int32" value="10" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="hdaab7880g17afg4e6bg92a2gefb96ec722ca" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h7fd64569g90e0g4b80g8709g57bc86f29fdf" version="1" />
+                    <attribute id="HpPerLevel" type="int32" value="6" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
-                    <attribute id="MustPrepareSpells" type="bool" value="false" />
+                    <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="GreatOldOne" />
                     <attribute id="ParentGuid" type="guid" value="b4225a4b-4bbe-4d97-9e3c-4719dbd1487c" />
                     <attribute id="PrimaryAbility" type="uint8" value="6" />
@@ -69,10 +75,12 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="10" />
                     <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="h1d4478b3g7acdg450fg82d4g4854276893f2" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hac0c681cg54a1g4a2egbeebgfa3a1adad49a" version="1" />
+                    <attribute id="HpPerLevel" type="int32" value="6" />
                     <attribute id="LearningStrategy" type="uint8" value="1" />
                     <attribute id="MustPrepareSpells" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="Hexblade" />

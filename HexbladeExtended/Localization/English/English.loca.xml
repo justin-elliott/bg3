@@ -10,6 +10,4 @@
     <content contentuid="h04e1888fg4aadg7d6agbe29g2a14621a0bfb" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hf72a512fgbc5eg1955g61e2g2ab2ab2b7177" version="1">Pack Mule</content>
     <content contentuid="h116ba52ag1747gdd31g0b3bg013f3f2eacee" version="1">Your carrying capacity is increased by [1]%.</content>
-    <content contentuid="hd79eb7cfg83b2g3089g5d3eg05f38d974aeb" version="1">Eldritch Strike</content>
-    <content contentuid="h1a3ffc70ga220gae94gf6c5g202b1b398f61" version="1">Strike with your melee weapon, empowering the blow with eldritch force.</content>
 </contentList>

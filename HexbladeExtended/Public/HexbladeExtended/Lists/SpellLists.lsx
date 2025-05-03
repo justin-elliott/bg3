@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Comment" type="LSString" value="Hexblade Extended level 1 spells that are always prepared" />
-                    <attribute id="Spells" type="LSString" value="HexbladeExtended_Bolster;HexbladeExtended_EldritchStrike" />
+                    <attribute id="Spells" type="LSString" value="HexbladeExtended_Bolster" />
                     <attribute id="UUID" type="guid" value="36f41c36-683c-a965-1461-80690f9f038a" />
                 </node>
             </children>

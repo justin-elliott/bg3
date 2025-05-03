@@ -3,7 +3,7 @@
 Skills enumeration.
 """
 
-from characterability import CharacterAbility
+from modtools.lsx.game.characterability import CharacterAbility
 
 from enum import StrEnum
 from typing import Final

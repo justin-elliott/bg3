@@ -25,6 +25,8 @@ camp_clothes = Mod(os.path.dirname(__file__),
                    mod_uuid=UUID("a93f92ad-5b31-4c9c-ac66-41082788e567"),
                    description="Adds a selection of outfits to the tutorial chest.")
 
+bolster = Bolster(camp_clothes).add_bolster()
+
 loca = camp_clothes.get_localization()
 
 loca["CampClothes_ComfortableBoots_DisplayName"] = {"en": "Comfortable Boots"}
@@ -326,7 +328,6 @@ def add_agility_potion() -> str:
 
 def add_bolster_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_BolsterPotion"
-    bolster = Bolster(camp_clothes).add_bolster()
     bolster_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Bolstering"}
@@ -537,6 +538,105 @@ def reduce_weight(items: list[str]) -> list[str]:
         camp_clothes.add(Armor(
             name,
             using=item,
+            Weight=0.01,
+        ))
+        new_items.append(name)
+    return new_items
+
+
+astral_knowledge = f"{camp_clothes.get_prefix()}_AstralKnowledge"
+astral_knowledge_spell_animation = [
+    "2f0d97b9-4a1f-4bf3-a3c2-32efb563d601,,",
+    ",,",
+    "6a95a81d-62e7-4b68-9b45-7e42e538dbde,,",
+    "815364ff-bbaa-4efc-b10e-f31043fafd6e,,",
+    "57e449b3-b712-4508-afcf-f2e91dc473f6,,",
+    ",,",
+    "84f3727f-aabc-4e34-bf31-c6cd0160bec9,,",
+    ",,",
+    ",,",
+]
+
+camp_clothes.add(SpellData(
+    astral_knowledge,
+    using="Shout_AstralKnowledge",
+    SpellType="Shout",
+    ContainerSpells=[
+        f"{astral_knowledge}_Strength",
+        f"{astral_knowledge}_Dexterity",
+        f"{astral_knowledge}_Intelligence",
+        f"{astral_knowledge}_Wisdom",
+        f"{astral_knowledge}_Charisma",
+    ],
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+camp_clothes.add(SpellData(
+    f"{astral_knowledge}_Strength",
+    using="Shout_AstralKnowledge_Strength",
+    SpellType="Shout",
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+camp_clothes.add(SpellData(
+    f"{astral_knowledge}_Dexterity",
+    using="Shout_AstralKnowledge_Dexterity",
+    SpellType="Shout",
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+camp_clothes.add(SpellData(
+    f"{astral_knowledge}_Intelligence",
+    using="Shout_AstralKnowledge_Intelligence",
+    SpellType="Shout",
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+camp_clothes.add(SpellData(
+    f"{astral_knowledge}_Wisdom",
+    using="Shout_AstralKnowledge_Wisdom",
+    SpellType="Shout",
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+camp_clothes.add(SpellData(
+    f"{astral_knowledge}_Charisma",
+    using="Shout_AstralKnowledge_Charisma",
+    SpellType="Shout",
+    RequirementConditions=[],
+    RequirementEvents=[],
+    SpellAnimation=astral_knowledge_spell_animation,
+    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
+    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
+))
+
+def magic_underwear(items: list[str]) -> list[str]:
+    new_items = []
+    for item in items:
+        name = "CampClothes" + item.removeprefix("ARM")
+        camp_clothes.add(Armor(
+            name,
+            using=item,
+            Boosts=[
+                f"UnlockSpell({bolster})",
+                f"UnlockSpell({astral_knowledge})",
+                "ProficiencyBonus(SavingThrow,Constitution)",
+            ],
             Weight=0.01,
         ))
         new_items.append(name)
@@ -794,7 +894,7 @@ dyes = [dye for dye in base_dyes]
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
-underwear = reduce_weight(base_underwear)
+underwear = magic_underwear(base_underwear)
 
 potions = [
     add_abilities_potion(2),
@@ -826,6 +926,8 @@ camp_clothes.add(SpellData(
     SpellType="Zone",
     using="Zone_Cleave",
     Cooldown="None",
+    SpellSuccess=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)", "GROUND:ExecuteWeaponFunctors(MainHand)"],
+    TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
 ))
 
 camp_clothes.add(Weapon(

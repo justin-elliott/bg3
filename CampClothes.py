@@ -637,6 +637,7 @@ def magic_underwear(items: list[str]) -> list[str]:
                 f"UnlockSpell({astral_knowledge})",
                 "ProficiencyBonus(SavingThrow,Constitution)",
             ],
+            Rarity="Legendary",
             Weight=0.01,
         ))
         new_items.append(name)

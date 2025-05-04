@@ -26,6 +26,7 @@ camp_clothes = Mod(os.path.dirname(__file__),
                    description="Adds a selection of outfits to the tutorial chest.")
 
 bolster = Bolster(camp_clothes).add_bolster()
+pack_mule = PackMule(camp_clothes).add_pack_mule(5.0)
 
 loca = camp_clothes.get_localization()
 
@@ -404,7 +405,6 @@ def add_overpowering_potion() -> str:
 
 def add_pack_mule_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_PackMulePotion"
-    pack_mule = PackMule(camp_clothes).add_pack_mule(5.0)
     pack_mule_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of the Pack Mule"}
@@ -557,74 +557,6 @@ astral_knowledge_spell_animation = [
     ",,",
 ]
 
-camp_clothes.add(SpellData(
-    astral_knowledge,
-    using="Shout_AstralKnowledge",
-    SpellType="Shout",
-    ContainerSpells=[
-        f"{astral_knowledge}_Strength",
-        f"{astral_knowledge}_Dexterity",
-        f"{astral_knowledge}_Intelligence",
-        f"{astral_knowledge}_Wisdom",
-        f"{astral_knowledge}_Charisma",
-    ],
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-camp_clothes.add(SpellData(
-    f"{astral_knowledge}_Strength",
-    using="Shout_AstralKnowledge_Strength",
-    SpellType="Shout",
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-camp_clothes.add(SpellData(
-    f"{astral_knowledge}_Dexterity",
-    using="Shout_AstralKnowledge_Dexterity",
-    SpellType="Shout",
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-camp_clothes.add(SpellData(
-    f"{astral_knowledge}_Intelligence",
-    using="Shout_AstralKnowledge_Intelligence",
-    SpellType="Shout",
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-camp_clothes.add(SpellData(
-    f"{astral_knowledge}_Wisdom",
-    using="Shout_AstralKnowledge_Wisdom",
-    SpellType="Shout",
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-camp_clothes.add(SpellData(
-    f"{astral_knowledge}_Charisma",
-    using="Shout_AstralKnowledge_Charisma",
-    SpellType="Shout",
-    RequirementConditions=[],
-    RequirementEvents=[],
-    SpellAnimation=astral_knowledge_spell_animation,
-    PrepareEffect="1e954b8e-99e5-4857-9512-cc7f77eb305f",
-    CastEffect="96712084-dcc8-4367-85a0-30f5f98ae461",
-))
-
 def magic_underwear(items: list[str]) -> list[str]:
     new_items = []
     for item in items:
@@ -634,9 +566,9 @@ def magic_underwear(items: list[str]) -> list[str]:
             using=item,
             Boosts=[
                 f"UnlockSpell({bolster})",
-                f"UnlockSpell({astral_knowledge})",
                 "ProficiencyBonus(SavingThrow,Constitution)",
             ],
+            PassivesOnEquip=[pack_mule],
             Rarity="Legendary",
             Weight=0.01,
         ))

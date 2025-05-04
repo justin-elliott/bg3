@@ -856,28 +856,29 @@ camp_clothes.add(Weapon(
 
 camp_clothes.add(SpellData(
     "CampClothes_Belm_Cleave",
-    SpellType="Zone",
     using="Zone_Cleave",
+    SpellType="Zone",
     Cooldown="None",
     SpellSuccess=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)", "GROUND:ExecuteWeaponFunctors(MainHand)"],
     TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
+))
+
+camp_clothes.add(SpellData(
+    "CampClothes_Belm_BonusAttack",
+    using="Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
+    SpellType="Target",
+    Cooldown="None",
+    SpellFlags=["IsAttack", "IsMelee", "IsHarmful"],
 ))
 
 camp_clothes.add(Weapon(
     "CampClothes_Belm_Shortsword",
     using="MAG_PHB_OfSpeed_Scimitar",
     BoostsOnEquipMainHand=[],
-    BoostsOnEquipOffHand=["UnlockSpell(CampClothes_Belm_Cleave)"],
+    Boosts=["UnlockSpell(CampClothes_Belm_Cleave)", "UnlockSpell(CampClothes_Belm_BonusAttack)"],
     PassivesOffHand=["MAG_IgnorePiercingResistance_Passive"],
     Proficiency_Group=["Shortswords", "MartialWeapons", "Scimitars"],
     RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
-))
-
-camp_clothes.add(SpellData(
-    "Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
-    using="Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
-    SpellType="Target",
-    SpellFlags=["IsAttack", "IsMelee", "IsHarmful"],
 ))
 
 equipment = [

@@ -560,7 +560,7 @@ astral_knowledge_spell_animation = [
 def magic_underwear(items: list[str]) -> list[str]:
     new_items = []
     for item in items:
-        name = "CampClothes" + item.removeprefix("ARM")
+        name = "CampClothes" + item.removeprefix("ARM") + "_Magic"
         camp_clothes.add(Armor(
             name,
             using=item,

@@ -104,7 +104,7 @@ class Bolster:
         """Add a spell list containing the Bolster spell."""
         spell_list = str(self._mod.make_uuid("bolster_spell_list"))
         self._mod.add(SpellList(
-            Comment="Bolster spell list",
+            Name="Bolster spell list",
             Spells=[self.add_bolster()],
             UUID=spell_list,
         ))

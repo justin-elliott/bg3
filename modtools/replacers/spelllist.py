@@ -26,8 +26,8 @@ type SpellListBuilder = Callable[[Replacer, SpellList], None]
 type SpellListBuilderDict = dict[str, list[SpellListBuilder]]
 
 
-def _key_by_comment(spell_list: SpellList) -> str:
-    return (spell_list.Comment or "").lower()
+def _key_by_name(spell_list: SpellList) -> str:
+    return (spell_list.Name or "").lower()
 
 
 def _key_by_uuid(spell_list: SpellList) -> str:
@@ -41,7 +41,7 @@ def _load_spell_lists(replacer: Replacer) -> LsxChildren:
     spell_lists_gustavx_lsx = Lsx.load(replacer.get_cache_path(_SPELL_LISTS_GUSTAVX_LSX_PATH))
     spell_lists_lsx.children.update(spell_lists_dev_lsx.children, key=_key_by_uuid)
     spell_lists_lsx.children.update(spell_lists_gustavx_lsx.children, key=_key_by_uuid)
-    spell_lists_lsx.children.sort(key=_key_by_comment)
+    spell_lists_lsx.children.sort(key=_key_by_name)
     return spell_lists_lsx.children
 
 
@@ -57,9 +57,9 @@ def _make_builders(spell_list_builders: list[SpellListBuilder]) -> SpellListBuil
     builders: SpellListBuilderDict = dict()
 
     for spell_list_builder in spell_list_builders:
-        comment_or_uuids = getattr(spell_list_builder, "spell_lists")
-        for comment_or_uuid in comment_or_uuids:
-            builders_list = builders.setdefault(comment_or_uuid, [])
+        name_or_uuids = getattr(spell_list_builder, "spell_lists")
+        for name_or_uuid in name_or_uuids:
+            builders_list = builders.setdefault(name_or_uuid, [])
             builders_list.append(spell_list_builder)
 
     return builders
@@ -73,7 +73,7 @@ def _update_spell_lists(replacer: Replacer,
     unused_spell_lists = set(builders.keys())
 
     for spell_list in spell_lists:
-        if builder_fns := builders.get(spell_list.Comment) or builders.get(spell_list.UUID):
+        if builder_fns := builders.get(spell_list.Name) or builders.get(spell_list.UUID):
             was_updated = False
             for builder_fn in builder_fns:
                 try:
@@ -81,8 +81,8 @@ def _update_spell_lists(replacer: Replacer,
                     was_updated = True
                 except DontIncludeSpellList:  # Can still be updated by another builder_fn
                     pass
-                if spell_list.Comment in unused_spell_lists:
-                    unused_spell_lists.remove(spell_list.Comment)
+                if spell_list.Name in unused_spell_lists:
+                    unused_spell_lists.remove(spell_list.Name)
                 else:
                     unused_spell_lists.remove(spell_list.UUID)
 
@@ -103,19 +103,19 @@ def _spell_list_builder(replacer: Replacer, spell_list_builders: list[SpellListB
     _update_spell_lists(replacer, spell_lists, builders, updated_spell_lists)
 
     # Save the updated origins
-    for spell_list in sorted(updated_spell_lists, key=_key_by_comment):
+    for spell_list in sorted(updated_spell_lists, key=_key_by_name):
         replacer.mod.add(spell_list)
 
 
-def spell_list(comment_or_uuid: str) -> SpellListBuilder:
+def spell_list(name_or_uuid: str) -> SpellListBuilder:
     """A decorator mapping a spell list to its builder function."""
-    if isinstance(comment_or_uuid, UUID):
-        comment_or_uuid = str(comment_or_uuid)
+    if isinstance(name_or_uuid, UUID):
+        name_or_uuid = str(name_or_uuid)
 
     def decorate(fn: SpellListBuilder) -> SpellListBuilder:
         setattr(fn, "builder", _spell_list_builder)
         spell_lists: list[str] = getattr(fn, "spell_lists", [])
-        spell_lists.append(comment_or_uuid)
+        spell_lists.append(name_or_uuid)
         setattr(fn, "spell_lists", spell_lists)
         return fn
 
@@ -221,24 +221,84 @@ def warlock_cantrips(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("f5c4af9c-5d8d-4526-9057-94a4b243cd40"))
 
 
-def warlock_level_1_spells(replacer: Replacer) -> SpellList:
+def warlock_archfey_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("e0099b15-2599-4cba-a54b-b25ae03d6519"))
+
+
+def warlock_archfey_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("0cc2c8ab-9bbc-43a7-a66d-08e47da4c172"))
+
+
+def warlock_archfey_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("f18ad912-e2f4-47a9-8744-73d6a51c2941"))
+
+
+def warlock_archfey_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("c3d8a4a5-9dae-4193-8322-a5d1c5b89f47"))
+
+
+def warlock_archfey_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("0a9b924f-64fb-4f22-b975-5eeedc99b2fd"))
+
+
+def warlock_fiend_level_1_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("4823a292-f584-4f7f-8434-6630c72e5411"))
 
 
-def warlock_level_2_spells(replacer: Replacer) -> SpellList:
+def warlock_fiend_level_2_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("835aeca7-c64a-4aaa-a25c-143aa14a5cec"))
 
 
-def warlock_level_3_spells(replacer: Replacer) -> SpellList:
+def warlock_fiend_level_3_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("5dec41aa-f16a-434e-b209-50c07e64e4ed"))
 
 
-def warlock_level_4_spells(replacer: Replacer) -> SpellList:
+def warlock_fiend_level_4_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("7ad7dbd0-751b-4bcd-8034-53bcc7bfb19d"))
 
 
-def warlock_level_5_spells(replacer: Replacer) -> SpellList:
+def warlock_fiend_level_5_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("deab57bf-4eec-4085-82f7-87335bce3f5d"))
+
+
+def warlock_greatoldone_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("65952d48-bb16-4ad7-b173-532182bf7770"))
+
+
+def warlock_greatoldone_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("fe101a94-8619-49b2-859d-a68c2c291054"))
+
+
+def warlock_greatoldone_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("30e9b761-6be0-418e-bb28-5103c00c663b"))
+
+
+def warlock_greatoldone_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("b64e527e-1f97-4125-84f7-78376ab1440b"))
+
+
+def warlock_greatoldone_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("6d2edca9-71a7-4f3f-89f0-fccfff0bdee5"))
+
+
+def warlock_hexblade_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("d90e88eb-e5f9-4db2-b7ef-1dccb044839a"))
+
+
+def warlock_hexblade_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("4a3bf687-91c1-4dad-821c-ad32171c7552"))
+
+
+def warlock_hexblade_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("58b8c82e-8ab3-4fd7-aa0a-3f2b831187f5"))
+
+
+def warlock_hexblade_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("39750075-781e-4ce2-a033-f8a288e47b8e"))
+
+
+def warlock_hexblade_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("88fafaeb-8b59-4319-9841-b9e6043f4636"))
 
 
 # Wizard Spells

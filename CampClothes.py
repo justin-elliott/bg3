@@ -827,7 +827,7 @@ dyes = [dye for dye in base_dyes]
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
-underwear = magic_underwear(base_underwear)
+underwear = reduce_weight(base_underwear) + magic_underwear(base_underwear)
 
 potions = [
     add_abilities_potion(2),

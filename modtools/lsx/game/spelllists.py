@@ -11,17 +11,17 @@ from modtools.lsx.type import LsxType
 
 
 class SpellList(LsxNode):
-    Comment: str = LsxType.LSSTRING_VALUE
+    Name: str = LsxType.LSSTRING_VALUE
     Spells: list[str] = LsxType.LSSTRING
     UUID: str = LsxType.GUID
 
     def __init__(self,
                  *,
-                 Comment: str = None,
+                 Name: str = None,
                  Spells: list[str] = None,
                  UUID: str = None):
         super().__init__(
-            Comment=Comment,
+            Name=Name,
             Spells=Spells,
             UUID=UUID,
         )

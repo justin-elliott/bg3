@@ -132,16 +132,14 @@ class WarlockExtended(Replacer):
             [],
         ]
 
-    _combined_spells: list[list[str]] = [[], None, None, None, None, None, None]
-    
     def _combine_spells(self, level: int, warlock_spells: list[list[str]]) -> list[str]:
-        if self._combined_spells[level] is None:
-            previous_spells = self._combine_spells(level - 1, warlock_spells)
-            current_spells = list(set(warlock_spells[level - 1] + self._wizard_spells[level - 1]) -
-                                set(previous_spells))
-            current_sorted = sorted(current_spells, key=lambda key: key[key.index("_"):])
-            self._combined_spells[level] = current_sorted + previous_spells
-        return self._combined_spells[level]
+        if level == 0:
+            return []
+        previous_spells = self._combine_spells(level - 1, warlock_spells)
+        current_spells = list(set(warlock_spells[level - 1] + self._wizard_spells[level - 1]) -
+                            set(previous_spells))
+        current_sorted = sorted(current_spells, key=lambda key: key[key.index("_"):])
+        return current_sorted + previous_spells
 
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),

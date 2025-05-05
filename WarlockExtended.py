@@ -24,10 +24,25 @@ from modtools.replacers import (
     Replacer,
     progression,
     spell_list,
+    warlock_archfey_level_1_spells,
+    warlock_archfey_level_2_spells,
+    warlock_archfey_level_3_spells,
+    warlock_archfey_level_4_spells,
     warlock_archfey_level_5_spells,
+    warlock_fiend_level_1_spells,
+    warlock_fiend_level_2_spells,
+    warlock_fiend_level_3_spells,
+    warlock_fiend_level_4_spells,
     warlock_fiend_level_5_spells,
+    warlock_greatoldone_level_1_spells,
+    warlock_greatoldone_level_2_spells,
+    warlock_greatoldone_level_3_spells,
+    warlock_greatoldone_level_4_spells,
     warlock_greatoldone_level_5_spells,
     warlock_hexblade_level_1_spells,
+    warlock_hexblade_level_2_spells,
+    warlock_hexblade_level_3_spells,
+    warlock_hexblade_level_4_spells,
     warlock_hexblade_level_5_spells,
     wizard_level_1_spells,
     wizard_level_2_spells,
@@ -62,22 +77,71 @@ class WarlockExtended(Replacer):
     _bolster: str
     _pack_mule: str
 
-    def _select_to_add_spells(self, progression: Progression) -> bool:
-        """Change spell selection to adding the entire spell list."""
-        was_updated = False
+    @cached_property
+    def _wizard_spells(self) -> list[list[str]]:
+        return [
+            [spell for spell in wizard_level_1_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+            [spell for spell in wizard_level_2_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+            [spell for spell in wizard_level_3_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+            [spell for spell in wizard_level_4_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+            [spell for spell in wizard_level_5_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+            [spell for spell in wizard_level_6_spells(self).Spells if spell != "Shout_Shield_Wizard"],
+        ]
 
-        if progression.Selectors:
-            selectors = []
-            for selector in progression.Selectors:
-                if match := self._SELECT_SPELLS.match(selector):
-                    args = match.groups("")
-                    selector = f"AddSpells({args[0]})"
-                    was_updated = True
-                if progression.Level % 2 == 1 and progression.Level < 10:
-                    selectors.append(selector)
-            progression.Selectors = selectors or None
+    @cached_property
+    def _archfey_spells(self) -> list[list[str]]:
+        return [
+            warlock_archfey_level_1_spells(self).Spells,
+            warlock_archfey_level_2_spells(self).Spells,
+            warlock_archfey_level_3_spells(self).Spells,
+            warlock_archfey_level_4_spells(self).Spells,
+            warlock_archfey_level_5_spells(self).Spells,
+            [],
+        ]
 
-        return was_updated
+    @cached_property
+    def _fiend_spells(self) -> list[list[str]]:
+        return [
+            warlock_fiend_level_1_spells(self).Spells,
+            warlock_fiend_level_2_spells(self).Spells,
+            warlock_fiend_level_3_spells(self).Spells,
+            warlock_fiend_level_4_spells(self).Spells,
+            warlock_fiend_level_5_spells(self).Spells,
+            [],
+        ]
+
+    @cached_property
+    def _greatoldone_spells(self) -> list[list[str]]:
+        return [
+            warlock_greatoldone_level_1_spells(self).Spells,
+            warlock_greatoldone_level_2_spells(self).Spells,
+            warlock_greatoldone_level_3_spells(self).Spells,
+            warlock_greatoldone_level_4_spells(self).Spells,
+            warlock_greatoldone_level_5_spells(self).Spells,
+            [],
+        ]
+
+    @cached_property
+    def _hexblade_spells(self) -> list[list[str]]:
+        return [
+            warlock_hexblade_level_1_spells(self).Spells,
+            warlock_hexblade_level_2_spells(self).Spells,
+            warlock_hexblade_level_3_spells(self).Spells,
+            warlock_hexblade_level_4_spells(self).Spells,
+            warlock_hexblade_level_5_spells(self).Spells,
+            [],
+        ]
+
+    _combined_spells: list[list[str]] = [[], None, None, None, None, None, None]
+    
+    def _combine_spells(self, level: int, warlock_spells: list[list[str]]) -> list[str]:
+        if self._combined_spells[level] is None:
+            previous_spells = self._combine_spells(level - 1, warlock_spells)
+            current_spells = list(set(warlock_spells[level - 1] + self._wizard_spells[level - 1]) -
+                                set(previous_spells))
+            current_sorted = sorted(current_spells, key=lambda key: key[key.index("_"):])
+            self._combined_spells[level] = current_sorted + previous_spells
+        return self._combined_spells[level]
 
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
@@ -108,38 +172,31 @@ class WarlockExtended(Replacer):
         self._bolster = Bolster(self.mod).add_bolster_spell_list()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
 
-    def combine_spells(self, spells_1: SpellList, spells_2: SpellList) -> list[str]:
-        combined_spells = dict.fromkeys(spells_1.Spells + spells_2.Spells)
-        combined_spells.pop("Shout_Shield_Wizard")
-        combined_list = list(combined_spells)
-        sorted_list = sorted(combined_list, key=lambda key: key[key.index("_"):])
-        return sorted_list
-
     @spell_list("Warlock Archfey SLevel 1")
     def archfey_level_1_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_1_spells(self))
+        spells.Spells = self._combine_spells(1, self._archfey_spells)
 
     @spell_list("Warlock Archfey SLevel 2")
     def archfey_level_2_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_2_spells(self))
+        spells.Spells = self._combine_spells(2, self._archfey_spells)
 
     @spell_list("Warlock Archfey SLevel 3")
     def archfey_level_3_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_3_spells(self))
+        spells.Spells = self._combine_spells(3, self._archfey_spells)
 
     @spell_list("Warlock Archfey SLevel 4")
     def archfey_level_4_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_4_spells(self))
+        spells.Spells = self._combine_spells(4, self._archfey_spells)
 
     @spell_list("Warlock Archfey SLevel 5")
     def archfey_level_5_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_5_spells(self))
+        spells.Spells = self._combine_spells(5, self._archfey_spells)
 
     @cached_property
     def archfey_level_6_spells(self) -> SpellList:
         spells = SpellList(
             Name="Warlock Archfey SLevel 6",
-            Spells=self.combine_spells(warlock_archfey_level_5_spells(self), wizard_level_6_spells(self)),
+            Spells=self._combine_spells(6, self._archfey_spells),
             UUID=self.make_uuid("Warlock Archfey SLevel 6"),
         )
         self.mod.add(spells)
@@ -147,29 +204,29 @@ class WarlockExtended(Replacer):
 
     @spell_list("Warlock Fiend SLevel 1")
     def fiend_level_1_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_1_spells(self))
+        spells.Spells = self._combine_spells(1, self._fiend_spells)
 
     @spell_list("Warlock Fiend SLevel 2")
     def fiend_level_2_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_2_spells(self))
+        spells.Spells = self._combine_spells(2, self._fiend_spells)
 
     @spell_list("Warlock Fiend SLevel 3")
     def fiend_level_3_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_3_spells(self))
+        spells.Spells = self._combine_spells(3, self._fiend_spells)
 
     @spell_list("Warlock Fiend SLevel 4")
     def fiend_level_4_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_4_spells(self))
+        spells.Spells = self._combine_spells(4, self._fiend_spells)
 
     @spell_list("Warlock Fiend SLevel 5")
     def fiend_level_5_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_5_spells(self))
+        spells.Spells = self._combine_spells(5, self._fiend_spells)
 
     @cached_property
     def fiend_level_6_spells(self) -> SpellList:
         spells = SpellList(
             Name="Warlock Fiend SLevel 6",
-            Spells=self.combine_spells(warlock_fiend_level_5_spells(self), wizard_level_6_spells(self)),
+            Spells=self._combine_spells(6, self._fiend_spells),
             UUID=self.make_uuid("Warlock Fiend SLevel 6"),
         )
         self.mod.add(spells)
@@ -177,29 +234,29 @@ class WarlockExtended(Replacer):
 
     @spell_list("Warlock The Great Old One SLevel 1")
     def greatoldone_level_1_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_1_spells(self))
+        spells.Spells = self._combine_spells(1, self._greatoldone_spells)
 
     @spell_list("Warlock The Great Old One SLevel 2")
     def greatoldone_level_2_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_2_spells(self))
+        spells.Spells = self._combine_spells(2, self._greatoldone_spells)
 
     @spell_list("Warlock The Great Old One SLevel 3")
     def greatoldone_level_3_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_3_spells(self))
+        spells.Spells = self._combine_spells(3, self._greatoldone_spells)
 
     @spell_list("Warlock The Great Old One SLevel 4")
     def greatoldone_level_4_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_4_spells(self))
+        spells.Spells = self._combine_spells(4, self._greatoldone_spells)
 
     @spell_list("Warlock The Great Old One SLevel 5")
     def greatoldone_level_5_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_5_spells(self))
+        spells.Spells = self._combine_spells(5, self._greatoldone_spells)
 
     @cached_property
     def greatoldone_level_6_spells(self) -> SpellList:
         spells = SpellList(
             Name="Warlock The Great Old One SLevel 6",
-            Spells=self.combine_spells(warlock_greatoldone_level_5_spells(self), wizard_level_6_spells(self)),
+            Spells=self._combine_spells(6, self._greatoldone_spells),
             UUID=self.make_uuid("Warlock The Great Old One SLevel 6"),
         )
         self.mod.add(spells)
@@ -207,29 +264,29 @@ class WarlockExtended(Replacer):
 
     @spell_list("Warlock Hexblade SLevel 1")
     def hexblade_level_1_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_1_spells(self))
+        spells.Spells = self._combine_spells(1, self._hexblade_spells)
 
     @spell_list("Warlock Hexblade SLevel 2")
     def hexblade_level_2_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_2_spells(self))
+        spells.Spells = self._combine_spells(2, self._hexblade_spells)
 
     @spell_list("Warlock Hexblade SLevel 3")
     def hexblade_level_3_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_3_spells(self))
+        spells.Spells = self._combine_spells(3, self._hexblade_spells)
 
     @spell_list("Warlock Hexblade SLevel 4")
     def hexblade_level_4_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_4_spells(self))
+        spells.Spells = self._combine_spells(4, self._hexblade_spells)
 
     @spell_list("Warlock Hexblade SLevel 5")
     def hexblade_level_5_spells(self, spells: SpellList) -> None:
-        spells.Spells = self.combine_spells(spells, wizard_level_5_spells(self))
+        spells.Spells = self._combine_spells(5, self._hexblade_spells)
 
     @cached_property
     def hexblade_level_6_spells(self) -> SpellList:
         spells = SpellList(
             Name="Warlock Hexblade SLevel 6",
-            Spells=self.combine_spells(warlock_hexblade_level_5_spells(self), wizard_level_6_spells(self)),
+            Spells=self._combine_spells(6, self._hexblade_spells),
             UUID=self.make_uuid("Warlock Hexblade SLevel 6"),
         )
         self.mod.add(spells)

@@ -35,7 +35,7 @@
     <content contentuid="hab6f905fgd7e3g6d61g7debg7ccd35829eda" version="1">Elixir of Flying</content>
     <content contentuid="h6854c269ge35dg4a5fg045agcf424e52856a" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
-    <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your health, armor class, attack rolls, damage rolls, and saving throws.</content>
+    <content contentuid="h755da482gc219g9c92gf17eg287298c0c6cc" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="hcab5885fg7d1dgb4e8g51efg1f188c8d5b15" version="1">Elixir of the Pack Mule</content>
     <content contentuid="hbd5ebd64ga8b8g22fbg734cg73095f810db3" version="1">Drinking this elixir grants the &lt;LSTag Type="Passive" Tooltip="CampClothes_PackMule_400"&gt;Pack Mule&lt;/LSTag&gt; passive.</content>
     <content contentuid="h8837a5f6gc8fcgdb31g4065g6423696df06c" version="1">Elixir of Persuasion</content>

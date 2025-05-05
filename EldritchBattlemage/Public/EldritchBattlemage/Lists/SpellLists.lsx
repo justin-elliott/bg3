@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Eldritch Knight level 3 abilities" />
+                    <attribute id="Name" type="LSString" value="Eldritch Knight level 3 abilities" />
                     <attribute id="Spells" type="LSString" value="Projectile_EldritchBlast" />
                     <attribute id="UUID" type="guid" value="b0c48349-1b33-0aa4-3a99-0038efa39883" />
                 </node>

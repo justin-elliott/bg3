@@ -32,14 +32,16 @@ progression.include(
 class ProgressionsReplacer(Replacer):
     @dataclass
     class Args:
-        name: str                     # Mod name
-        classes: set[CharacterClass]  # Class progressions to replace
-        feats: set[int]               # Feat improvement levels
-        spells: int                   # Multiplier for spell slots
-        warlock_spells: int           # Multiplier for Warlock spell slots
-        actions: int                  # Multiplier for other action resources
-        skills: int                   # Number of skills to select at character creation
-        expertise: int                # Number of skill expertises to select at character creation
+        name: str                       # Mod name
+        classes: set[CharacterClass]    # Class progressions to replace
+        feats: set[int]                 # Feat improvement levels
+        spells: int                     # Multiplier for spell slots
+        warlock_spells: int             # Multiplier for Warlock spell slots
+        actions: int                    # Multiplier for other action resources
+        skills: int                     # Number of skills to select at character creation
+        expertise: int                  # Number of skill expertises to select at character creation
+        fighter_feats: set[int] = None  # Fighter feat improvement levels
+        rogue_feats: set[int] = None    # Rogue feat improvement levels
 
     ACTION_RESOURCES = frozenset([
         ActionResource.ARCANE_RECOVERY_CHARGES,
@@ -71,8 +73,12 @@ class ProgressionsReplacer(Replacer):
             feat_levels = str(feat_level)
             args.feats = frozenset(
                 {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
+            args.fighter_feats = args.feats | {3, 5, 13}
+            args.rogue_feats = args.feats | {3, 9}
         else:
             args.feats = args.feats - frozenset([1, 20])
+            args.fighter_feats = args.feats
+            args.rogue_feats = args.feats
             feat_levels = "_".join(str(level) for level in sorted(args.feats))
 
         if len(feat_levels) > 0:
@@ -112,17 +118,30 @@ class ProgressionsReplacer(Replacer):
     
         self._args = args
 
-    @progression(BASE_CHARACTER_CLASSES, range(2, 21))
-    @only_existing_progressions
-    def allow_improvement(self, progression: Progression) -> None:
-        if (len(self._args.feats) == 0):
+    def _allow_improvement(self, progression: Progression, feats: set[int]) -> None:
+        if (len(feats) == 0):
             raise DontIncludeProgression()
         if CharacterClass(progression.Name) not in self._args.classes:
             raise DontIncludeProgression()
         allow_improvement = progression.AllowImprovement
-        progression.AllowImprovement = True if progression.Level in self._args.feats else None
+        progression.AllowImprovement = True if progression.Level in feats else None
         if allow_improvement == progression.AllowImprovement:
             raise DontIncludeProgression()
+
+    @progression(BASE_CHARACTER_CLASSES - {CharacterClass.FIGHTER, CharacterClass.ROGUE}, range(2, 21))
+    @only_existing_progressions
+    def allow_improvement_base(self, progression: Progression) -> None:
+        self._allow_improvement(progression, self._args.feats)
+
+    @progression(CharacterClass.FIGHTER, range(2, 21))
+    @only_existing_progressions
+    def allow_improvement_fighter(self, progression: Progression) -> None:
+        self._allow_improvement(progression, self._args.fighter_feats)
+
+    @progression(CharacterClass.ROGUE, range(2, 21))
+    @only_existing_progressions
+    def allow_improvement_rogue(self, progression: Progression) -> None:
+        self._allow_improvement(progression, self._args.rogue_feats)
 
     @progression(CharacterSubclasses.ALL, range(1, 21))
     @only_existing_progressions

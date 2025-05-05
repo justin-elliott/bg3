@@ -46,13 +46,16 @@
                         <node id="SubClasses">
                             <children>
                                 <node id="SubClass">
+                                    <attribute id="Object" type="guid" value="1be5aa5a-e221-4f0e-a1bf-be25f5d23224" />
+                                </node>
+                                <node id="SubClass">
                                     <attribute id="Object" type="guid" value="e668c6f1-5149-4b10-ab7e-3637ed444066" />
                                 </node>
                                 <node id="SubClass">
-                                    <attribute id="Object" type="guid" value="b722614a-303f-411a-bb19-a1882ad1f4cc" />
+                                    <attribute id="Object" type="guid" value="0a01dc6b-ab1a-4c0e-8a5e-4787fe1f2caf" />
                                 </node>
                                 <node id="SubClass">
-                                    <attribute id="Object" type="guid" value="0a01dc6b-ab1a-4c0e-8a5e-4787fe1f2caf" />
+                                    <attribute id="Object" type="guid" value="b722614a-303f-411a-bb19-a1882ad1f4cc" />
                                 </node>
                             </children>
                         </node>

@@ -886,6 +886,7 @@ camp_clothes.add(Weapon(
 equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
+    "WPN_Katana",
 ]
 
 item_template = """\

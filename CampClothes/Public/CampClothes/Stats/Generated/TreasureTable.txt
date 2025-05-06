@@ -488,3 +488,5 @@ new subtable "1,1"
 object category I_CampClothes_Crimson_Shortsword,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Belm_Shortsword,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_WPN_Katana,1,0,0,0,0,0,0,0

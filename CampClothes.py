@@ -883,10 +883,67 @@ camp_clothes.add(Weapon(
     RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
 ))
 
+loca["CampClothes_Katana_DisplayName"] = {"en": "Adamantine Katana"}
+
+katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+
+camp_clothes_katana_game_objects_uuid = camp_clothes.make_uuid("CampClothes_Katana")
+camp_clothes.add(GameObjects(
+    DisplayName=loca["CampClothes_Katana_DisplayName"],
+    Description="hccebbf40g138fg422ega113g7a0869715627",
+    LevelName="",
+    MapKey=camp_clothes_katana_game_objects_uuid,
+    Name="CampClothes_Katana",
+    ParentTemplateId=katana_uuid,
+    Stats="CampClothes_Katana",
+    Type="item",
+    children=[
+        GameObjects.StatusList(
+            children=[
+                GameObjects.StatusList.Status(Object="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"),
+                GameObjects.StatusList.Status(Object="MAG_DIAMONDSBANE_TECHNICAL"),
+            ],
+        ),
+    ],
+))
+
+camp_clothes.add(Weapon(
+    "CampClothes_Katana",
+    using="WPN_Longsword",
+    BoostsOnEquipMainHand=[
+        "UnlockSpell(Target_OpeningAttack)",
+        "UnlockSpell(Target_Slash_New)",
+        "UnlockSpell(Rush_SpringAttack)",
+    ],
+    DefaultBoosts=[
+        "WeaponProperty(Magical)",
+        "IF(not CharacterLevelGreaterThan(4)):WeaponEnchantment(1)",
+        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponEnchantment(2)",
+        "IF(CharacterLevelGreaterThan(8)):WeaponEnchantment(3)",
+        "IF(not CharacterLevelGreaterThan(4)):WeaponDamage(1d4,Slashing)",
+        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponDamage(1d6,Slashing)",
+        "IF(CharacterLevelGreaterThan(8)):WeaponDamage(1d8,Slashing)",
+    ],
+    PassivesOnEquip=[
+        "UNI_Adamantine_CriticalVsItems_Passive",
+        "MAG_IgnoreSlashingResistance_Passive",
+    ],
+    Rarity="Legendary",
+    RootTemplate=str(camp_clothes_katana_game_objects_uuid),
+    Unique="1",
+    Weapon_Properties=[
+        "Dippable",
+        "Finesse",
+        "Magical",
+        "Melee",
+        "Versatile",
+    ],
+))
+
 equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
-    "WPN_Katana",
+    "CampClothes_Katana",
 ]
 
 item_template = """\
@@ -925,7 +982,7 @@ new subtable "1,1"
 object category "I_CampClothes_Potions",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_CampClothes_Equipment",1,0,0,0,0,0,0,0
-new subtable "16000,1"
+new subtable "10000,1"
 object category "Gold",1,0,0,0,0,0,0,0
 """))
 

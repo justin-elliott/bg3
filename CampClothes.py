@@ -5,8 +5,19 @@ Generates files for the "CampClothes" mod.
 
 import os
 
-from moddb import Bolster, Defense, PackMule
-from modtools.gamedata import Armor, ObjectData, SpellData, StatusData, Weapon
+from moddb import (
+    Bolster,
+    character_level_range,
+    Defense,
+    PackMule,
+)
+from modtools.gamedata import (
+    Armor,
+    ObjectData,
+    SpellData,
+    StatusData,
+    Weapon,
+)
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import Text, TreasureTable
@@ -24,6 +35,8 @@ camp_clothes = Mod(os.path.dirname(__file__),
                    name="CampClothes",
                    mod_uuid=UUID("a93f92ad-5b31-4c9c-ac66-41082788e567"),
                    description="Adds a selection of outfits to the tutorial chest.")
+
+camp_clothes.add(character_level_range)
 
 bolster = Bolster(camp_clothes).add_bolster()
 pack_mule = PackMule(camp_clothes).add_pack_mule(5.0)
@@ -917,12 +930,15 @@ camp_clothes.add(Weapon(
     ],
     DefaultBoosts=[
         "WeaponProperty(Magical)",
-        "IF(not CharacterLevelGreaterThan(4)):WeaponEnchantment(1)",
-        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponEnchantment(2)",
-        "IF(CharacterLevelGreaterThan(8)):WeaponEnchantment(3)",
-        "IF(not CharacterLevelGreaterThan(4)):WeaponDamage(1d4,Slashing)",
-        "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):WeaponDamage(1d6,Slashing)",
-        "IF(CharacterLevelGreaterThan(8)):WeaponDamage(1d8,Slashing)",
+        "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+        "IF(CharacterLevelRange(13,16)):ReduceCriticalAttackThreshold(1)",
+        "IF(CharacterLevelRange(17,20)):ReduceCriticalAttackThreshold(2)",
+        "IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,Slashing)",
+        "IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,Slashing)",
+        "IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,Slashing)",
+        "IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,Slashing)",
     ],
     PassivesOnEquip=[
         "UNI_Adamantine_CriticalVsItems_Passive",

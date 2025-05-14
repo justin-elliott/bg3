@@ -6,23 +6,26 @@ Generates files for the "Demigod" mod.
 import os
 
 from functools import cached_property
-from modtools.gamedata import PassiveData, StatusData
+from moddb import Bolster
+from modtools.gamedata import PassiveData
 from modtools.lsx.game import Origin
 from modtools.mod import Mod
 
 
 class Demigod(Mod):
-    ABILITY_BONUS = 6
-    INITIATIVE_BONUS = 3
+    INITIATIVE_BONUS = 5
     MOVEMENT_BONUS = 4.5
     JUMP_BONUS = 2
-    CARRY_BONUS = 4
+    CARRY_BONUS = 5
+
+    _bolster: str
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="Demigod",
                          description="Adds the Demigod Origin.")
+        self._bolster = Bolster(self).add_bolster()
         self.add_origin()
 
     @cached_property
@@ -34,14 +37,13 @@ class Demigod(Mod):
         loca = self.get_localization()
         loca[display_name] = {"en": "Divine Heritage"}
         loca[description] = {"en": """
-            Your abilities are increased by [1], and you have <LSTag Tooltip="Advantage">Advantage</LSTag> on
-            <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>,
-            as well as <LSTag Tooltip="ProficiencyBonus">Proficiency</LSTag> in Constitution saving throws.
-            Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> is increased by [2], your
-            <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance is increased by [3]%,
-            and your carrying capacity is increased by [4]%.
-            You gain a +[5] bonus to Initiative, and can't be
-            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
+            Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> is increased by [1], your
+            <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> distance is increased by [2]%,
+            and your carrying capacity is increased by [3]%. You are immune to critical hits, gain a +[4] bonus to
+            Initiative, and can't be <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
+            You are <LSTag Tooltip="ProficiencyBonus">Proficient</LSTag> in all
+            <LSTag Tooltip="Dexterity">Dexterity</LSTag> and <LSTag Tooltip="Charisma">Charisma</LSTag> skills, and have
+            proficiency in Constitution and Dexterity <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
             """}
 
         self.add(PassiveData(
@@ -49,7 +51,6 @@ class Demigod(Mod):
             DisplayName=loca[display_name],
             Description=loca[description],
             DescriptionParams=[
-                self.ABILITY_BONUS,
                 f"Distance({self.MOVEMENT_BONUS})",
                 (self.JUMP_BONUS - 1) * 100,
                 (self.CARRY_BONUS - 1) * 100,
@@ -58,57 +59,24 @@ class Demigod(Mod):
             Icon="Action_SightOfTheSeelie_BestialCommunion_Wildshape",
             Properties=["Highlighted"],
             Boosts=[
-                "Advantage(AllAbilities)",
-                "Advantage(AllSavingThrows)",
-                "ProficiencyBonus(SavingThrow,Constitution)",
-                "Proficiency(MusicalInstrument)",
+                f"UnlockSpell({self._bolster})",
                 f"ActionResource(Movement,{self.MOVEMENT_BONUS},0)",
                 f"JumpMaxDistanceMultiplier({self.JUMP_BONUS})",
                 f"CarryCapacityMultiplier({self.CARRY_BONUS})",
                 f"Initiative({self.INITIATIVE_BONUS})",
+                "CriticalHit(AttackTarget,Success,Never)",
                 "StatusImmunity(SURPRISED)",
-                "StatusImmunity(HASTE_LETHARGY)",
+                "ProficiencyBonus(SavingThrow,Constitution)",
+                "ProficiencyBonus(SavingThrow,Dexterity)",
+                "ProficiencyBonus(Skill,Acrobatics)",
+                "ProficiencyBonus(Skill,SleightOfHand)",
+                "ProficiencyBonus(Skill,Stealth)",
+                "Proficiency(MusicalInstrument)",
+                "ProficiencyBonus(Skill,Deception)",
+                "ProficiencyBonus(Skill,Intimidation)",
+                "ProficiencyBonus(Skill,Performance)",
+                "ProficiencyBonus(Skill,Persuasion)",
             ],
-            StatsFunctors=[f"ApplyStatus({self.divine_heritage_status},100,-1)"],
-            StatsFunctorContext=["OnCreate", "OnLongRest", "OnShortRest"],
-        ))
-        return name
-
-    @cached_property
-    def divine_heritage_status(self) -> str:
-        name = f"{self.get_prefix()}_DIVINE_HERITAGE"
-        display_name = f"{name}_DisplayName"
-        description = f"{name}_Description"
-
-        loca = self.get_localization()
-        loca[display_name] = {"en": "Divine Heritage"}
-        loca[description] = {"en": """
-            Your abilities are increased by [1].
-            """}
-
-        self.add(StatusData(
-            name,
-            StatusType="BOOST",
-            DisplayName=loca[display_name],
-            Description=loca[description],
-            DescriptionParams=[self.ABILITY_BONUS],
-            Icon="Action_SightOfTheSeelie_BestialCommunion_Wildshape",
-            Boosts=[
-                f"Ability(Strength,{self.ABILITY_BONUS})",
-                f"Ability(Dexterity,{self.ABILITY_BONUS})",
-                f"Ability(Constitution,{self.ABILITY_BONUS})",
-                f"Ability(Intelligence,{self.ABILITY_BONUS})",
-                f"Ability(Wisdom,{self.ABILITY_BONUS})",
-                f"Ability(Charisma,{self.ABILITY_BONUS})",
-            ],
-            StackId=name,
-            StatusPropertyFlags=[
-                "ApplyToDead",
-                "DisableCombatlog",
-                "DisableOverhead",
-                "DisablePortraitIndicator",
-                "IgnoreResting",
-            ]
         ))
         return name
 
@@ -130,8 +98,7 @@ class Demigod(Mod):
             Name="Demigod",
             Passives=[
                 "DeathSavingThrows",
-                "HumanMilitia",
-                "SuperiorDarkvision",
+                "DevilsSight",
                 self.divine_heritage,
             ],
             UUID=demigod_uuid,

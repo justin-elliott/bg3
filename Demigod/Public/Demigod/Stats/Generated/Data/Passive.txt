@@ -2,11 +2,9 @@
 
 new entry "Demigod_DivineHeritage"
 type "PassiveData"
-data "Boosts" "Advantage(AllAbilities);Advantage(AllSavingThrows);ProficiencyBonus(SavingThrow,Constitution);Proficiency(MusicalInstrument);ActionResource(Movement,4.5,0);JumpMaxDistanceMultiplier(2);CarryCapacityMultiplier(4);Initiative(3);StatusImmunity(SURPRISED);StatusImmunity(HASTE_LETHARGY)"
+data "Boosts" "UnlockSpell(Demigod_Bolster);ActionResource(Movement,4.5,0);JumpMaxDistanceMultiplier(2);CarryCapacityMultiplier(5);Initiative(5);CriticalHit(AttackTarget,Success,Never);StatusImmunity(SURPRISED);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Dexterity);ProficiencyBonus(Skill,Acrobatics);ProficiencyBonus(Skill,SleightOfHand);ProficiencyBonus(Skill,Stealth);Proficiency(MusicalInstrument);ProficiencyBonus(Skill,Deception);ProficiencyBonus(Skill,Intimidation);ProficiencyBonus(Skill,Performance);ProficiencyBonus(Skill,Persuasion)"
 data "Description" "he3a67da1ge702g4e99gac7fg894ec4f52c9a"
-data "DescriptionParams" "6;Distance(4.5);100;300;3"
+data "DescriptionParams" "Distance(4.5);100;400;5"
 data "DisplayName" "hca582dd6g0fd1gf581g275cg3f1161883041"
 data "Icon" "Action_SightOfTheSeelie_BestialCommunion_Wildshape"
 data "Properties" "Highlighted"
-data "StatsFunctorContext" "OnCreate;OnLongRest;OnShortRest"
-data "StatsFunctors" "ApplyStatus(Demigod_DIVINE_HERITAGE,100,-1)"

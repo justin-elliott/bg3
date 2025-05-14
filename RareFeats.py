@@ -104,7 +104,7 @@ def ability_boost_feat() -> None:
     )
     rare_feats.add(ability_boost_passive_list)
 
-    for bonus in range(2, 18, 2):
+    for bonus in range(1, 18):
         ability_boost_passive = f"RareFeats_AbilityBoost_{bonus}"
         ability_boost_passive_list.Passives.append(ability_boost_passive)
 

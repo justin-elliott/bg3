@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_AbilityBoost_2,RareFeats_AbilityBoost_4,RareFeats_AbilityBoost_6,RareFeats_AbilityBoost_8,RareFeats_AbilityBoost_10,RareFeats_AbilityBoost_12,RareFeats_AbilityBoost_14,RareFeats_AbilityBoost_16" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_AbilityBoost_1,RareFeats_AbilityBoost_2,RareFeats_AbilityBoost_3,RareFeats_AbilityBoost_4,RareFeats_AbilityBoost_5,RareFeats_AbilityBoost_6,RareFeats_AbilityBoost_7,RareFeats_AbilityBoost_8,RareFeats_AbilityBoost_9,RareFeats_AbilityBoost_10,RareFeats_AbilityBoost_11,RareFeats_AbilityBoost_12,RareFeats_AbilityBoost_13,RareFeats_AbilityBoost_14,RareFeats_AbilityBoost_15,RareFeats_AbilityBoost_16,RareFeats_AbilityBoost_17" />
                     <attribute id="UUID" type="guid" value="ac44677f-9301-cb4c-5944-99e48ed91734" />
                 </node>
                 <node id="PassiveList">

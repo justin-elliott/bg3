@@ -64,6 +64,7 @@ class Defense:
         return name
 
     def add_warding(self, *,
+                    bonus: str = "Level",
                     display_name_handle: str = None,
                     description_handle: str = None,
                     icon: str = "PassiveFeature_ArcaneWard") -> None:
@@ -79,10 +80,10 @@ class Defense:
             name,
             DisplayName=display_name_handle,
             Description=description_handle,
-            DescriptionParams=["RegainHitPoints(max(1,Level))"],
+            DescriptionParams=[f"RegainHitPoints(max(1,{bonus}))"],
             Icon=icon,
             Properties=["Highlighted"],
-            Boosts=["DamageReduction(All,Flat,Level)"],
+            Boosts=[f"DamageReduction(All,Flat,{bonus})"],
         ))
 
         return name

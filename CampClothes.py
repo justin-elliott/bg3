@@ -523,7 +523,7 @@ def add_rituals_potion() -> str:
 
 def add_warding_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_WardingPotion"
-    warding = Defense(camp_clothes).add_warding()
+    warding = Defense(camp_clothes).add_warding(bonus="ProficiencyBonus")
     warding_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
@@ -878,11 +878,16 @@ camp_clothes.add(SpellData(
     TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
 ))
 
+loca["CampClothes_Belm_BonusAttack_Description"] = {"en": """
+    Strike out with an adder's speed, the very exemplar of swiftness embodied in steel.
+    """}
+
 camp_clothes.add(SpellData(
     "CampClothes_Belm_BonusAttack",
     using="Target_MAG_PHB_ScimitarOfSpeed_BonusAttack",
     SpellType="Target",
     Cooldown="None",
+    Description=loca["CampClothes_Belm_BonusAttack_Description"],
     SpellFlags=["IsAttack", "IsMelee", "IsHarmful"],
 ))
 
@@ -927,6 +932,7 @@ camp_clothes.add(Weapon(
         "UnlockSpell(Target_OpeningAttack)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(Rush_SpringAttack)",
+        "UnlockSpell(CampClothes_Belm_BonusAttack)",
     ],
     DefaultBoosts=[
         "WeaponProperty(Magical)",
@@ -942,6 +948,7 @@ camp_clothes.add(Weapon(
     ],
     PassivesOnEquip=[
         "UNI_Adamantine_CriticalVsItems_Passive",
+        "MAG_ArcaneEnchantment_Passive",
         "MAG_IgnoreSlashingResistance_Passive",
     ],
     Rarity="Legendary",

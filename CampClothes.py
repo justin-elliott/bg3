@@ -927,103 +927,102 @@ camp_clothes.add(GameObjects(
     ],
 ))
 
-loca[f"CampClothes_Katana_Progression_DisplayName"] = {"en": "Adamantine Weapon"}
-loca[f"CampClothes_Katana_Progression_Description"] = {"en": """
-    As the wielder levels up, the Adamantine Katana will gain the following upgrades:<br>
-    <LSTag>Level 1:</LSTag> +[1] to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, Damage Rolls, and
-                            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>. Deals an additional [2].<br>
-    <LSTag>Level 5:</LSTag> +[3] to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, Damage Rolls, and
-                            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>. Deals an additional [4].<br>
-    <LSTag>Level 9:</LSTag> +[5] to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, Damage Rolls, and
-                            <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag>. Deals an additional [6].
-                            You also gain <LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement">
-                            Kereska's Favour</LSTag><br>
-    <LSTag>Level 13:</LSTag> Deals an additional [7]. Reduce the number you need to roll a Critical Hit while attacking
-                             by [8].<br>
-    <LSTag>Level 17:</LSTag> Reduce the number you need to roll a Critical Hit while attacking by [9].
+loca["CampClothes_Katana_EnchantmentProgression_DisplayName"] = {"en": "Enchanted Blade"}
+loca["CampClothes_Katana_EnchantmentProgression_Description"] = {"en": """
+    Gain +1 to <LSTag Tooltip="AttackRoll">Attack</LSTag>, Damage, and <LSTag Tooltip="SpellDifficultyClass">Spell Save
+    DC</LSTag> rolls. This increases to +2 at <LSTag>Level 5</LSTag>, and +3 at <LSTag>Level 9</LSTag>.
     """}
 
 camp_clothes.add(PassiveData(
-    "CampClothes_Katana_Progression",
-    DisplayName=loca[f"CampClothes_Katana_Progression_DisplayName"],
-    Description=loca[f"CampClothes_Katana_Progression_Description"],
-    DescriptionParams=[
-        "1",
-        "DealDamage(1d4,Slashing)",
-        "2",
-        "DealDamage(1d6,Slashing)",
-        "3",
-        "DealDamage(1d8,Slashing)",
-        "DealDamage(1d10,Slashing)",
-        "1",
-        "2",
-    ],
-))
-
-loca["CampClothes_Katana_AdditionalDamage_DisplayName"] = {"en": "Honed Edge"}
-
-camp_clothes.add(PassiveData(
-    "CampClothes_Katana_WeaponDamageProgression",
-    DisplayName=loca["CampClothes_Katana_AdditionalDamage_DisplayName"],
-    Conditions=["AttackedWithPassiveSourceWeapon()"],
-    Boosts=[
-        "IF(CharacterLevelRange(1,4) and IsMeleeWeaponAttack()):CharacterWeaponDamage(1d4,Slashing)",
-        "IF(CharacterLevelRange(5,8) and IsMeleeWeaponAttack()):CharacterWeaponDamage(1d6,Slashing)",
-        "IF(CharacterLevelRange(9,12) and IsMeleeWeaponAttack()):CharacterWeaponDamage(1d8,Slashing)",
-        "IF(CharacterLevelRange(13,20) and IsMeleeWeaponAttack()):CharacterWeaponDamage(1d10,Slashing)",
-    ],
-    Properties=["IsHidden"],
-))
-
-loca["CampClothes_Katana_WeaponEnchantment_DisplayName"] = {"en": "Weapon Enchantment"}
-
-camp_clothes.add(PassiveData(
-    "CampClothes_Katana_WeaponEnchantmentProgression",
-    DisplayName=loca["CampClothes_Katana_WeaponEnchantment_DisplayName"],
-    Conditions=["AttackedWithPassiveSourceWeapon()"],
-    Boosts=[
-        "IF(CharacterLevelRange(1,4)):RollBonus(Attack,1)",
-        "IF(CharacterLevelRange(1,4)):CharacterWeaponDamage(1)",
-        "IF(CharacterLevelRange(5,8)):RollBonus(Attack,2)",
-        "IF(CharacterLevelRange(5,8)):CharacterWeaponDamage(2)",
-        "IF(CharacterLevelRange(9,20)):RollBonus(Attack,3)",
-        "IF(CharacterLevelRange(9,20)):CharacterWeaponDamage(3)",
-    ],
-    Properties=["IsHidden"],
-))
-
-camp_clothes.add(PassiveData(
-    "CampClothes_Katana_SpellSaveDCProgression",
-    DisplayName=loca["CampClothes_Katana_WeaponEnchantment_DisplayName"],
+    "CampClothes_Katana_EnchantmentProgression",
+    DisplayName=loca["CampClothes_Katana_EnchantmentProgression_DisplayName"],
+    Description=loca["CampClothes_Katana_EnchantmentProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(1,4)):SpellSaveDC(1)",
         "IF(CharacterLevelRange(1,4)):RollBonus(MeleeSpellAttack,1)",
         "IF(CharacterLevelRange(1,4)):RollBonus(RangedSpellAttack,1)",
+        "IF(CharacterLevelRange(1,4) and (IsSpell() or IsMeleeWeaponAttack())):DamageBonus(1)",
         "IF(CharacterLevelRange(5,8)):SpellSaveDC(2)",
         "IF(CharacterLevelRange(5,8)):RollBonus(MeleeSpellAttack,2)",
         "IF(CharacterLevelRange(5,8)):RollBonus(RangedSpellAttack,2)",
+        "IF(CharacterLevelRange(5,8) and (IsSpell() or IsMeleeWeaponAttack())):DamageBonus(2)",
         "IF(CharacterLevelRange(9,20)):SpellSaveDC(3)",
         "IF(CharacterLevelRange(9,20)):RollBonus(MeleeSpellAttack,3)",
         "IF(CharacterLevelRange(9,20)):RollBonus(RangedSpellAttack,3)",
+        "IF(CharacterLevelRange(9,20) and (IsSpell() or IsMeleeWeaponAttack())):DamageBonus(3)",
     ],
-    Properties=["IsHidden"],
 ))
+
+loca["CampClothes_Katana_CriticalProgression_DisplayName"] = {"en": "Improved Critical"}
+loca["CampClothes_Katana_CriticalProgression_Description"] = {"en": """
+    At <LSTag>Level 13</LSTag>, you reduce the number you need to roll a Critical Hit while attacking by 1. This is
+    further reduced by 1 at <LSTag>Level 17</LSTag>.
+    """}
 
 camp_clothes.add(PassiveData(
     "CampClothes_Katana_CriticalProgression",
+    DisplayName=loca["CampClothes_Katana_CriticalProgression_DisplayName"],
+    Description=loca["CampClothes_Katana_CriticalProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(13,16)):ReduceCriticalAttackThreshold(1)",
         "IF(CharacterLevelRange(17,20)):ReduceCriticalAttackThreshold(2)",
     ],
-    Properties=["IsHidden"],
 ))
+
+loca["CampClothes_Katana_SpellProgression_DisplayName"] = {"en": "Kereska's Favour"}
+loca["CampClothes_Katana_SpellProgression_Description"] = {"en": """
+    At <LSTag>Level 9</LSTag> you gain
+    <LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement">Kereska's Favour</LSTag>.
+    """}
 
 camp_clothes.add(PassiveData(
     "CampClothes_Katana_SpellProgression",
+    DisplayName=loca["CampClothes_Katana_SpellProgression_DisplayName"],
+    Description=loca["CampClothes_Katana_SpellProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(9,20)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
     ],
-    Properties=["IsHidden"],
+))
+
+loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"] = {"en": "Extra Attack"}
+loca["CampClothes_Katana_ExtraAttackProgression_Description"] = {"en": """
+    At <LSTag>Level 5</LSTag> you gain <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>. You gain
+    additional attacks at <LSTag>Level 11</LSTag> and <LSTag>Level 20</LSTag>.
+    """}
+
+camp_clothes.add(PassiveData(
+    "CampClothes_Katana_ExtraAttackProgression",
+    DisplayName=loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"],
+    Description=loca["CampClothes_Katana_ExtraAttackProgression_Description"],
+    Boosts=[
+        "IF(CharacterLevelRange(5,10)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1)",
+        "IF(CharacterLevelRange(11,19)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_2)",
+        "IF(CharacterLevelRange(20,20)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_3)",
+    ],
+))
+
+camp_clothes.add(StatusData(
+    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
+    StatusType="BOOST",
+    DisplayName=loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"],
+    Icon="PassiveFeature_ExtraAttack",
+    Passives=["ExtraAttack"],
+    StackId="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK",
+    StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
+))
+
+camp_clothes.add(StatusData(
+    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_2",
+    using="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
+    StatusType="BOOST",
+    Passives=["ExtraAttack_2"],
+))
+
+camp_clothes.add(StatusData(
+    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_3",
+    using="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
+    StatusType="BOOST",
+    Passives=["ExtraAttack_3"],
 ))
 
 camp_clothes.add(Weapon(
@@ -1036,18 +1035,23 @@ camp_clothes.add(Weapon(
         "UnlockSpell(Rush_SpringAttack)",
         "UnlockSpell(CampClothes_Belm_BonusAttack)",
     ],
-    Boosts=[
+    DefaultBoosts=[
         "WeaponProperty(Magical)",
+        "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+        "IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,Slashing)",
+        "IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,Slashing)",
+        "IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,Slashing)",
+        "IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,Slashing)",
     ],
     PassivesOnEquip=[
         "UNI_Adamantine_CriticalVsItems_Passive",
         "MAG_IgnoreSlashingResistance_Passive",
-        "CampClothes_Katana_Progression",
-        "CampClothes_Katana_WeaponDamageProgression",
-        "CampClothes_Katana_WeaponEnchantmentProgression",
-        "CampClothes_Katana_SpellSaveDCProgression",
-        "CampClothes_Katana_CriticalProgression",
+        "CampClothes_Katana_EnchantmentProgression",
+        "CampClothes_Katana_ExtraAttackProgression",
         "CampClothes_Katana_SpellProgression",
+        "CampClothes_Katana_CriticalProgression",
     ],
     Rarity="Legendary",
     RootTemplate=str(camp_clothes_katana_game_objects_uuid),

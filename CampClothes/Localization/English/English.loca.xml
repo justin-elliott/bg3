@@ -54,6 +54,4 @@
     <content contentuid="h202dd996g52b0g686egdc08g0135611166bf" version="1">At &lt;LSTag&gt;Level 13&lt;/LSTag&gt;, you reduce the number you need to roll a Critical Hit while attacking by 1. This is further reduced by 1 at &lt;LSTag&gt;Level 17&lt;/LSTag&gt;.</content>
     <content contentuid="h3ac19f84g2768g8293g706fg110a8dff2347" version="1">Kereska's Favour</content>
     <content contentuid="hbda1575fg2b82g5535gbf52g3b3e3970df5c" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
-    <content contentuid="h4cf099cdg318fg32feg8596gefa66491c7d8" version="1">Extra Attack</content>
-    <content contentuid="he85b1e0bg10feg2bc8ge33bg5b562943a4cb" version="1">At &lt;LSTag&gt;Level 5&lt;/LSTag&gt; you gain &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt;. You gain additional attacks at &lt;LSTag&gt;Level 11&lt;/LSTag&gt; and &lt;LSTag&gt;Level 20&lt;/LSTag&gt;.</content>
 </contentList>

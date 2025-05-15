@@ -14,6 +14,7 @@ from moddb import (
 )
 from modtools.gamedata import (
     PassiveData,
+    StatusData,
 )
 from modtools.lsx.game import (
     CharacterAbility,
@@ -291,9 +292,10 @@ def extra_attacks_feat() -> None:
 
     loca["RareFeats_ExtraAttacks_DisplayName"] = {"en": "Rare Feats: Extra Attacks"}
     loca["RareFeats_ExtraAttacks_Description"] = {"en": """
-        Gain <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>,
-        <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
-        <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag>.
+        Gain <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
+        <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag>. At <LSTag>Level 5</LSTag> you gain
+        <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>. You gain additional attacks at
+        <LSTag>Level 11</LSTag> and <LSTag>Level 20</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
@@ -306,7 +308,7 @@ def extra_attacks_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_ExtraAttacks",
-        PassivesAdded=["ExtraAttack", "FastHands", "RareFeats_ActionSurge_Unlock"],
+        PassivesAdded=["RareFeats_ExtraAttack", "FastHands", "RareFeats_ActionSurge_Unlock"],
         UUID=extra_attacks_uuid,
     ))
 
@@ -317,6 +319,41 @@ def extra_attacks_feat() -> None:
         Icon="Skill_Fighter_ActionSurge",
         Boosts=["UnlockSpell(Shout_ActionSurge)"],
         Properties=["IsHidden"],
+    ))
+
+    rare_feats.add(PassiveData(
+        "RareFeats_ExtraAttack",
+        DisplayName=loca["RareFeats_ExtraAttacks_DisplayName"],
+        Description=loca["RareFeats_ExtraAttacks_Description"],
+        Boosts=[
+            "IF(CharacterLevelRange(5,10)):ApplyStatus(SELF,RARE_FEATS_EXTRA_ATTACK_1,100,-1)",
+            "IF(CharacterLevelRange(11,19)):ApplyStatus(SELF,RARE_FEATS_EXTRA_ATTACK_2,100,-1)",
+            "IF(CharacterLevelRange(20,20)):ApplyStatus(SELF,RARE_FEATS_EXTRA_ATTACK_3,100,-1)",
+        ],
+    ))
+
+    rare_feats.add(StatusData(
+        "RARE_FEATS_EXTRA_ATTACK_1",
+        StatusType="BOOST",
+        DisplayName=loca["RareFeats_ExtraAttacks_DisplayName"],
+        Icon="PassiveFeature_ExtraAttack",
+        Passives=["ExtraAttack"],
+        StackId="RARE_FEATS_EXTRA_ATTACK",
+        StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
+    ))
+
+    rare_feats.add(StatusData(
+        "RARE_FEATS_EXTRA_ATTACK_2",
+        using="RARE_FEATS_EXTRA_ATTACK_1",
+        StatusType="BOOST",
+        Passives=["ExtraAttack_2"],
+    ))
+
+    rare_feats.add(StatusData(
+        "RARE_FEATS_EXTRA_ATTACK_3",
+        using="RARE_FEATS_EXTRA_ATTACK_1",
+        StatusType="BOOST",
+        Passives=["ExtraAttack_3"],
     ))
 
 

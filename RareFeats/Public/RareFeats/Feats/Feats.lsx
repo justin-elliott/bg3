@@ -34,7 +34,7 @@
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_ExtraAttacks" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;FastHands;RareFeats_ActionSurge_Unlock" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_ExtraAttack;FastHands;RareFeats_ActionSurge_Unlock" />
                     <attribute id="UUID" type="guid" value="402c4c1c-d78e-5f7f-1116-899458e77347" />
                 </node>
                 <node id="Feat">

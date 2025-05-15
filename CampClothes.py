@@ -984,47 +984,6 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
-loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"] = {"en": "Extra Attack"}
-loca["CampClothes_Katana_ExtraAttackProgression_Description"] = {"en": """
-    At <LSTag>Level 5</LSTag> you gain <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>. You gain
-    additional attacks at <LSTag>Level 11</LSTag> and <LSTag>Level 20</LSTag>.
-    """}
-
-camp_clothes.add(PassiveData(
-    "CampClothes_Katana_ExtraAttackProgression",
-    DisplayName=loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"],
-    Description=loca["CampClothes_Katana_ExtraAttackProgression_Description"],
-    Boosts=[
-        "IF(CharacterLevelRange(5,10)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1)",
-        "IF(CharacterLevelRange(11,19)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_2)",
-        "IF(CharacterLevelRange(20,20)):ApplyStatus(SELF,CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_3)",
-    ],
-))
-
-camp_clothes.add(StatusData(
-    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
-    StatusType="BOOST",
-    DisplayName=loca["CampClothes_Katana_ExtraAttackProgression_DisplayName"],
-    Icon="PassiveFeature_ExtraAttack",
-    Passives=["ExtraAttack"],
-    StackId="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK",
-    StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
-))
-
-camp_clothes.add(StatusData(
-    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_2",
-    using="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
-    StatusType="BOOST",
-    Passives=["ExtraAttack_2"],
-))
-
-camp_clothes.add(StatusData(
-    "CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_3",
-    using="CAMP_CLOTHES_UNLOCK_EXTRA_ATTACK_1",
-    StatusType="BOOST",
-    Passives=["ExtraAttack_3"],
-))
-
 camp_clothes.add(Weapon(
     "CampClothes_Katana",
     using="WPN_Longsword",
@@ -1048,7 +1007,6 @@ camp_clothes.add(Weapon(
         "UNI_Adamantine_CriticalVsItems_Passive",
         "MAG_IgnoreSlashingResistance_Passive",
         "CampClothes_Katana_EnchantmentProgression",
-        "CampClothes_Katana_ExtraAttackProgression",
         "CampClothes_Katana_SpellProgression",
         "CampClothes_Katana_CriticalProgression",
     ],

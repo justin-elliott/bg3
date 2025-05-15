@@ -1033,7 +1033,6 @@ camp_clothes.add(Weapon(
         "UnlockSpell(Target_OpeningAttack)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(Rush_SpringAttack)",
-        "UnlockSpell(CampClothes_Belm_BonusAttack)",
     ],
     DefaultBoosts=[
         "WeaponProperty(Magical)",

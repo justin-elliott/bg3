@@ -90,6 +90,13 @@
                     <attribute id="UUID" type="guid" value="a7b864d7-531a-2e4e-e03a-d1127995f3c3" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h86cc8195gb8d1gc674g7b72ge747e2bd3907" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="he9888a31g63e5ge095gb0edg76bd3952494e" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_RunningJump" />
+                    <attribute id="FeatId" type="guid" value="4bb0403f-d1b6-fb62-d02a-5cdfefffcdbb" />
+                    <attribute id="UUID" type="guid" value="e7465be0-0314-7787-ed8f-0fc66b114198" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h34f1f61egaecfg9095gcbcdgcbe8bde9b8dc" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h50c4428cgb4efg1aa7g1b32gac7c4b443231" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_Skilled" />

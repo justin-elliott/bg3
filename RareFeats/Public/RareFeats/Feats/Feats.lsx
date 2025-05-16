@@ -74,6 +74,11 @@
                     <attribute id="UUID" type="guid" value="fabd93ce-594c-81fb-2eb8-f5648b560d39" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_RunningJump" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_RunningJump" />
+                    <attribute id="UUID" type="guid" value="4bb0403f-d1b6-fb62-d02a-5cdfefffcdbb" />
+                </node>
+                <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_Skilled" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)" />

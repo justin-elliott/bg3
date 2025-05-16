@@ -37,6 +37,9 @@ rare_feats = Mod(os.path.dirname(__file__),
 loca = rare_feats.get_localization()
 loca.add_language("en", "English")
 
+cunning_actions = CunningActions(rare_feats)
+running_jump = cunning_actions.add_running_jump()
+
 
 def iife(fn: Callable[[], None]) -> Callable[[], None]:
     """Immediate invoke our decorated function."""
@@ -244,8 +247,6 @@ def battle_magic_feat() -> None:
 @iife
 def cunning_actions_feat() -> None:
     """Cunning actions."""
-    cunning_actions = CunningActions(rare_feats)
-    running_jump = cunning_actions.add_running_jump()
     cunning_actions_uuid = rare_feats.make_uuid("RareFeats_CunningActions")
 
     loca["RareFeats_CunningActions_DisplayName"] = {"en": "Rare Feats: Cunning Actions"}
@@ -610,6 +611,31 @@ def performer_feat() -> None:
         PassivesAdded="Performer",
         Selectors=f"SelectPassives({performer_passive_list},1,RareFeats_Performer)",
         UUID=performer_uuid,
+    ))
+
+
+@iife
+def running_jump_feat() -> None:
+    """Cunning actions."""
+    running_jump_uuid = rare_feats.make_uuid("RareFeats_RunningJump")
+
+    loca["RareFeats_RunningJump_DisplayName"] = {"en": "Rare Feats: Running Jump"}
+    loca["RareFeats_RunningJump_Description"] = {"en": f"""
+        You gain <LSTag Type="Passive" Tooltip="{running_jump}">Running Jump</LSTag>.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_RunningJump_DisplayName"],
+        Description=loca["RareFeats_RunningJump_Description"],
+        ExactMatch="RareFeats_RunningJump",
+        FeatId=running_jump_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_RunningJump"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_RunningJump",
+        PassivesAdded=[running_jump],
+        UUID=running_jump_uuid,
     ))
 
 

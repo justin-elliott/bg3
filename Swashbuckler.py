@@ -5,16 +5,13 @@ Generates files for the "Swashbuckler" mod.
 
 import argparse
 import os
-import re
 
 from dataclasses import dataclass
-from functools import cached_property
 from moddb import (
     Bolster,
     Movement,
     PackMule,
 )
-from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
     CharacterClass,
     Dependencies,
@@ -25,7 +22,6 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
-from typing import Final
 
 
 progression.include(

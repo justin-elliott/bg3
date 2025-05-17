@@ -293,10 +293,9 @@ def extra_attacks_feat() -> None:
 
     loca["RareFeats_ExtraAttacks_DisplayName"] = {"en": "Rare Feats: Extra Attacks"}
     loca["RareFeats_ExtraAttacks_Description"] = {"en": """
-        Gain <LSTag Type="Passive" Tooltip="FastHands">Fast Hands</LSTag>, and
-        <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag>. At <LSTag>Level 5</LSTag> you gain
-        <LSTag Type="Passive" Tooltip="ExtraAttack">Extra Attack</LSTag>. You gain additional attacks at
-        <LSTag>Level 11</LSTag> and <LSTag>Level 20</LSTag>.
+        You gain <LSTag Type="Spell" Tooltip="Shout_ActionSurge">Action Surge</LSTag>. At <LSTag>Level 5</LSTag> you can
+        make a second <LSTag Type="Passive" Tooltip="ExtraAttack">attack</LSTag> after making an unarmed or weapon
+        attack. You gain additional attacks at <LSTag>Level 11</LSTag> and <LSTag>Level 20</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
@@ -309,7 +308,7 @@ def extra_attacks_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_ExtraAttacks",
-        PassivesAdded=["RareFeats_ExtraAttack", "FastHands", "RareFeats_ActionSurge_Unlock"],
+        PassivesAdded=["RareFeats_ExtraAttack", "RareFeats_ActionSurge_Unlock"],
         UUID=extra_attacks_uuid,
     ))
 

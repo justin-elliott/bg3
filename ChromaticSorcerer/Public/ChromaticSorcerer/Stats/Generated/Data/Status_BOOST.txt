@@ -8,7 +8,6 @@ data "Description" "h5400c603g9fb0g194bg8a78g3cff265baf8f"
 data "DescriptionParams" "LevelMapValue(ChromaticSorcerer_Bolster_AidValue);Distance(12)"
 data "DisplayName" "heb072c7bg66e7g8173g466cgd5976e6dba01"
 data "Icon" "Spell_Abjuration_Aid"
-data "Passives" "Blindsight"
 data "StackId" "AID"
 data "StatusGroups" "SG_RemoveOnRespec"
 

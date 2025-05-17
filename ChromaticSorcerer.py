@@ -12,6 +12,7 @@ from functools import cached_property
 from moddb import (
     Bolster,
     multiply_resources,
+    PackMule,
 )
 from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import (
@@ -19,7 +20,6 @@ from modtools.lsx.game import (
     CharacterClass,
     Dependencies,
     Progression,
-    SpellList,
 )
 from modtools.replacers import (
     only_existing_progressions,
@@ -38,17 +38,21 @@ progression.include(
 class ChromaticSorcerer(Replacer):
     @dataclass
     class Args:
-        feats: int      # Feats every n levels
-        spells: int     # Multiplier for spell slots
-        actions: int    # Multiplier for other action resources (Sorcery Points)
-        skills: int     # Number of skills to select at character creation
-        expertise: int  # Number of skill expertises to select at character creation
+        feats: int             # Feats every n levels
+        spells_per_level: int  # Multiplier for spells per level
+        spells: int            # Multiplier for spell slots
+        actions: int           # Multiplier for other action resources (Sorcery Points)
+        skills: int            # Number of skills to select at character creation
+        expertise: int         # Number of skill expertises to select at character creation
 
     _SELECT_SORCERER_SPELLS: Final = re.compile(
         r"^\s*SelectSpells\(\s*(\w{8}-\w{4}-\w{4}-\w{4}-\w{12})\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*SorcererSpell\s*\)\s*$")
 
     _args: Args
     _feat_levels: set[int]
+
+    # Passives
+    _pack_mule: str
 
     # Spells
     _bolster: str
@@ -82,18 +86,18 @@ class ChromaticSorcerer(Replacer):
         loca[f"{name}_DisplayName"] = {"en": "Draconic Resilience"}
         loca[f"{name}_Description"] = {"en": """
             Dragon-like scales cover parts of your skin. Your base <LSTag Tooltip="ArmourClass">Armour Class</LSTag> is
-            increased by [1], and you take [2] less damage from all sources.
+            increased by [1], and all damage that you take is reduced by [2].
             """}
 
         self.mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            DescriptionParams=["3", "3"],
+            DescriptionParams=["3", "RegainHitPoints(ProficiencyBonus)"],
             Icon="PassiveFeature_DraconicResilience",
             Properties="Highlighted",
             BoostContext=["OnEquip", "OnCreate"],
-            Boosts=["AC(3)", "DamageReduction(All,Flat,3)"],
+            Boosts=["AC(3)", "DamageReduction(All,Flat,ProficiencyBonus)"],
         ))
 
     def _elemental_affinity(self):
@@ -206,6 +210,7 @@ class ChromaticSorcerer(Replacer):
         else:
             self._feat_levels = args.feats - frozenset([1])
 
+        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._bolster = Bolster(self.mod).add_bolster()
 
         self._draconic_ancestry()
@@ -222,13 +227,14 @@ class ChromaticSorcerer(Replacer):
         for selector in progression.Selectors:
             if (match := self._SELECT_SORCERER_SPELLS.match(selector)) is not None:
                 spelllist, new_count, replace_count = match.groups()
-                updated_count = (int(new_count) or 1) * self._args.spells
+                updated_count = (int(new_count) or 1) * self._args.spells_per_level
                 selector = f"SelectSpells({spelllist},{updated_count},{replace_count},SorcererSpell)"
             selectors.append(selector)
         progression.Selectors = selectors
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1_skills(self, progression: Progression) -> None:
+        progression.PassivesAdded += [self._pack_mule]
         selectors = progression.Selectors
         if self._args.skills is not None:
             selectors = [selector for selector in selectors if not selector.startswith("SelectSkills(")]
@@ -331,8 +337,10 @@ if __name__ == "__main__":
         description="Changes the Copper Draconic Sorcerer subclass to a Chromatic Draconic Sorcerer.")
     parser.add_argument("-f", "--feats", type=level_list, default=set(),
                         help="Feat progression every n levels (defaulting to double progression)")
-    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
-                        help="Spell slot and spells per level multiplier (defaulting to 2)")
+    parser.add_argument("-l", "--spells-per-level", type=int, choices=range(1, 9), default=2,
+                        help="Spells per level multiplier (defaulting to 2)")
+    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=4,
+                        help="Spell slot multiplier (defaulting to 4)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=4,
                         help="Action resource (Sorcery Point) multiplier (defaulting to 4)")
     parser.add_argument("-k", "--skills", type=int, default=6,

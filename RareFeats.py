@@ -661,7 +661,7 @@ def skilled_feat() -> None:
         CanBeTakenMultipleTimes=True,
         Name="RareFeats_Skilled",
         Selectors=[
-            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)",
         ],
         UUID=skilled_uuid,
     ))

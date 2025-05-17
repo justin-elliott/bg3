@@ -9,6 +9,7 @@ import os
 from dataclasses import dataclass
 from moddb import (
     Bolster,
+    CunningActions,
     Movement,
     PackMule,
 )
@@ -46,6 +47,7 @@ class Swashbuckler(Replacer):
     _fast_movement_60: str
     _fast_movement_75: str
     _pack_mule: str
+    _running_jump: str
 
     # Spells
     _bolster: str
@@ -82,6 +84,7 @@ class Swashbuckler(Replacer):
         self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5, "Fleet of Foot")
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0, "Fleet of Foot")
         self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5, "Fleet of Foot")
+        self._running_jump = CunningActions(self.mod).add_running_jump()
 
     @progression(CharacterClass.ROGUE, 1)
     def rogue_1(self, progression: Progression) -> None:
@@ -99,6 +102,7 @@ class Swashbuckler(Replacer):
     def level_3(self, progression: Progression) -> None:
         progression.PassivesAdded += [
             self._fast_movement_30,
+            self._running_jump,
             "Athlete_StandUp",
         ]
         progression.Selectors = [f"AddSpells({self._ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)"]

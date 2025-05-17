@@ -89,7 +89,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="PassivesAdded" type="LSString" value="FancyFootwork;RakishAudacity;SneakAttackSwitch;Swashbuckler_FastMovement_30;Athlete_StandUp" />
+                    <attribute id="PassivesAdded" type="LSString" value="FancyFootwork;RakishAudacity;SneakAttackSwitch;Swashbuckler_FastMovement_30;Swashbuckler_RunningJump;Athlete_StandUp" />
                     <attribute id="PassivesRemoved" type="LSString" value="SneakAttack_Unlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared)" />

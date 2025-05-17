@@ -6,7 +6,8 @@
     <content contentuid="hf1a3bee1g2d6fga13bg636eg66922904e518" version="1">Bolster</content>
     <content contentuid="h24173212g3926g6e46g2521g6e969f589aa8" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="hae63eaf1g3f91g1f14g858bga734af9b7fed" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="hc1e3f7b9gfb22g2b0bgc481g74db102a6475" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h7b607097g76afgc108g07b8gb0a17d060f3a" version="1">Running Jump</content>
     <content contentuid="hecf92411gf998g64b4gb1a1gd97e1db55780" version="1">After &lt;LSTag Type="Spell" Tooltip="Shout_Dash"&gt;Dashing&lt;/LSTag&gt; or taking a similar action, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; once that turn without using a bonus action.</content>
+    <content contentuid="h1147d124g0828g0a13g7199gb8a14c6a9de1" version="1">Fleet of Foot</content>
+    <content contentuid="hc1e3f7b9gfb22g2b0bgc481g74db102a6475" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
 </contentList>

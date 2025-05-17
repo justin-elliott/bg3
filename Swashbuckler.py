@@ -80,11 +80,16 @@ class Swashbuckler(Replacer):
 
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._bolster = Bolster(self.mod).add_bolster_spell_list()
-        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0, "Fleet of Foot")
-        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5, "Fleet of Foot")
-        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0, "Fleet of Foot")
-        self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5, "Fleet of Foot")
         self._running_jump = CunningActions(self.mod).add_running_jump()
+
+        fleet_of_foot = f"{self._mod.get_prefix()}_FleetOfFoot"
+        loca = self._mod.get_localization()
+        loca[fleet_of_foot] = {"en": "Fleet of Foot"}
+    
+        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0, loca[fleet_of_foot])
+        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5, loca[fleet_of_foot])
+        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0, loca[fleet_of_foot])
+        self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5, loca[fleet_of_foot])
 
     @progression(CharacterClass.ROGUE, 1)
     def rogue_1(self, progression: Progression) -> None:

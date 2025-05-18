@@ -109,6 +109,7 @@
                     <attribute id="Name" type="LSString" value="Swashbuckler" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(7472ff64-d1d6-34bf-11f5-0414a3963317,,Charisma,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
                     <attribute id="UUID" type="guid" value="54e73a08-1563-dca0-a479-0e3ffe8a48ff" />
                 </node>

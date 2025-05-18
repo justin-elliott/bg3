@@ -525,7 +525,7 @@ def add_rituals_potion() -> str:
 
 def add_warding_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_WardingPotion"
-    warding = Defense(camp_clothes).add_warding(bonus="ProficiencyBonus")
+    warding = Defense(camp_clothes).add_warding()
     warding_potion_uuid = camp_clothes.make_uuid(name)
 
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Warding"}
@@ -970,44 +970,6 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
-camp_clothes.add(SpellData(
-    "CampClothes_Katana_Counterspell",
-    using="Target_Counterspell_6",
-    SpellType="Target",
-    InterruptPrototype="CampClothes_Katana_CounterspellInterrupt",
-    UseCosts=["ReactionActionPoint:1"],
-))
-
-camp_clothes.add(InterruptData(
-    "CampClothes_Katana_CounterspellInterrupt",
-    using="Interrupt_Counterspell_6",
-    Success=["Counterspell()", "UseSpell(OBSERVER_SOURCE,CampClothes_Katana_CounterspellSuccess,true,true,true)"],
-    Cost=["ReactionActionPoint:1"],
-))
-
-camp_clothes.add(SpellData(
-    "CampClothes_Katana_CounterspellSuccess",
-    using="Target_Counterspell_Success",
-    SpellType="Target",
-    InterruptPrototype="CampClothes_Katana_CounterspellInterrupt",
-    UseCosts=["ReactionActionPoint:1"],
-))
-
-loca["CampClothes_Katana_SpellProgression_DisplayName"] = {"en": "Counterspell"}
-loca["CampClothes_Katana_SpellProgression_Description"] = {"en": """
-    At <LSTag>Level 5</LSTag> you gain
-    <LSTag Type="Spell" Tooltip="CampClothes_Katana_Counterspell">Counterspell</LSTag>.
-    """}
-
-camp_clothes.add(PassiveData(
-    "CampClothes_Katana_SpellProgression",
-    DisplayName=loca["CampClothes_Katana_SpellProgression_DisplayName"],
-    Description=loca["CampClothes_Katana_SpellProgression_Description"],
-    Boosts=[
-        "IF(CharacterLevelRange(5,20)):UnlockSpell(CampClothes_Katana_Counterspell)",
-    ],
-))
-
 camp_clothes.add(Weapon(
     "CampClothes_Katana",
     using="WPN_Longsword",
@@ -1030,8 +992,8 @@ camp_clothes.add(Weapon(
     PassivesOnEquip=[
         "UNI_Adamantine_CriticalVsItems_Passive",
         "MAG_IgnoreSlashingResistance_Passive",
+        Defense(camp_clothes).add_warding(icon=None),
         "CampClothes_Katana_EnchantmentProgression",
-        "CampClothes_Katana_SpellProgression",
         "CampClothes_Katana_CriticalProgression",
     ],
     Rarity="Legendary",

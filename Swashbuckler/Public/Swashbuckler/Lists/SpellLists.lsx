@@ -10,6 +10,11 @@
                     <attribute id="Spells" type="LSString" value="Swashbuckler_Bolster" />
                     <attribute id="UUID" type="guid" value="1071ce35-4bbc-1150-ee98-b9c2942f62ab" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Counterspell spell list" />
+                    <attribute id="Spells" type="LSString" value="Swashbuckler_Counterspell" />
+                    <attribute id="UUID" type="guid" value="7472ff64-d1d6-34bf-11f5-0414a3963317" />
+                </node>
             </children>
         </node>
     </region>

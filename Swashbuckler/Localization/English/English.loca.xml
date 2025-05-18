@@ -10,4 +10,6 @@
     <content contentuid="hecf92411gf998g64b4gb1a1gd97e1db55780" version="1">After &lt;LSTag Type="Spell" Tooltip="Shout_Dash"&gt;Dashing&lt;/LSTag&gt; or taking a similar action, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; once that turn without using a bonus action.</content>
     <content contentuid="h1147d124g0828g0a13g7199gb8a14c6a9de1" version="1">Fleet of Foot</content>
     <content contentuid="hc1e3f7b9gfb22g2b0bgc481g74db102a6475" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h40531acbg0e48ge334g03e8g7ac21d499acd" version="1">Dirty Trick: Counterspell</content>
+    <content contentuid="hb3524a63gbb5egf2b3g82e2g6a7dad5e555b" version="1">Try to stop a spell being cast.</content>
 </contentList>

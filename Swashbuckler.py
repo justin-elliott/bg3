@@ -9,6 +9,7 @@ import os
 from dataclasses import dataclass
 from moddb import (
     Bolster,
+    Defense,
     CunningActions,
     Movement,
     PackMule,
@@ -51,6 +52,7 @@ class Swashbuckler(Replacer):
 
     # Spells
     _bolster: str
+    _counterspell: str
 
     def __init__(self, args: Args):
         super().__init__(os.path.dirname(__file__),
@@ -91,6 +93,10 @@ class Swashbuckler(Replacer):
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0, loca[fleet_of_foot])
         self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5, loca[fleet_of_foot])
 
+        counterspell = f"{self._mod.get_prefix()}_Counterspell"
+        loca[counterspell] = {"en": "Dirty Trick: Counterspell"}
+        self._counterspell = Defense(self.mod).add_counterspell_spell_list(display_name_handle=loca[counterspell])
+
     @progression(CharacterClass.ROGUE, 1)
     def rogue_1(self, progression: Progression) -> None:
         progression.PassivesAdded += [self._pack_mule]
@@ -119,6 +125,7 @@ class Swashbuckler(Replacer):
     @progression(CharacterClass.ROGUE_SWASHBUCKLER, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = ["ExtraAttack"]
+        progression.Selectors = [f"AddSpells({self._counterspell},,Charisma,,AlwaysPrepared)"]
 
     @progression(CharacterClass.ROGUE_SWASHBUCKLER, 6)
     def level_6(self, progression: Progression) -> None:

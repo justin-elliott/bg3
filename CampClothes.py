@@ -13,6 +13,7 @@ from moddb import (
 )
 from modtools.gamedata import (
     Armor,
+    InterruptData,
     ObjectData,
     PassiveData,
     SpellData,
@@ -977,10 +978,18 @@ camp_clothes.add(SpellData(
     UseCosts=["ReactionActionPoint:1"],
 ))
 
-camp_clothes.add(SpellData(
+camp_clothes.add(InterruptData(
     "CampClothes_Katana_CounterspellInterrupt",
     using="Interrupt_Counterspell_6",
-    SpellType="Interrupt",
+    Success=["Counterspell()", "UseSpell(OBSERVER_SOURCE,CampClothes_Katana_CounterspellSuccess,true,true,true)"],
+    Cost=["ReactionActionPoint:1"],
+))
+
+camp_clothes.add(SpellData(
+    "CampClothes_Katana_CounterspellSuccess",
+    using="Target_Counterspell_Success",
+    SpellType="Target",
+    InterruptPrototype="CampClothes_Katana_CounterspellInterrupt",
     UseCosts=["ReactionActionPoint:1"],
 ))
 

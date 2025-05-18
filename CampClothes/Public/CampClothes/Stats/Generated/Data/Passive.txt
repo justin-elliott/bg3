@@ -33,6 +33,6 @@ data "DisplayName" "hdc76df54g222cg3316gf2a5g98192d212665"
 
 new entry "CampClothes_Katana_SpellProgression"
 type "PassiveData"
-data "Boosts" "IF(CharacterLevelRange(9,20)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
+data "Boosts" "IF(CharacterLevelRange(5,20)):UnlockSpell(CampClothes_Katana_Counterspell)"
 data "Description" "hbda1575fg2b82g5535gbf52g3b3e3970df5c"
 data "DisplayName" "h3ac19f84g2768g8293g706fg110a8dff2347"

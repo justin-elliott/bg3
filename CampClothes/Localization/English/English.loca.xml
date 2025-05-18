@@ -52,6 +52,6 @@
     <content contentuid="h165a0f72g5794g3217g6689g1342d66012ea" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Spell Save DC&lt;/LSTag&gt; rolls. This increases to +2 at &lt;LSTag&gt;Level 5&lt;/LSTag&gt;, and +3 at &lt;LSTag&gt;Level 9&lt;/LSTag&gt;.</content>
     <content contentuid="hdc76df54g222cg3316gf2a5g98192d212665" version="1">Improved Critical</content>
     <content contentuid="h202dd996g52b0g686egdc08g0135611166bf" version="1">At &lt;LSTag&gt;Level 13&lt;/LSTag&gt;, you reduce the number you need to roll a Critical Hit while attacking by 1. This is further reduced by 1 at &lt;LSTag&gt;Level 17&lt;/LSTag&gt;.</content>
-    <content contentuid="h3ac19f84g2768g8293g706fg110a8dff2347" version="1">Kereska's Favour</content>
-    <content contentuid="hbda1575fg2b82g5535gbf52g3b3e3970df5c" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
+    <content contentuid="h3ac19f84g2768g8293g706fg110a8dff2347" version="1">Counterspell</content>
+    <content contentuid="hbda1575fg2b82g5535gbf52g3b3e3970df5c" version="1">At &lt;LSTag&gt;Level 5&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="CampClothes_Katana_Counterspell"&gt;Counterspell&lt;/LSTag&gt;.</content>
 </contentList>

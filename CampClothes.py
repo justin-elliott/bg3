@@ -969,10 +969,25 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
-loca["CampClothes_Katana_SpellProgression_DisplayName"] = {"en": "Kereska's Favour"}
+camp_clothes.add(SpellData(
+    "CampClothes_Katana_Counterspell",
+    using="Target_Counterspell_6",
+    SpellType="Target",
+    InterruptPrototype="CampClothes_Katana_CounterspellInterrupt",
+    UseCosts=["ReactionActionPoint:1"],
+))
+
+camp_clothes.add(SpellData(
+    "CampClothes_Katana_CounterspellInterrupt",
+    using="Interrupt_Counterspell_6",
+    SpellType="Interrupt",
+    UseCosts=["ReactionActionPoint:1"],
+))
+
+loca["CampClothes_Katana_SpellProgression_DisplayName"] = {"en": "Counterspell"}
 loca["CampClothes_Katana_SpellProgression_Description"] = {"en": """
-    At <LSTag>Level 9</LSTag> you gain
-    <LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement">Kereska's Favour</LSTag>.
+    At <LSTag>Level 5</LSTag> you gain
+    <LSTag Type="Spell" Tooltip="CampClothes_Katana_Counterspell">Counterspell</LSTag>.
     """}
 
 camp_clothes.add(PassiveData(
@@ -980,7 +995,7 @@ camp_clothes.add(PassiveData(
     DisplayName=loca["CampClothes_Katana_SpellProgression_DisplayName"],
     Description=loca["CampClothes_Katana_SpellProgression_Description"],
     Boosts=[
-        "IF(CharacterLevelRange(9,20)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
+        "IF(CharacterLevelRange(5,20)):UnlockSpell(CampClothes_Katana_Counterspell)",
     ],
 ))
 

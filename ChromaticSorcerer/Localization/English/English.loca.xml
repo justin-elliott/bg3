@@ -6,6 +6,8 @@
     <content contentuid="heb072c7bg66e7g8173g466cgd5976e6dba01" version="1">Bolster</content>
     <content contentuid="h2a50ca1cge18egc147g964dga1dfe848899a" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h5400c603g9fb0g194bg8a78g3cff265baf8f" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="hbdfb156dgbdb3g39c1g4e10gb47b5a1f40c4" version="1">Fast Movement</content>
+    <content contentuid="hefe8e398gd5e5gc5b8g9239gcf7d9f9a2ee2" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="h62a89136gb72ag0a15gfddag79ebdaa393b6" version="1">Draconic Ancestry: Chromatic</content>
     <content contentuid="h7b7c5d8dg0ffag2237g0026ge2decbe6538e" version="1">At Level 6, your spells are more powerful, and you are resistant to all damage.</content>
     <content contentuid="h09aa1a9eg26f3gd7a8g792eg7fd2c1ac1b30" version="1">Draconic Resilience</content>

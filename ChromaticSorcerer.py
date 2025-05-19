@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     Bolster,
+    Movement,
     multiply_resources,
     PackMule,
 )
@@ -43,7 +44,7 @@ class ChromaticSorcerer(Replacer):
         spells: int            # Multiplier for spell slots
         actions: int           # Multiplier for other action resources (Sorcery Points)
         skills: int            # Number of skills to select at character creation
-        expertise: int         # Number of skill expertises to select at character creation
+        expertise: int         # Number of skills with expertise to select at character creation
 
     _SELECT_SORCERER_SPELLS: Final = re.compile(
         r"^\s*SelectSpells\(\s*(\w{8}-\w{4}-\w{4}-\w{4}-\w{12})\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*SorcererSpell\s*\)\s*$")
@@ -52,6 +53,10 @@ class ChromaticSorcerer(Replacer):
     _feat_levels: set[int]
 
     # Passives
+    _fast_movement_30: str
+    _fast_movement_45: str
+    _fast_movement_60: str
+    _fast_movement_75: str
     _pack_mule: str
 
     # Spells
@@ -93,11 +98,11 @@ class ChromaticSorcerer(Replacer):
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            DescriptionParams=["3", "RegainHitPoints(ProficiencyBonus)"],
+            DescriptionParams=["1", "RegainHitPoints(ProficiencyBonus)"],
             Icon="PassiveFeature_DraconicResilience",
             Properties="Highlighted",
             BoostContext=["OnEquip", "OnCreate"],
-            Boosts=["AC(3)", "DamageReduction(All,Flat,ProficiencyBonus)"],
+            Boosts=["AC(1)", "DamageReduction(All,Flat,ProficiencyBonus)"],
         ))
 
     def _elemental_affinity(self):
@@ -213,6 +218,11 @@ class ChromaticSorcerer(Replacer):
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._bolster = Bolster(self.mod).add_bolster()
 
+        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
+        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
+        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
+        self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5)
+
         self._draconic_ancestry()
         self._draconic_resilience()
         self._elemental_affinity()
@@ -250,15 +260,18 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 2)
     def level_2(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = ["SculptSpells"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 3)
     def level_3(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = [
+            self._fast_movement_30,
+            "Athlete_StandUp",
+        ]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 4)
     def level_4(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 5)
     def level_5(self, progression: Progression) -> None:
@@ -266,7 +279,7 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 6)
     def level_6(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 7)
     def level_7(self, progression: Progression) -> None:
@@ -274,7 +287,14 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 8)
     def level_8(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = [
+            self._fast_movement_45,
+            "FOR_NightWalkers_WebImmunity",
+            "LandsStride_DifficultTerrain",
+            "LandsStride_Surfaces",
+            "LandsStride_Advantage",
+        ]
+        progression.PassivesRemoved = [self._fast_movement_30]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 9)
     def level_9(self, progression: Progression) -> None:
@@ -282,19 +302,20 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 10)
     def level_10(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 11)
     def level_11(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = ["ReliableTalent"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 12)
     def level_12(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 13)
     def level_13(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = [self._fast_movement_60]
+        progression.PassivesRemoved = [self._fast_movement_45]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 14)
     def level_14(self, progression: Progression) -> None:
@@ -306,7 +327,7 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 16)
     def level_16(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 17)
     def level_17(self, progression: Progression) -> None:
@@ -314,7 +335,9 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 18)
     def level_18(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = [self._fast_movement_75]
+        progression.PassivesRemoved = [self._fast_movement_60]
+        progression.Selectors = ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 19)
     def level_19(self, progression: Progression) -> None:
@@ -339,14 +362,14 @@ if __name__ == "__main__":
                         help="Feat progression every n levels (defaulting to double progression)")
     parser.add_argument("-l", "--spells-per-level", type=int, choices=range(1, 9), default=2,
                         help="Spells per level multiplier (defaulting to 2)")
-    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=4,
-                        help="Spell slot multiplier (defaulting to 4)")
-    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=4,
-                        help="Action resource (Sorcery Point) multiplier (defaulting to 4)")
-    parser.add_argument("-k", "--skills", type=int, default=6,
-                        help="Number of skills to select at character creation (defaulting to 6)")
-    parser.add_argument("-e", "--expertise", type=int, default=3,
-                        help="Number of skill expertises to select at character creation (defaulting to 3)")
+    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
+                        help="Spell slot multiplier (defaulting to 2)")
+    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
+                        help="Action resource (Sorcery Point) multiplier (defaulting to 2)")
+    parser.add_argument("-k", "--skills", type=int, default=4,
+                        help="Number of skills to select at character creation (defaulting to 4)")
+    parser.add_argument("-e", "--expertise", type=int, default=2,
+                        help="Number of skills with expertise to select at character creation (defaulting to 2)")
     args = ChromaticSorcerer.Args(**vars(parser.parse_args()))
 
     chromatic_sorcerer = ChromaticSorcerer(args)

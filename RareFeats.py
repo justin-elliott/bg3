@@ -456,6 +456,8 @@ def metamagic_feat() -> None:
     """Metamagic."""
     metamagic_uuid = rare_feats.make_uuid("RareFeats_Metamagic")
 
+    POINTS_PER_LEVEL = 2
+
     loca["RareFeats_SorceryPoints_DisplayName"] = {"en": "Sorcery Points"}
     loca["RareFeats_SorceryPoints_Description"] = {"en": """
         You gain <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Points</LSTag>,
@@ -469,8 +471,11 @@ def metamagic_feat() -> None:
         Description=loca["RareFeats_SorceryPoints_Description"],
         Icon="statIcons_WildMagic_SorceryPoints",
         Boosts=[
-            "ActionResource(SorceryPoint,3,0)",
-            *[f"IF(CharacterLevelRange({level},20)):ActionResource(SorceryPoint,3,0)" for level in range(2, 21)],
+            f"ActionResource(SorceryPoint,{POINTS_PER_LEVEL},0)",
+            *[
+                f"IF(CharacterLevelRange({level},20)):ActionResource(SorceryPoint,{POINTS_PER_LEVEL},0)"
+                for level in range(2, 21)
+            ],
         ],
         Properties=["IsHidden"],
     ))

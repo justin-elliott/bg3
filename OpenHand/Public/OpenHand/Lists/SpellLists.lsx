@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Open Hand Monk Spinning Kick" />
+                    <attribute id="Name" type="LSString" value="Way of the Open Hand Monk Spinning Kick" />
                     <attribute id="Spells" type="LSString" value="OpenHand_SpinningKick" />
                     <attribute id="UUID" type="guid" value="4757c085-eabe-4174-5edc-5a4a58fa9925" />
                 </node>

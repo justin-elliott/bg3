@@ -9,9 +9,9 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Strength);ProficiencyBonus(SavingThrow,Dexterity);Proficiency(SimpleWeapons);Proficiency(Shortswords);ActionResource(KiPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Monk" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnarmoredDefense_Monk;MartialArts_DextrousUnarmedAttacks;MartialArts_UnarmedDamage;MartialArts_BonusUnarmedStrike;Monk_SoundSwitch;FlurryOfBlowsUnlock;MonkExpanded_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(81d80924-205d-e071-4e80-efc9a2e10b87,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(81d80924-205d-e071-4e80-efc9a2e10b87,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="c091d27e-009b-4841-8bde-5e63e5ca8f4e" />
                 </node>
@@ -70,6 +70,7 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="MonkExpanded_SlowFall" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="e2bd97c2-4de1-43eb-bbeb-6383c472a4a2" />
                 </node>
@@ -79,7 +80,7 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441);AddSpells(c20a5961-85d9-1f96-e7d2-7bdadd4390fe,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="7b354b75-537f-464e-a28d-cafa72323ab9" />
                 </node>
@@ -91,6 +92,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_2;MonkExpanded_Awareness;MonkExpanded_KiEmpoweredStrikes" />
                     <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_1" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="9286a35f-e58b-4f56-95a4-78dfb19ed5d5" />
                 </node>
@@ -129,6 +131,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_3;PurityOfBody" />
                     <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_2" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="153f55a7-4c75-4748-a9f7-a756239a3fe6" />
                 </node>
@@ -149,6 +152,7 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="67747624-d156-4e2b-917f-3d795ad06e8e" />
                 </node>
@@ -186,6 +190,7 @@
                     <attribute id="Level" type="uint8" value="16" />
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="2f61750b-9457-4ce7-bc30-caf7edff12e8" />
                 </node>
@@ -205,6 +210,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="UnarmoredMovement_5" />
                     <attribute id="PassivesRemoved" type="LSString" value="UnarmoredMovement_4" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="5a0d6438-9870-42b4-a845-40f0bc60ca60" />
                 </node>

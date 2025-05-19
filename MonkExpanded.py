@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from moddb import (
     Bolster,
+    Defense,
     multiply_resources,
     PackMule,
 )
@@ -23,7 +24,6 @@ from modtools.replacers import (
     Replacer,
     progression,
 )
-from uuid import UUID
 
 
 progression.include(
@@ -45,9 +45,11 @@ class MonkExpanded(Replacer):
 
     # Passives
     _pack_mule: str
+    _warding: str
 
     # Spell lists
     _bolster_spell_list: str
+    _counterspell_spell_list: str
 
     @cached_property
     def _awareness(self) -> str:
@@ -212,7 +214,9 @@ class MonkExpanded(Replacer):
             self._feat_levels = args.feats - frozenset([1])
 
         self._bolster_spell_list = Bolster(self.mod).add_bolster_spell_list()
+        self._counterspell_spell_list = Defense(self.mod).add_counterspell_spell_list()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
+        self._warding = Defense(self.mod).add_warding()
 
     @progression(CharacterClass.MONK, range(1, 21))
     @progression(CharacterClass.MONK, 1, is_multiclass=True)
@@ -222,6 +226,7 @@ class MonkExpanded(Replacer):
 
     @progression(CharacterClass.MONK, 1)
     def level_1(self, progression: Progression) -> None:
+        progression.PassivesAdded += [self._warding]
         progression.Selectors = [
             "SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)",
             f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})",
@@ -243,10 +248,12 @@ class MonkExpanded(Replacer):
             *[passive for passive in progression.PassivesAdded if not passive == "SlowFall"],
             self._slow_fall,
         ]
+        progression.Selectors = [f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})"]
 
     @progression(CharacterClass.MONK, 5)
     def level_5(self, progression: Progression) -> None:
         progression.PassivesAdded = progression.PassivesAdded + ["UncannyDodge"]
+        progression.Selectors += [f"AddSpells({self._counterspell_spell_list},,,,AlwaysPrepared)"]
 
     @progression(CharacterClass.MONK, 6)
     def level_6(self, progression: Progression) -> None:
@@ -255,6 +262,7 @@ class MonkExpanded(Replacer):
             self._awareness,
             self._ki_empowered_strikes,
         ]
+        progression.Selectors = [f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.expertise})"]
 
     @progression(CharacterClass.MONK_OPENHAND, 6)
     def level_6_open_hand(self, progression: Progression) -> None:
@@ -278,7 +286,7 @@ class MonkExpanded(Replacer):
 
     @progression(CharacterClass.MONK, 10)
     def level_10(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = [f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})"]
 
     @progression(CharacterClass.MONK, 11)
     def level_11(self, progression: Progression) -> None:
@@ -288,6 +296,7 @@ class MonkExpanded(Replacer):
     @progression(CharacterClass.MONK, 12)
     def level_12(self, progression: Progression) -> None:
         progression.PassivesAdded = ["ReliableTalent"]
+        progression.Selectors = [f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.expertise})"]
 
     @progression(CharacterClass.MONK, 13)
     def level_13(self, progression: Progression) -> None:
@@ -303,7 +312,7 @@ class MonkExpanded(Replacer):
 
     @progression(CharacterClass.MONK, 16)
     def level_16(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = [f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})"]
 
     @progression(CharacterClass.MONK, 17)
     def level_17(self, progression: Progression) -> None:
@@ -311,7 +320,7 @@ class MonkExpanded(Replacer):
 
     @progression(CharacterClass.MONK, 18)
     def level_18(self, progression: Progression) -> None:
-        ...
+        progression.Selectors = [f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.expertise})"]
 
     @progression(CharacterClass.MONK, 19)
     def level_19(self, progression: Progression) -> None:
@@ -336,10 +345,10 @@ def main():
                         help="Feat progression every n levels (defaulting to double progression)")
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
                         help="Action resource (Ki) multiplier (defaulting to 2x)")
-    parser.add_argument("-k", "--skills", type=int, default=6,
-                        help="Number of skills to select at character creation (defaulting to 6)")
+    parser.add_argument("-k", "--skills", type=int, default=4,
+                        help="Number of skills to select at levels 1, 4, 10, and 16 (defaulting to 4)")
     parser.add_argument("-e", "--expertise", type=int, default=2,
-                        help="Number of skills with expertise to select at character creation (defaulting to 2)")
+                        help="Number of skills with expertise to select at levels 1, 6, 12, and 18 (defaulting to 2)")
     args = MonkExpanded.Args(**vars(parser.parse_args()))
 
     monk_expanded = MonkExpanded(args)

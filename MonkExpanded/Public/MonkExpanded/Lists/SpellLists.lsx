@@ -6,9 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Bolster spell list" />
+                    <attribute id="Name" type="LSString" value="Bolster spell list" />
                     <attribute id="Spells" type="LSString" value="MonkExpanded_Bolster" />
                     <attribute id="UUID" type="guid" value="81d80924-205d-e071-4e80-efc9a2e10b87" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Counterspell spell list" />
+                    <attribute id="Spells" type="LSString" value="MonkExpanded_Counterspell" />
+                    <attribute id="UUID" type="guid" value="c20a5961-85d9-1f96-e7d2-7bdadd4390fe" />
                 </node>
             </children>
         </node>

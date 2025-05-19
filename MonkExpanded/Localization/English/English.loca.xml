@@ -4,8 +4,12 @@
     <content contentuid="hf8efff69ga569g402dgf47dg5fdb327dd50c" version="1">Bolster</content>
     <content contentuid="hc2e12ee3g9267g1040geb8dgd5fe65146190" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h060f603cg505bg401dg2ccbg3d16c12d8fa1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h38a4eba6g9aeeg91c1g74a7g13d3afa982df" version="1">Counterspell</content>
+    <content contentuid="h123c3b34g9dc0g0d76gf785g8da673f56dd4" version="1">Try to stop a spell being cast.</content>
     <content contentuid="hf3cbc3c0gb8fdg6e15ge214g9e6841d1ce29" version="1">Pack Mule</content>
     <content contentuid="h84d13094ge8a9gbc45g558eg3458bf875d56" version="1">Your carrying capacity is increased by [1]%.</content>
+    <content contentuid="he6d8c9d3gb6a8g433cg9d5bgd31d2b8ddf19" version="1">Warding</content>
+    <content contentuid="hfb97d5aeg85d0g2933g37abg6520fd2a8713" version="1">A magical barrier protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="hd8511daeg0ab2gf409g0b52g15050fbb629c" version="1">Slow Fall</content>
     <content contentuid="h50316ef1gaf49gd8b1g5422g3f3b23376440" version="1">You only take half damage from falling.</content>
     <content contentuid="he47646f9g6300gcbb5g78ebg7339d06ea7c8" version="1">Awareness</content>

@@ -15,7 +15,7 @@ from modtools.replacers import progression, Replacer
 
 
 progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-4fh7.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
     + "Progressions/Progressions.lsx"
 )
 
@@ -140,7 +140,7 @@ class OpenHand(Replacer):
     def _level_9_spell_list(self) -> str:
         spell_list = str(self.make_uuid("level_9_spell_list"))
         self.mod.add(SpellList(
-            Comment="Way of the Open Hand Monk Spinning Kick",
+            Name="Way of the Open Hand Monk Spinning Kick",
             Spells=[self._spinning_kick],
             UUID=spell_list,
         ))
@@ -155,10 +155,11 @@ class OpenHand(Replacer):
         self._args = args
 
         if len(args.feats) == 0:
-            self._feat_levels = frozenset(range(2, 21, 2))
+            self._feat_levels = frozenset({*range(2, 20, 2)} | {19})
         elif len(args.feats) == 1:
             feat_level = next(level for level in args.feats)
-            self._feat_levels = frozenset(range(max(feat_level, 2), 21, feat_level))
+            self._feat_levels = frozenset(
+                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
         else:
             self._feat_levels = args.feats - frozenset([1])
 
@@ -166,8 +167,8 @@ class OpenHand(Replacer):
     def level_1(self, progression: Progression) -> None:
         progression.Selectors = [
             *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills")],
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,18)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ]
 
     @progression(CharacterClass.MONK, range(1, 21))
@@ -189,6 +190,7 @@ class OpenHand(Replacer):
             "ImprovedCritical",
         ]
         progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 5)
@@ -203,7 +205,9 @@ class OpenHand(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             self._wholeness_of_body,
         ]
-        progression.Selectors = None
+        progression.Selectors = [
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
+        ]
 
     @progression(CharacterClass.MONK, 7)
     def level_7_monk(self, progression: Progression) -> None:
@@ -240,6 +244,7 @@ class OpenHand(Replacer):
             "BrutalCritical",
         ]
         progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 11)
@@ -254,6 +259,65 @@ class OpenHand(Replacer):
         progression.PassivesAdded = (progression.PassivesAdded or []) + [
             "ReliableTalent",
         ]
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 13)
+    def level_13(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 14)
+    def level_14(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 15)
+    def level_15(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 16)
+    def level_16(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 17)
+    def level_17(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 18)
+    def level_18(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 19)
+    def level_19(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+        ]
+        progression.Selectors = (progression.Selectors or []) + [
+        ]
+
+    @progression(CharacterClass.MONK_OPENHAND, 20)
+    def level_20(self, progression: Progression) -> None:
+        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_3"]
+        progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack_2"]
         progression.Selectors = (progression.Selectors or []) + [
         ]
 

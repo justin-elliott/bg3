@@ -959,3 +959,8 @@ data "Boosts" "UnlockSpell(CampClothes_Bolster);ProficiencyBonus(SavingThrow,Con
 data "PassivesOnEquip" "CampClothes_PackMule_400"
 data "Rarity" "Legendary"
 data "Weight" "0.01"
+
+new entry "CampClothes_Boots_Isobel"
+type "Armor"
+using "ARM_Shoes"
+data "RootTemplate" "6ea46549-90eb-45fc-8ece-238cf8c4065c"

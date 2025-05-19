@@ -230,7 +230,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
-                    <attribute id="PassivesAdded" type="LSString" value="SculptSpells" />
+                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
                     <attribute id="UUID" type="guid" value="4a855c18-ca24-4f12-bc8d-5f0354d8e253" />
@@ -254,6 +254,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="DraconicBloodline" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
                     <attribute id="UUID" type="guid" value="bc9e5525-082d-d3af-3a7f-1daecdb10492" />

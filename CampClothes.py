@@ -1008,10 +1008,18 @@ camp_clothes.add(Weapon(
     ],
 ))
 
+camp_clothes.add(Armor(
+    "CampClothes_Boots_Isobel",
+    using="ARM_Shoes",
+    RootTemplate="6ea46549-90eb-45fc-8ece-238cf8c4065c",
+))
+
 equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
     "CampClothes_Katana",
+    "ORI_Wyll_Infernal_Robe",
+    "CampClothes_Boots_Isobel",
 ]
 
 item_template = """\

@@ -260,7 +260,7 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 2)
     def level_2(self, progression: Progression) -> None:
-        progression.PassivesAdded = ["SculptSpells"]
+        progression.PassivesAdded = ["DevilsSight", "SculptSpells"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 3)
     def level_3(self, progression: Progression) -> None:
@@ -275,7 +275,7 @@ class ChromaticSorcerer(Replacer):
 
     @progression(CharacterClass.SORCERER_DRACONIC, 5)
     def level_5(self, progression: Progression) -> None:
-        ...
+        progression.PassivesAdded = ["ExtraAttack"]
 
     @progression(CharacterClass.SORCERER_DRACONIC, 6)
     def level_6(self, progression: Progression) -> None:

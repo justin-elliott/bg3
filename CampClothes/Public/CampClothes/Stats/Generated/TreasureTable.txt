@@ -490,3 +490,7 @@ new subtable "1,1"
 object category I_CampClothes_Belm_Shortsword,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Katana,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_ORI_Wyll_Infernal_Robe,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_CampClothes_Boots_Isobel,1,0,0,0,0,0,0,0

@@ -216,6 +216,7 @@ class WayOfShadowMagic(Replacer):
     def level_1_to_20_sorcerer(self, progression: Progression) -> None:
         progression.AllowImprovement = True if progression.Level in self._feat_levels else None
         multiply_resources(progression, [ActionResource.SORCERY_POINTS], self._args.actions)
+        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self._args.spells)
 
     @progression(CharacterClass.SORCERER, 1)
     def level_1_sorcerer(self, progression: Progression) -> None:

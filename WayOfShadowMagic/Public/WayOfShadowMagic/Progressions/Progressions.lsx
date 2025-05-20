@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Charisma);Proficiency(Daggers);Proficiency(Quarterstaffs);Proficiency(LightCrossbows)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Constitution);ProficiencyBonus(SavingThrow,Charisma);Proficiency(Daggers);Proficiency(Quarterstaffs);Proficiency(LightCrossbows)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1" />
@@ -63,7 +63,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,1);ActionResource(SorceryPoint,4,0);Tag(SORCERER_METAMAGIC)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SorceryPoint,4,0);Tag(SORCERER_METAMAGIC)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -72,7 +72,7 @@
                     <attribute id="UUID" type="guid" value="706a869d-7894-453d-b6ac-9428f617649c" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,1);ActionResource(SpellSlot,2,2);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
@@ -83,7 +83,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,2);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,2);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -92,7 +92,7 @@
                     <attribute id="UUID" type="guid" value="ef6299b9-7a3f-470c-9b5a-d02ba2b87d54" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3" />
@@ -103,7 +103,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,3);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -112,7 +112,7 @@
                     <attribute id="UUID" type="guid" value="d4e27787-6ff8-47ac-9556-a71992f7e596" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -122,7 +122,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -131,7 +131,7 @@
                     <attribute id="UUID" type="guid" value="c5c45a54-6387-4328-ad65-ceddc13d3221" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,4);ActionResource(SpellSlot,1,5);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -141,7 +141,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,5);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -150,7 +150,7 @@
                     <attribute id="UUID" type="guid" value="1c091ba4-d911-4c48-99ed-da58463f2ed3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,6);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -169,7 +169,7 @@
                     <attribute id="UUID" type="guid" value="9c5f5645-ccb9-49c0-864c-2522aabff53e" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,7);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="13" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -188,7 +188,7 @@
                     <attribute id="UUID" type="guid" value="b68229cb-73af-432e-89d4-1a6b4f06ead8" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,8);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,8);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="15" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -207,7 +207,7 @@
                     <attribute id="UUID" type="guid" value="12a5ad09-f86f-495b-b05a-69d548819744" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,9);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,9);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="17" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -217,7 +217,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,5);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -227,7 +227,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,6);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="19" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -236,7 +236,7 @@
                     <attribute id="UUID" type="guid" value="3b8feb72-3afd-4fed-8cbb-959861a876a6" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,7);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7);ActionResource(SorceryPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="20" />
                     <attribute id="Name" type="LSString" value="Sorcerer" />
                     <attribute id="PassivesAdded" type="LSString" value="SorcerousRestoration" />

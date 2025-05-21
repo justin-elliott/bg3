@@ -7,6 +7,7 @@ import argparse
 import os
 import re
 import sys
+import textwrap
 
 from collections import OrderedDict
 from dataclasses import dataclass
@@ -27,7 +28,7 @@ from modtools.replacers import (
     Replacer,
 )
 from tempfile import TemporaryDirectory
-from typing import Final
+from typing import Final, TextIO
 
 @dataclass
 class Args:
@@ -68,6 +69,28 @@ ROGUE_EXTRA_FEATS: Final[dict[int, set[int]]] = {
     3: {10},
     4: {10},
 }
+
+ACTION_RESOURCES = frozenset([
+    ActionResource.ARCANE_RECOVERY_CHARGES,
+    ActionResource.ARCANE_SHOT_CHARGES,
+    ActionResource.BARDIC_INSPIRATION_CHARGES,
+    ActionResource.BLADESONG_CHARGES,
+    ActionResource.CHANNEL_DIVINITY_CHARGES,
+    ActionResource.CHANNEL_OATH_CHARGES,
+    ActionResource.COSMIC_OMEN_POINTS,
+    ActionResource.FUNGAL_INFESTATION_CHARGES,
+    ActionResource.KI_POINTS,
+    ActionResource.LAY_ON_HANDS_CHARGES,
+    ActionResource.NATURAL_RECOVERY_CHARGES,
+    ActionResource.RAGE_CHARGES,
+    ActionResource.SORCERY_POINTS,
+    ActionResource.STAR_MAP_POINTS,
+    ActionResource.SUPERIORITY_DICE,
+    ActionResource.SWARM_CHARGES,
+    ActionResource.WAR_PRIEST_CHARGES,
+    ActionResource.WILD_SHAPE_CHARGES,
+    ActionResource.WRITHING_TIDE_POINTS,
+])
 
 def update_feat_levels(args: Args) -> None:
     if len(args.feats) == 1:
@@ -118,9 +141,9 @@ def parse_arguments() -> Args:
     parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=1,
                         help="Action resource multiplier (defaulting to 1; normal resources)")
     parser.add_argument("-k", "--skills", type=int,
-                        help="Number of skills to select at levels 1, 4, 10, and 16")
+                        help="Number of skills to select at level 1")
     parser.add_argument("-e", "--expertise", type=int,
-                        help="Number of skills with expertise to select at levels 1, 6, 12, and 18")
+                        help="Number of skills with expertise to select at level 1")
     args = Args(**vars(parser.parse_args()))
     update_feat_levels(args)
     update_classes(args)
@@ -129,7 +152,13 @@ def parse_arguments() -> Args:
 PROLOGUE = """
 import os
 
-from modtools.replacers import Replacer
+from modtools.lsx.game import Dependencies, Progression
+from modtools.replacers import (
+    CharacterClass,
+    DontIncludeProgression,
+    progression,
+    Replacer,
+)
 
 
 class {title}(Replacer):
@@ -138,9 +167,19 @@ class {title}(Replacer):
                          author="justin-elliott",
                          name="{title}",
                          description="A class replacer for {classes}.")
+
+        self.mod.add(Dependencies.ShortModuleDesc(
+            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            MD5="f94d034502139cf8b65a1597554e7236",
+            Name="UnlockLevelCurve",
+            PublishHandle=4166963,
+            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            Version64=72057594037927960,
+        ))
 """
 
 EPILOGUE = """
+
 def main() -> None:
     {title_snake} = {title}()
     {title_snake}.build()
@@ -150,6 +189,75 @@ if __name__ == "__main__":
     main()
 """
 
+def filter_classes(args: Args, progressions: list[Progression]) -> list[Progression]:
+    return [progression for progression in progressions
+            if progression.Name in CharacterClass
+            and CharacterClass(progression.Name) in args.included_classes
+            and not progression.IsMulticlass]
+
+def allow_improvement(progress: Progression, args: Args) -> None:
+    character_class = CharacterClass(progress.Name)
+    if character_class not in BASE_CHARACTER_CLASSES:
+        return
+    feats = (args.rogue_feats if character_class == CharacterClass.ROGUE
+             else args.fighter_feats if character_class == CharacterClass.FIGHTER
+             else args.feats)
+    progress.AllowImprovement = (progress.Level in feats) or None
+
+def update_skills(progress: Progression, skills: int | None) -> None:
+    if skills is None:
+        return
+    character_class = CharacterClass(progress.Name)
+    if character_class in BASE_CHARACTER_CLASSES and progress.Level == 1:
+        selectors = [selector for selector in progress.Selectors if not selector.startswith("SelectSkills(")]
+        selectors.append(f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{skills})")
+        progress.Selectors = selectors
+
+def update_expertise(progress: Progression, expertise: int | None) -> None:
+    if expertise is None:
+        return
+    character_class = CharacterClass(progress.Name)
+    if character_class in BASE_CHARACTER_CLASSES and progress.Level == 1:
+        selectors = [selector for selector in progress.Selectors if not selector.startswith("SelectSkillsExpertise(")]
+        selectors.append(f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{expertise})")
+        progress.Selectors = selectors
+
+INCLUDED_PROGRESSION_FIELDS: Final[list[str]] = [
+    "AllowImprovement",
+    "Boosts",
+    "PassivesAdded",
+    "PassivesRemoved",
+    "Selectors",
+]
+
+INDENT: Final[int] = 4
+MAX_LIST_LENGTH: Final[int] = 80
+
+def write_progression(f: TextIO, progress: Progression) -> None:
+    indent = " " * INDENT
+    class_name = CharacterClass(progress.Name).name
+    progression_text = textwrap.dedent(f"""\
+        @progression(CharacterClass.{class_name}, {progress.Level})
+        def {class_name.lower()}_level_{progress.Level}(self, progression: Progression) -> None:
+        """)
+    
+    has_fields = False
+    for field in INCLUDED_PROGRESSION_FIELDS:
+        if (value := getattr(progress, field, None)) is not None:
+            has_fields = True
+            if isinstance(value, list) and len(str(value)) > MAX_LIST_LENGTH:
+                progression_text += f"{indent}progression.{field} = [\n"
+                for entry in value:
+                    progression_text += f"{indent}{indent}'{entry}',\n"
+                progression_text += f"{indent}]\n"
+            else:
+                progression_text += f"{indent}progression.{field} = {value}\n"
+    if not has_fields:
+        progression_text += f"{indent}raise DontIncludeProgression()\n"
+
+    f.write("\n")
+    f.write(textwrap.indent(progression_text, indent))
+
 def main() -> None:
     args = parse_arguments()
 
@@ -157,21 +265,25 @@ def main() -> None:
     title_snake = re.sub(r"(?<!^)(?=[A-Z])", "_", title).lower()
 
     with TemporaryDirectory() as temp_dir:
-        mod = Mod(temp_dir,
-                author="justin-elliott",
-                name="ModMaker",
-                description="A mod maker.")
-
+        mod = Mod(temp_dir, author="justin-elliott", name="ModMaker", description="A mod maker.")
         progression.include(
             "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
             + "Progressions/Progressions.lsx"
         )
         progressions: list[Progression] = load_progressions(mod)
+        progressions = filter_classes(args, progressions)
     
-    # mod_file = os.path.join(os.path.dirname(__file__), f"{args.name}.py")
-    # with open(mod_file, "w") as f:
-    with sys.stdout as f:
+    mod_file = os.path.join(os.path.dirname(__file__), f"{args.name}.py")
+    with open(mod_file, "w") as f:
         f.write(PROLOGUE.format(title=title, classes=", ".join([cls.value for cls in args.classes])))
+        for progress in progressions:
+            allow_improvement(progress, args)
+            multiply_resources(progress, [ActionResource.SPELL_SLOTS], args.spells)
+            multiply_resources(progress, [ActionResource.WARLOCK_SPELL_SLOTS], args.warlock_spells)
+            multiply_resources(progress, ACTION_RESOURCES, args.actions)
+            update_skills(progress, args.skills)
+            update_expertise(progress, args.expertise)
+            write_progression(f, progress)
         f.write(EPILOGUE.format(title=title, title_snake=title_snake))
 
 

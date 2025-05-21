@@ -8,6 +8,7 @@ from enum import IntEnum
 from modtools.lsx.game import BASE_CHARACTER_CLASSES, CharacterClass, CharacterRace
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression
+from modtools.mod import Mod
 from modtools.replacers.replacer import Replacer
 
 
@@ -53,11 +54,11 @@ def _progression_order(progression: Progression) -> tuple[str, int, bool]:
     return (classification, name, progression.Level, progression.IsMulticlass or False)
 
 
-def _load_progressions(replacer: Replacer) -> list[Progression]:
+def load_progressions(replacer_or_mod: Replacer | Mod) -> list[Progression]:
     """Load the game's Progressions from the .pak cache."""
-    progressions_lsx = Lsx.load(replacer.get_cache_path(_progression_lsx_paths[0]))
+    progressions_lsx = Lsx.load(replacer_or_mod.get_cache_path(_progression_lsx_paths[0]))
     for lsx_path in _progression_lsx_paths[1:]:
-        lsx = Lsx.load(replacer.get_cache_path(lsx_path))
+        lsx = Lsx.load(replacer_or_mod.get_cache_path(lsx_path))
         progressions_lsx.children.update(lsx.children, key=_by_uuid)
     progressions_lsx.children.sort(key=_progression_order)
     return list(progressions_lsx.children)
@@ -143,7 +144,7 @@ def _progression_builder(replacer: Replacer, progression_builders: list[Progress
     builders = _make_builders(progression_builders)
     tableUuid: dict[str, str] = dict()
 
-    progressions = _load_progressions(replacer)
+    progressions = load_progressions(replacer)
     updated_progressions: set[Progression] = set()
 
     _update_progressions(replacer, progressions, builders, tableUuid, updated_progressions)
@@ -154,27 +155,33 @@ def _progression_builder(replacer: Replacer, progression_builders: list[Progress
         replacer.mod.add(progression)
 
 
-def progression(names: str | Iterable[str],
+class ProgressionDecorator:
+    @staticmethod
+    def __call__(names: str | Iterable[str],
                 levels: int | Iterable[int],
                 *,
                 is_multiclass: bool = False) -> ProgressionBuilder:
-    """A decorator mapping class and level combinations to their progression builder function."""
-    if isinstance(names, str) or not isinstance(names, Iterable):
-        names = [names]
-    if not isinstance(levels, Iterable):
-        levels = [levels]
+        """A decorator mapping class and level combinations to their progression builder function."""
+        if isinstance(names, str) or not isinstance(names, Iterable):
+            names = [names]
+        if not isinstance(levels, Iterable):
+            levels = [levels]
 
-    def decorate(fn: ProgressionBuilder) -> ProgressionBuilder:
-        setattr(fn, "builder", _progression_builder)
-        multi_class_level_keys: list[MultiNameLevelKey] = getattr(fn, "progression", [])
-        multi_class_level_keys.append((names, levels, is_multiclass))
-        setattr(fn, "progression", multi_class_level_keys)
-        return fn
+        def decorate(fn: ProgressionBuilder) -> ProgressionBuilder:
+            setattr(fn, "builder", _progression_builder)
+            multi_class_level_keys: list[MultiNameLevelKey] = getattr(fn, "progression", [])
+            multi_class_level_keys.append((names, levels, is_multiclass))
+            setattr(fn, "progression", multi_class_level_keys)
+            return fn
 
-    return decorate
+        return decorate
+
+    @staticmethod
+    def include(pak_path: str) -> None:
+        _progression_lsx_paths.append(pak_path)
 
 
-progression.include = lambda pak_path: _progression_lsx_paths.append(pak_path)
+progression = ProgressionDecorator()
 
 
 def only_existing_progressions(fn: ProgressionBuilder) -> ProgressionBuilder:

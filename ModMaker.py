@@ -22,7 +22,7 @@ from typing import Final, TextIO
 PROLOGUE = """
 import os
 
-from modtools.lsx.game import Dependencies, Progression
+from modtools.lsx.game import Progression
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,

@@ -114,20 +114,6 @@
                     <attribute id="UUID" type="guid" value="54e73a08-1563-dca0-a479-0e3ffe8a48ff" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="6" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="8a45b1fc-96c2-67e6-c33f-6155927920e3" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="7" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="b128ff89-2f48-64df-7576-aed671899573" />
-                </node>
-                <node id="Progression">
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="Swashbuckler" />
                     <attribute id="PassivesAdded" type="LSString" value="Swashbuckler_FastMovement_45;FOR_NightWalkers_WebImmunity;LandsStride_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage" />
@@ -135,14 +121,6 @@
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
                     <attribute id="UUID" type="guid" value="a20f40ef-a634-be14-d4b3-fdb902250a3e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="9" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(62b78cbc-f9df-4834-a544-d661e7571fc4,,,,AlwaysPrepared)" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="290fa2cd-2555-467b-a9f7-a330ff24caae" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />
@@ -179,33 +157,12 @@
                     <attribute id="UUID" type="guid" value="f2adf626-5a0c-1ab6-b2c4-2eeb42197242" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="14" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="0628f318-3f5d-f69b-66ef-e472b0f949e9" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="f9e73074-e7e6-a4b1-62cb-e500e7384938" />
-                </node>
-                <node id="Progression">
                     <attribute id="Level" type="uint8" value="16" />
                     <attribute id="Name" type="LSString" value="Swashbuckler" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
                     <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
                     <attribute id="UUID" type="guid" value="ff78268c-5e11-98df-cdda-0bbd471cf95d" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="4d01f922-2f9c-b464-5897-84faec5d26ed" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="18" />
@@ -216,13 +173,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)" />
                     <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
                     <attribute id="UUID" type="guid" value="dbd9eced-9b72-fb9f-0fc9-d9c5c6f07ce2" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Swashbuckler" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="0a0f8dbb-ca06-4753-ac64-7c6876deeeae" />
-                    <attribute id="UUID" type="guid" value="453776fe-c749-dcc2-02e4-04992c62e97c" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="20" />

@@ -224,7 +224,7 @@ class Replacer:
         return self._mod.make_uuid("Replacer:" + key)
 
     def allow_improvement(self, progression: Progression) -> bool:
-        if progression.Name not in BASE_CHARACTER_CLASSES:
+        if progression.Name not in BASE_CHARACTER_CLASSES or progression.Level == 1:
             return False
         character_class = CharacterClass(progression.Name)
         if character_class not in self.args.included_classes:

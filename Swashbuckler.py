@@ -3,10 +3,8 @@
 Generates files for the "Swashbuckler" mod.
 """
 
-import argparse
 import os
 
-from dataclasses import dataclass
 from moddb import (
     Bolster,
     Defense,
@@ -16,7 +14,6 @@ from moddb import (
 )
 from modtools.lsx.game import (
     CharacterClass,
-    Dependencies,
     Progression,
 )
 from modtools.replacers import (

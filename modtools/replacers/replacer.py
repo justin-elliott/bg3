@@ -78,7 +78,7 @@ class Replacer:
     _args: Args
     _mod: Mod
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args: str, **kwds: str):
         """Create the class, populating the _builders list."""
         cls._builders = dict()
 
@@ -91,8 +91,15 @@ class Replacer:
         return super().__new__(cls)
 
     def __init__(self, base_dir: str, *, author: str, **kwds: str):
-        self._parse_arguments()
-        self._mod = Mod(base_dir, author=author, name=self.args.name, **kwds)
+        self._parse_arguments(**kwds)
+        self._mod = Mod(base_dir,
+                        author=author,
+                        name=self.args.name,
+                        mod_uuid=kwds.get("mod_uuid"),
+                        description=kwds.get("description"),
+                        folder=kwds.get("folder"),
+                        version=kwds.get("version"),
+                        cache_dir=kwds.get("cache_dir"))
 
     @staticmethod
     def _class_list(s: str) -> list[CharacterClass]:
@@ -145,24 +152,31 @@ class Replacer:
         self.args.classes = [*classes.keys()]
         self.args.included_classes = [*included_classes.keys()]
 
-    def _parse_arguments(self) -> None:
+    def _parse_arguments(self, **kwds: str) -> None:
+        feats = kwds.get("feats", "4")
+        spells = kwds.get("spells", 1)
+        warlock_spells = kwds.get("warlock_spells", 1)
+        actions = kwds.get("actions", 1)
+        skills = kwds.get("skills")
+        expertise = kwds.get("expertise")
+
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str,
                             help="Mod name")
         parser.add_argument("-c", "--classes", type=self._class_list, default=set(),
                             help="Classes to include in the progression (defaulting to all)")
-        parser.add_argument("-f", "--feats", type=self._level_list, default=set(),
-                            help="Feat progression every n levels (defaulting to normal progression)")
-        parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=1,
-                            help="Spell slot multiplier (defaulting to 1; normal spell slots)")
-        parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 9), default=1,
-                            help="Warlock spell slot multiplier (defaulting to 1; normal spell slots)")
-        parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=1,
-                            help="Action resource multiplier (defaulting to 1; normal resources)")
-        parser.add_argument("-k", "--skills", type=int,
-                            help="Number of skills to select at level 1")
-        parser.add_argument("-e", "--expertise", type=int,
-                            help="Number of skills with expertise to select at level 1")
+        parser.add_argument("-f", "--feats", type=self._level_list, default=feats,
+                            help=f"Feat progression every n levels (default: {feats})")
+        parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=spells,
+                            help=f"Spell slot multiplier (default: {spells})")
+        parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 9), default=warlock_spells,
+                            help=f"Warlock spell slot multiplier (default: {warlock_spells})")
+        parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=actions,
+                            help=f"Action resource multiplier (default: {actions})")
+        parser.add_argument("-k", "--skills", type=int, default=skills,
+                            help=f"Number of skills to select at level 1 (default: {skills})")
+        parser.add_argument("-e", "--expertise", type=int, default=expertise,
+                            help=f"Number of skills with expertise to select at level 1 (default: {expertise})")
         self._args = Replacer.Args(**vars(parser.parse_args()))
 
         if self.args.name is None:

@@ -13,15 +13,14 @@ from moddb import (
     BattleMagic,
     Bolster,
     PackMule,
-    multiply_resources,
 )
 from modtools.lsx.game import (
-    ActionResource,
     CharacterClass,
     SpellList,
 )
 from modtools.lsx.game import Dependencies, Progression
 from modtools.replacers import (
+    DontIncludeProgression,
     Replacer,
     progression,
     spell_list,
@@ -226,35 +225,11 @@ class WarlockExtended(Replacer):
     def hexblade_level_5_spells(self, spells: SpellList) -> None:
         spells.Spells = self._merge_spells(5)
 
-    @progression(CharacterClass.WARLOCK, range(1, 21))
-    @progression(CharacterClass.WARLOCK, 1, is_multiclass=True)
-    def level_1_to_20_warlock(self, progression: Progression) -> None:
-        progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        multiply_resources(progression, [ActionResource.WARLOCK_SPELL_SLOTS], self._args.spells)
-
-    @progression(CharacterClass.WARLOCK, 1, is_multiclass=False)
-    def increase_skills(self, progression: Progression) -> None:
-        selectors = progression.Selectors
-        if self._args.skills is not None:
-            selectors = [selector for selector in (selectors or []) if not selector.startswith("SelectSkills(")]
-            selectors.append(f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.skills})")
-        if self._args.expertise is not None:
-            selectors = [selector for selector in selectors if not selector.startswith("SelectSkillsExpertise(")]
-            selectors.append(f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self._args.expertise})")
-        progression.Selectors = selectors
-
     @progression(CharacterClass.WARLOCK, 1)
     def warlock_level_1(self, progression: Progression) -> None:
         progression.Boosts += ["ProficiencyBonus(SavingThrow,Constitution)"]
         progression.PassivesAdded += [self._battle_magic, self._pack_mule]
         progression.Selectors += [f"AddSpells({self._bolster})"]
-
-
-def level_list(s: str) -> set[int]:
-    levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 21))):
-        raise "Invalid levels"
-    return levels
 
 
 def main():

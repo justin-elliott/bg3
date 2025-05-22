@@ -87,10 +87,13 @@ def _update_progressions(replacer: Replacer,
     """Update progressions that match our builder keys."""
     for progression in progressions:
         if progression.TableUUID:  # Ignore the one entry without a TableUUID
+            was_updated = replacer.allow_improvement(progression)
+            was_updated = replacer.adjust_resources(progression) or was_updated
+            was_updated = replacer.adjust_skills(progression) or was_updated
+
             tableUuid[progression.Name] = progression.TableUUID
             progression_key = (progression.Name, progression.Level, progression.IsMulticlass or False)
             if builder_fns := builders.get(progression_key):
-                was_updated = False
                 for builder_fn in builder_fns:
                     try:
                         builder_fn(replacer, progression)
@@ -98,8 +101,9 @@ def _update_progressions(replacer: Replacer,
                     except DontIncludeProgression:  # Can still be updated by another builder_fn
                         pass
                 del builders[progression_key]
-                if was_updated:
-                    updated_progressions.add(progression)
+
+            if was_updated:
+                updated_progressions.add(progression)
 
 
 def _create_progressions(replacer: Replacer,

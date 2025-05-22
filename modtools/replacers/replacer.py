@@ -9,11 +9,13 @@ import os
 from collections import OrderedDict
 from collections.abc import Callable
 from dataclasses import dataclass
+from moddb import multiply_resources
 from modtools.lsx.game import (
     ActionResource,
     BASE_CHARACTER_CLASSES,
     CharacterClass,
     CharacterSubclasses,
+    Progression,
 )
 from modtools.mod import Mod
 from typing import ClassVar, Final
@@ -155,7 +157,7 @@ class Replacer:
     def _parse_arguments(self, **kwds: str) -> None:
         name = kwds.get("name")
         classes = kwds.get("classes", list())
-        feats = set(str(kwds.get("feats", 4)))
+        feats = {kwds.get("feats", 4)}
         spells = kwds.get("spells", 1)
         warlock_spells = kwds.get("warlock_spells", 1)
         actions = kwds.get("actions", 1)
@@ -165,11 +167,11 @@ class Replacer:
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str, default=name,
                             help="Mod name")
-        parser.add_argument("-c", "--classes", type=self._class_list, default=list(),
+        parser.add_argument("-c", "--classes", type=self._class_list, default=classes,
                             help=f"Classes to include in the progression (default: {
                                 ", ".join([cls.value for cls in classes])})")
         parser.add_argument("-f", "--feats", type=self._level_list, default=feats,
-                            help=f"Feat progression every n levels (default: {", ".join(sorted(feats))})")
+                            help=f"Feat progression every n levels (default: {", ".join(map(str, sorted(feats)))})")
         parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=spells,
                             help=f"Spell slot multiplier (default: {spells})")
         parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 17), default=warlock_spells,
@@ -210,6 +212,49 @@ class Replacer:
     def make_uuid(self, key: str) -> UUID:
         """Generate a UUID for the given key."""
         return self._mod.make_uuid("Replacer:" + key)
+
+    def allow_improvement(self, progression: Progression) -> bool:
+        if progression.Name not in BASE_CHARACTER_CLASSES:
+            return False
+        character_class = CharacterClass(progression.Name)
+        if character_class not in self.args.classes:
+            return False
+        feats = (self.args.rogue_feats if character_class == CharacterClass.ROGUE
+                else self.args.fighter_feats if character_class == CharacterClass.FIGHTER
+                else self.args.other_feats)
+        allow_improvement = progression.AllowImprovement
+        progression.AllowImprovement = (progression.Level in feats) or None
+        return allow_improvement != progression.AllowImprovement
+
+    def adjust_resources(self, progression: Progression) -> bool:
+        if progression.Name not in CharacterClass:
+            return False
+        character_class = CharacterClass(progression.Name)
+        if character_class not in self.args.classes:
+            return False
+        existing_boosts = progression.Boosts
+        multiply_resources(progression, [ActionResource.SPELL_SLOTS], self.args.spells)
+        multiply_resources(progression, [ActionResource.WARLOCK_SPELL_SLOTS], self.args.warlock_spells)
+        multiply_resources(progression, self.ACTION_RESOURCES, self.args.actions)
+        return existing_boosts != progression.Boosts
+    
+    def adjust_skills(self, progression: Progression) -> bool:
+        if progression.Name not in CharacterClass or progression.Level != 1 or progression.IsMulticlass:
+            return False
+        character_class = CharacterClass(progression.Name)
+        if character_class not in self.args.classes:
+            return False
+        selectors = progression.Selectors
+        if self.args.skills is not None:
+            selectors = [selector for selector in (selectors or []) if not selector.startswith("SelectSkills(")]
+            selectors.append(f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self.args.skills})")
+        if self.args.expertise is not None:
+            selectors = [selector for selector in selectors if not selector.startswith("SelectSkillsExpertise(")]
+            selectors.append(f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self.args.expertise})")
+        if progression.Selectors == selectors:
+            return False
+        progression.Selectors = selectors
+        return True
 
     def build(self) -> None:
         """Build the mod."""

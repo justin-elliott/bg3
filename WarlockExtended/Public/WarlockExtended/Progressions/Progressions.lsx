@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="Warlock" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedWarlockSpellSlotLevel1;WarlockExtended_BattleMagic;WarlockExtended_PackMule_400" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(f5c4af9c-5d8d-4526-9057-94a4b243cd40,2,0,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,9);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3);AddSpells(4e4da293-996f-297f-68b8-cae19b53e12f)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(f5c4af9c-5d8d-4526-9057-94a4b243cd40,2,0,,,,AlwaysPrepared);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(4e4da293-996f-297f-68b8-cae19b53e12f)" />
                     <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
                     <attribute id="UUID" type="guid" value="a7767dc5-e6ab-4e05-96fd-f0424256121c" />
                     <children>
@@ -83,14 +83,6 @@
                     <attribute id="UUID" type="guid" value="da1ea937-f361-4dc6-abb1-1e7153e2a6de" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Level" type="uint8" value="4" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="646869be-8307-4e1f-93d7-eeedac71e756" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(WarlockSpellSlot,16,3);ActionResourceOverride(WarlockSpellSlot,0,2)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Warlock" />
@@ -116,14 +108,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(39efef92-9987-46e2-8c43-54052c1be535,1,WarlockInvocations)" />
                     <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
                     <attribute id="UUID" type="guid" value="23955656-459a-40b0-b648-2167e7d223d8" />
-                </node>
-                <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Level" type="uint8" value="8" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="2de88333-157c-48e0-a965-e498af5413e7" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(WarlockSpellSlot,16,5);ActionResourceOverride(WarlockSpellSlot,0,4)" />
@@ -154,44 +138,11 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Level" type="uint8" value="12" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations)" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="b50cff2c-9879-4f87-bc77-c428fd69c4e0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(e6ccab5e-3b3b-4b34-8fa2-1058dff2b3e6,1,0,MysticArcanum,,None,AlwaysPrepared,UntilRest)" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="f88ccd38-e789-4177-bf08-24e652ea0f99" />
-                </node>
-                <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="14" />
                     <attribute id="Name" type="LSString" value="Warlock" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
                     <attribute id="UUID" type="guid" value="67a28bc6-4a9e-4b10-a755-31487f9bc50e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations);SelectSpells(e6ccab5e-3b3b-4b34-8fa2-1058dff2b3e6,1,0,MysticArcanum,,None,AlwaysPrepared,UntilRest)" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="9d27c48e-930f-42ce-a4a7-188005d51304" />
-                </node>
-                <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Level" type="uint8" value="16" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="237669b6-a8f6-47ef-b1d4-8daf0651b020" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(WarlockSpellSlot,8,5)" />
@@ -210,22 +161,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(ab56f79f-95ec-48e5-bd83-e80ba9afc844,1,WarlockInvocations)" />
                     <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
                     <attribute id="UUID" type="guid" value="0a94300c-1717-42f0-b855-3dd49dd02e13" />
-                </node>
-                <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="8d20c2aa-422d-4b69-b9e7-44004c502c91" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="20" />
-                    <attribute id="Name" type="LSString" value="Warlock" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchMaster" />
-                    <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
-                    <attribute id="UUID" type="guid" value="bbac3e70-ff9a-4055-8ee9-7ea81a4141ec" />
                 </node>
             </children>
         </node>

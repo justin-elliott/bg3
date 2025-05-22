@@ -67,7 +67,9 @@ class ProgressionsReplacer(Replacer):
             name += f"-E{self.args.expertise}"
         return name
 
-    def _allow_improvement(self, progression: Progression) -> None:
+    @progression(BASE_CHARACTER_CLASSES, range(2, 21))
+    @only_existing_progressions
+    def allow_improvement(self, progression: Progression) -> None:
         character_class = CharacterClass(progression.Name)
         if character_class not in self.args.classes:
             raise DontIncludeProgression()
@@ -78,11 +80,6 @@ class ProgressionsReplacer(Replacer):
         progression.AllowImprovement = (progression.Level in feats) or None
         if allow_improvement == progression.AllowImprovement:
             raise DontIncludeProgression()
-
-    @progression(BASE_CHARACTER_CLASSES, range(2, 21))
-    @only_existing_progressions
-    def allow_improvement_base(self, progression: Progression) -> None:
-        self._allow_improvement(progression)
 
     @progression(CharacterSubclasses.ALL, range(1, 21))
     @only_existing_progressions

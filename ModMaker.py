@@ -18,12 +18,10 @@ from modtools.lsx.game import (
     CharacterClass,
     CharacterSubclasses,
 )
-from modtools.lsx.game import Dependencies, Progression
+from modtools.lsx.game import Progression
 from modtools.mod import Mod
 from modtools.replacers import (
-    DontIncludeProgression,
     load_progressions,
-    only_existing_progressions,
     progression,
     Replacer,
 )
@@ -52,8 +50,10 @@ def class_list(s: str) -> list[str]:
 
 def level_list(s: str) -> set[int]:
     levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 21))):
-        raise "Invalid levels"
+    if not levels.issubset(range(1, 21)):
+        raise "Invalid feat levels"
+    if len(levels) == 1 and not levels.issubset(range(1, 5)):
+        raise "Feat level must be in the range 1 to 4"
     return levels
 
 FIGHTER_EXTRA_FEATS: Final[dict[int, set[int]]] = {
@@ -95,7 +95,6 @@ ACTION_RESOURCES = frozenset([
 def update_feat_levels(args: Args) -> None:
     if len(args.feats) == 1:
         feat_level = next(level for level in args.feats)
-        feat_level = min(4, max(1, feat_level))
         args.feats = frozenset(
             {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else set()))
         args.fighter_feats = args.feats | FIGHTER_EXTRA_FEATS[feat_level]
@@ -189,7 +188,7 @@ if __name__ == "__main__":
     main()
 """
 
-def filter_classes(args: Args, progressions: list[Progression]) -> list[Progression]:
+def filter_classes(progressions: list[Progression], args: Args) -> list[Progression]:
     return [progression for progression in progressions
             if progression.Name in CharacterClass
             and CharacterClass(progression.Name) in args.included_classes
@@ -248,7 +247,7 @@ def write_progression(f: TextIO, progress: Progression) -> None:
             if isinstance(value, list) and len(str(value)) > MAX_LIST_LENGTH:
                 progression_text += f"{indent}progression.{field} = [\n"
                 for entry in value:
-                    progression_text += f"{indent}{indent}'{entry}',\n"
+                    progression_text += f"{indent}{indent}{repr(entry)},\n"
                 progression_text += f"{indent}]\n"
             else:
                 progression_text += f"{indent}progression.{field} = {value}\n"
@@ -271,7 +270,7 @@ def main() -> None:
             + "Progressions/Progressions.lsx"
         )
         progressions: list[Progression] = load_progressions(mod)
-        progressions = filter_classes(args, progressions)
+        progressions = filter_classes(progressions, args)
     
     mod_file = os.path.join(os.path.dirname(__file__), f"{args.name}.py")
     with open(mod_file, "w") as f:

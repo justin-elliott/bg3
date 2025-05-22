@@ -14,13 +14,11 @@ from modtools.lsx.game import (
     CharacterClass,
 )
 from modtools.lsx.game import Progression
-from modtools.mod import Mod
 from modtools.replacers import (
     load_progressions,
     progression,
     Replacer,
 )
-from tempfile import TemporaryDirectory
 from typing import Final, TextIO
 
 PROLOGUE = """
@@ -136,19 +134,16 @@ def main() -> None:
     replacer = Replacer(os.path.dirname(__file__),
                         author="justin-elliott",
                         description="A mod maker.")
-
+    progression.include(
+        "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+        + "Progressions/Progressions.lsx"
+    )
+    progressions: list[Progression] = load_progressions(replacer.mod)
+    progressions = filter_classes(progressions, replacer.args)
+    
     title = re.sub(r"\s", "", replacer.args.name)
     title_snake = re.sub(r"(?<!^)(?=[A-Z])", "_", title).lower()
 
-    with TemporaryDirectory() as temp_dir:
-        mod = Mod(temp_dir, author="justin-elliott", name="ModMaker", description="A mod maker.")
-        progression.include(
-            "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
-            + "Progressions/Progressions.lsx"
-        )
-        progressions: list[Progression] = load_progressions(mod)
-        progressions = filter_classes(progressions, replacer.args)
-    
     mod_file = os.path.join(os.path.dirname(__file__), f"{replacer.args.name}.py")
     with open(mod_file, "w") as f:
         f.write(PROLOGUE.format(title=title, classes=", ".join([cls.value for cls in replacer.args.classes])))

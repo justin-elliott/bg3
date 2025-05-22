@@ -126,11 +126,12 @@ class WarlockExtended(Replacer):
         current_sorted = sorted(current_spells, key=lambda key: key[key.index("_"):])
         return current_sorted + previous_spells
 
-    def __init__(self, args: Args):
+    def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="WarlockExtended",
-                         description="Warlock enhancements.")
+                         description="Warlock enhancements.",
+                         **kwds)
 
         self.mod.add(Dependencies.ShortModuleDesc(
             Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
@@ -141,17 +142,6 @@ class WarlockExtended(Replacer):
             Version64=72057594037927960,
         ))
 
-        self._args = args
-
-        if len(args.feats) == 0:
-            self._feat_levels = frozenset({*range(2, 20, 2)} | {19})
-        elif len(args.feats) == 1:
-            feat_level = next(level for level in args.feats)
-            self._feat_levels = frozenset(
-                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
-        else:
-            self._feat_levels = args.feats - frozenset([1])
-        
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._bolster = Bolster(self.mod).add_bolster_spell_list()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
@@ -268,18 +258,11 @@ def level_list(s: str) -> set[int]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Warlock enhancements.")
-    parser.add_argument("-f", "--feats", type=level_list, default=set(),
-                        help="Feat progression every n levels (defaulting to double progression)")
-    parser.add_argument("-s", "--spells", type=int, choices=range(1, 17), default=8,
-                        help="Spell slot multiplier (default 8)")
-    parser.add_argument("-k", "--skills", type=int, default=9,
-                        help="Number of skills to select at character creation (default 9)")
-    parser.add_argument("-e", "--expertise", type=int, default=3,
-                        help="Number of skills with expertise to select at character creation (default 3)")
-    args = WarlockExtended.Args(**vars(parser.parse_args()))
-
-    warlock_extended = WarlockExtended(args)
+    warlock_extended = WarlockExtended(classes=[CharacterClass.WARLOCK],
+                                       feats=2,
+                                       warlock_spells=8,
+                                       skills=4,
+                                       expertise=2)
     warlock_extended.build()
 
 

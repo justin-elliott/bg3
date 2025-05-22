@@ -154,7 +154,8 @@ class Replacer:
 
     def _parse_arguments(self, **kwds: str) -> None:
         name = kwds.get("name")
-        feats = kwds.get("feats", "4")
+        classes = kwds.get("classes", list())
+        feats = set(str(kwds.get("feats", 4)))
         spells = kwds.get("spells", 1)
         warlock_spells = kwds.get("warlock_spells", 1)
         actions = kwds.get("actions", 1)
@@ -164,13 +165,14 @@ class Replacer:
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str, default=name,
                             help="Mod name")
-        parser.add_argument("-c", "--classes", type=self._class_list, default=set(),
-                            help="Classes to include in the progression (defaulting to all)")
+        parser.add_argument("-c", "--classes", type=self._class_list, default=list(),
+                            help=f"Classes to include in the progression (default: {
+                                ", ".join([cls.value for cls in classes])})")
         parser.add_argument("-f", "--feats", type=self._level_list, default=feats,
-                            help=f"Feat progression every n levels (default: {feats})")
+                            help=f"Feat progression every n levels (default: {", ".join(sorted(feats))})")
         parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=spells,
                             help=f"Spell slot multiplier (default: {spells})")
-        parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 9), default=warlock_spells,
+        parser.add_argument("-w", "--warlock_spells", type=int, choices=range(1, 17), default=warlock_spells,
                             help=f"Warlock spell slot multiplier (default: {warlock_spells})")
         parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=actions,
                             help=f"Action resource multiplier (default: {actions})")

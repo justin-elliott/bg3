@@ -6,9 +6,7 @@ Generates files for the "ProgressionsReplacer" mod.
 import os
 
 from modtools.lsx.game import (
-    CharacterClass,
     CharacterSubclasses,
-    Dependencies,
     Progression,
 )
 from modtools.replacers import (
@@ -19,26 +17,11 @@ from modtools.replacers import (
 )
 
 
-progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
-    + "Progressions/Progressions.lsx"
-)
-
-
 class ProgressionsReplacer(Replacer):
     def __init__(self):
         super().__init__(os.path.join(os.path.dirname(__file__), "Progressions"),
                          author="justin-elliott",
                          description="A class progressions replacer.")
-
-        self.mod.add(Dependencies.ShortModuleDesc(
-            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-            MD5="f94d034502139cf8b65a1597554e7236",
-            Name="UnlockLevelCurve",
-            PublishHandle=4166963,
-            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-            Version64=72057594037927960,
-        ))
 
     def make_name(self) -> str:
         """Generate a name for the Mod."""

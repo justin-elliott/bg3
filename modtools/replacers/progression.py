@@ -33,6 +33,8 @@ _progression_lsx_paths = [
     "Shared.pak/Public/Shared/Progressions/Progressions.lsx",
     "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx",
     "GustavX.pak/Public/GustavX/Progressions/Progressions.lsx",
+    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+    + "Progressions/Progressions.lsx"
 ]
 
 

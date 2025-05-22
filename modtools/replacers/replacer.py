@@ -15,6 +15,7 @@ from modtools.lsx.game import (
     BASE_CHARACTER_CLASSES,
     CharacterClass,
     CharacterSubclasses,
+    Dependencies,
     Progression,
 )
 from modtools.mod import Mod
@@ -103,6 +104,15 @@ class Replacer:
                         version=kwds.get("version", (4, 1, 1, 1)),
                         cache_dir=kwds.get("cache_dir"))
 
+        self._mod.add(Dependencies.ShortModuleDesc(
+            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            MD5="f94d034502139cf8b65a1597554e7236",
+            Name="UnlockLevelCurve",
+            PublishHandle=4166963,
+            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+            Version64=72057594037927960,
+        ))
+
     @staticmethod
     def _class_list(s: str) -> list[CharacterClass]:
         classes = [CharacterClass(cc) for cc in s.split(",")]
@@ -138,8 +148,7 @@ class Replacer:
         if len(self.args.classes) == 0:
             self.args.classes = sorted(CharacterSubclasses.ALL)
 
-        for name in self.args.classes:
-            character_class = CharacterClass(name)
+        for character_class in self.args.classes:
             classes[character_class] = None
 
             if character_class in BASE_CHARACTER_CLASSES:
@@ -157,7 +166,8 @@ class Replacer:
     def _parse_arguments(self, **kwds: str) -> None:
         name = kwds.get("name")
         classes = kwds.get("classes", list())
-        feats = {kwds.get("feats", 4)}
+        feats = kwds.get("feats", 4)
+        feats = set(feats) if isinstance(feats, list) else {feats}
         spells = kwds.get("spells", 1)
         warlock_spells = kwds.get("warlock_spells", 1)
         actions = kwds.get("actions", 1)
@@ -217,7 +227,7 @@ class Replacer:
         if progression.Name not in BASE_CHARACTER_CLASSES:
             return False
         character_class = CharacterClass(progression.Name)
-        if character_class not in self.args.classes:
+        if character_class not in self.args.included_classes:
             return False
         feats = (self.args.rogue_feats if character_class == CharacterClass.ROGUE
                 else self.args.fighter_feats if character_class == CharacterClass.FIGHTER
@@ -230,7 +240,7 @@ class Replacer:
         if progression.Name not in CharacterClass:
             return False
         character_class = CharacterClass(progression.Name)
-        if character_class not in self.args.classes:
+        if character_class not in self.args.included_classes:
             return False
         existing_boosts = progression.Boosts
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self.args.spells)
@@ -242,7 +252,7 @@ class Replacer:
         if progression.Name not in CharacterClass or progression.Level != 1 or progression.IsMulticlass:
             return False
         character_class = CharacterClass(progression.Name)
-        if character_class not in self.args.classes:
+        if character_class not in self.args.included_classes:
             return False
         selectors = progression.Selectors
         if self.args.skills is not None:

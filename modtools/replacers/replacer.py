@@ -96,9 +96,9 @@ class Replacer:
                         author=author,
                         name=self.args.name,
                         mod_uuid=kwds.get("mod_uuid"),
-                        description=kwds.get("description"),
+                        description=kwds.get("description", ""),
                         folder=kwds.get("folder"),
-                        version=kwds.get("version"),
+                        version=kwds.get("version", (4, 1, 1, 1)),
                         cache_dir=kwds.get("cache_dir"))
 
     @staticmethod
@@ -153,6 +153,7 @@ class Replacer:
         self.args.included_classes = [*included_classes.keys()]
 
     def _parse_arguments(self, **kwds: str) -> None:
+        name = kwds.get("name")
         feats = kwds.get("feats", "4")
         spells = kwds.get("spells", 1)
         warlock_spells = kwds.get("warlock_spells", 1)
@@ -161,7 +162,7 @@ class Replacer:
         expertise = kwds.get("expertise")
 
         parser = argparse.ArgumentParser(description="A mod replacer.")
-        parser.add_argument("-n", "--name", type=str,
+        parser.add_argument("-n", "--name", type=str, default=name,
                             help="Mod name")
         parser.add_argument("-c", "--classes", type=self._class_list, default=set(),
                             help="Classes to include in the progression (defaulting to all)")

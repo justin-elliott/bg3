@@ -234,8 +234,6 @@ class Replacer:
                 else self.args.other_feats)
         allow_improvement = progression.AllowImprovement
         progression.AllowImprovement = (progression.Level in feats) or (False if allow_improvement == False else None)
-        if allow_improvement != progression.AllowImprovement:
-            print(f"{progression.Name}@{progression.Level} -> allow_improvement {progression.AllowImprovement}")
         return allow_improvement != progression.AllowImprovement
 
     def adjust_resources(self, progression: Progression) -> bool:
@@ -248,8 +246,6 @@ class Replacer:
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self.args.spells)
         multiply_resources(progression, [ActionResource.WARLOCK_SPELL_SLOTS], self.args.warlock_spells)
         multiply_resources(progression, self.ACTION_RESOURCES, self.args.actions)
-        if existing_boosts != progression.Boosts:
-            print(f"{progression.Name}@{progression.Level} -> adjust_resources {progression.Boosts}")
         return existing_boosts != progression.Boosts
     
     def adjust_skills(self, progression: Progression) -> bool:
@@ -265,8 +261,6 @@ class Replacer:
         if self.args.expertise is not None:
             selectors = [selector for selector in selectors if not selector.startswith("SelectSkillsExpertise(")]
             selectors.append(f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{self.args.expertise})")
-        if progression.Selectors != selectors:
-            print(f"{progression.Name}@{progression.Level} -> adjust_skills {progression.Selectors}")
         if progression.Selectors == selectors:
             return False
         progression.Selectors = selectors

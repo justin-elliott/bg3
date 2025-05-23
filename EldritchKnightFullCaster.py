@@ -35,24 +35,13 @@ from modtools.replacers import (
 )
 
 
-progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
-    + "Progressions/Progressions.lsx"
-)
-
-
 class EldritchKnightFullCaster(Replacer):
-    @dataclass
-    class Args:
-        spells: int  # Multiplier for spell slots
-
-    _args: Args
-    def __init__(self, args: Args):
+    def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="EldritchKnightFullCaster",
-                         description="Full casting for the Eldritch Knight subclass.")
-        self._args = args
+                         description="Full casting for the Eldritch Knight subclass.",
+                         **kwds)
 
     @class_description(CharacterClass.FIGHTER_ELDRITCHKNIGHT)
     def eldritch_knight_description(self, class_description: ClassDescription) -> None:
@@ -244,20 +233,11 @@ class EldritchKnightFullCaster(Replacer):
         ]
 
 
-def level_list(s: str) -> set[int]:
-    levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 21))):
-        raise "Invalid levels"
-    return levels
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Full casting for the Fighter Eldritch Knight subclass.")
-    parser.add_argument("-s", "--spells", type=int, choices=range(1, 9), default=2,
-                        help="Spell slot multiplier (default 2; double spell slots)")
-    args = EldritchKnightFullCaster.Args(**vars(parser.parse_args()))
-
-    eldritch_knight_full_caster = EldritchKnightFullCaster(args)
+    eldritch_knight_full_caster = EldritchKnightFullCaster(
+        classes=[CharacterClass.FIGHTER_ELDRITCHKNIGHT],
+        spells=2
+    )
     eldritch_knight_full_caster.build()
 
 

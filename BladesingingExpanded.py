@@ -55,10 +55,14 @@ class BladesingingExpanded(Replacer):
     def wizard_bladesinging_level_2(self, progress: Progression) -> None:
         progress.PassivesAdded += [
             "SculptSpells",
+            "Smite_Divine",
             self._fast_movement_30,
             self._pack_mule,
             self._unarmored_defense,
             self._warding
+        ]
+        progress.Selectors += [
+            "AddSpells(58aef51d-a46c-44c8-8bed-df90870eb55f,,,,AlwaysPrepared)",  # Smites
         ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 3)
@@ -147,8 +151,8 @@ def main() -> None:
         ],
         feats=2,
         spells=2,
-        warlock_spells=1,
-        actions=2,
+        warlock_spells=2,
+        actions=4,
         skills=4,
         expertise=2,
     )

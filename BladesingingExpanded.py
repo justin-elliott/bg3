@@ -46,7 +46,7 @@ class BladesingingExpanded(Replacer):
         loca[f"{arcane_guidance}_Description"] = {"en": """
             The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
             <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on
-            Charisma checks against non-hostile creatures.
+            <LSTag Tooltip="Charisma">Charisma</LSTag> checks.
             """}
 
         self.mod.add(SpellData(
@@ -69,8 +69,9 @@ class BladesingingExpanded(Replacer):
                 "RollBonus(RawAbility,1d4)",
                 "RollBonus(SavingThrow,1d4)",
                 "RollBonus(DeathSavingThrow,1d4)",
-                "Advantage(SourceDialogue,Charisma)",
+                "Advantage(Ability,Charisma)",
             ],
+            StackId=arcane_guidance.upper(),
         ))
 
         return arcane_guidance

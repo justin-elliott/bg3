@@ -1,13 +1,20 @@
 
 import os
 
+from functools import cached_property
 from moddb import (
+    BattleMagic,
     Bolster,
     Defense,
     Movement,
     PackMule,
 )
-from modtools.lsx.game import CharacterAbility, Progression
+from modtools.gamedata import SpellData, StatusData
+from modtools.lsx.game import (
+    CharacterAbility,
+    Progression,
+    SpellList,
+)
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -18,6 +25,7 @@ from modtools.replacers import (
 
 class BladesingingExpanded(Replacer):
     # Passives
+    _battle_magic: str
     _fast_movement_30: str
     _fast_movement_45: str
     _fast_movement_60: str
@@ -28,6 +36,55 @@ class BladesingingExpanded(Replacer):
 
     # Spells
     _bolster: str
+
+    @cached_property
+    def _arcane_guidance(self) -> str:
+        arcane_guidance = f"{self.mod.get_name()}_ArcaneGuidance"
+
+        loca = self.mod.get_localization()
+        loca[f"{arcane_guidance}_DisplayName"] = {"en": "Arcane Guidance"}
+        loca[f"{arcane_guidance}_Description"] = {"en": """
+            The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
+            <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on
+            Charisma checks against non-hostile creatures.
+            """}
+
+        self.mod.add(SpellData(
+            arcane_guidance,
+            SpellType="Target",
+            using="Target_Guidance",
+            DisplayName=loca[f"{arcane_guidance}_DisplayName"],
+            Description=loca[f"{arcane_guidance}_Description"],
+            SpellProperties=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
+            TooltipStatusApply=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
+        ))
+        self.mod.add(StatusData(
+            arcane_guidance.upper(),
+            StatusType="BOOST",
+            using="GUIDANCE",
+            DisplayName=loca[f"{arcane_guidance}_DisplayName"],
+            Description=loca[f"{arcane_guidance}_Description"],
+            Boosts=[
+                "RollBonus(SkillCheck,1d4)",
+                "RollBonus(RawAbility,1d4)",
+                "RollBonus(SavingThrow,1d4)",
+                "RollBonus(DeathSavingThrow,1d4)",
+                "Advantage(SourceDialogue,Charisma)",
+            ],
+        ))
+
+        return arcane_guidance
+
+    @cached_property
+    def _spells_level_2(self) -> str:
+        name = "Bladesinging spells gained at level 2"
+        spells = SpellList(
+            Name=name,
+            Spells=[self._arcane_guidance, "Projectile_EldritchBlast"],
+            UUID=self.make_uuid(name),
+        )
+        self.mod.add(spells)
+        return str(spells.UUID)
 
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
@@ -41,6 +98,7 @@ class BladesingingExpanded(Replacer):
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_75 = Movement(self.mod).add_fast_movement(3.0)
 
+        self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._unarmored_defense = Defense(self.mod).add_unarmored_defense(CharacterAbility.INTELLIGENCE)
         self._warding = Defense(self.mod).add_warding()
@@ -54,8 +112,10 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 2)
     def wizard_bladesinging_level_2(self, progress: Progression) -> None:
         progress.PassivesAdded += [
+            "RepellingBlast",
             "SculptSpells",
             "Smite_Divine",
+            self._battle_magic,
             self._fast_movement_30,
             self._pack_mule,
             self._unarmored_defense,
@@ -63,6 +123,7 @@ class BladesingingExpanded(Replacer):
         ]
         progress.Selectors += [
             "AddSpells(58aef51d-a46c-44c8-8bed-df90870eb55f,,,,AlwaysPrepared)",  # Smites
+            f"AddSpells({self._spells_level_2},,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 3)

@@ -10,6 +10,11 @@
                     <attribute id="Spells" type="LSString" value="BladesingingExpanded_Bolster" />
                     <attribute id="UUID" type="guid" value="270871ea-6f7c-f349-a13c-69c8a1f96bf3" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 2" />
+                    <attribute id="Spells" type="LSString" value="BladesingingExpanded_ArcaneGuidance;Projectile_EldritchBlast" />
+                    <attribute id="UUID" type="guid" value="e7c097be-d3f8-21a7-9169-b0e38524d71f" />
+                </node>
             </children>
         </node>
     </region>

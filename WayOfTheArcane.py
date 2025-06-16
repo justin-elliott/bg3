@@ -3,6 +3,7 @@ import os
 
 from functools import cached_property
 from moddb import (
+    Awareness,
     BattleMagic,
     Bolster,
     Defense,
@@ -39,6 +40,7 @@ class WayOfTheArcane(Replacer):
 
 
     # Passives
+    _awareness: str
     _battle_magic: str
     _empowered_spells: str
     _pack_mule: str
@@ -54,6 +56,7 @@ class WayOfTheArcane(Replacer):
                          description="A class replacer for Shadow.",
                          **kwds)
 
+        self._awareness = Awareness(self.mod).add_awareness()
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
@@ -91,35 +94,6 @@ class WayOfTheArcane(Replacer):
             StatsFunctors=[
                 "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY,100,2)",
                 "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY_DURATION_TECHNICAL,100,1)",
-            ],
-        ))
-
-        return name
-
-    @cached_property
-    def _awareness(self) -> str:
-        """The Awareness passive, a variant of Alert."""
-        name = f"{self.mod.get_prefix()}_Awareness"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Awareness"}
-        loca[f"{name}_Description"] = {"en": """
-            You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be
-            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>, and attackers can't land
-            <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
-            """}
-
-        self.mod.add(PassiveData(
-            name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            DescriptionParams=["5"],
-            Icon="Action_Barbarian_MagicAwareness",
-            Properties=["ForceShowInCC", "Highlighted"],
-            Boosts=[
-                "Initiative(5)",
-                "StatusImmunity(SURPRISED)",
-                "CriticalHit(AttackTarget,Success,Never)",
             ],
         ))
 

@@ -3,6 +3,8 @@
 <contentList>
     <content contentuid="h16d8bed7g5ba8g73c5g7920g05b69a5e621c" version="1">Fast Movement</content>
     <content contentuid="h79adbf0cg5982g4a52gc5ecg81624ca991af" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="hf928b11fgddf0gafa4gaf80gdf040274300e" version="1">Awareness</content>
+    <content contentuid="h72712505g5667g1781ge955g43ffe97d57cb" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h58b3b3ecg190fg3b5bgd617g8e934e3d2ee9" version="1">Battle Magic</content>
     <content contentuid="hc0adbfacg0719g1c89gb80fg466c2ba93411" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h74ddafaeg3a66g7589gcdadg611f27c0b497" version="1">Pack Mule</content>

@@ -3,6 +3,7 @@ import os
 
 from functools import cached_property
 from moddb import (
+    Awareness,
     BattleMagic,
     Bolster,
     Defense,
@@ -25,6 +26,7 @@ from modtools.replacers import (
 
 class BladesingingExpanded(Replacer):
     # Passives
+    _awareness: str
     _battle_magic: str
     _fast_movement_30: str
     _fast_movement_45: str
@@ -99,6 +101,7 @@ class BladesingingExpanded(Replacer):
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_75 = Movement(self.mod).add_fast_movement(3.0)
 
+        self._awareness = Awareness(self.mod).add_awareness()
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._unarmored_defense = Defense(self.mod).add_unarmored_defense(CharacterAbility.INTELLIGENCE)
@@ -129,8 +132,8 @@ class BladesingingExpanded(Replacer):
         ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 3)
-    def wizard_bladesinging_level_3(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def wizard_bladesinging_level_3(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._awareness]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 4)
     def wizard_bladesinging_level_4(self, progress: Progression) -> None:

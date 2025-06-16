@@ -5,6 +5,7 @@ BG3 moddb definitions package.
 
 # flake8: noqa
 from .attack import *
+from .awareness import *
 from .battlemagic import *
 from .bolster import *
 from .boosts import *

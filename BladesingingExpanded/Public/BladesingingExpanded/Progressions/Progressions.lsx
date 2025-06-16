@@ -216,6 +216,15 @@
                     <attribute id="UUID" type="guid" value="fb80a80b-d512-4ff5-89d8-b4fa6c29f96e" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="BladesingingSchool" />
+                    <attribute id="PassivesAdded" type="LSString" value="BladesingingExpanded_Awareness" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />
+                    <attribute id="UUID" type="guid" value="ca3998ec-99fc-4058-ae08-587adeb9d8ec" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />

@@ -308,6 +308,7 @@ class WayOfTheArcane(Replacer):
             self._warding,
         ]
         progress.Selectors = [
+            f"AddSpells({self._bolster_spell_list},,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_1_SPELL_LIST},6,0)",
             "Tag(WIZARD)",

@@ -5,19 +5,23 @@
     <content contentuid="h21257219g93f3g488agddd6g9c03d33f12c3" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h80a8ad23gd7cbgb9fbg11a0g4fdba58dfe72" version="1">Empowered Spells</content>
     <content contentuid="h0de2b947gc80bg4d3dga1f8g44a1bbc3bcd1" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt;" to the damage it deals.</content>
+    <content contentuid="hb77cbf15ga8b9g60c7g3147gcb0ce166126a" version="1">Pack Mule</content>
+    <content contentuid="h00eb1e7fg293eg011eg34fag10abd7580fa9" version="1">Your carrying capacity is increased by [1]%.</content>
+    <content contentuid="h45218d71gc5a5g9136g4aa1g4fbc3ced6fda" version="1">Warding</content>
+    <content contentuid="h806735d4g66cag5ccegf6e5g8bc0d04e700d" version="1">A magical barrier protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
     <content contentuid="h5546baa6gc7d7g2df4g3ea1g1009fc7f841c" version="1">Bolster</content>
     <content contentuid="h153cac16g325fg2496gb4eeg8bbab1ea6bf3" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h4ee01658gea87g9d0dg898fg6854ac2e6854" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="hb77cbf15ga8b9g60c7g3147gcb0ce166126a" version="1">Pack Mule</content>
-    <content contentuid="h00eb1e7fg293eg011eg34fag10abd7580fa9" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="hbfe8c88eg0f92gf4c0ga6edg447691180dcf" version="1">Way of the Arcane</content>
     <content contentuid="h9685107cgcb88g2d04gdf1fgb98a3c888033" version="1">You seek mastery over mind and body. Your Ki connects you to the Weave.</content>
     <content contentuid="h07369c02gb3b1g1e6bgb94dg64aed8b09021" version="1">Slow Fall</content>
     <content contentuid="h018affd8gd165g225fgcbb8gc3ca9a37e6dc" version="1">You only take half damage from falling.</content>
     <content contentuid="h88032cbagdbfdg7798g87bagcdd86a78b7d0" version="1">Stillness of Mind</content>
     <content contentuid="h141f6a62gb228g243fg94abg38fdefe80224" version="1">You are immune to being &lt;LSTag Tooltip="CharmedGroup"&gt;Charmed&lt;/LSTag&gt; or &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frightened&lt;/LSTag&gt;.</content>
+    <content contentuid="h9e52735dg6f99ga206gdf9egd89d44964725" version="1">Awareness</content>
+    <content contentuid="h16b35becg4fdeg4298g1b1bg6c229ad0a523" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h3e92ae6dga7e8ga97dg9b67ge3b5feaea397" version="1">Arcane Manifestation</content>
     <content contentuid="h7c87f2d9gc2feg6785g510fg3e0d3d70a8df" version="1">Arcane energy infuses your strikes. Your melee unarmed attacks deal an additional [1].&lt;br&gt;&lt;br&gt;Whenever you deal damage with a melee unarmed attack, you gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt; for 2 turns.</content>
     <content contentuid="h244ed4d4ge754gfbb1g1a15g355533863119" version="1">Wholeness of Body</content>
-    <content contentuid="h815c6a94g1d20g7f32gd505gf607b3ad63c1" version="1">Gain an additional bonus action.&lt;br&gt;&lt;br&gt;While in combat, you heal [1] every turn, and restore [2] &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point(s)&lt;/LSTag&gt;.</content>
+    <content contentuid="h815c6a94g1d20g7f32gd505gf607b3ad63c1" version="1">While in combat, you heal [1] every turn, and restore [2] &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point(s)&lt;/LSTag&gt;.</content>
 </contentList>

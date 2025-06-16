@@ -31,6 +31,7 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="h9685107cgcb88g2d04gdf1fgb98a3c888033" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hbfe8c88eg0f92gf4c0ga6edg447691180dcf" version="1" />

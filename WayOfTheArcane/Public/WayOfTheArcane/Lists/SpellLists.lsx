@@ -6,49 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane Flurry of Blows" />
+                    <attribute id="Name" type="LSString" value="Bolster spell list" />
+                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_Bolster" />
+                    <attribute id="UUID" type="guid" value="f996e50f-6059-d1cf-e969-1d8e621d1c5e" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Way of the Arcane Flurry of Blows" />
                     <attribute id="Spells" type="LSString" value="WayOfTheArcane_BonusUnarmedStrike;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push" />
                     <attribute id="UUID" type="guid" value="7b304523-6625-66c1-b0e1-754a0c1abb9f" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 2 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_Blindness;Target_FlamingSphere;Target_CloudOfDaggers;Shout_DetectThoughts;Target_Shatter;Target_Darkvision;Target_PhantasmalForce;Projectile_AcidArrow;Target_Invisibility;Target_HoldPerson;Target_Darkness;Shout_SeeInvisibility;Shout_MirrorImage;Target_Knock;Shout_Blur;Zone_GustOfWind;Target_Web;Projectile_RayOfEnfeeblement;Shout_ShadowBlade_Class;Projectile_ScorchingRay;Target_MagicWeapon;Target_MistyStep;Target_CrownOfMadness;Target_EnlargeReduce;Target_ArcaneLock" />
-                    <attribute id="UUID" type="guid" value="3c4c62c2-6be9-5d23-e64d-262c36732115" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_Slow;Shout_Blink;Target_SleetStorm;Target_AnimateDead;Target_VampiricTouch;Target_Counterspell;Projectile_Fireball;Target_StinkingCloud;Target_RemoveCurse;Target_GlyphOfWarding;Zone_LightningBolt;Target_ProtectionFromEnergy;Target_HypnoticPattern;Zone_Fear;Target_BestowCurse;Target_FeignDeath;Target_Haste;Target_Fly;Target_GaseousForm" />
-                    <attribute id="UUID" type="guid" value="3f554a87-b585-463f-f872-65fcd72ab5d3" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 6 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_CreateUndead;Wall_WallOfIce;Teleportation_ArcaneGate;Projectile_Disintegrate;Projectile_ChainLightning;Target_FreezingSphere;Target_GlobeOfInvulnerability;Target_CircleOfDeath;Target_IrresistibleDance;Zone_Sunbeam;Target_FleshToStone;Target_Eyebite" />
-                    <attribute id="UUID" type="guid" value="a5e3cc1b-ffc2-bf11-8d97-3511cb4ca6aa" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane cantrips" />
-                    <attribute id="Spells" type="LSString" value="Projectile_AcidSplash;Target_BoomingBlade_ClassSpell;Target_BurstingSinew;Target_ChillTouch;Projectile_FireBolt;Projectile_PoisonSpray;Projectile_RayOfFrost;Target_ShockingGrasp;Shout_BladeWard;Target_Friends;Target_DancingLights;Target_Light;Target_MageHand;Target_MinorIllusion;Target_TollTheDead;Target_TrueStrike" />
-                    <attribute id="UUID" type="guid" value="3a67ad15-9eed-a2e4-9a9e-00eb69f3ff0e" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="Zone_BurningHands;Target_CharmPerson;Projectile_ChromaticOrb;Zone_ColorSpray;Shout_DisguiseSelf;Shout_ExpeditiousRetreat;Shout_FalseLife;Shout_FeatherFall;Target_FindFamiliar;Target_FogCloud;Target_Grease;Projectile_IceKnife;Target_Jump;Target_Longstrider;Target_MageArmor;Projectile_MagicMissile;Target_ProtectionFromEvilAndGood;Projectile_RayOfSickness;Shout_Shield_Wizard;Target_Sleep;Target_HideousLaughter;Zone_Thunderwave;Projectile_WitchBolt" />
-                    <attribute id="UUID" type="guid" value="a60add86-4918-c6ed-670a-9bb346a41886" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 1 spells that are always prepared" />
-                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_Bolster" />
-                    <attribute id="UUID" type="guid" value="8fc3ad4f-77dc-53c9-1421-157bbba3d2bb" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 4 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_Stoneskin;Target_PhantasmalKiller;Target_Confusion;Target_ResilientSphere;Target_Polymorph;Target_Blight;Shout_FireShield;Target_Banishment;Target_ConjureElementals_Minor_Container;Target_IceStorm;Target_Invisibility_Greater;Wall_WallOfFire;Teleportation_DimensionDoor;Target_BlackTentacles" />
-                    <attribute id="UUID" type="guid" value="226560ba-1723-c273-1c32-ec954c8641a0" />
-                </node>
-                <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Way of the Arcane level 5 spells" />
-                    <attribute id="Spells" type="LSString" value="Target_HoldMonster;Throw_Telekinesis;Target_DominatePerson;Target_Cloudkill;Target_Seeming;Zone_ConeOfCold;Wall_WallOfStone;Target_PlanarBinding;Target_ConjureElemental_Container" />
-                    <attribute id="UUID" type="guid" value="eba4e789-34ae-286b-03b3-553440a615c4" />
                 </node>
             </children>
         </node>

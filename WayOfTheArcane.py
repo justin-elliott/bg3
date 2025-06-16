@@ -239,6 +239,7 @@ class WayOfTheArcane(Replacer):
         class_description.BaseHp = 10
         class_description.HpPerLevel = 6
 
+        class_description.CanLearnSpells = True
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.MustPrepareSpells = True
 
@@ -311,7 +312,6 @@ class WayOfTheArcane(Replacer):
             f"AddSpells({self._bolster_spell_list},,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_1_SPELL_LIST},6,0)",
-            "Tag(WIZARD)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 2)

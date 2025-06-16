@@ -209,7 +209,7 @@
                     <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);Proficiency(Daggers);Proficiency(Sickles);Proficiency(Shortswords);Proficiency(Rapiers);Proficiency(Scimitars);Proficiency(Longswords);ProficiencyBonus(Skill,Performance);ActionResource(Bladesong,8,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="TraininginWarandSong;Bladesong_Armor_Message;Bladesong_Weapon_Message;Bladesong_Shield_Message;Bladesong_Weapon;Bladesong_Shield;Bladesong_Unarmed;RepellingBlast;SculptSpells;Smite_Divine;BladesingingExpanded_BattleMagic;BladesingingExpanded_FastMovement_30;BladesingingExpanded_PackMule_400;BladesingingExpanded_UnarmoredDefense_Intelligence;BladesingingExpanded_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="TraininginWarandSong;Bladesong_Armor_Message;Bladesong_Weapon_Message;Bladesong_Shield_Message;Bladesong_Weapon;Bladesong_Shield;Bladesong_Unarmed;DevilsSight;RepellingBlast;SculptSpells;Smite_Divine;BladesingingExpanded_BattleMagic;BladesingingExpanded_FastMovement_30;BladesingingExpanded_PackMule_400;BladesingingExpanded_UnarmoredDefense_Intelligence;BladesingingExpanded_Warding" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectEquipment(5309613d-e7cb-4176-95b6-0c8b796d47d0,1,WarAndSong);AddSpells(e97297e2-5cc9-45c9-ae8d-5a24257dd176,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);AddSpells(58aef51d-a46c-44c8-8bed-df90870eb55f,,,,AlwaysPrepared);AddSpells(e7c097be-d3f8-21a7-9169-b0e38524d71f,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />
@@ -235,7 +235,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)" />
                     <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />

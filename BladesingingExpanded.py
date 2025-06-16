@@ -113,6 +113,7 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 2)
     def wizard_bladesinging_level_2(self, progress: Progression) -> None:
         progress.PassivesAdded += [
+            "DevilsSight",
             "RepellingBlast",
             "SculptSpells",
             "Smite_Divine",
@@ -141,6 +142,7 @@ class BladesingingExpanded(Replacer):
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 6)
     def wizard_bladesinging_level_6(self, progress: Progression) -> None:
+        progress.PassivesAdded += ["PotentCantrip"]
         progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 7)

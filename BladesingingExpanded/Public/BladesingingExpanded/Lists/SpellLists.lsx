@@ -12,8 +12,13 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 2" />
-                    <attribute id="Spells" type="LSString" value="BladesingingExpanded_ArcaneGuidance;Shout_CreateSorceryPoints;Shout_CreateSpellSlot;Projectile_EldritchBlast" />
+                    <attribute id="Spells" type="LSString" value="BladesingingExpanded_ArcaneGuidance;Target_Command_Container;Projectile_EldritchBlast" />
                     <attribute id="UUID" type="guid" value="e7c097be-d3f8-21a7-9169-b0e38524d71f" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 3" />
+                    <attribute id="Spells" type="LSString" value="Shout_CreateSorceryPoints;Shout_CreateSpellSlot" />
+                    <attribute id="UUID" type="guid" value="23ce1710-78cd-42d0-0c1e-94a8e99a4b19" />
                 </node>
             </children>
         </node>

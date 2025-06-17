@@ -88,9 +88,22 @@ class BladesingingExpanded(Replacer):
             Name=name,
             Spells=[
                 self._arcane_guidance,
+                "Target_Command_Container",
+                "Projectile_EldritchBlast",
+            ],
+            UUID=self.make_uuid(name),
+        )
+        self.mod.add(spells)
+        return str(spells.UUID)
+
+    @cached_property
+    def _spells_level_3(self) -> str:
+        name = "Bladesinging spells gained at level 3"
+        spells = SpellList(
+            Name=name,
+            Spells=[
                 "Shout_CreateSorceryPoints",
                 "Shout_CreateSpellSlot",
-                "Projectile_EldritchBlast",
             ],
             UUID=self.make_uuid(name),
         )
@@ -148,7 +161,10 @@ class BladesingingExpanded(Replacer):
     def wizard_bladesinging_level_3(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{3 * self.args.actions},0)"]
         progress.PassivesAdded = [self._awareness]
-        progress.Selectors += [f"SelectPassives({self._METAMAGIC},3,Metamagic)"]
+        progress.Selectors += [
+            f"AddSpells({self._spells_level_3},,,,AlwaysPrepared)",
+            f"SelectPassives({self._METAMAGIC},4,Metamagic)",
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 4)
     def wizard_bladesinging_level_4(self, progress: Progression) -> None:

@@ -221,7 +221,7 @@
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="BladesingingExpanded_Awareness" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0);SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,3,Metamagic)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0);AddSpells(23ce1710-78cd-42d0-0c1e-94a8e99a4b19,,,,AlwaysPrepared);SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,4,Metamagic)" />
                     <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />
                     <attribute id="UUID" type="guid" value="ca3998ec-99fc-4058-ae08-587adeb9d8ec" />
                 </node>

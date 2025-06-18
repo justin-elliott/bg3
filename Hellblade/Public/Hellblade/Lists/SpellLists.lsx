@@ -6,13 +6,8 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Bolster spell list" />
-                    <attribute id="Spells" type="LSString" value="Hellblade_Bolster" />
-                    <attribute id="UUID" type="guid" value="eb06b363-6845-3408-b967-727545888323" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Hellblade spells gained at level 1" />
-                    <attribute id="Spells" type="LSString" value="eb06b363-6845-3408-b967-727545888323;Zone_BurningHands;Target_Command_Container;Hellblade_HellsGuidance;Hellblade_InfernalBlade" />
+                    <attribute id="Spells" type="LSString" value="Hellblade_Bolster;Zone_BurningHands;Target_Command_Container;Hellblade_HellsGuidance;Hellblade_InfernalBlade" />
                     <attribute id="UUID" type="guid" value="b4acd5fe-f6e4-b76e-b3c9-d861b3a418fc" />
                 </node>
                 <node id="SpellList">

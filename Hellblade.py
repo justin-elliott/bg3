@@ -60,7 +60,7 @@ class Hellblade(Replacer):
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._warding = Defense(self.mod).add_warding()
 
-        self._bolster = Bolster(self.mod).add_bolster_spell_list()
+        self._bolster = Bolster(self.mod).add_bolster()
 
     @cached_property
     def _fire_walk(self) -> str:

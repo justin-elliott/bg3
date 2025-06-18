@@ -4,8 +4,6 @@
     <content contentuid="h2d53c34cg228dg19d7g0202gfc8f5cab47c7" version="1">Bolster</content>
     <content contentuid="ha98ca916g17f9g2f75g570fg2b96068d5e26" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h85af8b16gbecag7d13g87f2g553bab65f109" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
-    <content contentuid="hc0529dc8g51b3gbe78g5b5fgddf6dcfd2aa5" version="1">Brutal Cleave</content>
-    <content contentuid="hafcfd922gb1acg8647g43b1g0bce9752bd14" version="1">Swing your weapon in a large arc to attack up to [1] enemies at once.</content>
     <content contentuid="h69e1efdfg7cafg6632gfa33g42b1d51fa480" version="1">Pack Mule</content>
     <content contentuid="heae1917bge7d6g0070g253bg77c3ab1cc2f2" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="h3b62d67bg3ac9gaa21ga1ceg65d16dd670bb" version="1">Comfortable Boots</content>
@@ -56,5 +54,6 @@
     <content contentuid="h10a65a26g73c5g0337gd846gf86752e2cb1f" version="1">Improved Critical</content>
     <content contentuid="h08d620edg9ef4g069cgd15agacade81efa94" version="1">At &lt;LSTag&gt;Level 13&lt;/LSTag&gt;, you reduce the number you need to roll a Critical Hit while attacking by 1. This is further reduced by 1 at &lt;LSTag&gt;Level 17&lt;/LSTag&gt;.</content>
     <content contentuid="h6aaeee16ge8f8g1270g64bag71c67929f984" version="1">Adamantine Katana</content>
+    <content contentuid="h01332a50g8440ga109gff9egf29f1fab9f6c" version="1">Infernal Katana</content>
     <content contentuid="h6c9a8eddg57f7g064eg62cegfe4ea53e58ad" version="1">Dancing Blade</content>
 </contentList>

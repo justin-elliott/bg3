@@ -1475,6 +1475,28 @@
                 </node>
                 <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="hccebbf40g138fg422ega113g7a0869715627" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01332a50g8440ga109gff9egf29f1fab9f6c" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="f95c3f3a-07aa-05b5-6375-94577bcaa07f" />
+                    <attribute id="Name" type="LSString" value="CampClothes_InfernalKatana" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_InfernalKatana" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hccebbf40g138fg422ega113g7a0869715627" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h6c9a8eddg57f7g064eg62cegfe4ea53e58ad" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="61dfffd0-1309-3c87-aced-8ae9ce8dbe6e" />

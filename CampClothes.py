@@ -6,7 +6,6 @@ Generates files for the "CampClothes" mod.
 import os
 
 from moddb import (
-    Attack,
     Bolster,
     character_level_range,
     Defense,
@@ -41,7 +40,6 @@ camp_clothes = Mod(os.path.dirname(__file__),
 camp_clothes.add(character_level_range)
 
 bolster = Bolster(camp_clothes).add_bolster()
-brutal_cleave = Attack(camp_clothes).add_brutal_cleave()
 pack_mule = PackMule(camp_clothes).add_pack_mule(5.0)
 
 loca = camp_clothes.get_localization()
@@ -966,7 +964,8 @@ def add_longsword(name: str,
                   *,
                   parent_template_id: UUID,
                   display_name: str,
-                  description: str = "hccebbf40g138fg422ega113g7a0869715627") -> None:
+                  description: str = "hccebbf40g138fg422ega113g7a0869715627",
+                  bonus_damage_type: str = "Force") -> None:
     camp_clothes_longsword_game_objects_uuid = camp_clothes.make_uuid(name)
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
@@ -995,17 +994,16 @@ def add_longsword(name: str,
             "UnlockSpell(Target_OpeningAttack)",
             "UnlockSpell(Target_Slash_New)",
             "UnlockSpell(Rush_SpringAttack)",
-            f"UnlockSpell({brutal_cleave})",
         ],
         DefaultBoosts=[
             "WeaponProperty(Magical)",
             "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
             "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
             "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-            "IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,Force)",
-            "IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,Force)",
-            "IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,Force)",
-            "IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,Force)",
+            f"IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,{bonus_damage_type})",
+            f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,{bonus_damage_type})",
+            f"IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,{bonus_damage_type})",
+            f"IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,{bonus_damage_type})",
         ],
         PassivesOnEquip=[
             "UNI_Adamantine_CriticalVsItems_Passive",
@@ -1032,6 +1030,12 @@ add_longsword("CampClothes_Katana",
               parent_template_id=katana_uuid,
               display_name=loca["CampClothes_Katana_DisplayName"])
 
+loca["CampClothes_InfernalKatana_DisplayName"] = {"en": "Infernal Katana"}
+add_longsword("CampClothes_InfernalKatana",
+              parent_template_id=katana_uuid,
+              display_name=loca["CampClothes_InfernalKatana_DisplayName"],
+              bonus_damage_type="Fire")
+
 loca["CampClothes_DancingBlade_DisplayName"] = {"en": "Dancing Blade"}
 phalar_aluve_uuid = UUID("6d0d3206-50b5-48ed-af92-a146ed6b98f2")
 add_longsword("CampClothes_DancingBlade",
@@ -1048,6 +1052,7 @@ equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
     "CampClothes_Katana",
+    "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
     "ORI_Wyll_Infernal_Robe",
     "CampClothes_Boots_Isobel",

@@ -190,6 +190,14 @@
                     <attribute id="UUID" type="guid" value="05581dc5-e9c2-491e-99a5-acbb3d8d295f" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="4" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(f5c4af9c-5d8d-4526-9057-94a4b243cd40,1,0);SelectSpells(4a3bf687-91c1-4dad-821c-ad32171c7552,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="dbe59dcf-0f31-49d1-af83-a235a260451e" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Hexblade" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -202,7 +210,7 @@
                     <attribute id="Name" type="LSString" value="Hexblade" />
                     <attribute id="PassivesAdded" type="LSString" value="AccursedSpecter;ElementalAdept_Fire" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(58b8c82e-8ab3-4fd7-aa0a-3f2b831187f5,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(58b8c82e-8ab3-4fd7-aa0a-3f2b831187f5,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)" />
                     <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
                     <attribute id="UUID" type="guid" value="b2dbe656-f11e-42a7-9620-07b49d28b39b" />
                 </node>
@@ -217,14 +225,31 @@
                     <attribute id="UUID" type="guid" value="2accc6b5-c90f-472d-9bd2-456149edb759" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="10" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="PassivesAdded" type="LSString" value="ArmorOfHexes" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="e5df53c1-86a0-45bb-8937-6f9d0d504032" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="Hexblade" />
                     <attribute id="PassivesAdded" type="LSString" value="Hellblade_FastMovement_30" />
                     <attribute id="PassivesRemoved" type="LSString" value="Hellblade_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)" />
                     <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
                     <attribute id="UUID" type="guid" value="a5c0b503-a88a-4232-9bfc-7d3e02f990fc" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="16" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="0bfd55b5-f0d3-4931-b952-29f9e7ff2591" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="17" />
@@ -235,6 +260,14 @@
                     <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
                     <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
                     <attribute id="UUID" type="guid" value="a87c88d6-f05d-436a-a143-85d935ccde51" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="18" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="b00d4eea-bcc4-4de7-88cd-871164dbe370" />
                 </node>
             </children>
         </node>

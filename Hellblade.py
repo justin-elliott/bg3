@@ -303,8 +303,8 @@ class Hellblade(Replacer):
         progress.Selectors += [f"AddSpells({self._spells_level_3})"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 4)
-    def warlock_hexblade_level_4(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def warlock_hexblade_level_4(self, progress: Progression) -> None:
+        progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 5)
     def warlock_hexblade_level_5(self, progress: Progression) -> None:
@@ -313,6 +313,7 @@ class Hellblade(Replacer):
     @progression(CharacterClass.WARLOCK_HEXBLADE, 6)
     def warlock_hexblade_level_6(self, progress: Progression) -> None:
         progress.PassivesAdded += ["ElementalAdept_Fire"]
+        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 7)
     def warlock_hexblade_level_7(self, progress: Progression) -> None:
@@ -329,8 +330,8 @@ class Hellblade(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 10)
-    def warlock_hexblade_level_10(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def warlock_hexblade_level_10(self, progress: Progression) -> None:
+        progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 11)
     def warlock_hexblade_level_11(self, _: Progression) -> None:
@@ -340,6 +341,7 @@ class Hellblade(Replacer):
     def warlock_hexblade_level_12(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._fast_movement_60]
         progress.PassivesRemoved = [self._fast_movement_45]
+        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 13)
     def warlock_hexblade_level_13(self, _: Progression) -> None:
@@ -354,8 +356,8 @@ class Hellblade(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 16)
-    def warlock_hexblade_level_16(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def warlock_hexblade_level_16(self, progress: Progression) -> None:
+        progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 17)
     def warlock_hexblade_level_17(self, progress: Progression) -> None:
@@ -363,8 +365,8 @@ class Hellblade(Replacer):
         progress.PassivesRemoved = [self._fast_movement_60]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 18)
-    def warlock_hexblade_level_18(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def warlock_hexblade_level_18(self, progress: Progression) -> None:
+        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 19)
     def warlock_hexblade_level_19(self, _: Progression) -> None:

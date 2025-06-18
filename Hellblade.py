@@ -121,6 +121,7 @@ class Hellblade(Replacer):
                 TooltipStatusApply=[f"ApplyStatus({name.upper()}_{level},100,-1)"],
                 SpellProperties=[f"ApplyStatus({name.upper()}_{level},100,-1)"],
                 PowerLevel=level,
+                RootSpellID=name,
                 UseCosts=["ActionPoint:1", f"SpellSlotsGroup:1:1:{level}"],
             ))
 

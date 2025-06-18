@@ -26,6 +26,7 @@ from modtools.replacers import (
     DontIncludeProgression,
     progression,
     Replacer,
+    spell_list,
 )
 
 
@@ -61,6 +62,89 @@ class Hellblade(Replacer):
         self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster()
+
+    @cached_property
+    def _armour_of_avernus(self) -> str:
+        """Add the Armour of Avernus spell, returning its name."""
+        name = f"{self.mod.get_prefix()}_ArmourOfAvernus"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Armour of Avernus"}
+
+        self.mod.add(SpellData(
+            name,
+            SpellType="Shout",
+            using="Shout_ArmorOfAgathys",
+            Icon="Spell_Evocation_FireShield_Warm",
+            DisplayName=loca[f"{name}_DisplayName"],
+            DescriptionParams=["GainTemporaryHitPoints(5)", "DealDamage(5,Fire)"],
+            TooltipStatusApply=[f"ApplyStatus({name.upper()},100,-1)"],
+            SpellProperties=[f"ApplyStatus({name.upper()},100,-1)"],
+            CastSound="Spell_Cast_Utility_FireshieldWarm_L4to5",
+            TargetSound="Spell_Impact_Utility_FireshieldWarm_L4to5",
+            PrepareEffect="ab9a9a13-7ceb-46ee-bd9e-74c044516fb1",
+            CastEffect="859bdcb8-c4dc-487d-8e44-452b1be1c034",
+        ))
+
+        self.mod.add(StatusData(
+            name.upper(),
+            StatusType="BOOST",
+            using="ARMOR_OF_AGATHYS",
+            Icon="Spell_Evocation_FireShield_Warm",
+            DisplayName=loca[f"{name}_DisplayName"],
+            DescriptionParams=["DealDamage(5,Fire)", "5"],
+            Passives=[f"{name}_Passive"],
+            OnApplyFunctors=[f"AI_ONLY:IF(not HasStatus('{name.upper()}')):ApplyStatus(AI_HELPER_BUFF,100,1)"],
+            StatusEffect="393ae64d-5014-4614-b25c-82ff744c0f31",
+        ))
+
+        self.mod.add(PassiveData(
+            f"{name}_Passive",
+            using="ArmorOfAgathys",
+            Icon="Spell_Evocation_FireShield_Warm",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description="hb6cc3a06gbe30g4fc9gada9gc8d15a7d9f8e;1",
+            DescriptionParams=["DealDamage(5,Fire)"],
+            StatsFunctors=[
+                "ApplyStatus(PASSIVE_FIRE_SHIELD_WARM,100,0)",
+                "ApplyStatus(SELF,PASSIVE_FIRE_SHIELD_WARM_ATTACKER,100,0)",
+                "DealDamage(SWAP,5,Fire,Magical)",
+            ],
+        ))
+
+        for level in range(2, 6):
+            self.mod.add(SpellData(
+                f"{name}_{level}",
+                SpellType="Shout",
+                using=name,
+                DescriptionParams=[f"GainTemporaryHitPoints({5 * level})", f"DealDamage({5 * level},Fire)"],
+                TooltipStatusApply=[f"ApplyStatus({name.upper()}_{level},100,-1)"],
+                SpellProperties=[f"ApplyStatus({name.upper()}_{level},100,-1)"],
+                PowerLevel=level,
+                UseCosts=["ActionPoint:1", f"SpellSlotsGroup:1:1:{level}"],
+            ))
+
+            self.mod.add(StatusData(
+                f"{name.upper()}_{level}",
+                StatusType="BOOST",
+                using=name.upper(),
+                DescriptionParams=[f"DealDamage({5 * level},Fire)", f"{5 * level}"],
+                Boosts=[f"TemporaryHP({5 * level})"],
+                Passives=[f"{name}_Passive_{level}"],
+            ))
+
+            self.mod.add(PassiveData(
+                f"{name}_Passive_{level}",
+                using=f"{name}_Passive",
+                DescriptionParams=[f"DealDamage({5 * level},Fire)"],
+                StatsFunctors=[
+                    "ApplyStatus(PASSIVE_FIRE_SHIELD_WARM,100,0)",
+                    "ApplyStatus(SELF,PASSIVE_FIRE_SHIELD_WARM_ATTACKER,100,0)",
+                    f"DealDamage(SWAP,{5 * level},Fire,Magical)",
+                ],
+            ))
+
+        return name
 
     @cached_property
     def _fire_walk(self) -> str:
@@ -249,7 +333,7 @@ class Hellblade(Replacer):
         name = "Hellblade spells gained at level 3"
         spells = SpellList(
             Name=name,
-            Spells=["Target_HeatMetal", "Projectile_ScorchingRay"],
+            Spells=["Projectile_ScorchingRay"],
             UUID=self.make_uuid(name),
         )
         self.mod.add(spells)
@@ -271,14 +355,24 @@ class Hellblade(Replacer):
         name = "Hellblade spells gained at level 7"
         spells = SpellList(
             Name=name,
-            Spells=["Shout_FireShield", "Wall_WallOfFire"],
+            Spells=["Wall_WallOfFire"],
             UUID=self.make_uuid(name),
         )
         self.mod.add(spells)
         return str(spells.UUID)
 
+    @spell_list("Warlock Hexblade SLevel 1")
+    @spell_list("Warlock Hexblade SLevel 2")
+    @spell_list("Warlock Hexblade SLevel 3")
+    @spell_list("Warlock Hexblade SLevel 4")
+    @spell_list("Warlock Hexblade SLevel 5")
+    def warlock_hexblade_spells_level_1(self, spells: SpellList) -> None:
+        spells.Spells = [
+            self._armour_of_avernus if spell == "Shout_ArmorOfAgathys" else spell for spell in spells.Spells
+        ]
+
     @class_description(CharacterClass.WARLOCK_HEXBLADE)
-    def wizard_bladesinging_class_description(self, class_description: ClassDescription) -> None:
+    def warlock_hexblade_class_description(self, class_description: ClassDescription) -> None:
         class_description.children.append(ClassDescription.Tags(
             Object="18266c0b-efbc-4c80-8784-ada4a37218d7"  # SORCERER
         ))

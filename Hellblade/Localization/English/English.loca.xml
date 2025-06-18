@@ -14,6 +14,7 @@
     <content contentuid="h11bd12a8gd5d2gde24gf837g63d53245bd10" version="1">Bolster</content>
     <content contentuid="hb344beeag87c0g43f7g6751gb46c193f5ed2" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="h07593c4egdca0g79f5g40f5g7bae76df4dcf" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h93576a1ag3b7dgdd1bg70cegd52262022362" version="1">Armour of Avernus</content>
     <content contentuid="h19478273g2f36g4c72g3f3eg217c6f14ae0b" version="1">Searing Blast</content>
     <content contentuid="he0386d1dg7b84g56e7ge502ge48104c691fb" version="1">Each beam of your &lt;LSTag Type="Spell" Tooltip="Projectile_EldritchBlast"&gt;Eldritch Blast&lt;/LSTag&gt; deals an additional [1].</content>
     <content contentuid="h1438e1a7gee78g7c04g8be3gd64c575ab747" version="1">Hell's Guidance</content>

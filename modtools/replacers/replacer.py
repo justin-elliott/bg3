@@ -249,7 +249,7 @@ class Replacer:
         return existing_boosts != progression.Boosts
     
     def adjust_skills(self, progression: Progression) -> bool:
-        if progression.Name not in CharacterClass or progression.Level != 1 or progression.IsMulticlass:
+        if progression.Name not in BASE_CHARACTER_CLASSES or progression.Level != 1 or progression.IsMulticlass:
             return False
         character_class = CharacterClass(progression.Name)
         if character_class not in self.args.included_classes:

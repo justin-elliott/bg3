@@ -30,6 +30,7 @@ data "PrepareEffect" "ab9a9a13-7ceb-46ee-bd9e-74c044516fb1"
 data "SpellProperties" "ApplyStatus(HELLBLADE_ARMOUROFAVERNUS,100,-1)"
 data "TargetSound" "Spell_Impact_Utility_FireshieldWarm_L4to5"
 data "TooltipStatusApply" "ApplyStatus(HELLBLADE_ARMOUROFAVERNUS,100,-1)"
+data "TooltipUpcastDescriptionParams" "GainTemporaryHitPoints(5);DealDamage(5,Fire)"
 
 new entry "Hellblade_ArmourOfAvernus_2"
 type "SpellData"

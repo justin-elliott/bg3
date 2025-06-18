@@ -78,6 +78,7 @@ class Hellblade(Replacer):
             Icon="Spell_Evocation_FireShield_Warm",
             DisplayName=loca[f"{name}_DisplayName"],
             DescriptionParams=["GainTemporaryHitPoints(5)", "DealDamage(5,Fire)"],
+            TooltipUpcastDescriptionParams=["GainTemporaryHitPoints(5)", "DealDamage(5,Fire)"],
             TooltipStatusApply=[f"ApplyStatus({name.upper()},100,-1)"],
             SpellProperties=[f"ApplyStatus({name.upper()},100,-1)"],
             CastSound="Spell_Cast_Utility_FireshieldWarm_L4to5",
@@ -95,7 +96,10 @@ class Hellblade(Replacer):
             DescriptionParams=["DealDamage(5,Fire)", "5"],
             Passives=[f"{name}_Passive"],
             OnApplyFunctors=[f"AI_ONLY:IF(not HasStatus('{name.upper()}')):ApplyStatus(AI_HELPER_BUFF,100,1)"],
-            StatusEffect="393ae64d-5014-4614-b25c-82ff744c0f31",
+            # StatusEffect="393ae64d-5014-4614-b25c-82ff744c0f31",  # ORI_KARLACH_BURNING_LOWLEVEL_VFX
+            # StatusEffect="2156dd48-f83b-4060-9a4e-cab994da8857",  # BURNING
+            # StatusEffect="c3da0783-72b5-4054-9516-9d1acdc8db93",  # BURNING_HELLFIRE
+            StatusEffect="9055845d-c778-44ba-a671-b0a112bacf61",  # BURNING_HOLY
         ))
 
         self.mod.add(PassiveData(

@@ -163,6 +163,7 @@
                     <attribute id="UUID" type="guid" value="0a94300c-1717-42f0-b855-3dd49dd02e13" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ProficiencyBonus(SavingThrow,Constitution)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Hexblade" />
                     <attribute id="PassivesAdded" type="LSString" value="HexWarrior;HexbladesCurse;Hellblade_BattleMagic;Hellblade_PackMule_400;Hellblade_SearingBlast;Hellblade_Warding" />
@@ -232,6 +233,15 @@
                     <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)" />
                     <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
                     <attribute id="UUID" type="guid" value="e5df53c1-86a0-45bb-8937-6f9d0d504032" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(88fafaeb-8b59-4319-9841-b9e6043f4636,1,2,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="8bd96b0a-b148-4abf-94f7-0ef6576e9607" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="12" />

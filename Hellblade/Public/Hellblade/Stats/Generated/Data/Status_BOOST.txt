@@ -32,7 +32,7 @@ data "DisplayName" "h93576a1ag3b7dgdd1bg70cegd52262022362"
 data "Icon" "Spell_Evocation_FireShield_Warm"
 data "OnApplyFunctors" "AI_ONLY:IF(not HasStatus('HELLBLADE_ARMOUROFAVERNUS')):ApplyStatus(AI_HELPER_BUFF,100,1)"
 data "Passives" "Hellblade_ArmourOfAvernus_Passive"
-data "StatusEffect" "9055845d-c778-44ba-a671-b0a112bacf61"
+data "StatusEffect" "a25f92a9-7078-4a5f-8648-c0bb9f4fee39"
 
 new entry "HELLBLADE_ARMOUROFAVERNUS_2"
 type "StatusData"

@@ -99,7 +99,8 @@ class Hellblade(Replacer):
             # StatusEffect="393ae64d-5014-4614-b25c-82ff744c0f31",  # ORI_KARLACH_BURNING_LOWLEVEL_VFX
             # StatusEffect="2156dd48-f83b-4060-9a4e-cab994da8857",  # BURNING
             # StatusEffect="c3da0783-72b5-4054-9516-9d1acdc8db93",  # BURNING_HELLFIRE
-            StatusEffect="9055845d-c778-44ba-a671-b0a112bacf61",  # BURNING_HOLY
+            # StatusEffect="9055845d-c778-44ba-a671-b0a112bacf61",  # BURNING_HOLY
+            StatusEffect="a25f92a9-7078-4a5f-8648-c0bb9f4fee39",  # FIRE_SHIELD_WARM
         ))
 
         self.mod.add(PassiveData(
@@ -384,6 +385,7 @@ class Hellblade(Replacer):
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 1)
     def warlock_hexblade_level_1(self, progress: Progression) -> None:
+        progress.Boosts = ["ProficiencyBonus(SavingThrow,Constitution)"]
         progress.PassivesAdded += [
             self._battle_magic,
             self._pack_mule,
@@ -433,8 +435,8 @@ class Hellblade(Replacer):
         progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 11)
-    def warlock_hexblade_level_11(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def warlock_hexblade_level_11(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["ReliableTalent"]
 
     @progression(CharacterClass.WARLOCK_HEXBLADE, 12)
     def warlock_hexblade_level_12(self, progress: Progression) -> None:

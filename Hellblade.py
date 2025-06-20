@@ -172,18 +172,17 @@ class Hellblade(Replacer):
             Description=loca[f"{name}_Description"],
             DescriptionParams="",
             SpellProperties=["GROUND:TeleportSource()"],
-            UseCosts=["Movement:Distance*0.5"],
         ))
 
         return name
 
     @cached_property
     def _hells_guidance(self) -> str:
-        """Add the Hell's Guidance spell."""
+        """Add the Hells' Guidance spell."""
         hells_guidance = f"{self.mod.get_name()}_HellsGuidance"
 
         loca = self.mod.get_localization()
-        loca[f"{hells_guidance}_DisplayName"] = {"en": "Hell's Guidance"}
+        loca[f"{hells_guidance}_DisplayName"] = {"en": "Hells' Guidance"}
         loca[f"{hells_guidance}_Description"] = {"en": """
             The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
             <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on

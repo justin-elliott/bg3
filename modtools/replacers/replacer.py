@@ -35,6 +35,7 @@ class Replacer:
         actions: int                                   # Multiplier for other action resources
         skills: int                                    # Number of skills to select at character creation
         expertise: int                                 # Number of skill expertises to select at character creation
+        full_caster: bool = False                      # Update spell slot progression to be a full caster
         fighter_feats: set[int] = None                 # Fighter feat improvement levels
         rogue_feats: set[int] = None                   # Rogue feat improvement levels
         other_feats: set[int] = None                   # All other classes feat improvement levels
@@ -74,6 +75,40 @@ class Replacer:
         2: {3, 9},
         3: {10},
         4: {10},
+    }
+
+    # Spell slots for a full caster
+    _SPELL_SLOTS: Final[dict[int, list[int]]] = {
+        0: [],
+        1: [2],
+        2: [3],
+        3: [4, 2],
+        4: [4, 3],
+        5: [4, 3, 2],
+        6: [4, 3, 3],
+        7: [4, 3, 3, 1],
+        8: [4, 3, 3, 2],
+        9: [4, 3, 3, 3, 1],
+        10: [4, 3, 3, 3, 2],
+        11: [4, 3, 3, 3, 2, 1],
+        12: [4, 3, 3, 3, 2, 1],
+        13: [4, 3, 3, 3, 2, 1, 1],
+        14: [4, 3, 3, 3, 2, 1, 1],
+        15: [4, 3, 3, 3, 2, 1, 1, 1],
+        16: [4, 3, 3, 3, 2, 1, 1, 1],
+        17: [4, 3, 3, 3, 2, 1, 1, 1, 1],
+        18: [4, 3, 3, 3, 3, 1, 1, 1, 1],
+        19: [4, 3, 3, 3, 3, 2, 1, 1, 1],
+        20: [4, 3, 3, 3, 3, 2, 2, 1, 1],
+    }
+
+    _SPELL_SLOT_DELTA: Final[dict[int, list[int]]]
+
+    _LIMITED_CASTERS: Final[set[CharacterClass]] = {
+        CharacterClass.PALADIN,
+        CharacterClass.RANGER,
+        CharacterClass.ROGUE_ARCANETRICKSTER,
+        CharacterClass.FIGHTER_ELDRITCHKNIGHT,
     }
 
     _builders: ClassVar[dict[Callable, list[Callable]]]
@@ -173,6 +208,7 @@ class Replacer:
         actions = kwds.get("actions", 1)
         skills = kwds.get("skills")
         expertise = kwds.get("expertise")
+        full_caster = kwds.get("full_caster", False)
 
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str, default=name,
@@ -192,6 +228,8 @@ class Replacer:
                             help=f"Number of skills to select at level 1 (default: {skills})")
         parser.add_argument("-e", "--expertise", type=int, default=expertise,
                             help=f"Number of skills with expertise to select at level 1 (default: {expertise})")
+        parser.add_argument("--full-caster", action="store_true", default=full_caster,
+                            help=f"Update spell slot progression to be a full caster")
         self._args = Replacer.Args(**vars(parser.parse_args()))
 
         if self.args.name is None:
@@ -243,11 +281,37 @@ class Replacer:
         if character_class not in self.args.included_classes:
             return False
         existing_boosts = progression.Boosts
+        existing_passives = progression.PassivesAdded
         multiply_resources(progression, [ActionResource.SPELL_SLOTS], self.args.spells)
         multiply_resources(progression, [ActionResource.WARLOCK_SPELL_SLOTS], self.args.warlock_spells)
         multiply_resources(progression, self.ACTION_RESOURCES, self.args.actions)
-        return existing_boosts != progression.Boosts
+        if self.args.full_caster:
+            self._adjust_resources_full_caster(character_class, progression)
+        progression.Boosts = progression.Boosts or None
+        progression.PassivesAdded = progression.PassivesAdded or None
+        return existing_boosts != progression.Boosts or existing_passives != progression.PassivesAdded
     
+    def _adjust_resources_full_caster(self, character_class: CharacterClass, progression: Progression) -> None:
+        if character_class in self._LIMITED_CASTERS:
+            progression.Boosts = [
+                *[boost for boost in (progression.Boosts or []) if not boost.startswith("ActionResource(SpellSlot")],
+                *[
+                    f"ActionResource(SpellSlot,{self.args.spells * delta},{spell_level})"
+                    for spell_level in range(1, 10)
+                    if (delta := self._SPELL_SLOT_DELTA[progression.Level][spell_level - 1]) > 0
+                ],
+            ]
+            progression.PassivesAdded = [
+                *[
+                    passive for passive in (progression.PassivesAdded or [])
+                    if not passive.startswith("UnlockedSpellSlotLevel")
+                ],
+                *(
+                    [f"UnlockedSpellSlotLevel{(progression.Level + 1) // 2}"]
+                    if progression.Level in (1, 3, 5, 7, 9) else []
+                ),
+            ]
+
     def adjust_skills(self, progression: Progression) -> bool:
         if progression.Name not in BASE_CHARACTER_CLASSES or progression.Level != 1 or progression.IsMulticlass:
             return False
@@ -271,3 +335,11 @@ class Replacer:
         for builder, fns in self._builders.items():
             builder(self, fns)
         self._mod.build()
+
+Replacer._SPELL_SLOT_DELTA = {
+    level: [
+        (Replacer._SPELL_SLOTS[level][i] if i < len(Replacer._SPELL_SLOTS[level]) else 0) -
+        (Replacer._SPELL_SLOTS[level - 1][i] if i < len(Replacer._SPELL_SLOTS[level - 1]) else 0)
+        for i in range(0, 9)
+    ] for level in range(1, 21)
+}

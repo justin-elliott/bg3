@@ -903,16 +903,16 @@ camp_clothes.add(Weapon(
     RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
 ))
 
-loca["CampClothes_Longsword_EnchantmentProgression_DisplayName"] = {"en": "Enchanted Blade"}
-loca["CampClothes_Longsword_EnchantmentProgression_Description"] = {"en": """
+loca["CampClothes_Weapon_EnchantmentProgression_DisplayName"] = {"en": "Enchanted Blade"}
+loca["CampClothes_Weapon_EnchantmentProgression_Description"] = {"en": """
     Gain +1 to <LSTag Tooltip="AttackRoll">Attack</LSTag>, Damage, and <LSTag Tooltip="SpellDifficultyClass">Spell Save
     DC</LSTag> rolls. This increases to +2 at <LSTag>Level 5</LSTag>, and +3 at <LSTag>Level 9</LSTag>.
     """}
 
 camp_clothes.add(PassiveData(
-    "CampClothes_Longsword_EnchantmentProgression",
-    DisplayName=loca["CampClothes_Longsword_EnchantmentProgression_DisplayName"],
-    Description=loca["CampClothes_Longsword_EnchantmentProgression_Description"],
+    "CampClothes_Weapon_EnchantmentProgression",
+    DisplayName=loca["CampClothes_Weapon_EnchantmentProgression_DisplayName"],
+    Description=loca["CampClothes_Weapon_EnchantmentProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(1,4)):SpellSaveDC(1)",
         "IF(CharacterLevelRange(1,4)):RollBonus(MeleeSpellAttack,1)",
@@ -929,43 +929,47 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
-loca["CampClothes_Longsword_SpellProgression_DisplayName"] = {"en": "Kereska's Favour"}
-loca["CampClothes_Longsword_SpellProgression_Description"] = {"en": """
+loca["CampClothes_Weapon_SpellProgression_DisplayName"] = {"en": "Kereska's Favour"}
+loca["CampClothes_Weapon_SpellProgression_Description"] = {"en": """
     At <LSTag>Level 9</LSTag> you gain
     <LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement">Kereska's Favour</LSTag>.
     """}
 
 camp_clothes.add(PassiveData(
-    "CampClothes_Longsword_SpellProgression",
-    DisplayName=loca["CampClothes_Longsword_SpellProgression_DisplayName"],
-    Description=loca["CampClothes_Longsword_SpellProgression_Description"],
+    "CampClothes_Weapon_SpellProgression",
+    DisplayName=loca["CampClothes_Weapon_SpellProgression_DisplayName"],
+    Description=loca["CampClothes_Weapon_SpellProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(9,20)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
     ],
 ))
 
-loca["CampClothes_Longsword_CriticalProgression_DisplayName"] = {"en": "Improved Critical"}
-loca["CampClothes_Longsword_CriticalProgression_Description"] = {"en": """
+loca["CampClothes_Weapon_CriticalProgression_DisplayName"] = {"en": "Improved Critical"}
+loca["CampClothes_Weapon_CriticalProgression_Description"] = {"en": """
     At <LSTag>Level 13</LSTag>, you reduce the number you need to roll a Critical Hit while attacking by 1. This is
     further reduced by 1 at <LSTag>Level 17</LSTag>.
     """}
 
 camp_clothes.add(PassiveData(
-    "CampClothes_Longsword_CriticalProgression",
-    DisplayName=loca["CampClothes_Longsword_CriticalProgression_DisplayName"],
-    Description=loca["CampClothes_Longsword_CriticalProgression_Description"],
+    "CampClothes_Weapon_CriticalProgression",
+    DisplayName=loca["CampClothes_Weapon_CriticalProgression_DisplayName"],
+    Description=loca["CampClothes_Weapon_CriticalProgression_Description"],
     Boosts=[
         "IF(CharacterLevelRange(13,16)):ReduceCriticalAttackThreshold(1)",
         "IF(CharacterLevelRange(17,20)):ReduceCriticalAttackThreshold(2)",
     ],
 ))
 
-def add_longsword(name: str,
+def add_weapon(name: str,
                   *,
                   parent_template_id: UUID,
                   display_name: str,
                   description: str = "hccebbf40g138fg422ega113g7a0869715627",
-                  bonus_damage_type: str = "Force") -> None:
+                  damage_type: str = "Slashing",
+                  bonus_damage_type: str = "Force",
+                  using: str = "WPN_Longsword",
+                  has_reach: bool = False,
+                  visual_template: str = None) -> None:
     camp_clothes_longsword_game_objects_uuid = camp_clothes.make_uuid(name)
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
@@ -976,10 +980,11 @@ def add_longsword(name: str,
         ParentTemplateId=parent_template_id,
         Stats=name,
         Type="item",
+        VisualTemplate=visual_template,
         children=[
             GameObjects.StatusList(
                 children=[
-                    GameObjects.StatusList.Status(Object="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"),
+                    GameObjects.StatusList.Status(Object=f"MAG_BYPASS_{damage_type.upper()}_RESISTANCE_TECHNICAL"),
                     GameObjects.StatusList.Status(Object="MAG_DIAMONDSBANE_TECHNICAL"),
                 ],
             ),
@@ -988,7 +993,7 @@ def add_longsword(name: str,
 
     camp_clothes.add(Weapon(
         name,
-        using="WPN_Longsword",
+        using=using,
         BoostsOnEquipMainHand=[
             "CannotBeDisarmed()",
             "UnlockSpell(Target_OpeningAttack)",
@@ -1007,10 +1012,10 @@ def add_longsword(name: str,
         ],
         PassivesOnEquip=[
             "UNI_Adamantine_CriticalVsItems_Passive",
-            "MAG_IgnoreSlashingResistance_Passive",
-            "CampClothes_Longsword_EnchantmentProgression",
-            "CampClothes_Longsword_SpellProgression",
-            "CampClothes_Longsword_CriticalProgression",
+            f"MAG_Ignore{damage_type.title()}Resistance_Passive",
+            "CampClothes_Weapon_EnchantmentProgression",
+            "CampClothes_Weapon_SpellProgression",
+            "CampClothes_Weapon_CriticalProgression",
         ],
         Rarity="Legendary",
         RootTemplate=str(camp_clothes_longsword_game_objects_uuid),
@@ -1020,27 +1025,40 @@ def add_longsword(name: str,
             "Finesse",
             "Magical",
             "Melee",
+            *(["Reach"] if has_reach else []),
             "Versatile",
         ],
     ))
 
 loca["CampClothes_Katana_DisplayName"] = {"en": "Adamantine Katana"}
 katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
-add_longsword("CampClothes_Katana",
-              parent_template_id=katana_uuid,
-              display_name=loca["CampClothes_Katana_DisplayName"])
+add_weapon("CampClothes_Katana",
+           parent_template_id=katana_uuid,
+           display_name=loca["CampClothes_Katana_DisplayName"])
 
 loca["CampClothes_InfernalKatana_DisplayName"] = {"en": "Infernal Katana"}
-add_longsword("CampClothes_InfernalKatana",
-              parent_template_id=katana_uuid,
-              display_name=loca["CampClothes_InfernalKatana_DisplayName"],
-              bonus_damage_type="Fire")
+add_weapon("CampClothes_InfernalKatana",
+           parent_template_id=katana_uuid,
+           display_name=loca["CampClothes_InfernalKatana_DisplayName"],
+           bonus_damage_type="Fire")
 
 loca["CampClothes_DancingBlade_DisplayName"] = {"en": "Dancing Blade"}
 phalar_aluve_uuid = UUID("6d0d3206-50b5-48ed-af92-a146ed6b98f2")
-add_longsword("CampClothes_DancingBlade",
-              parent_template_id=phalar_aluve_uuid,
-              display_name=loca["CampClothes_DancingBlade_DisplayName"])
+add_weapon("CampClothes_DancingBlade",
+           parent_template_id=phalar_aluve_uuid,
+           display_name=loca["CampClothes_DancingBlade_DisplayName"])
+
+loca["CampClothes_ChampionsSpear_DisplayName"] = {"en": "Champion's Spear"}
+loca["CampClothes_ChampionsSpear_Description"] = {"en": """
+    A powerful spear gifted by a king to an extraordinary Huntress. Ideal for melee combat.
+    """}
+add_weapon("CampClothes_ChampionsSpear",
+           using="WPN_Spear",
+           damage_type="Piercing",
+           has_reach=True,
+           parent_template_id="74d9758a-84e9-4244-9ae8-14acee76acb3",
+           display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
+           description=loca["CampClothes_ChampionsSpear_Description"])
 
 camp_clothes.add(Armor(
     "CampClothes_Boots_Isobel",
@@ -1054,6 +1072,9 @@ equipment = [
     "CampClothes_Katana",
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
+    "CampClothes_ChampionsSpear",
+    "MAG_Bhaalist_Armor",
+    "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",
     "CampClothes_Boots_Isobel",
 ]

@@ -49,15 +49,9 @@ class EldritchKnightFullCaster(Replacer):
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, range(3, 21))
     @only_existing_progressions
-    def level_3_to_20(self, progression: Progression) -> None:
-        progression.Boosts = [
-            boost for boost in (progression.Boosts or []) if not boost.startswith("ActionResource(SpellSlot,")
-        ] or None
-        progression.PassivesAdded = [
-            passive for passive in (progression.PassivesAdded or []) if not passive.startswith("UnlockedSpellSlotLevel")
-        ] or None
-        progression.Selectors = [
-            selector for selector in (progression.Selectors or [])
+    def level_3_to_20(self, progress: Progression) -> None:
+        progress.Selectors = [
+            selector for selector in (progress.Selectors or [])
             if not selector.startswith(f"SelectSpells({eldritch_knight_cantrips(self).UUID}")
             and not selector.startswith(f"SelectSpells({eldritch_knight_level_1_spells(self).UUID}")
             and not selector.startswith(f"SelectSpells({eldritch_knight_level_2_spells(self).UUID}")
@@ -69,166 +63,120 @@ class EldritchKnightFullCaster(Replacer):
         ] or None
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 3)
-    def level_3(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{4 * self._args.spells},1)",
-            f"ActionResource(SpellSlot,{2 * self._args.spells},2)",
-        ]
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+    def level_3(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [
             "DevilsSight",
             "SculptSpells",
-            "UnlockedSpellSlotLevel1",
-            "UnlockedSpellSlotLevel2",
         ]
-        progression.Selectors = (progression.Selectors or []) + [
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},4,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},4,0)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 4)
-    def level_4(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},2)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_4(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_2_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 5)
-    def level_5(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{2 * self._args.spells},3)",
-        ]
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "UnlockedSpellSlotLevel3",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_5(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_3_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 6)
-    def level_6(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},3)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_6(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_3_spells(self).UUID},1,1)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["PotentCantrip"]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 7)
-    def level_7(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_7(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_4_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 8)
-    def level_8(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_8(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_4_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 9)
-    def level_9(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},4)",
-            f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_9(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_5_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 10)
-    def level_10(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},5)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_10(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_5_spells(self).UUID},1,1)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["EmpoweredEvocation"]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 11)
-    def level_11(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_11(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ReliableTalent"]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 12)
-    def level_12(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_12(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 13)
-    def level_13(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_13(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 14)
-    def level_14(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_14(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 15)
-    def level_15(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},8)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_15(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 16)
-    def level_16(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_16(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 17)
-    def level_17(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},9)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_17(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 18)
-    def level_18(self, progression: Progression) -> None:
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_18(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 19)
-    def level_19(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},6)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_19(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 20)
-    def level_20(self, progression: Progression) -> None:
-        progression.Boosts = (progression.Boosts or []) + [
-            f"ActionResource(SpellSlot,{1 * self._args.spells},7)",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    def level_20(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
         ]
 
@@ -236,7 +184,8 @@ class EldritchKnightFullCaster(Replacer):
 def main():
     eldritch_knight_full_caster = EldritchKnightFullCaster(
         classes=[CharacterClass.FIGHTER_ELDRITCHKNIGHT],
-        spells=2
+        spells=2,
+        full_caster=True,
     )
     eldritch_knight_full_caster.build()
 

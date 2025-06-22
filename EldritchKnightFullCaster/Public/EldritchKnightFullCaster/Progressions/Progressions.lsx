@@ -6,10 +6,27 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,8,1);ActionResource(SpellSlot,4,2)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1)" />
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="EldritchKnight" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
+                    <attribute id="UUID" type="guid" value="ed68cf5e-0f53-4dae-b16c-d3628f8017dd" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1)" />
+                    <attribute id="Level" type="uint8" value="2" />
+                    <attribute id="Name" type="LSString" value="EldritchKnight" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
+                    <attribute id="UUID" type="guid" value="0743e55d-73b9-4812-9c18-dcd1983eceac" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="DevilsSight;SculptSpells;UnlockedSpellSlotLevel1;UnlockedSpellSlotLevel2" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2;DevilsSight;SculptSpells" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(42c2f7ed-8d06-4347-a912-01172a0e318b,,,,AlwaysPrepared);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,4,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,4,0)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -38,6 +55,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,3)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
+                    <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,1,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -47,7 +65,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="WarMagic" />
+                    <attribute id="PassivesAdded" type="LSString" value="WarMagic;UnlockedSpellSlotLevel4" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,1,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -66,6 +84,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel5" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,1,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -75,7 +94,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchStrike" />
+                    <attribute id="PassivesAdded" type="LSString" value="EldritchStrike;EmpoweredEvocation" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,1,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -85,6 +104,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,1,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -142,6 +162,7 @@
                     <attribute id="UUID" type="guid" value="f632e3b2-a116-470b-a276-648df25ccf70" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,5)" />
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
                     <attribute id="PassivesAdded" type="LSString" value="WarMagicImproved" />

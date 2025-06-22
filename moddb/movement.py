@@ -50,6 +50,30 @@ class Movement:
         ))
         return name
 
+    def add_fire_walk(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
+        """Add the Fire Walk spell, returning its name."""
+        name = f"{self._mod.get_prefix()}_FireWalk"
+
+        loca = self._mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Fire Walk"}
+        loca[f"{name}_Description"] = {"en": """
+            You step through the hells, reappearing in another location.
+            """}
+
+        self._mod.add(SpellData(
+            name,
+            SpellType="Target",
+            using="Target_MAG_Legendary_HellCrawler",
+            Cooldown="",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            DescriptionParams="",
+            SpellProperties=["GROUND:TeleportSource()"],
+            UseCosts=use_costs,
+        ))
+
+        return name
+
     def add_misty_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Misty Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_MistyStep"

@@ -53,6 +53,7 @@ def main() -> None:
         actions={actions},
         skills={skills},
         expertise={expertise},
+        full_caster={full_caster},
     )
     {title_snake}.build()
 
@@ -108,7 +109,8 @@ def main() -> None:
                                 warlock_spells=replacer.args.warlock_spells,
                                 actions=replacer.args.actions,
                                 skills=replacer.args.skills,
-                                expertise=replacer.args.expertise))
+                                expertise=replacer.args.expertise,
+                                full_caster=replacer.args.full_caster))
 
 
 if __name__ == "__main__":

@@ -961,15 +961,15 @@ camp_clothes.add(PassiveData(
 ))
 
 def add_weapon(name: str,
-                  *,
-                  parent_template_id: UUID,
-                  display_name: str,
-                  description: str = "hccebbf40g138fg422ega113g7a0869715627",
-                  damage_type: str = "Slashing",
-                  bonus_damage_type: str = "Force",
-                  using: str = "WPN_Longsword",
-                  has_reach: bool = False,
-                  visual_template: str = None) -> None:
+               *,
+               parent_template_id: UUID,
+               display_name: str,
+               description: str = "hccebbf40g138fg422ega113g7a0869715627",
+               damage_type: str = "Slashing",
+               bonus_damage_type: str = "Force",
+               using: str = "WPN_Longsword",
+               has_reach: bool = False,
+               visual_template: str = None) -> None:
     camp_clothes_longsword_game_objects_uuid = camp_clothes.make_uuid(name)
     camp_clothes.add(GameObjects(
         DisplayName=display_name,

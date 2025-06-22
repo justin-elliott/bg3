@@ -79,7 +79,7 @@ class XPData(Text):
     def __init__(self, xp_data: dict[int, int]):
         text = ("".join(f"""key "Level{level}","{xp}"\n\n""" for level, xp in xp_data.items())
                 + f"""key "MaxXPLevel","{len(xp_data)}"\n""")
-        super.__init__(text)
+        super().__init__(text)
 
     @property
     def path(self) -> str:

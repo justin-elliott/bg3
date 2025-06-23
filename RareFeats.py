@@ -287,6 +287,35 @@ def cunning_actions_feat() -> None:
 
 
 @iife
+def expert_feat() -> None:
+    """Gain expertise in skills."""
+    expert_uuid = rare_feats.make_uuid("RareFeats_Expert")
+
+    loca["RareFeats_Expert_DisplayName"] = {"en": "Rare Feats: Expert"}
+    loca["RareFeats_Expert_Description"] = {"en": """
+        You gain <LSTag Tooltip="Expertise">Expertise</LSTag> in 3 <LSTag Tooltip="Skill">Skills</LSTag> of your
+        choice that you are <LSTag Tooltip="Proficiency">Proficient</LSTag> in.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_Expert_DisplayName"],
+        Description=loca["RareFeats_Expert_Description"],
+        ExactMatch="RareFeats_Expert",
+        FeatId=expert_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_Expert"),
+    ))
+
+    rare_feats.add(Feat(
+        CanBeTakenMultipleTimes=True,
+        Name="RareFeats_Expert",
+        Selectors=[
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3,true)",
+        ],
+        UUID=expert_uuid,
+    ))
+
+
+@iife
 def extra_attacks_feat() -> None:
     """Extra Attacks."""
     extra_attacks_uuid = rare_feats.make_uuid("RareFeats_ExtraAttacks")

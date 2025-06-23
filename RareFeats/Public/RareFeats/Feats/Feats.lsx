@@ -33,6 +33,12 @@
                     <attribute id="UUID" type="guid" value="2a8e042e-d6f8-2b60-f7f1-55f554b72464" />
                 </node>
                 <node id="Feat">
+                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_Expert" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3,true)" />
+                    <attribute id="UUID" type="guid" value="61db0071-86bb-7961-cc85-76fbe4ba6458" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_ExtraAttacks" />
                     <attribute id="PassivesAdded" type="LSString" value="RareFeats_ExtraAttack;RareFeats_ActionSurge_Unlock" />
                     <attribute id="UUID" type="guid" value="402c4c1c-d78e-5f7f-1116-899458e77347" />

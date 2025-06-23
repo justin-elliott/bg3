@@ -1056,7 +1056,7 @@ add_weapon("CampClothes_ChampionsSpear",
            using="WPN_Spear",
            damage_type="Piercing",
            has_reach=True,
-           parent_template_id="74d9758a-84e9-4244-9ae8-14acee76acb3",
+           parent_template_id="2eeabe97-8f29-4f4f-827e-6cfcd8fd1779",
            display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
            description=loca["CampClothes_ChampionsSpear_Description"])
 

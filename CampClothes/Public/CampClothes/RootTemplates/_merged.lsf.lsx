@@ -1523,7 +1523,7 @@
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="ae9c7203-a2e2-74b8-3201-5664c2bfdc95" />
                     <attribute id="Name" type="LSString" value="CampClothes_ChampionsSpear" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="74d9758a-84e9-4244-9ae8-14acee76acb3" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="2eeabe97-8f29-4f4f-827e-6cfcd8fd1779" />
                     <attribute id="Stats" type="FixedString" value="CampClothes_ChampionsSpear" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>

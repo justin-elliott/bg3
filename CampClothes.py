@@ -476,6 +476,41 @@ def add_rituals_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_RitualsPotion"
     rituals_potion_uuid = camp_clothes.make_uuid(name)
 
+    arcane_guidance = f"{camp_clothes.get_prefix()}_ArcaneGuidance"
+
+    loca = camp_clothes.get_localization()
+    loca[f"{arcane_guidance}_DisplayName"] = {"en": "Arcane Guidance"}
+    loca[f"{arcane_guidance}_Description"] = {"en": """
+        The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
+        <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on
+        <LSTag Tooltip="Charisma">Charisma</LSTag> checks.
+        """}
+
+    camp_clothes.add(SpellData(
+        arcane_guidance,
+        SpellType="Target",
+        using="Target_Guidance",
+        DisplayName=loca[f"{arcane_guidance}_DisplayName"],
+        Description=loca[f"{arcane_guidance}_Description"],
+        SpellProperties=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
+        TooltipStatusApply=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
+    ))
+    camp_clothes.add(StatusData(
+        arcane_guidance.upper(),
+        StatusType="BOOST",
+        using="GUIDANCE",
+        DisplayName=loca[f"{arcane_guidance}_DisplayName"],
+        Description=loca[f"{arcane_guidance}_Description"],
+        Boosts=[
+            "RollBonus(SkillCheck,1d4)",
+            "RollBonus(RawAbility,1d4)",
+            "RollBonus(SavingThrow,1d4)",
+            "RollBonus(DeathSavingThrow,1d4)",
+            "Advantage(Ability,Charisma)",
+        ],
+        StackId=arcane_guidance.upper(),
+    ))
+
     disguise_self = f"{camp_clothes.get_prefix()}_RitualDisguiseSelf"
     enhance_leap = f"{camp_clothes.get_prefix()}_RitualEnhanceLeap"
     detect_thoughts = f"{camp_clothes.get_prefix()}_RitualDetectThoughts"
@@ -502,6 +537,7 @@ def add_rituals_potion() -> str:
     loca[f"{name}_DisplayName"] = {"en": "Elixir of Rituals"}
     loca[f"{name}_Description"] = {"en": f"""
         Drinking this elixir grants you the
+        <LSTag Type="Spell" Tooltip="{arcane_guidance}">Arcane Guidance</LSTag>,
         <LSTag Type="Spell" Tooltip="{disguise_self}">Disguise Self</LSTag>,
         <LSTag Type="Spell" Tooltip="{enhance_leap}">Enhance Leap</LSTag>,
         <LSTag Type="Spell" Tooltip="{detect_thoughts}">Detect Thoughts</LSTag>, and
@@ -515,7 +551,8 @@ def add_rituals_potion() -> str:
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Poison_Malice",
         boosts=[
-            f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells
+            f"UnlockSpell({arcane_guidance})",
+            *(f"UnlockSpell({ritual_spell})" for ritual_spell, _ in ritual_spells),
         ],
     )
 

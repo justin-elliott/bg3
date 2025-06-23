@@ -100,17 +100,36 @@ class WayOfTheArcane(Replacer):
         return name
 
     @cached_property
-    def _bonus_unarmed_strike(self) -> str:
-        """Replaces the bonus unarmed strike class feature."""
-        name = f"{self.mod.get_prefix()}_BonusUnarmedStrike"
-
+    def _flurry_of_blows_topple(self) -> str:
+        name = f"{self.mod.get_prefix()}_FlurryOfBlowsTopple"
         self.mod.add(SpellData(
             name,
-            using="Target_UnarmedStrike_Monk",
+            using="Target_OpenHandTechnique_Knock",
             SpellType="Target",
-            SpellFlags=["IsMelee", "IsHarmful", "DisableBlood"],
+            UseCosts=["ActionPoint:1", "KiPoint:1"],
         ))
+        return name
+    
+    @cached_property
+    def _flurry_of_blows_stagger(self) -> str:
+        name = f"{self.mod.get_prefix()}_FlurryOfBlowsStagger"
+        self.mod.add(SpellData(
+            name,
+            using="Target_OpenHandTechnique_NoReactions",
+            SpellType="Target",
+            UseCosts=["ActionPoint:1", "KiPoint:1"],
+        ))
+        return name
 
+    @cached_property
+    def _flurry_of_blows_push(self) -> str:
+        name = f"{self.mod.get_prefix()}_FlurryOfBlowsPush"
+        self.mod.add(SpellData(
+            name,
+            using="Target_OpenHandTechnique_Push",
+            SpellType="Target",
+            UseCosts=["ActionPoint:1", "KiPoint:1"],
+        ))
         return name
 
     @cached_property
@@ -119,10 +138,9 @@ class WayOfTheArcane(Replacer):
         self.mod.add(SpellList(
             Name="Way of the Arcane Flurry of Blows",
             Spells=[
-                self._bonus_unarmed_strike,
-                "Target_OpenHandTechnique_Knock",
-                "Target_OpenHandTechnique_NoReactions",
-                "Target_OpenHandTechnique_Push",
+                self._flurry_of_blows_topple,
+                self._flurry_of_blows_stagger,
+                self._flurry_of_blows_push,
             ],
             UUID=spell_list,
         ))

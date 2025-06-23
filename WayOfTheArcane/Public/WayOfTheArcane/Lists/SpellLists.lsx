@@ -12,7 +12,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Arcane Flurry of Blows" />
-                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_BonusUnarmedStrike;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push" />
+                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_FlurryOfBlowsTopple;WayOfTheArcane_FlurryOfBlowsStagger;WayOfTheArcane_FlurryOfBlowsPush" />
                     <attribute id="UUID" type="guid" value="7b304523-6625-66c1-b0e1-754a0c1abb9f" />
                 </node>
             </children>

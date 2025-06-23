@@ -111,6 +111,13 @@ class Replacer:
         CharacterClass.FIGHTER_ELDRITCHKNIGHT,
     }
 
+    _NON_CASTERS: Final[set[CharacterClass]] = (
+        CharacterSubclasses.BARBARIAN |
+        (CharacterSubclasses.FIGHTER - {CharacterClass.FIGHTER_ELDRITCHKNIGHT}) |
+        CharacterSubclasses.MONK |
+        (CharacterSubclasses.ROGUE - {CharacterClass.ROGUE_ARCANETRICKSTER})
+    )
+
     _builders: ClassVar[dict[Callable, list[Callable]]]
 
     _args: Args
@@ -292,7 +299,8 @@ class Replacer:
         return existing_boosts != progression.Boosts or existing_passives != progression.PassivesAdded
     
     def _adjust_resources_full_caster(self, character_class: CharacterClass, progression: Progression) -> None:
-        if character_class in self._LIMITED_CASTERS:
+        if (character_class in self._LIMITED_CASTERS or
+            (character_class in self.args.classes and character_class in self._NON_CASTERS)):
             progression.Boosts = [
                 *[boost for boost in (progression.Boosts or []) if not boost.startswith("ActionResource(SpellSlot")],
                 *[

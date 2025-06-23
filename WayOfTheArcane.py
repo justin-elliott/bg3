@@ -56,7 +56,7 @@ class WayOfTheArcane(Replacer):
                          description="A class replacer for Shadow.",
                          **kwds)
 
-        self._awareness = Awareness(self.mod).add_awareness()
+        self._awareness = Awareness(self.mod).add_awareness(5)
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
@@ -272,11 +272,7 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 1)
     def monk_shadow_level_1(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{2 * self.args.spells},1)",
-        ]
-        progress.PassivesAdded = [
-            "UnlockedSpellSlotLevel1",
+        progress.PassivesAdded += [
             "DevilsSight",
             self._battle_magic,
             self._pack_mule,
@@ -290,9 +286,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 2)
     def monk_shadow_level_2(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},1)",
-        ]
         progress.PassivesAdded = ["SculptSpells"]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_1_SPELL_LIST},2,0)",
@@ -300,14 +293,9 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 3)
     def monk_shadow_level_3(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},1)",
-            f"ActionResource(SpellSlot,{2 * self.args.spells},2)",
-        ]
-        progress.PassivesAdded = [
-            "FastHands",
-            "UnlockedSpellSlotLevel2",
+        progress.PassivesAdded += [
             self._awareness,
+            "FastHands",
         ]
         progress.PassivesRemoved = [
             "FlurryOfBlowsUnlock",
@@ -320,9 +308,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 4)
     def monk_shadow_level_4(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},2)",
-        ]
         progress.PassivesAdded = None
         progress.Selectors = [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
@@ -332,20 +317,13 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 5)
     def monk_shadow_level_5(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{2 * self.args.spells},3)",
-        ]
-        progress.PassivesAdded = ["UnlockedSpellSlotLevel3"]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_3_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 6)
     def monk_shadow_level_6(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},3)",
-        ]
-        progress.PassivesAdded = [self._arcane_manifestation]
+        progress.PassivesAdded = [self._arcane_manifestation, "PotentCantrip"]
         progress.Selectors = [
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)",
             f"SelectSpells({self._WIZARD_LEVEL_3_SPELL_LIST},2,0)",
@@ -353,19 +331,13 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 7)
     def monk_shadow_level_7(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},4)",
-        ]
-        progress.PassivesAdded = [self._wholeness_of_body]
+        progress.PassivesAdded += [self._wholeness_of_body]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_4_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 8)
     def monk_shadow_level_8(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},4)",
-        ]
         progress.PassivesAdded = ["ImprovedCritical"]
         progress.Selectors = [
             f"AddSpells({self._ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
@@ -374,20 +346,13 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 9)
     def monk_shadow_level_9(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},4)",
-            f"ActionResource(SpellSlot,{1 * self.args.spells},5)",
-        ]
-        progress.PassivesAdded = ["Indomitable"]
+        progress.PassivesAdded += ["Indomitable"]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_5_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 10)
     def monk_shadow_level_10(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},5)",
-        ]
         progress.PassivesAdded = [self._empowered_spells]
         progress.Selectors = [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
@@ -397,9 +362,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 11)
     def monk_shadow_level_11(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},6)",
-        ]
         progress.PassivesAdded = ["ExtraAttack_2"]
         progress.PassivesRemoved = ["ExtraAttack"]
         progress.Selectors = [
@@ -416,9 +378,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 13)
     def monk_shadow_level_13(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},7)",
-        ]
         progress.PassivesAdded = ["Indomitable_2"]
         progress.PassivesRemoved = ["Indomitable"]
         progress.Selectors = [
@@ -433,9 +392,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 15)
     def monk_shadow_level_15(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},8)",
-        ]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
@@ -449,9 +405,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 17)
     def monk_shadow_level_17(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},9)",
-        ]
         progress.PassivesAdded = ["Indomitable_3"]
         progress.PassivesRemoved = ["Indomitable_2"]
         progress.Selectors = [
@@ -460,9 +413,6 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 18)
     def monk_shadow_level_18(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},5)",
-        ]
         progress.Selectors = [
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)",
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
@@ -470,18 +420,12 @@ class WayOfTheArcane(Replacer):
 
     @progression(CharacterClass.MONK_SHADOW, 19)
     def monk_shadow_level_19(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},6)",
-        ]
         progress.Selectors = [
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
     @progression(CharacterClass.MONK_SHADOW, 20)
     def monk_shadow_level_20(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,{1 * self.args.spells},7)",
-        ]
         progress.PassivesAdded = ["ExtraAttack_3"]
         progress.PassivesRemoved = ["ExtraAttack_2"]
         progress.Selectors = [
@@ -500,6 +444,7 @@ def main() -> None:
         actions=2,
         skills=4,
         expertise=2,
+        full_caster=True,
     )
     way_of_the_arcane.build()
 

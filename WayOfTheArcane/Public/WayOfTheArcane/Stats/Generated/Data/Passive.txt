@@ -2,9 +2,9 @@
 
 new entry "WayOfTheArcane_Awareness"
 type "PassiveData"
-data "Boosts" "Initiative(3);StatusImmunity(SURPRISED);CriticalHit(AttackTarget,Success,Never)"
+data "Boosts" "Initiative(5);StatusImmunity(SURPRISED);CriticalHit(AttackTarget,Success,Never)"
 data "Description" "h16b35becg4fdeg4298g1b1bg6c229ad0a523"
-data "DescriptionParams" "3"
+data "DescriptionParams" "5"
 data "DisplayName" "h9e52735dg6f99ga206gdf9egd89d44964725"
 data "Icon" "Action_Barbarian_MagicAwareness"
 data "Properties" "ForceShowInCC;Highlighted"

@@ -132,6 +132,9 @@ def _create_progressions(replacer: Replacer,
             UUID=replacer.make_uuid(f"Progression:{name}:{level}")
         )
         was_updated = False
+        was_updated = replacer.allow_improvement(progression)
+        was_updated = replacer.adjust_resources(progression) or was_updated
+        was_updated = replacer.adjust_skills(progression) or was_updated
 
         for builder_fn in builder_fns:
             if not getattr(builder_fn, "only_existing_progressions", False):

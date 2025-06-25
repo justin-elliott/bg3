@@ -12,6 +12,7 @@ from .boosts import *
 from .cunningactions import *
 from .defense import *
 from .empoweredspells import *
+from .guidance import *
 from .movement import *
 from .pack_mule import *
 from .progression import *

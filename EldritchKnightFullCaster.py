@@ -3,22 +3,18 @@
 Generates files for the "EldritchKnightFullCaster" mod.
 """
 
-import argparse
 import os
 
-from dataclasses import dataclass
 from functools import cached_property
-from moddb import EmpoweredSpells, Movement
-from modtools.gamedata import PassiveData, StatusData
+from moddb import Guidance
 from modtools.lsx.game import (
-    CharacterAbility,
     CharacterClass,
     ClassDescription,
     Progression,
+    SpellList,
 )
 from modtools.replacers import (
     class_description,
-    DontIncludeProgression,
     only_existing_progressions,
     progression,
     Replacer,
@@ -36,12 +32,32 @@ from modtools.replacers import (
 
 
 class EldritchKnightFullCaster(Replacer):
+    # Spells
+    _arcane_guidance: str
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="EldritchKnightFullCaster",
                          description="Full casting for the Eldritch Knight subclass.",
                          **kwds)
+
+        self._arcane_guidance = Guidance(self.mod).add_arcane_guidance()
+
+    @cached_property
+    def _spells_level_3(self) -> str:
+        name = "Eldritch Knight spells gained at level 3"
+        spells = SpellList(
+            Name=name,
+            Spells=[
+                self._arcane_guidance,
+                "Target_Command_Container",
+                "Projectile_EldritchBlast",
+            ],
+            UUID=self.make_uuid(name),
+        )
+        self.mod.add(spells)
+        return str(spells.UUID)
 
     @class_description(CharacterClass.FIGHTER_ELDRITCHKNIGHT)
     def eldritch_knight_description(self, class_description: ClassDescription) -> None:
@@ -69,6 +85,7 @@ class EldritchKnightFullCaster(Replacer):
             "SculptSpells",
         ]
         progress.Selectors = (progress.Selectors or []) + [
+            f"AddSpells({self._spells_level_3},,,,AlwaysPrepared)",
             f"SelectSpells({wizard_cantrips(self).UUID},4,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},4,0)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",

@@ -9,6 +9,7 @@ from moddb import (
     Bolster,
     character_level_range,
     Defense,
+    Guidance,
     PackMule,
 )
 from modtools.gamedata import (
@@ -477,40 +478,7 @@ def add_rituals_potion() -> str:
     name = f"{camp_clothes.get_prefix()}_RitualsPotion"
     rituals_potion_uuid = camp_clothes.make_uuid(name)
 
-    arcane_guidance = f"{camp_clothes.get_prefix()}_ArcaneGuidance"
-
-    loca = camp_clothes.get_localization()
-    loca[f"{arcane_guidance}_DisplayName"] = {"en": "Arcane Guidance"}
-    loca[f"{arcane_guidance}_Description"] = {"en": """
-        The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
-        <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on
-        <LSTag Tooltip="Charisma">Charisma</LSTag> checks.
-        """}
-
-    camp_clothes.add(SpellData(
-        arcane_guidance,
-        SpellType="Target",
-        using="Target_Guidance",
-        DisplayName=loca[f"{arcane_guidance}_DisplayName"],
-        Description=loca[f"{arcane_guidance}_Description"],
-        SpellProperties=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
-        TooltipStatusApply=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
-    ))
-    camp_clothes.add(StatusData(
-        arcane_guidance.upper(),
-        StatusType="BOOST",
-        using="GUIDANCE",
-        DisplayName=loca[f"{arcane_guidance}_DisplayName"],
-        Description=loca[f"{arcane_guidance}_Description"],
-        Boosts=[
-            "RollBonus(SkillCheck,1d4)",
-            "RollBonus(RawAbility,1d4)",
-            "RollBonus(SavingThrow,1d4)",
-            "RollBonus(DeathSavingThrow,1d4)",
-            "Advantage(Ability,Charisma)",
-        ],
-        StackId=arcane_guidance.upper(),
-    ))
+    arcane_guidance = Guidance(camp_clothes).add_arcane_guidance()
 
     disguise_self = f"{camp_clothes.get_prefix()}_RitualDisguiseSelf"
     enhance_leap = f"{camp_clothes.get_prefix()}_RitualEnhanceLeap"

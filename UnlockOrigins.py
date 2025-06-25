@@ -19,9 +19,46 @@ class UnlockOrigins(Replacer):
     @origin("Laezel")
     @origin("Shadowheart")
     @origin("Wyll")
-    def unlock_origins(self, origin: Origin) -> None:
-        origin.BackgroundUUID = None
-        origin.LockClass = None
+    def unlock_class(self, origin: Origin) -> None:
+        origin.LockClass = False
+
+    @origin("Astarion")
+    @origin("Gale")
+    @origin("Karlach")
+    @origin("Laezel")
+    @origin("Shadowheart")
+    @origin("Wyll")
+    def unlock_background(self, origin: Origin) -> None:
+        self.mod.add(Origin(
+            AppearanceLocked=origin.AppearanceLocked,
+            AvailableInCharacterCreation=origin.AvailableInCharacterCreation,
+            BackgroundUUID=None,
+            BodyShape=origin.BodyShape,
+            BodyType=origin.BodyType,
+            ClassEquipmentOverride=origin.ClassEquipmentOverride,
+            ClassUUID=origin.ClassUUID,
+            CloseUpA=origin.CloseUpA,
+            CloseUpB=origin.CloseUpB,
+            DefaultsTemplate=origin.DefaultsTemplate,
+            Description=origin.Description,
+            DisplayName=origin.DisplayName,
+            ExcludesOriginUUID=origin.ExcludesOriginUUID,
+            GlobalTemplate=origin.GlobalTemplate,
+            GodUUID=origin.GodUUID,
+            IntroDialogUUID=origin.IntroDialogUUID,
+            LockBody=origin.LockBody,
+            LockClass=False,
+            LockRace=origin.LockRace,
+            Name=origin.Name,
+            Passives=origin.Passives,
+            RaceUUID=origin.RaceUUID,
+            SubClassUUID=origin.SubClassUUID,
+            SubRaceUUID=origin.SubRaceUUID,
+            UUID=self.make_uuid(origin.Name),
+            Unique=origin.Unique,
+            VoiceTableUUID=origin.VoiceTableUUID,
+            children=origin.children,
+        ))
 
     def __init__(self):
         super().__init__(os.path.dirname(__file__),

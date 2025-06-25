@@ -122,7 +122,7 @@ class BladesingingExpanded(Replacer):
         self._fast_movement_60 = Movement(self.mod).add_fast_movement(3.0)
         self._fast_movement_75 = Movement(self.mod).add_fast_movement(3.0)
 
-        self._awareness = Awareness(self.mod).add_awareness()
+        self._awareness = Awareness(self.mod).add_awareness(5)
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._unarmored_defense = Defense(self.mod).add_unarmored_defense(CharacterAbility.INTELLIGENCE)
         self._warding = Defense(self.mod).add_warding()
@@ -146,14 +146,12 @@ class BladesingingExpanded(Replacer):
             "DevilsSight",
             "RepellingBlast",
             "SculptSpells",
-            "Smite_Divine",
             self._fast_movement_30,
             self._pack_mule,
             self._unarmored_defense,
             self._warding
         ]
         progress.Selectors += [
-            "AddSpells(58aef51d-a46c-44c8-8bed-df90870eb55f,,,,AlwaysPrepared)",  # Smites
             f"AddSpells({self._spells_level_2},,,,AlwaysPrepared)",
         ]
 
@@ -164,12 +162,13 @@ class BladesingingExpanded(Replacer):
         progress.Selectors += [
             f"AddSpells({self._spells_level_3},,,,AlwaysPrepared)",
             f"SelectPassives({self._METAMAGIC},4,Metamagic)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 4)
     def wizard_bladesinging_level_4(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
-        progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 5)
     def wizard_bladesinging_level_5(self, progress: Progression) -> None:
@@ -179,7 +178,10 @@ class BladesingingExpanded(Replacer):
     def wizard_bladesinging_level_6(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
         progress.PassivesAdded += ["PotentCantrip"]
-        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
+        progress.Selectors += [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 7)
     def wizard_bladesinging_level_7(self, progress: Progression) -> None:
@@ -194,26 +196,31 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 9)
     def wizard_bladesinging_level_9(self, progress: Progression) -> None:
         progress.Boosts += [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
+        progress.Selectors += [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 10)
     def wizard_bladesinging_level_10(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
         progress.PassivesAdded += ["EmpoweredEvocation"]
-        progress.Selectors = [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-            f"SelectPassives({self._METAMAGIC},1,Metamagic)",
-        ]
+        progress.Selectors = [f"SelectPassives({self._METAMAGIC},1,Metamagic)"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 11)
     def wizard_bladesinging_level_11(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
+        progress.PassivesAdded += ["ReliableTalent"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 12)
     def wizard_bladesinging_level_12(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
         progress.PassivesAdded = ["ExtraAttack_2", self._fast_movement_60]
         progress.PassivesRemoved = ["ExtraAttack", self._fast_movement_45]
-        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
+        progress.Selectors += [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 13)
     def wizard_bladesinging_level_13(self, progress: Progression) -> None:
@@ -226,11 +233,14 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 15)
     def wizard_bladesinging_level_15(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
+        progress.Selectors += [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 16)
     def wizard_bladesinging_level_16(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
-        progress.Selectors += ["SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 17)
     def wizard_bladesinging_level_17(self, progress: Progression) -> None:
@@ -242,7 +252,10 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 18)
     def wizard_bladesinging_level_18(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
-        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"]
+        progress.Selectors += [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 19)
     def wizard_bladesinging_level_19(self, progress: Progression) -> None:

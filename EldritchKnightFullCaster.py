@@ -71,6 +71,8 @@ class EldritchKnightFullCaster(Replacer):
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},4,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},4,0)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 4)
@@ -81,6 +83,7 @@ class EldritchKnightFullCaster(Replacer):
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 5)
     def level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded += ["UncannyDodge"]
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_3_spells(self).UUID},1,1)",
         ]
@@ -90,11 +93,14 @@ class EldritchKnightFullCaster(Replacer):
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_3_spells(self).UUID},1,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["PotentCantrip"]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 7)
     def level_7(self, progress: Progression) -> None:
+        progress.PassivesAdded += ["Evasion"]
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_4_spells(self).UUID},1,1)",
         ]
@@ -109,6 +115,8 @@ class EldritchKnightFullCaster(Replacer):
     def level_9(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_5_spells(self).UUID},1,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 10)
@@ -130,6 +138,8 @@ class EldritchKnightFullCaster(Replacer):
     def level_12(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 13)
@@ -148,6 +158,8 @@ class EldritchKnightFullCaster(Replacer):
     def level_15(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 16)
@@ -166,6 +178,8 @@ class EldritchKnightFullCaster(Replacer):
     def level_18(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},1,1)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 19)

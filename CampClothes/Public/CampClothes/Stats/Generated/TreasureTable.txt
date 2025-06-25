@@ -489,7 +489,7 @@ object category I_CampClothes_Crimson_Shortsword,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Belm_Shortsword,1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category I_CampClothes_Katana,1,0,0,0,0,0,0,0
+object category I_CampClothes_ArcaneKatana,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_InfernalKatana,1,0,0,0,0,0,0,0
 new subtable "1,1"

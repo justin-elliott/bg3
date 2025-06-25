@@ -1036,6 +1036,12 @@ WEAPON_PROPERTIES = [
     "Versatile",
 ]
 
+def WEAPON_STATUSES(damage_type: str) -> list[str]:
+    return [
+        f"MAG_BYPASS_{damage_type.upper()}_RESISTANCE_TECHNICAL",
+        "MAG_DIAMONDSBANE_TECHNICAL",
+    ]
+
 def add_weapon(name: str,
                *,
                parent_template_id: UUID,
@@ -1050,7 +1056,8 @@ def add_weapon(name: str,
                default_boosts: Callable[[str], list[str]] = DEFAULT_BOOSTS,
                passives_on_equip: Callable[[str], list[str]] = PASSIVES_ON_EQUIP,
                weapon_properties: list[str] = WEAPON_PROPERTIES,
-               status_on_equip: list[str] = None) -> None:
+               status_on_equip: list[str] = None,
+               weapon_statuses: Callable[[str], list[str]] = WEAPON_STATUSES) -> None:
     camp_clothes_weapon_game_objects_uuid = camp_clothes.make_uuid(name)
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
@@ -1065,8 +1072,7 @@ def add_weapon(name: str,
         children=[
             GameObjects.StatusList(
                 children=[
-                    GameObjects.StatusList.Status(Object=f"MAG_BYPASS_{damage_type.upper()}_RESISTANCE_TECHNICAL"),
-                    GameObjects.StatusList.Status(Object="MAG_DIAMONDSBANE_TECHNICAL"),
+                    GameObjects.StatusList.Status(Object=status) for status in weapon_statuses(damage_type)
                 ],
             ),
         ],
@@ -1086,11 +1092,11 @@ def add_weapon(name: str,
         Weapon_Properties=weapon_properties,
     ))
 
-loca["CampClothes_Katana_DisplayName"] = {"en": "Adamantine Katana"}
+loca["CampClothes_ArcaneKatana_DisplayName"] = {"en": "Arcane Katana"}
 katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
-add_weapon("CampClothes_Katana",
+add_weapon("CampClothes_ArcaneKatana",
            parent_template_id=katana_uuid,
-           display_name=loca["CampClothes_Katana_DisplayName"])
+           display_name=loca["CampClothes_ArcaneKatana_DisplayName"])
 
 loca["CampClothes_InfernalKatana_DisplayName"] = {"en": "Infernal Katana"}
 add_weapon("CampClothes_InfernalKatana",
@@ -1164,7 +1170,7 @@ camp_clothes.add(Armor(
 equipment = [
     "CampClothes_Crimson_Shortsword",
     "CampClothes_Belm_Shortsword",
-    "CampClothes_Katana",
+    "CampClothes_ArcaneKatana",
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
     "CampClothes_ChampionsSpear",

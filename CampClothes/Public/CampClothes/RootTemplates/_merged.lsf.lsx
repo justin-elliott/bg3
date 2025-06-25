@@ -1453,12 +1453,12 @@
                 </node>
                 <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="hccebbf40g138fg422ega113g7a0869715627" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h6aaeee16ge8f8g1270g64bag71c67929f984" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb18063c8gafe0gbcecge6f3g98ebd84a3e19" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="7fbb4c44-8261-f482-b2fa-c235a8dcf589" />
-                    <attribute id="Name" type="LSString" value="CampClothes_Katana" />
+                    <attribute id="MapKey" type="FixedString" value="a9905297-cffb-a1fb-9ac2-41e6fb94e721" />
+                    <attribute id="Name" type="LSString" value="CampClothes_ArcaneKatana" />
                     <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
-                    <attribute id="Stats" type="FixedString" value="CampClothes_Katana" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_ArcaneKatana" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
                         <node id="StatusList">

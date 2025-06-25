@@ -22,6 +22,7 @@ from modtools.gamedata import (
 from modtools.lsx.game import GameObjects
 from modtools.mod import Mod
 from modtools.text import Text, TreasureTable
+from typing import Callable
 from uuid import UUID
 
 
@@ -997,6 +998,44 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
+BOOSTS_ON_EQUIP_MAIN_HAND = [
+    "CannotBeDisarmed()",
+    "UnlockSpell(Target_OpeningAttack)",
+    "UnlockSpell(Target_Slash_New)",
+    "UnlockSpell(Rush_SpringAttack)",
+]
+
+BOOSTS_ON_EQUIP_OFF_HAND = None
+
+def DEFAULT_BOOSTS(bonus_damage_type: str):
+    return [
+        "WeaponProperty(Magical)",
+        "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+        f"IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,{bonus_damage_type})",
+        f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,{bonus_damage_type})",
+        f"IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,{bonus_damage_type})",
+        f"IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,{bonus_damage_type})",
+    ]
+
+def PASSIVES_ON_EQUIP(damage_type: str) -> list[str]:
+    return [
+        "UNI_Adamantine_CriticalVsItems_Passive",
+        f"MAG_Ignore{damage_type.title()}Resistance_Passive",
+        "CampClothes_Weapon_EnchantmentProgression",
+        "CampClothes_Weapon_SpellProgression",
+        "CampClothes_Weapon_CriticalProgression",
+    ]
+
+WEAPON_PROPERTIES = [
+    "Dippable",
+    "Finesse",
+    "Magical",
+    "Melee",
+    "Versatile",
+]
+
 def add_weapon(name: str,
                *,
                parent_template_id: UUID,
@@ -1005,14 +1044,19 @@ def add_weapon(name: str,
                damage_type: str = "Slashing",
                bonus_damage_type: str = "Force",
                using: str = "WPN_Longsword",
-               has_reach: bool = False,
-               visual_template: str = None) -> None:
-    camp_clothes_longsword_game_objects_uuid = camp_clothes.make_uuid(name)
+               visual_template: str = None,
+               boosts_on_equip_main_hand: list[str] = BOOSTS_ON_EQUIP_MAIN_HAND,
+               boosts_on_equip_off_hand: list[str] = BOOSTS_ON_EQUIP_OFF_HAND,
+               default_boosts: Callable[[str], list[str]] = DEFAULT_BOOSTS,
+               passives_on_equip: Callable[[str], list[str]] = PASSIVES_ON_EQUIP,
+               weapon_properties: list[str] = WEAPON_PROPERTIES,
+               status_on_equip: list[str] = None) -> None:
+    camp_clothes_weapon_game_objects_uuid = camp_clothes.make_uuid(name)
     camp_clothes.add(GameObjects(
         DisplayName=display_name,
         Description=description,
         LevelName="",
-        MapKey=camp_clothes_longsword_game_objects_uuid,
+        MapKey=camp_clothes_weapon_game_objects_uuid,
         Name=name,
         ParentTemplateId=parent_template_id,
         Stats=name,
@@ -1031,40 +1075,15 @@ def add_weapon(name: str,
     camp_clothes.add(Weapon(
         name,
         using=using,
-        BoostsOnEquipMainHand=[
-            "CannotBeDisarmed()",
-            "UnlockSpell(Target_OpeningAttack)",
-            "UnlockSpell(Target_Slash_New)",
-            "UnlockSpell(Rush_SpringAttack)",
-        ],
-        DefaultBoosts=[
-            "WeaponProperty(Magical)",
-            "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
-            "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
-            "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-            f"IF(CharacterLevelRange(1,4)):WeaponDamage(1d4,{bonus_damage_type})",
-            f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d6,{bonus_damage_type})",
-            f"IF(CharacterLevelRange(9,12)):WeaponDamage(1d8,{bonus_damage_type})",
-            f"IF(CharacterLevelRange(13,20)):WeaponDamage(1d10,{bonus_damage_type})",
-        ],
-        PassivesOnEquip=[
-            "UNI_Adamantine_CriticalVsItems_Passive",
-            f"MAG_Ignore{damage_type.title()}Resistance_Passive",
-            "CampClothes_Weapon_EnchantmentProgression",
-            "CampClothes_Weapon_SpellProgression",
-            "CampClothes_Weapon_CriticalProgression",
-        ],
+        BoostsOnEquipMainHand=boosts_on_equip_main_hand,
+        BoostsOnEquipOffHand=boosts_on_equip_off_hand,
+        DefaultBoosts=default_boosts(bonus_damage_type),
+        PassivesOnEquip=passives_on_equip(damage_type),
         Rarity="Legendary",
-        RootTemplate=str(camp_clothes_longsword_game_objects_uuid),
+        RootTemplate=str(camp_clothes_weapon_game_objects_uuid),
+        StatusOnEquip=status_on_equip,
         Unique="1",
-        Weapon_Properties=[
-            "Dippable",
-            "Finesse",
-            "Magical",
-            "Melee",
-            *(["Reach"] if has_reach else []),
-            "Versatile",
-        ],
+        Weapon_Properties=weapon_properties,
     ))
 
 loca["CampClothes_Katana_DisplayName"] = {"en": "Adamantine Katana"}
@@ -1092,10 +1111,49 @@ loca["CampClothes_ChampionsSpear_Description"] = {"en": """
 add_weapon("CampClothes_ChampionsSpear",
            using="WPN_Spear",
            damage_type="Piercing",
-           has_reach=True,
            parent_template_id="2eeabe97-8f29-4f4f-827e-6cfcd8fd1779",
            display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
-           description=loca["CampClothes_ChampionsSpear_Description"])
+           description=loca["CampClothes_ChampionsSpear_Description"],
+           weapon_properties=WEAPON_PROPERTIES + ["Reach"])
+
+dolar_amarus = UUID("d3e121fb-09c0-4478-84f1-f4f3e28cd50f")
+stillmaker = UUID("0cfbd2ef-6eb3-4283-b0c9-8e23a4f9bf8c")
+
+loca["CampClothes_Dexter_DisplayName"] = {"en": "Dexter"}
+loca["CampClothes_Dexter_Description"] = {"en": """
+    This isn't merely a weapon; it's an extension of dark intent. The grip is perfectly molded for a dominant hand,
+    almost too comfortable, as if eager to guide the blade. It hums with a faint, malevolent energy, a promise of unseen
+    blood and silent screams.
+    """}
+add_weapon("CampClothes_Dexter",
+           using="WPN_Dagger",
+           damage_type="Piercing",
+           bonus_damage_type="Necrotic",
+           parent_template_id=dolar_amarus,
+           display_name=loca["CampClothes_Dexter_DisplayName"],
+           description=loca["CampClothes_Dexter_Description"],
+           weapon_properties=["Finesse", "Light", "Thrown", "Melee", "Dippable"])
+
+loca["CampClothes_Sinister_DisplayName"] = {"en": "Sinister"}
+loca["CampClothes_Sinister_Description"] = {"en": """
+    Balanced with a chilling precision for the secondary hand, this blade feels less like steel and more like a fanged
+    extension of the wielder. It yearns to sink into flesh from an unexpected angle, leaving venom where its point
+    pierces.
+    """}
+add_weapon("CampClothes_Sinister",
+           using="WPN_Dagger",
+           damage_type="Piercing",
+           bonus_damage_type="Poison",
+           parent_template_id=dolar_amarus,
+           display_name=loca["CampClothes_Sinister_DisplayName"],
+           description=loca["CampClothes_Sinister_Description"],
+           passives_on_equip=lambda _: [
+               "UNI_Adamantine_CriticalVsItems_Passive",
+               "MAG_IgnorePiercingResistance_Passive",
+               "MAG_Zhentarim_BloodfeederBlade_Rapier_Passive",
+           ],
+           status_on_equip=["MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"],
+           weapon_properties=["Finesse", "Light", "Thrown", "Melee", "Dippable"])
 
 camp_clothes.add(Armor(
     "CampClothes_Boots_Isobel",
@@ -1110,6 +1168,8 @@ equipment = [
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
     "CampClothes_ChampionsSpear",
+    "CampClothes_Dexter",
+    "CampClothes_Sinister",
     "MAG_Bhaalist_Armor",
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",

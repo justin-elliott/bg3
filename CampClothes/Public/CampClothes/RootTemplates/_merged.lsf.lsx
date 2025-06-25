@@ -1539,6 +1539,50 @@
                         </node>
                     </children>
                 </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="had297a45g0af4g2626ga310g72a1e1abb9fb" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha44af125g85dagd0a8g72e4g649d5a32bae7" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="2315b913-4635-9fec-cb18-d937c57e6464" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Dexter" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="d3e121fb-09c0-4478-84f1-f4f3e28cd50f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Dexter" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_PIERCING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hd648797bg3c98gaf0dgd13bge01677a1c618" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h710530cfgb62agaf82gc21eg43a3b61d4551" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="f8a1f525-4357-1167-91c0-caef242f38b5" />
+                    <attribute id="Name" type="LSString" value="CampClothes_Sinister" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="d3e121fb-09c0-4478-84f1-f4f3e28cd50f" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_Sinister" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_PIERCING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
             </children>
         </node>
     </region>

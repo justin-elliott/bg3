@@ -6,6 +6,7 @@ from moddb import (
     Awareness,
     Bolster,
     Defense,
+    Guidance,
     Movement,
     PackMule,
 )
@@ -40,46 +41,8 @@ class BladesingingExpanded(Replacer):
     _warding: str
 
     # Spells
+    _arcane_guidance: str
     _bolster: str
-
-    @cached_property
-    def _arcane_guidance(self) -> str:
-        arcane_guidance = f"{self.mod.get_name()}_ArcaneGuidance"
-
-        loca = self.mod.get_localization()
-        loca[f"{arcane_guidance}_DisplayName"] = {"en": "Arcane Guidance"}
-        loca[f"{arcane_guidance}_Description"] = {"en": """
-            The target gains a +1d4 bonus to <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag> and
-            <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>, and has <LSTag Tooltip="Advantage">Advantage</LSTag> on
-            <LSTag Tooltip="Charisma">Charisma</LSTag> checks.
-            """}
-
-        self.mod.add(SpellData(
-            arcane_guidance,
-            SpellType="Target",
-            using="Target_Guidance",
-            DisplayName=loca[f"{arcane_guidance}_DisplayName"],
-            Description=loca[f"{arcane_guidance}_Description"],
-            SpellProperties=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
-            TooltipStatusApply=[f"ApplyStatus({arcane_guidance.upper()},100,10)"],
-        ))
-        self.mod.add(StatusData(
-            arcane_guidance.upper(),
-            StatusType="BOOST",
-            using="GUIDANCE",
-            DisplayName=loca[f"{arcane_guidance}_DisplayName"],
-            Description=loca[f"{arcane_guidance}_Description"],
-            Boosts=[
-                "RollBonus(SkillCheck,1d4)",
-                "RollBonus(RawAbility,1d4)",
-                "RollBonus(SavingThrow,1d4)",
-                "RollBonus(DeathSavingThrow,1d4)",
-                "Advantage(Ability,Charisma)",
-            ],
-            StackId=arcane_guidance.upper(),
-        ))
-
-        return arcane_guidance
 
     @cached_property
     def _spells_level_2(self) -> str:
@@ -127,6 +90,7 @@ class BladesingingExpanded(Replacer):
         self._unarmored_defense = Defense(self.mod).add_unarmored_defense(CharacterAbility.INTELLIGENCE)
         self._warding = Defense(self.mod).add_warding()
 
+        self._arcane_guidance = Guidance(self.mod).add_arcane_guidance()
         self._bolster = Bolster(self.mod).add_bolster_spell_list()
 
     @class_description(CharacterClass.WIZARD_BLADESINGING)

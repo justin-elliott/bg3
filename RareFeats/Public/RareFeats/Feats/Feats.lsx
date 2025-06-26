@@ -33,9 +33,14 @@
                     <attribute id="UUID" type="guid" value="2a8e042e-d6f8-2b60-f7f1-55f554b72464" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_EvasiveFeat" />
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion;UncannyDodge" />
+                    <attribute id="UUID" type="guid" value="8e895fb9-cf54-33a6-8479-6221f5b56b45" />
+                </node>
+                <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_Expert" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3,true)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="UUID" type="guid" value="61db0071-86bb-7961-cc85-76fbe4ba6458" />
                 </node>
                 <node id="Feat">
@@ -51,7 +56,7 @@
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_JackOfAllTrades" />
-                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_JackOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="JackOfAllTrades;ReliableTalent" />
                     <attribute id="UUID" type="guid" value="2029a4cd-7bb8-1012-d649-01f8c6098a4d" />
                 </node>
                 <node id="Feat">
@@ -87,7 +92,7 @@
                 <node id="Feat">
                     <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
                     <attribute id="Name" type="FixedString" value="RareFeats_Skilled" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,SkilledSkills)" />
                     <attribute id="UUID" type="guid" value="e04acda2-c2f4-4ae9-2d3b-d7437215b00f" />
                 </node>
                 <node id="Feat">

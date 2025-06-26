@@ -1085,9 +1085,25 @@ loca["CampClothes_ChampionsSpear_Description"] = {"en": """
 add_weapon("CampClothes_ChampionsSpear",
            using="WPN_Spear",
            damage_type="Piercing",
-           parent_template_id="2eeabe97-8f29-4f4f-827e-6cfcd8fd1779",
+           parent_template_id="74d9758a-84e9-4244-9ae8-14acee76acb3",
            display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
            description=loca["CampClothes_ChampionsSpear_Description"],
+           weapon_properties=WEAPON_PROPERTIES + ["Reach"])
+
+loca["CampClothes_SpearOfTwilight_DisplayName"] = {"en": "Spear of Twilight"}
+loca["CampClothes_SpearOfTwilight_Description"] = {"en": """
+    This isn't merely a weapon; it's a testament to the dying sun. Its sleek form is crafted from a material that seems
+    to be neither wood nor metal, but something born of the fading sky. The spearhead gleams with a cool, ethereal
+    light, and when it strikes, it leaves not a wound, but a chilling echo of perpetual twilight, draining warmth and
+    color from its target.
+    """}
+add_weapon("CampClothes_SpearOfTwilight",
+           using="WPN_Spear",
+           damage_type="Piercing",
+           bonus_damage_type="Necrotic",
+           parent_template_id="2eeabe97-8f29-4f4f-827e-6cfcd8fd1779",
+           display_name=loca["CampClothes_SpearOfTwilight_DisplayName"],
+           description=loca["CampClothes_SpearOfTwilight_Description"],
            weapon_properties=WEAPON_PROPERTIES + ["Reach"])
 
 dolar_amarus = UUID("d3e121fb-09c0-4478-84f1-f4f3e28cd50f")
@@ -1142,6 +1158,7 @@ equipment = [
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
     "CampClothes_ChampionsSpear",
+    "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",
     "MAG_Bhaalist_Armor",

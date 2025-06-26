@@ -66,17 +66,19 @@
     <content contentuid="h6705adecg4dbdg915bg0bf8gb07efa3b63e8" version="1">Battle Magic</content>
     <content contentuid="h15fd0445gf943g3557ge584g4a739490f532" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hb5787576g0947gbdcbge493g07b5875eed71" version="1">Rare Feats: Battle Magic</content>
-    <content contentuid="h6b264cfdgbcf7g4ba2g6f02ge9369019c02b" version="1">Gain &lt;LSTag Type="Passive" Tooltip="RareFeats_BattleMagic"&gt;Battle Magic&lt;/LSTag&gt;.</content>
+    <content contentuid="h6b264cfdgbcf7g4ba2g6f02ge9369019c02b" version="1">You gain &lt;LSTag Type="Passive" Tooltip="RareFeats_BattleMagic"&gt;Battle Magic&lt;/LSTag&gt;.</content>
     <content contentuid="h05dd3872gf3d2g341eg658dgcf27378fcf36" version="1">Rare Feats: Cunning Actions</content>
     <content contentuid="h5d71b742g06d3gb669g93ccgd638ab745699" version="1">Gain &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="RareFeats_RunningJump"&gt;Running Jump&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;.</content>
+    <content contentuid="h84307100g2347gc99bg2099g3837ce453f19" version="1">Rare Feats: Evasive</content>
+    <content contentuid="h5e69d385gfc01g4bd5g8e17g55683d00575b" version="1">You gain &lt;LSTag Type="Passive" Tooltip="Evasion"&gt;Evasion&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="UncannyDodge"&gt;Uncanny Dodge&lt;/LSTag&gt;.</content>
     <content contentuid="heeb4ece5g43c2gba8ag5116g342401ff8f43" version="1">Rare Feats: Expert</content>
-    <content contentuid="h03818507gdf02g3766g7565g88751c74040c" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in 3 &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of your choice that you are &lt;LSTag Tooltip="Proficiency"&gt;Proficient&lt;/LSTag&gt; in.</content>
+    <content contentuid="h03818507gdf02g3766g7565g88751c74040c" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in 2 &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of your choice that you are &lt;LSTag Tooltip="Proficiency"&gt;Proficient&lt;/LSTag&gt; in.</content>
     <content contentuid="h7d5f9357g2881gd058ga24bg2e0e31d3c5ae" version="1">Rare Feats: Extra Attacks</content>
     <content contentuid="h91b30b3dgb267gd5a7gda9bg84fee7ff0f6d" version="1">You gain &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt;. At &lt;LSTag&gt;Level 5&lt;/LSTag&gt; you can make a second &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;attack&lt;/LSTag&gt; after making an unarmed or weapon attack. You gain additional attacks at &lt;LSTag&gt;Level 11&lt;/LSTag&gt; and &lt;LSTag&gt;Level 20&lt;/LSTag&gt;.</content>
     <content contentuid="h3efe0374gc06ag71b8gfa9fg330a03b2ada6" version="1">Rare Feats: Fighting Style</content>
     <content contentuid="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1">Adopt a particular style of fighting as your specialty.</content>
     <content contentuid="h80e22e75gee20gc0efg055cg2681d75dde78" version="1">Rare Feats: Jack of All Trades</content>
-    <content contentuid="h763a12a2gbc82g828dg48fcg1a525b71a5d2" version="1">Your vast experiences make you more likely to succeed in any undertaking. Add your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; to all &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt;.</content>
+    <content contentuid="h763a12a2gbc82g828dg48fcg1a525b71a5d2" version="1">You gain &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="ReliableTalent"&gt;Reliable Talent&lt;/LSTag&gt;.</content>
     <content contentuid="he9b41b6cg912cgdd62g8870g2dcd7a93f2a5" version="1">Strength +2</content>
     <content contentuid="h5ab68dffge8d4g8956g091fga32af43b7997" version="1">Increase your Strength by 2, to a maximum of 30.</content>
     <content contentuid="hb8729b12gb328ga348g89a6gfe839daff705" version="1">Dexterity +2</content>
@@ -100,7 +102,7 @@
     <content contentuid="h999658bdg279cgc24cg74d7gf4a54644069e" version="1">Rare Feats: Performer</content>
     <content contentuid="hc44e1a34gf457g286cg6fc5g7438c5c40eb8" version="1">You gain &lt;LSTag Tooltip="MusicalInstrumentProficiency"&gt;Musical Instrument Proficiency&lt;/LSTag&gt;.</content>
     <content contentuid="h50c4428cgb4efg1aa7g1b32gac7c4b443231" version="1">Rare Feats: Skilled</content>
-    <content contentuid="h34f1f61egaecfg9095gcbcdgcbe8bde9b8dc" version="1">You gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; in 6 &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of your choice.</content>
+    <content contentuid="h34f1f61egaecfg9095gcbcdgcbe8bde9b8dc" version="1">You gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; in 4 &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of your choice.</content>
     <content contentuid="h14ee0345g1e42g97f7g539cg6a6bd224c3bc" version="1">Strength +2</content>
     <content contentuid="h544f0bc5g69d9gdcd6g6bb4g822686b72326" version="1">Increase your Strength by 2, to a maximum of 30.</content>
     <content contentuid="h2df5a6ccg03e2g7ff1gaf88gc8b461806ba9" version="1">Constitution +2</content>

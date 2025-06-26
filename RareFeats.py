@@ -226,7 +226,7 @@ def battle_magic_feat() -> None:
 
     loca["RareFeats_BattleMagicFeat_DisplayName"] = {"en": "Rare Feats: Battle Magic"}
     loca["RareFeats_BattleMagicFeat_Description"] = {"en": f"""
-        Gain <LSTag Type="Passive" Tooltip="{battle_magic}">Battle Magic</LSTag>.
+        You gain <LSTag Type="Passive" Tooltip="{battle_magic}">Battle Magic</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
@@ -287,14 +287,43 @@ def cunning_actions_feat() -> None:
 
 
 @iife
+def evasive_feat() -> None:
+    """Evasive."""
+    evasive_uuid = rare_feats.make_uuid("RareFeats_EvasiveFeat")
+
+    loca["RareFeats_EvasiveFeat_DisplayName"] = {"en": "Rare Feats: Evasive"}
+    loca["RareFeats_EvasiveFeat_Description"] = {"en": """
+        You gain <LSTag Type="Passive" Tooltip="Evasion">Evasion</LSTag> and
+        <LSTag Type="Passive" Tooltip="UncannyDodge">Uncanny Dodge</LSTag>.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_EvasiveFeat_DisplayName"],
+        Description=loca["RareFeats_EvasiveFeat_Description"],
+        ExactMatch="RareFeats_EvasiveFeat",
+        FeatId=evasive_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_EvasiveFeatDescription"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_EvasiveFeat",
+        PassivesAdded=["Evasion", "UncannyDodge"],
+        UUID=evasive_uuid,
+    ))
+
+
+@iife
 def expert_feat() -> None:
     """Gain expertise in skills."""
     expert_uuid = rare_feats.make_uuid("RareFeats_Expert")
 
+    NUMBER_OF_SKILLS = 2
+
     loca["RareFeats_Expert_DisplayName"] = {"en": "Rare Feats: Expert"}
-    loca["RareFeats_Expert_Description"] = {"en": """
-        You gain <LSTag Tooltip="Expertise">Expertise</LSTag> in 3 <LSTag Tooltip="Skill">Skills</LSTag> of your
-        choice that you are <LSTag Tooltip="Proficiency">Proficient</LSTag> in.
+    loca["RareFeats_Expert_Description"] = {"en": f"""
+        You gain <LSTag Tooltip="Expertise">Expertise</LSTag> in {NUMBER_OF_SKILLS}
+        <LSTag Tooltip="Skill">Skills</LSTag> of your choice that you are
+        <LSTag Tooltip="Proficiency">Proficient</LSTag> in.
         """}
 
     rare_feats.add(FeatDescription(
@@ -309,7 +338,7 @@ def expert_feat() -> None:
         CanBeTakenMultipleTimes=True,
         Name="RareFeats_Expert",
         Selectors=[
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3,true)",
+            f"SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,{NUMBER_OF_SKILLS})",
         ],
         UUID=expert_uuid,
     ))
@@ -420,9 +449,8 @@ def jack_of_all_trades_feat() -> None:
 
     loca["RareFeats_JackOfAllTrades_DisplayName"] = {"en": "Rare Feats: Jack of All Trades"}
     loca["RareFeats_JackOfAllTrades_Description"] = {"en": """
-        Your vast experiences make you more likely to succeed in any undertaking. Add your
-        <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> to all
-        <LSTag Tooltip="AbilityCheck">Ability Checks</LSTag>.
+        You gain <LSTag Type="Passive" Tooltip="JackOfAllTrades">Jack of All Trades</LSTag> and
+        <LSTag Type="Passive" Tooltip="ReliableTalent">Reliable Talent</LSTag>.
         """}
 
     rare_feats.add(FeatDescription(
@@ -435,20 +463,8 @@ def jack_of_all_trades_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_JackOfAllTrades",
-        PassivesAdded=["RareFeats_JackOfAllTrades"],
+        PassivesAdded=["JackOfAllTrades", "ReliableTalent"],
         UUID=jack_of_all_trades_uuid,
-    ))
-
-    rare_feats.add(PassiveData(
-        "RareFeats_JackOfAllTrades",
-        DisplayName=loca["RareFeats_JackOfAllTrades_DisplayName"],
-        Description=loca["RareFeats_JackOfAllTrades_Description"],
-        Icon="PassiveFeature_JackOfAllTrades",
-        Boosts=[
-            "RollBonus(SkillCheck,ProficiencyBonus)",
-            "RollBonus(RawAbility,ProficiencyBonus)",
-        ],
-        Properties=["Highlighted"],
     ))
 
 
@@ -677,9 +693,12 @@ def skilled_feat() -> None:
     """Skilled with additional selections."""
     skilled_uuid = rare_feats.make_uuid("RareFeats_Skilled")
 
+    NUMBER_OF_SKILLS = 4
+
     loca["RareFeats_Skilled_DisplayName"] = {"en": "Rare Feats: Skilled"}
-    loca["RareFeats_Skilled_Description"] = {"en": """
-        You gain <LSTag Tooltip="Proficiency">Proficiency</LSTag> in 6 <LSTag Tooltip="Skill">Skills</LSTag> of your
+    loca["RareFeats_Skilled_Description"] = {"en": f"""
+        You gain <LSTag Tooltip="Proficiency">Proficiency</LSTag> in {NUMBER_OF_SKILLS}
+        <LSTag Tooltip="Skill">Skills</LSTag> of your
         choice.
         """}
 
@@ -695,7 +714,7 @@ def skilled_feat() -> None:
         CanBeTakenMultipleTimes=True,
         Name="RareFeats_Skilled",
         Selectors=[
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,SkilledSkills)",
+            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{NUMBER_OF_SKILLS},SkilledSkills)",
         ],
         UUID=skilled_uuid,
     ))

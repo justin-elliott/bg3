@@ -110,7 +110,7 @@ class EldritchKnightFullCaster(Replacer):
     def eldritch_knight_description(self, class_description: ClassDescription) -> None:
         class_description.MulticlassSpellcasterModifier = 1.0
         class_description.children.append(ClassDescription.Tags(
-            Object="18266c0b-efbc-4c80-8784-ada4a37218d7"  # SORCERER
+            Object="6fe3ae27-dc6c-4fc9-9245-710c790c396c"  # WIZARD
         ))
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, range(3, 21))

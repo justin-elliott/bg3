@@ -160,7 +160,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Paladin" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedDivineSmite;ReliableTalent" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedDivineSmite;ExtraAttack_2;ReliableTalent" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
@@ -248,6 +249,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7)" />
                     <attribute id="Level" type="uint8" value="20" />
                     <attribute id="Name" type="LSString" value="Paladin" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_3" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack_2" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />

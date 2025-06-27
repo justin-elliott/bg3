@@ -160,7 +160,11 @@ class PaladinFullCaster(Replacer):
 
     @progression(CharacterClass.PALADIN, 11)
     def paladin_level_11(self, progress: Progression) -> None:
-        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ReliableTalent"]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [
+            "ExtraAttack_2",
+            "ReliableTalent",
+        ]
+        progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack"]
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
         ]
@@ -225,6 +229,8 @@ class PaladinFullCaster(Replacer):
 
     @progression(CharacterClass.PALADIN, 20)
     def paladin_level_20(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_3"]
+        progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack_2"]
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
         ]

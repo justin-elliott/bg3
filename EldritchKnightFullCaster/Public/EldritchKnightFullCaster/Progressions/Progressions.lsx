@@ -65,7 +65,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SorceryPoint,1,0)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="WarMagic;UnlockedSpellSlotLevel4;Evasion;EldritchKnightFullCaster_FastMovement_30" />
+                    <attribute id="PassivesAdded" type="LSString" value="WarMagic;UnlockedSpellSlotLevel4;Evasion;EldritchKnightFullCaster_FastMovement_45" />
                     <attribute id="PassivesRemoved" type="LSString" value="EldritchKnightFullCaster_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,1,1)" />
@@ -115,8 +115,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,1,0)" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnightFullCaster_FastMovement_30" />
-                    <attribute id="PassivesRemoved" type="LSString" value="EldritchKnightFullCaster_FastMovement_30" />
+                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnightFullCaster_FastMovement_60" />
+                    <attribute id="PassivesRemoved" type="LSString" value="EldritchKnightFullCaster_FastMovement_45" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,1,1);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />
@@ -162,8 +162,8 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,9);ActionResource(SorceryPoint,1,0)" />
                     <attribute id="Level" type="uint8" value="17" />
                     <attribute id="Name" type="LSString" value="EldritchKnight" />
-                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnightFullCaster_FastMovement_30" />
-                    <attribute id="PassivesRemoved" type="LSString" value="EldritchKnightFullCaster_FastMovement_30" />
+                    <attribute id="PassivesAdded" type="LSString" value="EldritchKnightFullCaster_FastMovement_75" />
+                    <attribute id="PassivesRemoved" type="LSString" value="EldritchKnightFullCaster_FastMovement_60" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,1,1);SelectPassives(c3506532-36eb-4d18-823e-497a537a9619,1,Metamagic)" />
                     <attribute id="TableUUID" type="guid" value="2db3f02e-dfa9-4235-b9bd-28a89bf41435" />

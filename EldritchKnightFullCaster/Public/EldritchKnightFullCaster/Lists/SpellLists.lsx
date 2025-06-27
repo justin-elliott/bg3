@@ -6,13 +6,8 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Bolster spell list" />
-                    <attribute id="Spells" type="LSString" value="EldritchKnightFullCaster_Bolster" />
-                    <attribute id="UUID" type="guid" value="6084305d-b163-db27-fdeb-b698bb67565a" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Eldritch Knight spells gained at level 3" />
-                    <attribute id="Spells" type="LSString" value="EldritchKnightFullCaster_ArcaneGuidance;6084305d-b163-db27-fdeb-b698bb67565a;Target_Command_Container;Projectile_EldritchBlast" />
+                    <attribute id="Spells" type="LSString" value="EldritchKnightFullCaster_ArcaneGuidance;EldritchKnightFullCaster_Bolster;Target_Command_Container;Projectile_EldritchBlast" />
                     <attribute id="UUID" type="guid" value="a4befc43-457a-22f8-f003-36cda26f7c07" />
                 </node>
                 <node id="SpellList">

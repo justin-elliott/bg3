@@ -22,6 +22,7 @@ from modtools.lsx.game import (
 )
 from modtools.replacers import (
     class_description,
+    DontIncludeProgression,
     only_existing_progressions,
     progression,
     Replacer,
@@ -127,6 +128,14 @@ class EldritchKnightFullCaster(Replacer):
             and not selector.startswith(f"SelectSpells({wizard_level_3_spells(self).UUID}")
             and not selector.startswith(f"SelectSpells({wizard_level_4_spells(self).UUID}")
         ] or None
+
+    @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 1)
+    def level_1(self, _: Progression) -> None:
+        raise DontIncludeProgression()
+
+    @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 2)
+    def level_2(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 3)
     def level_3(self, progress: Progression) -> None:

@@ -72,6 +72,7 @@ class PaladinFullCaster(Replacer):
         self.mod.add(Armor(
             "ARM_ScaleMail_Body_Paladin_Crown",
             using="ARM_ScaleMail_Body_Paladin_Crown",
+            Ability_Modifier_Cap="",
             ArmorClass="20",
             ArmorType="Plate",
             Boosts="",

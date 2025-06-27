@@ -3,6 +3,7 @@
 new entry "ARM_ScaleMail_Body_Paladin_Crown"
 type "Armor"
 using "ARM_ScaleMail_Body_Paladin_Crown"
+data "Ability Modifier Cap" ""
 data "ArmorClass" "20"
 data "ArmorType" "Plate"
 data "Boosts" ""

@@ -102,7 +102,7 @@ class PaladinFullCaster(Replacer):
         progress.PassivesAdded = (progress.PassivesAdded or []) + [self._awareness]
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},2,0)",
         ]
 
@@ -124,7 +124,7 @@ class PaladinFullCaster(Replacer):
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["PotentCantrip"]
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_3_spells(self).UUID},2,0)",
         ]
 
@@ -146,7 +146,7 @@ class PaladinFullCaster(Replacer):
     def paladin_level_9(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_5_spells(self).UUID},2,0)",
         ]
 
@@ -171,7 +171,7 @@ class PaladinFullCaster(Replacer):
         progress.PassivesRemoved = (progress.PassivesRemoved or []) + [self._fast_movement_45]
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
         ]
 
@@ -191,7 +191,7 @@ class PaladinFullCaster(Replacer):
     def paladin_level_15(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
         ]
 
@@ -213,7 +213,7 @@ class PaladinFullCaster(Replacer):
     def paladin_level_18(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({wizard_level_6_spells(self).UUID},2,0)",
         ]
 

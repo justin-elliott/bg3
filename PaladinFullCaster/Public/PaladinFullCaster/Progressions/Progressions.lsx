@@ -79,7 +79,7 @@
                     <attribute id="Name" type="LSString" value="Paladin" />
                     <attribute id="PassivesAdded" type="LSString" value="DivineHealth;UnlockedSpellSlotLevel2;PaladinFullCaster_Awareness" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="31c12f48-d62f-4e83-b475-10ed9068c9dd" />
                 </node>
@@ -110,7 +110,7 @@
                     <attribute id="Name" type="LSString" value="Paladin" />
                     <attribute id="PassivesAdded" type="LSString" value="PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(94db914d-95d0-484e-8a02-c0faa9d575a7,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(94db914d-95d0-484e-8a02-c0faa9d575a7,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="a3fcceed-a1e9-4300-8032-83c573640b19" />
                 </node>
@@ -141,7 +141,7 @@
                     <attribute id="Name" type="LSString" value="Paladin" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel5" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(d18dec04-478f-41c3-b816-239d5cfcf2a2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d18dec04-478f-41c3-b816-239d5cfcf2a2);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="fada82ce-7f21-4b4d-9f08-5440848a7c1d" />
                 </node>
@@ -173,7 +173,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="PaladinFullCaster_FastMovement_60" />
                     <attribute id="PassivesRemoved" type="LSString" value="PaladinFullCaster_FastMovement_45" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="0a2410b4-ff13-429f-84ca-73ce2fd9654d" />
                 </node>
@@ -200,7 +200,7 @@
                     <attribute id="Level" type="uint8" value="15" />
                     <attribute id="Name" type="LSString" value="Paladin" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="65c6b594-c4f9-4fc6-9882-47fffc39a0bb" />
                 </node>
@@ -230,7 +230,7 @@
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="Paladin" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(5bf1b679-2bd9-4d33-ac2a-36dbe206e6df,,,,AlwaysPrepared);AddSpells(13647873-879c-4c2e-b936-0c6911a6f8a6,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(5bf1b679-2bd9-4d33-ac2a-36dbe206e6df,,,,AlwaysPrepared);AddSpells(13647873-879c-4c2e-b936-0c6911a6f8a6,,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="ba2afe85-acba-4ea1-a238-2b4543f47821" />
                     <attribute id="UUID" type="guid" value="969108d9-e59c-44ee-8014-b4c1411eb258" />
                 </node>

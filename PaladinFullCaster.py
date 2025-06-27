@@ -10,6 +10,7 @@ from moddb import (
     Movement,
     PackMule,
 )
+from modtools.gamedata import Armor
 from modtools.lsx.game import (
     CharacterAbility,
     ClassDescription,
@@ -64,6 +65,29 @@ class PaladinFullCaster(Replacer):
         self._warding = Defense(self.mod).add_warding()
 
         self._bolster = Bolster(self.mod).add_bolster_spell_list()
+
+        self._upgrade_armor()
+
+    def _upgrade_armor(self) -> None:
+        self.mod.add(Armor(
+            "ARM_ScaleMail_Body_Paladin_Crown",
+            using="ARM_ScaleMail_Body_Paladin_Crown",
+            ArmorClass="20",
+            ArmorType="Plate",
+            Boosts="",
+            MaxAmount="1",
+            MinAmount="1",
+            MinLevel="7",
+            PassivesOnEquip=["ARM_MagicalPlate_2_Passive", "MAG_MAG_EndGame_Plate_Armor_Passive"],
+            Priority="1",
+            Proficiency_Group="HeavyArmor",
+            Rarity="Legendary",
+            StatusOnEquip=["MAG_BLADE_WARD", "MAG_END_GAME_RESISTANCE"],
+            Unique="1",
+            ValueLevel="10",
+            ValueUUID="adfdafe5-f4da-4c64-a1e6-a33d626437d2",
+            Weight="1",
+        ))
 
     @class_description(CharacterClass.PALADIN)
     def paladin_class_description(self, description: ClassDescription) -> None:

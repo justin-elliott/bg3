@@ -73,6 +73,7 @@ class PaladinFullCaster(Replacer):
             "ARM_ScaleMail_Body_Paladin_Crown",
             using="ARM_ScaleMail_Body_Paladin_Crown",
             Ability_Modifier_Cap="",
+            Armor_Class_Ability="",
             ArmorClass="20",
             ArmorType="Plate",
             Boosts="",

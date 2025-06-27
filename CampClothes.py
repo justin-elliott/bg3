@@ -1078,17 +1078,30 @@ add_weapon("CampClothes_DancingBlade",
            parent_template_id=phalar_aluve_uuid,
            display_name=loca["CampClothes_DancingBlade_DisplayName"])
 
-loca["CampClothes_ChampionsSpear_DisplayName"] = {"en": "Champion's Spear"}
+loca["CampClothes_ChampionsSpear_DisplayName"] = {"en": "Champion's Glaive"}
 loca["CampClothes_ChampionsSpear_Description"] = {"en": """
-    A powerful spear gifted by a king to an extraordinary Huntress. Ideal for melee combat.
+    Forged for those who command the fight, this glaive is a brutal instrument of war. Its heavy, crescent blade seems
+    to hum with anticipation, eager to scythe through ranks with devastating force. Every inch of its length is designed
+    for wide, decisive blows that turn the tide of battle.
     """}
 add_weapon("CampClothes_ChampionsSpear",
-           using="WPN_Spear",
-           damage_type="Piercing",
-           parent_template_id="74d9758a-84e9-4244-9ae8-14acee76acb3",
+           using="WPN_Glaive",
+           parent_template_id="99f3b2d9-e03d-4cd5-9a67-5435a95682da",
            display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
            description=loca["CampClothes_ChampionsSpear_Description"],
-           weapon_properties=WEAPON_PROPERTIES + ["Reach"])
+           boosts_on_equip_main_hand=[
+               "CannotBeDisarmed()",
+               "UnlockSpell(Rush_SpringAttack)",
+               "UnlockSpell(Target_Slash_New)",
+               "UnlockSpell(Shout_Steady)",
+            ],
+           passives_on_equip=lambda damage_type: [
+               "UNI_Adamantine_CriticalVsItems_Passive",
+               f"MAG_Ignore{damage_type.title()}Resistance_Passive",
+               "CampClothes_Weapon_EnchantmentProgression",
+               "CampClothes_Weapon_CriticalProgression",
+           ],
+           weapon_properties=None)
 
 loca["CampClothes_SpearOfTwilight_DisplayName"] = {"en": "Spear of Twilight"}
 loca["CampClothes_SpearOfTwilight_Description"] = {"en": """

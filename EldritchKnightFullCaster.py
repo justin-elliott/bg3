@@ -65,16 +65,16 @@ class EldritchKnightFullCaster(Replacer):
                          **kwds)
 
         self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
-        self._fast_movement_45 = Movement(self.mod).add_fast_movement(3.0)
-        self._fast_movement_60 = Movement(self.mod).add_fast_movement(3.0)
-        self._fast_movement_75 = Movement(self.mod).add_fast_movement(3.0)
+        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
+        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
+        self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5)
 
         self._awareness = Awareness(self.mod).add_awareness(5)
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._warding = Defense(self.mod).add_warding()
 
         self._arcane_guidance = Guidance(self.mod).add_arcane_guidance()
-        self._bolster = Bolster(self.mod).add_bolster_spell_list()
+        self._bolster = Bolster(self.mod).add_bolster()
 
     @cached_property
     def _spells_level_3(self) -> str:

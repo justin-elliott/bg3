@@ -1078,17 +1078,17 @@ add_weapon("CampClothes_DancingBlade",
            parent_template_id=phalar_aluve_uuid,
            display_name=loca["CampClothes_DancingBlade_DisplayName"])
 
-loca["CampClothes_ChampionsSpear_DisplayName"] = {"en": "Champion's Glaive"}
-loca["CampClothes_ChampionsSpear_Description"] = {"en": """
+loca["CampClothes_ChampionsGlaive_DisplayName"] = {"en": "Champion's Glaive"}
+loca["CampClothes_ChampionsGlaive_Description"] = {"en": """
     Forged for those who command the fight, this glaive is a brutal instrument of war. Its heavy, crescent blade seems
     to hum with anticipation, eager to scythe through ranks with devastating force. Every inch of its length is designed
     for wide, decisive blows that turn the tide of battle.
     """}
-add_weapon("CampClothes_ChampionsSpear",
+add_weapon("CampClothes_ChampionsGlaive",
            using="WPN_Glaive",
            parent_template_id="99f3b2d9-e03d-4cd5-9a67-5435a95682da",
-           display_name=loca["CampClothes_ChampionsSpear_DisplayName"],
-           description=loca["CampClothes_ChampionsSpear_Description"],
+           display_name=loca["CampClothes_ChampionsGlaive_DisplayName"],
+           description=loca["CampClothes_ChampionsGlaive_Description"],
            boosts_on_equip_main_hand=[
                "CannotBeDisarmed()",
                "UnlockSpell(Rush_SpringAttack)",
@@ -1170,7 +1170,7 @@ equipment = [
     "CampClothes_ArcaneKatana",
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
-    "CampClothes_ChampionsSpear",
+    "CampClothes_ChampionsGlaive",
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",

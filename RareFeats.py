@@ -469,6 +469,84 @@ def jack_of_all_trades_feat() -> None:
 
 
 @iife
+def heavily_armored_feat() -> None:
+    """Heavily Armored with +2 Strength ASI."""
+    heavily_armored_uuid = rare_feats.make_uuid("RareFeats_HeavilyArmored")
+
+    loca["RareFeats_HeavilyArmored_DisplayName"] = {"en": "Rare Feats: Heavily Armoured"}
+    loca["RareFeats_HeavilyArmored_Description"] = {"en": """
+        You gain <LSTag Tooltip="ArmourProficiency">Armour Proficiency</LSTag> with Heavy Armour and your
+        <LSTag Tooltip="Strength">Strength</LSTag> increases by 2, to a maximum of 30.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_HeavilyArmored_DisplayName"],
+        Description=loca["RareFeats_HeavilyArmored_Description"],
+        ExactMatch="RareFeats_HeavilyArmored",
+        FeatId=heavily_armored_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_HeavilyArmored"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_HeavilyArmored",
+        PassivesAdded="RareFeats_HeavilyArmored_Passive",
+        Requirements="FeatRequirementProficiency('MediumArmor')",
+        UUID=heavily_armored_uuid,
+    ))
+
+    rare_feats.add(PassiveData(
+        "RareFeats_HeavilyArmored_Passive",
+        DisplayName=loca["RareFeats_HeavilyArmored_DisplayName"],
+        Description=loca["RareFeats_HeavilyArmored_Description"],
+        Icon="PassiveFeature_HeavilyArmored",
+        Boosts=["Ability(Strength,2,30)", "Proficiency(HeavyArmor)"],
+        Properties=["Highlighted"],
+    ))
+
+
+@iife
+def heavy_armor_master_feat() -> None:
+    """Heavy Armor Master with +2 Strength ASI."""
+    heavy_armor_master_uuid = rare_feats.make_uuid("RareFeats_HeavyArmorMaster")
+
+    loca["RareFeats_HeavyArmorMaster_DisplayName"] = {"en": "Rare Feats: Heavy Armor Master"}
+    loca["RareFeats_HeavyArmorMaster_Description"] = {"en": """
+        Your <LSTag Tooltip="Strength">Strength</LSTag> increases by 2, to a maximum of 30.
+        
+        Incoming damage from non-magical attacks also decreases by 3 while you're wearing heavy armour.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_HeavyArmorMaster_DisplayName"],
+        Description=loca["RareFeats_HeavyArmorMaster_Description"],
+        ExactMatch="RareFeats_HeavyArmorMaster",
+        FeatId=heavy_armor_master_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_HeavyArmorMaster"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_HeavyArmorMaster",
+        PassivesAdded="RareFeats_HeavyArmorMaster_Passive",
+        Requirements="FeatRequirementProficiency('HeavyArmor')",
+        UUID=heavy_armor_master_uuid,
+    ))
+
+    rare_feats.add(PassiveData(
+        "RareFeats_HeavyArmorMaster_Passive",
+        DisplayName=loca["RareFeats_HeavyArmorMaster_DisplayName"],
+        Description=loca["RareFeats_HeavyArmorMaster_Description"],
+        Icon="PassiveFeature_HeavyArmorMaster",
+        Boosts=[
+            "Ability(Strength,2,30)",
+            "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Bludgeoning,Flat,3)",
+            "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Piercing,Flat,3)",
+            "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Slashing,Flat,3)",
+        ],
+        Properties=["Highlighted"],
+    ))
+
+
+@iife
 def lightly_armored_feat() -> None:
     """Lightly Armored with optional ASI."""
     lightly_armored_uuid = rare_feats.make_uuid("RareFeats_LightlyArmored")

@@ -79,6 +79,10 @@
     <content contentuid="hfdd02038g4c99g5c7dg651cgfc7399101720" version="1">Adopt a particular style of fighting as your specialty.</content>
     <content contentuid="h80e22e75gee20gc0efg055cg2681d75dde78" version="1">Rare Feats: Jack of All Trades</content>
     <content contentuid="h763a12a2gbc82g828dg48fcg1a525b71a5d2" version="1">You gain &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="ReliableTalent"&gt;Reliable Talent&lt;/LSTag&gt;.</content>
+    <content contentuid="hffddab9ag145dg578bgce6ag7cf497ced92d" version="1">Rare Feats: Heavily Armoured</content>
+    <content contentuid="h07cca7d3gc0e9ga408g6dd1g83a8c522595b" version="1">You gain &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Heavy Armour and your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases by 2, to a maximum of 30.</content>
+    <content contentuid="h64955afag7148gc6b2gd976g6ba644465e12" version="1">Rare Feats: Heavy Armor Master</content>
+    <content contentuid="hfd9c6a1agc179g2a58gfb35g126a99579bee" version="1">Your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases by 2, to a maximum of 30.&lt;br&gt;&lt;br&gt;Incoming damage from non-magical attacks also decreases by 3 while you're wearing heavy armour.</content>
     <content contentuid="he9b41b6cg912cgdd62g8870g2dcd7a93f2a5" version="1">Strength +2</content>
     <content contentuid="h5ab68dffge8d4g8956g091fga32af43b7997" version="1">Increase your Strength by 2, to a maximum of 30.</content>
     <content contentuid="hb8729b12gb328ga348g89a6gfe839daff705" version="1">Dexterity +2</content>

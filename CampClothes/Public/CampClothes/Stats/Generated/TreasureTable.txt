@@ -495,7 +495,7 @@ object category I_CampClothes_InfernalKatana,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_DancingBlade,1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category I_CampClothes_ChampionsSpear,1,0,0,0,0,0,0,0
+object category I_CampClothes_ChampionsGlaive,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_SpearOfTwilight,1,0,0,0,0,0,0,0
 new subtable "1,1"

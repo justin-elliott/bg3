@@ -877,7 +877,7 @@ camp_clothes.add(Weapon(
 ))
 
 camp_clothes.add(SpellData(
-    "CampClothes_Belm_Cleave",
+    "CampClothes_Weapon_Cleave",
     using="Zone_Cleave",
     SpellType="Zone",
     Cooldown="None",
@@ -903,7 +903,7 @@ camp_clothes.add(Weapon(
     "CampClothes_Belm_Shortsword",
     using="MAG_PHB_OfSpeed_Scimitar",
     BoostsOnEquipMainHand=[],
-    Boosts=["UnlockSpell(CampClothes_Belm_Cleave)", "UnlockSpell(CampClothes_Belm_BonusAttack)"],
+    Boosts=["UnlockSpell(CampClothes_Weapon_Cleave)", "UnlockSpell(CampClothes_Belm_BonusAttack)"],
     PassivesOffHand=["MAG_IgnorePiercingResistance_Passive"],
     Proficiency_Group=["Shortswords", "MartialWeapons", "Scimitars"],
     RootTemplate="5961d027-75fd-4ad7-964c-8b786b5839fb",
@@ -1094,6 +1094,7 @@ add_weapon("CampClothes_ChampionsGlaive",
                "UnlockSpell(Rush_SpringAttack)",
                "UnlockSpell(Target_Slash_New)",
                "UnlockSpell(Shout_Steady)",
+               "UnlockSpell(CampClothes_Weapon_Cleave)",
             ],
            passives_on_equip=lambda damage_type: [
                "UNI_Adamantine_CriticalVsItems_Passive",

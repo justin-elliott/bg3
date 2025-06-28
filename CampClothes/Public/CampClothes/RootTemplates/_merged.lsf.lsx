@@ -1518,13 +1518,13 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h6b65a4f5g116egec37g8049gc4e412cec3f9" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h2c69f0f3gcf7ag8414g0347g18b15abd61fc" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="hf5e4807egebb3g49aeg96d0g52e866509d71" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hab32b93cg968cgb777gb1edg24617216c228" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="ae9c7203-a2e2-74b8-3201-5664c2bfdc95" />
-                    <attribute id="Name" type="LSString" value="CampClothes_ChampionsSpear" />
+                    <attribute id="MapKey" type="FixedString" value="21698ee1-c91e-f4bd-c5d8-619b87069ae3" />
+                    <attribute id="Name" type="LSString" value="CampClothes_ChampionsGlaive" />
                     <attribute id="ParentTemplateId" type="FixedString" value="99f3b2d9-e03d-4cd5-9a67-5435a95682da" />
-                    <attribute id="Stats" type="FixedString" value="CampClothes_ChampionsSpear" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_ChampionsGlaive" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
                         <node id="StatusList">

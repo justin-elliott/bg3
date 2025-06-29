@@ -1181,17 +1181,32 @@ add_weapon("CampClothes_Sinister",
            status_on_equip=["MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"],
            weapon_properties=["Finesse", "Light", "Thrown", "Melee", "Dippable"])
 
+loca["CampClothes_DeepenTheWound_Description"] = {"en": """
+    The wielder gains a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack</LSTag> and Damage rolls with this weapon when
+    attacking creatures that have already taken damage.
+    """}
+camp_clothes.add(PassiveData(
+    "CampClothes_DeepenTheWound",
+    using="MAG_TheWoundSeeker_Greatsword",
+    Description=loca["CampClothes_DeepenTheWound_Description"],
+    Boosts=[
+        "IF(not HasMaxHP()):RollBonus(MeleeWeaponAttack,1d4)",
+        "IF(not HasMaxHP() and IsMeleeWeaponAttack()):DamageBonus(1d4,Slashing,false)",
+    ],
+))
+
 camp_clothes.add(Weapon(
     "CampClothes_Woundseeker",
     using="MAG_TheWoundSeeker_Greatsword",
     DefaultBoosts=[
+        "CannotBeDisarmed()",
         "WeaponProperty(Magical)",
         "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
         "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
         "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
     ],
     PassivesOnEquip=[
-        "MAG_TheWoundSeeker_Greatsword_Passive",
+        "CampClothes_DeepenTheWound",
         "MAG_TheClover_Rearrangement_Passive",
     ],
     Rarity="Legendary",

@@ -6,6 +6,16 @@
         <node id="root">
             <children>
                 <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Bonus Action Dash" />
+                    <attribute id="Spells" type="LSString" value="BattleMaster_BonusActionDash" />
+                    <attribute id="UUID" type="guid" value="09f5bd61-ba65-41ef-f37d-cffe9f7c4753" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Battle Master Kick" />
+                    <attribute id="Spells" type="LSString" value="BattleMaster_Kick" />
+                    <attribute id="UUID" type="guid" value="df2e66c0-4308-9ea2-e7ee-64d9c7f89989" />
+                </node>
+                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Battle Master Elemental Cleaver" />
                     <attribute id="Spells" type="LSString" value="BattleMaster_ElementalCleaver" />
                     <attribute id="UUID" type="guid" value="49a56818-37c9-8e1d-a1d4-2baa45007847" />

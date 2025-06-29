@@ -79,7 +79,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,4,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;RecklessAttack" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;RecklessAttack;BattleMaster_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
@@ -89,7 +89,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
+                    <attribute id="PassivesAdded" type="LSString" value="FeralInstinct;BattleMaster_RunningJump" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(09f5bd61-ba65-41ef-f37d-cffe9f7c4753)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="c1c4df37-b95d-4e3e-88e2-a1d0ff433887" />
                 </node>
@@ -99,7 +101,7 @@
                     <attribute id="Name" type="LSString" value="BattleMaster" />
                     <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(12653b66-e36c-4b0b-872d-b61a1b2a3411)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(df2e66c0-4308-9ea2-e7ee-64d9c7f89989)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="47761a30-c1ff-2095-7758-b626db017f22" />
                 </node>
@@ -134,6 +136,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
+                    <attribute id="PassivesAdded" type="LSString" value="BrutalCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="6674fbf1-3c9c-48a2-b78d-92546df2cac5" />

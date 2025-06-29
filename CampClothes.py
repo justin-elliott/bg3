@@ -1190,7 +1190,10 @@ camp_clothes.add(Weapon(
         "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
         "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
     ],
-    PassivesOnEquip=["MAG_TheClover_Rearrangement_Passive"],
+    PassivesOnEquip=[
+        "MAG_TheWoundSeeker_Greatsword_Passive",
+        "MAG_TheClover_Rearrangement_Passive",
+    ],
     Rarity="Legendary",
 ))
 

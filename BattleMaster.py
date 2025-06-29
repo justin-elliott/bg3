@@ -34,6 +34,12 @@ class BattleMaster(Replacer):
     def battlemaster_level_5(self, progress: Progression) -> None:
         progress.PassivesAdded = ["UncannyDodge"]
 
+    @progression(CharacterClass.FIGHTER_BATTLEMASTER, 6)
+    def battlemaster_level_6(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a)",  # Volley, Whirlwind
+        ]
+
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 7)
     def battlemaster_level_7(self, progress: Progression) -> None:
         progress.PassivesAdded = ["Evasion", "RemarkableAthlete_Proficiency", "RemarkableAthlete_Jump"]
@@ -57,8 +63,6 @@ def main() -> None:
     battle_master = BattleMaster(
         classes=[CharacterClass.FIGHTER_BATTLEMASTER],
         feats=2,
-        skills=4,
-        expertise=2,
     )
     battle_master.build()
 

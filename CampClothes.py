@@ -1094,7 +1094,6 @@ add_weapon("CampClothes_ChampionsGlaive",
                "UnlockSpell(Rush_SpringAttack)",
                "UnlockSpell(Target_Slash_New)",
                "UnlockSpell(Shout_Steady)",
-               "UnlockSpell(CampClothes_Weapon_Cleave)",
             ],
            passives_on_equip=lambda damage_type: [
                "UNI_Adamantine_CriticalVsItems_Passive",

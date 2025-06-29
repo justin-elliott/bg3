@@ -489,13 +489,13 @@ def heavily_armored_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_HeavilyArmored",
-        PassivesAdded="RareFeats_HeavilyArmored_Passive",
+        PassivesAdded="RareFeats_HeavilyArmored",
         Requirements="FeatRequirementProficiency('MediumArmor')",
         UUID=heavily_armored_uuid,
     ))
 
     rare_feats.add(PassiveData(
-        "RareFeats_HeavilyArmored_Passive",
+        "RareFeats_HeavilyArmored",
         DisplayName=loca["RareFeats_HeavilyArmored_DisplayName"],
         Description=loca["RareFeats_HeavilyArmored_Description"],
         Icon="PassiveFeature_HeavilyArmored",
@@ -526,13 +526,13 @@ def heavy_armor_master_feat() -> None:
 
     rare_feats.add(Feat(
         Name="RareFeats_HeavyArmorMaster",
-        PassivesAdded="RareFeats_HeavyArmorMaster_Passive",
+        PassivesAdded="RareFeats_HeavyArmorMaster",
         Requirements="FeatRequirementProficiency('HeavyArmor')",
         UUID=heavy_armor_master_uuid,
     ))
 
     rare_feats.add(PassiveData(
-        "RareFeats_HeavyArmorMaster_Passive",
+        "RareFeats_HeavyArmorMaster",
         DisplayName=loca["RareFeats_HeavyArmorMaster_DisplayName"],
         Description=loca["RareFeats_HeavyArmorMaster_Description"],
         Icon="PassiveFeature_HeavyArmorMaster",

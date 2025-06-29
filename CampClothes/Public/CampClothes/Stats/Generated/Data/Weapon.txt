@@ -58,6 +58,7 @@ data "PassivesOnEquip" "UNI_Adamantine_CriticalVsItems_Passive;MAG_IgnoreSlashin
 data "Rarity" "Legendary"
 data "RootTemplate" "21698ee1-c91e-f4bd-c5d8-619b87069ae3"
 data "Unique" "1"
+data "Weapon Properties" "Heavy;Reach;Twohanded;Melee;Dippable;Finesse"
 
 new entry "CampClothes_SpearOfTwilight"
 type "Weapon"

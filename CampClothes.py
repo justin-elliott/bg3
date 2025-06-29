@@ -1102,7 +1102,7 @@ add_weapon("CampClothes_ChampionsGlaive",
                "CampClothes_Weapon_EnchantmentProgression",
                "CampClothes_Weapon_CriticalProgression",
            ],
-           weapon_properties=None)
+           weapon_properties=["Heavy", "Reach", "Twohanded", "Melee", "Dippable", "Finesse"])
 
 loca["CampClothes_SpearOfTwilight_DisplayName"] = {"en": "Spear of Twilight"}
 loca["CampClothes_SpearOfTwilight_Description"] = {"en": """

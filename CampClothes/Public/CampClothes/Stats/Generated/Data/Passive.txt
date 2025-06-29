@@ -33,6 +33,6 @@ data "DisplayName" "haca999bdge177ga75dgb35dgc22cd83dc350"
 
 new entry "CampClothes_Weapon_CriticalProgression"
 type "PassiveData"
-data "Boosts" "IF(CharacterLevelRange(13,16)):ReduceCriticalAttackThreshold(1);IF(CharacterLevelRange(17,20)):ReduceCriticalAttackThreshold(2)"
+data "Boosts" "IF(CharacterLevelRange(6,20)):ReduceCriticalAttackThreshold(1)"
 data "Description" "h31e4fbf1gf4d9ge0aegf3b0gfc82a55da414"
 data "DisplayName" "h03c48060g413bg5e34gea5cg308b880767ef"

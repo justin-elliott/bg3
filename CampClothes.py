@@ -952,8 +952,7 @@ camp_clothes.add(PassiveData(
 
 loca["CampClothes_Weapon_CriticalProgression_DisplayName"] = {"en": "Improved Critical"}
 loca["CampClothes_Weapon_CriticalProgression_Description"] = {"en": """
-    At <LSTag>Level 13</LSTag>, you reduce the number you need to roll a Critical Hit while attacking by 1. This is
-    further reduced by 1 at <LSTag>Level 17</LSTag>.
+    At <LSTag>Level 6</LSTag>, you reduce the number you need to roll a Critical Hit while attacking by 1.
     """}
 
 camp_clothes.add(PassiveData(
@@ -961,8 +960,7 @@ camp_clothes.add(PassiveData(
     DisplayName=loca["CampClothes_Weapon_CriticalProgression_DisplayName"],
     Description=loca["CampClothes_Weapon_CriticalProgression_Description"],
     Boosts=[
-        "IF(CharacterLevelRange(13,16)):ReduceCriticalAttackThreshold(1)",
-        "IF(CharacterLevelRange(17,20)):ReduceCriticalAttackThreshold(2)",
+        "IF(CharacterLevelRange(6,20)):ReduceCriticalAttackThreshold(1)",
     ],
 ))
 
@@ -1078,6 +1076,33 @@ add_weapon("CampClothes_DancingBlade",
            parent_template_id=phalar_aluve_uuid,
            display_name=loca["CampClothes_DancingBlade_DisplayName"])
 
+loca["CampClothes_SavageBlade_DisplayName"] = {"en": "Savage Blade"}
+loca["CampClothes_SavageBlade_Description"] = {"en": """
+    This longsword is scarred, not by careful parries, but by clashing blows and uncontrolled fury. It's not about
+    precision, but about overwhelming force and relentless momentum; a whirlwind of steel that cares little for defense,
+    only for striking down everything in its path.
+    """}
+add_weapon("CampClothes_SavageBlade",
+           using="WPN_Longsword",
+           bonus_damage_type="Slashing",
+           parent_template_id="0a11f6f4-5605-4dff-a3e6-b172e4dba555",
+           display_name=loca["CampClothes_SavageBlade_DisplayName"],
+           description=loca["CampClothes_SavageBlade_Description"],
+           boosts_on_equip_main_hand=[
+               "CannotBeDisarmed()",
+               "UnlockSpell(Rush_SpringAttack)",
+               "UnlockSpell(Target_Slash_New)",
+               "UnlockSpell(Shout_Steady)",
+            ],
+           passives_on_equip=lambda damage_type: [
+               "UNI_Adamantine_CriticalVsItems_Passive",
+               f"MAG_Ignore{damage_type.title()}Resistance_Passive",
+               "CampClothes_Weapon_EnchantmentProgression",
+               "CampClothes_Weapon_CriticalProgression",
+               "RecklessAttack",
+               "ALCH_Elixir_Bloodlust_Passive",
+           ])
+
 loca["CampClothes_ChampionsGlaive_DisplayName"] = {"en": "Champion's Glaive"}
 loca["CampClothes_ChampionsGlaive_Description"] = {"en": """
     Forged for those who command the fight, this glaive is a brutal instrument of war. Its heavy, crescent blade seems
@@ -1170,6 +1195,7 @@ equipment = [
     "CampClothes_ArcaneKatana",
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
+    "CampClothes_SavageBlade",
     "CampClothes_ChampionsGlaive",
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",

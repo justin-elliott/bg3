@@ -54,10 +54,12 @@
     <content contentuid="haca999bdge177ga75dgb35dgc22cd83dc350" version="1">Kereska's Favour</content>
     <content contentuid="h77b99644g9175g1759g3c66ga20fcb275c75" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
     <content contentuid="h03c48060g413bg5e34gea5cg308b880767ef" version="1">Improved Critical</content>
-    <content contentuid="h31e4fbf1gf4d9ge0aegf3b0gfc82a55da414" version="1">At &lt;LSTag&gt;Level 13&lt;/LSTag&gt;, you reduce the number you need to roll a Critical Hit while attacking by 1. This is further reduced by 1 at &lt;LSTag&gt;Level 17&lt;/LSTag&gt;.</content>
+    <content contentuid="h31e4fbf1gf4d9ge0aegf3b0gfc82a55da414" version="1">At &lt;LSTag&gt;Level 6&lt;/LSTag&gt;, you reduce the number you need to roll a Critical Hit while attacking by 1.</content>
     <content contentuid="hb18063c8gafe0gbcecge6f3g98ebd84a3e19" version="1">Arcane Katana</content>
     <content contentuid="h01332a50g8440ga109gff9egf29f1fab9f6c" version="1">Infernal Katana</content>
     <content contentuid="h6c9a8eddg57f7g064eg62cegfe4ea53e58ad" version="1">Dancing Blade</content>
+    <content contentuid="h537d558dgbd1dg6387gda2egbd81b730ed50" version="1">Savage Blade</content>
+    <content contentuid="hbc4096f8g9804gf7d6g38f2g1d481404eebd" version="1">This longsword is scarred, not by careful parries, but by clashing blows and uncontrolled fury. It's not about precision, but about overwhelming force and relentless momentum; a whirlwind of steel that cares little for defense, only for striking down everything in its path.</content>
     <content contentuid="hab32b93cg968cgb777gb1edg24617216c228" version="1">Champion's Glaive</content>
     <content contentuid="hf5e4807egebb3g49aeg96d0g52e866509d71" version="1">Forged for those who command the fight, this glaive is a brutal instrument of war. Its heavy, crescent blade seems to hum with anticipation, eager to scythe through ranks with devastating force. Every inch of its length is designed for wide, decisive blows that turn the tide of battle.</content>
     <content contentuid="h3417b20bg6e31ga16ag9949gac573837dbce" version="1">Spear of Twilight</content>

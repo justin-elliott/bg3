@@ -39,6 +39,6 @@ data "DisplayName" "h03c48060g413bg5e34gea5cg308b880767ef"
 
 new entry "CampClothes_DeepenTheWound"
 type "PassiveData"
-using "MAG_TheWoundSeeker_Greatsword"
+using "MAG_TheWoundSeeker_Greatsword_Passive"
 data "Boosts" "IF(not HasMaxHP()):RollBonus(MeleeWeaponAttack,1d4);IF(not HasMaxHP() and IsMeleeWeaponAttack()):DamageBonus(1d4,Slashing,false)"
 data "Description" "h936d257ag1ad6ga328gd3f8gc6d3d274be06"

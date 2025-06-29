@@ -1187,7 +1187,7 @@ loca["CampClothes_DeepenTheWound_Description"] = {"en": """
     """}
 camp_clothes.add(PassiveData(
     "CampClothes_DeepenTheWound",
-    using="MAG_TheWoundSeeker_Greatsword",
+    using="MAG_TheWoundSeeker_Greatsword_Passive",
     Description=loca["CampClothes_DeepenTheWound_Description"],
     Boosts=[
         "IF(not HasMaxHP()):RollBonus(MeleeWeaponAttack,1d4)",

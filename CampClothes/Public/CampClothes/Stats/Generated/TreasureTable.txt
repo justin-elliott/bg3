@@ -505,7 +505,7 @@ object category I_CampClothes_Dexter,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Sinister,1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category I_MAG_TheWoundSeeker_Greatsword,1,0,0,0,0,0,0,0
+object category I_CampClothes_Woundseeker,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_MAG_Bhaalist_Armor,1,0,0,0,0,0,0,0
 new subtable "1,1"

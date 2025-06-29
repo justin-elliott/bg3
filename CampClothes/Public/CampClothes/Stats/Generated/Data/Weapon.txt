@@ -104,3 +104,8 @@ data "RootTemplate" "f8a1f525-4357-1167-91c0-caef242f38b5"
 data "StatusOnEquip" "MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"
 data "Unique" "1"
 data "Weapon Properties" "Finesse;Light;Thrown;Melee;Dippable"
+
+new entry "CampClothes_Woundseeker"
+type "Weapon"
+using "MAG_TheWoundSeeker_Greatsword"
+data "DefaultBoosts" "WeaponProperty(Magical);IF(CharacterLevelRange(1,4)):WeaponEnchantment(1);IF(CharacterLevelRange(5,8)):WeaponEnchantment(2);IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)"

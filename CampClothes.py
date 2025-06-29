@@ -1181,6 +1181,17 @@ add_weapon("CampClothes_Sinister",
            status_on_equip=["MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"],
            weapon_properties=["Finesse", "Light", "Thrown", "Melee", "Dippable"])
 
+camp_clothes.add(Weapon(
+    "CampClothes_Woundseeker",
+    using="MAG_TheWoundSeeker_Greatsword",
+    DefaultBoosts=[
+        "WeaponProperty(Magical)",
+        "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+        "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+        "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+    ],
+))
+
 camp_clothes.add(Armor(
     "CampClothes_Boots_Isobel",
     using="ARM_Shoes",
@@ -1198,7 +1209,7 @@ equipment = [
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",
-    "MAG_TheWoundSeeker_Greatsword",
+    "CampClothes_Woundseeker",
     "MAG_Bhaalist_Armor",
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",

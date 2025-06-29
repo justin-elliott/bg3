@@ -1,7 +1,9 @@
 
 import os
 
-from modtools.lsx.game import Progression
+from functools import cached_property
+from modtools.gamedata import SpellData, StatusData
+from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     progression,
@@ -17,10 +19,56 @@ class BattleMaster(Replacer):
                          description="A class replacer for BattleMaster.",
                          **kwds)
 
+    @cached_property
+    def _elemental_cleaver(self) -> str:
+        elemental_cleaver = f"{self.mod.get_prefix()}_ElementalCleaver"
+        elements = ["Acid", "Cold", "Fire", "Lightning", "Thunder"]
+        self.mod.add(SpellData(
+            elemental_cleaver,
+            using="Shout_ElementalCleaver",
+            SpellType="Shout",
+            ContainerSpells=[f"{elemental_cleaver}_{element}" for element in elements],
+            SpellProperties=[f"ApplyEquipmentStatus(MainHand,{elemental_cleaver.upper()}_ACID,100,-1)"],
+            TooltipStatusApply=[f"ApplyStatus({elemental_cleaver.upper()}_ACID,100,-1)"],
+            RequirementConditions=[],
+        ))
+
+        for element in elements:
+            status_name = f"{elemental_cleaver.upper()}_{element.upper()}"
+            self.mod.add(SpellData(
+                f"{elemental_cleaver}_{element}",
+                using=f"Shout_ElementalCleaver_{element}",
+                SpellType="Shout",
+                SpellContainerID=elemental_cleaver,
+                SpellProperties=[f"ApplyEquipmentStatus(MainHand,{status_name},100,-1)"],
+                TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
+            ))
+
+            self.mod.add(StatusData(
+                status_name,
+                using=f"ELEMENTAL_CLEAVER_{element.upper()}",
+                StatusType="BOOST",
+                RemoveConditions=[],
+                RemoveEvents=[],
+            ))
+        
+        return elemental_cleaver
+
+    @cached_property
+    def _elemental_cleaver_spell_list(self) -> str:
+        name = "Battle Master Elemental Cleaver"
+        spells = SpellList(
+            Name=name,
+            Spells=[self._elemental_cleaver],
+            UUID=self.make_uuid(name),
+        )
+        self.mod.add(spells)
+        return spells.UUID
+
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 3)
     def battlemaster_level_3(self, progress: Progression) -> None:
         progress.Boosts = ["ActionResource(SuperiorityDie,4,0)"]
-        progress.PassivesAdded = ["ImprovedCritical"]
+        progress.PassivesAdded = ["ImprovedCritical", "RecklessAttack"]
         progress.Selectors += [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
@@ -33,10 +81,14 @@ class BattleMaster(Replacer):
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 5)
     def battlemaster_level_5(self, progress: Progression) -> None:
         progress.PassivesAdded = ["UncannyDodge"]
+        progress.Selectors = [
+            "AddSpells(12653b66-e36c-4b0b-872d-b61a1b2a3411)",  # Boot of the Giants
+        ]
 
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 6)
     def battlemaster_level_6(self, progress: Progression) -> None:
         progress.Selectors = [
+            f"AddSpells({self._elemental_cleaver_spell_list})",
             "AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a)",  # Volley, Whirlwind
         ]
 

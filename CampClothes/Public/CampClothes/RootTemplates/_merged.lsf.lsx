@@ -1518,13 +1518,13 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="hbc4096f8g9804gf7d6g38f2g1d481404eebd" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h537d558dgbd1dg6387gda2egbd81b730ed50" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h377de8adg3f3dg2054g6f3cgcb5172255ece" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2840eac4g5eabg698dga1fbg25b84fb8e2be" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="f0f0d072-55b4-2e4d-7c26-45a69a0e74a4" />
-                    <attribute id="Name" type="LSString" value="CampClothes_SavageBlade" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="0a11f6f4-5605-4dff-a3e6-b172e4dba555" />
-                    <attribute id="Stats" type="FixedString" value="CampClothes_SavageBlade" />
+                    <attribute id="MapKey" type="FixedString" value="95651788-7e11-5a50-9d26-79b258c05f00" />
+                    <attribute id="Name" type="LSString" value="CampClothes_WhisperOfTheDawn" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="20c66f8d-f455-42fc-8e48-543512247e75" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_WhisperOfTheDawn" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
                         <node id="StatusList">

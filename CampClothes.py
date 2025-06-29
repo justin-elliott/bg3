@@ -1076,18 +1076,18 @@ add_weapon("CampClothes_DancingBlade",
            parent_template_id=phalar_aluve_uuid,
            display_name=loca["CampClothes_DancingBlade_DisplayName"])
 
-loca["CampClothes_SavageBlade_DisplayName"] = {"en": "Savage Blade"}
-loca["CampClothes_SavageBlade_Description"] = {"en": """
-    This longsword is scarred, not by careful parries, but by clashing blows and uncontrolled fury. It's not about
-    precision, but about overwhelming force and relentless momentum; a whirlwind of steel that cares little for defense,
-    only for striking down everything in its path.
+loca["CampClothes_WhisperOfTheDawn_DisplayName"] = {"en": "Whisper of the Dawn"}
+loca["CampClothes_WhisperOfTheDawn_Description"] = {"en": """
+    A longsword born of raw, unblemished silver, this blade holds the very essence of breaking light. Its brilliance is
+    not ostentatious, but deep and resonant, a constant beacon against encroaching night. When drawn, it seems to hum
+    with a quiet, persistent energy, promising swift judgment and ultimate victory over those who lurk in the shadows.
     """}
-add_weapon("CampClothes_SavageBlade",
+add_weapon("CampClothes_WhisperOfTheDawn",
            using="WPN_Longsword",
-           bonus_damage_type="Slashing",
-           parent_template_id="0a11f6f4-5605-4dff-a3e6-b172e4dba555",
-           display_name=loca["CampClothes_SavageBlade_DisplayName"],
-           description=loca["CampClothes_SavageBlade_Description"],
+           bonus_damage_type="Radiant",
+           parent_template_id="20c66f8d-f455-42fc-8e48-543512247e75",
+           display_name=loca["CampClothes_WhisperOfTheDawn_DisplayName"],
+           description=loca["CampClothes_WhisperOfTheDawn_Description"],
            boosts_on_equip_main_hand=[
                "CannotBeDisarmed()",
                "UnlockSpell(Rush_SpringAttack)",
@@ -1099,8 +1099,6 @@ add_weapon("CampClothes_SavageBlade",
                f"MAG_Ignore{damage_type.title()}Resistance_Passive",
                "CampClothes_Weapon_EnchantmentProgression",
                "CampClothes_Weapon_CriticalProgression",
-               "RecklessAttack",
-               "ALCH_Elixir_Bloodlust_Passive",
            ])
 
 loca["CampClothes_ChampionsGlaive_DisplayName"] = {"en": "Champion's Glaive"}
@@ -1195,11 +1193,12 @@ equipment = [
     "CampClothes_ArcaneKatana",
     "CampClothes_InfernalKatana",
     "CampClothes_DancingBlade",
-    "CampClothes_SavageBlade",
+    "CampClothes_WhisperOfTheDawn",
     "CampClothes_ChampionsGlaive",
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",
+    "MAG_TheWoundSeeker_Greatsword",
     "MAG_Bhaalist_Armor",
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",

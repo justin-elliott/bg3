@@ -1211,6 +1211,7 @@ camp_clothes.add(Weapon(
         "MAG_TheClover_Rearrangement_Passive",
     ],
     Rarity="Legendary",
+    Weapon_Properties=["Twohanded", "Heavy", "Melee", "Dippable", "Magical", "Finesse"],
 ))
 
 camp_clothes.add(Armor(

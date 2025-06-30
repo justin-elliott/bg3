@@ -1235,6 +1235,9 @@ equipment = [
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",
     "CampClothes_Boots_Isobel",
+    "MAG_DevilsBlackmith_ScaleMail",
+    "MAG_DevilsBlackmith_Boots",
+    "MAG_DevilsBlackmith_Gloves",
 ]
 
 item_template = """\

@@ -514,3 +514,9 @@ new subtable "1,1"
 object category I_ORI_Wyll_Infernal_Robe,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_Boots_Isobel,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_MAG_DevilsBlackmith_ScaleMail,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_MAG_DevilsBlackmith_Boots,1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category I_MAG_DevilsBlackmith_Gloves,1,0,0,0,0,0,0,0

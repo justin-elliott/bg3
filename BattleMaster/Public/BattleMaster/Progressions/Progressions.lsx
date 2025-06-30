@@ -101,7 +101,6 @@
                     <attribute id="Name" type="LSString" value="BattleMaster" />
                     <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(df2e66c0-4308-9ea2-e7ee-64d9c7f89989)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="47761a30-c1ff-2095-7758-b626db017f22" />
                 </node>

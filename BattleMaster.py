@@ -54,6 +54,7 @@ class BattleMaster(Replacer):
                 SpellContainerID=elemental_cleaver,
                 SpellProperties=[f"ApplyEquipmentStatus(MainHand,{status_name},100,-1)"],
                 TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
+                RequirementConditions=[],
             ))
 
             self.mod.add(StatusData(
@@ -77,31 +78,6 @@ class BattleMaster(Replacer):
         self.mod.add(spells)
         return spells.UUID
 
-    @cached_property
-    def _kick(self) -> str:
-        name = f"{self.mod.get_prefix()}_Kick"
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Kick"}
-
-        self.mod.add(SpellData(
-            name,
-            using="Target_BootOfTheGiants",
-            SpellType="Target",
-            DisplayName=loca[f"{name}_DisplayName"],
-        ))
-        return name
-
-    @cached_property
-    def _kick_spell_list(self) -> str:
-        name = "Battle Master Kick"
-        spells = SpellList(
-            Name=name,
-            Spells=[self._kick],
-            UUID=self.make_uuid(name),
-        )
-        self.mod.add(spells)
-        return spells.UUID
-    
     @cached_property
     def _bonus_action_dash(self) -> str:
         name = f"{self.mod.get_prefix()}_BonusActionDash"
@@ -147,9 +123,6 @@ class BattleMaster(Replacer):
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 5)
     def battlemaster_level_5(self, progress: Progression) -> None:
         progress.PassivesAdded = ["UncannyDodge"]
-        progress.Selectors = [
-            f"AddSpells({self._kick_spell_list})",
-        ]
 
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 6)
     def battlemaster_level_6(self, progress: Progression) -> None:

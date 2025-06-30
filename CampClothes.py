@@ -1200,6 +1200,7 @@ camp_clothes.add(Weapon(
     using="MAG_TheWoundSeeker_Greatsword",
     DefaultBoosts=[
         "CannotBeDisarmed()",
+        "ItemReturnToOwner()",
         "WeaponProperty(Magical)",
         "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
         "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",

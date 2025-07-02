@@ -38,6 +38,10 @@ _progression_lsx_paths = [
 ]
 
 
+def include_progression(progression_lsx_path: str) -> None:
+    _progression_lsx_paths.append(progression_lsx_path)
+
+
 def _by_uuid(progression: Progression) -> str:
     return progression.UUID
 
@@ -59,7 +63,8 @@ def _progression_order(progression: Progression) -> tuple[str, int, bool]:
 def load_progressions(replacer_or_mod: Replacer | Mod) -> list[Progression]:
     """Load the game's Progressions from the .pak cache."""
     progressions_lsx = Lsx.load(replacer_or_mod.get_cache_path(_progression_lsx_paths[0]))
-    for lsx_path in _progression_lsx_paths[1:]:
+    additional_lsx_paths = _progression_lsx_paths[1:] + (replacer_or_mod.args.include or [])
+    for lsx_path in additional_lsx_paths:
         lsx = Lsx.load(replacer_or_mod.get_cache_path(lsx_path))
         progressions_lsx.children.update(lsx.children, key=_by_uuid)
     progressions_lsx.children.sort(key=_progression_order)

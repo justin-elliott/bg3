@@ -36,6 +36,7 @@ class Replacer:
         skills: int                                    # Number of skills to select at character creation
         expertise: int                                 # Number of skill expertises to select at character creation
         full_caster: bool = False                      # Update spell slot progression to be a full caster
+        include: list[str] = None                      # Third-party mods to include
         fighter_feats: set[int] = None                 # Fighter feat improvement levels
         rogue_feats: set[int] = None                   # Rogue feat improvement levels
         other_feats: set[int] = None                   # All other classes feat improvement levels
@@ -216,6 +217,7 @@ class Replacer:
         skills = kwds.get("skills")
         expertise = kwds.get("expertise")
         full_caster = kwds.get("full_caster", False)
+        include = kwds.get("include", None)
 
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str, default=name,
@@ -237,6 +239,8 @@ class Replacer:
                             help=f"Number of skills with expertise to select at level 1 (default: {expertise})")
         parser.add_argument("--full-caster", action="store_true", default=full_caster,
                             help=f"Update spell slot progression to be a full caster")
+        parser.add_argument("--include", type=str, action="append", default=include,
+                            help="Include a third-party mod in the progression.")
         self._args = Replacer.Args(**vars(parser.parse_args()))
 
         if self.args.name is None:

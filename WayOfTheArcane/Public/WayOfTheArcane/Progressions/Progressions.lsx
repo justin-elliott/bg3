@@ -95,7 +95,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Monk" />
-                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
@@ -277,7 +277,7 @@
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="7b4be74d-4f0c-5807-95d6-a5d90c65aec0" />
                 </node>
@@ -297,7 +297,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_ArcaneManifestation;PotentCantrip" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true);SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="2843ad66-a79d-4357-9c34-877e443f9701" />
                 </node>
@@ -317,7 +317,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared);SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);AddSpells(964e765d-5881-463e-b1b0-4fc6b8035aa8,,,,AlwaysPrepared);SelectSpells(820b1220-0385-426d-ae15-458dc8a6f5c0,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="f0fdf4e5-72d4-3669-a623-947c5b2c558d" />
                 </node>
@@ -337,7 +337,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="WayOfTheArcane_EmpoweredSpells_WisdomModifier" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared);SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="5c34aa0e-a4cb-8322-5b07-cc26408f8b0b" />
                 </node>
@@ -357,7 +357,7 @@
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="a66b490b-4cf9-04b3-2fea-dd503f587318" />
                 </node>
@@ -393,7 +393,7 @@
                     <attribute id="Level" type="uint8" value="16" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="f30534a5-d512-8fc2-caca-68f9bcbec847" />
                 </node>
@@ -413,7 +413,7 @@
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="Shadow" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="65b319b9-2af9-8e73-445d-192e04926948" />
                 </node>
@@ -433,7 +433,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_3" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack_2" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1);SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="5ed363b3-6580-66e8-412c-6e78e086fc15" />
                 </node>

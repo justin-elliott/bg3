@@ -281,6 +281,10 @@ class WayOfTheArcane(Replacer):
             self._slow_fall,
         ]
 
+    @progression(CharacterClass.MONK, 5)
+    def monk_level_5_uncanny_dodge(self, progress: Progression) -> None:
+        progress.PassivesAdded += ["UncannyDodge"]
+
     @progression(CharacterClass.MONK, 7)
     def monk_level_7_replace_stillness_of_mind(self, progress: Progression) -> None:
         progress.PassivesAdded = [
@@ -328,7 +332,8 @@ class WayOfTheArcane(Replacer):
     def monk_shadow_level_4(self, progress: Progression) -> None:
         progress.PassivesAdded = None
         progress.Selectors = [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({self._WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_2_SPELL_LIST},2,0)",
         ]
@@ -343,7 +348,6 @@ class WayOfTheArcane(Replacer):
     def monk_shadow_level_6(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._arcane_manifestation, "PotentCantrip"]
         progress.Selectors = [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)",
             f"SelectSpells({self._WIZARD_LEVEL_3_SPELL_LIST},2,0)",
         ]
 
@@ -358,6 +362,8 @@ class WayOfTheArcane(Replacer):
     def monk_shadow_level_8(self, progress: Progression) -> None:
         progress.PassivesAdded = ["ImprovedCritical"]
         progress.Selectors = [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"AddSpells({self._ACTION_SURGE_SPELL_LIST},,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_4_SPELL_LIST},2,0)",
         ]
@@ -373,7 +379,6 @@ class WayOfTheArcane(Replacer):
     def monk_shadow_level_10(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._empowered_spells]
         progress.Selectors = [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
             f"SelectSpells({self._WIZARD_CANTRIP_SPELL_LIST},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_5_SPELL_LIST},2,0)",
         ]
@@ -390,7 +395,8 @@ class WayOfTheArcane(Replacer):
     def monk_shadow_level_12(self, progress: Progression) -> None:
         progress.PassivesAdded = ["ReliableTalent"]
         progress.Selectors = [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
@@ -417,7 +423,8 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 16)
     def monk_shadow_level_16(self, progress: Progression) -> None:
         progress.Selectors = [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
@@ -432,7 +439,6 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 18)
     def monk_shadow_level_18(self, progress: Progression) -> None:
         progress.Selectors = [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)",
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 
@@ -447,6 +453,8 @@ class WayOfTheArcane(Replacer):
         progress.PassivesAdded = ["ExtraAttack_3"]
         progress.PassivesRemoved = ["ExtraAttack_2"]
         progress.Selectors = [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)",
             f"SelectSpells({self._WIZARD_LEVEL_6_SPELL_LIST},2,0)",
         ]
 

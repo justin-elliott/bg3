@@ -1,53 +1,51 @@
-#!/usr/bin/env python3
-"""
-Generates files for the "OpenHand" mod.
-"""
 
-import argparse
 import os
 
-from dataclasses import dataclass
 from functools import cached_property
-from moddb import multiply_resources
+from moddb import (
+    Awareness,
+    Bolster,
+    Defense,
+)
 from modtools.gamedata import PassiveData, SpellData
-from modtools.lsx.game import ActionResource, CharacterClass, Progression, SpellList
-from modtools.replacers import progression, Replacer
-
-
-progression.include(
-    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
-    + "Progressions/Progressions.lsx"
+from modtools.lsx.game import Progression, SpellList
+from modtools.replacers import (
+    CharacterClass,
+    DontIncludeProgression,
+    progression,
+    Replacer,
 )
 
 
 class OpenHand(Replacer):
-    @dataclass
-    class Args:
-        feats: set[int]  # Feat improvement levels
-        actions: int     # Multiplier for other action resources
+    # Passives
+    _awareness: str
+    _warding: str
 
-    _args: Args
-    _feat_levels: set[int]
+    # Spells
+    _bolster: str
+
+    def __init__(self, **kwds: str):
+        super().__init__(os.path.join(os.path.dirname(__file__)),
+                         author="justin-elliott",
+                         name="OpenHand",
+                         description="A class replacer for OpenHand.",
+                         **kwds)
+
+        self._awareness = Awareness(self.mod).add_awareness(5)
+        self._warding = Defense(self.mod).add_warding()
+
+        self._bolster = Bolster(self.mod).add_bolster_spell_list()
 
     @cached_property
-    def _spinning_kick(self) -> str:
-        """The Spinning Kick attack."""
-        name = f"{self.mod.get_prefix()}_SpinningKick"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Spinning Kick"}
-        loca[f"{name}_Description"] = {"en": """
-            Strike out with a spinning kick at all nearby foes, making separate
-            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> against each target.
-            """}
+    def _whirlwind_attack(self) -> str:
+        """Whirlwind attack as a bonus action."""
+        name = f"{self.mod.get_prefix()}_WhirlwindAttack"
 
         self.mod.add(SpellData(
             name,
             using="Shout_Whirlwind",
             SpellType="Shout",
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            Icon="Action_IronboundPursuit",
             PrepareSound="Vocal_Component_Monk_Damage",
             CastSound="Spell_Cast_Monk_FlurryofBlows_L1to3",
             HitAnimationType="PhysicalDamage",
@@ -140,204 +138,132 @@ class OpenHand(Replacer):
     def _level_9_spell_list(self) -> str:
         spell_list = str(self.make_uuid("level_9_spell_list"))
         self.mod.add(SpellList(
-            Name="Way of the Open Hand Monk Spinning Kick",
-            Spells=[self._spinning_kick],
+            Name="Way of the Open Hand Monk Whirlwind and Volley",
+            Spells=[self._whirlwind_attack, "Target_Volley"],
             UUID=spell_list,
         ))
         return spell_list
 
-    def __init__(self, args: Args):
-        super().__init__(os.path.dirname(__file__),
-                         author="justin-elliott",
-                         name="OpenHand",
-                         description="Enhancements for the Way of the Open Hand subclass.")
-
-        self._args = args
-
-        if len(args.feats) == 0:
-            self._feat_levels = frozenset({*range(2, 20, 2)} | {19})
-        elif len(args.feats) == 1:
-            feat_level = next(level for level in args.feats)
-            self._feat_levels = frozenset(
-                {*range(max(feat_level, 2), 20, feat_level)} | ({19} if 20 % feat_level == 0 else {}))
-        else:
-            self._feat_levels = args.feats - frozenset([1])
-
     @progression(CharacterClass.MONK, 1)
-    def level_1(self, progression: Progression) -> None:
-        progression.Selectors = [
-            *[selector for selector in progression.Selectors if not selector.startswith("SelectSkills")],
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-        ]
-
-    @progression(CharacterClass.MONK, range(1, 21))
-    def level_1_to_20_monk(self, progression: Progression) -> None:
-        progression.AllowImprovement = True if progression.Level in self._feat_levels else None
-        multiply_resources(progression, [ActionResource.KI_POINTS], self._args.actions)
-
-    @progression(CharacterClass.MONK_OPENHAND, 3)
-    def level_3(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "FastHands",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
-
-    @progression(CharacterClass.MONK_OPENHAND, 4)
-    def level_4(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "ImprovedCritical",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-        ]
-
-    @progression(CharacterClass.MONK_OPENHAND, 5)
-    def level_5(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
-
-    @progression(CharacterClass.MONK_OPENHAND, 6)
-    def level_6(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            self._wholeness_of_body,
-        ]
-        progression.Selectors = [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
+    def monk_level_1(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
+            f"AddSpells({self._bolster},,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.MONK, 7)
-    def level_7_monk(self, progression: Progression) -> None:
-        progression.PassivesAdded = [
-            *[passive for passive in progression.PassivesAdded if not passive == "StillnessOfMind"],
+    def monk_level_7(self, progress: Progression) -> None:
+        progress.PassivesAdded = [
+            *[passive for passive in progress.PassivesAdded if not passive == "StillnessOfMind"],
             self._stillness_of_mind,
         ]
 
-    @progression(CharacterClass.MONK_OPENHAND, 7)
-    def level_7(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
+    @progression(CharacterClass.MONK_OPENHAND, 3)
+    def openhand_level_3(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [
+            self._awareness,
+            "DevilsSight",
+            "FastHands",
+            self._warding,
         ]
 
-    @progression(CharacterClass.MONK_OPENHAND, 8)
-    def level_8(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
+    @progression(CharacterClass.MONK_OPENHAND, 4)
+    def openhand_level_4(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ImprovedCritical"]
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
-        progression.Selectors = (progression.Selectors or []) + [
+
+    @progression(CharacterClass.MONK_OPENHAND, 5)
+    def openhand_level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["UncannyDodge"]
+
+    @progression(CharacterClass.MONK_OPENHAND, 6)
+    def openhand_level_6(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [self._wholeness_of_body]
+        progress.Selectors = None
+
+    @progression(CharacterClass.MONK_OPENHAND, 7)
+    def openhand_level_7(self, _: Progression) -> None:
+        raise DontIncludeProgression()
+
+    @progression(CharacterClass.MONK_OPENHAND, 8)
+    def openhand_level_8(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 9)
-    def level_9(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = [
-            f"AddSpells({self._level_9_spell_list})",
-        ]
+    def openhand_level_9(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 10)
-    def level_10(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "BrutalCritical",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-        ]
+    def openhand_level_10(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 11)
-    def level_11(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_2"]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack"]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_11(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_2"]
+        progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack"]
 
     @progression(CharacterClass.MONK_OPENHAND, 12)
-    def level_12(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-            "ReliableTalent",
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
+    def openhand_level_12(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ReliableTalent"]
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 13)
-    def level_13(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_13(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 14)
-    def level_14(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_14(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 15)
-    def level_15(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_15(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 16)
-    def level_16(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+    def openhand_level_16(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
     @progression(CharacterClass.MONK_OPENHAND, 17)
-    def level_17(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_17(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 18)
-    def level_18(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2,true)"
-        ]
+    def openhand_level_18(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 19)
-    def level_19(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + [
-        ]
-        progression.Selectors = (progression.Selectors or []) + [
-        ]
+    def openhand_level_19(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_OPENHAND, 20)
-    def level_20(self, progression: Progression) -> None:
-        progression.PassivesAdded = (progression.PassivesAdded or []) + ["ExtraAttack_3"]
-        progression.PassivesRemoved = (progression.PassivesRemoved or []) + ["ExtraAttack_2"]
-        progression.Selectors = (progression.Selectors or []) + [
+    def openhand_level_20(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_3"]
+        progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack_2"]
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
         ]
 
 
-def level_list(s: str) -> set[int]:
-    levels = frozenset([int(level) for level in s.split(",")])
-    if not levels.issubset(frozenset(range(1, 12))):
-        raise "Invalid levels"
-    return levels
-
-
-def main():
-    parser = argparse.ArgumentParser(description="Enhancements for the Way of the Open Hand subclass.")
-    parser.add_argument("-f", "--feats", type=level_list, default=set(),
-                        help="Feat progression every n levels (defaulting to double progression)")
-    parser.add_argument("-a", "--actions", type=int, choices=range(1, 9), default=2,
-                        help="Action resource multiplier (defaulting to 2; double resources)")
-    args = OpenHand.Args(**vars(parser.parse_args()))
-
-    open_hand = OpenHand(args)
+def main() -> None:
+    open_hand = OpenHand(
+        classes=[CharacterClass.MONK_OPENHAND],
+        feats=2,
+        actions=2,
+        skills=4,
+        expertise=2,
+    )
     open_hand.build()
 
 

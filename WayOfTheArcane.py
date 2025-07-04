@@ -113,10 +113,33 @@ class WayOfTheArcane(Replacer):
     @cached_property
     def _flurry_of_blows_stagger(self) -> str:
         name = f"{self.mod.get_prefix()}_FlurryOfBlowsStagger"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_Description"] = {"en": """
+            Punch twice in quick succession and <LSTag Type="Status" Tooltip="OPEN_HAND_NO_REACTIONS">Stagger</LSTag>
+            the target, making it unable to take reactions.
+
+            From Monk Level 5 onwards, the target will possibly be
+            <LSTag Type="Status" Tooltip="STUNNED">Stunned</LSTag>.
+            """}
+        
         self.mod.add(SpellData(
             name,
             using="Target_OpenHandTechnique_NoReactions",
             SpellType="Target",
+            Description=loca[f"{name}_Description"],
+            SpellSuccess=[
+                "IF(ClassLevelHigherOrEqualThan(5,'Monk') and not SavingThrow(Ability.Constitution,ManeuverSaveDC())):"
+                + "ApplyStatus(STUNNED,100,1)",
+                "IF(not HasStatus('SG_Stunned',context.Target)):"
+                + "ApplyStatus(OPEN_HAND_NO_REACTIONS,100,1)",
+                "DealDamage(UnarmedDamage,Bludgeoning)",
+                "Cast2[DealDamage(UnarmedDamage,Bludgeoning)]",
+            ],
+            TooltipStatusApply=[
+                "ApplyStatus(OPEN_HAND_NO_REACTIONS,100,1)",
+                "ApplyStatus(STUNNED,100,1)",
+            ],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
         ))
         return name
@@ -282,8 +305,15 @@ class WayOfTheArcane(Replacer):
         ]
 
     @progression(CharacterClass.MONK, 5)
-    def monk_level_5_uncanny_dodge(self, progress: Progression) -> None:
+    def monk_level_5_uncanny_dodge_no_stunning_strike(self, progress: Progression) -> None:
         progress.PassivesAdded += ["UncannyDodge"]
+        progress.Selectors = None
+
+    @progression(CharacterClass.MONK_DRUNKENMASTER, 5)
+    @progression(CharacterClass.MONK_FOURELEMENTS, 5)
+    @progression(CharacterClass.MONK_OPENHAND, 5)
+    def monk_subclass_level_5_stunning_strike(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + ["AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)"]
 
     @progression(CharacterClass.MONK, 7)
     def monk_level_7_replace_stillness_of_mind(self, progress: Progression) -> None:

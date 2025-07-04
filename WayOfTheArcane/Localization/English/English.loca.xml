@@ -20,6 +20,7 @@
     <content contentuid="h018affd8gd165g225fgcbb8gc3ca9a37e6dc" version="1">You only take half damage from falling.</content>
     <content contentuid="h88032cbagdbfdg7798g87bagcdd86a78b7d0" version="1">Stillness of Mind</content>
     <content contentuid="h141f6a62gb228g243fg94abg38fdefe80224" version="1">You are immune to being &lt;LSTag Tooltip="CharmedGroup"&gt;Charmed&lt;/LSTag&gt; or &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frightened&lt;/LSTag&gt;.</content>
+    <content contentuid="h8bbd40a9gcd22g86dcg0e31gb40da6c67088" version="1">Punch twice in quick succession and &lt;LSTag Type="Status" Tooltip="OPEN_HAND_NO_REACTIONS"&gt;Stagger&lt;/LSTag&gt; the target, making it unable to take reactions.&lt;br&gt;&lt;br&gt;From Monk Level 5 onwards, the target will possibly be &lt;LSTag Type="Status" Tooltip="STUNNED"&gt;Stunned&lt;/LSTag&gt;.</content>
     <content contentuid="h3e92ae6dga7e8ga97dg9b67ge3b5feaea397" version="1">Arcane Manifestation</content>
     <content contentuid="h7c87f2d9gc2feg6785g510fg3e0d3d70a8df" version="1">Arcane energy infuses your strikes. Your melee unarmed attacks deal an additional [1].&lt;br&gt;&lt;br&gt;Whenever you deal damage with a melee unarmed attack, you gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt; for 2 turns.</content>
     <content contentuid="h244ed4d4ge754gfbb1g1a15g355533863119" version="1">Wholeness of Body</content>

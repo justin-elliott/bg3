@@ -97,7 +97,6 @@
                     <attribute id="Name" type="LSString" value="Monk" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="7b354b75-537f-464e-a28d-cafa72323ab9" />
                 </node>
@@ -240,6 +239,30 @@
                     <attribute id="ProgressionType" type="uint8" value="0" />
                     <attribute id="TableUUID" type="guid" value="fe1319a2-86be-469c-aab5-e3b0bd714e0e" />
                     <attribute id="UUID" type="guid" value="51f0e9b1-bf75-4a87-9332-f5d65e4bcc73" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="DrunkenMaster" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)" />
+                    <attribute id="TableUUID" type="guid" value="dbffd3ed-ef5c-4a0d-8b3b-86f017c30e21" />
+                    <attribute id="UUID" type="guid" value="dd2169f0-29b1-2014-bfab-23e7b282c7eb" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,0,1,FourElements,,,AlwaysPrepared);AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)" />
+                    <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
+                    <attribute id="UUID" type="guid" value="64e4f191-186b-4cc9-9e3d-9374d2670ec3" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="OpenHand" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3ba6090a-a8be-4938-82ef-40eba0083441)" />
+                    <attribute id="TableUUID" type="guid" value="5a9bf488-fda7-4e49-a3fa-e0aad24fbf43" />
+                    <attribute id="UUID" type="guid" value="bb961901-0ca2-7381-eba7-e8dfc97ba453" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1)" />

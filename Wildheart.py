@@ -45,6 +45,7 @@ class Wildheart(Replacer):
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
             Icon="Action_Bear_Claws",
+            RequirementConditions=["HasStatus('SG_Rage')"],
             SpellSuccess=[
                 "IF(not SavingThrow(Ability.Constitution,ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)",
                 "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
@@ -76,22 +77,6 @@ class Wildheart(Replacer):
 
         return name
 
-    @cached_property
-    def _kick(self) -> str:
-        name = f"{self.mod.get_prefix()}_Kick"
-
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Kick"}
-
-        self.mod.add(SpellData(
-            name,
-            using="Target_BootOfTheGiants",
-            SpellType="Target",
-            DisplayName=loca[f"{name}_DisplayName"],
-        ))
-
-        return name
-
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
@@ -109,7 +94,6 @@ class Wildheart(Replacer):
                 "UnlockSpell(Shout_FerociousAppetite)",
                 f"UnlockSpell({self._bash})",
                 f"UnlockSpell({self._maul})",
-                f"UnlockSpell({self._kick})",
                 f"UnlockSpell({self._bonus_action_dash})",
             ],
         ))

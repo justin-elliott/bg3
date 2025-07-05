@@ -1160,7 +1160,12 @@ add_weapon("CampClothes_ChampionsLongbow",
                "UnlockSpell(Shout_SteadyRanged)",
                "UnlockSpell(Projectile_MAG_PushingAttack)",
            ],
-           default_boosts=lambda _: [],
+           default_boosts=lambda _: [
+               "WeaponProperty(Magical)",
+               "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+               "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+               "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+           ],
            passives_on_equip=lambda _: [
                "MAG_StrengthBonusToWeaponDamage_Passive",
                "MAG_WYR_Orin_Bhaalist_Dagger_ImprovedCritical_Passive",

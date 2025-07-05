@@ -20,10 +20,15 @@ class Wildheart(Replacer):
     @cached_property
     def _bonus_action_dash(self) -> str:
         name = f"{self.mod.get_prefix()}_BonusActionDash"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Bonus Action: Dash"}
+
         self.mod.add(SpellData(
             name,
             using="Shout_Dash_BonusAction",
             SpellType="Shout",
+            DisplayName=loca[f"{name}_DisplayName"],
             SpellFlags=["IgnoreSilence", "Stealth", "Invisible", "NoCameraMove"],
         ))
         return name

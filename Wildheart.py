@@ -114,6 +114,10 @@ class Wildheart(Replacer):
             ],
         ))
 
+    @progression(CharacterClass.BARBARIAN, 20)
+    def barbarian_level_20(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(Rage,87,0)"]  # Boost to 99
+
     @progression(CharacterClass.BARBARIAN_WILDHEART, 3)
     def totemwarriorpath_level_3(self, progress: Progression) -> None:
         progress.PassivesAdded = [

@@ -113,7 +113,7 @@
                     <attribute id="UUID" type="guid" value="fdff97a8-a514-404a-855c-19b8dc3a61e2" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(Rage,186,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(Rage,87,0)" />
                     <attribute id="Level" type="uint8" value="20" />
                     <attribute id="Name" type="LSString" value="Barbarian" />
                     <attribute id="PassivesAdded" type="LSString" value="PrimalChampion" />

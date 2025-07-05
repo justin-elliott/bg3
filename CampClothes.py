@@ -303,7 +303,7 @@ def add_action_potion() -> str:
         uuid=action_potion_uuid,
         display_name=loca[f"{name}_DisplayName"],
         description=loca[f"{name}_Description"],
-        icon="Item_ALCH_Solution_Elixir_Darkvision",
+        icon="Item_ALCH_Solution_Elixir_Criticals",
         boosts=["UnlockSpell(Shout_ActionSurge)"],
         passives=["ExtraAttack", "FastHands"],
     )
@@ -359,6 +359,27 @@ def add_bolster_potion() -> str:
         description=loca[f"{name}_Description"],
         icon="Item_CONS_Drink_Potion_B",
         boosts=[f"UnlockSpell({bolster})"],
+    )
+
+    return name
+
+
+def add_devils_sight_potion() -> str:
+    name = f"{camp_clothes.get_prefix()}_DevilsSightPotion"
+    devils_sight_potion_uuid = camp_clothes.make_uuid(name)
+
+    loca[f"{name}_DisplayName"] = {"en": "Elixir of Devil's Sight"}
+    loca[f"{name}_Description"] = {"en": f"""
+        Drinking this elixir grants <LSTag Type="Passive" Tooltip="DevilsSight">Devil's Sight</LSTag>.
+        """}
+
+    add_potion(
+        name,
+        uuid=devils_sight_potion_uuid,
+        display_name=loca[f"{name}_DisplayName"],
+        description=loca[f"{name}_Description"],
+        icon="Item_ALCH_Solution_Elixir_Darkvision",
+        passives=["DevilsSight"],
     )
 
     return name
@@ -849,17 +870,13 @@ dyes = [dye for dye in base_dyes]
 
 clothing = reduce_weight(base_clothing)
 shoes = reduce_weight(base_shoes)
-underwear = reduce_weight(base_underwear) + magic_underwear(base_underwear)
+underwear = reduce_weight(base_underwear)
 
 potions = [
-    add_abilities_potion(2),
-    add_abilities_potion(4),
-    add_abilities_potion(6),
-    add_abilities_potion(8),
-    add_abilities_potion(10),
     add_action_potion(),
     add_agility_potion(),
     add_bolster_potion(),
+    add_devils_sight_potion(),
     add_flying_potion(),
     add_overpowering_potion(),
     add_pack_mule_potion(),
@@ -1114,6 +1131,7 @@ add_weapon("CampClothes_ChampionsGlaive",
            description=loca["CampClothes_ChampionsGlaive_Description"],
            boosts_on_equip_main_hand=[
                "CannotBeDisarmed()",
+               "ItemReturnToOwner()",
                "UnlockSpell(Rush_SpringAttack)",
                "UnlockSpell(Target_Slash_New)",
                "UnlockSpell(Shout_Steady)",
@@ -1125,6 +1143,31 @@ add_weapon("CampClothes_ChampionsGlaive",
                "CampClothes_Weapon_CriticalProgression",
            ],
            weapon_properties=["Heavy", "Reach", "Twohanded", "Melee", "Dippable", "Finesse"])
+
+loca["CampClothes_ChampionsLongbow_DisplayName"] = {"en": "Champion's Longbow"}
+loca["CampClothes_ChampionsLongbow_Description"] = {"en": """
+    This longbow embodies the spirit of unrelenting excellence. Its powerful draw is surprisingly fluid, designed to
+    deliver arrows with incredible speed and devastating force, striking down challenges from afar.
+    """}
+add_weapon("CampClothes_ChampionsLongbow",
+           using="WPN_Longbow_1",
+           parent_template_id="13236988-83df-4bf2-8005-b4ac31f21ff4",
+           display_name=loca["CampClothes_ChampionsLongbow_DisplayName"],
+           description=loca["CampClothes_ChampionsLongbow_Description"],
+           boosts_on_equip_main_hand=[
+               "CannotBeDisarmed()",
+               "UnlockSpell(Projectile_HamstringShot)",
+               "UnlockSpell(Shout_SteadyRanged)",
+               "UnlockSpell(Projectile_MAG_PushingAttack)",
+           ],
+           default_boosts=lambda _: [],
+           passives_on_equip=lambda _: [
+               "MAG_StrengthBonusToWeaponDamage_Passive",
+               "MAG_WYR_Orin_Bhaalist_Dagger_ImprovedCritical_Passive",
+               "MAG_DoubleProficiencyBonusToRangedAttack_Passive",
+           ],
+           weapon_properties=None,
+           weapon_statuses=lambda _: [])
 
 loca["CampClothes_SpearOfTwilight_DisplayName"] = {"en": "Spear of Twilight"}
 loca["CampClothes_SpearOfTwilight_Description"] = {"en": """
@@ -1228,6 +1271,7 @@ equipment = [
     "CampClothes_DancingBlade",
     "CampClothes_WhisperOfTheDawn",
     "CampClothes_ChampionsGlaive",
+    "CampClothes_ChampionsLongbow",
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",

@@ -21,17 +21,14 @@
     <content contentuid="hc7ea4575gee65gca50g058bg95687ed5ef5b" version="1">Contains a selection of potions.</content>
     <content contentuid="ha3a21fc3gc019ge490g2ca2gb13073d866cb" version="1">Equipment</content>
     <content contentuid="h9eef8661g5c0age22bg80fcgf796a320ca3b" version="1">Contains a selection of equipment.</content>
-    <content contentuid="h8681d3e0g1a21gd178g975eg86011a688b6f" version="1">Drinking this elixir grants you +2 on all of your ability scores.</content>
-    <content contentuid="h62e48131g5e35g337egd4d7g5852066296ab" version="1">Drinking this elixir grants you +4 on all of your ability scores.</content>
-    <content contentuid="hb2bb0ce2g2814gef39g904dgf1e03537728c" version="1">Drinking this elixir grants you +6 on all of your ability scores.</content>
-    <content contentuid="h4cc6f060g8f03g72c7g2b5cg454896e11af5" version="1">Drinking this elixir grants you +8 on all of your ability scores.</content>
-    <content contentuid="h5af4adbcg3e9dg0b17gec7ag53e7614b644c" version="1">Drinking this elixir grants you +10 on all of your ability scores.</content>
     <content contentuid="hdd4b8265g1401g7148g9dcfge50a9e3777f8" version="1">Elixir of Action</content>
     <content contentuid="h058d36dfgd3e0g2d5dgbb2fga433b250ef77" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="Shout_ActionSurge"&gt;Action Surge&lt;/LSTag&gt; ability. Additionally, you gain the &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;Extra Attack&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt; passives.</content>
     <content contentuid="hbcf57a29gfa75g5f94g4f6cgfe03da633e24" version="1">Elixir of Agility</content>
     <content contentuid="heab5060eg7db2g4c60g2e6cga75e883097b9" version="1">Drinking this elixir grants you &lt;LSTag Type="Tooltip" Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Dexterity"&gt;Dexterity&lt;/LSTag&gt; Skills, and &lt;LSTag Type="Tooltip" Tooltip="ProficiencyBonus"&gt;Proficiency&lt;/LSTag&gt; in Dexterity &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
     <content contentuid="h59d742ebgfff5gef8dgcf9cg738570dc4670" version="1">Elixir of Bolstering</content>
     <content contentuid="heb703554g55e8gada6g8ff0gdf23e8880ffc" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="CampClothes_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h42cf3fb8gec31g5f5bg0644ge76f7a3421c3" version="1">Elixir of Devil's Sight</content>
+    <content contentuid="h41c6bbf2g425fgb5adg3741ge300a15ee1e1" version="1">Drinking this elixir grants &lt;LSTag Type="Passive" Tooltip="DevilsSight"&gt;Devil's Sight&lt;/LSTag&gt;.</content>
     <content contentuid="hab6f905fgd7e3g6d61g7debg7ccd35829eda" version="1">Elixir of Flying</content>
     <content contentuid="h6854c269ge35dg4a5fg045agcf424e52856a" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="h7fdb7774g23b1gd577gc8c8g613629011381" version="1">Potion of Overpowering</content>
@@ -62,6 +59,8 @@
     <content contentuid="h377de8adg3f3dg2054g6f3cgcb5172255ece" version="1">A longsword born of raw, unblemished silver, this blade holds the very essence of breaking light. Its brilliance is not ostentatious, but deep and resonant, a constant beacon against encroaching night. When drawn, it seems to hum with a quiet, persistent energy, promising swift judgment and ultimate victory over those who lurk in the shadows.</content>
     <content contentuid="hab32b93cg968cgb777gb1edg24617216c228" version="1">Champion's Glaive</content>
     <content contentuid="hf5e4807egebb3g49aeg96d0g52e866509d71" version="1">Forged for those who command the fight, this glaive is a brutal instrument of war. Its heavy, crescent blade seems to hum with anticipation, eager to scythe through ranks with devastating force. Every inch of its length is designed for wide, decisive blows that turn the tide of battle.</content>
+    <content contentuid="h09aba5fcg58d8g835bg6bbfgdfc9e985d4f1" version="1">Champion's Longbow</content>
+    <content contentuid="h24f08113g0bcfgcbfcg3cdcgfa90f26502fc" version="1">This longbow embodies the spirit of unrelenting excellence. Its powerful draw is surprisingly fluid, designed to deliver arrows with incredible speed and devastating force, striking down challenges from afar.</content>
     <content contentuid="h3417b20bg6e31ga16ag9949gac573837dbce" version="1">Spear of Twilight</content>
     <content contentuid="h52e5e42egd59ag6166g4200g9c2cc60f135e" version="1">This isn't merely a weapon; it's a testament to the dying sun. Its sleek form is crafted from a material that seems to be neither wood nor metal, but something born of the fading sky. The spearhead gleams with a cool, ethereal light, and when it strikes, it leaves not a wound, but a chilling echo of perpetual twilight, draining warmth and color from its target.</content>
     <content contentuid="ha44af125g85dagd0a8g72e4g649d5a32bae7" version="1">Dexter</content>

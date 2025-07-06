@@ -45,39 +45,39 @@ class Wildheart(Replacer):
 
         self.mod.add(SpellData(
             name,
-            using="Target_MainHandAttack",
+            using="Target_ConcussiveSmash",
             SpellType="Target",
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            Icon="Action_Bear_Claws",
+            Cooldown="None",
             RequirementConditions=["HasStatus('SG_Rage')"],
             SpellSuccess=[
                 "IF(not SavingThrow(Ability.Constitution,ManeuverSaveDC())):ApplyStatus(STUNNED,100,1)",
-                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "DealDamage(max(1,MainMeleeWeapon),Bludgeoning)",
                 "ExecuteWeaponFunctors(MainHand)",
             ],
             TargetConditions=[
                 "not Self() and not Dead() and not (not Player(context.Source) and HasStatus('SG_Stunned'))",
             ],
-            TooltipAttackSave=["MeleeWeaponAttack", "Constitution"],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon,Bludgeoning)"],
             TooltipStatusApply=["ApplyStatus(STUNNED,100,1)"],
         ))
 
         return name
 
     @cached_property
-    def _maul(self) -> str:
-        name = f"{self.mod.get_prefix()}_Maul"
+    def _brutal_cleave(self) -> str:
+        name = f"{self.mod.get_prefix()}_BrutalCleave"
 
         loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Maul"}
+        loca[f"{name}_DisplayName"] = {"en": "Brutal Cleave"}
 
         self.mod.add(SpellData(
             name,
             using="Zone_TigersBloodlust",
             SpellType="Zone",
             DisplayName=loca[f"{name}_DisplayName"],
-            Icon="Action_Bear_Multiattack",
+            Icon="Action_Cleave_New",
         ))
 
         return name
@@ -98,7 +98,7 @@ class Wildheart(Replacer):
                 "UnlockSpell(Shout_Rage_Totem_Bear)",
                 "UnlockSpell(Shout_FerociousAppetite)",
                 f"UnlockSpell({self._bash})",
-                f"UnlockSpell({self._maul})",
+                f"UnlockSpell({self._brutal_cleave})",
                 f"UnlockSpell({self._bonus_action_dash})",
             ],
         ))

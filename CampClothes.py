@@ -1256,6 +1256,7 @@ camp_clothes.add(Weapon(
     ],
     PassivesOnEquip=[
         "CampClothes_DeepenTheWound",
+        "UND_DuergarRaft_Hammer_Passive",
         "MAG_TheClover_Rearrangement_Passive",
     ],
     Rarity="Legendary",

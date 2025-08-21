@@ -124,12 +124,29 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="GiantPath" />
-                    <attribute id="PassivesAdded" type="LSString" value="RageGiantUnlock;Giants_CarryCapacity;Shout_Dash_CunningAction;FastHands;JackOfAllTrades;GiantPath_PackMule_400;GiantPath_RunningJump" />
+                    <attribute id="PassivesAdded" type="LSString" value="RageGiantUnlock;Giants_CarryCapacity;FastHands;ImprovedCritical;JackOfAllTrades;GiantPath_RunningJump" />
                     <attribute id="PassivesRemoved" type="LSString" value="RageUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(afe6b18c-47a7-4c5f-aed5-49dfe07e5234);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2);AddSpells(7852f6b4-9414-fd83-352b-087dab386cc5)" />
                     <attribute id="TableUUID" type="guid" value="bdd02775-b9ee-480c-a260-d844580453b4" />
                     <attribute id="UUID" type="guid" value="4f6cccca-2e3e-44b0-957b-842cddc353cb" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="GiantPath" />
+                    <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(12653b66-e36c-4b0b-872d-b61a1b2a3411)" />
+                    <attribute id="TableUUID" type="guid" value="bdd02775-b9ee-480c-a260-d844580453b4" />
+                    <attribute id="UUID" type="guid" value="a30f6062-8e31-4fcd-976e-568275a9d56a" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="GiantPath" />
+                    <attribute id="PassivesAdded" type="LSString" value="Evasion" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="bdd02775-b9ee-480c-a260-d844580453b4" />
+                    <attribute id="UUID" type="guid" value="966504de-00f8-660c-2abc-7dbb43d096dc" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />

@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Barbarian level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="GiantPath_Bolster;GiantPath_BrutalCleave" />
+                    <attribute id="Spells" type="LSString" value="Shout_ActionSurge;GiantPath_Bolster;GiantPath_BrutalCleave;GiantPath_DashBonusAction" />
                     <attribute id="UUID" type="guid" value="7852f6b4-9414-fd83-352b-087dab386cc5" />
                 </node>
             </children>

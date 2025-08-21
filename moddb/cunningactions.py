@@ -3,7 +3,7 @@
 Cunning action spells for Baldur's Gate 3 mods.
 """
 
-from modtools.gamedata import PassiveData, StatusData
+from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.mod import Mod
 from uuid import UUID
 
@@ -17,6 +17,17 @@ class CunningActions:
     def __init__(self, mod: Mod):
         """Initialize."""
         self._mod = mod
+
+    def add_dash_bonus_action(self) -> str:
+        """Add Dash: Bonus Action."""
+        name = f"{self._mod.get_prefix()}_DashBonusAction"
+        self._mod.add(SpellData(
+            name,
+            using="Shout_Dash_BonusAction",
+            SpellType="Shout",
+            SpellFlags=["IgnoreSilence", "Stealth", "Invisible", "NoCameraMove"],
+        ))
+        return name
 
     def add_running_jump(self) -> str:
         """Add the Running Jump passive, returning its name."""

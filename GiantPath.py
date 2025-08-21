@@ -8,6 +8,7 @@ from moddb import (
     CunningActions,
     PackMule,
 )
+from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
@@ -19,9 +20,8 @@ from modtools.replacers import (
 
 class GiantPath(Replacer):
     # Passives
-    _pack_mule: str
+    _dash_bonus_action: str
     _running_jump: str
-    _warding: str
 
     # Spells
     _bolster: str
@@ -34,19 +34,63 @@ class GiantPath(Replacer):
                          description="A class replacer for GiantPath.",
                          **kwds)
         
+        self._dash_bonus_action = CunningActions(self.mod).add_dash_bonus_action()
         self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._running_jump = CunningActions(self.mod).add_running_jump()
 
         self._bolster = Bolster(self.mod).add_bolster()
         self._brutal_cleave = Attack(self.mod).add_brutal_cleave()
 
+        self._rage_giant()
+
+    @cached_property
+    def _rage_giant_extra_resistances(self) -> str:
+        name = f"{self.mod.get_prefix()}_RageGiantExtraResistances"
+        self.mod.add(PassiveData(
+            name,
+            Properties=["IsHidden"],
+            BoostContext=["OnEquip", "OnCreate"],
+            BoostConditions=["not HasHeavyArmor(context.Source)"],
+            Boosts=[
+                "Resistance(Acid,Resistant)",
+                "Resistance(Cold,Resistant)",
+                "Resistance(Fire,Resistant)",
+                "Resistance(Force,Resistant)",
+                "Resistance(Lightning,Resistant)",
+                "Resistance(Necrotic,Resistant)",
+                "Resistance(Poison,Resistant)",
+                "Resistance(Psychic,Resistant)",
+                "Resistance(Radiant,Resistant)",
+                "Resistance(Thunder,Resistant)",
+            ],
+        ))
+        return name
+
+    def _rage_giant(self) -> None:
+        self.mod.add(StatusData(
+            "RAGE_GIANT",
+            StatusType="BOOST",
+            using="RAGE_GIANT",
+            Passives=[
+                "Rage_Rage_Boosts",
+                "Rage_Attack",
+                "Rage_Damaged",
+                "Rage_NoHeavyArmour_VFX",
+                "EnlargeWeightMedium",
+                "EnlargeWeightLarge",
+                self._rage_giant_extra_resistances,
+            ],
+        ))
+
     @cached_property
     def _level_3_spells(self) -> SpellList:
         spells = SpellList(
             Name="Barbarian level 3 spells",
             Spells=[
+                "Shout_ActionSurge",
                 self._bolster,
                 self._brutal_cleave,
+                self._dash_bonus_action,
             ],
             UUID=self.make_uuid("level_3_spells"),
         )
@@ -64,10 +108,9 @@ class GiantPath(Replacer):
     @progression(CharacterClass.BARBARIAN_GIANT, 3)
     def giantpath_level_3(self, progress: Progression) -> None:
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
-            "Shout_Dash_CunningAction",
             "FastHands",
+            "ImprovedCritical",
             "JackOfAllTrades",
-            self._pack_mule,
             self._running_jump,
         ]
         progress.Selectors = (progress.Selectors or []) + [
@@ -81,16 +124,16 @@ class GiantPath(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.BARBARIAN_GIANT, 5)
-    def giantpath_level_5(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def giantpath_level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["UncannyDodge"]
 
     @progression(CharacterClass.BARBARIAN_GIANT, 6)
     def giantpath_level_6(self, _: Progression) -> None:
         raise DontIncludeProgression()
 
     @progression(CharacterClass.BARBARIAN_GIANT, 7)
-    def giantpath_level_7(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def giantpath_level_7(self, progress: Progression) -> None:
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["Evasion"]
 
     @progression(CharacterClass.BARBARIAN_GIANT, 8)
     def giantpath_level_8(self, _: Progression) -> None:

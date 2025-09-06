@@ -575,6 +575,53 @@ def lightly_armored_feat() -> None:
 
 
 @iife
+def martial_adept_feat() -> None:
+    """Martial Adept."""
+    martial_adept_uuid = rare_feats.make_uuid("RareFeats_MartialAdept")
+
+    loca["RareFeats_MartialAdept_DisplayName"] = {"en": "Rare Feats: Martial Adept"}
+    loca["RareFeats_MartialAdept_Description"] = {"en": """
+        You learn five manoeuvres from the Battle Master subclass and gain a
+        <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag> to fuel them. You regain expended
+        Superiority Dice after a <LSTag Tooltip="ShortRest">Short</LSTag> or
+        <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+        """}
+    loca["RareFeats_SuperiorityDice_Description"] = {"en": """
+        You receive an (additional) superiority die each level.
+        """}
+
+    rare_feats.add(PassiveData(
+        "RareFeats_SuperiorityDice",
+        DisplayName=loca["RareFeats_MartialAdept_DisplayName"],
+        Description=loca["RareFeats_SuperiorityDice_Description"],
+        Icon="PassiveFeature_MartialAdept",
+        Properties=["Highlighted"],
+        Boosts=[
+            f"ActionResource(SuperiorityDie,1,0)",
+            *[
+                f"IF(CharacterLevelRange({level},20)):ActionResource(SuperiorityDie,1,0)"
+                for level in range(2, 21)
+            ],
+        ],
+    ))
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_MartialAdept_DisplayName"],
+        Description=loca["RareFeats_MartialAdept_Description"],
+        ExactMatch="RareFeats_MartialAdept",
+        FeatId=martial_adept_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_MartialAdeptFeatDescription"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_MartialAdept",
+        PassivesAdded=["RareFeats_SuperiorityDice"],
+        Selectors=[f"SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,5,MAManeuvers)"],
+        UUID=martial_adept_uuid,
+    ))
+
+
+@iife
 def metamagic_feat() -> None:
     """Metamagic."""
     metamagic_uuid = rare_feats.make_uuid("RareFeats_Metamagic")

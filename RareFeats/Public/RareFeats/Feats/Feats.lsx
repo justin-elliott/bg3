@@ -61,13 +61,13 @@
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_HeavilyArmored" />
-                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_HeavilyArmored_Passive" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_HeavilyArmored" />
                     <attribute id="Requirements" type="LSString" value="FeatRequirementProficiency('MediumArmor')" />
                     <attribute id="UUID" type="guid" value="615a27cd-2145-3900-5713-8dc3d3aa0966" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_HeavyArmorMaster" />
-                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_HeavyArmorMaster_Passive" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_HeavyArmorMaster" />
                     <attribute id="Requirements" type="LSString" value="FeatRequirementProficiency('HeavyArmor')" />
                     <attribute id="UUID" type="guid" value="d08490b7-f08a-7ed7-a987-e69af95035b6" />
                 </node>
@@ -76,6 +76,12 @@
                     <attribute id="PassivesAdded" type="LSString" value="LightlyArmored" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(035ecf1b-f447-6074-18d5-c5a22116ad4e,1,RareFeats_LightlyArmored)" />
                     <attribute id="UUID" type="guid" value="89035b8f-c2d2-259c-194d-71e20b966217" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_MartialAdept" />
+                    <attribute id="PassivesAdded" type="LSString" value="RareFeats_SuperiorityDice" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,5,MAManeuvers)" />
+                    <attribute id="UUID" type="guid" value="b900d4f0-aa6b-1f89-24da-3fb032f4b2a1" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Metamagic" />

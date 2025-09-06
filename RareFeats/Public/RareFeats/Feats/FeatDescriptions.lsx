@@ -97,6 +97,13 @@
                     <attribute id="UUID" type="guid" value="eba2847a-2bf2-4755-3b28-53ea7055bc58" />
                 </node>
                 <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hd4900776g8bd7g7ec9gc67ag8ebbde25e458" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha51a2bbdg8e3fg968fg9e45g5d891e1277c8" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_MartialAdept" />
+                    <attribute id="FeatId" type="guid" value="b900d4f0-aa6b-1f89-24da-3fb032f4b2a1" />
+                    <attribute id="UUID" type="guid" value="c7efc1cf-422f-efaa-dc2f-6fbd2b4e69bf" />
+                </node>
+                <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h407e13e8gfde3g84b8g450ag3a40a8258f69" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hc01ed66eg19dbg68fdgd1f0g123ff52983f1" version="1" />
                     <attribute id="ExactMatch" type="FixedString" value="RareFeats_Metamagic" />

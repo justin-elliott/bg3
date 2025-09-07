@@ -1229,6 +1229,13 @@ add_weapon("CampClothes_Sinister",
            status_on_equip=["MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"],
            weapon_properties=["Finesse", "Light", "Thrown", "Melee", "Dippable"])
 
+loca["CampClothes_TheWoundseeker_DisplayName"] = {"en": "The Woundseeker"}
+loca["CampClothes_TheWoundseeker_Description"] = {"en": """
+    The Woundseeker is a grim, two-handed blade, that hungers for vulnerability. Against
+    foes already injured, the blade seems to hum with dark anticipation, its edge effortlessly finding purchase in
+    existing injuries, deepening their agony and ensuring the swiftest, most merciless end.
+    """}
+
 loca["CampClothes_DeepenTheWound_Description"] = {"en": """
     The wielder gains a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack</LSTag> and Damage rolls with this weapon when
     attacking creatures that have already taken damage.
@@ -1243,25 +1250,25 @@ camp_clothes.add(PassiveData(
     ],
 ))
 
-camp_clothes.add(Weapon(
-    "CampClothes_Woundseeker",
-    using="MAG_TheWoundSeeker_Greatsword",
-    DefaultBoosts=[
-        "CannotBeDisarmed()",
-        "ItemReturnToOwner()",
-        "WeaponProperty(Magical)",
-        "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
-        "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
-        "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-    ],
-    PassivesOnEquip=[
+svartlebees_woundseeker = UUID("56316970-8adb-4936-8c73-9d8a7c41a8a4")
+
+add_weapon(
+    "CampClothes_TheWoundseeker",
+    using="WPN_Greatsword",
+    damage_type="Slashing",
+    bonus_damage_type="Slashing",
+    parent_template_id=svartlebees_woundseeker,
+    display_name=loca["CampClothes_TheWoundseeker_DisplayName"],
+    description=loca["CampClothes_TheWoundseeker_Description"],
+    passives_on_equip=lambda _: [
+        "UNI_Adamantine_CriticalVsItems_Passive",
+        "MAG_IgnoreSlashingResistance_Passive",
         "CampClothes_DeepenTheWound",
         "UND_DuergarRaft_Hammer_Passive",
         "MAG_TheClover_Rearrangement_Passive",
     ],
-    Rarity="Legendary",
-    Weapon_Properties=["Twohanded", "Heavy", "Melee", "Dippable", "Magical", "Finesse"],
-))
+    weapon_properties=["Twohanded", "Heavy", "Melee", "Dippable", "Magical", "Finesse"],
+)
 
 camp_clothes.add(Armor(
     "CampClothes_Boots_Isobel",
@@ -1281,7 +1288,7 @@ equipment = [
     "CampClothes_SpearOfTwilight",
     "CampClothes_Dexter",
     "CampClothes_Sinister",
-    "CampClothes_Woundseeker",
+    "CampClothes_TheWoundseeker",
     "MAG_Bhaalist_Armor",
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",

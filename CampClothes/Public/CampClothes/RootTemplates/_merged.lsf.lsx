@@ -1264,6 +1264,28 @@
                         </node>
                     </children>
                 </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h834adf42g9b9eg0009gbab2g12d95fb2b63a" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd3d6fb71g51f3g3295g57aage68346da8931" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="409b6b6a-bb29-382f-ed35-99bbbf125d87" />
+                    <attribute id="Name" type="LSString" value="CampClothes_TheWoundseeker" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="56316970-8adb-4936-8c73-9d8a7c41a8a4" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_TheWoundseeker" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
             </children>
         </node>
     </region>

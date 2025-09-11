@@ -73,6 +73,17 @@ class BladesingingExpanded(Replacer):
         self.mod.add(spells)
         return str(spells.UUID)
 
+    @cached_property
+    def _spells_level_11(self) -> str:
+        name = "Bladesinging spells gained at level 11"
+        spells = SpellList(
+            Name=name,
+            Spells=["Projectile_Fly"],
+            UUID=self.make_uuid(name),
+        )
+        self.mod.add(spells)
+        return str(spells.UUID)
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
@@ -175,6 +186,9 @@ class BladesingingExpanded(Replacer):
     def wizard_bladesinging_level_11(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
         progress.PassivesAdded += ["ReliableTalent"]
+        progress.Selectors += [
+            f"AddSpells({self._spells_level_11},,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 12)
     def wizard_bladesinging_level_12(self, progress: Progression) -> None:

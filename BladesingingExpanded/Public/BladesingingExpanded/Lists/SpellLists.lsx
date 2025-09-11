@@ -20,6 +20,11 @@
                     <attribute id="Spells" type="LSString" value="Shout_CreateSorceryPoints;Shout_CreateSpellSlot" />
                     <attribute id="UUID" type="guid" value="23ce1710-78cd-42d0-0c1e-94a8e99a4b19" />
                 </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 11" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fly" />
+                    <attribute id="UUID" type="guid" value="82b318bf-096b-8893-1b8b-594a4661b0bb" />
+                </node>
             </children>
         </node>
     </region>

@@ -3,7 +3,6 @@
 Generates files for the "WarlockExtended" mod.
 """
 
-import argparse
 import os
 import re
 
@@ -20,7 +19,6 @@ from modtools.lsx.game import (
 )
 from modtools.lsx.game import Dependencies, Progression
 from modtools.replacers import (
-    DontIncludeProgression,
     Replacer,
     progression,
     spell_list,

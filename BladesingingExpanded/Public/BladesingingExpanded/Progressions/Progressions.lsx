@@ -298,7 +298,7 @@
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="SongOfDefense_6;ReliableTalent" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0);AddSpells(82b318bf-096b-8893-1b8b-594a4661b0bb,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />
                     <attribute id="UUID" type="guid" value="7038732a-6324-4af6-bb39-48086729f4fe" />
                 </node>

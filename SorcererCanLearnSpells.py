@@ -21,15 +21,12 @@ class SorcererCanLearnSpells(Replacer):
                          **kwds)
 
     @class_description(CharacterClass.SORCERER)
-    def sorcerer_can_learn_spells(self, description: ClassDescription) -> None:
-        description.CanLearnSpells = True
-
-    @class_description(CharacterClass.SORCERER)
     @class_description(CharacterClass.SORCERER_DRACONIC)
     @class_description(CharacterClass.SORCERER_SHADOWMAGIC)
     @class_description(CharacterClass.SORCERER_STORM)
     @class_description(CharacterClass.SORCERER_WILDMAGIC)
-    def sorcerer_must_prepare_spells(self, description: ClassDescription) -> None:
+    def sorcerer_can_learn_spells(self, description: ClassDescription) -> None:
+        description.CanLearnSpells = True
         description.MustPrepareSpells = True
 
     @progression(CharacterClass.SORCERER, range(1, 21))

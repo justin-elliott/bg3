@@ -6,6 +6,7 @@
         <node id="root">
             <children>
                 <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Sorcerer_DraconicAncestry" />
                     <attribute id="Description" type="TranslatedString" handle="h8653dfceg5163g42e3gb4c4g5acc4dd573c8" version="2" />
@@ -26,6 +27,7 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Sorcerer_ShadowMagic" />
                     <attribute id="Description" type="TranslatedString" handle="hec37ca35g480cg4de1gae65g3986c3592aa7" version="1" />
@@ -42,6 +44,7 @@
                 </node>
                 <node id="ClassDescription">
                     <attribute id="BaseHp" type="int32" value="6" />
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Sorcerer" />
                     <attribute id="Description" type="TranslatedString" handle="h23997f5eg91f5g499bgac88gda4f6f2dfcc9" version="2" />
@@ -64,6 +67,7 @@
                     </children>
                 </node>
                 <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="ClassEquipment" type="FixedString" value="EQP_CC_Sorcerer_StormSorcery" />
                     <attribute id="Description" type="TranslatedString" handle="h6cc6b6fega327g411ag9b33g098e0c8636b1" version="3" />
@@ -80,6 +84,7 @@
                     <attribute id="UUID" type="guid" value="d379fdae-b401-4731-8d50-277c73919ae3" />
                 </node>
                 <node id="ClassDescription">
+                    <attribute id="CanLearnSpells" type="bool" value="true" />
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8" />
                     <attribute id="Description" type="TranslatedString" handle="hedfe3092ga840g4e10gb962g092566a89852" version="2" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h04ded653gcf76g4ad4gaa36g523db04a9487" version="1" />

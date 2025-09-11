@@ -1078,6 +1078,7 @@ def add_weapon(name: str,
 loca["CampClothes_ArcaneKatana_DisplayName"] = {"en": "Arcane Katana"}
 katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
 add_weapon("CampClothes_ArcaneKatana",
+           boosts_on_equip_main_hand=BOOSTS_ON_EQUIP_MAIN_HAND + ["Proficiency(Longswords)"],
            parent_template_id=katana_uuid,
            display_name=loca["CampClothes_ArcaneKatana_DisplayName"])
 

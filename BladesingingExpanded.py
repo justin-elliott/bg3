@@ -119,12 +119,13 @@ class BladesingingExpanded(Replacer):
         progress.Boosts += ["Tag(SORCERER_METAMAGIC)"]
         progress.PassivesAdded += [
             "DevilsSight",
+            "JackOfAllTrades",
             "RepellingBlast",
             "SculptSpells",
             self._fast_movement_30,
             self._pack_mule,
             self._unarmored_defense,
-            self._warding
+            self._warding,
         ]
         progress.Selectors += [
             f"AddSpells({self._spells_level_2},,,,AlwaysPrepared)",
@@ -148,6 +149,7 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 5)
     def wizard_bladesinging_level_5(self, progress: Progression) -> None:
         progress.Boosts += [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
+        progress.PassivesAdded = ["UncannyDodge"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 6)
     def wizard_bladesinging_level_6(self, progress: Progression) -> None:
@@ -161,12 +163,18 @@ class BladesingingExpanded(Replacer):
     @progression(CharacterClass.WIZARD_BLADESINGING, 7)
     def wizard_bladesinging_level_7(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
-        progress.PassivesAdded = [self._fast_movement_45]
+        progress.PassivesAdded = ["Evasion", self._fast_movement_45]
         progress.PassivesRemoved = [self._fast_movement_30]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 8)
     def wizard_bladesinging_level_8(self, progress: Progression) -> None:
         progress.Boosts = [f"ActionResource(SorceryPoint,{self.args.actions},0)"]
+        progress.PassivesAdded = [
+            "FOR_NightWalkers_WebImmunity",
+            "LandsStride_DifficultTerrain",
+            "LandsStride_Surfaces",
+            "LandsStride_Advantage",
+        ]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 9)
     def wizard_bladesinging_level_9(self, progress: Progression) -> None:

@@ -1127,6 +1127,7 @@ loca["CampClothes_ChampionsGlaive_Description"] = {"en": """
     """}
 add_weapon("CampClothes_ChampionsGlaive",
            using="WPN_Glaive",
+           bonus_damage_type="Piercing",
            parent_template_id="99f3b2d9-e03d-4cd5-9a67-5435a95682da",
            display_name=loca["CampClothes_ChampionsGlaive_DisplayName"],
            description=loca["CampClothes_ChampionsGlaive_Description"],

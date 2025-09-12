@@ -1258,6 +1258,13 @@ add_weapon(
     using="WPN_Greatsword",
     damage_type="Slashing",
     bonus_damage_type="Slashing",
+    boosts_on_equip_main_hand=[
+        "CannotBeDisarmed()",
+        "ItemReturnToOwner()",
+        "UnlockSpell(Target_PommelStrike)",
+        "UnlockSpell(Target_Slash_New)",
+        "UnlockSpell(CampClothes_Weapon_Cleave)",
+    ],
     parent_template_id=svartlebees_woundseeker,
     display_name=loca["CampClothes_TheWoundseeker_DisplayName"],
     description=loca["CampClothes_TheWoundseeker_Description"],

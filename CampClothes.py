@@ -902,6 +902,15 @@ camp_clothes.add(SpellData(
     TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
 ))
 
+camp_clothes.add(SpellData(
+    "CampClothes_Glaive_Cleave",
+    using="CampClothes_Weapon_Cleave",
+    SpellType="Zone",
+    Angle="150",
+    MaximumTargets="",
+    Range="3",
+))
+
 loca["CampClothes_Belm_BonusAttack_Description"] = {"en": """
     Strike out with an adder's speed, the very exemplar of swiftness embodied in steel.
     """}
@@ -1084,6 +1093,7 @@ add_weapon("CampClothes_ArcaneKatana",
 
 loca["CampClothes_InfernalKatana_DisplayName"] = {"en": "Infernal Katana"}
 add_weapon("CampClothes_InfernalKatana",
+           boosts_on_equip_main_hand=BOOSTS_ON_EQUIP_MAIN_HAND + ["Proficiency(Longswords)"],
            parent_template_id=katana_uuid,
            display_name=loca["CampClothes_InfernalKatana_DisplayName"],
            bonus_damage_type="Fire")
@@ -1137,7 +1147,7 @@ add_weapon("CampClothes_ChampionsGlaive",
                "UnlockSpell(Rush_SpringAttack)",
                "UnlockSpell(Target_Slash_New)",
                "UnlockSpell(Shout_Steady)",
-               "UnlockSpell(CampClothes_Weapon_Cleave)",
+               "UnlockSpell(CampClothes_Glaive_Cleave)",
                "Proficiency(Glaives)",
             ],
            passives_on_equip=lambda damage_type: [

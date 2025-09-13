@@ -6,14 +6,14 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Battlemage class abilities level 2" />
-                    <attribute id="Spells" type="LSString" value="Battlemage_BrutalCleave" />
-                    <attribute id="UUID" type="guid" value="acef541c-2e77-fa88-2ad7-6ba0596971f9" />
+                    <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 2" />
+                    <attribute id="Spells" type="LSString" value="Battlemage_ArcaneGuidance;Battlemage_Bolster;Target_Command_Container;Projectile_EldritchBlast" />
+                    <attribute id="UUID" type="guid" value="87ad6758-42e7-c603-a29a-bac20869e19e" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Battlemage class abilities level 3" />
-                    <attribute id="Spells" type="LSString" value="Battlemage_ArcaneWeapon" />
-                    <attribute id="UUID" type="guid" value="b3e33ea1-39b0-bc61-8d11-5e38761dcd1f" />
+                    <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 11" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fly" />
+                    <attribute id="UUID" type="guid" value="a87ce77f-8630-710b-5f23-4a32db9f3ab7" />
                 </node>
             </children>
         </node>

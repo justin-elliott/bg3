@@ -123,7 +123,7 @@ class Battlemage(Replacer):
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 5)
     def wizard_bladesinging_level_5(self, progress: Progression) -> None:
-        progress.PassivesAdded = ["UncannyDodge"]
+        progress.PassivesAdded = ["ExtraAttack", "UncannyDodge"]
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 6)
     def wizard_bladesinging_level_6(self, progress: Progression) -> None:

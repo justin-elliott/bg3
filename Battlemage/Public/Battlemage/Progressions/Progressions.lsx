@@ -237,7 +237,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Bladesong,2,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack;UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0)" />
                     <attribute id="TableUUID" type="guid" value="eb51387c-6990-4f9b-965a-3acae7ba49d1" />

@@ -1286,6 +1286,28 @@
                         </node>
                     </children>
                 </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h834adf42g9b9eg0009gbab2g12d95fb2b63a" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd3d6fb71g51f3g3295g57aage68346da8931" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="8e5bf9bc-9e44-72eb-8c49-333cb881019a" />
+                    <attribute id="Name" type="LSString" value="CampClothes_CruelSting" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="67ae6ce9-08fd-4ee7-9343-9a408f8ad9fa" />
+                    <attribute id="Stats" type="FixedString" value="CampClothes_CruelSting" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
             </children>
         </node>
     </region>

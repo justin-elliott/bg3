@@ -1087,13 +1087,11 @@ def add_weapon(name: str,
 loca["CampClothes_ArcaneKatana_DisplayName"] = {"en": "Arcane Katana"}
 katana_uuid = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
 add_weapon("CampClothes_ArcaneKatana",
-           boosts_on_equip_main_hand=BOOSTS_ON_EQUIP_MAIN_HAND + ["Proficiency(Longswords)"],
            parent_template_id=katana_uuid,
            display_name=loca["CampClothes_ArcaneKatana_DisplayName"])
 
 loca["CampClothes_InfernalKatana_DisplayName"] = {"en": "Infernal Katana"}
 add_weapon("CampClothes_InfernalKatana",
-           boosts_on_equip_main_hand=BOOSTS_ON_EQUIP_MAIN_HAND + ["Proficiency(Longswords)"],
            parent_template_id=katana_uuid,
            display_name=loca["CampClothes_InfernalKatana_DisplayName"],
            bonus_damage_type="Fire")
@@ -1277,7 +1275,6 @@ add_weapon(
         "UnlockSpell(Target_PommelStrike)",
         "UnlockSpell(Target_Slash_New)",
         "UnlockSpell(CampClothes_Weapon_Cleave)",
-        "Proficiency(Greatswords)",
     ],
     parent_template_id=svartlebees_woundseeker,
     display_name=loca["CampClothes_TheWoundseeker_DisplayName"],
@@ -1286,10 +1283,33 @@ add_weapon(
         "UNI_Adamantine_CriticalVsItems_Passive",
         "MAG_IgnoreSlashingResistance_Passive",
         "CampClothes_DeepenTheWound",
-        "UND_DuergarRaft_Hammer_Passive",
         "MAG_TheClover_Rearrangement_Passive",
     ],
     weapon_properties=["Twohanded", "Heavy", "Melee", "Dippable", "Magical", "Finesse"],
+)
+
+cruel_string = UUID("67ae6ce9-08fd-4ee7-9343-9a408f8ad9fa")
+
+add_weapon(
+    "CampClothes_CruelSting",
+    damage_type="Slashing",
+    bonus_damage_type="Slashing",
+    boosts_on_equip_main_hand=[
+        "CannotBeDisarmed()",
+        "ItemReturnToOwner()",
+        "UnlockSpell(Target_PommelStrike)",
+        "UnlockSpell(Target_Slash_New)",
+        "UnlockSpell(CampClothes_Weapon_Cleave)",
+    ],
+    parent_template_id=cruel_string,
+    display_name=loca["CampClothes_TheWoundseeker_DisplayName"],
+    description=loca["CampClothes_TheWoundseeker_Description"],
+    passives_on_equip=lambda _: [
+        "UNI_Adamantine_CriticalVsItems_Passive",
+        "MAG_IgnoreSlashingResistance_Passive",
+        "CampClothes_DeepenTheWound",
+        "MAG_TheClover_Rearrangement_Passive",
+    ],
 )
 
 camp_clothes.add(Armor(
@@ -1311,6 +1331,7 @@ equipment = [
     "CampClothes_Dexter",
     "CampClothes_Sinister",
     "CampClothes_TheWoundseeker",
+    "CampClothes_CruelSting",
     "MAG_Bhaalist_Armor",
     "UNI_DarkUrge_Bhaal_Cloak",
     "ORI_Wyll_Infernal_Robe",

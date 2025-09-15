@@ -79,7 +79,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,4,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;RecklessAttack;BattleMaster_FastMovement_30" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BattleMaster_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
@@ -89,7 +89,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
-                    <attribute id="PassivesAdded" type="LSString" value="FeralInstinct;BattleMaster_RunningJump" />
+                    <attribute id="PassivesAdded" type="LSString" value="BattleMaster_Awareness;BattleMaster_RunningJump" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(09f5bd61-ba65-41ef-f37d-cffe9f7c4753)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
@@ -109,7 +109,6 @@
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(49a56818-37c9-8e1d-a1d4-2baa45007847);AddSpells(49cfa35d-94c9-4092-a5c6-337b7f16fd3a)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="c088b1cb-1f84-3880-0b8d-cd77fe1f4f62" />
                 </node>

@@ -441,6 +441,8 @@ object category I_CampClothes_Sinister,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_CampClothes_TheWoundseeker,1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category I_CampClothes_CruelSting,1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category I_MAG_Bhaalist_Armor,1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category I_UNI_DarkUrge_Bhaal_Cloak,1,0,0,0,0,0,0,0

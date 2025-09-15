@@ -10,8 +10,24 @@
                     <attribute id="UUID" type="guid" value="ac44677f-9301-cb4c-5944-99e48ed91734" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_BoostAbility_Strength_2,RareFeats_ASI_BoostAbility_Dexterity_2,RareFeats_ASI_BoostAbility_Constitution_2,RareFeats_ASI_BoostAbility_Intelligence_2,RareFeats_ASI_BoostAbility_Wisdom_2,RareFeats_ASI_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
-                    <attribute id="UUID" type="guid" value="39870e3d-d797-1e7d-89b2-4706b711fc9c" />
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_1_BoostAbility_Strength_2,RareFeats_ASI_1_BoostAbility_Dexterity_2,RareFeats_ASI_1_BoostAbility_Constitution_2,RareFeats_ASI_1_BoostAbility_Intelligence_2,RareFeats_ASI_1_BoostAbility_Wisdom_2,RareFeats_ASI_1_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="1bedf95b-7251-fd5c-0703-ff1801e2c1ac" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_2_BoostAbility_Strength_2,RareFeats_ASI_2_BoostAbility_Dexterity_2,RareFeats_ASI_2_BoostAbility_Constitution_2,RareFeats_ASI_2_BoostAbility_Intelligence_2,RareFeats_ASI_2_BoostAbility_Wisdom_2,RareFeats_ASI_2_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="047eb223-dbd9-6ef1-1d9f-7e2a3f5c0d20" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_3_BoostAbility_Strength_2,RareFeats_ASI_3_BoostAbility_Dexterity_2,RareFeats_ASI_3_BoostAbility_Constitution_2,RareFeats_ASI_3_BoostAbility_Intelligence_2,RareFeats_ASI_3_BoostAbility_Wisdom_2,RareFeats_ASI_3_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="8eb7da21-e495-c327-f403-76e8fb087520" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_4_BoostAbility_Strength_2,RareFeats_ASI_4_BoostAbility_Dexterity_2,RareFeats_ASI_4_BoostAbility_Constitution_2,RareFeats_ASI_4_BoostAbility_Intelligence_2,RareFeats_ASI_4_BoostAbility_Wisdom_2,RareFeats_ASI_4_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="729f9f1e-a697-3c80-6753-0e2fc1ddd73d" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Passives" type="LSString" value="RareFeats_ASI_5_BoostAbility_Strength_2,RareFeats_ASI_5_BoostAbility_Dexterity_2,RareFeats_ASI_5_BoostAbility_Constitution_2,RareFeats_ASI_5_BoostAbility_Intelligence_2,RareFeats_ASI_5_BoostAbility_Wisdom_2,RareFeats_ASI_5_BoostAbility_Charisma_2,RareFeats_BoostAbility_None" />
+                    <attribute id="UUID" type="guid" value="e6c0e16d-19e7-bd34-5691-3ab8b7f19fc7" />
                 </node>
                 <node id="PassiveList">
                     <attribute id="Passives" type="LSString" value="RareFeats_Athlete_BoostAbility_Strength_2,RareFeats_Athlete_BoostAbility_Dexterity_2,RareFeats_BoostAbility_None" />

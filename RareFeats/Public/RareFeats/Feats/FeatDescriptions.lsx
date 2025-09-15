@@ -15,9 +15,37 @@
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
-                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI" />
-                    <attribute id="FeatId" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
-                    <attribute id="UUID" type="guid" value="f89f224d-8294-3d61-142c-a8625cbae3dc" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI_1" />
+                    <attribute id="FeatId" type="guid" value="a99d36a1-db37-bf65-3c80-057fc9a0a885" />
+                    <attribute id="UUID" type="guid" value="bdcc102d-8bd4-a787-9f61-d9c3f983c570" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI_2" />
+                    <attribute id="FeatId" type="guid" value="7833149e-c1e9-d3cd-510a-e52ecd77c203" />
+                    <attribute id="UUID" type="guid" value="e6ee6a90-e675-4d7c-43c5-1c48b203f6ee" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI_3" />
+                    <attribute id="FeatId" type="guid" value="13a72d4e-4769-b2d1-3ea6-fe0ac7321312" />
+                    <attribute id="UUID" type="guid" value="dd9c2f80-8c02-46b4-5db6-3eb5f3afd17e" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI_4" />
+                    <attribute id="FeatId" type="guid" value="1ebd9f07-5a58-5223-1b6f-742d0f001397" />
+                    <attribute id="UUID" type="guid" value="ddd1c2d7-fdaf-b7ff-1398-22cf6061905e" />
+                </node>
+                <node id="FeatDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h41d88cc8gd3f9gff46g82e0g173d4df794b1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="ha9d04b32g7300gf893g5346gd4ec5678b3fd" version="1" />
+                    <attribute id="ExactMatch" type="FixedString" value="RareFeats_ASI_5" />
+                    <attribute id="FeatId" type="guid" value="82ac226b-3402-0220-fd39-6f04c896a299" />
+                    <attribute id="UUID" type="guid" value="a8116ef6-82ef-d852-f10b-ac8f2aee949e" />
                 </node>
                 <node id="FeatDescription">
                     <attribute id="Description" type="TranslatedString" handle="h6701699ag2399g6589ge9d9gbb8b8afa2e67" version="1" />

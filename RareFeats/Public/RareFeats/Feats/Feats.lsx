@@ -11,10 +11,29 @@
                     <attribute id="UUID" type="guid" value="ae9b068b-c966-134b-d824-954441d1841a" />
                 </node>
                 <node id="Feat">
-                    <attribute id="CanBeTakenMultipleTimes" type="bool" value="true" />
-                    <attribute id="Name" type="FixedString" value="RareFeats_ASI" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(39870e3d-d797-1e7d-89b2-4706b711fc9c,1,RareFeats_ASI)" />
-                    <attribute id="UUID" type="guid" value="c7e036bc-7627-132c-d86b-dea768dfbf5c" />
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_1" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(1bedf95b-7251-fd5c-0703-ff1801e2c1ac,1,RareFeats_ASI_1)" />
+                    <attribute id="UUID" type="guid" value="a99d36a1-db37-bf65-3c80-057fc9a0a885" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(047eb223-dbd9-6ef1-1d9f-7e2a3f5c0d20,1,RareFeats_ASI_2)" />
+                    <attribute id="UUID" type="guid" value="7833149e-c1e9-d3cd-510a-e52ecd77c203" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_3" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(8eb7da21-e495-c327-f403-76e8fb087520,1,RareFeats_ASI_3)" />
+                    <attribute id="UUID" type="guid" value="13a72d4e-4769-b2d1-3ea6-fe0ac7321312" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_4" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(729f9f1e-a697-3c80-6753-0e2fc1ddd73d,1,RareFeats_ASI_4)" />
+                    <attribute id="UUID" type="guid" value="1ebd9f07-5a58-5223-1b6f-742d0f001397" />
+                </node>
+                <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_ASI_5" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(e6c0e16d-19e7-bd34-5691-3ab8b7f19fc7,1,RareFeats_ASI_5)" />
+                    <attribute id="UUID" type="guid" value="82ac226b-3402-0220-fd39-6f04c896a299" />
                 </node>
                 <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_Athlete" />

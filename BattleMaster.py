@@ -47,7 +47,7 @@ class BattleMaster(Replacer):
 
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 3)
     def battlemaster_level_3(self, progress: Progression) -> None:
-        progress.Boosts = ["ActionResource(SuperiorityDie,5,0)"]
+        progress.Boosts = ["ActionResource(SuperiorityDie,4,0)"]
         progress.PassivesAdded = ["ImprovedCritical", "JackOfAllTrades", self._remarkable_athlete_run]
         progress.Selectors += [
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",

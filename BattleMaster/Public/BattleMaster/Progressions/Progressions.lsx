@@ -76,10 +76,10 @@
                     <attribute id="UUID" type="guid" value="ee6dffc7-962c-4ed6-8426-6b74537573f3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,5,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,4,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
-                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BattleMaster_FastMovement_30" />
+                    <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;JackOfAllTrades;BattleMaster_FastMovement_30" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />

@@ -76,7 +76,7 @@
                     <attribute id="UUID" type="guid" value="ee6dffc7-962c-4ed6-8426-6b74537573f3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,4,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,5,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCritical;BattleMaster_FastMovement_30" />

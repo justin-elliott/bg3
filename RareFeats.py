@@ -383,6 +383,7 @@ def extra_attacks_feat() -> None:
         "RareFeats_ExtraAttack",
         DisplayName=loca["RareFeats_ExtraAttacks_DisplayName"],
         Description=loca["RareFeats_ExtraAttacks_Description"],
+        Icon="Skill_Fighter_ActionSurge",
         StatsFunctorContext=["OnCreate", "OnLongRest", "OnShortRest", "OnAttack"],
         StatsFunctors=[
             "IF(CharacterLevelRange(5,10)):ApplyStatus(SELF,RARE_FEATS_EXTRA_ATTACK_1,100,-1)",

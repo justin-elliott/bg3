@@ -52,6 +52,12 @@
                     <attribute id="UUID" type="guid" value="2a8e042e-d6f8-2b60-f7f1-55f554b72464" />
                 </node>
                 <node id="Feat">
+                    <attribute id="Name" type="FixedString" value="RareFeats_DualWielder" />
+                    <attribute id="PassivesAdded" type="LSString" value="DualWielder_BonusAC;DualWielder_PassiveBonuses" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c6127135-793f-9db6-a617-35429955e897,1,RareFeats_DualWielder)" />
+                    <attribute id="UUID" type="guid" value="62504ffa-b161-11a1-a79b-a91894ce65e6" />
+                </node>
+                <node id="Feat">
                     <attribute id="Name" type="FixedString" value="RareFeats_EvasiveFeat" />
                     <attribute id="PassivesAdded" type="LSString" value="Evasion;UncannyDodge" />
                     <attribute id="UUID" type="guid" value="8e895fb9-cf54-33a6-8479-6221f5b56b45" />

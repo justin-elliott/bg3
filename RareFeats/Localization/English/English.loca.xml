@@ -117,6 +117,12 @@
     <content contentuid="h6b264cfdgbcf7g4ba2g6f02ge9369019c02b" version="1">You gain &lt;LSTag Type="Passive" Tooltip="RareFeats_BattleMagic"&gt;Battle Magic&lt;/LSTag&gt;.</content>
     <content contentuid="h05dd3872gf3d2g341eg658dgcf27378fcf36" version="1">Rare Feats: Cunning Actions</content>
     <content contentuid="h5d71b742g06d3gb669g93ccgd638ab745699" version="1">Gain &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;, &lt;LSTag Type="Passive" Tooltip="RareFeats_RunningJump"&gt;Running Jump&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="FastHands"&gt;Fast Hands&lt;/LSTag&gt;.</content>
+    <content contentuid="hf2764f4fg719cg7ceeg2a41gd4fe1d9c2c30" version="1">Strength +2</content>
+    <content contentuid="h512033ffg1ad1gb338g216dgedfcc876aff5" version="1">Increase your Strength by 2, to a maximum of 30.</content>
+    <content contentuid="h15fd1f95g7d7agd20fg7edeg2324bbc13fac" version="1">Dexterity +2</content>
+    <content contentuid="hf41cb09dgf681g4566ge939gd51878a9b975" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
+    <content contentuid="h6c92493egbfe4g6f82g7af1gb28ee8af3dea" version="1">Rare Feats: Dual Wielder</content>
+    <content contentuid="h41f3b648gc1fagc737gb59eg4007b725e4ef" version="1">You can use Two-Weapon Fighting even if your weapons aren't &lt;LSTag Tooltip="Light"&gt;Light&lt;/LSTag&gt;, and you gain a +1 bonus to &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt; while wielding a melee weapon in each hand. You cannot dual-wield &lt;LSTag Tooltip="TwoHanded"&gt;Two-Handed&lt;/LSTag&gt; weapons.</content>
     <content contentuid="h84307100g2347gc99bg2099g3837ce453f19" version="1">Rare Feats: Evasive</content>
     <content contentuid="h5e69d385gfc01g4bd5g8e17g55683d00575b" version="1">You gain &lt;LSTag Type="Passive" Tooltip="Evasion"&gt;Evasion&lt;/LSTag&gt; and &lt;LSTag Type="Passive" Tooltip="UncannyDodge"&gt;Uncanny Dodge&lt;/LSTag&gt;.</content>
     <content contentuid="heeb4ece5g43c2gba8ag5116g342401ff8f43" version="1">Rare Feats: Expert</content>

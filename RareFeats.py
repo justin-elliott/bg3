@@ -287,6 +287,36 @@ def cunning_actions_feat() -> None:
 
 
 @iife
+def dual_wielder_feat() -> None:
+    """Dual Wielder with optional ASI."""
+    dual_wielder_uuid = rare_feats.make_uuid("RareFeats_DualWielder")
+    dual_wielder_passive_list = boost_abilities_passive_list(
+        "DualWielder", [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY, None], 2)
+
+    loca["RareFeats_DualWielder_DisplayName"] = {"en": "Rare Feats: Dual Wielder"}
+    loca["RareFeats_DualWielder_Description"] = {"en": """
+        You can use Two-Weapon Fighting even if your weapons aren't <LSTag Tooltip="Light">Light</LSTag>, and you gain a
+        +1 bonus to <LSTag Tooltip="ArmourClass">Armour Class</LSTag> while wielding a melee weapon in each hand. You
+        cannot dual-wield <LSTag Tooltip="TwoHanded">Two-Handed</LSTag> weapons.
+        """}
+
+    rare_feats.add(FeatDescription(
+        DisplayName=loca["RareFeats_DualWielder_DisplayName"],
+        Description=loca["RareFeats_DualWielder_Description"],
+        ExactMatch="RareFeats_DualWielder",
+        FeatId=dual_wielder_uuid,
+        UUID=rare_feats.make_uuid("RareFeats_FeatDescription_DualWielder"),
+    ))
+
+    rare_feats.add(Feat(
+        Name="RareFeats_DualWielder",
+        PassivesAdded=["DualWielder_BonusAC", "DualWielder_PassiveBonuses"],
+        Selectors=f"SelectPassives({dual_wielder_passive_list},1,RareFeats_DualWielder)",
+        UUID=dual_wielder_uuid,
+    ))
+
+
+@iife
 def evasive_feat() -> None:
     """Evasive."""
     evasive_uuid = rare_feats.make_uuid("RareFeats_EvasiveFeat")

@@ -54,6 +54,20 @@ class Spartan(Replacer):
         self._spear_instrument()
         self._tavern_brawler()
 
+    def _weapon_boosts(self, damage_type: str, die_sides: int) -> list[str]:
+        return [
+            "WeaponProperty(Magical)",
+            "CannotBeDisarmed()",
+            "ItemReturnToOwner()",
+            "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
+            "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
+            "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
+            f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d{die_sides},{damage_type},Magical)",
+            f"IF(CharacterLevelRange(9,12)):WeaponDamage(2d{die_sides},{damage_type},Magical)",
+            f"IF(CharacterLevelRange(13,16)):WeaponDamage(3d{die_sides},{damage_type},Magical)",
+            f"IF(CharacterLevelRange(17,20)):WeaponDamage(4d{die_sides},{damage_type},Magical)",
+        ]
+
     def _armor_body(self) -> None:
         self.mod.add(Armor(
             "ARM_SPR_Body",
@@ -71,14 +85,7 @@ class Spartan(Replacer):
         self.mod.add(Weapon(
             "WPN_SPR_Shield",
             using="WPN_SPR_Shield",
-            DefaultBoosts=[
-                "WeaponProperty(Magical)",
-                "CannotBeDisarmed()",
-                "ItemReturnToOwner()",
-                f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d4,Bludgeoning,Magical)",
-                f"IF(CharacterLevelRange(9,12)):WeaponDamage(2d4,Bludgeoning,Magical)",
-                f"IF(CharacterLevelRange(13,20)):WeaponDamage(3d4,Bludgeoning,Magical)",
-            ],
+            DefaultBoosts=self._weapon_boosts("Bludgeoning", 4),
         ))
     
     def _shield_bash(self) -> None:
@@ -108,18 +115,7 @@ class Spartan(Replacer):
         self.mod.add(Weapon(
             "WPN_SPR_Shortsword",
             using="WPN_SPR_Shortsword",
-            DefaultBoosts=[
-                "WeaponProperty(Magical)",
-                "CannotBeDisarmed()",
-                "ItemReturnToOwner()",
-                "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
-                "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
-                "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-                f"IF(CharacterLevelRange(1,4)):WeaponDamage(1d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(5,8)):WeaponDamage(2d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(9,12)):WeaponDamage(3d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(13,20)):WeaponDamage(4d6,Piercing,Magical)",
-            ],
+            DefaultBoosts=self._weapon_boosts("Piercing", 4),
             PassivesOnEquip=[],
         ))
 
@@ -138,18 +134,7 @@ class Spartan(Replacer):
         self.mod.add(Weapon(
             "WPN_SPR_Spear",
             using="WPN_SPR_Spear",
-            DefaultBoosts=[
-                "WeaponProperty(Magical)",
-                "CannotBeDisarmed()",
-                "ItemReturnToOwner()",
-                "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
-                "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
-                "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-                f"IF(CharacterLevelRange(1,4)):WeaponDamage(1d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(5,8)):WeaponDamage(2d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(9,12)):WeaponDamage(3d6,Piercing,Magical)",
-                f"IF(CharacterLevelRange(13,20)):WeaponDamage(4d6,Piercing,Magical)",
-            ],
+            DefaultBoosts=self._weapon_boosts("Piercing", 4),
         ))
 
     def _spear_instrument(self) -> None:

@@ -92,7 +92,7 @@ class Spartan(Replacer):
     def _shield_bash(self) -> None:
         loca = self.mod.get_localization()
         loca[f"{self.mod.get_prefix()}_ShieldBash_Description"] = {"en": """
-            Perform an offhand attack with your shield.
+            Bash your shield against a target, possibly <LSTag Type="Status" Tooltip="DAZED">Dazing</LSTag> it.
             """}
 
         self.mod.add(SpellData(
@@ -100,16 +100,17 @@ class Spartan(Replacer):
             using="Target_Bash",
             SpellType="Target",
             Description=loca[f"{self.mod.get_prefix()}_ShieldBash_Description"],
+            TooltipAttackSave=["Attack(AttackType.MeleeOffHandWeaponAttack)", "Strength"],
             TooltipDamageList=["DealDamage(OffhandMeleeWeapon,OffhandMeleeWeaponDamageType)"],
-            TooltipAttackSave=["MeleeWeaponAttack"],
-            TooltipStatusApply=[],
+            TooltipStatusApply=["ApplyStatus(DAZED,100,1)"],
             SpellRoll=["Attack(AttackType.MeleeOffHandWeaponAttack)"],
             SpellSuccess=[
+                "IF(not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(DAZED,100,1)",
                 "DealDamage(max(1,OffhandMeleeWeapon),OffhandMeleeWeaponDamageType)",
                 "ExecuteWeaponFunctors(OffHand)",
             ],
-            SpellFail=["ApplyStatus(SAVED_AGAINST_HOSTILE_SPELL,100,0)"],
             TargetConditions=["not Self() and not Dead()"],
+            UseCosts=["BonusActionPoint:1"],
         ))
     
     def _shield_boost(self) -> None:

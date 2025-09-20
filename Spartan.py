@@ -102,10 +102,10 @@ class Spartan(Replacer):
             Description=loca[f"{self.mod.get_prefix()}_ShieldBash_Description"],
             TooltipAttackSave=["Attack(AttackType.MeleeOffHandWeaponAttack)", "Strength"],
             TooltipDamageList=["DealDamage(OffhandMeleeWeapon,OffhandMeleeWeaponDamageType)"],
-            TooltipStatusApply=["ApplyStatus(DAZED,100,1)"],
+            TooltipStatusApply=["ApplyStatus(DAZED,100,2"],
             SpellRoll=["Attack(AttackType.MeleeOffHandWeaponAttack)"],
             SpellSuccess=[
-                "IF(not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(DAZED,100,1)",
+                "IF(not Item() and not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(DAZED,100,2)",
                 "DealDamage(max(1,OffhandMeleeWeapon),OffhandMeleeWeaponDamageType)",
                 "ExecuteWeaponFunctors(OffHand)",
             ],

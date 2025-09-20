@@ -3,7 +3,7 @@ import os
 
 from functools import cached_property
 from moddb import character_level_range, CunningActions, Movement
-from modtools.gamedata import Armor, PassiveData, SpellData, Weapon
+from modtools.gamedata import Armor, PassiveData, SpellData, StatusData, Weapon
 from modtools.lsx.game import ClassDescription, Dependencies, Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
@@ -48,6 +48,7 @@ class Spartan(Replacer):
         self._armor_body()
         self._shield()
         self._shield_bash()
+        self._shield_boost()
         self._shortsword()
         self._spartan_kick()
         self._spear()
@@ -109,6 +110,14 @@ class Spartan(Replacer):
             ],
             SpellFail=["ApplyStatus(SAVED_AGAINST_HOSTILE_SPELL,100,0)"],
             TargetConditions=["not Self() and not Dead()"],
+        ))
+    
+    def _shield_boost(self) -> None:
+        self.mod.add(StatusData(
+            "SPR_SHIELD_BOOST",
+            using="SPR_SHIELD_BOOST",
+            StatusType="BOOST",
+            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog"],
         ))
     
     def _shortsword(self) -> None:

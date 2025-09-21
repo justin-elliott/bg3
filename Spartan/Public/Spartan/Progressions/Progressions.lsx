@@ -50,6 +50,14 @@
                     <attribute id="UUID" type="guid" value="bbe85abd-27ac-3d9a-cad0-a47f34b9c8cc" />
                 </node>
                 <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="GiantPath" />
+                    <attribute id="PassivesAdded" type="LSString" value="FastHands" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="bdd02775-b9ee-480c-a260-d844580453b4" />
+                    <attribute id="UUID" type="guid" value="3e0f70fa-04e0-0524-5d83-a0d4dba58cff" />
+                </node>
+                <node id="Progression">
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="GiantPath" />
                     <attribute id="ProgressionType" type="uint8" value="1" />

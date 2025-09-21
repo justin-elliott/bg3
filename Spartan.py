@@ -99,10 +99,11 @@ class Spartan(Replacer):
             "Target_SPR_Shield_Bash",
             using="Target_Bash",
             SpellType="Target",
+            Cooldown="OncePerTurn",
             Description=loca[f"{self.mod.get_prefix()}_ShieldBash_Description"],
             TooltipAttackSave=["Attack(AttackType.MeleeOffHandWeaponAttack)", "Strength"],
             TooltipDamageList=["DealDamage(OffhandMeleeWeapon,OffhandMeleeWeaponDamageType)"],
-            TooltipStatusApply=["ApplyStatus(DAZED,100,2"],
+            TooltipStatusApply=["ApplyStatus(DAZED,100,2)"],
             SpellRoll=["Attack(AttackType.MeleeOffHandWeaponAttack)"],
             SpellSuccess=[
                 "IF(not Item() and not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(DAZED,100,2)",
@@ -227,8 +228,8 @@ class Spartan(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.BARBARIAN_GIANT, 9)
-    def spartan_level_9(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def spartan_level_9(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["FastHands"]
 
     @progression(CharacterClass.BARBARIAN_GIANT, 10)
     def spartan_level_10(self, progress: Progression) -> None:

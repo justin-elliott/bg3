@@ -5,11 +5,8 @@ from functools import cached_property
 from moddb import (
     Awareness,
     BattleMagic,
-    Bolster,
     Defense,
-    Guidance,
     Movement,
-    PackMule,
 )
 from modtools.lsx.game import (
     CharacterAbility,
@@ -32,13 +29,8 @@ class Battlemage(Replacer):
     _fast_movement_45: str
     _fast_movement_60: str
     _fast_movement_75: str
-    _pack_mule: str
     _unarmored_defense: str
     _warding: str
-
-    # Spells
-    _arcane_guidance: str
-    _bolster: str
 
     @cached_property
     def _spells_level_2(self) -> str:
@@ -46,8 +38,6 @@ class Battlemage(Replacer):
         spells = SpellList(
             Name=name,
             Spells=[
-                self._arcane_guidance,
-                self._bolster,
                 "Target_Command_Container",
                 "Projectile_EldritchBlast",
             ],
@@ -81,12 +71,8 @@ class Battlemage(Replacer):
 
         self._awareness = Awareness(self.mod).add_awareness(5)
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
-        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
         self._unarmored_defense = Defense(self.mod).add_unarmored_defense(CharacterAbility.INTELLIGENCE)
         self._warding = Defense(self.mod).add_warding()
-
-        self._arcane_guidance = Guidance(self.mod).add_arcane_guidance()
-        self._bolster = Bolster(self.mod).add_bolster()
 
     @progression(CharacterClass.WIZARD_BLADESINGING, 2)
     def wizard_bladesinging_level_2(self, progress: Progression) -> None:
@@ -94,7 +80,6 @@ class Battlemage(Replacer):
         progress.PassivesAdded += [
             self._battle_magic,
             self._fast_movement_30,
-            self._pack_mule,
             "SculptSpells",
             self._unarmored_defense,
             self._warding,

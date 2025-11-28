@@ -12,6 +12,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Equipment
 
 
 class Spartan(Replacer):
@@ -53,6 +54,7 @@ class Spartan(Replacer):
         self._spartan_kick()
         self._spear()
         self._spear_instrument()
+        self._starting_equipment()
         self._tavern_brawler()
 
     def _weapon_boosts(self, damage_type: str, die_sides: int) -> list[str]:
@@ -157,6 +159,42 @@ class Spartan(Replacer):
                 "UnlockSpell(Shout_Bard_Perform_Whistle)",
             ],
         ))
+
+    def _starting_equipment(self) -> None:
+        self.mod.add(Equipment("""
+            new equipment "EQP_CC_Barbarian"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Greataxe"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "ARM_Shoes_Barbarian"
+            add equipmentgroup
+            add equipment entry "ARM_Barbarian"
+            add equipmentgroup
+            add equipment entry "WPN_Handaxe"
+            add equipmentgroup
+            add equipment entry "WPN_Handaxe"
+            add equipmentgroup
+            add equipment entry "WPN_Shortsword"
+            add equipmentgroup
+            add equipment entry "WPN_Shortsword"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+        """))
 
     def _tavern_brawler(self) -> None:
         self.mod.add(PassiveData(

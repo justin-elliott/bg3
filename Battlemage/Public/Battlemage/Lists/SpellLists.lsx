@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Bladesinging spells gained at level 2" />
-                    <attribute id="Spells" type="LSString" value="Battlemage_ArcaneGuidance;Battlemage_Bolster;Target_Command_Container;Projectile_EldritchBlast" />
+                    <attribute id="Spells" type="LSString" value="Target_Command_Container;Projectile_EldritchBlast" />
                     <attribute id="UUID" type="guid" value="87ad6758-42e7-c603-a29a-bac20869e19e" />
                 </node>
                 <node id="SpellList">

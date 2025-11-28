@@ -7,15 +7,8 @@
     <content contentuid="h1d223c1bg4995g30acg6ae8g2e900e0436cb" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h0af46fbcg75dag71b8g0b70g2259edfaa1f8" version="1">Battle Magic</content>
     <content contentuid="hf0290551g2ecfgba69gbd33g9e5a7ca3b88a" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
-    <content contentuid="h2273e8cbg097cg01d2g707fgacff087db7fd" version="1">Pack Mule</content>
-    <content contentuid="ha7c18884gcc76ge6d8gafdcge9ba2b6b2bdb" version="1">Your carrying capacity is increased by [1]%.</content>
     <content contentuid="h5b466b11g77e0g05c4g3390g60e1c5be6cab" version="1">Unarmored Defense</content>
     <content contentuid="hffe9904ag162fg1527ge6beg9337b6f94bd6" version="1">Your body is as resilient as any armour. While not wearing armour, you add your Intelligence &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt;.</content>
     <content contentuid="h5ce68987gc9e9g8aedgcf65g5a7b71e363d6" version="1">Warding</content>
     <content contentuid="h2cf1e45cga5dag2534gd111g20d87a363420" version="1">A magical barrier protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="h8e8d7758gfdbfgddc7gb409g7f2417476efc" version="1">Arcane Guidance</content>
-    <content contentuid="h98d11e63gd953ga620g680ag7036af74bc26" version="1">The target gains a +1d4 bonus to &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt; and &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;, and has &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; checks.</content>
-    <content contentuid="ha1845c6ag31b9g1797g1607g41653f7f924b" version="1">Bolster</content>
-    <content contentuid="hca3b06f4gdea5g4e8agdecfgde72d82235b0" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="he5b95f33g96b9g3a51gf799g230f89f6473d" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
 </contentList>

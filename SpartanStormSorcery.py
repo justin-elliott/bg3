@@ -2,9 +2,25 @@
 import os
 
 from functools import cached_property
-from moddb import character_level_range, Defense, EmpoweredSpells
-from modtools.gamedata import Armor, ObjectData, PassiveData, SpellData, StatusData, Weapon
-from modtools.lsx.game import CharacterAbility, Dependencies, GameObjects, Progression, ProgressionDescription, SpellList
+from moddb import (
+    Awareness,
+    character_level_range,
+    Defense,
+    EmpoweredSpells,
+)
+from modtools.gamedata import (
+    Armor,
+    ObjectData,
+    PassiveData,
+    Weapon,
+)
+from modtools.lsx.game import (
+    CharacterAbility,
+    Dependencies,
+    GameObjects,
+    Progression,
+    ProgressionDescription,
+)
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -35,6 +51,9 @@ class SpartanStormSorcery(Replacer):
         self._add_starting_equipment()
         self._add_treasure_table()
 
+    @cached_property
+    def _awareness(self) -> str:
+        return Awareness(self.mod).add_awareness(3, icon=None)
 
     @cached_property
     def _empowered_spells(self) -> str:
@@ -98,14 +117,39 @@ class SpartanStormSorcery(Replacer):
         return name
 
     @cached_property
-    def _armor_helm(self) -> str:
-        name = f"{self.mod.get_prefix()}_Helm"
+    def _armor_helmet(self) -> str:
+        name = f"{self.mod.get_prefix()}_Helmet"
+        storms_acuity = f"{self.mod.get_prefix()}_StormsAcuity"
+
         self.mod.add(Armor(
             name,
             using="ARM_SPR_Headwear",
             ArmorType="Cloth",
+            Boosts=[],
+            PassivesOnEquip=[self._awareness, storms_acuity],
             Proficiency_Group="",
         ))
+
+        loca = self.mod.get_localization()
+        loca[f"{storms_acuity}_DisplayName"] = {"en": "Storm's Acuity"}
+        loca[f"{storms_acuity}_Description"] = {"en": """
+            When the wearer deals Cold, Lightning, or Thunder damage, they gain
+            <LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY">Arcane Acuity</LSTag>.
+        """}
+
+        self.mod.add(PassiveData(
+            name=storms_acuity,
+            DisplayName=loca[f"{storms_acuity}_DisplayName"],
+            Description=loca[f"{storms_acuity}_Description"],
+            Properties=["OncePerAttack"],
+            StatsFunctorContext=["OnDamage"],
+            Conditions=["IsDamageTypeCold() or IsDamageTypeLightning() or IsDamageTypeThunder()"],
+            StatsFunctors=[
+                "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY,100,2)",
+                "ApplyStatus(SELF,MAG_GISH_ARCANE_ACUITY_DURATION_TECHNICAL,100,1)",
+            ],
+        ))
+
         return name
 
     @cached_property
@@ -136,8 +180,8 @@ class SpartanStormSorcery(Replacer):
         return name
 
     @cached_property
-    def _camp_helm(self) -> str:
-        name = f"{self.mod.get_prefix()}_CampHelm"
+    def _camp_helmet(self) -> str:
+        name = f"{self.mod.get_prefix()}_CampHelmet"
         self.mod.add(Armor(
             name,
             using="CAMP_SPR_Headwear",
@@ -278,11 +322,11 @@ class SpartanStormSorcery(Replacer):
             new treasuretable "{container_name}_TreasureTable"
             CanMerge 1
             new subtable "1,1"
-            object category "I_{self._armor_helm}",1,0,0,0,0,0,0,0
+            object category "I_{self._armor_helmet}",1,0,0,0,0,0,0,0
             new subtable "1,1"
             object category "I_{self._camp_body}",1,0,0,0,0,0,0,0
             new subtable "1,1"
-            object category "I_{self._camp_helm}",1,0,0,0,0,0,0,0
+            object category "I_{self._camp_helmet}",1,0,0,0,0,0,0,0
         """))
 
     @progression(CharacterClass.SORCERER_STORM, 1)

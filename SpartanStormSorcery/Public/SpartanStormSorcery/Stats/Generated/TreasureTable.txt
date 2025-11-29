@@ -8,8 +8,8 @@ object category "I_SpartanStormSorcery_Chest",1,0,0,0,0,0,0,0
 new treasuretable "SpartanStormSorcery_Chest_TreasureTable"
 CanMerge 1
 new subtable "1,1"
-object category "I_SpartanStormSorcery_Helm",1,0,0,0,0,0,0,0
+object category "I_SpartanStormSorcery_Helmet",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SpartanStormSorcery_CampBody",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_SpartanStormSorcery_CampHelm",1,0,0,0,0,0,0,0
+object category "I_SpartanStormSorcery_CampHelmet",1,0,0,0,0,0,0,0

@@ -15,7 +15,7 @@ class Awareness:
         """Initialize."""
         self._mod = mod
 
-    def add_awareness(self, initiative: int = 3) -> str:
+    def add_awareness(self, initiative: int = 3, *, icon: str = "Action_Barbarian_MagicAwareness") -> str:
         """The Awareness passive, a variant of Alert."""
         name = f"{self._mod.get_prefix()}_Awareness"
 
@@ -32,7 +32,7 @@ class Awareness:
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
             DescriptionParams=[str(initiative)],
-            Icon="Action_Barbarian_MagicAwareness",
+            Icon=icon,
             Properties=["ForceShowInCC", "Highlighted"],
             Boosts=[
                 f"Initiative({initiative})",

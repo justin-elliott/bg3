@@ -5,6 +5,10 @@
     <content contentuid="ha991fabbgee23g74c5g9eedg66447057b567" version="1">Your body is as resilient as any armour. While not wearing armour, you add your Charisma &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to your &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt;.</content>
     <content contentuid="hd8f80c72g8e06ga35dg51a5g1c3e01b34c85" version="1">Storm Sorcerer's Spartan Gear</content>
     <content contentuid="h33403651g7c97g9e70g9f9dga4e2be9e17b6" version="1">Forged from blackened steel and reinforced with storm-weathered oak, this heavy chest bears the mark of a Spartan Storm Sorcerer. Its lid is secured by robust iron clasps, etched with subtle, angular lightning bolts that hint at the raw power contained within.</content>
+    <content contentuid="h3b8f64c3g07acg1943ge536g8d575de0442e" version="1">Awareness</content>
+    <content contentuid="h4db16c93g6b05ga3e6g8d5eg6c8e73d0780d" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
+    <content contentuid="h32795c75g5923gc0a0g9850ga37210768802" version="1">Storm's Acuity</content>
+    <content contentuid="hef36742cgfffeg774ege7edg2715170c981a" version="1">When the wearer deals Cold, Lightning, or Thunder damage, they gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt;.</content>
     <content contentuid="h76da934cgf788g5507gbfb0gafd138b9b33e" version="1">Storm Sorcery: Hit Points</content>
     <content contentuid="h5c3c52f2gb6a3g78a2gae36g7178f03af588" version="1">Your &lt;LSTag Tooltip="HitPoints"&gt;hit point&lt;/LSTag&gt; maximum increases by 2 for each Sorcerer level.</content>
     <content contentuid="h224dff77g592fg531dg4115g474bafb3d308" version="1">Empowered Spells</content>

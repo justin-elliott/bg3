@@ -20,6 +20,7 @@ from modtools.lsx.game import (
     GameObjects,
     Progression,
     ProgressionDescription,
+    SpellList,
 )
 from modtools.replacers import (
     CharacterClass,
@@ -45,6 +46,15 @@ class SpartanStormSorcery(Replacer):
             PublishHandle=5219033,
             UUID="dc350aa5-ddc0-5d9a-07a9-65e77a7ac82f",
             Version64=36028797018963972,
+        ))
+
+        self._mod.add(Dependencies.ShortModuleDesc(
+            Folder="ElementalCantrips_295e30e6-bb35-9ecc-0476-f282538ed8bd",
+            MD5="76f275a73b754f8fac756f1d25d69448",
+            Name="Elemental Cantrips",
+            PublishHandle=4397962,
+            UUID="295e30e6-bb35-9ecc-0476-f282538ed8bd",
+            Version64=36169534507319302,
         ))
 
         self.mod.add(character_level_range)
@@ -354,6 +364,22 @@ class SpartanStormSorcery(Replacer):
             object category "I_{self._camp_helmet}",1,0,0,0,0,0,0,0
         """))
 
+    @cached_property
+    def _spelllist_level_1(self) -> str:
+        name = f"{self.mod.get_prefix()} level 1 spells"
+        uuid = self.make_uuid(name)
+        self.mod.add(SpellList(
+            Name=name,
+            Spells=[
+                "Shout_ArmorOfAgathys",
+                "Projectile_LightningBolt",
+                "Projectile_ThunderBolt",
+                "Projectile_WaterBolt",
+            ],
+            UUID=uuid,
+        ))
+        return uuid
+
     @progression(CharacterClass.SORCERER_STORM, 1)
     def spartan_level_1(self, progress: Progression) -> None:
         hp_boost = "IncreaseMaxHP(ClassLevel(Sorcerer)*2)"
@@ -361,6 +387,7 @@ class SpartanStormSorcery(Replacer):
         progress.Boosts = [hp_boost]
         progress.PassivesAdded = ["DevilsSight"]
         progress.Selectors = [
+            f"AddSpells({self._spelllist_level_1})",
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d)",  # Fly
         ]
 

@@ -23,6 +23,14 @@
               <attribute id="UUID" type="FixedString" value="dc350aa5-ddc0-5d9a-07a9-65e77a7ac82f" />
               <attribute id="Version64" type="int64" value="1764416322393936300" />
             </node>
+            <node id="ShortModuleDesc">
+              <attribute id="Folder" type="LSString" value="ElementalCantrips_295e30e6-bb35-9ecc-0476-f282538ed8bd" />
+              <attribute id="MD5" type="LSString" value="76f275a73b754f8fac756f1d25d69448" />
+              <attribute id="Name" type="LSString" value="Elemental Cantrips" />
+              <attribute id="PublishHandle" type="uint64" value="4397962" />
+              <attribute id="UUID" type="FixedString" value="295e30e6-bb35-9ecc-0476-f282538ed8bd" />
+              <attribute id="Version64" type="int64" value="1764416322393936300" />
+            </node>
           </children>
         </node>
         <node id="ModuleInfo">

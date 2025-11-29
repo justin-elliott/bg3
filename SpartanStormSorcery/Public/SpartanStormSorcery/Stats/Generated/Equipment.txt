@@ -21,11 +21,9 @@ add equipment entry "SpartanStormSorcery_Body"
 add equipmentgroup
 add equipment entry "SpartanStormSorcery_Boots"
 add equipmentgroup
-add equipment entry "SpartanStormSorcery_Boots"
+add equipment entry "SpartanStormSorcery_Cloak"
 add equipmentgroup
 add equipment entry "SpartanStormSorcery_Gloves"
-add equipmentgroup
-add equipment entry "SpartanStormSorcery_Helm"
 add equipmentgroup
 add equipment entry "SpartanStormSorcery_SpearInstrument"
 add equipmentgroup
@@ -39,12 +37,8 @@ add equipment entry "OBJ_Keychain"
 add equipmentgroup
 add equipment entry "OBJ_Bag_AlchemyPouch"
 add equipmentgroup
-add equipment entry "SpartanStormSorcery_CampBody"
-add equipmentgroup
 add equipment entry "SpartanStormSorcery_CampBodyCloak"
 add equipmentgroup
 add equipment entry "SpartanStormSorcery_CampBoots"
-add equipmentgroup
-add equipment entry "SpartanStormSorcery_CampHelm"
 add equipmentgroup
 add equipment entry "OBJ_Backpack_CampSupplies"

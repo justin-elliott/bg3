@@ -6,6 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="IncreaseMaxHP(ClassLevel(Sorcerer)*2)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="StormSorcery" />
                     <attribute id="PassivesAdded" type="LSString" value="DevilsSight" />

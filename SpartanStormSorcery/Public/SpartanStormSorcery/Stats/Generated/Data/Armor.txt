@@ -3,13 +3,13 @@
 new entry "SpartanStormSorcery_Body"
 type "Armor"
 using "ARM_SPR_Body"
-data "PassivesOnEquip" "SPR_Unarmored"
+data "PassivesOnEquip" "SpartanStormSorcery_UnarmoredDefense_Charisma"
 
 new entry "SpartanStormSorcery_Boots"
 type "Armor"
 using "ARM_SPR_Boots"
 
-new entry "SpartanStormSorcery_Boots"
+new entry "SpartanStormSorcery_Cloak"
 type "Armor"
 using "ARM_SPR_Cloak"
 
@@ -17,18 +17,10 @@ new entry "SpartanStormSorcery_Gloves"
 type "Armor"
 using "ARM_SPR_Gloves"
 
-new entry "SpartanStormSorcery_Helm"
-type "Armor"
-using "ARM_SPR_Headwear"
-
 new entry "SpartanStormSorcery_SpearInstrument"
 type "Armor"
 using "INS_SPR_Spear"
 data "Boosts" "Proficiency(MusicalInstrument);UnlockSpell(Shout_Bard_Perform_Whistle)"
-
-new entry "SpartanStormSorcery_CampBody"
-type "Armor"
-using "CAMP_SPR_Set_No_Cloak"
 
 new entry "SpartanStormSorcery_CampBodyCloak"
 type "Armor"
@@ -37,6 +29,16 @@ using "CAMP_SPR_Set"
 new entry "SpartanStormSorcery_CampBoots"
 type "Armor"
 using "CAMP_SPR_Boots"
+
+new entry "SpartanStormSorcery_Helm"
+type "Armor"
+using "ARM_SPR_Headwear"
+data "ArmorType" "Cloth"
+data "Proficiency Group" ""
+
+new entry "SpartanStormSorcery_CampBody"
+type "Armor"
+using "CAMP_SPR_Set_No_Cloak"
 
 new entry "SpartanStormSorcery_CampHelm"
 type "Armor"

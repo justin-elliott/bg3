@@ -73,20 +73,6 @@ class SpartanStormSorcery(Replacer):
     def _unarmored_defense(self) -> str:
         return Defense(self.mod).add_unarmored_defense(CharacterAbility.CHARISMA, icon=None)
 
-    def _weapon_boosts(self, damage_type: str, die_sides: int) -> list[str]:
-        return [
-            "WeaponProperty(Magical)",
-            "CannotBeDisarmed()",
-            "ItemReturnToOwner()",
-            "IF(CharacterLevelRange(1,4)):WeaponEnchantment(1)",
-            "IF(CharacterLevelRange(5,8)):WeaponEnchantment(2)",
-            "IF(CharacterLevelRange(9,20)):WeaponEnchantment(3)",
-            f"IF(CharacterLevelRange(5,8)):WeaponDamage(1d{die_sides},{damage_type},Magical)",
-            f"IF(CharacterLevelRange(9,12)):WeaponDamage(2d{die_sides},{damage_type},Magical)",
-            f"IF(CharacterLevelRange(13,16)):WeaponDamage(3d{die_sides},{damage_type},Magical)",
-            f"IF(CharacterLevelRange(17,20)):WeaponDamage(4d{die_sides},{damage_type},Magical)",
-        ]
-
     @cached_property
     def _armor_body(self) -> str:
         name = f"{self.mod.get_prefix()}_Body"
@@ -229,7 +215,22 @@ class SpartanStormSorcery(Replacer):
         self.mod.add(Weapon(
             name,
             using="WPN_SPR_Shield",
-            DefaultBoosts=self._weapon_boosts("Bludgeoning", 4),
+            Boosts=[
+                "AC(1)",
+                "Proficiency(Shields)",
+                "RollBonus(SavingThrow,1)",
+                "UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
+            ],
+            DefaultBoosts=[
+                "WeaponProperty(Magical)",
+                "CannotBeDisarmed()",
+                "WeaponDamage(1d4,Thunder,Magical)",
+            ],
+            PassivesOnEquip=[
+                "MAG_ArcaneEnchantment_Lesser_Passive",
+                "MAG_Legendary_Chromatic_Spellslot_Passive",
+            ],
+            StatusOnEquip=["MAG_THE_CHROMATIC_TECHNICAL"],
         ))
         return name
     
@@ -239,8 +240,25 @@ class SpartanStormSorcery(Replacer):
         self.mod.add(Weapon(
             name,
             using="WPN_SPR_Shortsword",
-            DefaultBoosts=self._weapon_boosts("Piercing", 4),
-            PassivesOnEquip=[],
+            Boosts=[
+                "Proficiency(Shortswords)",
+            ],
+            BoostsOnEquipMainHand=[
+                "UnlockSpell(Target_OpeningAttack)",
+                "UnlockSpell(Target_PiercingThrust)",
+            ],
+            DefaultBoosts=[
+                "WeaponProperty(Magical)",
+                "CannotBeDisarmed()",
+                "WeaponEnchantment(1)",
+                f"WeaponDamage(1d4,Lightning,Magical)",
+            ],
+            PassivesOnEquip=[
+                "MAG_ChargedLightning_Charge_OnDamage_Passive",
+                "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
+                "MAG_Zhentarim_BloodfeederBlade_Rapier_Passive",
+            ],
+            StatusOnEquip=["MAG_BLOODFEEDER_SCARLET_REMITTANCE_REMOVAL_TECHNICAL"],
         ))
         return name
 

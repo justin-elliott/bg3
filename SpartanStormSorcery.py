@@ -95,10 +95,24 @@ class SpartanStormSorcery(Replacer):
     @cached_property
     def _armor_boots(self) -> str:
         name = f"{self.mod.get_prefix()}_Boots"
+
         self.mod.add(Armor(
             name,
             using="ARM_SPR_Boots",
+            PassivesOnEquip=[
+                f"{name}_DifficultTerrain",
+                "LandsStride_Surfaces",
+                "LandsStride_Advantage",
+                "FOR_NightWalkers_WebImmunity",
+            ],
         ))
+
+        self.mod.add(PassiveData(
+            name=f"{name}_DifficultTerrain",
+            using="LandsStride_DifficultTerrain",
+            Icon="",
+        ))
+
         return name
 
     @cached_property
@@ -107,6 +121,9 @@ class SpartanStormSorcery(Replacer):
         self.mod.add(Armor(
             name,
             using="ARM_SPR_Cloak",
+            Boosts=["AC(1)", "RollBonus(SavingThrow,1)"],
+            PassivesOnEquip=["MAG_PHB_Displacement_Cloak_Passive"],
+            StatusOnEquip=["MAG_PHB_CLOAK_OF_DISPLACEMENT_TECHNICAL"],
         ))
         return name
 

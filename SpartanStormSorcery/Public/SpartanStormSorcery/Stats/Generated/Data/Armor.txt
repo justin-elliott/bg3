@@ -9,10 +9,14 @@ data "PassivesOnEquip" "MAG_ArcaneEnchantment_Passive;SpartanStormSorcery_Unarmo
 new entry "SpartanStormSorcery_Boots"
 type "Armor"
 using "ARM_SPR_Boots"
+data "PassivesOnEquip" "SpartanStormSorcery_Boots_DifficultTerrain;LandsStride_Surfaces;LandsStride_Advantage;FOR_NightWalkers_WebImmunity"
 
 new entry "SpartanStormSorcery_Cloak"
 type "Armor"
 using "ARM_SPR_Cloak"
+data "Boosts" "AC(1);RollBonus(SavingThrow,1)"
+data "PassivesOnEquip" "MAG_PHB_Displacement_Cloak_Passive"
+data "StatusOnEquip" "MAG_PHB_CLOAK_OF_DISPLACEMENT_TECHNICAL"
 
 new entry "SpartanStormSorcery_Gloves"
 type "Armor"

@@ -9,6 +9,11 @@ data "Description" "ha991fabbgee23g74c5g9eedg66447057b567"
 data "DisplayName" "h0da7ab0eg1b54ga29ag5592ga62dca0d73b0"
 data "Properties" "Highlighted"
 
+new entry "SpartanStormSorcery_Boots_DifficultTerrain"
+type "PassiveData"
+using "LandsStride_DifficultTerrain"
+data "Icon" ""
+
 new entry "SpartanStormSorcery_Awareness"
 type "PassiveData"
 data "Boosts" "Initiative(3);StatusImmunity(SURPRISED);CriticalHit(AttackTarget,Success,Never)"

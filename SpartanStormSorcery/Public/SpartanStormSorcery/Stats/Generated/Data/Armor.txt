@@ -3,7 +3,8 @@
 new entry "SpartanStormSorcery_Body"
 type "Armor"
 using "ARM_SPR_Body"
-data "PassivesOnEquip" "SpartanStormSorcery_UnarmoredDefense_Charisma"
+data "Boosts" "AC(2)"
+data "PassivesOnEquip" "MAG_ArcaneEnchantment_Passive;SpartanStormSorcery_UnarmoredDefense_Charisma;MAG_MagicEating_Robe_Passive"
 
 new entry "SpartanStormSorcery_Boots"
 type "Armor"
@@ -16,6 +17,8 @@ using "ARM_SPR_Cloak"
 new entry "SpartanStormSorcery_Gloves"
 type "Armor"
 using "ARM_SPR_Gloves"
+data "Boosts" ""
+data "PassivesOnEquip" "MAG_Thunder_Reverberation_Gloves_Passive;MAG_Frost_GenerateFrostOnDamage_Gloves_Passive"
 
 new entry "SpartanStormSorcery_SpearInstrument"
 type "Armor"

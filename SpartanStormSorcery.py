@@ -61,7 +61,7 @@ class SpartanStormSorcery(Replacer):
 
     @cached_property
     def _unarmored_defense(self) -> str:
-        return Defense(self.mod).add_unarmored_defense(CharacterAbility.CHARISMA)
+        return Defense(self.mod).add_unarmored_defense(CharacterAbility.CHARISMA, icon=None)
 
     def _weapon_boosts(self, damage_type: str, die_sides: int) -> list[str]:
         return [
@@ -83,8 +83,11 @@ class SpartanStormSorcery(Replacer):
         self.mod.add(Armor(
             name,
             using="ARM_SPR_Body",
+            Boosts=["AC(2)"],
             PassivesOnEquip=[
+                "MAG_ArcaneEnchantment_Passive",
                 self._unarmored_defense,
+                "MAG_MagicEating_Robe_Passive",
             ],
         ))
         return name
@@ -113,6 +116,11 @@ class SpartanStormSorcery(Replacer):
         self.mod.add(Armor(
             name,
             using="ARM_SPR_Gloves",
+            Boosts=[],
+            PassivesOnEquip=[
+                "MAG_Thunder_Reverberation_Gloves_Passive",
+                "MAG_Frost_GenerateFrostOnDamage_Gloves_Passive",
+            ],
         ))
         return name
 

@@ -7,7 +7,6 @@ data "BoostContext" "OnEquip;OnCreate"
 data "Boosts" "ACOverrideFormula(10,true,Dexterity,Charisma)"
 data "Description" "ha991fabbgee23g74c5g9eedg66447057b567"
 data "DisplayName" "h0da7ab0eg1b54ga29ag5592ga62dca0d73b0"
-data "Icon" "PassiveFeature_UnarmoredDefense"
 data "Properties" "Highlighted"
 
 new entry "SpartanStormSorcery_Awareness"

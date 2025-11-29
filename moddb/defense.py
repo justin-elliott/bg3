@@ -110,7 +110,7 @@ class Defense:
         ))
         return spell_list
 
-    def add_unarmored_defense(self, ability: CharacterAbility) -> str:
+    def add_unarmored_defense(self, ability: CharacterAbility, *, icon: str = "PassiveFeature_UnarmoredDefense") -> str:
         ability_name = ability.name.title()
 
         name = f"{self._mod.get_prefix()}_UnarmoredDefense_{ability_name}"
@@ -128,7 +128,7 @@ class Defense:
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            Icon="PassiveFeature_UnarmoredDefense",
+            Icon=icon,
             Properties=["Highlighted"],
             BoostContext=["OnEquip", "OnCreate"],
             BoostConditions=["not WearingArmor(context.Source) and not HasShieldEquipped(context.Source)"],

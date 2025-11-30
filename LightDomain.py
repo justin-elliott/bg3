@@ -2,9 +2,9 @@
 from functools import cached_property
 import os
 
-from moddb import BattleMagic
+from moddb import BattleMagic, EmpoweredSpells
 from modtools.gamedata import SpellData
-from modtools.lsx.game import Progression, SpellList
+from modtools.lsx.game import CharacterAbility, Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -26,12 +26,23 @@ class LightDomain(Replacer):
         return BattleMagic(self.mod).add_battle_magic()
 
     @cached_property
-    def _twin_firebolt(self) -> str:
-        name = f"{self.mod.get_prefix()}_TwinFirebolt"
+    def _empowered_spells(self) -> str:
+        return EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
+
+    @cached_property
+    def _twinned_firebolt(self) -> str:
+        name = f"{self.mod.get_prefix()}_TwinnedFireBolt"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Twinned Fire Bolt"}
+        loca[f"{name}_Description"] = {"en": "Hurl two motes of fire."}
+
         self.mod.add(SpellData(
             name,
             using="Projectile_FireBolt",
             SpellType="Projectile",
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
             AmountOfTargets="2",
         ))
         return name
@@ -42,7 +53,7 @@ class LightDomain(Replacer):
         uuid = self.make_uuid(name)
         self.mod.add(SpellList(
             Name=name,
-            Spells=[self._twin_firebolt],
+            Spells=[self._twinned_firebolt],
             UUID=uuid,
         ))
         return uuid
@@ -110,8 +121,8 @@ class LightDomain(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.CLERIC_LIGHT, 10)
-    def lightdomain_level_10(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def lightdomain_level_10(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._empowered_spells]
 
     @progression(CharacterClass.CLERIC_LIGHT, 11)
     def lightdomain_level_11(self, progress: Progression) -> None:

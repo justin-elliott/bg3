@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Light Domain Cleric Additional Level 1 Spell List" />
-                    <attribute id="Spells" type="LSString" value="LightDomain_TwinFirebolt" />
+                    <attribute id="Spells" type="LSString" value="LightDomain_TwinnedFireBolt" />
                     <attribute id="UUID" type="guid" value="63959c1a-054f-a252-ed48-bc2b66ecdafc" />
                 </node>
                 <node id="SpellList">

@@ -12,7 +12,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Light Domain Cleric Additional Level 5 Spell List" />
-                    <attribute id="Spells" type="LSString" value="Target_Counterspell;Target_MistyStep" />
+                    <attribute id="Spells" type="LSString" value="Target_Counterspell;LightDomain_MistyStep" />
                     <attribute id="UUID" type="guid" value="eed41621-276d-fcbb-78f7-37e1eb8de4b2" />
                 </node>
             </children>

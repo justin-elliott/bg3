@@ -2,7 +2,7 @@
 from functools import cached_property
 import os
 
-from moddb import BattleMagic, EmpoweredSpells
+from moddb import BattleMagic, EmpoweredSpells, Movement
 from modtools.gamedata import SpellData
 from modtools.lsx.game import CharacterAbility, Progression, SpellList
 from modtools.replacers import (
@@ -28,6 +28,10 @@ class LightDomain(Replacer):
     @cached_property
     def _empowered_spells(self) -> str:
         return EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
+
+    @cached_property
+    def _misty_step(self) -> str:
+        return Movement(self.mod).add_misty_step()
 
     @cached_property
     def _twinned_firebolt(self) -> str:
@@ -64,7 +68,7 @@ class LightDomain(Replacer):
         uuid = self.make_uuid(name)
         self.mod.add(SpellList(
             Name=name,
-            Spells=["Target_Counterspell", "Target_MistyStep"],
+            Spells=["Target_Counterspell", self._misty_step],
             UUID=uuid,
         ))
         return uuid

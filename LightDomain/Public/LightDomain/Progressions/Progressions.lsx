@@ -253,14 +253,6 @@
                     <attribute id="UUID" type="guid" value="caf6d4b9-4233-4d67-af18-3a4ba3ea9996" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="10" />
-                    <attribute id="Name" type="LSString" value="LightDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="LightDomain_EmpoweredSpells_WisdomModifier" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
-                    <attribute id="UUID" type="guid" value="acdd3440-40fd-5229-8f4c-77009e4e685a" />
-                </node>
-                <node id="Progression">
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="LightDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />

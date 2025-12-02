@@ -82,8 +82,6 @@ class Movement:
             using="Target_MistyStep",
             SpellType="Target",
             Level="",
-            SpellSchool="None",
-            Sheathing="Sheathed",
             SpellStyleGroup="Class",
             UseCosts=use_costs,
         ))

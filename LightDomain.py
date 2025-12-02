@@ -2,15 +2,16 @@
 from functools import cached_property
 import os
 
-from moddb import BattleMagic, EmpoweredSpells, Movement
+from moddb import BattleMagic, Movement
 from modtools.gamedata import SpellData
-from modtools.lsx.game import CharacterAbility, Progression, SpellList
+from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
     progression,
     Replacer,
 )
+from modtools.text import Script
 
 
 class LightDomain(Replacer):
@@ -21,13 +22,19 @@ class LightDomain(Replacer):
                          description="A class replacer for LightDomain.",
                          **kwds)
 
+        self.mod.add(Script(f"""
+        -- Test for a Cleric cantrip.
+        function IsClericCantrip()
+            return SpellId('Target_SacredFlame')
+            | SpellId('Target_TollTheDead')
+            | SpellId('Target_BurstingSinew')
+            | SpellId('{self._twinned_firebolt}')
+        end
+        """))
+
     @cached_property
     def _battle_magic(self) -> str:
         return BattleMagic(self.mod).add_battle_magic()
-
-    @cached_property
-    def _empowered_spells(self) -> str:
-        return EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
 
     @cached_property
     def _misty_step(self) -> str:
@@ -125,8 +132,8 @@ class LightDomain(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.CLERIC_LIGHT, 10)
-    def lightdomain_level_10(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._empowered_spells]
+    def lightdomain_level_10(self, _: Progression) -> None:
+        raise DontIncludeProgression()
 
     @progression(CharacterClass.CLERIC_LIGHT, 11)
     def lightdomain_level_11(self, progress: Progression) -> None:

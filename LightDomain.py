@@ -82,7 +82,7 @@ class LightDomain(Replacer):
         name = f"{self.mod.get_prefix()}_RingOfHillGiantStrength"
 
         strength = "22"
-        damage_bonus = "DamageBonus(1d4,Bludgeoning)"
+        damage_bonus = "1d4,Bludgeoning"
 
         loca = self.mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Ring of Hill Giant Strength"}
@@ -110,7 +110,8 @@ class LightDomain(Replacer):
             name,
             using="_Ring_Magic",
             PassivesOnEquip=[hill_giant_strength, heavy_blows],
-            Rarity="VeryRare",
+            Rarity="Legendary",
+            RootTemplate=ring_uuid,
         ))
 
         loca[f"{hill_giant_strength}_DisplayName"] = {"en": "Hill Giant Strength"}
@@ -135,8 +136,8 @@ class LightDomain(Replacer):
             heavy_blows,
             DisplayName=loca[f"{heavy_blows}_DisplayName"],
             Description=loca[f"{heavy_blows}_Description"],
-            DescriptionParams=[damage_bonus],
-            Boosts=[f"IF(IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()):{damage_bonus}"]
+            DescriptionParams=[f"DealDamage({damage_bonus})"],
+            Boosts=[f"IF(IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()):DamageBonus({damage_bonus})"]
         ))
 
         return name

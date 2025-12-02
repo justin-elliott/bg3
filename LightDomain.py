@@ -43,7 +43,7 @@ class LightDomain(Replacer):
         name = f"{self.mod.get_prefix()}_Equipment"
 
         self.mod.add(Equipment(f"""
-            new equipment "EQP_CC_Cleric_LightDomain"
+            new equipment "{name}"
             add initialweaponset "Melee"
             add equipmentgroup
             add equipment entry "WPN_Mace"

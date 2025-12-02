@@ -3,6 +3,15 @@
 <contentList>
     <content contentuid="h0c75949cgbdb3gb2cfge7dfgaeb9cc347aba" version="1">Twinned Fire Bolt</content>
     <content contentuid="h0561090dgb25aga644g3886g00856de0bca3" version="1">Hurl two motes of fire.</content>
+    <content contentuid="h14741a31g0dbcge439g7619gcf5c938cbc6a" version="1">Ring of Hill Giant Strength</content>
+    <content contentuid="hfc45f031g515fg2f52g63f6g78fed66303f7" version="1">This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants the wearer the raw, unrefined might of a hill giant.</content>
+    <content contentuid="h77f8f435g7429g12a0g222cg3debdb715d1b" version="1">Hill Giant Strength</content>
+    <content contentuid="h529f4025g8be8g8d5eg7474gb2eb10c06f33" version="1">Your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases to [1].</content>
+    <content contentuid="h1ce3faacgddadg59bfg5ff7g3ea49c7ec255" version="1">Heavy Blows</content>
+    <content contentuid="h80f52a42gb553g0661g1d8fgcc73cac0b312" version="1">Your melee weapon and unarmed attacks deal an additional [1].</content>
     <content contentuid="h3770cde6g4817gb162gdd1agfdcac40b8c5f" version="1">Battle Magic</content>
     <content contentuid="h659480d8gbe43gb1ddgf234g3e9efd1dc315" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="hf6a7405bgca86g170fgb938g4b702caad440" version="1">Bolster</content>
+    <content contentuid="hc8f25380gd2f2g1778ga070gb154e875117e" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="hc8b4f385g1622gd0e1g9ce5gda48b1263ce4" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
 </contentList>

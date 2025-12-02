@@ -2,16 +2,22 @@
 from functools import cached_property
 import os
 
-from moddb import BattleMagic, Movement
-from modtools.gamedata import SpellData
-from modtools.lsx.game import Progression, SpellList
+from moddb import BattleMagic, Bolster, Movement
+from modtools.gamedata import Armor, PassiveData, SpellData
+from modtools.lsx.game import (
+    ClassDescription,
+    GameObjects,
+    Progression,
+    SpellList,
+)
 from modtools.replacers import (
     CharacterClass,
+    class_description,
     DontIncludeProgression,
     progression,
     Replacer,
 )
-from modtools.text import Script
+from modtools.text import Equipment, Script
 
 
 class LightDomain(Replacer):
@@ -23,18 +29,125 @@ class LightDomain(Replacer):
                          **kwds)
 
         self.mod.add(Script(f"""
-        -- Test for a Cleric cantrip.
-        function IsClericCantrip()
-            return SpellId('Target_SacredFlame')
-            | SpellId('Target_TollTheDead')
-            | SpellId('Target_BurstingSinew')
-            | SpellId('{self._twinned_firebolt}')
-        end
+            -- Test for a Cleric cantrip.
+            function IsClericCantrip()
+                return SpellId('Target_SacredFlame')
+                | SpellId('Target_TollTheDead')
+                | SpellId('Target_BurstingSinew')
+                | SpellId('{self._twinned_firebolt}')
+            end
         """))
+
+    @cached_property
+    def _equipment(self) -> str:
+        name = f"{self.mod.get_prefix()}_Equipment"
+
+        self.mod.add(Equipment(f"""
+            new equipment "EQP_CC_Cleric_LightDomain"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Mace"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "ARM_Shield"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "ARM_Boots_Leather"
+            add equipmentgroup
+            add equipment entry "ARM_ChainShirt_Body"
+            add equipmentgroup
+            add equipment entry "{self._ring_of_hill_giant_strength}"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+        """))
+
+        return name
+
+    @cached_property
+    def _ring_of_hill_giant_strength(self) -> str:
+        name = f"{self.mod.get_prefix()}_RingOfHillGiantStrength"
+
+        strength = "22"
+        damage_bonus = "DamageBonus(1d4,Bludgeoning)"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Ring of Hill Giant Strength"}
+        loca[f"{name}_Description"] = {"en": f"""
+            This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants
+            the wearer the raw, unrefined might of a hill giant.
+        """}
+
+        ring_uuid = self.mod.make_uuid(name)
+        self.mod.add(GameObjects(
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            LevelName="",
+            MapKey=ring_uuid,
+            ParentTemplateId="1abd032b-c138-45ee-b85e-62b5bbb6ea2d",
+            Name=name,
+            Stats=name,
+            Type="item",
+        ))
+
+        hill_giant_strength = f"{self.mod.get_prefix()}_HillGiantStrength"
+        heavy_blows = f"{self.mod.get_prefix()}_HeavyBlows"
+
+        self.mod.add(Armor(
+            name,
+            using="_Ring_Magic",
+            PassivesOnEquip=[hill_giant_strength, heavy_blows],
+            Rarity="VeryRare",
+        ))
+
+        loca[f"{hill_giant_strength}_DisplayName"] = {"en": "Hill Giant Strength"}
+        loca[f"{hill_giant_strength}_Description"] = {"en": f"""
+            Your <LSTag Tooltip="Strength">Strength</LSTag> increases to [1].
+        """}
+
+        self.mod.add(PassiveData(
+            hill_giant_strength,
+            DisplayName=loca[f"{hill_giant_strength}_DisplayName"],
+            Description=loca[f"{hill_giant_strength}_Description"],
+            DescriptionParams=[strength],
+            Boosts=[f"AbilityOverrideMinimum(Strength,{strength})"]
+        ))
+
+        loca[f"{heavy_blows}_DisplayName"] = {"en": "Heavy Blows"}
+        loca[f"{heavy_blows}_Description"] = {"en": f"""
+            Your melee weapon and unarmed attacks deal an additional [1].
+        """}
+
+        self.mod.add(PassiveData(
+            heavy_blows,
+            DisplayName=loca[f"{heavy_blows}_DisplayName"],
+            Description=loca[f"{heavy_blows}_Description"],
+            DescriptionParams=[damage_bonus],
+            Boosts=[f"IF(IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()):{damage_bonus}"]
+        ))
+
+        return name
 
     @cached_property
     def _battle_magic(self) -> str:
         return BattleMagic(self.mod).add_battle_magic()
+
+    @cached_property
+    def _bolster(self) -> str:
+        return Bolster(self.mod).add_bolster()
 
     @cached_property
     def _misty_step(self) -> str:
@@ -64,7 +177,7 @@ class LightDomain(Replacer):
         uuid = self.make_uuid(name)
         self.mod.add(SpellList(
             Name=name,
-            Spells=[self._twinned_firebolt],
+            Spells=[self._bolster, self._twinned_firebolt],
             UUID=uuid,
         ))
         return uuid
@@ -79,6 +192,10 @@ class LightDomain(Replacer):
             UUID=uuid,
         ))
         return uuid
+
+    @class_description(CharacterClass.CLERIC_LIGHT)
+    def lightdomain_class_description(self, desc: ClassDescription) -> None:
+        desc.ClassEquipment = self._equipment
 
     @progression(CharacterClass.CLERIC_LIGHT, 1)
     def lightdomain_level_1(self, progress: Progression) -> None:

@@ -2,9 +2,20 @@
 from functools import cached_property
 import os
 
-from moddb import Bolster, spells_always_prepared
-from modtools.gamedata import PassiveData
-from modtools.lsx.game import ClassDescription, Progression, SpellList
+from moddb import (
+    BattleMagic,
+    Bolster,
+    EmpoweredSpells,
+    spells_always_prepared,
+)
+from modtools.gamedata import Armor, PassiveData
+from modtools.lsx.game import (
+    CharacterAbility,
+    ClassDescription,
+    GameObjects,
+    Progression,
+    SpellList,
+)
 from modtools.replacers import (
     CharacterClass,
     class_description,
@@ -12,6 +23,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Equipment
 
 
 class StormSorcery(Replacer):
@@ -23,8 +35,117 @@ class StormSorcery(Replacer):
                          **kwds)
 
     @cached_property
+    def _equipment(self) -> str:
+        name = f"{self.mod.get_prefix()}_Equipment"
+
+        self.mod.add(Equipment(f"""
+            new equipment "{name}"
+            add initialweaponset "Melee"
+            add equipmentgroup
+            add equipment entry "WPN_Quarterstaff"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "OBJ_Potion_Healing"
+            add equipmentgroup
+            add equipment entry "ARM_Shoes"
+            add equipmentgroup
+            add equipment entry "ARM_Robe_Body_Sorcerer_StormSorcery"
+            add equipmentgroup
+            add equipment entry "{self._ring_of_frost_giant_strength}"
+            add equipmentgroup
+            add equipment entry "OBJ_Scroll_Revivify"
+            add equipmentgroup
+            add equipment entry "OBJ_Keychain"
+            add equipmentgroup
+            add equipment entry "OBJ_Bag_AlchemyPouch"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Body"
+            add equipmentgroup
+            add equipment entry "ARM_Camp_Shoes"
+            add equipmentgroup
+            add equipment entry "OBJ_Backpack_CampSupplies"
+        """))
+
+        return name
+
+    @cached_property
+    def _ring_of_frost_giant_strength(self) -> str:
+        name = f"{self.mod.get_prefix()}_RingOfFrostGiantStrength"
+
+        strength = "23"
+        damage_bonus = "1d4,Cold"
+
+        loca = self.mod.get_localization()
+        loca[f"{name}_DisplayName"] = {"en": "Ring of Frost Giant Strength"}
+        loca[f"{name}_Description"] = {"en": f"""
+            Forged from polished silver and etched with icy runes, this ring is painfully cold to the touch, granting
+            the wearer the massive, chilling strength of a frost giant.
+        """}
+
+        ring_uuid = self.mod.make_uuid(name)
+        self.mod.add(GameObjects(
+            DisplayName=loca[f"{name}_DisplayName"],
+            Description=loca[f"{name}_Description"],
+            Icon="Item_MAG_PHB_Ring_Of_Protection",
+            LevelName="",
+            MapKey=ring_uuid,
+            ParentTemplateId="1abd032b-c138-45ee-b85e-62b5bbb6ea2d",
+            Name=name,
+            Stats=name,
+            Type="item",
+        ))
+
+        hill_giant_strength = f"{self.mod.get_prefix()}_HillGiantStrength"
+        chilling_blows = f"{self.mod.get_prefix()}_ChillingBlows"
+
+        self.mod.add(Armor(
+            name,
+            using="_Ring_Magic",
+            PassivesOnEquip=[hill_giant_strength, chilling_blows],
+            Rarity="Legendary",
+            RootTemplate=ring_uuid,
+        ))
+
+        loca[f"{hill_giant_strength}_DisplayName"] = {"en": "Hill Giant Strength"}
+        loca[f"{hill_giant_strength}_Description"] = {"en": f"""
+            Your <LSTag Tooltip="Strength">Strength</LSTag> increases to [1].
+        """}
+
+        self.mod.add(PassiveData(
+            hill_giant_strength,
+            DisplayName=loca[f"{hill_giant_strength}_DisplayName"],
+            Description=loca[f"{hill_giant_strength}_Description"],
+            DescriptionParams=[strength],
+            Boosts=[f"AbilityOverrideMinimum(Strength,{strength})"]
+        ))
+
+        loca[f"{chilling_blows}_DisplayName"] = {"en": "Chilling Blows"}
+        loca[f"{chilling_blows}_Description"] = {"en": f"""
+            Your melee weapon and unarmed attacks deal an additional [1].
+        """}
+
+        self.mod.add(PassiveData(
+            chilling_blows,
+            DisplayName=loca[f"{chilling_blows}_DisplayName"],
+            Description=loca[f"{chilling_blows}_Description"],
+            DescriptionParams=[f"DealDamage({damage_bonus})"],
+            Boosts=[f"IF(IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()):DamageBonus({damage_bonus})"]
+        ))
+
+        return name
+
+    @cached_property
+    def _battle_magic(self) -> str:
+        return BattleMagic(self.mod).add_battle_magic()
+
+    @cached_property
     def _bolster(self) -> str:
         return Bolster(self.mod).add_bolster()
+
+    @cached_property
+    def _empowered_spells(self) -> str:
+        return EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.CHARISMA)
 
     @cached_property
     def _electrostatic_generator(self) -> str:
@@ -91,6 +212,7 @@ class StormSorcery(Replacer):
             Spells=[
                 "Shout_ArmorOfAgathys",
                 self._bolster,
+                "Target_BoomingBlade",
                 "Projectile_RayOfFrost",
                 "Target_ShockingGrasp",
             ],
@@ -103,9 +225,13 @@ class StormSorcery(Replacer):
     @class_description(CharacterClass.SORCERER_SHADOWMAGIC)
     @class_description(CharacterClass.SORCERER_STORM)
     @class_description(CharacterClass.SORCERER_WILDMAGIC)
-    def sorcerer_can_learn_spells(self, description: ClassDescription) -> None:
-        description.CanLearnSpells = True
-        description.MustPrepareSpells = True
+    def sorcerer_can_learn_spells(self, desc: ClassDescription) -> None:
+        desc.CanLearnSpells = True
+        desc.MustPrepareSpells = True
+
+    @class_description(CharacterClass.SORCERER_STORM)
+    def stormsorcery_equipment(self, desc: ClassDescription) -> None:
+        desc.ClassEquipment = self._equipment
 
     @progression(CharacterClass.SORCERER, range(1, 21))
     @progression(CharacterClass.SORCERER, 1, is_multiclass=True)
@@ -113,21 +239,29 @@ class StormSorcery(Replacer):
     @progression(CharacterClass.SORCERER_SHADOWMAGIC, range(1, 21))
     @progression(CharacterClass.SORCERER_STORM, range(1, 21))
     @progression(CharacterClass.SORCERER_WILDMAGIC, range(1, 21))
-    def sorcerer_spells_always_prepared(self, progression: Progression) -> None:
-        if not spells_always_prepared(progression):
+    def sorcerer_spells_always_prepared(self, progress: Progression) -> None:
+        if not spells_always_prepared(progress):
             raise DontIncludeProgression()
 
     @progression(CharacterClass.SORCERER_STORM, 1)
     def stormsorcery_level_1(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._electrostatic_generator, self._wintry_mix]
+        progress.PassivesAdded = [
+            self._battle_magic,
+            self._electrostatic_generator,
+            self._wintry_mix,
+        ]
         progress.Selectors = [
             f"AddSpells({self._spelllist_level_1},,,,AlwaysPrepared)",
             "AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)",  # Fly
         ]
 
     @progression(CharacterClass.SORCERER_STORM, 2)
-    def stormsorcery_level_2(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def stormsorcery_level_2(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["JackOfAllTrades", "SculptSpells"]
+        progress.Selectors = [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+        ]
 
     @progression(CharacterClass.SORCERER_STORM, 3)
     def stormsorcery_level_3(self, _: Progression) -> None:
@@ -138,8 +272,8 @@ class StormSorcery(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.SORCERER_STORM, 5)
-    def stormsorcery_level_5(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def stormsorcery_level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["ExtraAttack"]
 
     @progression(CharacterClass.SORCERER_STORM, 6)
     def stormsorcery_level_6(self, _: Progression) -> None:
@@ -150,8 +284,8 @@ class StormSorcery(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.SORCERER_STORM, 8)
-    def stormsorcery_level_8(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def stormsorcery_level_8(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._empowered_spells]
 
     @progression(CharacterClass.SORCERER_STORM, 9)
     def stormsorcery_level_9(self, _: Progression) -> None:
@@ -162,8 +296,9 @@ class StormSorcery(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.SORCERER_STORM, 11)
-    def stormsorcery_level_11(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def stormsorcery_level_11(self, progress: Progression) -> None:
+        progress.PassivesAdded += ["ExtraAttack_2"]
+        progress.PassivesRemoved = ["ExtraAttack"]
 
     @progression(CharacterClass.SORCERER_STORM, 12)
     def stormsorcery_level_12(self, _: Progression) -> None:
@@ -198,8 +333,9 @@ class StormSorcery(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.SORCERER_STORM, 20)
-    def stormsorcery_level_20(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def stormsorcery_level_20(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["ExtraAttack_3"]
+        progress.PassivesRemoved = ["ExtraAttack_2"]
 
 
 def main() -> None:

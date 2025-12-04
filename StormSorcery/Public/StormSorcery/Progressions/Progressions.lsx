@@ -252,11 +252,28 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="StormSorcery" />
-                    <attribute id="PassivesAdded" type="LSString" value="StormSorcery_ElectrostaticGenerator;StormSorcery_WintryMix" />
+                    <attribute id="PassivesAdded" type="LSString" value="StormSorcery_BattleMagic;StormSorcery_ElectrostaticGenerator;StormSorcery_WintryMix" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(1118b5b2-69ba-8586-3595-313b4085c7e6,,,,AlwaysPrepared);AddSpells(12150e11-267a-4ecc-a3cc-292c9e2a198d,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
                     <attribute id="UUID" type="guid" value="6a973653-70d4-46dc-a634-315b47ef336e" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="2" />
+                    <attribute id="Name" type="LSString" value="StormSorcery" />
+                    <attribute id="PassivesAdded" type="LSString" value="JackOfAllTrades;SculptSpells" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
+                    <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
+                    <attribute id="UUID" type="guid" value="d080683d-7efc-1a80-145a-737154e9ab8b" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="StormSorcery" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
+                    <attribute id="UUID" type="guid" value="0d77e0ea-b0a8-56fd-0fb3-4c20f86a799c" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="6" />
@@ -266,6 +283,32 @@
                     <attribute id="Selectors" type="LSString" value="AddSpells(1efc151d-f076-4ab9-9886-d8c5625691c9,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
                     <attribute id="UUID" type="guid" value="daca4d03-f668-4c71-a013-4532cba886f5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="8" />
+                    <attribute id="Name" type="LSString" value="StormSorcery" />
+                    <attribute id="PassivesAdded" type="LSString" value="StormSorcery_EmpoweredSpells_CharismaModifier" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
+                    <attribute id="UUID" type="guid" value="c58632b7-d17f-0666-df84-6c90a66f27d9" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="StormSorcery" />
+                    <attribute id="PassivesAdded" type="LSString" value="StormsFury;ExtraAttack_2" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
+                    <attribute id="UUID" type="guid" value="18a0cd31-027a-41ab-ae20-0131332a0439" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="20" />
+                    <attribute id="Name" type="LSString" value="StormSorcery" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_3" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack_2" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="fac6ea25-a7f8-4793-b331-d884041e5adb" />
+                    <attribute id="UUID" type="guid" value="e54d0842-7ad0-5f67-d8da-f2a685da0fc0" />
                 </node>
             </children>
         </node>

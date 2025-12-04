@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="StormSorcery level 1 spells" />
-                    <attribute id="Spells" type="LSString" value="Shout_ArmorOfAgathys;StormSorcery_Bolster;Target_BoomingBlade;Projectile_RayOfFrost;Target_ShockingGrasp" />
+                    <attribute id="Spells" type="LSString" value="Shout_ArmorOfAgathys;StormSorcery_Bolster;Target_BoomingBlade_ClassSpell;Projectile_RayOfFrost;Target_ShockingGrasp" />
                     <attribute id="UUID" type="guid" value="1118b5b2-69ba-8586-3595-313b4085c7e6" />
                 </node>
             </children>

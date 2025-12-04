@@ -212,7 +212,7 @@ class StormSorcery(Replacer):
             Spells=[
                 "Shout_ArmorOfAgathys",
                 self._bolster,
-                "Target_BoomingBlade",
+                "Target_BoomingBlade_ClassSpell",
                 "Projectile_RayOfFrost",
                 "Target_ShockingGrasp",
             ],

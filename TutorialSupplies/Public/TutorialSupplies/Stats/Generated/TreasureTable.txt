@@ -10,4 +10,6 @@ CanMerge 1
 new subtable "1,1"
 object category "I_TutorialSupplies_BolsterPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_TutorialSupplies_KnowledgePotion",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_RingOfHillGiantMight",1,0,0,0,0,0,0,0

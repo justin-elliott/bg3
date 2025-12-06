@@ -1,10 +1,16 @@
+from collections import OrderedDict
 from functools import cache, cached_property
 from typing import Iterable
 from uuid import UUID
 
 from moddb import Bolster
-from modtools.gamedata import Armor, PassiveData, ObjectData, StatusData
-from modtools.localization import Localization
+from modtools.gamedata import (
+    Armor,
+    PassiveData,
+    ObjectData,
+    SpellData,
+    StatusData,
+)
 from modtools.lsx.game import GameObjects
 from modtools.replacers import Mod
 from modtools.text import TreasureTable
@@ -30,6 +36,7 @@ class TutorialSupplies(Mod):
             description="Equipment.",
             items=[
                 self._bolster_potion,
+                self._knowledge_potion,
                 self._ring_of_hill_giant_might,
             ],
         )
@@ -49,6 +56,99 @@ class TutorialSupplies(Mod):
             icon="Item_CONS_Drink_Potion_B",
             boosts=[f"UnlockSpell({self._bolster})"],
         )
+    
+    @cached_property
+    def _knowledge_potion(self) -> str:
+        return self._add_potion(
+            "KnowledgePotion",
+            display_name="Elixir of Knowledge",
+            description=f"""
+                Drinking this elixir grants
+                <LSTag Type="Spell" Tooltip="{self._knowledge_of_the_ages}">Knowledge of the Ages</LSTag>, and
+                <LSTag Type="Passive" Tooltip="JackOfAllTrades">Jack of All Trades</LSTag>.
+            """,
+            icon="Item_CONS_Potion_Invulnerability",
+            boosts=[f"UnlockSpell({self._knowledge_of_the_ages})"],
+            passives=["JackOfAllTrades"],
+        )
+    
+    @cached_property
+    def _knowledge_of_the_ages(self) -> None:
+        name = f"{self.get_prefix()}_KnowledgeOfTheAges"
+
+        ability_skills: OrderedDict[str, list[str]] = OrderedDict([
+            ("Charisma", ["Deception", "Intimidation", "Performance", "Persuasion"]),
+            ("Dexterity", ["Acrobatics", "SleightOfHand", "Stealth"]),
+            ("Intelligence", ["Arcana", "History", "Investigation", "Nature", "Religion"]),
+            ("Strength", ["Athletics"]),
+            ("Wisdom", ["AnimalHandling", "Insight", "Medicine", "Perception", "Survival"]),
+        ])
+        written_names: dict[str, str] = {
+            "SleightOfHand": "Sleight of Hand",
+            "AnimalHandling": "Animal Handling",
+        }
+
+        container_spells: list[SpellData] = []
+        for ability in ability_skills.keys():
+            container_spell_name = f"{name}_{ability}"
+            status_name = container_spell_name.upper()
+
+            skills = ability_skills[ability]
+            written_skills = [written_names.get(skill, skill) for skill in skills]
+            skill_list = ""
+            if len(written_skills) == 1:
+                skill_list = written_skills[0]
+            else:
+                skill_list = f"{", ".join(written_skills[:-1])}, and {written_skills[-1]}"
+            
+            self.loca[f"{container_spell_name}_Description"] = f"""
+                Gain <LSTag Tooltip="Expertise">Expertise</LSTag> in {skill_list}.
+            """
+            self.loca[f"{status_name}_Description"] = f"""
+                Has <LSTag Tooltip="Expertise">Expertise</LSTag> in {skill_list}.
+            """
+
+            self.add(StatusData(
+                status_name,
+                using=f"KNOWLEDGE_OF_THE_AGES_{ability.upper()}",
+                StatusType="BOOST",
+                Description=self.loca[f"{status_name}_Description"],
+                Boosts=[
+                    *[f"ProficiencyBonus(Skill,{skill})" for skill in skills],
+                    *[f"ExpertiseBonus({skill})" for skill in skills],
+                ],
+                StatusPropertyFlags=["IgnoreResting"],
+            ))
+
+            container_spells.append(SpellData(
+                container_spell_name,
+                using=f"Shout_KnowledgeOfTheAges_{ability}",
+                SpellType="Shout",
+                Description=self.loca[f"{container_spell_name}_Description"],
+                SpellContainerID=name,
+                SpellProperties=[f"ApplyStatus({status_name},100,-1)"],
+                TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
+                UseCosts=["ActionPoint:1"],
+            ))
+
+        self.loca[f"{name}_Description"] = """
+            Gain <LSTag Tooltip="Expertise">Expertise</LSTag> in all <LSTag Tooltip="Skill">Skills</LSTag> of a chosen
+            <LSTag Tooltip="Abilities">Ability</LSTag>.
+        """
+
+        self.add(SpellData(
+            name,
+            using="Shout_KnowledgeOfTheAges",
+            SpellType="Shout",
+            Description=self.loca[f"{name}_Description"],
+            ContainerSpells=[spell.name for spell in container_spells],
+            TooltipStatusApply=container_spells[0].TooltipStatusApply,
+            UseCosts=["ActionPoint:1"],
+        ))
+        for spell in container_spells:
+            self.add(spell)
+        
+        return name
 
     @cached_property
     def _ring_of_hill_giant_might(self) -> str:
@@ -334,7 +434,6 @@ class TutorialSupplies(Mod):
             ObjectCategory="",
         ))
         return name
-
 
 
 if __name__ == "__main__":

@@ -13,6 +13,11 @@ type "Object"
 using "TutorialSupplies_BasePotion"
 data "RootTemplate" "b2c74846-06d5-bac3-a3f5-aac38cd99bd1"
 
+new entry "TutorialSupplies_KnowledgePotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "771323db-56d3-2a56-ef2c-72a6d9e99632"
+
 new entry "TutorialSupplies_Equipment"
 type "Object"
 using "_Container"

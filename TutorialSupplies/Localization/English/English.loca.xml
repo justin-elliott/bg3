@@ -6,6 +6,19 @@
     <content contentuid="hea03581bg5dbbg9b07ga594g6a8d4fdc26e1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h3967067cgfdb2g159cg4edagf63d65d95052" version="1">Elixir of Bolstering</content>
     <content contentuid="h839f3b71gdc84gd1d7g7339g471be1bb0fd0" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h59501b24g40cegff8fgd9ffgdba5143a5320" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
+    <content contentuid="h1633bb7bg10a4g2e83g5670g61499ca44787" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
+    <content contentuid="hc1fa73ccg5a57g9c59g5730g9f463245086d" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
+    <content contentuid="hda73153ag1da3g863fgfe7egba43996eed8c" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
+    <content contentuid="h39c84436g8c02g4552g9f89gb3ba2775fdbf" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
+    <content contentuid="hc68b3e7egd1ebg76adgb114g28d2b950c135" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
+    <content contentuid="h4666f467ga775g154bg3bc5g6f4c26622085" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
+    <content contentuid="haf3cc0acga63cg29b7gf3e6gefc88f4cc360" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
+    <content contentuid="h16d2b146ge3a3gf71dg8bbeg60c601578221" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
+    <content contentuid="h1759d50bgd5cdg61bdgd316g81744416d0fb" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
+    <content contentuid="h325e3399gf282ge8fegc63cgb12e2f17b079" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of a chosen &lt;LSTag Tooltip="Abilities"&gt;Ability&lt;/LSTag&gt;.</content>
+    <content contentuid="hb8769852g0917g5600g5135gac767f813d0f" version="1">Elixir of Knowledge</content>
+    <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
     <content contentuid="hcd6cb3f1g679bgf831g05d0g46fa5a3492b7" version="1">Ring of Hill Giant Might</content>
     <content contentuid="h512b5392g8f8fga6d1g2397gaa8a8b7721ec" version="1">This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants the wearer the raw, unrefined might of a hill giant.</content>
     <content contentuid="ha663a9e6gd859g7243g324age46739b7d4cf" version="1">Hill Giant Might</content>

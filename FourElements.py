@@ -23,6 +23,8 @@ class FourElements(Replacer):
                          description="A class replacer for FourElements.",
                          **kwds)
 
+        self._spells_activate_extra_attack()
+
     @cached_property
     def _level_3_spell_list(self) -> UUID:
         name = "Way of the Four Elements level 3 spells"
@@ -188,6 +190,160 @@ class FourElements(Replacer):
         ))
 
         return touch_of_the_storm
+
+    def _spells_activate_extra_attack(self) -> None:
+        self.mod.add(SpellData(
+            "Projectile_Fireball_Monk",
+            using="Projectile_Fireball_Monk",
+            SpellType="Projectile",
+            SpellProperties=[
+                "GROUND:SurfaceChange(Ignite)",
+                "GROUND:SurfaceChange(Melt)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Shout_GaseousForm_Monk",
+            using="Shout_GaseousForm_Monk",
+            SpellType="Shout",
+            SpellProperties=[
+                "ApplyStatus(GASEOUS_FORM,100,-1)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Shout_Fly_Monk",
+            using="Shout_Fly_Monk",
+            SpellType="Shout",
+            SpellProperties=[
+                "ApplyStatus(FLY_MONK,100,-1)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+            RitualCosts=["ActionPoint:1"],
+            SpellFlags=["HasSomaticComponent"],
+        ))
+        
+        self.mod.add(SpellData(
+            "Target_HoldPerson_Monk",
+            using="Target_HoldPerson_Monk",
+            SpellType="Target",
+            SpellProperties=[
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Projectile_ScorchingRay_Monk",
+            using="Projectile_ScorchingRay_Monk",
+            SpellType="Projectile",
+            SpellProperties=[
+                "GROUND:SurfaceChange(Ignite)",
+                "GROUND:SurfaceChange(Melt)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Target_Shatter_Monk",
+            using="Target_Shatter_Monk",
+            SpellType="Target",
+            SpellProperties=[
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Projectile_BladeOfTheRime",
+            using="Projectile_BladeOfTheRime",
+            SpellType="Projectile",
+            SpellProperties=[
+                "GROUND:SurfaceChange(Freeze)",
+                "GROUND:CreateSurface(2,2,WaterFrozen)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Zone_Thunderwave_Monk",
+            using="Zone_Thunderwave_Monk",
+            SpellType="Zone",
+            SpellProperties=[
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Target_FistOfUnbrokenAir",
+            using="Target_FistOfUnbrokenAir",
+            SpellType="Target",
+            SpellProperties=[
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Zone_GustOfWind_Monk",
+            using="Zone_GustOfWind_Monk",
+            SpellType="Zone",
+            SpellProperties=[
+                "GROUND:SurfaceClearLayer(cloud)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Target_ShapeTheFlowingRiver_IceBlock",
+            using="Target_ShapeTheFlowingRiver_IceBlock",
+            SpellType="Target",
+            SpellProperties=[
+                "GROUND:Summon(408559c5-ac6c-4fab-b629-7fd6e52e108a,10)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Projectile_ChromaticOrb_Monk",
+            using="Projectile_ChromaticOrb_Monk",
+            SpellType="Projectile",
+            SpellProperties=[
+                "GROUND:CreateSurface(2,2,Acid)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+
+        for element in ["Acid", "Cold", "Fire", "Lightning", "Poison", "Thunder"]:
+            self.mod.add(SpellData(
+                f"Projectile_ChromaticOrb_{element}_Monk",
+                using=f"Projectile_ChromaticOrb_{element}_Monk",
+                SpellType="Projectile",
+                SpellProperties=[
+                    f"GROUND:CreateSurface(2,2,{element})",
+                    "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+                ],
+            ))
+
+        self.mod.add(SpellData(
+            "Zone_BurningHands_Monk",
+            using="Zone_BurningHands_Monk",
+            SpellType="Zone",
+            SpellProperties=[
+                "GROUND:SurfaceChange(Ignite)",
+                "GROUND:SurfaceChange(Melt)",
+                "TARGET:IF(Item()):ApplyStatus(BURNING,100,2)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
+        
+        self.mod.add(SpellData(
+            "Target_WaterWhip",
+            using="Target_WaterWhip",
+            SpellType="Target",
+            SpellProperties=[
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+        ))
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:

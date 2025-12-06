@@ -84,6 +84,9 @@ class Mod:
         self._lsx = Lsx()
         self._text = TextCollection()
 
+    def make_name(self, suffix: str) -> str:
+        return f"{self.get_prefix()}_{suffix}"
+
     def make_uuid(self, key: str) -> UUID:
         m = hashlib.sha256()
         m.update(self._uuid.bytes)

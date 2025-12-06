@@ -102,7 +102,7 @@ class TutorialSupplies(Mod):
 
     @cached_property
     def _knowledge_of_the_ages(self) -> None:
-        name = f"{self.get_prefix()}_KnowledgeOfTheAges"
+        name = self.make_name("KnowledgeOfTheAges")
 
         ability_skills: OrderedDict[str, list[str]] = OrderedDict([
             ("Charisma", ["Deception", "Intimidation", "Performance", "Persuasion"]),
@@ -181,7 +181,7 @@ class TutorialSupplies(Mod):
 
     @cached_property
     def _ring_of_hill_giant_might(self) -> str:
-        name = f"{self.get_prefix()}_RingOfHillGiantMight"
+        name = self.make_name("RingOfHillGiantMight")
 
         strength = "22"
         constitution = "20"
@@ -205,8 +205,8 @@ class TutorialSupplies(Mod):
             Type="item",
         ))
 
-        hill_giant_might = f"{self.get_prefix()}_HillGiantMight"
-        heavy_blows = f"{self.get_prefix()}_HeavyBlows"
+        hill_giant_might = self.make_name("HillGiantMight")
+        heavy_blows = self.make_name("HeavyBlows")
 
         self.add(Armor(
             name,
@@ -255,7 +255,7 @@ class TutorialSupplies(Mod):
                             description: str | dict[str, str],
                             items: Iterable[str]) -> None:
         """Add a treasure chest to the tutorial chest."""
-        name = f"{self.get_prefix()}_{short_name}"
+        name = self.make_name(short_name)
         chest_uuid = self.make_uuid(name)
 
         self._add_chest_game_object(name, chest_uuid, display_name, description)
@@ -328,7 +328,7 @@ class TutorialSupplies(Mod):
             passives: list[str] = None,
             stack_id: str = None,
             status_property_flags: list[str] = None) -> str:
-        name = f"{self.get_prefix()}_{short_name}"
+        name = self.make_name(short_name)
         uuid = self.make_uuid(name)
 
         self.loca[f"{name}_DisplayName"] = display_name
@@ -453,7 +453,7 @@ class TutorialSupplies(Mod):
 
     @cached_property
     def _base_potion(self) -> str:
-        name = f"{self.get_prefix()}_BasePotion"
+        name = self.make_name("BasePotion")
         self.add(ObjectData(
             name,
             using="OBJ_Bottle",

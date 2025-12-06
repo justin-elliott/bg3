@@ -18,6 +18,11 @@ type "Object"
 using "TutorialSupplies_BasePotion"
 data "RootTemplate" "771323db-56d3-2a56-ef2c-72a6d9e99632"
 
+new entry "TutorialSupplies_OverpoweringPotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "feb17425-a93b-ceb1-dd7a-7589e33a8986"
+
 new entry "TutorialSupplies_Equipment"
 type "Object"
 using "_Container"

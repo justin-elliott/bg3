@@ -19,6 +19,8 @@
     <content contentuid="h325e3399gf282ge8fegc63cgb12e2f17b079" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of a chosen &lt;LSTag Tooltip="Abilities"&gt;Ability&lt;/LSTag&gt;.</content>
     <content contentuid="hb8769852g0917g5600g5135gac767f813d0f" version="1">Elixir of Knowledge</content>
     <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
+    <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
+    <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="hcd6cb3f1g679bgf831g05d0g46fa5a3492b7" version="1">Ring of Hill Giant Might</content>
     <content contentuid="h512b5392g8f8fga6d1g2397gaa8a8b7721ec" version="1">This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants the wearer the raw, unrefined might of a hill giant.</content>
     <content contentuid="ha663a9e6gd859g7243g324age46739b7d4cf" version="1">Hill Giant Might</content>

@@ -37,6 +37,7 @@ class TutorialSupplies(Mod):
             items=[
                 self._bolster_potion,
                 self._knowledge_potion,
+                self._overpowering_potion,
                 self._ring_of_hill_giant_might,
             ],
         )
@@ -72,6 +73,33 @@ class TutorialSupplies(Mod):
             passives=["JackOfAllTrades"],
         )
     
+    @cached_property
+    def _overpowering_potion(self) -> str:
+        return self._add_potion(
+        "OverpoweringPotion",
+        display_name="Potion of Overpowering",
+        description="""
+            Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and
+            saving throws.
+        """,
+        icon="Item_CONS_Drug_Dreammist_A",
+        status_duration=10,
+        boosts=[
+            "AbilityOverrideMinimum(Strength,30)",
+            "AC(20)",
+            "DamageBonus(200)",
+            "IncreaseMaxHP(50)",
+            "Initiative(10)",
+            "RollBonus(Attack,20)",
+            "RollBonus(SavingThrow,20)",
+            "SpellSaveDC(20)",
+            "IgnoreResistance(Bludgeoning,Resistant)",
+            "IgnoreResistance(Piercing,Resistant)",
+            "IgnoreResistance(Slashing,Resistant)",
+        ],
+        status_property_flags=[],
+    )
+
     @cached_property
     def _knowledge_of_the_ages(self) -> None:
         name = f"{self.get_prefix()}_KnowledgeOfTheAges"

@@ -1,9 +1,10 @@
-from functools import cached_property
+from functools import cache, cached_property
 from typing import Iterable
 from uuid import UUID
 
 from moddb import Bolster
 from modtools.gamedata import Armor, PassiveData, ObjectData, StatusData
+from modtools.localization import Localization
 from modtools.lsx.game import GameObjects
 from modtools.replacers import Mod
 from modtools.text import TreasureTable
@@ -39,25 +40,15 @@ class TutorialSupplies(Mod):
 
     @cached_property
     def _bolster_potion(self) -> str:
-        name = f"{self.get_prefix()}_BolsterPotion"
-        bolster_potion_uuid = self.make_uuid(name)
-
-        loca = self.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Elixir of Bolstering"}
-        loca[f"{name}_Description"] = {"en": f"""
-            Drinking this elixir grants the <LSTag Type="Spell" Tooltip="{self._bolster}">Bolster</LSTag> spell.
-            """}
-
-        self._add_potion(
-            name,
-            uuid=bolster_potion_uuid,
-            display_name=loca[f"{name}_DisplayName"],
-            description=loca[f"{name}_Description"],
+        return self._add_potion(
+            "BolsterPotion",
+            display_name="Elixir of Bolstering",
+            description=f"""
+                Drinking this elixir grants the <LSTag Type="Spell" Tooltip="{self._bolster}">Bolster</LSTag> spell.
+            """,
             icon="Item_CONS_Drink_Potion_B",
             boosts=[f"UnlockSpell({self._bolster})"],
         )
-
-        return name
 
     @cached_property
     def _ring_of_hill_giant_might(self) -> str:
@@ -67,17 +58,16 @@ class TutorialSupplies(Mod):
         constitution = "20"
         damage_bonus = "1d4,Bludgeoning"
 
-        loca = self.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Ring of Hill Giant Might"}
-        loca[f"{name}_Description"] = {"en": f"""
+        self.loca[f"{name}_DisplayName"] = "Ring of Hill Giant Might"
+        self.loca[f"{name}_Description"] = f"""
             This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants
             the wearer the raw, unrefined might of a hill giant.
-        """}
+        """
 
         ring_uuid = self.make_uuid(name)
         self.add(GameObjects(
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
             LevelName="",
             MapKey=ring_uuid,
             ParentTemplateId="1abd032b-c138-45ee-b85e-62b5bbb6ea2d",
@@ -97,16 +87,16 @@ class TutorialSupplies(Mod):
             RootTemplate=ring_uuid,
         ))
 
-        loca[f"{hill_giant_might}_DisplayName"] = {"en": "Hill Giant Might"}
-        loca[f"{hill_giant_might}_Description"] = {"en": f"""
+        self.loca[f"{hill_giant_might}_DisplayName"] = "Hill Giant Might"
+        self.loca[f"{hill_giant_might}_Description"] = f"""
             Your <LSTag Tooltip="Strength">Strength</LSTag> increases to [1], and your
             <LSTag Tooltip="Constitution">Constitution</LSTag> to [2].
-        """}
+        """
 
         self.add(PassiveData(
             hill_giant_might,
-            DisplayName=loca[f"{hill_giant_might}_DisplayName"],
-            Description=loca[f"{hill_giant_might}_Description"],
+            DisplayName=self.loca[f"{hill_giant_might}_DisplayName"],
+            Description=self.loca[f"{hill_giant_might}_Description"],
             DescriptionParams=[strength, constitution],
             Boosts=[
                 f"AbilityOverrideMinimum(Strength,{strength})",
@@ -114,17 +104,17 @@ class TutorialSupplies(Mod):
             ]
         ))
 
-        loca[f"{heavy_blows}_DisplayName"] = {"en": "Heavy Blows"}
-        loca[f"{heavy_blows}_Description"] = {"en": f"""
-            Your melee weapon and unarmed attacks deal an additional [1].
-        """}
+        self.loca[f"{heavy_blows}_DisplayName"] = "Heavy Blows"
+        self.loca[f"{heavy_blows}_Description"] = f"""
+            Your weapon and unarmed attacks deal an additional [1].
+        """
 
         self.add(PassiveData(
             heavy_blows,
-            DisplayName=loca[f"{heavy_blows}_DisplayName"],
-            Description=loca[f"{heavy_blows}_Description"],
+            DisplayName=self.loca[f"{heavy_blows}_DisplayName"],
+            Description=self.loca[f"{heavy_blows}_Description"],
             DescriptionParams=[f"DealDamage({damage_bonus})"],
-            Boosts=[f"IF(IsMeleeWeaponAttack() or IsMeleeUnarmedAttack()):DamageBonus({damage_bonus})"]
+            Boosts=[f"IF(IsWeaponAttack() or IsUnarmedAttack()):DamageBonus({damage_bonus})"]
         ))
 
         return name
@@ -132,8 +122,8 @@ class TutorialSupplies(Mod):
     def _add_treasure_chest(self,
                             short_name: str,
                             *,
-                            display_name: str,
-                            description: str,
+                            display_name: str | dict[str, str],
+                            description: str | dict[str, str],
                             items: Iterable[str]) -> None:
         """Add a treasure chest to the tutorial chest."""
         name = f"{self.get_prefix()}_{short_name}"
@@ -143,14 +133,17 @@ class TutorialSupplies(Mod):
         self._add_chest_container(name, chest_uuid)
         self._add_treasure_table(name, items)
     
-    def _add_chest_game_object(self, name: str, chest_uuid: UUID, display_name: str, description: str) -> None:
-        loca = self.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": display_name}
-        loca[f"{name}_Description"] = {"en": description}
+    def _add_chest_game_object(self,
+                               name: str,
+                               chest_uuid: UUID,
+                               display_name: str | dict[str, str],
+                               description: str | dict[str, str]) -> None:
+        self.loca[f"{name}_DisplayName"] = display_name
+        self.loca[f"{name}_Description"] = description
 
         self.add(GameObjects(
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
             Icon="Item_CONT_GEN_Chest_Travel_A_Small_A",
             LevelName="",
             MapKey=chest_uuid,
@@ -196,20 +189,25 @@ class TutorialSupplies(Mod):
 
     def _add_potion(
             self,
-            name: str,
+            short_name: str,
             *,
-            uuid: UUID,
-            display_name: str,
-            description: str,
+            display_name: str | dict[str, str],
+            description: str | dict[str, str],
             icon: str,
             status_duration: int = -1,
             boosts: list[str] = None,
             passives: list[str] = None,
             stack_id: str = None,
-            status_property_flags: list[str] = None) -> None:
+            status_property_flags: list[str] = None) -> str:
+        name = f"{self.get_prefix()}_{short_name}"
+        uuid = self.make_uuid(name)
+
+        self.loca[f"{name}_DisplayName"] = display_name
+        self.loca[f"{name}_Description"] = description
+
         self.add(GameObjects(
-            DisplayName=display_name,
-            Description=description,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
             Flag_int32=0,
             Icon=icon,
             LevelName="",
@@ -313,14 +311,16 @@ class TutorialSupplies(Mod):
         self.add(StatusData(
             name.upper(),
             StatusType="BOOST",
-            DisplayName=display_name,
-            Description=description,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
             Icon=icon,
             Boosts=boosts,
             Passives=passives,
             StackId=name.upper() if stack_id is None else stack_id,
             StatusPropertyFlags=status_property_flags,
         ))
+
+        return name
 
     @cached_property
     def _base_potion(self) -> str:

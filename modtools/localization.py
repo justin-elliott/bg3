@@ -26,9 +26,9 @@ class Translation:
 
     handle: str
 
-    __translations: {str, str}
+    __translations: dict[str, str]
 
-    def __init__(self, handle: str, translations: {str: str}) -> None:
+    def __init__(self, handle: str, translations: dict[str, str]) -> None:
         self.handle = handle
         self.__translations = {short_lang_name: _strip_whitespace(text)
                                for short_lang_name, text in translations.items()}
@@ -42,8 +42,8 @@ class Localization:
     """Localization dictionaries."""
 
     __mod_uuid: UUID
-    __languages: {str, str}
-    __translations: {str, Translation}
+    __languages: dict[str, str]
+    __translations: dict[str, Translation]
 
     def __init__(self, mod_uuid: UUID):
         self.__mod_uuid = mod_uuid
@@ -58,13 +58,16 @@ class Localization:
         """Get the translation handle for a given key."""
         return self.__translations[key].handle
 
-    def __setitem__(self, key: str, translations: {str: str}) -> None:
+    def __setitem__(self, key: str, translations: str | dict[str, str]) -> None:
         """Add a translation for the given key."""
         m = hashlib.sha256()
         m.update(self.__mod_uuid.bytes)
         m.update(bytes(key, "UTF-8"))
         handle = f"h{str(UUID(m.hexdigest()[0:32])).replace("-", "g")}"
 
+        if isinstance(translations, str):
+            translations = {"en": translations}
+        
         for short_lang_name in translations.keys():
             if short_lang_name not in self.__languages:
                 raise KeyError(f"Unknown short language name for '{key}': '{short_lang_name}'")

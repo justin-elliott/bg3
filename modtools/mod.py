@@ -122,6 +122,10 @@ class Mod:
         """Get the path of a file in the unpak cache."""
         return self._unpak.get_path(lsx_path)
 
+    @property
+    def loca(self) -> Localization:
+        return self._localization
+
     def add(self, item: any) -> None:
         """Add a datum to the GameData collection."""
         if isinstance(item, Dependencies.ShortModuleDesc):

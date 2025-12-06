@@ -268,6 +268,9 @@ class Replacer:
         """Get the path of a file in the unpak cache."""
         return self._mod.get_cache_path(lsx_path)
 
+    def make_name(self, suffix: str) -> str:
+        return self._mod.make_name(suffix)
+
     def make_uuid(self, key: str) -> UUID:
         """Generate a UUID for the given key."""
         return self._mod.make_uuid("Replacer:" + key)

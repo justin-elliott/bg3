@@ -117,6 +117,7 @@ class TutorialSupplies(Mod):
                     *[f"ProficiencyBonus(Skill,{skill})" for skill in skills],
                     *[f"ExpertiseBonus({skill})" for skill in skills],
                 ],
+                StatusEffect="",
                 StatusPropertyFlags=["IgnoreResting"],
             ))
 

@@ -93,7 +93,7 @@ class TutorialSupplies(Mod):
             name,
             using="_Ring_Magic",
             PassivesOnEquip=[hill_giant_might, heavy_blows],
-            Rarity="VeryRare",
+            Rarity="Legendary",
             RootTemplate=ring_uuid,
         ))
 

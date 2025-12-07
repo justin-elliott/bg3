@@ -32,16 +32,31 @@ class FourElements(Replacer):
         self.mod.add(SpellList(
             Name=name,
             Spells=[
-                self._chill_of_the_mountain_bonus_action,
-                self._fangs_of_the_fire_snake_bonus_action,
-                self._touch_of_the_storm_bonus_action,
+                self._flurry_of_blows,
+                self._chill_of_the_mountain,
+                self._fangs_of_the_fire_snake,
+                self._touch_of_the_storm,
+                "Shout_HarmonyOfFireAndWater",
             ],
             UUID=uuid,
         ))
         return uuid
 
     @cached_property
-    def _chill_of_the_mountain_bonus_action(self) -> str:
+    def _flurry_of_blows(self) -> str:
+        name = self.make_name("FlurryOfBlows")
+
+        self.mod.add(SpellData(
+            name,
+            using="Target_FlurryOfBlows",
+            SpellType="Target",
+            UseCosts=["BonusActionPoint:1"],
+        ))
+
+        return name
+
+    @cached_property
+    def _chill_of_the_mountain(self) -> str:
         chill_of_the_mountain = "Projectile_RayOfFrost_Monk"
         chill_of_the_mountain_status = self.make_name("CHILL_OF_THE_MOUNTAIN")
 
@@ -64,15 +79,14 @@ class FourElements(Replacer):
             ],
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Cold,Magical)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Cold,Magical)",
                 "ApplyStatus(RAY_OF_FROST,100,1)",
             ],
-            TargetRadius=9,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Cold)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Cold)",
             ],
-            UseCosts=["BonusActionPoint:1"],
+            UseCosts=["ActionPoint:1"],
         ))
 
         self.mod.loca[f"{chill_of_the_mountain_status}_DisplayName"] = "Chill of the Mountain"
@@ -97,7 +111,7 @@ class FourElements(Replacer):
         return chill_of_the_mountain
 
     @cached_property
-    def _fangs_of_the_fire_snake_bonus_action(self) -> str:
+    def _fangs_of_the_fire_snake(self) -> str:
         fangs_of_the_fire_snake = "Projectile_FangsOfTheFireSnake"
 
         self.mod.add(SpellData(
@@ -106,20 +120,19 @@ class FourElements(Replacer):
             SpellType="Projectile",
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Fire)"],
             SpellProperties=[
-                "GROUND:DealDamage(LevelMapValue(D10Cantrip),Fire)",
+                "GROUND:DealDamage(LevelMapValue(RayOfFrost_Monk),Fire)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
             ],
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Fire,Magical)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Fire,Magical)",
             ],
-            TargetRadius=9,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Fire)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Fire)",
             ],
-            UseCosts=["BonusActionPoint:1"],
+            UseCosts=["ActionPoint:1"],
         ))
 
         self.mod.add(StatusData(
@@ -136,7 +149,7 @@ class FourElements(Replacer):
         return fangs_of_the_fire_snake
 
     @cached_property
-    def _touch_of_the_storm_bonus_action(self) -> str:
+    def _touch_of_the_storm(self) -> str:
         touch_of_the_storm = "Target_ShockingGrasp_Monk"
         touch_of_the_storm_status = self.make_name("TOUCH_OF_THE_STORM")
 
@@ -159,15 +172,14 @@ class FourElements(Replacer):
             ],
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Lightning,Magical)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Lightning,Magical)",
                 "ApplyStatus(SHOCKING_GRASP,100,1)",
             ],
-            TargetRadius=9,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(D10Cantrip),Lightning)",
+                "DealDamage(LevelMapValue(RayOfFrost_Monk),Lightning)",
             ],
-            UseCosts=["BonusActionPoint:1"],
+            UseCosts=["ActionPoint:1"],
         ))
 
         self.mod.loca[f"{touch_of_the_storm_status}_DisplayName"] = "Touch of the Storm"
@@ -211,6 +223,8 @@ class FourElements(Replacer):
                 "ApplyStatus(GASEOUS_FORM,100,-1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
             ],
+            RitualCosts=["ActionPoint:1"],
+            SpellFlags=["HasSomaticComponent"],
         ))
         
         self.mod.add(SpellData(
@@ -225,15 +239,50 @@ class FourElements(Replacer):
             SpellFlags=["HasSomaticComponent"],
         ))
         
+        hold_monster_status = self.make_name("HOLD_MONSTER_MONK")
+
         self.mod.add(SpellData(
             "Target_HoldPerson_Monk",
-            using="Target_HoldPerson_Monk",
+            using="Target_HoldMonster",
             SpellType="Target",
+            Level="",
             SpellProperties=[
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
             ],
+            SpellSuccess=[f"ApplyStatus({hold_monster_status},100,10)"],
+            AmountOfTargets="LevelMapValue(HoldPerson_Monk)",
+            DisplayName="hd82ec163ge78ag4ecbgae09g7fab45598d2d;2",
+            TooltipStatusApply=[f"ApplyStatus({hold_monster_status},100,10)"],
+            PrepareSound="Vocal_Component_Monk_Control",
+            CastSound="Spell_Cast_Monk_ClenchoftheNorthwind_L1to3",
+            TargetSound="Vocal_Component_Stop",
+            VocalComponentSound="Vocal_Component_Stop",
+            UseCosts=["ActionPoint:1", "KiPoint:3"],
+            SpellAnimation=[
+                "32456253-9787-49c8-9775-4cd93d602f05,,",
+                ",,",
+                "32415fee-295d-4fed-a7f4-d2f9218ff9c1,,",
+                "05f29a9a-58d1-43d2-84cf-5a95ab5baa24,,",
+                "5c9e3bb0-8963-4cc3-aa24-c0ba1c49494b,,",
+                ",,",
+                "c79f1495-5c5c-4e22-bed4-38beb3779b23,,",
+                ",,",
+                ",,",
+            ],
+            SpellStyleGroup="Class",
+            SpellFlags=["HasVerbalComponent", "HasSomaticComponent", "HasHighGroundRangeExtension", "IsHarmful"],
+            PrepareEffect="76154940-c4fc-4adb-b700-87051865380f",
+            CastEffect="b05bd9fd-c2d2-44c9-ae77-c58b17aa2443",
+            TargetEffect="57190c62-9877-46f5-acd4-ca35093a5e8a",
         ))
         
+        self.mod.add(StatusData(
+            hold_monster_status,
+            using="HOLD_MONSTER",
+            StatusType="INCAPACITATED",
+            StatusEffect="3c134510-649a-4aa7-a4bf-2dd243cc173b",
+        ))
+
         self.mod.add(SpellData(
             "Projectile_ScorchingRay_Monk",
             using="Projectile_ScorchingRay_Monk",
@@ -301,6 +350,7 @@ class FourElements(Replacer):
                 "GROUND:Summon(408559c5-ac6c-4fab-b629-7fd6e52e108a,10)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
             ],
+            RitualCosts=["ActionPoint:1"],
         ))
         
         self.mod.add(SpellData(
@@ -348,8 +398,9 @@ class FourElements(Replacer):
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
         progress.PassivesRemoved = ["MartialArts_BonusUnarmedStrike", "FlurryOfBlowsUnlock"]
-        progress.Selectors += [
+        progress.Selectors = [
             f"AddSpells({self._level_3_spell_list})",
+            "SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,4,0,FourElements,,,AlwaysPrepared)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
             "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ]
@@ -359,12 +410,15 @@ class FourElements(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 5)
-    def fourelements_level_5(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["UncannyDodge"]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 6)
-    def fourelements_level_6(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_6(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,3,0,FourElements,,,AlwaysPrepared)",
+            "SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 7)
     def fourelements_level_7(self, progress: Progression) -> None:
@@ -375,8 +429,11 @@ class FourElements(Replacer):
         raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 9)
-    def fourelements_level_9(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_9(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,2,0,FourElements,,,AlwaysPrepared)",
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 10)
     def fourelements_level_10(self, _: Progression) -> None:
@@ -386,43 +443,66 @@ class FourElements(Replacer):
     def fourelements_level_11(self, progress: Progression) -> None:
         progress.PassivesAdded = ["ExtraAttack_2", "ReliableTalent"]
         progress.PassivesRemoved = ["ExtraAttack"]
+        progress.Selectors = [
+            "SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,2,0,FourElements,,,AlwaysPrepared)",
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 12)
     def fourelements_level_12(self, _: Progression) -> None:
         raise DontIncludeProgression()
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 13)
-    def fourelements_level_13(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_13(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 14)
-    def fourelements_level_14(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_14(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,1,0,FourElements,,,AlwaysPrepared)",
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 15)
-    def fourelements_level_15(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_15(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 16)
-    def fourelements_level_16(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_16(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 17)
-    def fourelements_level_17(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_17(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,1,0,FourElements,,,AlwaysPrepared)",
+            "SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 18)
-    def fourelements_level_18(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_18(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 19)
-    def fourelements_level_19(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_19(self, progress: Progression) -> None:
+        progress.Selectors = [
+            "SelectSpells(c841dfad-9d3b-486d-ad6b-ac3eaebc2db4,0,1,FourElements,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 20)
     def fourelements_level_20(self, progress: Progression) -> None:
         progress.PassivesAdded = ["ExtraAttack_3"]
         progress.PassivesRemoved = ["ExtraAttack_2"]
+        progress.Selectors = [
+            "SelectSpells(cf014f77-4d0a-4322-a2bf-95e38b89435b,1,0,FourElements,,,AlwaysPrepared)",
+        ]
 
 
 def main() -> None:

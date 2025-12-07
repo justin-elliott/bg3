@@ -4,6 +4,8 @@ new entry "Shout_GaseousForm_Monk"
 type "SpellData"
 data "SpellType" "Shout"
 using "Shout_GaseousForm_Monk"
+data "RitualCosts" "ActionPoint:1"
+data "SpellFlags" "HasSomaticComponent"
 data "SpellProperties" "ApplyStatus(GASEOUS_FORM,100,-1);IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)"
 
 new entry "Shout_Fly_Monk"

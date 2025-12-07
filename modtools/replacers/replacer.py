@@ -18,8 +18,9 @@ from modtools.lsx.game import (
     Dependencies,
     Progression,
 )
+from modtools.localization import Localization
 from modtools.mod import Mod
-from typing import ClassVar, Final
+from typing import Any, ClassVar, Final
 from uuid import UUID
 
 
@@ -258,6 +259,15 @@ class Replacer:
     def args(self) -> Args:
         """Return our arguments."""
         return self._args
+
+    def add(self, item: Any) -> None:
+        """Add an item to our mod."""
+        self._mod.add(item)
+
+    @property
+    def loca(self) -> Localization:
+        """Return the mod's localization object."""
+        return self._mod.loca
 
     @property
     def mod(self) -> Mod:

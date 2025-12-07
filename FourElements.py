@@ -1,8 +1,9 @@
 import os
 
 from functools import cached_property
-from modtools.gamedata import SpellData, StatusData
-from modtools.lsx.game import Progression, SpellList
+from moddb import character_level_range
+from modtools.gamedata import PassiveData, SpellData, StatusData
+from modtools.lsx.game import LevelMapSeries, Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -23,13 +24,55 @@ class FourElements(Replacer):
                          description="A class replacer for FourElements.",
                          **kwds)
 
+        self.add(character_level_range)
         self._spells_activate_extra_attack()
+
+    @cached_property
+    def _awareness(self) -> str:
+        """The Awareness passive, a variant of Alert."""
+        name = self.make_name("Awareness")
+        awareness_level_map = f"{name}_LevelMap"
+
+        self.loca[f"{name}_DisplayName"] = "Awareness"
+        self.loca[f"{name}_Description"] = """
+            You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be
+            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>, and attackers can't land
+            <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
+            """
+
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"LevelMapValue({awareness_level_map})"],
+            Icon="Action_Barbarian_MagicAwareness",
+            Properties=["ForceShowInCC", "Highlighted"],
+            Boosts=[
+                "IF(CharacterLevelRange(1,4)):Initiative(1)",
+                "IF(CharacterLevelRange(5,6)):Initiative(2)",
+                "IF(CharacterLevelRange(7,8)):Initiative(3)",
+                "IF(CharacterLevelRange(9,10)):Initiative(4)",
+                "IF(CharacterLevelRange(11,20)):Initiative(5)",
+                "StatusImmunity(SURPRISED)",
+                "CriticalHit(AttackTarget,Success,Never)",
+            ],
+        ))
+
+        self.add(LevelMapSeries(
+            **{f"Level{level}": 1 for level in range(1, 3)},
+            **{f"Level{level}": int((level - 1) / 2) for level in range(3, 12)},
+            **{f"Level{level}": 5 for level in range(12, 21)},
+            Name=awareness_level_map,
+            UUID=self.make_uuid(awareness_level_map),
+        ))
+
+        return name
 
     @cached_property
     def _level_3_spell_list(self) -> UUID:
         name = "Way of the Four Elements level 3 spells"
         uuid = self.make_uuid(name)
-        self.mod.add(SpellList(
+        self.add(SpellList(
             Name=name,
             Spells=[
                 self._flurry_of_blows,
@@ -46,7 +89,7 @@ class FourElements(Replacer):
     def _flurry_of_blows(self) -> str:
         name = self.make_name("FlurryOfBlows")
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             name,
             using="Target_FlurryOfBlows",
             SpellType="Target",
@@ -60,17 +103,17 @@ class FourElements(Replacer):
         chill_of_the_mountain = "Projectile_RayOfFrost_Monk"
         chill_of_the_mountain_status = self.make_name("CHILL_OF_THE_MOUNTAIN")
 
-        self.mod.loca[f"{chill_of_the_mountain}_Description"] = """
+        self.loca[f"{chill_of_the_mountain}_Description"] = """
             Call forth the cold mountain winds and reduce the target's
             <LSTag Tooltip="MovementSpeed">movement speed</LSTag> by [1].
             Your next melee attacks deal an additional [2].
         """
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             chill_of_the_mountain,
             using=chill_of_the_mountain,
             SpellType="Projectile",
-            Description=self.mod.loca[f"{chill_of_the_mountain}_Description"],
+            Description=self.loca[f"{chill_of_the_mountain}_Description"],
             DescriptionParams=["Distance(3)", "DealDamage(LevelMapValue(D4Cantrip),Cold)"],
             SpellProperties=[
                 "GROUND:SurfaceChange(Freeze)",
@@ -89,12 +132,12 @@ class FourElements(Replacer):
             UseCosts=["ActionPoint:1"],
         ))
 
-        self.mod.loca[f"{chill_of_the_mountain_status}_DisplayName"] = "Chill of the Mountain"
-        self.mod.loca[f"{chill_of_the_mountain_status}_Description"] = """
+        self.loca[f"{chill_of_the_mountain_status}_DisplayName"] = "Chill of the Mountain"
+        self.loca[f"{chill_of_the_mountain_status}_Description"] = """
             Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].
         """
         
-        self.mod.add(StatusData(
+        self.add(StatusData(
             chill_of_the_mountain_status,
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
@@ -102,8 +145,8 @@ class FourElements(Replacer):
                 "CharacterWeaponDamage(LevelMapValue(D4Cantrip),Cold)",
                 "CharacterUnarmedDamage(LevelMapValue(D4Cantrip),Cold)",
             ],
-            DisplayName=self.mod.loca[f"{chill_of_the_mountain_status}_DisplayName"],
-            Description=self.mod.loca[f"{chill_of_the_mountain_status}_Description"],
+            DisplayName=self.loca[f"{chill_of_the_mountain_status}_DisplayName"],
+            Description=self.loca[f"{chill_of_the_mountain_status}_Description"],
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Cold)"],
             Icon="Spell_Evocation_RayOfFrost",
         ))
@@ -114,7 +157,7 @@ class FourElements(Replacer):
     def _fangs_of_the_fire_snake(self) -> str:
         fangs_of_the_fire_snake = "Projectile_FangsOfTheFireSnake"
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             fangs_of_the_fire_snake,
             using=fangs_of_the_fire_snake,
             SpellType="Projectile",
@@ -135,7 +178,7 @@ class FourElements(Replacer):
             UseCosts=["ActionPoint:1"],
         ))
 
-        self.mod.add(StatusData(
+        self.add(StatusData(
             self._fangs_of_the_fire_snake_status,
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
@@ -153,17 +196,17 @@ class FourElements(Replacer):
         touch_of_the_storm = "Target_ShockingGrasp_Monk"
         touch_of_the_storm_status = self.make_name("TOUCH_OF_THE_STORM")
 
-        self.mod.loca[f"{touch_of_the_storm}_Description"] = """
+        self.loca[f"{touch_of_the_storm}_Description"] = """
             The target cannot use reactions. This spell has <LSTag Tooltip="Advantage">Advantage</LSTag> on creatures
             with metal armour.
             Your next melee attacks deal an additional [1].
         """
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             touch_of_the_storm,
             using=touch_of_the_storm,
             SpellType="Target",
-            Description=self.mod.loca[f"{touch_of_the_storm}_Description"],
+            Description=self.loca[f"{touch_of_the_storm}_Description"],
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Lightning)"],
             SpellProperties=[
                 "GROUND:SurfaceChange(Electrify)",
@@ -182,12 +225,12 @@ class FourElements(Replacer):
             UseCosts=["ActionPoint:1"],
         ))
 
-        self.mod.loca[f"{touch_of_the_storm_status}_DisplayName"] = "Touch of the Storm"
-        self.mod.loca[f"{touch_of_the_storm_status}_Description"] = """
+        self.loca[f"{touch_of_the_storm_status}_DisplayName"] = "Touch of the Storm"
+        self.loca[f"{touch_of_the_storm_status}_Description"] = """
             Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
         """
         
-        self.mod.add(StatusData(
+        self.add(StatusData(
             touch_of_the_storm_status,
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
@@ -195,8 +238,8 @@ class FourElements(Replacer):
                 "CharacterWeaponDamage(LevelMapValue(D4Cantrip),Lightning)",
                 "CharacterUnarmedDamage(LevelMapValue(D4Cantrip),Lightning)",
             ],
-            DisplayName=self.mod.loca[f"{touch_of_the_storm_status}_DisplayName"],
-            Description=self.mod.loca[f"{touch_of_the_storm_status}_Description"],
+            DisplayName=self.loca[f"{touch_of_the_storm_status}_DisplayName"],
+            Description=self.loca[f"{touch_of_the_storm_status}_Description"],
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Lightning)"],
             Icon="Spell_Evocation_ShockingGrasp",
         ))
@@ -204,7 +247,7 @@ class FourElements(Replacer):
         return touch_of_the_storm
 
     def _spells_activate_extra_attack(self) -> None:
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Projectile_Fireball_Monk",
             using="Projectile_Fireball_Monk",
             SpellType="Projectile",
@@ -215,7 +258,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Shout_GaseousForm_Monk",
             using="Shout_GaseousForm_Monk",
             SpellType="Shout",
@@ -227,7 +270,7 @@ class FourElements(Replacer):
             SpellFlags=["HasSomaticComponent"],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Shout_Fly_Monk",
             using="Shout_Fly_Monk",
             SpellType="Shout",
@@ -241,7 +284,7 @@ class FourElements(Replacer):
         
         hold_monster_status = self.make_name("HOLD_MONSTER_MONK")
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Target_HoldPerson_Monk",
             using="Target_HoldMonster",
             SpellType="Target",
@@ -276,14 +319,14 @@ class FourElements(Replacer):
             TargetEffect="57190c62-9877-46f5-acd4-ca35093a5e8a",
         ))
         
-        self.mod.add(StatusData(
+        self.add(StatusData(
             hold_monster_status,
             using="HOLD_MONSTER",
             StatusType="INCAPACITATED",
             StatusEffect="3c134510-649a-4aa7-a4bf-2dd243cc173b",
         ))
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Projectile_ScorchingRay_Monk",
             using="Projectile_ScorchingRay_Monk",
             SpellType="Projectile",
@@ -294,7 +337,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Target_Shatter_Monk",
             using="Target_Shatter_Monk",
             SpellType="Target",
@@ -303,7 +346,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Projectile_BladeOfTheRime",
             using="Projectile_BladeOfTheRime",
             SpellType="Projectile",
@@ -314,7 +357,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Zone_Thunderwave_Monk",
             using="Zone_Thunderwave_Monk",
             SpellType="Zone",
@@ -323,7 +366,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Target_FistOfUnbrokenAir",
             using="Target_FistOfUnbrokenAir",
             SpellType="Target",
@@ -332,7 +375,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Zone_GustOfWind_Monk",
             using="Zone_GustOfWind_Monk",
             SpellType="Zone",
@@ -342,7 +385,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Target_ShapeTheFlowingRiver_IceBlock",
             using="Target_ShapeTheFlowingRiver_IceBlock",
             SpellType="Target",
@@ -353,7 +396,7 @@ class FourElements(Replacer):
             RitualCosts=["ActionPoint:1"],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Projectile_ChromaticOrb_Monk",
             using="Projectile_ChromaticOrb_Monk",
             SpellType="Projectile",
@@ -364,7 +407,7 @@ class FourElements(Replacer):
         ))
 
         for element in ["Acid", "Cold", "Fire", "Lightning", "Poison", "Thunder"]:
-            self.mod.add(SpellData(
+            self.add(SpellData(
                 f"Projectile_ChromaticOrb_{element}_Monk",
                 using=f"Projectile_ChromaticOrb_{element}_Monk",
                 SpellType="Projectile",
@@ -374,7 +417,7 @@ class FourElements(Replacer):
                 ],
             ))
 
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Zone_BurningHands_Monk",
             using="Zone_BurningHands_Monk",
             SpellType="Zone",
@@ -386,7 +429,7 @@ class FourElements(Replacer):
             ],
         ))
         
-        self.mod.add(SpellData(
+        self.add(SpellData(
             "Target_WaterWhip",
             using="Target_WaterWhip",
             SpellType="Target",
@@ -397,6 +440,7 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._awareness]
         progress.PassivesRemoved = ["MartialArts_BonusUnarmedStrike", "FlurryOfBlowsUnlock"]
         progress.Selectors = [
             f"AddSpells({self._level_3_spell_list})",

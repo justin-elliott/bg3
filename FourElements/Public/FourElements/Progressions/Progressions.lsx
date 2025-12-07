@@ -226,6 +226,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="FourElements" />
+                    <attribute id="PassivesAdded" type="LSString" value="FourElements_Awareness" />
                     <attribute id="PassivesRemoved" type="LSString" value="MartialArts_BonusUnarmedStrike;FlurryOfBlowsUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(165cf2f3-5f7a-8299-dab2-bb52483ea976);SelectSpells(9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c,4,0,FourElements,,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />

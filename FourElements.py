@@ -83,7 +83,9 @@ class FourElements(Replacer):
             using="MAG_ElementalGish_ArcaneAcuity_Helmet_Passive",
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
+            Icon="PassiveFeature_MartialArts_BonusUnarmedStrike",
             Conditions="IsUnarmedAttack()",
+            Properties=["Highlighted"],
         ))
 
         return name

@@ -16,6 +16,8 @@ from uuid import UUID
 
 class FourElements(Replacer):
     _fangs_of_the_fire_snake_status: ClassVar[str] = "FANGS_OF_THE_FIRE_SNAKE"
+    _cantrip_damage: ClassVar[str] = "1d10"
+    _cantrip_status_damage: ClassVar[str] = "LevelMapValue(MartialArts)"
 
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
@@ -136,7 +138,7 @@ class FourElements(Replacer):
             using=chill_of_the_mountain,
             SpellType="Projectile",
             Description=self.loca[f"{chill_of_the_mountain}_Description"],
-            DescriptionParams=["Distance(3)", "DealDamage(LevelMapValue(D4Cantrip),Cold)"],
+            DescriptionParams=["Distance(3)", f"DealDamage({self._cantrip_status_damage},Cold)"],
             SpellProperties=[
                 "GROUND:SurfaceChange(Freeze)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
@@ -145,12 +147,12 @@ class FourElements(Replacer):
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Cold,Magical)",
+                f"DealDamage({self._cantrip_damage},Cold,Magical)",
                 "ApplyStatus(RAY_OF_FROST,100,1)",
             ],
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Cold)",
+                f"DealDamage({self._cantrip_damage},Cold)",
             ],
             TooltipStatusApply=[
                 "ApplyStatus(RAY_OF_FROST,100,1)",
@@ -169,13 +171,13 @@ class FourElements(Replacer):
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
             Boosts=[
-                "CharacterWeaponDamage(LevelMapValue(D4Cantrip),Cold)",
-                "CharacterUnarmedDamage(LevelMapValue(D4Cantrip),Cold)",
+                f"CharacterWeaponDamage({self._cantrip_status_damage},Cold)",
+                f"CharacterUnarmedDamage({self._cantrip_status_damage},Cold)",
             ],
             DisplayName=self.loca[f"{chill_of_the_mountain_status}_DisplayName"],
             Description=self.loca[f"{chill_of_the_mountain_status}_Description"],
-            DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Cold)"],
-            Icon="Spell_Evocation_RayOfFrost",
+            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Cold)"],
+            Icon="Spell_Evocation_ChromaticOrb_Cold",
             StatusEffect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
         ))
 
@@ -189,21 +191,21 @@ class FourElements(Replacer):
             fangs_of_the_fire_snake,
             using=fangs_of_the_fire_snake,
             SpellType="Projectile",
-            DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Fire)"],
+            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Fire)"],
             SpellProperties=[
-                "GROUND:DealDamage(1d10,Fire)",
+                f"GROUND:DealDamage({self._cantrip_damage},Fire)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Fire,Magical)",
+                f"DealDamage({self._cantrip_damage},Fire,Magical)",
             ],
             TargetRadius=18,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Fire)",
+                f"DealDamage({self._cantrip_damage},Fire)",
             ],
             UseCosts=["ActionPoint:1"],
         ))
@@ -213,10 +215,11 @@ class FourElements(Replacer):
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
             Boosts=[
-                "CharacterWeaponDamage(LevelMapValue(D4Cantrip),Fire)",
-                "CharacterUnarmedDamage(LevelMapValue(D4Cantrip),Fire)",
+                f"CharacterWeaponDamage({self._cantrip_status_damage},Fire)",
+                f"CharacterUnarmedDamage({self._cantrip_status_damage},Fire)",
             ],
-            DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Fire)"],
+            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Fire)"],
+            StatusEffect="43d61721-9a1a-4cef-bc33-8bb54f30de9d",
         ))
 
         return fangs_of_the_fire_snake
@@ -226,6 +229,7 @@ class FourElements(Replacer):
         touch_of_the_storm = "Target_ShockingGrasp_Monk"
         touch_of_the_storm_status = self.make_name("TOUCH_OF_THE_STORM")
 
+        self.loca[f"{touch_of_the_storm}_DisplayName"] = "Strike of the Storm"
         self.loca[f"{touch_of_the_storm}_Description"] = """
             The target cannot use reactions. This spell has <LSTag Tooltip="Advantage">Advantage</LSTag> on creatures
             with metal armour. Your next melee attacks deal an additional [1].
@@ -235,8 +239,10 @@ class FourElements(Replacer):
             touch_of_the_storm,
             using=touch_of_the_storm,
             SpellType="Target",
+            DisplayName=self.loca[f"{touch_of_the_storm}_DisplayName"],
             Description=self.loca[f"{touch_of_the_storm}_Description"],
-            DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Lightning)"],
+            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Lightning)"],
+            Icon="Spell_Evocation_WitchBolt",
             SpellProperties=[
                 "GROUND:SurfaceChange(Electrify)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
@@ -245,12 +251,13 @@ class FourElements(Replacer):
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack,HasMetalArmor() or IsMetalCharacter())",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Lightning,Magical)",
+                f"DealDamage({self._cantrip_damage},Lightning,Magical)",
                 "ApplyStatus(SHOCKING_GRASP,100,1)",
             ],
+            TargetRadius=18,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(1d10,Lightning)",
+                f"DealDamage({self._cantrip_damage},Lightning)",
             ],
             TooltipStatusApply=[
                 "ApplyStatus(SHOCKING_GRASP,100,1)",
@@ -259,7 +266,6 @@ class FourElements(Replacer):
             UseCosts=["ActionPoint:1"],
         ))
 
-        self.loca[f"{touch_of_the_storm_status}_DisplayName"] = "Touch of the Storm"
         self.loca[f"{touch_of_the_storm_status}_Description"] = """
             Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
         """
@@ -269,13 +275,13 @@ class FourElements(Replacer):
             using=self._fangs_of_the_fire_snake_status,
             StatusType="BOOST",
             Boosts=[
-                "CharacterWeaponDamage(LevelMapValue(D4Cantrip),Lightning)",
-                "CharacterUnarmedDamage(LevelMapValue(D4Cantrip),Lightning)",
+                f"CharacterWeaponDamage({self._cantrip_status_damage},Lightning)",
+                f"CharacterUnarmedDamage({self._cantrip_status_damage},Lightning)",
             ],
-            DisplayName=self.loca[f"{touch_of_the_storm_status}_DisplayName"],
+            DisplayName=self.loca[f"{touch_of_the_storm}_DisplayName"],
             Description=self.loca[f"{touch_of_the_storm_status}_Description"],
-            DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Lightning)"],
-            Icon="Spell_Evocation_ShockingGrasp",
+            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Lightning)"],
+            Icon="Spell_Evocation_ChromaticOrb_Lightning",
             StatusEffect="18143f47-3bb2-48eb-bf3d-a0be7c712d00",
         ))
 

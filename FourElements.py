@@ -143,12 +143,16 @@ class FourElements(Replacer):
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Cold,Magical)",
+                "DealDamage(1d10,Cold,Magical)",
                 "ApplyStatus(RAY_OF_FROST,100,1)",
             ],
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Cold)",
+                "DealDamage(1d10,Cold)",
+            ],
+            TooltipStatusApply=[
+                "ApplyStatus(RAY_OF_FROST,100,1)",
+                f"ApplyStatus({chill_of_the_mountain_status},100,1)",
             ],
             UseCosts=["ActionPoint:1"],
         ))
@@ -185,18 +189,19 @@ class FourElements(Replacer):
             SpellType="Projectile",
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Fire)"],
             SpellProperties=[
-                "GROUND:DealDamage(LevelMapValue(RayOfFrost_Monk),Fire)",
+                "GROUND:DealDamage(1d10,Fire)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Fire,Magical)",
+                "DealDamage(1d10,Fire,Magical)",
             ],
+            TargetRadius=18,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Fire)",
+                "DealDamage(1d10,Fire)",
             ],
             UseCosts=["ActionPoint:1"],
         ))
@@ -221,8 +226,7 @@ class FourElements(Replacer):
 
         self.loca[f"{touch_of_the_storm}_Description"] = """
             The target cannot use reactions. This spell has <LSTag Tooltip="Advantage">Advantage</LSTag> on creatures
-            with metal armour.
-            Your next melee attacks deal an additional [1].
+            with metal armour. Your next melee attacks deal an additional [1].
         """
 
         self.add(SpellData(
@@ -239,12 +243,16 @@ class FourElements(Replacer):
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack,HasMetalArmor() or IsMetalCharacter())",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Lightning,Magical)",
+                "DealDamage(1d10,Lightning,Magical)",
                 "ApplyStatus(SHOCKING_GRASP,100,1)",
             ],
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                "DealDamage(LevelMapValue(RayOfFrost_Monk),Lightning)",
+                "DealDamage(1d10,Lightning)",
+            ],
+            TooltipStatusApply=[
+                "ApplyStatus(SHOCKING_GRASP,100,1)",
+                f"ApplyStatus({touch_of_the_storm_status},100,1)",
             ],
             UseCosts=["ActionPoint:1"],
         ))

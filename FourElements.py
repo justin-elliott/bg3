@@ -69,6 +69,26 @@ class FourElements(Replacer):
         return name
 
     @cached_property
+    def _unarmed_acuity(self) -> str:
+        name = self.make_name("UnarmedAcuity")
+
+        self.loca[f"{name}_DisplayName"] = "Unarmed Acuity"
+        self.loca[f"{name}_Description"] = """
+            Whenever you deal damage with an unarmed attack, you gain
+            <LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY">Arcane Acuity</LSTag> for 2 turns.
+        """
+
+        self.add(PassiveData(
+            name,
+            using="MAG_ElementalGish_ArcaneAcuity_Helmet_Passive",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Conditions="IsUnarmedAttack()",
+        ))
+
+        return name
+
+    @cached_property
     def _level_3_spell_list(self) -> UUID:
         name = "Way of the Four Elements level 3 spells"
         uuid = self.make_uuid(name)
@@ -120,6 +140,7 @@ class FourElements(Replacer):
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{chill_of_the_mountain_status},100,1)",
             ],
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
                 "DealDamage(LevelMapValue(RayOfFrost_Monk),Cold,Magical)",
@@ -149,6 +170,7 @@ class FourElements(Replacer):
             Description=self.loca[f"{chill_of_the_mountain_status}_Description"],
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Cold)"],
             Icon="Spell_Evocation_RayOfFrost",
+            StatusEffect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
         ))
 
         return chill_of_the_mountain
@@ -167,6 +189,7 @@ class FourElements(Replacer):
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
             ],
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
                 "DealDamage(LevelMapValue(RayOfFrost_Monk),Fire,Magical)",
@@ -213,6 +236,7 @@ class FourElements(Replacer):
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{touch_of_the_storm_status},100,1)",
             ],
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack,HasMetalArmor() or IsMetalCharacter())",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
                 "DealDamage(LevelMapValue(RayOfFrost_Monk),Lightning,Magical)",
@@ -242,6 +266,7 @@ class FourElements(Replacer):
             Description=self.loca[f"{touch_of_the_storm_status}_Description"],
             DescriptionParams=["DealDamage(LevelMapValue(D4Cantrip),Lightning)"],
             Icon="Spell_Evocation_ShockingGrasp",
+            StatusEffect="18143f47-3bb2-48eb-bf3d-a0be7c712d00",
         ))
 
         return touch_of_the_storm
@@ -450,8 +475,8 @@ class FourElements(Replacer):
         ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 4)
-    def fourelements_level_4(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    def fourelements_level_4(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._unarmed_acuity]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 5)
     def fourelements_level_5(self, progress: Progression) -> None:

@@ -6,11 +6,6 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Eldritch Knight spells gained at level 3" />
-                    <attribute id="Spells" type="LSString" value="EldritchKnightFullCaster_ArcaneGuidance;EldritchKnightFullCaster_Bolster;Target_Command_Container;Projectile_EldritchBlast" />
-                    <attribute id="UUID" type="guid" value="a4befc43-457a-22f8-f003-36cda26f7c07" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Eldritch Knight spells gained at level 4" />
                     <attribute id="Spells" type="LSString" value="Shout_CreateSorceryPoints;Shout_CreateSpellSlot" />
                     <attribute id="UUID" type="guid" value="26ebed16-b32d-115a-152c-807008f2a22b" />

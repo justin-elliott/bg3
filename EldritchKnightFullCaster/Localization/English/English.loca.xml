@@ -3,15 +3,4 @@
 <contentList>
     <content contentuid="h6cfef5f6g1b9cg021bg240cgc1ce745d982a" version="1">Fast Movement</content>
     <content contentuid="h41a5dd7age734g1d60gd145gaeb918f7ea74" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
-    <content contentuid="h5ce53499g1c54g2df7g734fgf36b57850296" version="1">Awareness</content>
-    <content contentuid="h626aa904g754cgd77ag5802gbb4d10240761" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
-    <content contentuid="hc9815d12g1f1eg1256g3bfegdac838c4c5f3" version="1">Pack Mule</content>
-    <content contentuid="hefb78f60g5e8eg74a9g9a24g054612dfc1dd" version="1">Your carrying capacity is increased by [1]%.</content>
-    <content contentuid="hd15a197dged69g550dg683agd44dea402aec" version="1">Warding</content>
-    <content contentuid="h37302092ge85agf030g04abg6db7e2ae617c" version="1">A magical barrier protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="h6fa67d79g4c14g829fg839eg4b04c7607af6" version="1">Arcane Guidance</content>
-    <content contentuid="h670039ceg17ceg6903g460dg031ac096f306" version="1">The target gains a +1d4 bonus to &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Checks&lt;/LSTag&gt; and &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;, and has &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on &lt;LSTag Tooltip="Charisma"&gt;Charisma&lt;/LSTag&gt; checks.</content>
-    <content contentuid="h3f6033d3g4507g025egce1age3a56dc48d13" version="1">Bolster</content>
-    <content contentuid="h80a76adcgee37g249ageb41gf9aad53a72ec" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="h0020d716g22ceg9154g0bc5g19fd1f64e986" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
 </contentList>

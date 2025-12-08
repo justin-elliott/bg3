@@ -7,12 +7,7 @@ import os
 
 from functools import cached_property
 from moddb import (
-    Awareness,
-    Bolster,
-    Defense,
-    Guidance,
     Movement,
-    PackMule,
 )
 from modtools.lsx.game import (
     CharacterClass,
@@ -44,20 +39,6 @@ from uuid import UUID
 class EldritchKnightFullCaster(Replacer):
     _METAMAGIC: Final[UUID] = UUID("c3506532-36eb-4d18-823e-497a537a9619")
 
-    # Passives
-    _awareness: str
-    _fast_movement_30: str
-    _fast_movement_45: str
-    _fast_movement_60: str
-    _fast_movement_75: str
-    _pack_mule: str
-    _unarmored_defense: str
-    _warding: str
-
-    # Spells
-    _arcane_guidance: str
-    _bolster: str
-
     def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
@@ -65,33 +46,21 @@ class EldritchKnightFullCaster(Replacer):
                          description="Full casting for the Eldritch Knight subclass.",
                          **kwds)
 
-        self._fast_movement_30 = Movement(self.mod).add_fast_movement(3.0)
-        self._fast_movement_45 = Movement(self.mod).add_fast_movement(4.5)
-        self._fast_movement_60 = Movement(self.mod).add_fast_movement(6.0)
-        self._fast_movement_75 = Movement(self.mod).add_fast_movement(7.5)
-
-        self._awareness = Awareness(self.mod).add_awareness(5)
-        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
-        self._warding = Defense(self.mod).add_warding()
-
-        self._arcane_guidance = Guidance(self.mod).add_arcane_guidance()
-        self._bolster = Bolster(self.mod).add_bolster()
+    @cached_property
+    def _fast_movement_30(self) -> str:
+        return Movement(self.mod).add_fast_movement(3.0)
 
     @cached_property
-    def _spells_level_3(self) -> str:
-        name = "Eldritch Knight spells gained at level 3"
-        spells = SpellList(
-            Name=name,
-            Spells=[
-                self._arcane_guidance,
-                self._bolster,
-                "Target_Command_Container",
-                "Projectile_EldritchBlast",
-            ],
-            UUID=self.make_uuid(name),
-        )
-        self.mod.add(spells)
-        return str(spells.UUID)
+    def _fast_movement_45(self) -> str:
+        return Movement(self.mod).add_fast_movement(4.5)
+
+    @cached_property
+    def _fast_movement_60(self) -> str:
+        return Movement(self.mod).add_fast_movement(6.0)
+
+    @cached_property
+    def _fast_movement_75(self) -> str:
+        return Movement(self.mod).add_fast_movement(7.5)
 
     @cached_property
     def _spells_level_4(self) -> str:
@@ -141,20 +110,15 @@ class EldritchKnightFullCaster(Replacer):
     def level_3(self, progress: Progression) -> None:
         progress.Boosts += ["Tag(SORCERER_METAMAGIC)"]
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
-            "DevilsSight",
-            "RepellingBlast",
+            "JackOfAllTrades",
             "SculptSpells",
-            self._awareness,
             self._fast_movement_30,
-            self._pack_mule,
-            self._warding
         ]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({self._spells_level_3},,,,AlwaysPrepared)",
             f"SelectSpells({wizard_cantrips(self).UUID},4,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_2_spells(self).UUID},4,0)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,3)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"
         ]
 
     @progression(CharacterClass.FIGHTER_ELDRITCHKNIGHT, 4)
@@ -181,7 +145,7 @@ class EldritchKnightFullCaster(Replacer):
             f"SelectSpells({wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
             f"SelectSpells({wizard_level_3_spells(self).UUID},1,1)",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,1)"
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["PotentCantrip"]
 

@@ -1,9 +1,9 @@
 from collections import OrderedDict
-from functools import cache, cached_property
+from functools import cached_property
 from typing import Iterable
 from uuid import UUID
 
-from moddb import Bolster
+from moddb import Bolster, level_map_ranges_format
 from modtools.gamedata import (
     Armor,
     PassiveData,
@@ -11,7 +11,7 @@ from modtools.gamedata import (
     SpellData,
     StatusData,
 )
-from modtools.lsx.game import GameObjects
+from modtools.lsx.game import GameObjects, LevelMapSeries
 from modtools.replacers import Mod
 from modtools.text import TreasureTable
 
@@ -38,7 +38,7 @@ class TutorialSupplies(Mod):
                 self._bolster_potion,
                 self._knowledge_potion,
                 self._overpowering_potion,
-                self._ring_of_hill_giant_might,
+                self._underwear_of_giant_might,
             ],
         )
 
@@ -96,6 +96,7 @@ class TutorialSupplies(Mod):
             "IgnoreResistance(Bludgeoning,Resistant)",
             "IgnoreResistance(Piercing,Resistant)",
             "IgnoreResistance(Slashing,Resistant)",
+            "CriticalHit(AttackTarget,Success,Never)",
         ],
         status_property_flags=[],
     )
@@ -180,55 +181,74 @@ class TutorialSupplies(Mod):
         return name
 
     @cached_property
-    def _ring_of_hill_giant_might(self) -> str:
-        name = self.make_name("RingOfHillGiantMight")
+    def _underwear_of_giant_might(self) -> str:
+        name = self.make_name("UnderwearOfGiantMight")
+        underwear_uuid = self.make_uuid(name)
 
-        strength = "22"
-        constitution = "20"
-
-        self.loca[f"{name}_DisplayName"] = "Ring of Hill Giant Might"
+        self.loca[f"{name}_DisplayName"] = "Underwear of Giant Might"
         self.loca[f"{name}_Description"] = f"""
-            This crudely hammered bronze band is surprisingly heavy, resonating with a faint, earthy tremor that grants
-            the wearer the raw, unrefined might of a hill giant.
+            These thick, surprisingly resilient undergarments look mundane, yet they hum with a faint, low tremor,
+            granting the wearer the raw, unrefined might of a giant.
         """
 
-        ring_uuid = self.make_uuid(name)
         self.add(GameObjects(
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
             LevelName="",
-            MapKey=ring_uuid,
-            ParentTemplateId="1abd032b-c138-45ee-b85e-62b5bbb6ea2d",
+            MapKey=underwear_uuid,
+            ParentTemplateId="3caad2f1-719f-4070-b7f0-887c49c773d3",
             Name=name,
             Stats=name,
             Type="item",
         ))
 
-        hill_giant_might = self.make_name("HillGiantMight")
+        giant_might = self.make_name("GiantMight")
 
         self.add(Armor(
             name,
-            using="_Ring_Magic",
-            PassivesOnEquip=[hill_giant_might],
+            using="ARM_Underwear",
+            PassivesOnEquip=[giant_might],
             Rarity="Legendary",
-            RootTemplate=ring_uuid,
+            RootTemplate=underwear_uuid,
         ))
 
-        self.loca[f"{hill_giant_might}_DisplayName"] = "Hill Giant Might"
-        self.loca[f"{hill_giant_might}_Description"] = f"""
+        strength_level_map = LevelMapSeries(
+            Level1=22,
+            Level6=24,
+            Level11=26,
+            Level16=28,
+            Name=self.make_name("StrengthLevelMap"),
+            UUID=self.make_uuid("StrengthLevelMap"),
+        )
+        self.add(strength_level_map)
+
+        constitution_level_map = LevelMapSeries(
+            Level1=20,
+            Level6=22,
+            Level11=24,
+            Name=self.make_name("ConstitutionLevelMap"),
+            UUID=self.make_uuid("ConstitutionLevelMap"),
+        )
+        self.add(constitution_level_map)
+
+        self.loca[f"{giant_might}_DisplayName"] = "Giant Might"
+        self.loca[f"{giant_might}_Description"] = f"""
             Your <LSTag Tooltip="Strength">Strength</LSTag> increases to [1], and your
             <LSTag Tooltip="Constitution">Constitution</LSTag> to [2].
         """
 
         self.add(PassiveData(
-            hill_giant_might,
-            DisplayName=self.loca[f"{hill_giant_might}_DisplayName"],
-            Description=self.loca[f"{hill_giant_might}_Description"],
-            DescriptionParams=[strength, constitution],
+            giant_might,
+            DisplayName=self.loca[f"{giant_might}_DisplayName"],
+            Description=self.loca[f"{giant_might}_Description"],
+            DescriptionParams=[
+                f"LevelMapValue({strength_level_map.Name})",
+                f"LevelMapValue({constitution_level_map.Name})",
+            ],
             Boosts=[
-                f"AbilityOverrideMinimum(Strength,{strength})",
-                f"AbilityOverrideMinimum(Constitution,{constitution})",
-            ]
+                *level_map_ranges_format(self, strength_level_map, "AbilityOverrideMinimum(Strength,{})"),
+                *level_map_ranges_format(self, constitution_level_map, "AbilityOverrideMinimum(Constitution,{})"),
+            ],
         ))
 
         return name

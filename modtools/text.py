@@ -35,7 +35,8 @@ class TextCollection:
 
     def add(self, entry: Text) -> None:
         assert isinstance(entry, Text), f"{type(entry).__name__} is not a subclass of Text"
-        self._entries.append(entry)
+        if entry not in self._entries:
+            self._entries.append(entry)
 
     def save(self, mod_path: os.PathLike, **kwds: str) -> None:
         """Save each entry to the appropriate file."""

@@ -288,13 +288,13 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h512b5392g8f8fga6d1g2397gaa8a8b7721ec" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="hcd6cb3f1g679bgf831g05d0g46fa5a3492b7" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h28524931gdb56ga79cg4b77g695a835e20d3" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hc13279d2g73bega3c9g0abeg5be2776ad12e" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="be9504b4-2227-33fa-f4e3-b078c5ac16be" />
-                    <attribute id="Name" type="LSString" value="TutorialSupplies_RingOfHillGiantMight" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="1abd032b-c138-45ee-b85e-62b5bbb6ea2d" />
-                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_RingOfHillGiantMight" />
+                    <attribute id="MapKey" type="FixedString" value="2aa2339f-dd45-a5d9-bf70-86b9758c4d32" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_UnderwearOfGiantMight" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="3caad2f1-719f-4070-b7f0-887c49c773d3" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_UnderwearOfGiantMight" />
                     <attribute id="Type" type="FixedString" value="item" />
                 </node>
                 <node id="GameObjects">

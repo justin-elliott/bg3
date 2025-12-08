@@ -13,6 +13,7 @@ from .cunningactions import *
 from .defense import *
 from .empoweredspells import *
 from .guidance import *
+from .level_map_ranges import *
 from .movement import *
 from .pack_mule import *
 from .progression import *

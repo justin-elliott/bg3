@@ -185,7 +185,6 @@ class TutorialSupplies(Mod):
 
         strength = "22"
         constitution = "20"
-        damage_bonus = "1d4,Bludgeoning"
 
         self.loca[f"{name}_DisplayName"] = "Ring of Hill Giant Might"
         self.loca[f"{name}_Description"] = f"""
@@ -206,12 +205,11 @@ class TutorialSupplies(Mod):
         ))
 
         hill_giant_might = self.make_name("HillGiantMight")
-        heavy_blows = self.make_name("HeavyBlows")
 
         self.add(Armor(
             name,
             using="_Ring_Magic",
-            PassivesOnEquip=[hill_giant_might, heavy_blows],
+            PassivesOnEquip=[hill_giant_might],
             Rarity="Legendary",
             RootTemplate=ring_uuid,
         ))
@@ -231,19 +229,6 @@ class TutorialSupplies(Mod):
                 f"AbilityOverrideMinimum(Strength,{strength})",
                 f"AbilityOverrideMinimum(Constitution,{constitution})",
             ]
-        ))
-
-        self.loca[f"{heavy_blows}_DisplayName"] = "Heavy Blows"
-        self.loca[f"{heavy_blows}_Description"] = f"""
-            Your weapon and unarmed attacks deal an additional [1].
-        """
-
-        self.add(PassiveData(
-            heavy_blows,
-            DisplayName=self.loca[f"{heavy_blows}_DisplayName"],
-            Description=self.loca[f"{heavy_blows}_Description"],
-            DescriptionParams=[f"DealDamage({damage_bonus})"],
-            Boosts=[f"IF(IsWeaponAttack() or IsUnarmedAttack()):DamageBonus({damage_bonus})"]
         ))
 
         return name

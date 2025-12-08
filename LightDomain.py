@@ -59,7 +59,9 @@ class LightDomain(Replacer):
             TooltipUpcastDescription="",
             TooltipUpcastDescriptionParams=[],
             UseCosts=["ActionPoint:1"],
+            HitCosts="",
             MemoryCost="",
+            SpellFlags=["IsMelee", "IsHarmful"],
         ))
 
         return name

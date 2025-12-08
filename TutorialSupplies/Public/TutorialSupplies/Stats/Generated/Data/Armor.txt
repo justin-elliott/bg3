@@ -3,6 +3,6 @@
 new entry "TutorialSupplies_RingOfHillGiantMight"
 type "Armor"
 using "_Ring_Magic"
-data "PassivesOnEquip" "TutorialSupplies_HillGiantMight;TutorialSupplies_HeavyBlows"
+data "PassivesOnEquip" "TutorialSupplies_HillGiantMight"
 data "Rarity" "Legendary"
 data "RootTemplate" "be9504b4-2227-33fa-f4e3-b078c5ac16be"

@@ -3,12 +3,13 @@
 <contentList>
     <content contentuid="hcea40549g3530g231cg373fg900c5aff767d" version="1">Awareness</content>
     <content contentuid="h31db904eg6a74g9ab3g9bfdg016cf6ca0866" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
-    <content contentuid="h44ae99efg508bg0983gf07agfbf27e80c43a" version="1">Call forth the cold mountain winds and reduce the target's &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; by [1]. Your next melee attacks deal an additional [2].</content>
+    <content contentuid="h44ae99efg508bg0983gf07agfbf27e80c43a" version="1">Call forth the cold mountain winds. Your next melee attacks deal an additional [2].</content>
     <content contentuid="hc44d4d50g1ba5g180cgd7dbgfc18ffd6e458" version="1">Chill of the Mountain</content>
     <content contentuid="h7ca82620gd439gf7d6g86fdg022fa478ce25" version="1">Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].</content>
     <content contentuid="h63e26978g3829g06c7g77aegfccf5e8251e0" version="1">Strike of the Storm</content>
-    <content contentuid="h0168db91ga3b1g7083ged0fg93ed9512627a" version="1">The target cannot use reactions. This spell has &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on creatures with metal armour. Your next melee attacks deal an additional [1].</content>
+    <content contentuid="h0168db91ga3b1g7083ged0fg93ed9512627a" version="1">Strike with the power of the storms. This attack has &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on creatures with metal armour. Your next melee attacks deal an additional [1].</content>
     <content contentuid="h14874d23ga27eg66e6g7bdcg923a42304a5d" version="1">Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].</content>
-    <content contentuid="hfa71cdf1g220agb58dg499egff684e9ea44c" version="1">Unarmed Acuity</content>
-    <content contentuid="h4bb07058ga058gb766gfab4ge1b6291b6454" version="1">Whenever you deal damage with an unarmed attack, you gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt; for 2 turns.</content>
+    <content contentuid="h72c1454cg0dfegb3f2gb263ga1a93643d4ec" version="1">Crash of Thunder</content>
+    <content contentuid="hbcb6a6d6gae68g5a66gac52gd1e5b0258f0e" version="1">Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].</content>
+    <content contentuid="ha71b0f39g0f82g91d6g0dfdg0aaf524ea857" version="1">Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].</content>
 </contentList>

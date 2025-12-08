@@ -3,6 +3,7 @@ from functools import cached_property
 import os
 
 from moddb import BattleMagic, Movement
+from modtools.gamedata import SpellData
 from modtools.lsx.game import (
     Progression,
     SpellList,
@@ -32,6 +33,49 @@ class LightDomain(Replacer):
         return Movement(self.mod).add_misty_step()
 
     @cached_property
+    def _searing_smite(self) -> str:
+        name = self.make_name("SearingSmite")
+
+        self.add(SpellData(
+            name,
+            using="Target_Smite_Searing",
+            SpellType="Target",
+            Level="",
+            SpellSuccess=[
+                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "DealDamage(LevelMapValue(D6Cantrip),Fire,Magical)",
+                "ExecuteWeaponFunctors(MainHand)",
+                "ApplyStatus(SEARING_SMITE,100,10)",
+            ],
+            Icon="Spell_Evocation_FlameBlade",
+            DescriptionParams=[
+                "DealDamage(LevelMapValue(D6Cantrip),Fire)",
+                "DealDamage(1d6,Fire)",
+            ],
+            TooltipDamageList=[
+                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "DealDamage(LevelMapValue(D6Cantrip),Fire)",
+            ],
+            TooltipUpcastDescription="",
+            TooltipUpcastDescriptionParams=[],
+            UseCosts=["ActionPoint:1"],
+            MemoryCost="",
+        ))
+
+        return name
+
+    @cached_property
+    def _level_1_spell_list(self) -> str:
+        name = "Light Domain Cleric Additional Level 1 Spell List"
+        uuid = self.make_uuid(name)
+        self.mod.add(SpellList(
+            Name=name,
+            Spells=[self._searing_smite],
+            UUID=uuid,
+        ))
+        return uuid
+
+    @cached_property
     def _level_5_spell_list(self) -> str:
         name = "Light Domain Cleric Additional Level 5 Spell List"
         uuid = self.make_uuid(name)
@@ -50,6 +94,9 @@ class LightDomain(Replacer):
             "Proficiency(MartialWeapons)",
         ]
         progress.PassivesAdded += [self._battle_magic]
+        progress.Selectors += [
+            f"AddSpells({self._level_1_spell_list},ClericLightDomainSpells,,,AlwaysPrepared)",
+        ]
 
     @progression(CharacterClass.CLERIC_LIGHT, 2)
     def lightdomain_level_2(self, progress: Progression) -> None:

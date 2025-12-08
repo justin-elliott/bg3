@@ -230,7 +230,7 @@
                     <attribute id="Name" type="LSString" value="LightDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="WardingFlare;LightDomain_BattleMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(e2464518-2484-436e-9153-864c9dd05a7d,ClericLightDomainSpells,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(e2464518-2484-436e-9153-864c9dd05a7d,ClericLightDomainSpells,,,AlwaysPrepared);AddSpells(63959c1a-054f-a252-ed48-bc2b66ecdafc,ClericLightDomainSpells,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="6ec6caad-2dfa-4661-8edd-5c4eca0e044c" />
                     <attribute id="UUID" type="guid" value="18b60150-3f77-4f5d-9c67-b25c3b7ce404" />
                 </node>

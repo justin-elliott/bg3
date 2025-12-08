@@ -291,12 +291,14 @@ class FourElements(Replacer):
 
         self.add(SpellData(
             crash_of_thunder,
-            using="Projectile_ChromaticOrb_Thunder",
-            SpellType="Target",
-            Level="",
+            using="Projectile_ChromaticOrb_Thunder_Monk",
+            SpellType="Projectile",
             DisplayName=self.loca[f"{crash_of_thunder}_DisplayName"],
             Description=self.loca[f"{crash_of_thunder}_Description"],
             DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Thunder)"],
+            ContainerSpells=[],
+            SpellContainerID="",
+            SpellFlags=["HasHighGroundRangeExtension", "RangeIgnoreVerticalThreshold", "IsHarmful"],
             SpellProperties=[
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{crash_of_thunder_status},100,1)",
@@ -307,6 +309,7 @@ class FourElements(Replacer):
                 f"DealDamage({self._cantrip_damage},Thunder,Magical)",
             ],
             TargetRadius=18,
+            TooltipAttackSave="MeleeUnarmedAttack",
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
                 f"DealDamage({self._cantrip_damage},Thunder)",
@@ -314,8 +317,6 @@ class FourElements(Replacer):
             TooltipStatusApply=[
                 f"ApplyStatus({crash_of_thunder_status},100,1)",
             ],
-            TooltipUpcastDescription="",
-            TooltipUpcastDescriptionParams=[],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
         ))
 

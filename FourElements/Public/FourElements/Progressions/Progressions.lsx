@@ -238,7 +238,7 @@
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3f8f8a53-8e83-df88-5212-17e615a49b0e)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="4d2390c9-e95a-4b3d-bc22-22ac680e0393" />
                 </node>
@@ -247,7 +247,7 @@
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="PassivesAdded" type="LSString" value="UncannyDodge" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(cbaffd17-43af-9b8b-e927-d330b394c4b0)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="64e4f191-186b-4cc9-9e3d-9374d2670ec3" />
                 </node>

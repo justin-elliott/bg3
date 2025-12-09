@@ -1,9 +1,13 @@
 import os
 
 from functools import cached_property
-from moddb import character_level_range
+from moddb import level_map_ranges_format
 from modtools.gamedata import PassiveData, SpellData, StatusData
-from modtools.lsx.game import LevelMapSeries, Progression, SpellList
+from modtools.lsx.game import (
+    LevelMapSeries,
+    Progression,
+    SpellList,
+)
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -26,8 +30,6 @@ class FourElements(Replacer):
                          description="A class replacer for FourElements.",
                          **kwds)
 
-        self.add(character_level_range)
-
     @cached_property
     def _awareness(self) -> str:
         """The Awareness passive, a variant of Alert."""
@@ -41,6 +43,17 @@ class FourElements(Replacer):
             <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
             """
 
+        level_map = LevelMapSeries(
+            Level1=1,
+            Level5=2,
+            Level7=3,
+            Level9=4,
+            Level11=5,
+            Name=awareness_level_map,
+            UUID=self.make_uuid(awareness_level_map),
+        )
+        self.add(level_map)
+
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
@@ -49,48 +62,45 @@ class FourElements(Replacer):
             Icon="Action_Barbarian_MagicAwareness",
             Properties=["ForceShowInCC", "Highlighted"],
             Boosts=[
-                "IF(CharacterLevelRange(1,4)):Initiative(1)",
-                "IF(CharacterLevelRange(5,6)):Initiative(2)",
-                "IF(CharacterLevelRange(7,8)):Initiative(3)",
-                "IF(CharacterLevelRange(9,10)):Initiative(4)",
-                "IF(CharacterLevelRange(11,20)):Initiative(5)",
+                *level_map_ranges_format(self, level_map, "Initiative({})"),
                 "StatusImmunity(SURPRISED)",
                 "CriticalHit(AttackTarget,Success,Never)",
             ],
         ))
 
-        self.add(LevelMapSeries(
-            **{f"Level{level}": 1 for level in range(1, 3)},
-            **{f"Level{level}": int((level - 1) / 2) for level in range(3, 12)},
-            **{f"Level{level}": 5 for level in range(12, 21)},
-            Name=awareness_level_map,
-            UUID=self.make_uuid(awareness_level_map),
-        ))
-
         return name
+
+    def _spell_list(self, level: int, spells: list[str]) -> UUID:
+        name = f"Way of the Four Elements level {level} spells"
+        uuid = self.make_uuid(name)
+        self.add(SpellList(Name=name, Spells=spells, UUID=uuid))
+        return uuid
 
     @cached_property
     def _level_3_spell_list(self) -> UUID:
-        name = "Way of the Four Elements level 3 spells"
-        uuid = self.make_uuid(name)
-        self.add(SpellList(
-            Name=name,
-            Spells=[
-                self._chill_of_the_mountain,
-                self._fangs_of_the_fire_snake,
-                self._touch_of_the_storm,
-                self._crash_of_thunder,
-                "Target_OpenHandTechnique_Knock",
-                "Target_OpenHandTechnique_NoReactions",
-                "Target_OpenHandTechnique_Push",
-                self._bonus_unarmed_strike,
-                self._harmony_of_fire_and_water,
-                self._healing_surge,
-                self._healing_rain,
-            ],
-            UUID=uuid,
-        ))
-        return uuid
+        return self._spell_list(3, [
+            self._fangs_of_the_fire_snake,
+            "Target_OpenHandTechnique_Knock",
+            "Target_OpenHandTechnique_NoReactions",
+            "Target_OpenHandTechnique_Push",
+            self._bonus_unarmed_strike,
+            self._healing_surge,
+        ])
+
+    @cached_property
+    def _level_4_spell_list(self) -> UUID:
+        return self._spell_list(4, [
+            self._chill_of_the_mountain,
+            self._touch_of_the_storm,
+            self._crash_of_thunder,
+        ])
+
+    @cached_property
+    def _level_5_spell_list(self) -> UUID:
+        return self._spell_list(5, [
+            self._harmony_of_fire_and_water,
+            self._healing_rain,
+        ])
 
     @cached_property
     def _harmony_of_fire_and_water(self) -> str:
@@ -477,7 +487,9 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
-        progress.Boosts = ["ActionResource(SpellSlot,1,10)"]
+        progress.Boosts = [
+            f"ActionResource(SpellSlot,1,10)",  # Fake spell slot for KiPoint upcasting
+        ]
         progress.PassivesAdded = [self._awareness]
         progress.PassivesRemoved = ["MartialArts_BonusUnarmedStrike", "FlurryOfBlowsUnlock"]
         progress.Selectors = [
@@ -488,12 +500,16 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 4)
     def fourelements_level_4(self, progress: Progression) -> None:
-        progress.Selectors = []
+        progress.Selectors = [
+            f"AddSpells({self._level_4_spell_list})",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 5)
     def fourelements_level_5(self, progress: Progression) -> None:
         progress.PassivesAdded = ["UncannyDodge"]
-        progress.Selectors = []
+        progress.Selectors = [
+            f"AddSpells({self._level_5_spell_list})",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 6)
     def fourelements_level_6(self, progress: Progression) -> None:

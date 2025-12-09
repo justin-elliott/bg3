@@ -4,6 +4,7 @@ BG3 .lsx definitions package.
 """
 
 # flake8: noqa
+from .actionresourcedefinitions import *
 from .actionresources import *
 from .characterability import *
 from .characterclass import *

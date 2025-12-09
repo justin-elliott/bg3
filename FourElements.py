@@ -86,6 +86,7 @@ class FourElements(Replacer):
                 self._bonus_unarmed_strike,
                 self._harmony_of_fire_and_water,
                 self._healing_surge,
+                self._healing_rain,
             ],
             UUID=uuid,
         ))
@@ -347,10 +348,9 @@ class FourElements(Replacer):
     @cached_property
     def _healing_surge(self) -> str:
         name = self.make_name("HealingSurge")
-        status_name = self.make_name("HEALING_SURGE")
 
         self.loca[f"{name}_DisplayName"] = "Healing Surge"
-        self.loca[f"{name}_Description"] = "Heal an ally."
+        self.loca[f"{name}_Description"] = "Heal a creature."
 
         self.add(SpellData(
             name,
@@ -358,14 +358,14 @@ class FourElements(Replacer):
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
             SpellProperties=[
-                "RegainHitPoints(LevelMapValue(MartialArts))",
-                f"ApplyStatus({status_name},100,3)",
+                f"RegainHitPoints(LevelMapValue({self._heal_level_map}))",
+                f"ApplyStatus({self._heal_over_time_status},100,3)",
             ],
             Icon="Spell_Evocation_HealingWord",
             TargetRadius="18",
             TargetConditions=["Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')"],
-            TooltipDamageList=["RegainHitPoints(LevelMapValue(MartialArts))"],
-            TooltipStatusApply=[f"ApplyStatus({status_name},100,3)"],
+            TooltipDamageList=[f"RegainHitPoints(LevelMapValue({self._heal_level_map}))"],
+            TooltipStatusApply=[f"ApplyStatus({self._heal_over_time_status},100,3)"],
             TooltipPermanentWarnings="662e013d-e5cb-4669-9a4b-771636b24aa2",
             CastSound="Spell_Cast_Monk_WaterWhip_L1to3",
             TargetSound="Spell_Impact_Healing_HealingWord_L1to3",
@@ -392,21 +392,91 @@ class FourElements(Replacer):
             BeamEffect="bb97ac24-8aae-463b-a080-072c2957db0e",
         ))
 
-        self.loca[f"{status_name}_Description"] = "Regaining health."
+        return name
+
+    @cached_property
+    def _healing_rain(self) -> str:
+        name = self.make_name("HealingRain")
+
+        self.loca[f"{name}_DisplayName"] = "Healing Rain"
+        self.loca[f"{name}_Description"] = "Heal your nearby allies."
+
+        self.add(SpellData(
+            name,
+            SpellType="Shout",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            SpellProperties=[
+                f"RegainHitPoints(LevelMapValue({self._heal_level_map}))",
+                f"ApplyStatus({self._heal_over_time_status},100,3)",
+            ],
+            Icon="Spell_Evocation_MassHealingWord",
+            AreaRadius="9",
+            TargetConditions=["Ally() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')"],
+            TooltipDamageList=[f"RegainHitPoints(LevelMapValue({self._heal_level_map}))"],
+            TooltipStatusApply=[f"ApplyStatus({self._heal_over_time_status},100,3)"],
+            TooltipPermanentWarnings="662e013d-e5cb-4669-9a4b-771636b24aa2",
+            CastSound="Spell_Cast_Utility_CreateWater_L1to3",
+            TargetSound="Spell_Impact_Healing_MassHealingWord_L1to3",
+            CastTextEvent="Cast",
+            CycleConditions=["Ally() and not Dead()"],
+            UseCosts=["BonusActionPoint:1", "KiPoint:4"],
+            SpellAnimation=[
+                "dd86aa43-8189-4d9f-9a5c-454b5fe4a197,,",
+                ",,",
+                "09ae2f11-f5b4-42f5-ae16-687a5b57d500,,",
+                "10caea0e-c949-4d91-8ab7-3b50019dd054,,",
+                "cc5b0caf-3ed1-4711-a50d-11dc3f1fdc6a,,",
+                ",,",
+                "1715b877-4512-472e-9bd0-fd568a112e90,,",
+                ",,",
+                ",,",
+            ],
+            VerbalIntent="Buff",
+            SpellStyleGroup="Class",
+            SpellFlags=["HasSomaticComponent"],
+            PrepareEffect="7121a488-7c9a-4ba1-a585-f79aaa77e97c",
+            CastEffect="06fda61b-8867-4f68-aee4-c1536bd11e78",
+            PositionEffect="2c9ae2d5-5b85-458e-92fe-f311dae7f174",
+            TargetEffect="7f8485a2-920d-49e7-903e-bdf8e684db46",
+        ))
+
+        return name
+
+    @cached_property
+    def _heal_level_map(self) -> None:
+        name = self.make_name("HealLevelMap")
+
+        self.add(LevelMapSeries(
+            Level1="1d4",
+            Level3="1d6",
+            Level9="1d8",
+            Level17="1d10",
+            Name=name,
+            UUID=self.make_uuid(name),
+        ))
+        return name
+
+    @cached_property
+    def _heal_over_time_status(self) -> None:
+        name = self.make_name("HEAL_OVER_TIME")
+
+        self.loca[f"{name}_DisplayName"] = "Regaining Health"
+        self.loca[f"{name}_Description"] = "Regaining [1] every turn."
 
         self.add(StatusData(
-            status_name,
+            name,
             StatusType="BOOST",
             DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{status_name}_Description"],
-            TooltipDamage=["RegainHitPoints(LevelMapValue(MartialArts))"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"RegainHitPoints(LevelMapValue({self._heal_level_map}))"],
             Icon="Spell_Evocation_HealingWord",
-            StackId=status_name,
+            StackId=name,
             StackType="Overwrite",
             TickType="StartTurn",
             TickFunctors=[
                 "IF(not HasStatus('DOWNED') and not Dead() and HasHPPercentageLessThan(100)):"
-                + "RegainHitPoints(LevelMapValue(MartialArts))",
+                + f"RegainHitPoints(LevelMapValue({self._heal_level_map}))",
             ],
         ))
 

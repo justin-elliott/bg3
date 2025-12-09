@@ -13,6 +13,9 @@
     <content contentuid="hbcb6a6d6gae68g5a66gac52gd1e5b0258f0e" version="1">Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].</content>
     <content contentuid="ha71b0f39g0f82g91d6g0dfdg0aaf524ea857" version="1">Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].</content>
     <content contentuid="h1b5999e4gb156gb49eg21d3g1717056029a7" version="1">Healing Surge</content>
-    <content contentuid="h9530f708gb2d5g72b0ga403g91ae359c95b1" version="1">Heal an ally.</content>
-    <content contentuid="hd7019834g65b2g9566g3274g9ed1448d770b" version="1">Regaining health.</content>
+    <content contentuid="h9530f708gb2d5g72b0ga403g91ae359c95b1" version="1">Heal a creature.</content>
+    <content contentuid="hea874aeagcf14g5621g29ecg151b14906aba" version="1">Regaining Health</content>
+    <content contentuid="h4d3a5585g69d9g1a23gaa02g4458b901ce3f" version="1">Regaining [1] every turn.</content>
+    <content contentuid="h5c899ddbga948g5b1dga558g59f9132d768b" version="1">Healing Rain</content>
+    <content contentuid="h8d10402bgf2d0g280ag1fb4ga949d145b1ac" version="1">Heal your nearby allies.</content>
 </contentList>

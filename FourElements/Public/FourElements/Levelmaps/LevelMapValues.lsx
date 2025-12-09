@@ -29,6 +29,14 @@
                     <attribute id="Name" type="FixedString" value="FourElements_Awareness_LevelMap" />
                     <attribute id="UUID" type="guid" value="8a3fbe44-89fc-9d1c-6af9-bd5dafacd159" />
                 </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="1d4" />
+                    <attribute id="Level3" type="LSString" value="1d6" />
+                    <attribute id="Level9" type="LSString" value="1d8" />
+                    <attribute id="Level17" type="LSString" value="1d10" />
+                    <attribute id="Name" type="FixedString" value="FourElements_HealLevelMap" />
+                    <attribute id="UUID" type="guid" value="b7e5b403-a3d1-19bc-cbdb-26607e9644e9" />
+                </node>
             </children>
         </node>
     </region>

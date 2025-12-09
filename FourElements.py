@@ -85,6 +85,7 @@ class FourElements(Replacer):
                 "Target_OpenHandTechnique_Push",
                 self._bonus_unarmed_strike,
                 self._harmony_of_fire_and_water,
+                self._healing_surge,
             ],
             UUID=uuid,
         ))
@@ -342,6 +343,74 @@ class FourElements(Replacer):
         ))
 
         return crash_of_thunder
+
+    @cached_property
+    def _healing_surge(self) -> str:
+        name = self.make_name("HealingSurge")
+        status_name = self.make_name("HEALING_SURGE")
+
+        self.loca[f"{name}_DisplayName"] = "Healing Surge"
+        self.loca[f"{name}_Description"] = "Heal an ally."
+
+        self.add(SpellData(
+            name,
+            SpellType="Target",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            SpellProperties=[
+                "RegainHitPoints(LevelMapValue(MartialArts))",
+                f"ApplyStatus({status_name},100,3)",
+            ],
+            Icon="Spell_Evocation_HealingWord",
+            TargetRadius="18",
+            TargetConditions=["Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')"],
+            TooltipDamageList=["RegainHitPoints(LevelMapValue(MartialArts))"],
+            TooltipStatusApply=[f"ApplyStatus({status_name},100,3)"],
+            TooltipPermanentWarnings="662e013d-e5cb-4669-9a4b-771636b24aa2",
+            CastSound="Spell_Cast_Monk_WaterWhip_L1to3",
+            TargetSound="Spell_Impact_Healing_HealingWord_L1to3",
+            CastTextEvent="Cast",
+            CycleConditions=["Ally() and not Dead()"],
+            UseCosts=["BonusActionPoint:1", "KiPoint:2"],
+            SpellAnimation=[
+                "101629c4-d30c-4ae7-b316-9d6423e7298a,,",
+                ",,",
+                "5787f12b-23ba-4fcb-8404-2580b7bdb6bd,,",
+                "f0ad7144-f061-4bf0-97be-b7ac68b9fe95,,",
+                "9af429ab-54e8-455b-99d0-71c62e66ad64,,",
+                ",,",
+                "e550f983-faab-412b-a55d-237a1e17d4da,,",
+                ",,",
+                ",,",
+            ],
+            VerbalIntent="Buff",
+            SpellStyleGroup="Class",
+            SpellFlags=["HasSomaticComponent"],
+            PrepareEffect="8e096e97-26bb-4da1-bb6a-374acb434c54",
+            CastEffect="903263b5-afca-4370-bf00-32aba5f01757",
+            TargetEffect="7f8485a2-920d-49e7-903e-bdf8e684db46",
+            BeamEffect="bb97ac24-8aae-463b-a080-072c2957db0e",
+        ))
+
+        self.loca[f"{status_name}_Description"] = "Regaining health."
+
+        self.add(StatusData(
+            status_name,
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{status_name}_Description"],
+            TooltipDamage=["RegainHitPoints(LevelMapValue(MartialArts))"],
+            Icon="Spell_Evocation_HealingWord",
+            StackId=status_name,
+            StackType="Overwrite",
+            TickType="StartTurn",
+            TickFunctors=[
+                "IF(not HasStatus('DOWNED') and not Dead() and HasHPPercentageLessThan(100)):"
+                + "RegainHitPoints(LevelMapValue(MartialArts))",
+            ],
+        ))
+
+        return name
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:

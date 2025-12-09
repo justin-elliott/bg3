@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_RayOfFrost_Monk;Projectile_FangsOfTheFireSnake;Target_ShockingGrasp_Monk;FourElements_CrashOfThunder;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push;FourElements_BonusUnarmedStrike;FourElements_HarmonyOfFireAndWater" />
+                    <attribute id="Spells" type="LSString" value="Projectile_RayOfFrost_Monk;Projectile_FangsOfTheFireSnake;Target_ShockingGrasp_Monk;FourElements_CrashOfThunder;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push;FourElements_BonusUnarmedStrike;FourElements_HarmonyOfFireAndWater;FourElements_HealingSurge" />
                     <attribute id="UUID" type="guid" value="165cf2f3-5f7a-8299-dab2-bb52483ea976" />
                 </node>
             </children>

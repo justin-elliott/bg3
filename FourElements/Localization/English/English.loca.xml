@@ -12,4 +12,7 @@
     <content contentuid="h72c1454cg0dfegb3f2gb263ga1a93643d4ec" version="1">Crash of Thunder</content>
     <content contentuid="hbcb6a6d6gae68g5a66gac52gd1e5b0258f0e" version="1">Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].</content>
     <content contentuid="ha71b0f39g0f82g91d6g0dfdg0aaf524ea857" version="1">Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].</content>
+    <content contentuid="h1b5999e4gb156gb49eg21d3g1717056029a7" version="1">Healing Surge</content>
+    <content contentuid="h9530f708gb2d5g72b0ga403g91ae359c95b1" version="1">Heal an ally.</content>
+    <content contentuid="hd7019834g65b2g9566g3274g9ed1448d770b" version="1">Regaining health.</content>
 </contentList>

@@ -80,25 +80,21 @@ class FourElements(Replacer):
     def _level_3_spell_list(self) -> UUID:
         return self._spell_list(3, [
             self._fangs_of_the_fire_snake,
-            "Target_OpenHandTechnique_Knock",
-            "Target_OpenHandTechnique_NoReactions",
-            "Target_OpenHandTechnique_Push",
-            self._bonus_unarmed_strike,
+            self._chill_of_the_mountain,
+            self._touch_of_the_storm,
+            self._crash_of_thunder,
             self._healing_surge,
         ])
 
     @cached_property
     def _level_4_spell_list(self) -> UUID:
         return self._spell_list(4, [
-            self._chill_of_the_mountain,
-            self._touch_of_the_storm,
-            self._crash_of_thunder,
+            self._harmony_of_fire_and_water,
         ])
 
     @cached_property
     def _level_5_spell_list(self) -> UUID:
         return self._spell_list(5, [
-            self._harmony_of_fire_and_water,
             self._healing_rain,
         ])
 
@@ -122,19 +118,6 @@ class FourElements(Replacer):
         return name
 
     @cached_property
-    def _bonus_unarmed_strike(self) -> str:
-        name = self.make_name("BonusUnarmedStrike")
-
-        self.add(SpellData(
-            name,
-            using="Target_UnarmedStrike_Monk",
-            SpellType="Target",
-            SpellFlags=["IsMelee", "IsHarmful", "DisableBlood"],
-        ))
-
-        return name
-
-    @cached_property
     def _chill_of_the_mountain(self) -> str:
         chill_of_the_mountain = "Projectile_RayOfFrost_Monk"
         chill_of_the_mountain_status = self.make_name("CHILL_OF_THE_MOUNTAIN")
@@ -151,6 +134,7 @@ class FourElements(Replacer):
             DescriptionParams=["Distance(3)", f"DealDamage({self._cantrip_status_damage},Cold)"],
             SpellProperties=[
                 "GROUND:SurfaceChange(Freeze)",
+                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{chill_of_the_mountain_status},100,1)",
             ],
@@ -202,6 +186,7 @@ class FourElements(Replacer):
             DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Fire)"],
             SpellProperties=[
                 f"GROUND:DealDamage({self._cantrip_damage},Fire)",
+                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
             ],
@@ -253,6 +238,7 @@ class FourElements(Replacer):
             Icon="Spell_Evocation_WitchBolt",
             SpellProperties=[
                 "GROUND:SurfaceChange(Electrify)",
+                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{touch_of_the_storm_status},100,1)",
             ],
@@ -314,6 +300,7 @@ class FourElements(Replacer):
             SpellContainerID="",
             SpellFlags=["HasHighGroundRangeExtension", "RangeIgnoreVerticalThreshold", "IsHarmful"],
             SpellProperties=[
+                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{crash_of_thunder_status},100,1)",
             ],
@@ -386,7 +373,6 @@ class FourElements(Replacer):
             CastTextEvent="Cast",
             CycleConditions=["Ally() and not Dead()"],
             UseCosts=["BonusActionPoint:1", "KiPoint:2"],
-            PowerLevel=1,
             SpellAnimation=[
                 "101629c4-d30c-4ae7-b316-9d6423e7298a,,",
                 ",,",
@@ -440,7 +426,6 @@ class FourElements(Replacer):
             CastTextEvent="Cast",
             CycleConditions=["Ally() and not Dead()"],
             UseCosts=["BonusActionPoint:1", "KiPoint:4"],
-            PowerLevel=1,
             SpellAnimation=[
                 "dd86aa43-8189-4d9f-9a5c-454b5fe4a197,,",
                 ",,",
@@ -474,7 +459,6 @@ class FourElements(Replacer):
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._awareness]
-        progress.PassivesRemoved = ["MartialArts_BonusUnarmedStrike", "FlurryOfBlowsUnlock"]
         progress.Selectors = [
             f"AddSpells({self._level_3_spell_list})",
             "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",

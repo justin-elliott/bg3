@@ -7,17 +7,17 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_FangsOfTheFireSnake;Target_OpenHandTechnique_Knock;Target_OpenHandTechnique_NoReactions;Target_OpenHandTechnique_Push;FourElements_BonusUnarmedStrike;FourElements_HealingSurge" />
+                    <attribute id="Spells" type="LSString" value="Projectile_FangsOfTheFireSnake;Projectile_RayOfFrost_Monk;Target_ShockingGrasp_Monk;FourElements_CrashOfThunder;FourElements_HealingSurge" />
                     <attribute id="UUID" type="guid" value="165cf2f3-5f7a-8299-dab2-bb52483ea976" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 4 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_RayOfFrost_Monk;Target_ShockingGrasp_Monk;FourElements_CrashOfThunder" />
+                    <attribute id="Spells" type="LSString" value="FourElements_HarmonyOfFireAndWater" />
                     <attribute id="UUID" type="guid" value="3f8f8a53-8e83-df88-5212-17e615a49b0e" />
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 5 spells" />
-                    <attribute id="Spells" type="LSString" value="FourElements_HarmonyOfFireAndWater;FourElements_HealingRain" />
+                    <attribute id="Spells" type="LSString" value="FourElements_HealingRain" />
                     <attribute id="UUID" type="guid" value="cbaffd17-43af-9b8b-e927-d330b394c4b0" />
                 </node>
             </children>

@@ -362,19 +362,25 @@ class FourElements(Replacer):
         self.loca[f"{name}_DisplayName"] = "Healing Surge"
         self.loca[f"{name}_Description"] = "Heal a creature."
 
+        level_map = LevelMapSeries(
+            Level1=0,
+            **{f"Level{level}": f"{count + 1}d6" for (count, level) in enumerate(range(3, 21, 2))},
+            Name=f"{name}_LevelMap",
+            UUID=self.make_uuid(f"{name}_LevelMap")
+        )
+        self.add(level_map)
+
         self.add(SpellData(
             name,
             SpellType="Target",
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            SpellProperties=[f"RegainHitPoints(1d4+SpellCastingAbilityModifier)"],
+            SpellProperties=[f"RegainHitPoints(LevelMapValue({level_map.Name})+SpellCastingAbilityModifier)"],
             Icon="Spell_Evocation_HealingWord",
             TargetRadius=18,
             TargetConditions=["Character() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')"],
-            TooltipDamageList=[f"RegainHitPoints(1d4+SpellCastingAbilityModifier)"],
+            TooltipDamageList=[f"RegainHitPoints(LevelMapValue({level_map.Name})+SpellCastingAbilityModifier)"],
             TooltipPermanentWarnings="662e013d-e5cb-4669-9a4b-771636b24aa2",
-            TooltipUpcastDescription="ef4fc937-9b23-4fcc-a67f-7706f86cfa44",
-            TooltipUpcastDescriptionParams=["RegainHitPoints(1d4)"],
             CastSound="Spell_Cast_Monk_WaterWhip_L1to3",
             TargetSound="Spell_Impact_Healing_HealingWord_L1to3",
             CastTextEvent="Cast",
@@ -401,19 +407,6 @@ class FourElements(Replacer):
             BeamEffect="bb97ac24-8aae-463b-a080-072c2957db0e",
         ))
 
-        for level in range(2, 11):
-            self.add(SpellData(
-                f"{name}_{level}",
-                SpellType="Target",
-                using=name,
-                SpellProperties=[f"RegainHitPoints({level}d4+SpellCastingAbilityModifier)"],
-                TooltipDamageList=[f"RegainHitPoints({level}d4+SpellCastingAbilityModifier)"],
-                RequirementConditions=[f"CharacterLevelGreaterThan({(level - 1) * 2})"],
-                UseCosts=["BonusActionPoint:1", f"KiPoint:{level + 1}"],
-                RootSpellID=name,
-                PowerLevel=level,
-            ))
-
         return name
 
     @cached_property
@@ -423,19 +416,25 @@ class FourElements(Replacer):
         self.loca[f"{name}_DisplayName"] = "Healing Rain"
         self.loca[f"{name}_Description"] = "Heal your nearby allies."
 
+        level_map = LevelMapSeries(
+            Level1=0,
+            **{f"Level{level}": f"{count + 1}d6" for (count, level) in enumerate(range(5, 21, 2))},
+            Name=f"{name}_LevelMap",
+            UUID=self.make_uuid(f"{name}_LevelMap")
+        )
+        self.add(level_map)
+
         self.add(SpellData(
             name,
             SpellType="Shout",
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            SpellProperties=[f"RegainHitPoints(1d4+SpellCastingAbilityModifier)"],
+            SpellProperties=[f"RegainHitPoints(LevelMapValue({level_map.Name})+SpellCastingAbilityModifier)"],
             Icon="Spell_Evocation_MassHealingWord",
             AreaRadius=18,
             TargetConditions=["Ally() and not Dead() and not Tagged('UNDEAD') and not Tagged('CONSTRUCT')"],
-            TooltipDamageList=[f"RegainHitPoints(1d4+SpellCastingAbilityModifier)"],
+            TooltipDamageList=[f"RegainHitPoints(LevelMapValue({level_map.Name})+SpellCastingAbilityModifier)"],
             TooltipPermanentWarnings="662e013d-e5cb-4669-9a4b-771636b24aa2",
-            TooltipUpcastDescription="ef4fc937-9b23-4fcc-a67f-7706f86cfa44",
-            TooltipUpcastDescriptionParams=["RegainHitPoints(1d4)"],
             CastSound="Spell_Cast_Monk_WaterWhip_L1to3",
             TargetSound="Spell_Impact_Healing_MassHealingWord_L1to3",
             CastTextEvent="Cast",
@@ -462,19 +461,6 @@ class FourElements(Replacer):
             TargetEffect="7f8485a2-920d-49e7-903e-bdf8e684db46",
         ))
 
-        for level in range(2, 11):
-            self.add(SpellData(
-                f"{name}_{level}",
-                SpellType="Shout",
-                using=name,
-                SpellProperties=[f"RegainHitPoints({level}d4+SpellCastingAbilityModifier)"],
-                TooltipDamageList=[f"RegainHitPoints({level}d4+SpellCastingAbilityModifier)"],
-                RequirementConditions=[f"CharacterLevelGreaterThan({(level - 1) * 2})"],
-                UseCosts=["BonusActionPoint:1", f"KiPoint:{level + 3}"],
-                RootSpellID=name,
-                PowerLevel=level,
-            ))
-
         return name
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 1)
@@ -487,9 +473,6 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
-        progress.Boosts = [
-            f"ActionResource(SpellSlot,1,10)",  # Fake spell slot for KiPoint upcasting
-        ]
         progress.PassivesAdded = [self._awareness]
         progress.PassivesRemoved = ["MartialArts_BonusUnarmedStrike", "FlurryOfBlowsUnlock"]
         progress.Selectors = [

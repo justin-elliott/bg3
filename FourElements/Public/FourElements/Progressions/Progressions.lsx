@@ -224,7 +224,6 @@
                     <attribute id="UUID" type="guid" value="51f0e9b1-bf75-4a87-9332-f5d65e4bcc73" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,1,10)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="PassivesAdded" type="LSString" value="FourElements_Awareness" />

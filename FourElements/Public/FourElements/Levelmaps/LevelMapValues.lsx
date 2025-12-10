@@ -14,6 +14,33 @@
                     <attribute id="Name" type="FixedString" value="FourElements_Awareness_LevelMap" />
                     <attribute id="UUID" type="guid" value="8a3fbe44-89fc-9d1c-6af9-bd5dafacd159" />
                 </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="0" />
+                    <attribute id="Level3" type="LSString" value="1d6" />
+                    <attribute id="Level5" type="LSString" value="2d6" />
+                    <attribute id="Level7" type="LSString" value="3d6" />
+                    <attribute id="Level9" type="LSString" value="4d6" />
+                    <attribute id="Level11" type="LSString" value="5d6" />
+                    <attribute id="Level13" type="LSString" value="6d6" />
+                    <attribute id="Level15" type="LSString" value="7d6" />
+                    <attribute id="Level17" type="LSString" value="8d6" />
+                    <attribute id="Level19" type="LSString" value="9d6" />
+                    <attribute id="Name" type="FixedString" value="FourElements_HealingSurge_LevelMap" />
+                    <attribute id="UUID" type="guid" value="c278fdc6-d9fb-573b-66cd-a666e8588209" />
+                </node>
+                <node id="LevelMapSeries">
+                    <attribute id="Level1" type="LSString" value="0" />
+                    <attribute id="Level5" type="LSString" value="1d6" />
+                    <attribute id="Level7" type="LSString" value="2d6" />
+                    <attribute id="Level9" type="LSString" value="3d6" />
+                    <attribute id="Level11" type="LSString" value="4d6" />
+                    <attribute id="Level13" type="LSString" value="5d6" />
+                    <attribute id="Level15" type="LSString" value="6d6" />
+                    <attribute id="Level17" type="LSString" value="7d6" />
+                    <attribute id="Level19" type="LSString" value="8d6" />
+                    <attribute id="Name" type="FixedString" value="FourElements_HealingRain_LevelMap" />
+                    <attribute id="UUID" type="guid" value="59e79b59-a272-c16d-0365-60486c59a38c" />
+                </node>
             </children>
         </node>
     </region>

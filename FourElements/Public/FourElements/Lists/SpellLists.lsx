@@ -17,7 +17,7 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 5 spells" />
-                    <attribute id="Spells" type="LSString" value="FourElements_HealingRain" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fireball_Monk;FourElements_HealingRain" />
                     <attribute id="UUID" type="guid" value="cbaffd17-43af-9b8b-e927-d330b394c4b0" />
                 </node>
             </children>

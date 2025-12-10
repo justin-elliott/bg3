@@ -95,6 +95,7 @@ class FourElements(Replacer):
     @cached_property
     def _level_5_spell_list(self) -> UUID:
         return self._spell_list(5, [
+            self._flames_of_the_phoenix,
             self._healing_rain,
         ])
 
@@ -341,6 +342,30 @@ class FourElements(Replacer):
         ))
 
         return crash_of_thunder
+
+    @cached_property
+    def _flames_of_the_phoenix(self) -> str:
+        name = "Projectile_Fireball_Monk"
+
+        level_map = LevelMapSeries(
+            Level1=0,
+            **{f"Level{level}": f"{count + 8}d6" for (count, level) in enumerate(range(5, 18, 2))},
+            Name=f"{name}_LevelMap",
+            UUID=self.make_uuid(f"{name}_LevelMap")
+        )
+        self.add(level_map)
+
+        self.add(SpellData(
+            name,
+            using=name,
+            SpellType="Projectile",
+            SpellSuccess=[f"DealDamage(LevelMapValue({level_map.Name}),Fire,Magical)"],
+            SpellFail=[f"DealDamage((LevelMapValue({level_map.Name}))/2,Fire,Magical)"],
+            TooltipDamageList=[f"DealDamage(LevelMapValue({level_map.Name}),Fire)"],
+            UseCosts=["BonusActionPoint:1", "KiPoint:4"],
+        ))
+
+        return name
 
     @cached_property
     def _healing_surge(self) -> str:

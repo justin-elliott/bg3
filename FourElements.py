@@ -197,7 +197,6 @@ class FourElements(Replacer):
                        icon: str = None,
                        spell_flags: list[str] = None,
                        spell_properties: list[str],
-                       spell_roll_advantage: str = None,
                        ki_points: int) -> str:
         self.loca[f"{name}_DisplayName"] = display_name
         self.loca[f"{name}_Description"] = f"{description} Your next melee attacks deal an additional [1]."
@@ -223,8 +222,7 @@ class FourElements(Replacer):
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
                 f"ApplyStatus(SELF,{status},100,1)",
             ],
-            SpellRoll=f"Attack(AttackType.MeleeUnarmedAttack{
-                f",{spell_roll_advantage}" if spell_roll_advantage else ""})",
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
                 f"DealDamage({self._elemental_damage},{element},Magical)",

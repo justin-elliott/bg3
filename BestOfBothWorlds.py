@@ -28,6 +28,9 @@ class BestOfBothWorlds(Replacer):
     def half_elf(self, progress: Progression) -> None:
         progress.Boosts += ["ProficiencyBonus(Skill,Perception)"]
         progress.PassivesAdded += ["Elf_WeaponTraining"]
+        progress.Selectors = [
+            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,1,HumanVersatility)",
+        ]
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@
                     <attribute id="Name" type="LSString" value="HalfElf" />
                     <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;Darkvision;FeyAncestry;Elf_WeaponTraining" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,1,HumanVersatility)" />
                     <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
                     <attribute id="UUID" type="guid" value="a1729574-2f7b-4561-91d8-3766cf940420" />
                 </node>

@@ -8,7 +8,7 @@ data "Boosts" "CharacterWeaponDamage(1d4+SpellCastingAbilityModifier,Fire);Chara
 data "Description" "h63b94a6fg36a7gd3aegea47g5f78e21d4a67"
 data "DescriptionParams" "DealDamage(1d4+SpellCastingAbilityModifier,Fire)"
 data "DisplayName" "h85a99868gbf07g5968g9415gc2430cb55dd3"
-data "Icon" "Action_Monk_FangsOfTheFireSnake"
+data "Icon" "Spell_Evocation_ChromaticOrb_Fire"
 data "StatusEffect" "43d61721-9a1a-4cef-bc33-8bb54f30de9d"
 
 new entry "FourElements_COLD_DAMAGE"

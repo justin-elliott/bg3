@@ -5,19 +5,23 @@
     <content contentuid="h31db904eg6a74g9ab3g9bfdg016cf6ca0866" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h85a99868gbf07g5968g9415gc2430cb55dd3" version="1">Flickering Flame</content>
     <content contentuid="h63b94a6fg36a7gd3aegea47g5f78e21d4a67" version="1">Affected entity's fists are flickering with flame. Its melee attacks deal an additional [1].</content>
-    <content contentuid="h44ae99efg508bg0983gf07agfbf27e80c43a" version="1">Call forth the cold mountain winds. Your next melee attacks deal an additional [2].</content>
+    <content contentuid="hab072c05gadefgce72g09c1g2a4edeb78b50" version="1">Fangs of the Fire Snake</content>
+    <content contentuid="hbe9ff736g7092gdcf4g24f2g7cc141960e1b" version="1">Hit your foe from afar. Your next melee attacks deal an additional [1].</content>
     <content contentuid="h35c08e5fgcc5fg0a2egc01dg0eba2601767c" version="1">Glistening Frost</content>
     <content contentuid="h7e89d730gb44dgb7d3g1d59gbe854c5abbd2" version="1">Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].</content>
-    <content contentuid="h63e26978g3829g06c7g77aegfccf5e8251e0" version="1">Strike of the Storm</content>
-    <content contentuid="h0168db91ga3b1g7083ged0fg93ed9512627a" version="1">Strike with the power of the storms. This attack has &lt;LSTag Tooltip="Advantage"&gt;Advantage&lt;/LSTag&gt; on creatures with metal armour. Your next melee attacks deal an additional [1].</content>
+    <content contentuid="ha5e22269gd7b0g9e6fge305gd26505855619" version="1">Chill of the Mountain</content>
+    <content contentuid="h44ae99efg508bg0983gf07agfbf27e80c43a" version="1">Call forth the cold mountain winds. Your next melee attacks deal an additional [1].</content>
     <content contentuid="he3f33914g539egd9aag241cg270b9ebfb774" version="1">Sparking Lightning</content>
     <content contentuid="h4a9b7409g7c4eg81e5g638egd3a8bec774ce" version="1">Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].</content>
-    <content contentuid="h72c1454cg0dfegb3f2gb263ga1a93643d4ec" version="1">Crash of Thunder</content>
-    <content contentuid="hbcb6a6d6gae68g5a66gac52gd1e5b0258f0e" version="1">Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].</content>
+    <content contentuid="h99097debg98fdgf070g4aa1g786b6c951f51" version="1">Strike of the Storm</content>
+    <content contentuid="h92f89423ge85dg53degb307gb17ea362d285" version="1">Strike with the power of the storms. Your next melee attacks deal an additional [1].</content>
     <content contentuid="h107fa3f1g85f1g2699g814dg65a030df6647" version="1">Echoing Thunder</content>
     <content contentuid="h06dab8a3g2aa3g5778gb461g0f7631359221" version="1">Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].</content>
+    <content contentuid="h72c1454cg0dfegb3f2gb263ga1a93643d4ec" version="1">Crash of Thunder</content>
+    <content contentuid="hbcb6a6d6gae68g5a66gac52gd1e5b0258f0e" version="1">Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].</content>
     <content contentuid="h1b5999e4gb156gb49eg21d3g1717056029a7" version="1">Healing Surge</content>
     <content contentuid="h9530f708gb2d5g72b0ga403g91ae359c95b1" version="1">Heal a creature.</content>
+    <content contentuid="h47d77845g443bgcfdag262aga46d4843c04c" version="1">Flames of the Phoenix</content>
     <content contentuid="h460cbbebg3474g07a6g231cgf48943ed45ef" version="1">Launch a bright flame that explodes upon contact, torching everything in the vicinity. Your next melee attacks deal an additional [1].</content>
     <content contentuid="h5c899ddbga948g5b1dga558g59f9132d768b" version="1">Healing Rain</content>
     <content contentuid="h8d10402bgf2d0g280ag1fb4ga949d145b1ac" version="1">Heal your nearby allies.</content>

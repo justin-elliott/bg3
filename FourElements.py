@@ -1,6 +1,6 @@
 import os
 
-from functools import cache, cached_property
+from functools import cached_property
 from moddb import level_map_ranges_format
 from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
@@ -79,7 +79,7 @@ class FourElements(Replacer):
         return self._spell_list(3, [
             self._fangs_of_the_fire_snake,
             self._chill_of_the_mountain,
-            self._touch_of_the_storm,
+            self._strike_of_the_storm,
             self._crash_of_thunder,
             self._healing_surge,
         ])
@@ -116,12 +116,17 @@ class FourElements(Replacer):
 
         return name
 
-    @cache
-    def _elemental_damage_status(self, element: str, *, display_name: str, description: str, icon: str, status_effect: str) -> str:
+    def _elemental_damage_status(self,
+                                 element: str,
+                                 *,
+                                 display_name: str,
+                                 description: str,
+                                 icon: str,
+                                 status_effect: str) -> str:
         name = self.make_name(f"{element.upper()}_DAMAGE")
 
         self.loca[f"{name}_DisplayName"] = display_name
-        self.loca[f"{name}_Description"] = description
+        self.loca[f"{name}_Description"] = f"{description} Its melee attacks deal an additional [1]."
 
         self.add(StatusData(
             name,
@@ -145,7 +150,7 @@ class FourElements(Replacer):
         return self._elemental_damage_status(
             "Cold",
             display_name="Glistening Frost",
-            description="Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].",
+            description="Affected entity's fists are glistening with frost.",
             icon="Spell_Evocation_ChromaticOrb_Cold",
             status_effect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
         )
@@ -155,8 +160,8 @@ class FourElements(Replacer):
         return self._elemental_damage_status(
             "Fire",
             display_name="Flickering Flame",
-            description="Affected entity's fists are flickering with flame. Its melee attacks deal an additional [1].",
-            icon="Action_Monk_FangsOfTheFireSnake",
+            description="Affected entity's fists are flickering with flame.",
+            icon="Spell_Evocation_ChromaticOrb_Fire",
             status_effect="43d61721-9a1a-4cef-bc33-8bb54f30de9d",
         )
 
@@ -165,9 +170,7 @@ class FourElements(Replacer):
         return self._elemental_damage_status(
             "Lightning",
             display_name="Sparking Lightning",
-            description="""
-                Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
-            """,
+            description="Affected entity's fists are sparking with lightning.",
             icon="Spell_Evocation_ChromaticOrb_Lightning",
             status_effect="18143f47-3bb2-48eb-bf3d-a0be7c712d00",
         )
@@ -177,212 +180,138 @@ class FourElements(Replacer):
         return self._elemental_damage_status(
             "Thunder",
             display_name="Echoing Thunder",
-            description="Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].",
+            description="Affected entity's fists are echoing with thunder.",
             icon="Spell_Evocation_ChromaticOrb_Thunder",
             status_effect="64153d5b-c66f-41a8-a4f6-73b801888be7",
         )
 
-    @cached_property
-    def _chill_of_the_mountain(self) -> str:
-        chill_of_the_mountain = "Projectile_RayOfFrost_Monk"
-
-        self.loca[f"{chill_of_the_mountain}_Description"] = """
-            Call forth the cold mountain winds. Your next melee attacks deal an additional [2].
-        """
-
-        self.add(SpellData(
-            chill_of_the_mountain,
-            using=chill_of_the_mountain,
-            SpellType="Projectile",
-            Description=self.loca[f"{chill_of_the_mountain}_Description"],
-            DescriptionParams=["Distance(3)", f"DealDamage({self._elemental_damage},Cold)"],
-            SpellProperties=[
-                "GROUND:SurfaceChange(Freeze)",
-                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._cold_damage_status},100,1)",
-            ],
-            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
-            SpellSuccess=[
-                "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Cold,Magical)",
-            ],
-            TooltipDamageList=[
-                "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Cold)",
-            ],
-            TooltipStatusApply=[f"ApplyStatus({self._cold_damage_status},100,1)"],
-            UseCosts=["ActionPoint:1"],
-            HitCosts=["KiPoint:1"],
-        ))
-
-        return chill_of_the_mountain
-
-    @cached_property
-    def _fangs_of_the_fire_snake(self) -> str:
-        fangs_of_the_fire_snake = "Projectile_FangsOfTheFireSnake"
-
-        self.add(SpellData(
-            fangs_of_the_fire_snake,
-            using=fangs_of_the_fire_snake,
-            SpellType="Projectile",
-            DescriptionParams=[f"DealDamage({self._elemental_damage},Fire)"],
-            SpellProperties=[
-                f"GROUND:DealDamage({self._elemental_damage},Fire)",
-                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._fire_damage_status},100,1)",
-            ],
-            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
-            SpellSuccess=[
-                "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Fire,Magical)",
-            ],
-            TargetRadius=18,
-            TooltipDamageList=[
-                "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Fire)",
-            ],
-            TooltipStatusApply=[f"ApplyStatus({self._fire_damage_status},100,1)"],
-            UseCosts=["ActionPoint:1"],
-            HitCosts=["KiPoint:1"],
-        ))
-
-        return fangs_of_the_fire_snake
-
-    @cached_property
-    def _touch_of_the_storm(self) -> str:
-        touch_of_the_storm = "Target_ShockingGrasp_Monk"
-
-        self.loca[f"{touch_of_the_storm}_DisplayName"] = "Strike of the Storm"
-        self.loca[f"{touch_of_the_storm}_Description"] = """
-            Strike with the power of the storms. This attack has <LSTag Tooltip="Advantage">Advantage</LSTag> on
-            creatures with metal armour. Your next melee attacks deal an additional [1].
-        """
-
-        self.add(SpellData(
-            touch_of_the_storm,
-            using=touch_of_the_storm,
-            SpellType="Target",
-            DisplayName=self.loca[f"{touch_of_the_storm}_DisplayName"],
-            Description=self.loca[f"{touch_of_the_storm}_Description"],
-            DescriptionParams=[f"DealDamage({self._elemental_damage},Lightning)"],
-            Icon="Spell_Evocation_WitchBolt",
-            SpellProperties=[
-                "GROUND:SurfaceChange(Electrify)",
-                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._lightning_damage_status},100,1)",
-            ],
-            SpellRoll="Attack(AttackType.MeleeUnarmedAttack,HasMetalArmor() or IsMetalCharacter())",
-            SpellSuccess=[
-                "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Lightning,Magical)",
-            ],
-            TargetRadius=18,
-            TooltipDamageList=[
-                "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Lightning)",
-            ],
-            TooltipStatusApply=[
-                f"ApplyStatus({self._lightning_damage_status},100,1)",
-            ],
-            UseCosts=["ActionPoint:1"],
-            HitCosts=["KiPoint:1"],
-        ))
-
-        return touch_of_the_storm
-
-    @cached_property
-    def _crash_of_thunder(self) -> str:
-        crash_of_thunder = self.make_name("CrashOfThunder")
-
-        self.loca[f"{crash_of_thunder}_DisplayName"] = "Crash of Thunder"
-        self.loca[f"{crash_of_thunder}_Description"] = """
-            Shake your target with a crash of thunder. Your next melee attacks deal an additional [1].
-        """
-
-        self.add(SpellData(
-            crash_of_thunder,
-            using="Projectile_ChromaticOrb_Thunder_Monk",
-            SpellType="Projectile",
-            DisplayName=self.loca[f"{crash_of_thunder}_DisplayName"],
-            Description=self.loca[f"{crash_of_thunder}_Description"],
-            DescriptionParams=[f"DealDamage({self._elemental_damage},Thunder)"],
-            ContainerSpells=[],
-            SpellContainerID="",
-            SpellFlags=["HasHighGroundRangeExtension", "RangeIgnoreVerticalThreshold", "IsHarmful"],
-            SpellProperties=[
-                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._thunder_damage_status},100,1)",
-            ],
-            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
-            SpellSuccess=[
-                "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Thunder,Magical)",
-            ],
-            TargetRadius=18,
-            TooltipAttackSave="MeleeUnarmedAttack",
-            TooltipDamageList=[
-                "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Thunder)",
-            ],
-            TooltipStatusApply=[
-                f"ApplyStatus({self._thunder_damage_status},100,1)",
-            ],
-            UseCosts=["ActionPoint:1"],
-            HitCosts=["KiPoint:1"],
-        ))
-
-        return crash_of_thunder
-
-    @cached_property
-    def _flames_of_the_phoenix(self) -> str:
-        name = "Projectile_Fireball_Monk"
-
-        self.loca[f"{name}_Description"] = """
-            Launch a bright flame that explodes upon contact, torching everything in the vicinity.
-            Your next melee attacks deal an additional [1].
-        """
+    def _unarmed_spell(self,
+                       name: str,
+                       *,
+                       using: str = None,
+                       spell_type: str,
+                       element: str,
+                       status: str,
+                       display_name: str,
+                       description: str,
+                       icon: str = None,
+                       spell_flags: list[str] = None,
+                       spell_properties: list[str],
+                       spell_roll_advantage: str = None,
+                       ki_points: int) -> str:
+        self.loca[f"{name}_DisplayName"] = display_name
+        self.loca[f"{name}_Description"] = f"{description} Your next melee attacks deal an additional [1]."
 
         self.add(SpellData(
             name,
-            using=name,
-            SpellType="Projectile",
+            using=using or name,
+            SpellType=spell_type,
+            DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"DealDamage({self._elemental_damage},Fire)"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},{element})"],
+            Icon=icon,
             SpellFlags=[
-                "HasSomaticComponent",
                 "HasHighGroundRangeExtension",
+                "HasSomaticComponent",
                 "RangeIgnoreVerticalThreshold",
                 "IsHarmful",
-                "CanAreaDamageEvade",
+                *(spell_flags or []),
             ],
             SpellProperties=[
+                *spell_properties,
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._fire_damage_status},100,1)",
+                f"ApplyStatus(SELF,{status},100,1)",
             ],
-            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
+            SpellRoll=f"Attack(AttackType.MeleeUnarmedAttack{
+                f",{spell_roll_advantage}" if spell_roll_advantage else ""})",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Fire,Magical)",
+                f"DealDamage({self._elemental_damage},{element},Magical)",
             ],
             TargetRadius=18,
             TooltipAttackSave="MeleeUnarmedAttack",
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._elemental_damage},Fire)",
+                f"DealDamage({self._elemental_damage},{element})",
             ],
-            TooltipStatusApply=[
-                f"ApplyStatus({self._fire_damage_status},100,1)",
-            ],
+            TooltipStatusApply=[f"ApplyStatus({status},100,1)"],
             UseCosts=["ActionPoint:1"],
-            HitCosts=["KiPoint:4"],
+            HitCosts=[f"KiPoint:{ki_points}"],
+            ContainerSpells=[],
+            SpellContainerID="",
         ))
 
         return name
+
+    @cached_property
+    def _chill_of_the_mountain(self) -> str:
+        return self._unarmed_spell(
+            "Projectile_RayOfFrost_Monk",
+            spell_type="Projectile",
+            element="Cold",
+            status=self._cold_damage_status,
+            display_name="Chill of the Mountain",
+            description="Call forth the cold mountain winds.",
+            spell_properties=["GROUND:SurfaceChange(Freeze)"],
+            ki_points=1,
+        )
+
+    @cached_property
+    def _fangs_of_the_fire_snake(self) -> str:
+        return self._unarmed_spell(
+            "Projectile_FangsOfTheFireSnake",
+            spell_type="Projectile",
+            element="Fire",
+            status=self._fire_damage_status,
+            display_name="Fangs of the Fire Snake",
+            description="Hit your foe from afar.",
+            spell_properties=[f"GROUND:DealDamage({self._elemental_damage},Fire)"],
+            ki_points=1,
+        )
+
+    @cached_property
+    def _strike_of_the_storm(self) -> str:
+        return self._unarmed_spell(
+            self.make_name("StrikeOfTheStorm"),
+            using="Projectile_ChromaticOrb_Lightning_Monk",
+            spell_type="Projectile",
+            element="Lightning",
+            status=self._lightning_damage_status,
+            display_name="Strike of the Storm",
+            description="Strike with the power of the storms.",
+            icon="Spell_Evocation_LightningBolt",
+            spell_properties=["GROUND:SurfaceChange(Electrify)"],
+            ki_points=1,
+        )
+
+    @cached_property
+    def _crash_of_thunder(self) -> str:
+        return self._unarmed_spell(
+            self.make_name("CrashOfThunder"),
+            using="Projectile_ChromaticOrb_Thunder_Monk",
+            spell_type="Projectile",
+            element="Thunder",
+            status=self._thunder_damage_status,
+            display_name="Crash of Thunder",
+            description="Shake your target with a crash of thunder.",
+            spell_properties=[],
+            ki_points=1,
+        )
+
+    @cached_property
+    def _flames_of_the_phoenix(self) -> str:
+        return self._unarmed_spell(
+            "Projectile_Fireball_Monk",
+            spell_type="Projectile",
+            element="Fire",
+            status=self._fire_damage_status,
+            display_name="Flames of the Phoenix",
+            description="Launch a bright flame that explodes upon contact, torching everything in the vicinity.",
+            spell_flags=["CanAreaDamageEvade"],
+            spell_properties=["GROUND:SurfaceChange(Ignite)", "GROUND:SurfaceChange(Melt)"],
+            ki_points=4,
+        )
 
     @cached_property
     def _healing_surge(self) -> str:

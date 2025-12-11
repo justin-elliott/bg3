@@ -1,6 +1,6 @@
 import os
 
-from functools import cached_property
+from functools import cache, cached_property
 from moddb import level_map_ranges_format
 from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
@@ -19,9 +19,7 @@ from uuid import UUID
 
 
 class FourElements(Replacer):
-    _fangs_of_the_fire_snake_status: ClassVar[str] = "FANGS_OF_THE_FIRE_SNAKE"
-    _cantrip_damage: ClassVar[str] = "1d10"
-    _cantrip_status_damage: ClassVar[str] = "LevelMapValue(MartialArts)"
+    _elemental_damage: ClassVar[str] = "1d4+SpellCastingAbilityModifier"
 
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
@@ -118,10 +116,75 @@ class FourElements(Replacer):
 
         return name
 
+    @cache
+    def _elemental_damage_status(self, element: str, *, display_name: str, description: str, icon: str, status_effect: str) -> str:
+        name = self.make_name(f"{element.upper()}_DAMAGE")
+
+        self.loca[f"{name}_DisplayName"] = display_name
+        self.loca[f"{name}_Description"] = description
+
+        self.add(StatusData(
+            name,
+            using="FANGS_OF_THE_FIRE_SNAKE",
+            StatusType="BOOST",
+            Boosts=[
+                f"CharacterWeaponDamage({self._elemental_damage},{element})",
+                f"CharacterUnarmedDamage({self._elemental_damage},{element})",
+            ],
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},{element})"],
+            Icon=icon,
+            StatusEffect=status_effect,
+        ))
+
+        return name
+    
+    @cached_property
+    def _cold_damage_status(self) -> str:
+        return self._elemental_damage_status(
+            "Cold",
+            display_name="Chill of the Mountain",
+            description="Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].",
+            icon="Spell_Evocation_ChromaticOrb_Cold",
+            status_effect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
+        )
+    
+    @cached_property
+    def _fire_damage_status(self) -> str:
+        return self._elemental_damage_status(
+            "Fire",
+            display_name="Fangs of the Fire Snake",
+            description="Affected entity's fists are flickering with flame. Its melee attacks deal an additional [1].",
+            icon="Action_Monk_FangsOfTheFireSnake",
+            status_effect="43d61721-9a1a-4cef-bc33-8bb54f30de9d",
+        )
+
+    @cached_property
+    def _lightning_damage_status(self) -> str:
+        return self._elemental_damage_status(
+            "Lightning",
+            display_name="Strike of the Storm",
+            description="""
+                Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
+            """,
+            icon="Spell_Evocation_ChromaticOrb_Lightning",
+            status_effect="18143f47-3bb2-48eb-bf3d-a0be7c712d00",
+        )
+
+    @cached_property
+    def _thunder_damage_status(self) -> str:
+        return self._elemental_damage_status(
+            "Thunder",
+            display_name="Crash of Thunder",
+            description="Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].",
+            icon="Spell_Evocation_ChromaticOrb_Thunder",
+            status_effect="64153d5b-c66f-41a8-a4f6-73b801888be7",
+        )
+
     @cached_property
     def _chill_of_the_mountain(self) -> str:
         chill_of_the_mountain = "Projectile_RayOfFrost_Monk"
-        chill_of_the_mountain_status = self.make_name("CHILL_OF_THE_MOUNTAIN")
 
         self.loca[f"{chill_of_the_mountain}_Description"] = """
             Call forth the cold mountain winds. Your next melee attacks deal an additional [2].
@@ -132,46 +195,24 @@ class FourElements(Replacer):
             using=chill_of_the_mountain,
             SpellType="Projectile",
             Description=self.loca[f"{chill_of_the_mountain}_Description"],
-            DescriptionParams=["Distance(3)", f"DealDamage({self._cantrip_status_damage},Cold)"],
+            DescriptionParams=["Distance(3)", f"DealDamage({self._elemental_damage},Cold)"],
             SpellProperties=[
                 "GROUND:SurfaceChange(Freeze)",
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{chill_of_the_mountain_status},100,1)",
+                f"ApplyStatus(SELF,{self._cold_damage_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Cold,Magical)",
+                f"DealDamage({self._elemental_damage},Cold,Magical)",
             ],
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Cold)",
+                f"DealDamage({self._elemental_damage},Cold)",
             ],
-            TooltipStatusApply=[
-                f"ApplyStatus({chill_of_the_mountain_status},100,1)",
-            ],
+            TooltipStatusApply=[f"ApplyStatus({self._cold_damage_status},100,1)"],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
-        ))
-
-        self.loca[f"{chill_of_the_mountain_status}_DisplayName"] = "Chill of the Mountain"
-        self.loca[f"{chill_of_the_mountain_status}_Description"] = """
-            Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].
-        """
-        
-        self.add(StatusData(
-            chill_of_the_mountain_status,
-            using=self._fangs_of_the_fire_snake_status,
-            StatusType="BOOST",
-            Boosts=[
-                f"CharacterWeaponDamage({self._cantrip_status_damage},Cold)",
-                f"CharacterUnarmedDamage({self._cantrip_status_damage},Cold)",
-            ],
-            DisplayName=self.loca[f"{chill_of_the_mountain_status}_DisplayName"],
-            Description=self.loca[f"{chill_of_the_mountain_status}_Description"],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Cold)"],
-            Icon="Spell_Evocation_ChromaticOrb_Cold",
-            StatusEffect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
         ))
 
         return chill_of_the_mountain
@@ -184,36 +225,25 @@ class FourElements(Replacer):
             fangs_of_the_fire_snake,
             using=fangs_of_the_fire_snake,
             SpellType="Projectile",
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Fire)"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},Fire)"],
             SpellProperties=[
-                f"GROUND:DealDamage({self._cantrip_damage},Fire)",
+                f"GROUND:DealDamage({self._elemental_damage},Fire)",
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{self._fangs_of_the_fire_snake_status},100,1)",
+                f"ApplyStatus(SELF,{self._fire_damage_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Fire,Magical)",
+                f"DealDamage({self._elemental_damage},Fire,Magical)",
             ],
             TargetRadius=18,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Fire)",
+                f"DealDamage({self._elemental_damage},Fire)",
             ],
+            TooltipStatusApply=[f"ApplyStatus({self._fire_damage_status},100,1)"],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
-        ))
-
-        self.add(StatusData(
-            self._fangs_of_the_fire_snake_status,
-            using=self._fangs_of_the_fire_snake_status,
-            StatusType="BOOST",
-            Boosts=[
-                f"CharacterWeaponDamage({self._cantrip_status_damage},Fire)",
-                f"CharacterUnarmedDamage({self._cantrip_status_damage},Fire)",
-            ],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Fire)"],
-            StatusEffect="43d61721-9a1a-4cef-bc33-8bb54f30de9d",
         ))
 
         return fangs_of_the_fire_snake
@@ -221,7 +251,6 @@ class FourElements(Replacer):
     @cached_property
     def _touch_of_the_storm(self) -> str:
         touch_of_the_storm = "Target_ShockingGrasp_Monk"
-        touch_of_the_storm_status = self.make_name("TOUCH_OF_THE_STORM")
 
         self.loca[f"{touch_of_the_storm}_DisplayName"] = "Strike of the Storm"
         self.loca[f"{touch_of_the_storm}_Description"] = """
@@ -235,47 +264,28 @@ class FourElements(Replacer):
             SpellType="Target",
             DisplayName=self.loca[f"{touch_of_the_storm}_DisplayName"],
             Description=self.loca[f"{touch_of_the_storm}_Description"],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Lightning)"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},Lightning)"],
             Icon="Spell_Evocation_WitchBolt",
             SpellProperties=[
                 "GROUND:SurfaceChange(Electrify)",
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{touch_of_the_storm_status},100,1)",
+                f"ApplyStatus(SELF,{self._lightning_damage_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack,HasMetalArmor() or IsMetalCharacter())",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Lightning,Magical)",
+                f"DealDamage({self._elemental_damage},Lightning,Magical)",
             ],
             TargetRadius=18,
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Lightning)",
+                f"DealDamage({self._elemental_damage},Lightning)",
             ],
             TooltipStatusApply=[
-                f"ApplyStatus({touch_of_the_storm_status},100,1)",
+                f"ApplyStatus({self._lightning_damage_status},100,1)",
             ],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
-        ))
-
-        self.loca[f"{touch_of_the_storm_status}_Description"] = """
-            Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
-        """
-        
-        self.add(StatusData(
-            touch_of_the_storm_status,
-            using=self._fangs_of_the_fire_snake_status,
-            StatusType="BOOST",
-            Boosts=[
-                f"CharacterWeaponDamage({self._cantrip_status_damage},Lightning)",
-                f"CharacterUnarmedDamage({self._cantrip_status_damage},Lightning)",
-            ],
-            DisplayName=self.loca[f"{touch_of_the_storm}_DisplayName"],
-            Description=self.loca[f"{touch_of_the_storm_status}_Description"],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Lightning)"],
-            Icon="Spell_Evocation_ChromaticOrb_Lightning",
-            StatusEffect="18143f47-3bb2-48eb-bf3d-a0be7c712d00",
         ))
 
         return touch_of_the_storm
@@ -283,7 +293,6 @@ class FourElements(Replacer):
     @cached_property
     def _crash_of_thunder(self) -> str:
         crash_of_thunder = self.make_name("CrashOfThunder")
-        crash_of_thunder_status = self.make_name("CRASH_OF_THUNDER")
 
         self.loca[f"{crash_of_thunder}_DisplayName"] = "Crash of Thunder"
         self.loca[f"{crash_of_thunder}_Description"] = """
@@ -296,49 +305,30 @@ class FourElements(Replacer):
             SpellType="Projectile",
             DisplayName=self.loca[f"{crash_of_thunder}_DisplayName"],
             Description=self.loca[f"{crash_of_thunder}_Description"],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Thunder)"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},Thunder)"],
             ContainerSpells=[],
             SpellContainerID="",
             SpellFlags=["HasHighGroundRangeExtension", "RangeIgnoreVerticalThreshold", "IsHarmful"],
             SpellProperties=[
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{crash_of_thunder_status},100,1)",
+                f"ApplyStatus(SELF,{self._thunder_damage_status},100,1)",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
                 "DealDamage(UnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Thunder,Magical)",
+                f"DealDamage({self._elemental_damage},Thunder,Magical)",
             ],
             TargetRadius=18,
             TooltipAttackSave="MeleeUnarmedAttack",
             TooltipDamageList=[
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
-                f"DealDamage({self._cantrip_damage},Thunder)",
+                f"DealDamage({self._elemental_damage},Thunder)",
             ],
             TooltipStatusApply=[
-                f"ApplyStatus({crash_of_thunder_status},100,1)",
+                f"ApplyStatus({self._thunder_damage_status},100,1)",
             ],
             UseCosts=["ActionPoint:1", "KiPoint:1"],
-        ))
-
-        self.loca[f"{crash_of_thunder_status}_Description"] = """
-            Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].
-        """
-        
-        self.add(StatusData(
-            crash_of_thunder_status,
-            using=self._fangs_of_the_fire_snake_status,
-            StatusType="BOOST",
-            Boosts=[
-                f"CharacterWeaponDamage({self._cantrip_status_damage},Thunder)",
-                f"CharacterUnarmedDamage({self._cantrip_status_damage},Thunder)",
-            ],
-            DisplayName=self.loca[f"{crash_of_thunder}_DisplayName"],
-            Description=self.loca[f"{crash_of_thunder_status}_Description"],
-            DescriptionParams=[f"DealDamage({self._cantrip_status_damage},Thunder)"],
-            Icon="Spell_Evocation_ChromaticOrb_Thunder",
-            StatusEffect="64153d5b-c66f-41a8-a4f6-73b801888be7",
         ))
 
         return crash_of_thunder

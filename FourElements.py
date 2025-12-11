@@ -321,7 +321,7 @@ class FourElements(Replacer):
             spell_type="Target",
             element="Lightning",
             display_name="Strike of the Storm",
-            description="Call down a bolt of lightning to strike your foe.",
+            description="Strike an enemy with lightning.",
             icon="Spell_Evocation_LightningBolt",
             spell_properties=["GROUND:SurfaceChange(Electrify)"],
             ki_points=1,

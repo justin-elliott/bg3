@@ -144,7 +144,7 @@ class FourElements(Replacer):
     def _cold_damage_status(self) -> str:
         return self._elemental_damage_status(
             "Cold",
-            display_name="Chill of the Mountain",
+            display_name="Glistening Frost",
             description="Affected entity's fists are glistening with frost. Its melee attacks deal an additional [1].",
             icon="Spell_Evocation_ChromaticOrb_Cold",
             status_effect="6648ef67-84a4-4191-ad6b-3d2538a983c6",
@@ -154,7 +154,7 @@ class FourElements(Replacer):
     def _fire_damage_status(self) -> str:
         return self._elemental_damage_status(
             "Fire",
-            display_name="Fangs of the Fire Snake",
+            display_name="Flickering Flame",
             description="Affected entity's fists are flickering with flame. Its melee attacks deal an additional [1].",
             icon="Action_Monk_FangsOfTheFireSnake",
             status_effect="43d61721-9a1a-4cef-bc33-8bb54f30de9d",
@@ -164,7 +164,7 @@ class FourElements(Replacer):
     def _lightning_damage_status(self) -> str:
         return self._elemental_damage_status(
             "Lightning",
-            display_name="Strike of the Storm",
+            display_name="Sparking Lightning",
             description="""
                 Affected entity's fists are sparking with lightning. Its melee attacks deal an additional [1].
             """,
@@ -176,7 +176,7 @@ class FourElements(Replacer):
     def _thunder_damage_status(self) -> str:
         return self._elemental_damage_status(
             "Thunder",
-            display_name="Crash of Thunder",
+            display_name="Echoing Thunder",
             description="Affected entity's fists are echoing with thunder. Its melee attacks deal an additional [1].",
             icon="Spell_Evocation_ChromaticOrb_Thunder",
             status_effect="64153d5b-c66f-41a8-a4f6-73b801888be7",
@@ -212,7 +212,8 @@ class FourElements(Replacer):
                 f"DealDamage({self._elemental_damage},Cold)",
             ],
             TooltipStatusApply=[f"ApplyStatus({self._cold_damage_status},100,1)"],
-            UseCosts=["ActionPoint:1", "KiPoint:1"],
+            UseCosts=["ActionPoint:1"],
+            HitCosts=["KiPoint:1"],
         ))
 
         return chill_of_the_mountain
@@ -243,7 +244,8 @@ class FourElements(Replacer):
                 f"DealDamage({self._elemental_damage},Fire)",
             ],
             TooltipStatusApply=[f"ApplyStatus({self._fire_damage_status},100,1)"],
-            UseCosts=["ActionPoint:1", "KiPoint:1"],
+            UseCosts=["ActionPoint:1"],
+            HitCosts=["KiPoint:1"],
         ))
 
         return fangs_of_the_fire_snake
@@ -285,7 +287,8 @@ class FourElements(Replacer):
             TooltipStatusApply=[
                 f"ApplyStatus({self._lightning_damage_status},100,1)",
             ],
-            UseCosts=["ActionPoint:1", "KiPoint:1"],
+            UseCosts=["ActionPoint:1"],
+            HitCosts=["KiPoint:1"],
         ))
 
         return touch_of_the_storm
@@ -328,7 +331,8 @@ class FourElements(Replacer):
             TooltipStatusApply=[
                 f"ApplyStatus({self._thunder_damage_status},100,1)",
             ],
-            UseCosts=["ActionPoint:1", "KiPoint:1"],
+            UseCosts=["ActionPoint:1"],
+            HitCosts=["KiPoint:1"],
         ))
 
         return crash_of_thunder
@@ -337,22 +341,45 @@ class FourElements(Replacer):
     def _flames_of_the_phoenix(self) -> str:
         name = "Projectile_Fireball_Monk"
 
-        level_map = LevelMapSeries(
-            Level1=0,
-            **{f"Level{level}": f"{count + 8}d6" for (count, level) in enumerate(range(5, 18, 2))},
-            Name=f"{name}_LevelMap",
-            UUID=self.make_uuid(f"{name}_LevelMap")
-        )
-        self.add(level_map)
+        self.loca[f"{name}_Description"] = """
+            Launch a bright flame that explodes upon contact, torching everything in the vicinity.
+            Your next melee attacks deal an additional [1].
+        """
 
         self.add(SpellData(
             name,
             using=name,
             SpellType="Projectile",
-            SpellSuccess=[f"DealDamage(LevelMapValue({level_map.Name}),Fire,Magical)"],
-            SpellFail=[f"DealDamage((LevelMapValue({level_map.Name}))/2,Fire,Magical)"],
-            TooltipDamageList=[f"DealDamage(LevelMapValue({level_map.Name}),Fire)"],
-            UseCosts=["BonusActionPoint:1", "KiPoint:4"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"DealDamage({self._elemental_damage},Fire)"],
+            SpellFlags=[
+                "HasSomaticComponent",
+                "HasHighGroundRangeExtension",
+                "RangeIgnoreVerticalThreshold",
+                "IsHarmful",
+                "CanAreaDamageEvade",
+            ],
+            SpellProperties=[
+                "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+                f"ApplyStatus(SELF,{self._fire_damage_status},100,1)",
+            ],
+            SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
+            SpellSuccess=[
+                "DealDamage(UnarmedDamage,Bludgeoning)",
+                f"DealDamage({self._elemental_damage},Fire,Magical)",
+            ],
+            TargetRadius=18,
+            TooltipAttackSave="MeleeUnarmedAttack",
+            TooltipDamageList=[
+                "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
+                f"DealDamage({self._elemental_damage},Fire)",
+            ],
+            TooltipStatusApply=[
+                f"ApplyStatus({self._fire_damage_status},100,1)",
+            ],
+            UseCosts=["ActionPoint:1"],
+            HitCosts=["KiPoint:4"],
         ))
 
         return name
@@ -499,7 +526,6 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 7)
     def fourelements_level_7(self, progress: Progression) -> None:
-        progress.PassivesAdded = ["FastHands"]
         progress.Selectors = []
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 8)

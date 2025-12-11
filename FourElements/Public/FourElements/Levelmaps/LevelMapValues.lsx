@@ -30,18 +30,6 @@
                 </node>
                 <node id="LevelMapSeries">
                     <attribute id="Level1" type="LSString" value="0" />
-                    <attribute id="Level5" type="LSString" value="8d6" />
-                    <attribute id="Level7" type="LSString" value="9d6" />
-                    <attribute id="Level9" type="LSString" value="10d6" />
-                    <attribute id="Level11" type="LSString" value="11d6" />
-                    <attribute id="Level13" type="LSString" value="12d6" />
-                    <attribute id="Level15" type="LSString" value="13d6" />
-                    <attribute id="Level17" type="LSString" value="14d6" />
-                    <attribute id="Name" type="FixedString" value="Projectile_Fireball_Monk_LevelMap" />
-                    <attribute id="UUID" type="guid" value="0ccf81f8-7647-4c6c-f157-7ab5724ba010" />
-                </node>
-                <node id="LevelMapSeries">
-                    <attribute id="Level1" type="LSString" value="0" />
                     <attribute id="Level5" type="LSString" value="1d6" />
                     <attribute id="Level7" type="LSString" value="2d6" />
                     <attribute id="Level9" type="LSString" value="3d6" />

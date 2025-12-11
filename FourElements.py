@@ -93,8 +93,26 @@ class FourElements(Replacer):
     @cached_property
     def _level_5_spell_list(self) -> UUID:
         return self._spell_list(5, [
-            self._flames_of_the_phoenix,
+            self._gong_of_the_summit,
             self._healing_rain,
+        ])
+
+    @cached_property
+    def _level_7_spell_list(self) -> UUID:
+        return self._spell_list(7, [
+            self._flames_of_the_phoenix,
+        ])
+
+    @cached_property
+    def _level_9_spell_list(self) -> UUID:
+        return self._spell_list(9, [
+            self._breath_of_winter,
+        ])
+
+    @cached_property
+    def _level_11_spell_list(self) -> UUID:
+        return self._spell_list(11, [
+            self._arcing_currents,
         ])
 
     @cached_property
@@ -185,21 +203,43 @@ class FourElements(Replacer):
             status_effect="64153d5b-c66f-41a8-a4f6-73b801888be7",
         )
 
+    def _element_to_status(self, element: str) -> str:
+        match element:
+            case "Cold":
+                return self._cold_damage_status
+            case "Fire":
+                return self._fire_damage_status
+            case "Lightning":
+                return self._lightning_damage_status
+            case "Thunder":
+                return self._thunder_damage_status
+            case _:
+                raise ValueError(f"{element} is not an element")
+
     def _unarmed_spell(self,
                        name: str,
                        *,
                        using: str = None,
                        spell_type: str,
                        element: str,
-                       status: str,
                        display_name: str,
                        description: str,
                        icon: str = None,
                        spell_flags: list[str] = None,
                        spell_properties: list[str],
-                       ki_points: int) -> str:
+                       ki_points: int,
+                       zone_range=None,
+                       prepare_sound: str = None,
+                       prepare_loop_sound: str = None,
+                       cast_sound: str = None,
+                       target_sound: str = None,
+                       prepare_effect: str = None,
+                       cast_effect: str = None,
+                       target_effect: str = None) -> str:
         self.loca[f"{name}_DisplayName"] = display_name
         self.loca[f"{name}_Description"] = f"{description} Your next melee attacks deal an additional [1]."
+
+        status = self._element_to_status(element)
 
         self.add(SpellData(
             name,
@@ -236,8 +276,16 @@ class FourElements(Replacer):
             TooltipStatusApply=[f"ApplyStatus({status},100,1)"],
             UseCosts=["ActionPoint:1"],
             HitCosts=[f"KiPoint:{ki_points}"],
+            Range=zone_range,
             ContainerSpells=[],
             SpellContainerID="",
+            PrepareSound=prepare_sound,
+            PrepareLoopSound=prepare_loop_sound,
+            CastSound=cast_sound,
+            TargetSound=target_sound,
+            PrepareEffect=prepare_effect,
+            CastEffect=cast_effect,
+            TargetEffect=target_effect,
         ))
 
         return name
@@ -248,7 +296,6 @@ class FourElements(Replacer):
             "Projectile_RayOfFrost_Monk",
             spell_type="Projectile",
             element="Cold",
-            status=self._cold_damage_status,
             display_name="Chill of the Mountain",
             description="Call forth the cold mountain winds.",
             spell_properties=["GROUND:SurfaceChange(Freeze)"],
@@ -261,7 +308,6 @@ class FourElements(Replacer):
             "Projectile_FangsOfTheFireSnake",
             spell_type="Projectile",
             element="Fire",
-            status=self._fire_damage_status,
             display_name="Fangs of the Fire Snake",
             description="Hit your foe from afar.",
             spell_properties=[f"GROUND:DealDamage({self._elemental_damage},Fire)"],
@@ -271,13 +317,11 @@ class FourElements(Replacer):
     @cached_property
     def _strike_of_the_storm(self) -> str:
         return self._unarmed_spell(
-            self.make_name("StrikeOfTheStorm"),
-            using="Projectile_ChromaticOrb_Lightning_Monk",
-            spell_type="Projectile",
+            "Target_ShockingGrasp_Monk",
+            spell_type="Target",
             element="Lightning",
-            status=self._lightning_damage_status,
             display_name="Strike of the Storm",
-            description="Strike with the power of the storms.",
+            description="Call down a bolt of lightning to strike your foe.",
             icon="Spell_Evocation_LightningBolt",
             spell_properties=["GROUND:SurfaceChange(Electrify)"],
             ki_points=1,
@@ -290,11 +334,22 @@ class FourElements(Replacer):
             using="Projectile_ChromaticOrb_Thunder_Monk",
             spell_type="Projectile",
             element="Thunder",
-            status=self._thunder_damage_status,
             display_name="Crash of Thunder",
             description="Shake your target with a crash of thunder.",
             spell_properties=[],
             ki_points=1,
+        )
+
+    @cached_property
+    def _gong_of_the_summit(self) -> str:
+        return self._unarmed_spell(
+            "Target_Shatter_Monk",
+            spell_type="Target",
+            element="Thunder",
+            display_name="Gong of the Summit",
+            description="Damage all nearby creatures and objects with a roar of thunder.",
+            spell_properties=[],
+            ki_points=4,
         )
 
     @cached_property
@@ -303,14 +358,48 @@ class FourElements(Replacer):
             "Projectile_Fireball_Monk",
             spell_type="Projectile",
             element="Fire",
-            status=self._fire_damage_status,
             display_name="Flames of the Phoenix",
             description="Launch a bright flame that explodes upon contact, torching everything in the vicinity.",
             spell_flags=["CanAreaDamageEvade"],
             spell_properties=["GROUND:SurfaceChange(Ignite)", "GROUND:SurfaceChange(Melt)"],
             ki_points=4,
         )
-
+    
+    @cached_property
+    def _breath_of_winter(self) -> str:
+        return self._unarmed_spell(
+            self.make_name("BreathOfWinter"),
+            using="Zone_BreathWeapon_Cold",
+            spell_type="Zone",
+            element="Cold",
+            display_name="Breath of Winter",
+            description="Expel a flurry of frost, crisp air, and condensed snow crystals.",
+            icon="Spell_Evocation_ConeOfCold",
+            spell_properties=["GROUND:SurfaceChange(Freeze)", "GROUND:SurfaceChange(Douse)", "RemoveStatus(BURNING)"],
+            ki_points=4,
+            zone_range=9,
+            prepare_sound="Action_Prepare_Druid_DazzlingBreath",
+            prepare_loop_sound="Action_Loop_Druid_DazzlingBreath",
+            cast_sound="Spell_Cast_Damage_Ice_ConeOfCold_L4to5",
+            target_sound="Spell_Impact_Damage_Ice_ConeOfCold_L4to5",
+        )
+    
+    @cached_property
+    def _arcing_currents(self) -> str:
+        return self._unarmed_spell(
+            self.make_name("ArcingCurrents"),
+            using="Projectile_ChainLightning",
+            spell_type="Projectile",
+            element="Lightning",
+            display_name="Arcing Currents",
+            description="""
+                Strike an enemy with lightning. Three more bolts will leap from the target, arcing to as many as
+                three other enemies within range.
+            """,
+            spell_properties=["GROUND:SurfaceChange(Electrify)"],
+            ki_points=4,
+        )
+    
     @cached_property
     def _healing_surge(self) -> str:
         name = self.make_name("HealingSurge")
@@ -453,7 +542,9 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 7)
     def fourelements_level_7(self, progress: Progression) -> None:
-        progress.Selectors = []
+        progress.Selectors = [
+            f"AddSpells({self._level_7_spell_list})",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 8)
     def fourelements_level_8(self, progress: Progression) -> None:
@@ -462,7 +553,9 @@ class FourElements(Replacer):
     @progression(CharacterClass.MONK_FOURELEMENTS, 9)
     def fourelements_level_9(self, progress: Progression) -> None:
         progress.PassivesAdded = []
-        progress.Selectors = []
+        progress.Selectors = [
+            f"AddSpells({self._level_9_spell_list})",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 10)
     def fourelements_level_10(self, progress: Progression) -> None:
@@ -472,7 +565,9 @@ class FourElements(Replacer):
     def fourelements_level_11(self, progress: Progression) -> None:
         progress.PassivesAdded = ["ExtraAttack_2", "ReliableTalent"]
         progress.PassivesRemoved = ["ExtraAttack"]
-        progress.Selectors = []
+        progress.Selectors = [
+            f"AddSpells({self._level_11_spell_list})",
+        ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 12)
     def fourelements_level_12(self, progress: Progression) -> None:

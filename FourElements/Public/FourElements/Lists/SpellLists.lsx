@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 3 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_FangsOfTheFireSnake;Projectile_RayOfFrost_Monk;FourElements_StrikeOfTheStorm;FourElements_CrashOfThunder;FourElements_HealingSurge" />
+                    <attribute id="Spells" type="LSString" value="Projectile_FangsOfTheFireSnake;Projectile_RayOfFrost_Monk;Target_ShockingGrasp_Monk;FourElements_CrashOfThunder;FourElements_HealingSurge;FourElements_BreathOfWinter" />
                     <attribute id="UUID" type="guid" value="165cf2f3-5f7a-8299-dab2-bb52483ea976" />
                 </node>
                 <node id="SpellList">
@@ -17,8 +17,23 @@
                 </node>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Four Elements level 5 spells" />
-                    <attribute id="Spells" type="LSString" value="Projectile_Fireball_Monk;FourElements_HealingRain" />
+                    <attribute id="Spells" type="LSString" value="Target_Shatter_Monk;FourElements_HealingRain" />
                     <attribute id="UUID" type="guid" value="cbaffd17-43af-9b8b-e927-d330b394c4b0" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Way of the Four Elements level 7 spells" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fireball_Monk" />
+                    <attribute id="UUID" type="guid" value="fe49de5a-dc74-0ebd-5fcf-6f6fc8c7ebca" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Way of the Four Elements level 9 spells" />
+                    <attribute id="Spells" type="LSString" value="FourElements_BreathOfWinter" />
+                    <attribute id="UUID" type="guid" value="208d192d-f46f-a1a3-c3bc-5fb54cbca15b" />
+                </node>
+                <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Way of the Four Elements level 11 spells" />
+                    <attribute id="Spells" type="LSString" value="FourElements_ArcingCurrents" />
+                    <attribute id="UUID" type="guid" value="3b9eae83-b8d4-492b-158c-6cf5bfc96534" />
                 </node>
             </children>
         </node>

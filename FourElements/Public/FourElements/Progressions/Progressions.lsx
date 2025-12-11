@@ -261,7 +261,7 @@
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(fe49de5a-dc74-0ebd-5fcf-6f6fc8c7ebca)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="4ad9ff21-d003-4194-a04b-04b2a5c8780f" />
                 </node>
@@ -278,7 +278,7 @@
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="PassivesAdded" type="LSString" value="" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(208d192d-f46f-a1a3-c3bc-5fb54cbca15b)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="a846bdfe-75e9-44b8-978a-864227b5caf8" />
                 </node>
@@ -296,7 +296,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2;ReliableTalent" />
                     <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(3b9eae83-b8d4-492b-158c-6cf5bfc96534)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="f71e5d22-b830-42dd-ba88-a91ad6d95ec6" />
                 </node>

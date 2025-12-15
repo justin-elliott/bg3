@@ -156,6 +156,7 @@ class TutorialSupplies(Mod):
                 SpellType="Shout",
                 Description=self.loca[f"{container_spell_name}_Description"],
                 SpellContainerID=name,
+                SpellFlags=["HasVerbalComponent", "UnavailableInDialogs"],
                 SpellProperties=[f"ApplyStatus({status_name},100,-1)"],
                 TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
                 UseCosts=["ActionPoint:1"],

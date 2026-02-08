@@ -57,11 +57,23 @@
     <content contentuid="h6b55f0f1g7c9age777g43a2ga10f63206666" version="1">Decline any racial ability at this level.</content>
     <content contentuid="h9699ddafg0e70g3eb7g34fcg112d63b95004" version="1">Archer</content>
     <content contentuid="hf4f48378gc0c8gdea6g57fbg3aeff543038a" version="1">You are proficient with all bows, and gain a +2 bonus to &lt;LSTag Tooltip="RangedWeaponAttack"&gt;ranged weapon attacks&lt;/LSTag&gt; and damage.</content>
-    <content contentuid="he9b53854ge04cg5a87g76e9g23e0489888bc" version="1">Pickpocket</content>
-    <content contentuid="h64797aafg5f3aga3fcg4dadg5b7ae2342e3c" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;.</content>
+    <content contentuid="h5e76f0e6gbf6cg0bcbgbc54gd73ce3c1a288" version="1">Light-Fingered</content>
+    <content contentuid="hebfa881cg09d3g5797ga627g7394f6efa074" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;.</content>
+    <content contentuid="h759ed349g40bdg0ad6gda0agc91f8ee5e551" version="1">Swordmaster</content>
+    <content contentuid="h6f179267gc3d4g1b2bg19d4g10ff70313a3c" version="1">You are proficient with all swords, and gain a +2 bonus to &lt;LSTag Tooltip="MeleeWeaponAttack"&gt;melee weapon attacks&lt;/LSTag&gt; and damage.</content>
+    <content contentuid="hd279373fg7c85g736dg0ab1g54b1f7961f9c" version="1">Cunning</content>
+    <content contentuid="h5a55f6ccge402g1443g276ag830e6001d600" version="1">They'll never see you coming, until it's too late. As a bonus action, you can use &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, or &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
+    <content contentuid="hd12546d9g127cg02fdgbb9ag3a08a0c34582" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h1103cdd4gd155g2e44gde8bgc4157777257e" version="1">Quick-Handed</content>
+    <content contentuid="h5db76a17gd2fcgdc79g9e7eg5d8d45512a3a" version="1">Artful Dodger</content>
     <content contentuid="hafa89aa7g05ccg82fbgdecbg4e2e8f98db3f" version="1">Mistwalker</content>
     <content contentuid="h536dd15eg9917g7507gf9ecgc8756e84232a" version="1">Surrounded by silver mist, you teleport to an unoccupied space you can see.</content>
+    <content contentuid="h84fa688fg614agab3dgd291gdc4ed1306757" version="1">Evasive</content>
+    <content contentuid="h3d6bc546g2a7eg3beeg5471g36ba92319e7f" version="1">Resilient</content>
+    <content contentuid="h338bd31ag926cgcb37gfef2g5fe04ac259f8" version="1">You shrug off attacks, taking 2 less damage from all sources.</content>
+    <content contentuid="hcfa95a86g96c8gcde3g07adgbf4e612e53ef" version="1">Sure-Footed</content>
+    <content contentuid="h15b60a4ag01bcg216fgdf69g52f4c1f2906d" version="1">You have become an expert at moving through the wilderness. &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down. You can't be Enwebbed, Entangled, or Ensnared and can't slip on grease or ice.</content>
     <content contentuid="h95000f81g69f8g0cefg08dcg6aac12f62a82" version="1">Well-Practiced</content>
-    <content contentuid="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1">Racial Abilities</content>
-    <content contentuid="hfff196d0g6242g59aage122g4e170932b5f3" version="1">Select a racial ability.</content>
+    <content contentuid="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1">Racial Features</content>
+    <content contentuid="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1">Select a racial feature.</content>
 </contentList>

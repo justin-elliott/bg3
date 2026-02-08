@@ -13,25 +13,25 @@
                     <attribute id="UUID" type="guid" value="167b3965-d94a-2cfd-e018-6184c76052a0" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_1" />
-                    <attribute id="UUID" type="guid" value="593d1413-36a9-ce4d-8273-c552f6a5680f" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_1" />
+                    <attribute id="UUID" type="guid" value="7389e06a-ab32-a0a7-f87f-9168077a2b2d" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_3" />
-                    <attribute id="UUID" type="guid" value="9ba2f003-b70a-71ef-a6d3-f12398e62259" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="403863d5-f8e6-d478-a9e3-4bd9642b6701" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_5" />
-                    <attribute id="UUID" type="guid" value="77f4a491-0b16-c0d2-a055-333e72aa8385" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="a5673695-d49b-36cf-8ac2-930772bd30c2" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hbecdfadfge01cg97d2g2eacg03a5cd0480f4" version="1" />
@@ -41,18 +41,18 @@
                     <attribute id="UUID" type="guid" value="0fc19e93-dcdd-8f3a-1ff2-a1ef0b8de3fb" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_1" />
-                    <attribute id="UUID" type="guid" value="0e222ea9-ffce-abeb-c0be-e64e57a23b2e" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_1" />
+                    <attribute id="UUID" type="guid" value="2748356e-3f4c-4384-af56-5a0ea478aafc" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_3" />
-                    <attribute id="UUID" type="guid" value="cadfd916-3846-42fe-8143-2662e30c79c4" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="009b7e43-05a6-329d-5e83-9fe7fbafa053" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hbecdfadfge01cg97d2g2eacg03a5cd0480f4" version="1" />
@@ -62,179 +62,179 @@
                     <attribute id="UUID" type="guid" value="96dfd335-9d97-caea-4cd4-7e1150db2d94" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_1" />
-                    <attribute id="UUID" type="guid" value="516a6bf2-58e1-54a1-5b23-71624d0e370f" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_1" />
+                    <attribute id="UUID" type="guid" value="5cb6ecfe-5a8e-eaf7-43ec-2e9edbb67635" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_3" />
-                    <attribute id="UUID" type="guid" value="f4fc8619-79fc-11c9-7f43-5278bc026e91" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="19957d09-64a3-102c-5ac3-689b2e88f7a0" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_5" />
-                    <attribute id="UUID" type="guid" value="95839c59-13ca-53ca-8ee4-585e87859a19" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="fb385495-0852-4971-a7d1-a8ffb4eac540" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_7" />
-                    <attribute id="UUID" type="guid" value="beeb0ed5-ffe8-8226-306b-db7ab35ba715" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="6d27445b-518e-91c2-46ae-cfdc7479a500" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_9" />
-                    <attribute id="UUID" type="guid" value="3dbff713-e21a-48aa-e536-a3f52116784d" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="f2e795fb-2abc-ef27-2d26-b7c10f95fa99" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_11" />
-                    <attribute id="UUID" type="guid" value="cf0023f1-dc68-9a91-64bd-ed724df5758f" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="f25e015b-9c38-c350-bacc-47aed091ab57" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_13" />
-                    <attribute id="UUID" type="guid" value="72f9f55a-898a-ff76-2314-bda69e62fe4e" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_13" />
+                    <attribute id="UUID" type="guid" value="abaf9073-a644-6d89-8b20-a642b9a48cfe" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_15" />
-                    <attribute id="UUID" type="guid" value="183a9656-1201-2519-e92b-75dd36d661b7" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_15" />
+                    <attribute id="UUID" type="guid" value="fef1c488-8b7d-e813-7915-a7ee53017c21" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_17" />
-                    <attribute id="UUID" type="guid" value="8abe6b4f-2995-df97-2bcb-14af064ad3d7" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_17" />
+                    <attribute id="UUID" type="guid" value="530e96f5-eaab-a4a5-0e8e-8f1516b18c2a" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialAbilities_Level_19" />
-                    <attribute id="UUID" type="guid" value="b4199c41-0868-620d-daca-7b466fb354e6" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_HalfElfRacialFeatures_Level_19" />
+                    <attribute id="UUID" type="guid" value="8c89c6ad-2cc3-4069-0afe-ee01d1b3b04e" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_5" />
-                    <attribute id="UUID" type="guid" value="e440792b-811b-9e44-c6e1-8f642a3e1e14" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="e2296805-a69b-ee0e-55b7-e6d8b71c7df7" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_7" />
-                    <attribute id="UUID" type="guid" value="8c23d33b-dafd-7360-b91f-41c74ef937d2" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="2f16b132-a83e-fa76-fec7-adb3aa576933" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_9" />
-                    <attribute id="UUID" type="guid" value="c7aa3531-e25a-744f-525e-6e486e6c8e2b" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="ab34a354-1d65-98b7-7ec0-f2afe12d0fe5" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_11" />
-                    <attribute id="UUID" type="guid" value="fe227909-a5ca-9ea7-c4b1-ee2ac7f8f9d7" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="bce69728-98ac-cc62-6035-7cb99c29af24" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_13" />
-                    <attribute id="UUID" type="guid" value="09c0c881-2804-d358-5417-56c95db46113" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_13" />
+                    <attribute id="UUID" type="guid" value="505bd5d1-2ba1-cecc-2678-880334ede1f1" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_15" />
-                    <attribute id="UUID" type="guid" value="c7a3883b-f592-7043-551f-326e141cdc56" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_15" />
+                    <attribute id="UUID" type="guid" value="9f5c6eee-70c4-0890-8dc5-6881e3dec349" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_17" />
-                    <attribute id="UUID" type="guid" value="f3dadeb1-5be1-2bc2-3d00-b98407cfccdc" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_17" />
+                    <attribute id="UUID" type="guid" value="e930c4fe-d490-f18f-2483-62d9a9308421" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialAbilities_Level_19" />
-                    <attribute id="UUID" type="guid" value="81ec9576-5c07-34a3-a168-ce47c25190eb" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_ElfRacialFeatures_Level_19" />
+                    <attribute id="UUID" type="guid" value="dd6b1b64-c3f7-36a3-6c65-996e66135b3c" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_7" />
-                    <attribute id="UUID" type="guid" value="90de971f-08d0-4d70-5a08-aef910f7f4e4" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="d1271877-dce2-89e5-ead6-93a09a2f588b" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_9" />
-                    <attribute id="UUID" type="guid" value="6e3b11d7-1e7e-a1c7-0987-a3a5b86f28f5" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="bafd658a-b27c-643b-7c80-6f34e2f7a539" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_11" />
-                    <attribute id="UUID" type="guid" value="8895123c-5811-fc20-a2b4-30c48a017cd6" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="c1a83aa8-6aae-7130-2ad6-c5a511ca8d85" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_13" />
-                    <attribute id="UUID" type="guid" value="d059b5d5-8918-9ebb-efda-5239379de5c5" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_13" />
+                    <attribute id="UUID" type="guid" value="5f357591-9ffc-99b0-f6cc-ae6840823997" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_15" />
-                    <attribute id="UUID" type="guid" value="1239f2ef-15d0-3804-16bf-60e7eedbc7da" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_15" />
+                    <attribute id="UUID" type="guid" value="20112f4d-c4fb-20f6-9051-b6ff8aa65b4d" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_17" />
-                    <attribute id="UUID" type="guid" value="a6148003-0174-95ad-400e-70b5229f1ca8" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_17" />
+                    <attribute id="UUID" type="guid" value="1e28613c-609c-9b94-3b46-d9750417c344" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hfff196d0g6242g59aage122g4e170932b5f3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h02b81e27g12c3g0567g82c2g0eb8171cdbd2" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h2529bb3eg1c78gb7b2gbe74g2fc1a7dbb6e2" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h44583d3aga5f8g7175g2a07gd76b307dffb2" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialAbilities_Level_19" />
-                    <attribute id="UUID" type="guid" value="39d0029e-0dd6-0c0b-585c-c45e838ba32d" />
+                    <attribute id="SelectorId" type="FixedString" value="ExceptionalElves_DrowRacialFeatures_Level_19" />
+                    <attribute id="UUID" type="guid" value="56907f20-7e65-9294-d671-fbb41bf7118b" />
                 </node>
             </children>
         </node>

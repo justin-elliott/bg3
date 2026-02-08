@@ -11,14 +11,17 @@ from modtools.lsx.type import LsxType
 
 
 class PassiveList(LsxNode):
+    Name: str = LsxType.FIXEDSTRING
     Passives: list[str] = LsxType.LSSTRING_COMMA
     UUID: str = LsxType.GUID
 
     def __init__(self,
                  *,
+                 Name: str = None,
                  Passives: list[str] = None,
                  UUID: str = None):
         super().__init__(
+            Name=Name,
             Passives=Passives,
             UUID=UUID,
         )

@@ -6,11 +6,6 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Bolster spell list" />
-                    <attribute id="Spells" type="LSString" value="WayOfTheArcane_Bolster" />
-                    <attribute id="UUID" type="guid" value="f996e50f-6059-d1cf-e969-1d8e621d1c5e" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Way of the Arcane Flurry of Blows" />
                     <attribute id="Spells" type="LSString" value="WayOfTheArcane_FlurryOfBlowsTopple;WayOfTheArcane_FlurryOfBlowsStagger;WayOfTheArcane_FlurryOfBlowsPush" />
                     <attribute id="UUID" type="guid" value="7b304523-6625-66c1-b0e1-754a0c1abb9f" />

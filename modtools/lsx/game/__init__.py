@@ -10,6 +10,7 @@ from .characterability import *
 from .characterclass import *
 from .characterrace import *
 from .classdescriptions import *
+from .defaultvalues import *
 from .featdescriptions import *
 from .feats import *
 from .levelmaps import *

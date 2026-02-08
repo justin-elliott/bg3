@@ -46,9 +46,11 @@ class Bolster:
             Cooldown="None",
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
+            DescriptionParams=[],
             Level="",
             RequirementConditions="",
             Requirements="!Combat",
+            SpellFlags=["HasVerbalComponent"],
             SpellProperties=[
                 f"ApplyStatus({name.upper()},100,-1)",
                 "ApplyStatus(FEATHER_FALL,100,-1)",
@@ -56,7 +58,9 @@ class Bolster:
                 "ApplyStatus(PETPAL,100,-1)",
                 "IF(not WearingArmor()):ApplyStatus(MAGE_ARMOR,100,-1)",
             ],
+            SpellStyleGroup="Class",
             TargetConditions="Party() and not Dead()",
+            TooltipDamageList=[],
             TooltipStatusApply=[
                 f"ApplyStatus({name.upper()},100,-1)",
                 "ApplyStatus(FEATHER_FALL,100,-1)",

@@ -268,9 +268,9 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Shadow" />
-                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;DevilsSight;WayOfTheArcane_BattleMagic;WayOfTheArcane_PackMule_400;WayOfTheArcane_Warding" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1;WayOfTheArcane_BattleMagic" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(f996e50f-6059-d1cf-e969-1d8e621d1c5e,,,,AlwaysPrepared);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,6,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared);SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,6,0)" />
                     <attribute id="TableUUID" type="guid" value="6e1a1046-1202-410b-9d80-91c819a8bcca" />
                     <attribute id="UUID" type="guid" value="196e7e5d-1c16-22cc-498e-d85a46d2c09c" />
                 </node>

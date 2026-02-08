@@ -5,10 +5,7 @@ from functools import cached_property
 from moddb import (
     Awareness,
     BattleMagic,
-    Bolster,
-    Defense,
     EmpoweredSpells,
-    PackMule,
     spells_always_prepared,
 )
 from modtools.gamedata import PassiveData, SpellData
@@ -43,8 +40,6 @@ class WayOfTheArcane(Replacer):
     _awareness: str
     _battle_magic: str
     _empowered_spells: str
-    _pack_mule: str
-    _warding: str
 
     # Spells
     _bolster_spell_list: str
@@ -53,16 +48,12 @@ class WayOfTheArcane(Replacer):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
                          name="WayOfTheArcane",
-                         description="A class replacer for Shadow.",
+                         description="A class replacer for Way of the Shadow.",
                          **kwds)
 
         self._awareness = Awareness(self.mod).add_awareness(5)
         self._battle_magic = BattleMagic(self.mod).add_battle_magic()
         self._empowered_spells = EmpoweredSpells(self.mod).add_empowered_spells(CharacterAbility.WISDOM)
-        self._pack_mule = PackMule(self.mod).add_pack_mule(5.0)
-        self._warding = Defense(self.mod).add_warding()
-
-        self._bolster_spell_list = Bolster(self.mod).add_bolster_spell_list()
 
     @cached_property
     def _arcane_manifestation(self) -> str:
@@ -325,13 +316,9 @@ class WayOfTheArcane(Replacer):
     @progression(CharacterClass.MONK_SHADOW, 1)
     def monk_shadow_level_1(self, progress: Progression) -> None:
         progress.PassivesAdded += [
-            "DevilsSight",
             self._battle_magic,
-            self._pack_mule,
-            self._warding,
         ]
         progress.Selectors = [
-            f"AddSpells({self._bolster_spell_list},,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_CANTRIP_SPELL_LIST},3,0,,,,AlwaysPrepared)",
             f"SelectSpells({self._WIZARD_LEVEL_1_SPELL_LIST},6,0)",
         ]

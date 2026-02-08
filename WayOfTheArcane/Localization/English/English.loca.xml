@@ -7,13 +7,6 @@
     <content contentuid="h21257219g93f3g488agddd6g9c03d33f12c3" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h80a8ad23gd7cbgb9fbg11a0g4fdba58dfe72" version="1">Empowered Spells</content>
     <content contentuid="h0de2b947gc80bg4d3dga1f8g44a1bbc3bcd1" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt;" to the damage it deals.</content>
-    <content contentuid="hb77cbf15ga8b9g60c7g3147gcb0ce166126a" version="1">Pack Mule</content>
-    <content contentuid="h00eb1e7fg293eg011eg34fag10abd7580fa9" version="1">Your carrying capacity is increased by [1]%.</content>
-    <content contentuid="h45218d71gc5a5g9136g4aa1g4fbc3ced6fda" version="1">Warding</content>
-    <content contentuid="h806735d4g66cag5ccegf6e5g8bc0d04e700d" version="1">A magical barrier protects you from harm, making you resistant to all forms of damage. Incoming damage is reduced by [1].</content>
-    <content contentuid="h5546baa6gc7d7g2df4g3ea1g1009fc7f841c" version="1">Bolster</content>
-    <content contentuid="h153cac16g325fg2496gb4eeg8bbab1ea6bf3" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="h4ee01658gea87g9d0dg898fg6854ac2e6854" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hbfe8c88eg0f92gf4c0ga6edg447691180dcf" version="1">Way of the Arcane</content>
     <content contentuid="h9685107cgcb88g2d04gdf1fgb98a3c888033" version="1">You seek mastery over mind and body. Your Ki connects you to the Weave.</content>
     <content contentuid="h07369c02gb3b1g1e6bgb94dg64aed8b09021" version="1">Slow Fall</content>

@@ -8,9 +8,51 @@
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="ExceptionalElves_AbilitiesBonus_0" />
                     <attribute id="Level" type="int32" value="1" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowAbilitiesBonus" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="db0e3e81-227b-f8f0-3bbf-319adfa30bab" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_1" />
+                    <attribute id="Level" type="int32" value="1" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_1" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="456979e9-4c3b-2581-2231-c02991d6c22f" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="19b529e0-771b-0970-cc6c-ab209081ced8" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="7eb0cb4d-e5f6-a275-73fe-47219db8e6c4" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_AbilitiesBonus_0" />
+                    <attribute id="Level" type="int32" value="1" />
                     <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfAbilitiesBonus" />
                     <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
                     <attribute id="UUID" type="guid" value="472a4b41-da4b-a73c-1561-a5614ec85d4d" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_1" />
+                    <attribute id="Level" type="int32" value="1" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_1" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="5fb6b753-5a3f-06fe-36ad-f6b098f88ad4" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="f80d2f88-6053-13ad-8b55-ea3279cf8c5d" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="ExceptionalElves_AbilitiesBonus_0" />
@@ -18,6 +60,181 @@
                     <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfAbilitiesBonus" />
                     <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
                     <attribute id="UUID" type="guid" value="059189f3-972d-d45a-bf30-3e0a157795d5" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_1" />
+                    <attribute id="Level" type="int32" value="1" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_1" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="4cd2b8bb-c1f6-d26e-669b-b8f25d23fa61" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="b1101d73-634b-c75d-d6c0-9eec99df61c4" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="f6a8ee81-cfa0-ad7c-8b41-3b40a1a1365d" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="42e4f921-45c3-9c96-a5b3-c567353ddd0f" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="1e8d75f2-68df-8f81-5bda-6f735bb4b1b5" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="e2753438-ae01-3bef-0d99-91bce7e2f97b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_13" />
+                    <attribute id="Level" type="int32" value="13" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_13" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="76bec223-f6e5-21f4-79f8-0c3e390ebedc" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_15" />
+                    <attribute id="Level" type="int32" value="15" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_15" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="cd1b9a92-f848-c21f-ad22-d1ff8ca681fe" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_17" />
+                    <attribute id="Level" type="int32" value="17" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_17" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="749e9431-855f-6c34-f602-64e36d75e1d3" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_19" />
+                    <attribute id="Level" type="int32" value="19" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_HalfElfRacialAbilities_Level_19" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="c2688757-2b47-52ce-bf12-1b7112e75596" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="a6599dd9-772f-fb7d-9090-6bfaacbe4bfb" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="0240f775-b503-837b-041e-38b5137d3cbd" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="b58d7784-52f7-0978-2526-aa12b6ea664e" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="5b2e8ae8-eebb-f6a3-3474-282a55fea896" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_13" />
+                    <attribute id="Level" type="int32" value="13" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_13" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="737331c7-874f-1393-e4fc-ae08375b8951" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_15" />
+                    <attribute id="Level" type="int32" value="15" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_15" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="e563e23f-59b9-dc82-39b2-8693958de614" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_17" />
+                    <attribute id="Level" type="int32" value="17" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_17" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="af2cde6c-c629-e864-fac7-c5e561486a43" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_19" />
+                    <attribute id="Level" type="int32" value="19" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_ElfRacialAbilities_Level_19" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="edeac28c-1603-f210-72ae-8592ff64dc31" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="1aea6648-6c2b-e4fc-78fa-e2845a9ec5ec" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="f1b69c30-dd53-ce66-bb2e-5e62e4f6ed44" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="4d45ff5d-02d5-5d7b-2a04-700f417a9706" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_13" />
+                    <attribute id="Level" type="int32" value="13" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_13" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="6b3c8d4e-2e74-bada-e5ae-b53ba59fcc62" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_15" />
+                    <attribute id="Level" type="int32" value="15" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_15" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="74f00d4b-e46a-3030-8dad-a79c494a43ed" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_17" />
+                    <attribute id="Level" type="int32" value="17" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_17" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="2a8a8f52-41f5-de34-8a3f-de43925a7a64" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="ExceptionalElves_NoSelection_Level_19" />
+                    <attribute id="Level" type="int32" value="19" />
+                    <attribute id="SelectorId" type="LSString" value="ExceptionalElves_DrowRacialAbilities_Level_19" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="32ae8166-5c9b-b1df-ef9f-763f10bd227b" />
                 </node>
             </children>
         </node>

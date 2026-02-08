@@ -11,9 +11,54 @@
                     <attribute id="UUID" type="guid" value="5d4c53ff-d4a0-87b4-9547-d3484c8e980b" />
                 </node>
                 <node id="PassiveList">
-                    <attribute id="Name" type="FixedString" value="Abilities Bonus" />
-                    <attribute id="Passives" type="LSString" value="ExceptionalElves_AbilitiesBonus_0,ExceptionalElves_AbilitiesBonus_1,ExceptionalElves_AbilitiesBonus_2,ExceptionalElves_AbilitiesBonus_3,ExceptionalElves_AbilitiesBonus_4,ExceptionalElves_AbilitiesBonus_5,ExceptionalElves_AbilitiesBonus_6,ExceptionalElves_AbilitiesBonus_7,ExceptionalElves_AbilitiesBonus_8,ExceptionalElves_AbilitiesBonus_9,ExceptionalElves_AbilitiesBonus_10,ExceptionalElves_AbilitiesBonus_11,ExceptionalElves_AbilitiesBonus_12,ExceptionalElves_AbilitiesBonus_13,ExceptionalElves_AbilitiesBonus_14,ExceptionalElves_AbilitiesBonus_15,ExceptionalElves_AbilitiesBonus_16,ExceptionalElves_AbilitiesBonus_17" />
-                    <attribute id="UUID" type="guid" value="5d4c53ff-d4a0-87b4-9547-d3484c8e980b" />
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 1" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_1,ExceptionalElves_Archer,Halfling_LightfootStealth,ExceptionalElves_Pickpocket" />
+                    <attribute id="UUID" type="guid" value="61d364db-8756-1c81-921d-ec1fb8f85487" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 3" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_3,ExceptionalElves_Archer,JackOfAllTrades,Halfling_LightfootStealth,ExceptionalElves_Pickpocket" />
+                    <attribute id="UUID" type="guid" value="edce58e3-9b70-9467-688e-22d2845eeebc" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 5" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_5,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket" />
+                    <attribute id="UUID" type="guid" value="9549c198-a1ab-6ca4-1334-2ff939b6fca5" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 7" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_7,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket" />
+                    <attribute id="UUID" type="guid" value="c6e0b120-446a-566c-d36c-a01b62901135" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 9" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_9,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket" />
+                    <attribute id="UUID" type="guid" value="48a28693-e29f-b7f7-c784-e7a783c89e67" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 11" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_11,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket,ExceptionalElves_WellPracticed" />
+                    <attribute id="UUID" type="guid" value="1f3e0bb2-4307-31a1-efcb-944ce81c5353" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 13" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_13,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket,ExceptionalElves_WellPracticed" />
+                    <attribute id="UUID" type="guid" value="6d025bc3-6cb7-8860-e5ae-743a86548203" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 15" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_15,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket,ExceptionalElves_WellPracticed" />
+                    <attribute id="UUID" type="guid" value="bbe86910-c006-e26d-7795-d0eb6fd027b8" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 17" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_17,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket,ExceptionalElves_WellPracticed" />
+                    <attribute id="UUID" type="guid" value="5ba1a002-5955-e341-994a-aac1ef976677" />
+                </node>
+                <node id="PassiveList">
+                    <attribute id="Name" type="FixedString" value="Racial Abilities Level 19" />
+                    <attribute id="Passives" type="LSString" value="ExceptionalElves_NoSelection_Level_19,ExceptionalElves_Archer,JackOfAllTrades,ExceptionalElves_Mistwalker,Halfling_LightfootStealth,ExceptionalElves_Pickpocket,ExceptionalElves_WellPracticed" />
+                    <attribute id="UUID" type="guid" value="4c43853f-de7e-1037-ac27-571fb5d81caa" />
                 </node>
             </children>
         </node>

@@ -6,15 +6,169 @@
         <node id="root">
             <children>
                 <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0);ProficiencyBonus(Skill,Perception)" />
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="PassivesAdded" type="LSString" value="Drow_DrowWeaponTraining;SuperiorDarkvision;FeyAncestry" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d9cdc5c1-c75b-ee4c-9477-1587cd9754c8,,Intelligence,,AlwaysPrepared);SelectPassives(5d4c53ff-d4a0-87b4-9547-d3484c8e980b,1,ExceptionalElves_DrowAbilitiesBonus);SelectPassives(61d364db-8756-1c81-921d-ec1fb8f85487,1,ExceptionalElves_DrowRacialAbilities_Level_1)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="4a634f24-bdcb-4559-b8be-7847133ad1c3" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(753bd4ba-9f16-4a01-92df-556b98cc7497,,Charisma,,AlwaysPrepared,UntilRest);SelectPassives(edce58e3-9b70-9467-688e-22d2845eeebc,1,ExceptionalElves_DrowRacialAbilities_Level_3)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="334e0ddd-33cb-468f-a232-40cfe9ad23da" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(ab1b1b3e-d13c-49b3-b061-c72dd3c8a2b4,,Charisma,,AlwaysPrepared,UntilRest);SelectPassives(9549c198-a1ab-6ca4-1334-2ff939b6fca5,1,ExceptionalElves_DrowRacialAbilities_Level_5)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="db485b48-fc71-4de4-a62d-47675659678b" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c6e0b120-446a-566c-d36c-a01b62901135,1,ExceptionalElves_DrowRacialAbilities_Level_7)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="49551cfe-fb05-3e24-a3f3-91b68f63ad66" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(48a28693-e29f-b7f7-c784-e7a783c89e67,1,ExceptionalElves_DrowRacialAbilities_Level_9)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="0dc36d3c-12ed-c138-fcff-d7cfd07243a3" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(1f3e0bb2-4307-31a1-efcb-944ce81c5353,1,ExceptionalElves_DrowRacialAbilities_Level_11)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="e1876bf9-2cd4-390d-a9ef-6c5b6693d400" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="13" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(6d025bc3-6cb7-8860-e5ae-743a86548203,1,ExceptionalElves_DrowRacialAbilities_Level_13)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="c665c215-e819-8f1f-3b82-228ce911dd91" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="15" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(bbe86910-c006-e26d-7795-d0eb6fd027b8,1,ExceptionalElves_DrowRacialAbilities_Level_15)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="4e5a5571-bbe8-550f-ede3-d22557378005" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="17" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(5ba1a002-5955-e341-994a-aac1ef976677,1,ExceptionalElves_DrowRacialAbilities_Level_17)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="ec1564d8-7f0e-7e98-e285-626b28a5e38f" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="19" />
+                    <attribute id="Name" type="LSString" value="Drow" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(4c43853f-de7e-1037-ac27-571fb5d81caa,1,ExceptionalElves_DrowRacialAbilities_Level_19)" />
+                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+                    <attribute id="UUID" type="guid" value="8e559131-f73f-78d7-5607-938d4efabc8f" />
+                </node>
+                <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="false" />
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(Skill,Perception);ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Elf" />
                     <attribute id="PassivesAdded" type="LSString" value="Elf_WeaponTraining;Darkvision;FeyAncestry" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(d9cdc5c1-c75b-ee4c-9477-1587cd9754c8,,Intelligence,,AlwaysPrepared);SelectPassives(5d4c53ff-d4a0-87b4-9547-d3484c8e980b,1,ExceptionalElves_ElfAbilitiesBonus)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d9cdc5c1-c75b-ee4c-9477-1587cd9754c8,,Intelligence,,AlwaysPrepared);SelectPassives(5d4c53ff-d4a0-87b4-9547-d3484c8e980b,1,ExceptionalElves_ElfAbilitiesBonus);SelectPassives(61d364db-8756-1c81-921d-ec1fb8f85487,1,ExceptionalElves_ElfRacialAbilities_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
                     <attribute id="UUID" type="guid" value="496486a4-b5f2-4f91-90ea-6cad9023952e" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(edce58e3-9b70-9467-688e-22d2845eeebc,1,ExceptionalElves_ElfRacialAbilities_Level_3)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="46ac9fd4-811c-4977-abeb-adfc31ab21c4" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(9549c198-a1ab-6ca4-1334-2ff939b6fca5,1,ExceptionalElves_ElfRacialAbilities_Level_5)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="1cf83992-693c-9ecd-47bd-e9a16f55aeb5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c6e0b120-446a-566c-d36c-a01b62901135,1,ExceptionalElves_ElfRacialAbilities_Level_7)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="8f9c87a4-687b-36e7-b896-eda925d879f3" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(48a28693-e29f-b7f7-c784-e7a783c89e67,1,ExceptionalElves_ElfRacialAbilities_Level_9)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="1542a4e6-6096-a7c7-9eed-f7613687509d" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(1f3e0bb2-4307-31a1-efcb-944ce81c5353,1,ExceptionalElves_ElfRacialAbilities_Level_11)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="dc2cfbbc-2cc2-c69e-2387-84c878a7dbf5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="13" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(6d025bc3-6cb7-8860-e5ae-743a86548203,1,ExceptionalElves_ElfRacialAbilities_Level_13)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="7b063670-5de6-1501-9a72-76c608139a0a" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="15" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(bbe86910-c006-e26d-7795-d0eb6fd027b8,1,ExceptionalElves_ElfRacialAbilities_Level_15)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="1e421dec-e850-f81a-f7e6-116a2a96f2e5" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="17" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(5ba1a002-5955-e341-994a-aac1ef976677,1,ExceptionalElves_ElfRacialAbilities_Level_17)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="eaf95d78-8003-7453-b815-2ac4e2a61a90" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="19" />
+                    <attribute id="Name" type="LSString" value="Elf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(4c43853f-de7e-1037-ac27-571fb5d81caa,1,ExceptionalElves_ElfRacialAbilities_Level_19)" />
+                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="UUID" type="guid" value="cdbd8d13-ed91-4093-72be-c8eb04b482e2" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
@@ -22,9 +176,81 @@
                     <attribute id="Name" type="LSString" value="HalfElf" />
                     <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;Darkvision;FeyAncestry" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(d9cdc5c1-c75b-ee4c-9477-1587cd9754c8,,Intelligence,,AlwaysPrepared);SelectPassives(5d4c53ff-d4a0-87b4-9547-d3484c8e980b,1,ExceptionalElves_HalfElfAbilitiesBonus)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d9cdc5c1-c75b-ee4c-9477-1587cd9754c8,,Intelligence,,AlwaysPrepared);SelectPassives(5d4c53ff-d4a0-87b4-9547-d3484c8e980b,1,ExceptionalElves_HalfElfAbilitiesBonus);SelectPassives(61d364db-8756-1c81-921d-ec1fb8f85487,1,ExceptionalElves_HalfElfRacialAbilities_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
                     <attribute id="UUID" type="guid" value="a1729574-2f7b-4561-91d8-3766cf940420" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(edce58e3-9b70-9467-688e-22d2845eeebc,1,ExceptionalElves_HalfElfRacialAbilities_Level_3)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="25c0008d-57ca-4b88-a0f2-1dfbd5597f69" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="5" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(9549c198-a1ab-6ca4-1334-2ff939b6fca5,1,ExceptionalElves_HalfElfRacialAbilities_Level_5)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="03e7a84f-48bd-8a67-240c-900daeba7a9a" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(c6e0b120-446a-566c-d36c-a01b62901135,1,ExceptionalElves_HalfElfRacialAbilities_Level_7)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="861d48da-6cc6-873f-c84f-7c5467808d40" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(48a28693-e29f-b7f7-c784-e7a783c89e67,1,ExceptionalElves_HalfElfRacialAbilities_Level_9)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="44664747-bede-adcb-af8e-72593cbf01ee" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(1f3e0bb2-4307-31a1-efcb-944ce81c5353,1,ExceptionalElves_HalfElfRacialAbilities_Level_11)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="2e5d6b98-3d02-ab1c-c970-7f85bc5cb9e4" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="13" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(6d025bc3-6cb7-8860-e5ae-743a86548203,1,ExceptionalElves_HalfElfRacialAbilities_Level_13)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="61feaba2-801f-67f4-c173-16c02c951dad" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="15" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(bbe86910-c006-e26d-7795-d0eb6fd027b8,1,ExceptionalElves_HalfElfRacialAbilities_Level_15)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="f8f6617e-1ded-c402-aa0a-d204a6efe8ce" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="17" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(5ba1a002-5955-e341-994a-aac1ef976677,1,ExceptionalElves_HalfElfRacialAbilities_Level_17)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="358cce93-1992-b925-38b3-4c2111c1e94c" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="19" />
+                    <attribute id="Name" type="LSString" value="HalfElf" />
+                    <attribute id="ProgressionType" type="uint8" value="2" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(4c43853f-de7e-1037-ac27-571fb5d81caa,1,ExceptionalElves_HalfElfRacialAbilities_Level_19)" />
+                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="UUID" type="guid" value="f0aca4f8-a777-a576-fe23-3562299a7667" />
                 </node>
             </children>
         </node>

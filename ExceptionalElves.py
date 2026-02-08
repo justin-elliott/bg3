@@ -25,12 +25,18 @@ from modtools.replacers import (
 
 
 class ExceptionalElves(Replacer):
+    _no_selection_ids: set[str]
+    _passive_list_uuids: set[str]
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
                          author="justin-elliott",
                          name="ExceptionalElves",
                          description="Enhancements for Elf and Half-Elf races.",
                          **kwds)
+        
+        self._no_selection_ids = set()
+        self._passive_list_uuids = set()
 
     @cached_property
     def _spell_list(self) -> str:
@@ -72,11 +78,13 @@ class ExceptionalElves(Replacer):
         list_uuid = self.make_uuid(list_name)
         selector_id = self.make_name(f"{progress.Name}AbilitiesBonus")
 
-        self.add(PassiveList(
-            Name=list_name,
-            Passives=[self._abilities_bonus_passive(bonus) for bonus in range(0, 18)],
-            UUID=list_uuid,
-        ))
+        if list_uuid not in self._passive_list_uuids:
+            self.add(PassiveList(
+                Name=list_name,
+                Passives=[self._abilities_bonus_passive(bonus) for bonus in range(0, 18)],
+                UUID=list_uuid,
+            ))
+            self._passive_list_uuids.add(list_uuid)
 
         default_passive = self._abilities_bonus_passive(0)
         self.add(DefaultValue(
@@ -87,12 +95,12 @@ class ExceptionalElves(Replacer):
             UUID=self.make_uuid(selector_id),
         ))
 
-        self.loca[f"{selector_id}_DisplayName"] = f"Abilities Bonus"
-        self.loca[f"{selector_id}_Description"] = f"Increase all of your abilities, to a maximum of 30."
+        self.loca["AbilitiesBonus_DisplayName"] = f"Abilities Bonus"
+        self.loca["AbilitiesBonus_Description"] = f"Increase all of your abilities, to a maximum of 30."
 
         self.add(ProgressionDescription(
-            DisplayName=self.loca[f"{selector_id}_DisplayName"],
-            Description=self.loca[f"{selector_id}_Description"],
+            DisplayName=self.loca["AbilitiesBonus_DisplayName"],
+            Description=self.loca["AbilitiesBonus_Description"],
             ProgressionTableId=progress.TableUUID,
             SelectorId=selector_id,
             UUID=self.make_uuid(f"{selector_id} Description"),
@@ -100,15 +108,155 @@ class ExceptionalElves(Replacer):
         
         return (str(list_uuid), selector_id)
 
+    @cache
+    def _no_selection(self, progress: Progression) -> str:
+        name = self.make_name(f"NoSelection_Level_{progress.Level}")
+        if name not in self._no_selection_ids:
+            self.loca["NoSelection_DisplayName"] = "None"
+            self.loca["NoSelection_Description"] = "Decline any racial ability at this level."
+            self.add(PassiveData(
+                name,
+                DisplayName=self.loca["NoSelection_DisplayName"],
+                Description=self.loca["NoSelection_Description"],
+                Properties=["IsHidden"],
+            ))
+            self._no_selection_ids.add(name)
+        return name
+
+    @cached_property
+    def _archer(self) -> str:
+        name = self.make_name("Archer")
+        self.loca[f"{name}_DisplayName"] = "Archer"
+        self.loca[f"{name}_Description"] = """
+            You are proficient with all bows, and gain a +2 bonus to
+            <LSTag Tooltip="RangedWeaponAttack">ranged weapon attacks</LSTag> and damage.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "Proficiency(HandCrossbows)",
+                "Proficiency(LightCrossbows)",
+                "Proficiency(HeavyCrossbows)",
+                "Proficiency(Shortbows)",
+                "Proficiency(Longbows)",
+                "RollBonus(RangedWeaponAttack,2)",
+                "RollBonus(RangedOffHandWeaponAttack,2)",
+                "IF(IsRangedWeaponAttack()):CharacterWeaponDamage(2)",
+            ],
+            Icon="PassiveFeature_FightingStyle_Archery",
+        ))
+        return name
+
+    @cached_property
+    def _mistwalker(self) -> str:
+        name = self.make_name("Mistwalker")
+        self.loca[f"{name}_DisplayName"] = "Mistwalker"
+        self.loca[f"{name}_Description"] = "Surrounded by silver mist, you teleport to an unoccupied space you can see."
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["UnlockSpell(Target_MistyStep_Githyanki,Singular,,OncePerTurnNoRealtime)"],
+            Icon="Spell_Conjuration_MistyStep",
+            Properties=["IsHidden"],
+        ))
+        return name
+
+    @cached_property
+    def _pickpocket(self) -> str:
+        name = self.make_name("Pickpocket")
+        self.loca[f"{name}_DisplayName"] = "Pickpocket"
+        self.loca[f"{name}_Description"] = """
+            You gain <LSTag Tooltip="Expertise">Expertise</LSTag> in
+            <LSTag Tooltip="SleightOfHand">Sleight of Hand</LSTag>.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["ProficiencyBonus(Skill,SleightOfHand)", "ExpertiseBonus(SleightOfHand)"],
+            Icon="Spell_Conjuration_MageHand",
+        ))
+        return name
+
+    @cached_property
+    def _well_practiced(self) -> str:
+        name = self.make_name("WellPracticed")
+        self.loca[f"{name}_DisplayName"] = "Well-Practiced"
+        self.add(PassiveData(
+            name,
+            using="ReliableTalent",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+        ))
+        return name
+
+    @cached_property
+    def _racial_passives(self) -> list[tuple[int, str, str]]:
+        return sorted([
+            ( 1, "Archer",              self._archer),
+            ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
+            ( 1, "Pickpocket",          self._pickpocket),
+            ( 3, "Jack of All Trades",  "JackOfAllTrades"),
+            ( 5, "Mistwalker",          self._mistwalker),
+            (11, "Well-Practiced",      self._well_practiced),
+        ], key=lambda item: item[1])
+
+    @cache
+    def _racial_passive_list(self, progress: Progression) -> tuple[str, str]:
+        list_name = f"Racial Abilities Level {progress.Level}"
+        list_uuid = self.make_uuid(list_name)
+        selector_id = self.make_name(f"{progress.Name}RacialAbilities_Level_{progress.Level}")
+        
+        if list_uuid not in self._passive_list_uuids:
+            self.add(PassiveList(
+                Name=list_name,
+                Passives=[
+                    self._no_selection(progress),
+                    *[passive for level, _, passive in self._racial_passives if progress.Level >= level],
+                ],
+                UUID=list_uuid,
+            ))
+            self._passive_list_uuids.add(list_uuid)
+
+        self.add(DefaultValue(
+            Add=self._no_selection(progress),
+            Level=progress.Level,
+            SelectorId=selector_id,
+            TableUUID=progress.TableUUID,
+            UUID=self.make_uuid(selector_id),
+        ))
+
+        self.loca["RacialAbilities_DisplayName"] = f"Racial Abilities"
+        self.loca["RacialAbilities_Description"] = f"Select a racial ability."
+
+        self.add(ProgressionDescription(
+            DisplayName=self.loca["RacialAbilities_DisplayName"],
+            Description=self.loca["RacialAbilities_Description"],
+            ProgressionTableId=progress.TableUUID,
+            SelectorId=selector_id,
+            UUID=self.make_uuid(f"{selector_id} Description"),
+        ))
+        
+        return (str(list_uuid), selector_id)
+
+    @progression(CharacterRace.DROW, 1)
     @progression(CharacterRace.ELF, 1)
     @progression(CharacterRace.HALF_ELF, 1)
     def elf_level_1(self, progress: Progression) -> None:
-        list_uuid, selector_id = self._abilities_bonus_passive_list(progress)
         progress.Selectors = [
             f"AddSpells({self._spell_list},,Intelligence,,AlwaysPrepared)",
-            f"SelectPassives({list_uuid},1,{selector_id})",
+            "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
         ]
 
+    @progression(CharacterRace.DROW, range(1, 21, 2))
+    @progression(CharacterRace.ELF, range(1, 21, 2))
+    @progression(CharacterRace.HALF_ELF, range(1, 21, 2))
+    def elf_odd_levels(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectPassives({},1,{})".format(*self._racial_passive_list(progress)),
+        ]
 
 if __name__ == "__main__":
     exceptional_elves = ExceptionalElves(

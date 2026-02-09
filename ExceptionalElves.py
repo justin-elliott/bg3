@@ -6,7 +6,12 @@ Generates files for Exceptional Elves, a mod to give Elves and Half-Elves bonus 
 from functools import cache, cached_property
 import os
 
-from moddb import Bolster, Knowledge, Movement
+from moddb import (
+    BattleMagic,
+    Bolster,
+    Knowledge,
+    Movement,
+)
 from modtools.gamedata import PassiveData
 from modtools.lsx.game import (
     CharacterAbility,
@@ -150,20 +155,13 @@ class ExceptionalElves(Replacer):
         return name
 
     @cached_property
-    def _artful_dodger(self) -> str:
-        name = self.make_name("ArtfulDodger")
-        self.loca[f"{name}_DisplayName"] = "Artful Dodger"
-        self.add(PassiveData(
-            name,
-            using="UncannyDodge",
-            DisplayName=self.loca[f"{name}_DisplayName"],
-        ))
-        return name
+    def _battle_magic(self) -> str:
+        return BattleMagic(self.mod).add_battle_magic()
 
     @cached_property
-    def _cunning(self) -> str:
-        name = self.make_name("Cunning")
-        self.loca[f"{name}_DisplayName"] = "Cunning"
+    def _cunning_actions(self) -> str:
+        name = self.make_name("CunningActions")
+        self.loca[f"{name}_DisplayName"] = "Cunning Actions"
         self.loca[f"{name}_Description"] = """
             They'll never see you coming, until it's too late. As a bonus action, you can use
             <LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction">Cunning Action: Dash</LSTag>,
@@ -185,34 +183,24 @@ class ExceptionalElves(Replacer):
         return name
 
     @cached_property
-    def _evasive(self) -> str:
-        name = self.make_name("Evasive")
-        self.loca[f"{name}_DisplayName"] = "Evasive"
+    def _elven_resilience(self) -> str:
+        name = self.make_name("ElvenResilience")
+        self.loca[f"{name}_DisplayName"] = "Elven Resilience"
+        self.loca[f"{name}_Description"] = """
+            You shrug off attacks, taking 2 less damage from all sources.
+            """
         self.add(PassiveData(
             name,
-            using="Evasion",
             DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["DamageReduction(All,Flat,2)"],
+            Icon="PassiveFeature_UnarmoredDefense_Barbarian",
         ))
         return name
 
     @cached_property
     def _fleet_of_foot(self) -> str:
         return Movement(self.mod).add_fast_movement(3.0, "Fleet of Foot")
-
-    @cached_property
-    def _mistwalker(self) -> str:
-        name = self.make_name("Mistwalker")
-        self.loca[f"{name}_DisplayName"] = "Mistwalker"
-        self.loca[f"{name}_Description"] = "Surrounded by silver mist, you teleport to an unoccupied space you can see."
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            Boosts=["UnlockSpell(Target_MistyStep_Githyanki,Singular,,OncePerTurnNoRealtime)"],
-            Icon="Spell_Conjuration_MistyStep",
-            Properties=["IsHidden"],
-        ))
-        return name
 
     @cached_property
     def _light_fingered(self) -> str:
@@ -232,64 +220,17 @@ class ExceptionalElves(Replacer):
         return name
 
     @cached_property
-    def _quick_handed(self) -> str:
-        name = self.make_name("QuickHanded")
-        self.loca[f"{name}_DisplayName"] = "Quick-Handed"
-        self.add(PassiveData(
-            name,
-            using="FastHands",
-            DisplayName=self.loca[f"{name}_DisplayName"],
-        ))
-        return name
-
-    @cached_property
-    def _resilient(self) -> str:
-        name = self.make_name("Resilient")
-        self.loca[f"{name}_DisplayName"] = "Resilient"
-        self.loca[f"{name}_Description"] = """
-            You shrug off attacks, taking 2 less damage from all sources.
-            """
+    def _misty_step(self) -> str:
+        name = self.make_name("MistyStep")
+        self.loca[f"{name}_DisplayName"] = "Misty Step"
+        self.loca[f"{name}_Description"] = "Surrounded by silver mist, you teleport to an unoccupied space you can see."
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            Boosts=["DamageReduction(All,Flat,2)"],
-            Icon="PassiveFeature_UnarmoredDefense_Barbarian",
-        ))
-        return name
-
-    @cached_property
-    def _sure_footed(self) -> str:
-        name = self.make_name("SureFooted")
-        self.loca[f"{name}_DisplayName"] = "Sure-Footed"
-        self.loca[f"{name}_Description"] = """
-            You have become an expert at moving through the wilderness.
-            <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down.
-            You can't be Enwebbed, Entangled, or Ensnared and can't slip on grease or ice.
-            """
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            Boosts=[
-                "StatusImmunity(SG_DifficultTerrain)",
-                "StatusImmunity(SHADOW_CURSED_VINES)",
-                "StatusImmunity(SPIKE_GROWTH)",
-                "StatusImmunity(BLIGHT_ENTANGLE)",
-                "StatusImmunity(PLANT_GROWTH)",
-                "StatusImmunity(DIFFICULT_TERRAIN_VINES)",
-                "StatusImmunity(DIFFICULT_TERRAIN_OVERGROWTH)",
-                "StatusImmunity(ENSNARED_VINES)",
-                "StatusImmunity(TWN_ARABELLAPOWERS_ARABELLAVINES)",
-                "StatusImmunity(WEB)",
-                "StatusImmunity(ENSNARED)",
-                "StatusImmunity(PRONE_GREASE)",
-                "StatusImmunity(PRONE_ICE)",
-                "StatusImmunity(ENSNARING_STRIKE)",
-                "StatusImmunity(ENSNARING_STRIKE_2)",
-                "Tag(PLANT_IMPEDE_ADV)",
-            ],
-            Icon="PassiveFeature_LandsStride_DifficultTerrain",
+            Boosts=["UnlockSpell(Target_MistyStep_Githyanki,Singular,,OncePerTurnNoRealtime)"],
+            Icon="Spell_Conjuration_MistyStep",
+            Properties=["IsHidden"],
         ))
         return name
 
@@ -320,13 +261,42 @@ class ExceptionalElves(Replacer):
         return name
 
     @cached_property
-    def _well_practiced(self) -> str:
-        name = self.make_name("WellPracticed")
-        self.loca[f"{name}_DisplayName"] = "Well-Practiced"
+    def _volley(self) -> str:
+        name = self.make_name("Volley")
+        self.loca[f"{name}_DisplayName"] = "Volley"
+        self.loca[f"{name}_Description"] = """
+            Strike multiple foes at once. You gain <LSTag Type="Spell" Tooltip="Target_Volley">Volley</LSTag> and
+            <LSTag Type="Spell" Tooltip="Shout_Whirlwind">Whirlwind</LSTag>
+            """
         self.add(PassiveData(
             name,
-            using="ReliableTalent",
             DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["UnlockSpell(Target_Volley)", "UnlockSpell(Shout_Whirlwind)"],
+            Icon="Action_Multiattack_Volley",
+            Properties=["IsHidden"],
+        ))
+        return name
+
+    @cached_property
+    def _wilderness_explorer(self) -> str:
+        name = self.make_name("WildernessExplorer")
+        self.loca[f"{name}_DisplayName"] = "Wilderness Explorer"
+        self.loca[f"{name}_Description"] = """
+            You have become an expert at moving through the wilderness.
+            <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down, and
+            you can't slip on grease or ice.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "StatusImmunity(SG_DifficultTerrain)",
+                "StatusImmunity(PRONE_GREASE)",
+                "StatusImmunity(PRONE_ICE)",
+            ],
+            Icon="PassiveFeature_LandsStride_DifficultTerrain",
         ))
         return name
 
@@ -336,18 +306,23 @@ class ExceptionalElves(Replacer):
             ( 1, "Archer",              self._archer),
             ( 1, "Light-Fingered",      self._light_fingered),
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
+            ( 1, "Savage Attacks",      "SavageAttacks"),
             ( 1, "Swordmaster",         self._swordmaster),
-            ( 3, "Cunning",             self._cunning),
+            ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
+            ( 3, "Battle Magic",        self._battle_magic),
+            ( 3, "Cunning Actions",     self._cunning_actions),
+            ( 3, "Fast Hands",          "FastHands"),
             ( 3, "Fleet of Foot",       self._fleet_of_foot),
+            ( 3, "Improved Critical",   "ImprovedCritical"),
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
-            ( 3, "Quick-Handed",        self._quick_handed),
-            ( 5, "Artful Dodger",       self._artful_dodger),
+            ( 5, "Uncanny Dodge",       "UncannyDodge"),
             ( 5, "Extra Attack",        "ExtraAttack"),
-            ( 5, "Mistwalker",          self._mistwalker),
-            ( 7, "Evasive",             self._evasive),
-            ( 7, "Resilient",           self._resilient),
-            ( 9, "Sure-Footed",         self._sure_footed),
-            (11, "Well-Practiced",      self._well_practiced),
+            ( 5, "Misty Step",          self._misty_step),
+            ( 7, "Evasion",             "Evasion"),
+            ( 7, "Elven Resilience",    self._elven_resilience),
+            ( 9, "Volley",              self._volley),
+            ( 9, "Wilderness Explorer", self._wilderness_explorer),
+            (11, "Reliable Talent",     "ReliableTalent"),
         ], key=lambda item: item[1])
 
     @cache

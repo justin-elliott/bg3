@@ -65,6 +65,7 @@
     <content contentuid="h6abb0480gf657g35fcgc67fg05f7a761caba" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h0e2388b3g17cag976fg4f9eg111af371b3fd" version="1">Cunning Actions</content>
     <content contentuid="ha462b897g8f0agdff7gec1agf0b8739ba508" version="1">They'll never see you coming, until it's too late. As a bonus action, you can use &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, or &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
+    <content contentuid="h484adc66g73beg8bf7gd226g5581443f0266" version="1">Fleet of Foot</content>
     <content contentuid="hd12546d9g127cg02fdgbb9ag3a08a0c34582" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="haf846e9fg4e21g3068gadcegf8edcf439927" version="1">Misty Step</content>
     <content contentuid="heaf1b052g2c2eg7b55gb356g0639baabdca0" version="1">Surrounded by silver mist, you teleport to an unoccupied space you can see.</content>

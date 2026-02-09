@@ -176,7 +176,7 @@ data "BoostContext" "OnEquip;OnCreate"
 data "Boosts" "ActionResource(Movement,3.0,0)"
 data "Description" "hd12546d9g127cg02fdgbb9ag3a08a0c34582"
 data "DescriptionParams" "Distance(3.0)"
-data "DisplayName" "Fleet of Foot"
+data "DisplayName" "h484adc66g73beg8bf7gd226g5581443f0266"
 data "Icon" "PassiveFeature_FastMovement"
 data "Properties" "Highlighted;ForceShowInCC"
 

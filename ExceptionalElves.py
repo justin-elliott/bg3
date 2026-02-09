@@ -200,7 +200,8 @@ class ExceptionalElves(Replacer):
 
     @cached_property
     def _fleet_of_foot(self) -> str:
-        return Movement(self.mod).add_fast_movement(3.0, "Fleet of Foot")
+        self.loca["FleetOfFoot"] = "Fleet of Foot"
+        return Movement(self.mod).add_fast_movement(3.0, self.loca["FleetOfFoot"])
 
     @cached_property
     def _light_fingered(self) -> str:

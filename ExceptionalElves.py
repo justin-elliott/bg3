@@ -151,6 +151,7 @@ class ExceptionalElves(Replacer):
                 "IF(IsRangedWeaponAttack()):CharacterWeaponDamage(2)",
             ],
             Icon="PassiveFeature_FightingStyle_Archery",
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -195,6 +196,7 @@ class ExceptionalElves(Replacer):
             Description=self.loca[f"{name}_Description"],
             Boosts=["DamageReduction(All,Flat,2)"],
             Icon="PassiveFeature_UnarmoredDefense_Barbarian",
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -217,6 +219,7 @@ class ExceptionalElves(Replacer):
             Description=self.loca[f"{name}_Description"],
             Boosts=["ProficiencyBonus(Skill,SleightOfHand)", "ExpertiseBonus(SleightOfHand)"],
             Icon="Spell_Conjuration_MageHand",
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -257,7 +260,8 @@ class ExceptionalElves(Replacer):
                 "RollBonus(MeleeOffHandWeaponAttack,2)",
                 "IF(IsMeleeWeaponAttack()):CharacterWeaponDamage(2)",
             ],
-            Icon="PassiveFeature_FightingStyle_Archery",
+            Icon="PassiveFeature_RakishAudacity",
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -298,6 +302,7 @@ class ExceptionalElves(Replacer):
                 "StatusImmunity(PRONE_ICE)",
             ],
             Icon="PassiveFeature_LandsStride_DifficultTerrain",
+            Properties=["Highlighted"],
         ))
         return name
 

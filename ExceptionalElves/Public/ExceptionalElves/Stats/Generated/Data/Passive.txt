@@ -137,6 +137,7 @@ data "Boosts" "Proficiency(HandCrossbows);Proficiency(LightCrossbows);Proficienc
 data "Description" "hf4f48378gc0c8gdea6g57fbg3aeff543038a"
 data "DisplayName" "h9699ddafg0e70g3eb7g34fcg112d63b95004"
 data "Icon" "PassiveFeature_FightingStyle_Archery"
+data "Properties" "Highlighted"
 
 new entry "ExceptionalElves_LightFingered"
 type "PassiveData"
@@ -144,13 +145,15 @@ data "Boosts" "ProficiencyBonus(Skill,SleightOfHand);ExpertiseBonus(SleightOfHan
 data "Description" "hebfa881cg09d3g5797ga627g7394f6efa074"
 data "DisplayName" "h5e76f0e6gbf6cg0bcbgbc54gd73ce3c1a288"
 data "Icon" "Spell_Conjuration_MageHand"
+data "Properties" "Highlighted"
 
 new entry "ExceptionalElves_Swordmaster"
 type "PassiveData"
 data "Boosts" "Proficiency(Shortswords);Proficiency(Longswords);Proficiency(Greatswords);Proficiency(Rapiers);Proficiency(Scimitars);RollBonus(MeleeWeaponAttack,2);RollBonus(MeleeOffHandWeaponAttack,2);IF(IsMeleeWeaponAttack()):CharacterWeaponDamage(2)"
 data "Description" "h6f179267gc3d4g1b2bg19d4g10ff70313a3c"
 data "DisplayName" "h759ed349g40bdg0ad6gda0agc91f8ee5e551"
-data "Icon" "PassiveFeature_FightingStyle_Archery"
+data "Icon" "PassiveFeature_RakishAudacity"
+data "Properties" "Highlighted"
 
 new entry "ExceptionalElves_BattleMagic"
 type "PassiveData"
@@ -194,6 +197,7 @@ data "Boosts" "DamageReduction(All,Flat,2)"
 data "Description" "hc01883a7ge3e4g5ac0g43ffg6e7ede85bb7a"
 data "DisplayName" "h95158bc9gb7bcg4888g6cb5gdd673800d506"
 data "Icon" "PassiveFeature_UnarmoredDefense_Barbarian"
+data "Properties" "Highlighted"
 
 new entry "ExceptionalElves_Volley"
 type "PassiveData"
@@ -209,6 +213,7 @@ data "Boosts" "StatusImmunity(SG_DifficultTerrain);StatusImmunity(PRONE_GREASE);
 data "Description" "hd2ff820cg35cbg3896gf11cg889241e02df4"
 data "DisplayName" "hc1aebceeg42bege2deged14g3883bbf9c3ef"
 data "Icon" "PassiveFeature_LandsStride_DifficultTerrain"
+data "Properties" "Highlighted"
 
 new entry "ExceptionalElves_NoSelection_Level_3"
 type "PassiveData"

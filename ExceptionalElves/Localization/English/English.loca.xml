@@ -59,6 +59,8 @@
     <content contentuid="hf4f48378gc0c8gdea6g57fbg3aeff543038a" version="1">You are proficient with all bows, and gain a +2 bonus to &lt;LSTag Tooltip="RangedWeaponAttack"&gt;ranged weapon attacks&lt;/LSTag&gt; and damage.</content>
     <content contentuid="h5e76f0e6gbf6cg0bcbgbc54gd73ce3c1a288" version="1">Light-Fingered</content>
     <content contentuid="hebfa881cg09d3g5797ga627g7394f6efa074" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;.</content>
+    <content contentuid="h57647742g1d00g032bgaed3gf2e9d80a3b07" version="1">Spellweaver</content>
+    <content contentuid="h6666f0b3g05a3g0b10g18ebg814f3f2cc766" version="1">You gain a +[1] bonus to &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Spell Save DC&lt;/LSTag&gt; and spell &lt;LSTag Tooltip="AttackRoll"&gt;attack rolls&lt;/LSTag&gt;.</content>
     <content contentuid="h759ed349g40bdg0ad6gda0agc91f8ee5e551" version="1">Swordmaster</content>
     <content contentuid="h6f179267gc3d4g1b2bg19d4g10ff70313a3c" version="1">You are proficient with all swords, and gain a +2 bonus to &lt;LSTag Tooltip="MeleeWeaponAttack"&gt;melee weapon attacks&lt;/LSTag&gt; and damage.</content>
     <content contentuid="hb5d4a5fegaf65g2e3dgfad2g556110f9faa5" version="1">Battle Magic</content>

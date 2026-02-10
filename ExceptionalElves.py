@@ -239,6 +239,29 @@ class ExceptionalElves(Replacer):
         return name
 
     @cached_property
+    def _spellweaver(self) -> str:
+        name = self.make_name("Spellweaver")
+        self.loca[f"{name}_DisplayName"] = "Spellweaver"
+        self.loca[f"{name}_Description"] = """
+            You gain a +[1] bonus to <LSTag Tooltip="SpellDifficultyClass">Spell Save DC</LSTag> and spell
+            <LSTag Tooltip="AttackRoll">attack rolls</LSTag>.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=["1"],
+            Boosts=[
+                "SpellSaveDC(1)",
+                "RollBonus(MeleeSpellAttack,1)",
+                "RollBonus(RangedSpellAttack,1)",
+            ],
+            Icon="Spell_Evocation_DancingLights",
+            Properties=["Highlighted"],
+        ))
+        return name
+    
+    @cached_property
     def _swordmaster(self) -> str:
         name = self.make_name("Swordmaster")
         self.loca[f"{name}_DisplayName"] = "Swordmaster"
@@ -313,6 +336,7 @@ class ExceptionalElves(Replacer):
             ( 1, "Light-Fingered",      self._light_fingered),
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
             ( 1, "Savage Attacks",      "SavageAttacks"),
+            ( 1, "Spellweaver",         self._spellweaver),
             ( 1, "Swordmaster",         self._swordmaster),
             ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
             ( 3, "Battle Magic",        self._battle_magic),

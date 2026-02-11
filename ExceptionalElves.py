@@ -397,6 +397,9 @@ class ExceptionalElves(Replacer):
     @progression(CharacterRace.ELF, 1)
     @progression(CharacterRace.HALF_ELF, 1)
     def elf_level_1(self, progress: Progression) -> None:
+        progress.PassivesAdded += [
+            "Athlete_StandUp",
+        ]
         progress.Selectors = [
             f"AddSpells({self._spell_list},,Intelligence,,AlwaysPrepared)",
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),

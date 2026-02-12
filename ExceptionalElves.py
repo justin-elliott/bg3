@@ -333,6 +333,7 @@ class ExceptionalElves(Replacer):
     def _racial_passives(self) -> list[tuple[int, str, str]]:
         return sorted([
             ( 1, "Archer",              self._archer),
+            ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
             ( 1, "Savage Attacks",      "SavageAttacks"),

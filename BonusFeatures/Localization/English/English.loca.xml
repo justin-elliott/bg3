@@ -55,18 +55,18 @@
     <content contentuid="h43fed24eg5456gf7b9gb4b7gd42ec2a1a7f0" version="1">They'll never see you coming, until it's too late. As a bonus action, you can use &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, or &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
     <content contentuid="h773b01c1g97c0g10b1g92d9g5552939915a9" version="1">Fleet of Foot</content>
     <content contentuid="hd1100b9cgf4dbg7cedg6535g1ea3bd2129c9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="hd6f689d7g6686ga18dg3892g4183ac26dd12" version="1">Resilience</content>
+    <content contentuid="h4bea5f36gdeadg5aadgf237g9f4671afb5de" version="1">You shrug off attacks, taking [1] less damage from all sources.</content>
     <content contentuid="hb8b4882bg312egaf56g87efg8dbe0fc8704a" version="1">Awareness</content>
     <content contentuid="hddd087f2g9948g57d1g3cd2g13a9f1acf999" version="1">You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;, and attackers can't land &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hits&lt;/LSTag&gt; against you.</content>
     <content contentuid="h815151f9g88ceg0a4bgafd4g88b303056687" version="1">Fire Walk</content>
     <content contentuid="ha3736fa3gb0e2ge4d3gb263g4cef4c1beb34" version="1">You step through the hells, reappearing in another location.</content>
     <content contentuid="hfad3fadag99f0g0693gab38g16191107eb2f" version="1">Misty Step</content>
     <content contentuid="h9ac6f6a9ga395g48adgcad8g715773f0d05c" version="1">Surrounded by silver mist, you teleport to an unoccupied space you can see.</content>
-    <content contentuid="hd6f689d7g6686ga18dg3892g4183ac26dd12" version="1">Resilience</content>
-    <content contentuid="h4bea5f36gdeadg5aadgf237g9f4671afb5de" version="1">You shrug off attacks, taking 2 less damage from all sources.</content>
-    <content contentuid="h8e39161cg2951g1b65g699dg1173da593e0a" version="1">Volley</content>
-    <content contentuid="h01f8f5aagd28cg7c33ga1e6gcccefb81173d" version="1">Strike multiple foes at once. You gain &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt;</content>
     <content contentuid="hd0c83a1dg731bgdad8g8a40g11a358fd3068" version="1">Wilderness Explorer</content>
     <content contentuid="hc4989ad0gf692g4b28g7f79g90c81f92849f" version="1">You have become an expert at moving through the wilderness. &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down, and you can't slip on grease or ice.</content>
+    <content contentuid="h8e39161cg2951g1b65g699dg1173da593e0a" version="1">Volley</content>
+    <content contentuid="h01f8f5aagd28cg7c33ga1e6gcccefb81173d" version="1">Strike multiple foes at once. You gain &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt;</content>
     <content contentuid="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1">Bonus Features</content>
     <content contentuid="hf057760cg2079g1b13g6131g15ef80b425b4" version="1">Select a bonus feature.</content>
 </contentList>

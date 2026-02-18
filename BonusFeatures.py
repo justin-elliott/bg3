@@ -201,15 +201,17 @@ class BonusFeatures(Replacer):
     @cached_property
     def _resilience(self) -> str:
         name = self.make_name("Resilience")
+        BONUS = "ProficiencyBonus"
         self.loca[f"{name}_DisplayName"] = "Resilience"
         self.loca[f"{name}_Description"] = """
-            You shrug off attacks, taking 2 less damage from all sources.
+            You shrug off attacks, taking [1] less damage from all sources.
             """
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            Boosts=["DamageReduction(All,Flat,2)"],
+            DescriptionParams=[f"{BONUS}"],
+            Boosts=[f"DamageReduction(All,Flat,{BONUS})"],
             Icon="PassiveFeature_UnarmoredDefense_Barbarian",
             Properties=["Highlighted"],
         ))
@@ -367,15 +369,15 @@ class BonusFeatures(Replacer):
             ( 3, "Fleet of Foot",       self._fleet_of_foot),
             ( 3, "Improved Critical",   "ImprovedCritical"),
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
+            ( 3, "Resilience",          self._resilience),
             ( 5, "Awareness",           self._awareness),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
             ( 5, "Extra Attack",        "ExtraAttack"),
             ( 5, "Fire Walk",           self._fire_walk),
             ( 5, "Misty Step",          self._misty_step),
             ( 7, "Evasion",             "Evasion"),
-            ( 7, "Resilience",          self._resilience),
+            ( 7, "Wilderness Explorer", self._wilderness_explorer),
             ( 9, "Volley",              self._volley),
-            ( 9, "Wilderness Explorer", self._wilderness_explorer),
             (11, "Reliable Talent",     "ReliableTalent"),
         ], key=lambda item: item[1])
 
@@ -418,13 +420,13 @@ class BonusFeatures(Replacer):
         return (str(list_uuid), selector_id)
 
     @progression(BASE_CHARACTER_RACES, 1)
-    def elf_level_1(self, progress: Progression) -> None:
+    def level_1(self, progress: Progression) -> None:
         progress.Selectors = [
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
         ]
 
     @progression(BASE_CHARACTER_RACES, range(1, 21, 2))
-    def elf_odd_levels(self, progress: Progression) -> None:
+    def odd_levels(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
             "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]

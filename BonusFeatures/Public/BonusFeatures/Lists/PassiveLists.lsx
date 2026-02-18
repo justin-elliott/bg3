@@ -17,17 +17,17 @@
                 </node>
                 <node id="PassiveList">
                     <attribute id="Name" type="FixedString" value="Bonus Features Level 3" />
-                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_3,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,FastHands,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,Halfling_LightfootStealth,SavageAttacks,FightingStyle_TwoWeaponFighting,BonusFeatures_Weaponmaster" />
+                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_3,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,FastHands,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,Halfling_LightfootStealth,BonusFeatures_Resilience,SavageAttacks,FightingStyle_TwoWeaponFighting,BonusFeatures_Weaponmaster" />
                     <attribute id="UUID" type="guid" value="be305400-272e-3d41-5e8d-ee76aa0bf596" />
                 </node>
                 <node id="PassiveList">
                     <attribute id="Name" type="FixedString" value="Bonus Features Level 5" />
-                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_5,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_Awareness,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,ExtraAttack,FastHands,BonusFeatures_FireWalk,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,BonusFeatures_MistyStep,Halfling_LightfootStealth,SavageAttacks,FightingStyle_TwoWeaponFighting,UncannyDodge,BonusFeatures_Weaponmaster" />
+                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_5,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_Awareness,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,ExtraAttack,FastHands,BonusFeatures_FireWalk,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,BonusFeatures_MistyStep,Halfling_LightfootStealth,BonusFeatures_Resilience,SavageAttacks,FightingStyle_TwoWeaponFighting,UncannyDodge,BonusFeatures_Weaponmaster" />
                     <attribute id="UUID" type="guid" value="73df27b3-0392-6aac-27d7-7e3b9c508af6" />
                 </node>
                 <node id="PassiveList">
                     <attribute id="Name" type="FixedString" value="Bonus Features Level 7" />
-                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_7,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_Awareness,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,Evasion,ExtraAttack,FastHands,BonusFeatures_FireWalk,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,BonusFeatures_MistyStep,Halfling_LightfootStealth,BonusFeatures_Resilience,SavageAttacks,FightingStyle_TwoWeaponFighting,UncannyDodge,BonusFeatures_Weaponmaster" />
+                    <attribute id="Passives" type="LSString" value="BonusFeatures_NoSelection_Level_7,BonusFeatures_ArcaneAdept,BonusFeatures_Archer,Athlete_StandUp,BonusFeatures_Awareness,BonusFeatures_BattleMagic,BonusFeatures_CunningActions,DevilsSight,Evasion,ExtraAttack,FastHands,BonusFeatures_FireWalk,BonusFeatures_FastMovement_30,ImprovedCritical,JackOfAllTrades,BonusFeatures_LightFingered,BonusFeatures_MistyStep,Halfling_LightfootStealth,BonusFeatures_Resilience,SavageAttacks,FightingStyle_TwoWeaponFighting,UncannyDodge,BonusFeatures_Weaponmaster,BonusFeatures_WildernessExplorer" />
                     <attribute id="UUID" type="guid" value="ce533fde-9cf7-eb9f-af47-caf746305c11" />
                 </node>
                 <node id="PassiveList">

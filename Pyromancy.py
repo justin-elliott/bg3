@@ -172,7 +172,7 @@ class Pyromancy(Replacer):
             ],
             PassivesOnEquip=[
                 "MAG_ArcaneEnchantment_Passive",
-                "MAG_Legendary_Chromatic_Heat_Passive",
+                "MAG_Fire_HeatOnFireDamage_Gloves_Passive",
             ],
             Rarity="Legendary",
         ))

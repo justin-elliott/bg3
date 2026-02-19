@@ -288,16 +288,6 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h28524931gdb56ga79cg4b77g695a835e20d3" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="hc13279d2g73bega3c9g0abeg5be2776ad12e" version="1" />
-                    <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="2aa2339f-dd45-a5d9-bf70-86b9758c4d32" />
-                    <attribute id="Name" type="LSString" value="TutorialSupplies_UnderwearOfGiantMight" />
-                    <attribute id="ParentTemplateId" type="FixedString" value="3caad2f1-719f-4070-b7f0-887c49c773d3" />
-                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_UnderwearOfGiantMight" />
-                    <attribute id="Type" type="FixedString" value="item" />
-                </node>
-                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h37c7581cg4b4bgace2gc460g539072d0a393" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h1e9af597g8c07g1923g311bgb7a3a7af4996" version="1" />
                     <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />

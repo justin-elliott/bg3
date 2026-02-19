@@ -13,5 +13,3 @@ new subtable "1,1"
 object category "I_TutorialSupplies_KnowledgePotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_OverpoweringPotion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_TutorialSupplies_UnderwearOfGiantMight",1,0,0,0,0,0,0,0

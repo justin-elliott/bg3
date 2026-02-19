@@ -21,10 +21,6 @@
     <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
     <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
-    <content contentuid="hc13279d2g73bega3c9g0abeg5be2776ad12e" version="1">Underwear of Giant Might</content>
-    <content contentuid="h28524931gdb56ga79cg4b77g695a835e20d3" version="1">These thick, surprisingly resilient undergarments look mundane, yet they hum with a faint, low tremor, granting the wearer the raw, unrefined might of a giant.</content>
-    <content contentuid="had800816gd75dg37feg71a8g4d11bc39dc5d" version="1">Giant Might</content>
-    <content contentuid="h26debfafgf8b7g026cg1b52gb89eb9bf65f7" version="1">Your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases to [1], and your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; to [2].</content>
     <content contentuid="h1e9af597g8c07g1923g311bgb7a3a7af4996" version="1">Equipment</content>
     <content contentuid="h37c7581cg4b4bgace2gc460g539072d0a393" version="1">Equipment.</content>
 </contentList>

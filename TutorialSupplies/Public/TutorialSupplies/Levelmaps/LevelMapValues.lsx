@@ -29,21 +29,6 @@
                     <attribute id="Name" type="FixedString" value="TutorialSupplies_Bolster_AidValue" />
                     <attribute id="UUID" type="guid" value="03ac05d9-d8d3-63a0-3c41-dc2ea89cf1c0" />
                 </node>
-                <node id="LevelMapSeries">
-                    <attribute id="Level1" type="LSString" value="22" />
-                    <attribute id="Level6" type="LSString" value="24" />
-                    <attribute id="Level11" type="LSString" value="26" />
-                    <attribute id="Level16" type="LSString" value="28" />
-                    <attribute id="Name" type="FixedString" value="TutorialSupplies_StrengthLevelMap" />
-                    <attribute id="UUID" type="guid" value="37f942d5-031f-8a04-6294-ea28036ac0d2" />
-                </node>
-                <node id="LevelMapSeries">
-                    <attribute id="Level1" type="LSString" value="20" />
-                    <attribute id="Level6" type="LSString" value="22" />
-                    <attribute id="Level11" type="LSString" value="24" />
-                    <attribute id="Name" type="FixedString" value="TutorialSupplies_ConstitutionLevelMap" />
-                    <attribute id="UUID" type="guid" value="e1e96369-45b8-5ef6-d7f2-ea9b9fdfbc38" />
-                </node>
             </children>
         </node>
     </region>

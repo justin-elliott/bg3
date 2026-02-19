@@ -38,7 +38,6 @@ class TutorialSupplies(Mod):
                 self._bolster_potion,
                 self._knowledge_potion,
                 self._overpowering_potion,
-                self._underwear_of_giant_might,
             ],
         )
 
@@ -104,79 +103,6 @@ class TutorialSupplies(Mod):
     @cached_property
     def _knowledge_of_the_ages(self) -> None:
         return Knowledge(self).add_knowledge_of_the_ages()
-
-    @cached_property
-    def _underwear_of_giant_might(self) -> str:
-        name = self.make_name("UnderwearOfGiantMight")
-        underwear_uuid = self.make_uuid(name)
-
-        self.loca[f"{name}_DisplayName"] = "Underwear of Giant Might"
-        self.loca[f"{name}_Description"] = f"""
-            These thick, surprisingly resilient undergarments look mundane, yet they hum with a faint, low tremor,
-            granting the wearer the raw, unrefined might of a giant.
-        """
-
-        self.add(GameObjects(
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            LevelName="",
-            MapKey=underwear_uuid,
-            ParentTemplateId="3caad2f1-719f-4070-b7f0-887c49c773d3",
-            Name=name,
-            Stats=name,
-            Type="item",
-        ))
-
-        giant_might = self.make_name("GiantMight")
-
-        self.add(Armor(
-            name,
-            using="ARM_Underwear",
-            PassivesOnEquip=[giant_might],
-            Rarity="Legendary",
-            RootTemplate=underwear_uuid,
-        ))
-
-        strength_level_map = LevelMapSeries(
-            Level1=22,
-            Level6=24,
-            Level11=26,
-            Level16=28,
-            Name=self.make_name("StrengthLevelMap"),
-            UUID=self.make_uuid("StrengthLevelMap"),
-        )
-        self.add(strength_level_map)
-
-        constitution_level_map = LevelMapSeries(
-            Level1=20,
-            Level6=22,
-            Level11=24,
-            Name=self.make_name("ConstitutionLevelMap"),
-            UUID=self.make_uuid("ConstitutionLevelMap"),
-        )
-        self.add(constitution_level_map)
-
-        self.loca[f"{giant_might}_DisplayName"] = "Giant Might"
-        self.loca[f"{giant_might}_Description"] = f"""
-            Your <LSTag Tooltip="Strength">Strength</LSTag> increases to [1], and your
-            <LSTag Tooltip="Constitution">Constitution</LSTag> to [2].
-        """
-
-        self.add(PassiveData(
-            giant_might,
-            DisplayName=self.loca[f"{giant_might}_DisplayName"],
-            Description=self.loca[f"{giant_might}_Description"],
-            DescriptionParams=[
-                f"LevelMapValue({strength_level_map.Name})",
-                f"LevelMapValue({constitution_level_map.Name})",
-            ],
-            Boosts=[
-                *level_map_ranges_format(self, strength_level_map, "AbilityOverrideMinimum(Strength,{})"),
-                *level_map_ranges_format(self, constitution_level_map, "AbilityOverrideMinimum(Constitution,{})"),
-            ],
-        ))
-
-        return name
 
     def _add_treasure_chest(self,
                             short_name: str,

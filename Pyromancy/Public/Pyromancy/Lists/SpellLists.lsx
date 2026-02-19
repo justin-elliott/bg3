@@ -6,23 +6,23 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 1" />
-                    <attribute id="Spells" type="LSString" value="Pyromancy_Bolster;Projectile_FireBolt;Shout_HellishRebuke;Zone_BurningHands" />
+                    <attribute id="Name" type="LSString" value="Spells gained at Pyromancy level 1" />
+                    <attribute id="Spells" type="LSString" value="Projectile_FireBolt;Target_Command_Container;Zone_BurningHands;Shout_HellishRebuke" />
                     <attribute id="UUID" type="guid" value="88554c82-f37e-b4e2-8994-ea381c8df909" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 3" />
-                    <attribute id="Spells" type="LSString" value="Target_HeatMetal;Pyromancy_IgniteWeapon;Projectile_ScorchingRay" />
+                    <attribute id="Name" type="LSString" value="Spells gained at Pyromancy level 3" />
+                    <attribute id="Spells" type="LSString" value="Projectile_ScorchingRay" />
                     <attribute id="UUID" type="guid" value="d6a54351-c0b2-ae59-b219-dc72447e3f52" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 5" />
-                    <attribute id="Spells" type="LSString" value="Projectile_Fireball;Pyromancy_Firewalk" />
+                    <attribute id="Name" type="LSString" value="Spells gained at Pyromancy level 5" />
+                    <attribute id="Spells" type="LSString" value="Projectile_Fireball;Pyromancy_FireWalk" />
                     <attribute id="UUID" type="guid" value="52ce1792-577a-c097-8d69-af342b9d150a" />
                 </node>
                 <node id="SpellList">
-                    <attribute id="Comment" type="LSString" value="Spells gained at Sorcerer level 7" />
-                    <attribute id="Spells" type="LSString" value="Shout_FireShield;Wall_WallOfFire" />
+                    <attribute id="Name" type="LSString" value="Spells gained at Pyromancy level 7" />
+                    <attribute id="Spells" type="LSString" value="Wall_WallOfFire" />
                     <attribute id="UUID" type="guid" value="a1e3d45c-a063-8a17-4087-f4b632ff3989" />
                 </node>
             </children>

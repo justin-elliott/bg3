@@ -65,6 +65,8 @@
     <content contentuid="h9ac6f6a9ga395g48adgcad8g715773f0d05c" version="1">Surrounded by silver mist, you teleport to an unoccupied space you can see.</content>
     <content contentuid="hd0c83a1dg731bgdad8g8a40g11a358fd3068" version="1">Wilderness Explorer</content>
     <content contentuid="hc4989ad0gf692g4b28g7f79g90c81f92849f" version="1">You have become an expert at moving through the wilderness. &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down, and you can't slip on grease or ice.</content>
+    <content contentuid="h88c9a9aeg1851gc942g94a1g64d7d0301c1d" version="1">Empowered Spells</content>
+    <content contentuid="h6c984b96gc0cege15cg6237g8f73ceb0c95a" version="1">When you cast a damaging spell, add your &lt;LSTag Tooltip="SpellcastingAbilityModifier"&gt;Spellcasting Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="h8e39161cg2951g1b65g699dg1173da593e0a" version="1">Volley</content>
     <content contentuid="h01f8f5aagd28cg7c33ga1e6gcccefb81173d" version="1">Strike multiple foes at once. You gain &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt;</content>
     <content contentuid="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1">Bonus Features</content>

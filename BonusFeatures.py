@@ -9,6 +9,7 @@ import os
 from moddb import (
     Awareness,
     BattleMagic,
+    EmpoweredSpells,
     Movement,
 )
 from modtools.gamedata import PassiveData
@@ -199,6 +200,10 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _empowered_spells(self) -> str:
+        return EmpoweredSpells(self.mod).add_empowered_spells()
+
+    @cached_property
     def _resilience(self) -> str:
         name = self.make_name("Resilience")
         BONUS = "ProficiencyBonus"
@@ -377,6 +382,7 @@ class BonusFeatures(Replacer):
             ( 5, "Misty Step",          self._misty_step),
             ( 7, "Evasion",             "Evasion"),
             ( 7, "Wilderness Explorer", self._wilderness_explorer),
+            ( 9, "Empowered Spells",    self._empowered_spells),
             ( 9, "Volley",              self._volley),
             (11, "Reliable Talent",     "ReliableTalent"),
         ], key=lambda item: item[1])

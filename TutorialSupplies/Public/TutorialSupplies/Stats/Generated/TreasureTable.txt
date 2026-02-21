@@ -4,9 +4,15 @@ new treasuretable "TUT_Chest_Potions"
 CanMerge 1
 new subtable "1,1"
 object category "I_TutorialSupplies_CampClothing",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_CampShoes",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_Underwear",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_Daisy",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_Potions",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_Dyes",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_CampClothing_TreasureTable"
@@ -177,15 +183,9 @@ new subtable "1,1"
 object category "I_ARM_Vanity_ElegantRobe",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ARM_Vanity_Prison_Poor",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_UNI_DaisyPlaysuit",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_CampShoes_TreasureTable"
 CanMerge 1
-new subtable "1,1"
-object category "I_TutorialSupplies_ComfortableBoots",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_TutorialSupplies_DaisyBoots",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ARM_Camp_Sandals_A1_Black",1,0,0,0,0,0,0,0
 new subtable "1,1"
@@ -234,11 +234,11 @@ new subtable "1,1"
 object category "I_ARM_Vanity_Deva_Shoes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ARM_Vanity_Shoes_Circus",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_ComfortableBoots",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_Underwear_TreasureTable"
 CanMerge 1
-new subtable "1,1"
-object category "I_TutorialSupplies_DaisyGloves",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ARM_Underwear_Dragonborn_Bronze",1,0,0,0,0,0,0,0
 new subtable "1,1"
@@ -297,6 +297,19 @@ new subtable "1,1"
 object category "I_ARM_Underwear_Shadowheart",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_ARM_Underwear_Wyll",1,0,0,0,0,0,0,0
+
+new treasuretable "TutorialSupplies_Daisy_TreasureTable"
+CanMerge 1
+new subtable "1,1"
+object category "I_TutorialSupplies_DaisyBody",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_DaisyGloves",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_DaisyBoots",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_UNI_DaisyPlaysuit",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_UNI_Daisy_Gloves",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_Potions_TreasureTable"
 CanMerge 1
@@ -390,6 +403,6 @@ object category "I_OBJ_Dye_WhiteBrown",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_Dye_WhiteRed",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_DLC_LOOT_Dye_Larian",1,0,0,0,0,0,0,0
+object category "I_DLC_OBJ_Dye_Larian",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_Dye_Remover",1,0,0,0,0,0,0,0

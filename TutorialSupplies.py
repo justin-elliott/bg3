@@ -37,6 +37,7 @@ class TutorialSupplies(Mod):
             self._camp_clothing,
             self._camp_shoes,
             self._underwear,
+            self._daisy,
             self._potions,
             self._dyes,
         ])
@@ -131,7 +132,6 @@ class TutorialSupplies(Mod):
                 "ARM_Vanity_Body_Shirt_Red",
                 "ARM_Vanity_ElegantRobe",
                 "ARM_Vanity_Prison_Poor",
-                "UNI_DaisyPlaysuit",
             ],
         )
 
@@ -142,8 +142,6 @@ class TutorialSupplies(Mod):
             display_name="Camp Shoes",
             description="Contains a selection of camp shoes.",
             items=[
-                self._comfortable_boots,
-                self._daisy_boots,
                 "ARM_Camp_Sandals_A1_Black",
                 "ARM_Camp_Sandals_A1",
                 "ARM_Camp_Sandals_B_Red",
@@ -168,6 +166,7 @@ class TutorialSupplies(Mod):
                 "ARM_Camp_Shoes_Wyll",
                 "ARM_Vanity_Deva_Shoes",
                 "ARM_Vanity_Shoes_Circus",
+                self._comfortable_boots,
             ],
         )
 
@@ -178,7 +177,6 @@ class TutorialSupplies(Mod):
             display_name="Underwear",
             description="Contains a selection of underwear.",
             items=[
-                self._daisy_gloves,
                 "ARM_Underwear_Dragonborn_Bronze",
                 "ARM_Underwear_Dragonborn",
                 "ARM_Underwear_Dwarves_Green",
@@ -211,6 +209,20 @@ class TutorialSupplies(Mod):
             ],
         )
 
+    @cached_property
+    def _daisy(self) -> TreasureChest:
+        return self.TreasureChest(
+            name="Daisy",
+            display_name="Dream Guardian Armour",
+            description="Contains a selection of Dream Guardian armour.",
+            items=[
+                self._daisy_body,
+                self._daisy_gloves,
+                self._daisy_boots,
+                "UNI_DaisyPlaysuit",
+                "UNI_Daisy_Gloves",
+            ],
+        )
     @cached_property
     def _potions(self) -> TreasureChest:
         return self.TreasureChest(
@@ -267,7 +279,7 @@ class TutorialSupplies(Mod):
             ("OBJ_Dye_WhiteBlack", "455c4b21-4cda-3fec-7425-a557d140b972"),
             ("OBJ_Dye_WhiteBrown", "612865e1-ac2c-30b7-dc50-207c95d3901f"),
             ("OBJ_Dye_WhiteRed", "33f7e7b9-7e66-7893-b18f-e080f39fe3e3"),
-            ("DLC_LOOT_Dye_Larian", "68d055b3-c3df-ab42-857d-cfe747e4a85b"),
+            ("DLC_OBJ_Dye_Larian", "68d055b3-c3df-ab42-857d-cfe747e4a85b"),
             ("OBJ_Dye_Remover", None),
         ]
 
@@ -287,6 +299,20 @@ class TutorialSupplies(Mod):
                 data "ResultAmount 1" "1"
             """))
         
+        self.add(ItemCombinations("""
+            new ItemCombination "OBJ_Dye_DLC_Larian"
+            data "Type 1" "Object"
+            data "Object 1" "DLC_OBJ_Dye_Larian"
+            data "Transform 1" "None"
+            data "Type 2" "Category"
+            data "Object 2" "DyableArmor"
+            data "Transform 2" "Dye"
+            data "DyeColorPresetResource" "68d055b3-c3df-ab42-857d-cfe747e4a85b"
+
+            new ItemCombinationResult "OBJ_Dye_DLC_Larian_1"
+            data "ResultAmount 1" "1"
+        """))
+    
         return self.TreasureChest(
             name="Dyes",
             display_name="Dyes",
@@ -370,6 +396,7 @@ class TutorialSupplies(Mod):
             self._add_chest_container(name, chest_uuid)
 
             tutorial_chest_entries += [f"""\
+                new subtable "1,1"
                 object category "I_{name}",1,0,0,0,0,0,0,0
             """]
             treasure_table_items = [f"""\
@@ -386,7 +413,6 @@ class TutorialSupplies(Mod):
             f"""\
                 new treasuretable "TUT_Chest_Potions"
                 CanMerge 1
-                new subtable "1,1"
                 {"".join(tutorial_chest_entries)}
                 {"".join(treasure_tables)}
             """.splitlines())))
@@ -591,20 +617,30 @@ class TutorialSupplies(Mod):
             Description=loca[f"{name}_Description"],
             LevelName="",
             MapKey=uuid,
-            Name="CampClothes_ComfortableBoots",
+            Name=name,
             ParentTemplateId="cf987856-1381-477e-88db-6b359f7e19e8",
-            Stats="CampClothes_ComfortableBoots",
+            Stats=name,
             Type="item",
         ))
 
         self.add(Armor(
-            "CampClothes_ComfortableBoots",
+            name,
             using="ARM_Camp_Shoes",
             RootTemplate=uuid,
         ))
 
         return name
     
+    @cached_property
+    def _daisy_body(self) -> str:
+        name = self.make_name("DaisyBody")
+        self.add(Armor(
+            name,
+            using="ARM_Camp_Body",
+            RootTemplate="aa0917ea-5f66-4a22-97de-654228484128",
+        ))
+        return name
+
     @cached_property
     def _daisy_boots(self) -> str:
         name = self.make_name("DaisyBoots")

@@ -10,9 +10,9 @@
                     <attribute id="DisplayName" type="TranslatedString" handle="h23716a4fgb508g104fg29b2gf4980f17f7e6" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="85bc4a68-b7e9-56eb-5344-34e115494d08" />
-                    <attribute id="Name" type="LSString" value="CampClothes_ComfortableBoots" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_ComfortableBoots" />
                     <attribute id="ParentTemplateId" type="FixedString" value="cf987856-1381-477e-88db-6b359f7e19e8" />
-                    <attribute id="Stats" type="FixedString" value="CampClothes_ComfortableBoots" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_ComfortableBoots" />
                     <attribute id="Type" type="FixedString" value="item" />
                 </node>
                 <node id="GameObjects">
@@ -352,6 +352,26 @@
                             <children>
                                 <node id="InventoryItem">
                                     <attribute id="Object" type="FixedString" value="TutorialSupplies_Underwear_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h025f5614g7c3bgdb87gf217g23adf741ca69" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0f7f7512g438bg0a76gf7b0g5744f962b88e" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="b54a6062-8d5d-199f-f3c3-ee8380f9d2ad" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_Daisy" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_Daisy" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="TutorialSupplies_Daisy_TreasureTable" />
                                 </node>
                             </children>
                         </node>

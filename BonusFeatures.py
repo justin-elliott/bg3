@@ -421,7 +421,7 @@ class BonusFeatures(Replacer):
 
     @progression(BASE_CHARACTER_RACES, 1)
     def level_1(self, progress: Progression) -> None:
-        progress.Selectors = [
+        progress.Selectors = (progress.Selectors or []) + [
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
         ]
 

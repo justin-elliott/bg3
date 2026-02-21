@@ -92,7 +92,7 @@
                     <attribute id="Name" type="LSString" value="Drow" />
                     <attribute id="PassivesAdded" type="LSString" value="Drow_DrowWeaponTraining;SuperiorDarkvision;FeyAncestry" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_DrowAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_DrowBonusFeatures_Level_1)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(d707ec70-da8a-457b-9b69-7cf5205eef0e,,Charisma,,AlwaysPrepared);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_DrowAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_DrowBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
                     <attribute id="UUID" type="guid" value="4a634f24-bdcb-4559-b8be-7847133ad1c3" />
                 </node>
@@ -339,7 +339,7 @@
                     <attribute id="Name" type="LSString" value="Githyanki" />
                     <attribute id="PassivesAdded" type="LSString" value="Gith_MartialProdigy" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_GithyankiAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_GithyankiBonusFeatures_Level_1)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(5216169f-6b32-4860-8664-61348d970e48);AddSpells(4d7bfb6c-5001-4a83-8728-94e3711516d3,,Intelligence,,AlwaysPrepared);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_GithyankiAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_GithyankiBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
                     <attribute id="UUID" type="guid" value="f653d537-bc14-4fea-b7d2-25734ec928a2" />
                 </node>
@@ -750,7 +750,7 @@
                     <attribute id="Name" type="LSString" value="Human" />
                     <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;HumanVersatility" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HumanAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HumanBonusFeatures_Level_1)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,1,HumanVersatility);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HumanAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HumanBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
                     <attribute id="UUID" type="guid" value="dbde4d66-d3e4-4c3f-ae87-fd6e2d1cd276" />
                 </node>

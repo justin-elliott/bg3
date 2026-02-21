@@ -60,6 +60,12 @@ class Equipment(Text):
         return "Public/{folder}/Stats/Generated/Equipment.txt"
 
 
+class ItemCombinations(Text):
+    @property
+    def path(self) -> str:
+        return "Public/{folder}/Stats/Generated/ItemCombos.txt"
+
+
 class Script(Text):
     @property
     def path(self) -> str:

@@ -283,35 +283,25 @@ class TutorialSupplies(Mod):
             ("OBJ_Dye_Remover", None),
         ]
 
-        for dye, dye_resource in base_dyes:
+        def item_combination(name: str, object_name: str, dye_resource: str | None) -> None:
             self.add(ItemCombinations(f"""
-                new ItemCombination "{dye}"
+                new ItemCombination "{name}"
                 data "Type 1" "Object"
-                data "Object 1" "{dye}"
+                data "Object 1" "{object_name}"
                 data "Transform 1" "None"
                 data "Type 2" "Category"
                 data "Object 2" "DyableArmor"
                 data "Transform 2" "Dye"
-                {f'data "DyeColorPresetResource" "{dye_resource}"' if dye_resource else ''}
-            """))
-            self.add(ItemCombinations(f"""
-                new ItemCombinationResult "{dye}_1"
+                {f'data "DyeColorPresetResource" "{dye_resource}"\n' if dye_resource else ''}
+                new ItemCombinationResult "{name}_1"
                 data "ResultAmount 1" "1"
             """))
-        
-        self.add(ItemCombinations("""
-            new ItemCombination "OBJ_Dye_DLC_Larian"
-            data "Type 1" "Object"
-            data "Object 1" "DLC_OBJ_Dye_Larian"
-            data "Transform 1" "None"
-            data "Type 2" "Category"
-            data "Object 2" "DyableArmor"
-            data "Transform 2" "Dye"
-            data "DyeColorPresetResource" "68d055b3-c3df-ab42-857d-cfe747e4a85b"
 
-            new ItemCombinationResult "OBJ_Dye_DLC_Larian_1"
-            data "ResultAmount 1" "1"
-        """))
+        for dye, dye_resource in base_dyes:
+            item_combination(dye, dye, dye_resource)
+        
+        # The Drake General dye is a special case where the name and object name do not match.
+        item_combination("OBJ_Dye_DLC_Larian", "DLC_OBJ_Dye_Larian", "68d055b3-c3df-ab42-857d-cfe747e4a85b")
     
         return self.TreasureChest(
             name="Dyes",

@@ -142,7 +142,7 @@ class ActuallyEldritchKnight(Replacer):
         return uuid
 
     @class_description(CharacterClass.FIGHTER_ELDRITCHKNIGHT)
-    def sorcerer_pyromancy_description(self, class_description: ClassDescription) -> None:
+    def eldritchknight_description(self, class_description: ClassDescription) -> None:
         class_description.MulticlassSpellcasterModifier = None
         class_description.SpellCastingAbility = CharacterAbility.CHARISMA
 

@@ -232,6 +232,7 @@ class TutorialSupplies(Mod):
             items=[
                 self._bolster_potion,
                 self._knowledge_potion,
+                self._flying_potion,
                 self._overpowering_potion,
             ],
         )
@@ -326,6 +327,18 @@ class TutorialSupplies(Mod):
             boosts=[f"UnlockSpell({self._bolster})"],
         )
     
+    @cached_property
+    def _flying_potion(self) -> str:
+        return self._add_potion(
+            "FlyingPotion",
+            display_name="Elixir of Flying",
+            description="""
+                Drinking this elixir grants <LSTag Type="Spell" Tooltip="Projectile_Fly">Fly</LSTag>.
+            """,
+            icon="Item_ALCH_Solution_Potion_Flying",
+            boosts=["UnlockSpell(Projectile_Fly)"],
+        )
+
     @cached_property
     def _knowledge_potion(self) -> str:
         return self._add_potion(

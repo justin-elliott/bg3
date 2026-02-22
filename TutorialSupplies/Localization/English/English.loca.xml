@@ -21,6 +21,8 @@
     <content contentuid="h325e3399gf282ge8fegc63cgb12e2f17b079" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of a chosen &lt;LSTag Tooltip="Abilities"&gt;Ability&lt;/LSTag&gt;.</content>
     <content contentuid="hb8769852g0917g5600g5135gac767f813d0f" version="1">Elixir of Knowledge</content>
     <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
+    <content contentuid="h33394154g0aadg8d05g145dgdc41b84d59bb" version="1">Elixir of Flying</content>
+    <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
     <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
     <content contentuid="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1">Camp Clothing</content>

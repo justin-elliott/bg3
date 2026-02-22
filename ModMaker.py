@@ -13,7 +13,9 @@ from modtools.replacers import (
 )
 from typing import Final, TextIO
 
-PROLOGUE = """
+PROLOGUE = """\
+#!/usr/bin/env python3
+
 import os
 
 from modtools.lsx.game import Progression

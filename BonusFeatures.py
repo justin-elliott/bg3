@@ -17,18 +17,42 @@ from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,
     CharacterClass,
-    DefaultValue,
     PassiveList,
+    PassivesDefaultValue,
     Progression,
     ProgressionDescription,
+    Skills,
+    SkillsDefaultValue,
 )
 from modtools.replacers import (
     progression,
     Replacer,
 )
+from typing import Final
 
 
 class BonusFeatures(Replacer):
+    _SKILL_LIST: Final[list[str]] = [
+        Skills.PERSUASION,
+        Skills.SLEIGHT_OF_HAND,
+        Skills.ATHLETICS,
+        Skills.PERCEPTION,
+        Skills.INSIGHT,
+        Skills.INTIMIDATION,
+        Skills.DECEPTION,
+        Skills.STEALTH,
+        Skills.ARCANA,
+        Skills.HISTORY,
+        Skills.INVESTIGATION,
+        Skills.NATURE,
+        Skills.RELIGION,
+        Skills.ANIMAL_HANDLING,
+        Skills.MEDICINE,
+        Skills.SURVIVAL,
+        Skills.PERFORMANCE,
+        Skills.ACROBATICS,
+    ]
+
     _no_selection_ids: set[str]
     _passive_list_uuids: set[str]
 
@@ -77,7 +101,7 @@ class BonusFeatures(Replacer):
             self._passive_list_uuids.add(list_uuid)
 
         default_passive = self._abilities_bonus_passive(0)
-        self.add(DefaultValue(
+        self.add(PassivesDefaultValue(
             Add=default_passive,
             Level=1,
             SelectorId=selector_id,
@@ -404,7 +428,7 @@ class BonusFeatures(Replacer):
             ))
             self._passive_list_uuids.add(list_uuid)
 
-        self.add(DefaultValue(
+        self.add(PassivesDefaultValue(
             Add=self._no_selection(progress),
             Level=progress.Level,
             SelectorId=selector_id,
@@ -427,9 +451,18 @@ class BonusFeatures(Replacer):
 
     @progression(BASE_CHARACTER_RACES, 1)
     def level_1(self, progress: Progression) -> None:
-        progress.Selectors = (progress.Selectors or []) + [
+        bonus_skills = 4 if progress.Name != "Human" else 6
+        progress.Selectors = [s for s in (progress.Selectors or []) if not s.startswith("SelectSkills(")] + [
+            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{bonus_skills},{self.mod.get_name()})",
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
         ]
+        self.add(SkillsDefaultValue(
+            Add=self._SKILL_LIST,
+            Level=1,
+            SelectorId=self.mod.get_name(),
+            TableUUID=progress.TableUUID,
+            UUID=self.make_uuid(f"{progress.Name}_SkillsDefaultValue"),
+        ))
 
     @progression(BASE_CHARACTER_RACES, range(1, 21, 2))
     def odd_levels(self, progress: Progression) -> None:

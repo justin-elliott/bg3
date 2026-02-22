@@ -22,7 +22,7 @@ class DevilishSorceryPoints(Replacer):
     def sorcerer_level_2(self, progress: Progression) -> None:
         progress.Boosts = [
             *[boost for boost in progress.Boosts if not boost.startswith("ActionResource(SorceryPoint,")],
-            "ActionResource(SorceryPoint,666)",
+            "ActionResource(SorceryPoint,666,0)",
         ]
 
     @progression(CharacterClass.SORCERER, range(3, 21))
@@ -33,6 +33,7 @@ class DevilishSorceryPoints(Replacer):
 def main() -> None:
     devilish_sorcery_points = DevilishSorceryPoints(
         classes=[CharacterClass.SORCERER],
+        feats=2,
         spells=2,
     )
     devilish_sorcery_points.build()

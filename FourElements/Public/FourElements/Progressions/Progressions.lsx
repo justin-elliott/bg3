@@ -26,7 +26,6 @@
                     <attribute id="UUID" type="guid" value="297e0cb5-9743-4ae8-b053-b3850f0fa134" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="Monk" />
@@ -84,7 +83,6 @@
                     <attribute id="UUID" type="guid" value="7b354b75-537f-464e-a28d-cafa72323ab9" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="Monk" />
@@ -122,7 +120,6 @@
                     <attribute id="UUID" type="guid" value="62d54d84-80f8-4c89-9a1a-6b15aeaf697a" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="Monk" />
@@ -159,7 +156,6 @@
                     <attribute id="UUID" type="guid" value="da5308ab-7825-46c6-bbe6-0deaea7bc9cf" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="14" />
                     <attribute id="Name" type="LSString" value="Monk" />
@@ -195,7 +191,6 @@
                     <attribute id="UUID" type="guid" value="76ac8b5f-6c06-4abb-ae7c-5f9add2ef2e0" />
                 </node>
                 <node id="Progression">
-                    <attribute id="AllowImprovement" type="bool" value="true" />
                     <attribute id="Boosts" type="LSString" value="ActionResource(KiPoint,2,0)" />
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="Monk" />
@@ -228,7 +223,7 @@
                     <attribute id="Name" type="LSString" value="FourElements" />
                     <attribute id="PassivesAdded" type="LSString" value="FourElements_Awareness" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(165cf2f3-5f7a-8299-dab2-bb52483ea976);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(165cf2f3-5f7a-8299-dab2-bb52483ea976)" />
                     <attribute id="TableUUID" type="guid" value="6c9fac23-d01a-4e0d-bfb1-28bed5581ee2" />
                     <attribute id="UUID" type="guid" value="cae2ce43-a1b8-473a-b163-c961d0048bd6" />
                 </node>

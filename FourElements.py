@@ -10,7 +10,6 @@ from modtools.lsx.game import (
 )
 from modtools.replacers import (
     CharacterClass,
-    DontIncludeProgression,
     progression,
     Replacer,
 )
@@ -249,6 +248,7 @@ class FourElements(Replacer):
             Description=self.loca[f"{name}_Description"],
             DescriptionParams=[f"DealDamage({self._elemental_damage},{element})"],
             Icon=icon,
+            Cooldown="",
             SpellFlags=[
                 "HasHighGroundRangeExtension",
                 "HasSomaticComponent",
@@ -506,21 +506,11 @@ class FourElements(Replacer):
 
         return name
 
-    @progression(CharacterClass.MONK_FOURELEMENTS, 1)
-    def fourelements_level_1(self, _: Progression) -> None:
-       raise DontIncludeProgression()
-
-    @progression(CharacterClass.MONK_FOURELEMENTS, 2)
-    def fourelements_level_2(self, _: Progression) -> None:
-       raise DontIncludeProgression()
-
     @progression(CharacterClass.MONK_FOURELEMENTS, 3)
     def fourelements_level_3(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._awareness]
         progress.Selectors = [
             f"AddSpells({self._level_3_spell_list})",
-            "SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4)",
-            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
         ]
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 4)
@@ -611,13 +601,7 @@ class FourElements(Replacer):
 def main() -> None:
     four_elements = FourElements(
         classes=[CharacterClass.MONK_FOURELEMENTS],
-        feats=2,
-        spells=2,
-        warlock_spells=2,
         actions=2,
-        skills=None,
-        expertise=None,
-        full_caster=False,
     )
     four_elements.build()
 

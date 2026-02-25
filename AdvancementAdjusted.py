@@ -28,11 +28,23 @@ default_advancement = {
     10: 20000,
     11: 24000,
     12: 30000,
+    13: 20000,
+    14: 25000,
+    15: 30000,
+    16: 30000,
+    17: 40000,
+    18: 40000,
+    19: 50000,
+    20: 55000,
 }
 
 double_advancement = {
     level: xp // 2 for level, xp in default_advancement.items()
 }
 
-advancement.add(XPData(double_advancement))
+instant_advancement = {
+    level: 1 for level, _ in default_advancement.items()
+}
+
+advancement.add(XPData(instant_advancement))
 advancement.build()

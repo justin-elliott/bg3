@@ -6,8 +6,8 @@ Generates files for Bonus Features, a mod to give all races optional bonus featu
 from functools import cache, cached_property
 import os
 
+from collections.abc import Iterable
 from moddb import (
-    Awareness,
     BattleMagic,
     EmpoweredSpells,
     Movement,
@@ -17,6 +17,7 @@ from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,
     CharacterClass,
+    Feat,
     PassiveList,
     PassivesDefaultValue,
     Progression,
@@ -65,6 +66,8 @@ class BonusFeatures(Replacer):
         
         self._no_selection_ids = set()
         self._passive_list_uuids = set()
+
+        self._remove_asi_from_feats()
 
     @cache
     def _abilities_bonus_passive(self, bonus: int) -> str:
@@ -123,6 +126,89 @@ class BonusFeatures(Replacer):
         return (str(list_uuid), selector_id)
 
     @cache
+    def _ability_improvement(self, ability: CharacterAbility | None, name: str) -> str:
+        ability_name = ability.name.title() if ability is not None else "None"
+        passive_name = self.make_name(f"AbilityImprovement_{ability_name}_{name}")
+
+        self.loca[f"{passive_name}_DisplayName"] = f"Ability Improvement: {ability_name}"
+        self.loca[f"{passive_name}_Description"] = (
+            f"Increase your {ability_name} by 1, to a maximum of 30."
+            if ability is not None else "No ability increase."
+        )
+
+        self.add(PassiveData(
+            passive_name,
+            DisplayName=self.loca[f"{passive_name}_DisplayName"],
+            Description=self.loca[f"{passive_name}_Description"],
+            Boosts=[f"Ability({ability_name},1,30)"] if ability is not None else None,
+            Properties=["IsHidden"],
+        ))
+
+        return passive_name
+
+    @cached_property
+    def _ability_improvement_display_name(self) -> str:
+        self.loca["AbilityImprovement_DisplayName"] = "Ability Improvement"
+        return self.loca["AbilityImprovement_DisplayName"]
+
+    @cached_property
+    def _ability_improvement_description(self) -> str:
+        self.loca["AbilityImprovement_Description"] = "Increase one of your abilities by 1, to a maximum of 30."
+        return self.loca["AbilityImprovement_Description"]
+
+    @cache
+    def _ability_improvement_passive_list(self, progress: Progression) -> tuple[str, str]:
+        list_name = f"Ability Improvement Level {progress.Level}"
+        list_uuid = self.make_uuid(list_name)
+        level_id = f"Level_{progress.Level}"
+        selector_id = self.make_name(f"{progress.Name}AbilityImprovement_{level_id}")
+
+        none_passive = self._ability_improvement(None, level_id)
+
+        if list_uuid not in self._passive_list_uuids:
+            self.add(PassiveList(
+                Name=list_name,
+                Passives=[
+                    none_passive,
+                    *[self._ability_improvement(ability, level_id) for ability in CharacterAbility]
+                ],
+                UUID=list_uuid,
+            ))
+            self._passive_list_uuids.add(list_uuid)
+
+        self.add(PassivesDefaultValue(
+            Add=none_passive,
+            Level=progress.Level,
+            SelectorId=selector_id,
+            TableUUID=progress.TableUUID,
+            UUID=self.make_uuid(selector_id),
+        ))
+
+        self.add(ProgressionDescription(
+            DisplayName=self._ability_improvement_display_name,
+            Description=self._ability_improvement_description,
+            ProgressionTableId=progress.TableUUID,
+            SelectorId=selector_id,
+            UUID=self.make_uuid(f"{selector_id} Description"),
+        ))
+        
+        return (str(list_uuid), selector_id)
+
+    def _ability_improvement_for_abilities(self, name: str, abilities: Iterable[CharacterAbility]) -> str:
+        list_name = f"Ability Improvement {name}"
+        list_uuid = self.make_uuid(list_name)
+
+        if list_uuid not in self._passive_list_uuids:
+            self.add(PassiveList(
+                Name=list_name,
+                Passives=[self._ability_improvement(ability, name) for ability in abilities],
+                UUID=list_uuid,
+            ))
+            self._passive_list_uuids.add(list_uuid)
+        
+        return str(list_uuid)
+
+    @cache
     def _no_selection(self, progress: Progression) -> str:
         name = self.make_name(f"NoSelection_Level_{progress.Level}")
         if name not in self._no_selection_ids:
@@ -135,6 +221,23 @@ class BonusFeatures(Replacer):
                 Properties=["IsHidden"],
             ))
             self._no_selection_ids.add(name)
+        return name
+
+    @cached_property
+    def _action_surge(self) -> str:
+        name = self.make_name("ActionSurge")
+        self.loca[f"{name}_DisplayName"] = "Action Surge"
+        self.loca[f"{name}_Description"] = """
+            Immediately gain an extra <LSTag Tooltip="Action">action</LSTag> to use this turn.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["UnlockSpell(Shout_ActionSurge)"],
+            Icon="Skill_Fighter_ActionSurge",
+            Properties=["IsHidden"],
+        ))
         return name
 
     @cached_property
@@ -190,10 +293,6 @@ class BonusFeatures(Replacer):
             Properties=["Highlighted"],
         ))
         return name
-
-    @cached_property
-    def _awareness(self) -> str:
-        return Awareness(self.mod).add_awareness()
 
     @cached_property
     def _battle_magic(self) -> str:
@@ -300,6 +399,24 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _persuasive(self) -> str:
+        name = self.make_name("Persuasive")
+        self.loca[f"{name}_DisplayName"] = "Persuasive"
+        self.loca[f"{name}_Description"] = """
+            You gain <LSTag Tooltip="Expertise">Expertise</LSTag> in
+            <LSTag Tooltip="Persuasion">Persuasion</LSTag>.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["ProficiencyBonus(Skill,Persuasion)", "ExpertiseBonus(Persuasion)"],
+            Icon="Spell_Enchantment_Tasha'sHideousLaughter",
+            Properties=["Highlighted"],
+        ))
+        return name
+
+    @cached_property
     def _volley(self) -> str:
         name = self.make_name("Volley")
         self.loca[f"{name}_DisplayName"] = "Volley"
@@ -385,13 +502,17 @@ class BonusFeatures(Replacer):
         return sorted([
             ( 1, "Arcane Adept",        self._arcane_adept),
             ( 1, "Archer",              self._archer),
-            ( 1, "Athlete",             "Athlete_StandUp"),
+            ( 1, "Armour of Shadows",   "ArmorOfShadows"),
+            ( 1, "Beast Speech",        "BeastSpeech"),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
+            ( 1, "Mask of Many Faces",  "MaskOfManyFaces"),
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
+            ( 1, "Persuasive",          self._persuasive),
             ( 1, "Savage Attacks",      "SavageAttacks"),
             ( 1, "Weaponmaster",        self._weaponmaster),
             ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
+            ( 3, "Action Surge",        self._action_surge),
             ( 3, "Battle Magic",        self._battle_magic),
             ( 3, "Cunning Actions",     self._cunning_actions),
             ( 3, "Fast Hands",          "FastHands"),
@@ -399,7 +520,6 @@ class BonusFeatures(Replacer):
             ( 3, "Improved Critical",   "ImprovedCritical"),
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
             ( 3, "Resilience",          self._resilience),
-            ( 5, "Awareness",           self._awareness),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
             ( 5, "Extra Attack",        "ExtraAttack"),
             ( 5, "Fire Walk",           self._fire_walk),
@@ -449,12 +569,80 @@ class BonusFeatures(Replacer):
         
         return (str(list_uuid), selector_id)
 
+    def _remove_asi_from_feats(self) -> None:
+        athlete_asi = self._ability_improvement_for_abilities(
+            "Athlete",
+            [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY]
+        )
+        self.add(Feat(
+            Name="Athlete",
+            PassivesAdded=["Athlete_StandUp"],
+            Selectors=[f"SelectPassives({athlete_asi},1)"],
+            UUID="d674aa33-8633-4b67-8623-b6788f0d5fc4",
+        ))
+
+        lightly_armored_asi = self._ability_improvement_for_abilities(
+            "LightlyArmored",
+            [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY]
+        )
+        self.add(Feat(
+            Name="LightlyArmored",
+            PassivesAdded=["LightlyArmored"],
+            Selectors=[f"SelectPassives({lightly_armored_asi},1)"],
+            UUID="b441c722-e4d4-4702-861a-039bfd77c124",
+        ))
+
+        moderately_armored_asi = self._ability_improvement_for_abilities(
+            "ModeratelyArmored",
+            [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY]
+        )
+        self.add(Feat(
+            Name="ModeratelyArmored",
+            PassivesAdded=["ModeratelyArmored"],
+            Requirements="FeatRequirementProficiency('LightArmor')",
+            Selectors=[f"SelectPassives({moderately_armored_asi},1)"],
+            UUID="681d5307-f0ed-4c94-8cf0-db0c51116f56",
+        ))
+
+        performer_asi = self._ability_improvement(CharacterAbility.CHARISMA, "Performer")
+        self.add(Feat(
+            Name="Performer",
+            PassivesAdded=["Performer", performer_asi],
+            UUID="60dfd716-3ba8-4611-90ee-018b59775b1d",
+        ))
+
+        tavern_brawler_asi = self._ability_improvement_for_abilities(
+            "TavernBrawler",
+            [CharacterAbility.STRENGTH, CharacterAbility.CONSTITUTION]
+        )
+        self.add(Feat(
+            Name="TavernBrawler",
+            PassivesAdded=["TavernBrawler"],
+            Selectors=[f"SelectPassives({tavern_brawler_asi},1)"],
+            UUID="be0889d2-f9aa-472d-b942-592bff0f1ef3",
+        ))
+
+        weapon_master_asi = self._ability_improvement_for_abilities(
+            "WeaponMaster",
+            [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY]
+        )
+        self.add(Feat(
+            Name="WeaponMaster",
+            PassivesAdded=["WeaponMaster"],
+            Selectors=[
+                f"SelectPassives({weapon_master_asi},1)",
+                "SelectPassives(f21e6b94-44e8-4ae0-a6f1-0c81abac03a2,4,WeaponMasterProficiencies)",
+            ],
+            UUID="b153e75c-27a2-4412-95cd-60b477121679",
+        ))
+
     @progression(BASE_CHARACTER_RACES, 1)
     def level_1(self, progress: Progression) -> None:
         bonus_skills = 4 if progress.Name != "Human" else 6
         progress.Selectors = [s for s in (progress.Selectors or []) if not s.startswith("SelectSkills(")] + [
             f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{bonus_skills},{self.mod.get_name()})",
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
+            "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
         self.add(SkillsDefaultValue(
             Add=self._SKILL_LIST,
@@ -464,9 +652,16 @@ class BonusFeatures(Replacer):
             UUID=self.make_uuid(f"{progress.Name}_SkillsDefaultValue"),
         ))
 
-    @progression(BASE_CHARACTER_RACES, range(1, 21, 2))
+    @progression(BASE_CHARACTER_RACES, 2)
+    def level_2(self, progress: Progression) -> None:
+        progress.Selectors = (progress.Selectors or []) + [
+            "SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress)),
+        ]
+
+    @progression(BASE_CHARACTER_RACES, range(3, 21, 2))
     def odd_levels(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
+            "SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress)),
             "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
 

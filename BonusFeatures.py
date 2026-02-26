@@ -347,7 +347,7 @@ class BonusFeatures(Replacer):
 
     @cached_property
     def _fire_walk(self) -> str:
-        name = self.make_name("FireWalk")
+        name = self.make_name("FireWalkUnlock")
         self.loca[f"{name}_DisplayName"] = "Fire Walk"
         self.loca[f"{name}_Description"] = "You step through the hells, reappearing in another location."
         self.add(PassiveData(

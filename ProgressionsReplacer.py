@@ -23,7 +23,7 @@ class ProgressionsReplacer(Replacer):
                          author="justin-elliott",
                          description="A class progressions replacer.")
 
-    def make_name(self) -> str:
+    def generate_name(self) -> str:
         """Generate a name for the Mod."""
         if len(self.args.feats) == 1:
             feat_level = next(level for level in self.args.feats)

@@ -245,10 +245,16 @@ class Replacer:
         self._args = Replacer.Args(**vars(parser.parse_args()))
 
         if self.args.name is None:
-            parser.error("the name argument is required: -n/--name")
+            if (name := self.generate_name()) is None:
+                parser.error("the name argument is required: -n/--name")
+            self.args.name = name
         self._update_feat_levels()
         self._update_classes()
 
+    def generate_name(self) -> str:
+        """Generate a name for the Mod."""
+        return None
+    
     @property
     def args(self) -> Args:
         """Return our arguments."""

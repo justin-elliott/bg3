@@ -149,10 +149,7 @@ class FourElements(Replacer):
             name,
             using="FANGS_OF_THE_FIRE_SNAKE",
             StatusType="BOOST",
-            Boosts=[
-                f"CharacterWeaponDamage({self._elemental_damage},{element})",
-                f"CharacterUnarmedDamage({self._elemental_damage},{element})",
-            ],
+            Boosts=[f"CharacterUnarmedDamage({self._elemental_damage},{element})"],
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
             DescriptionParams=[f"DealDamage({self._elemental_damage},{element})"],

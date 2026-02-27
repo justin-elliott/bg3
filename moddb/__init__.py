@@ -19,4 +19,5 @@ from .movement import *
 from .pack_mule import *
 from .progression import *
 from .scripts import *
+from .sorcery import *
 from .stormbolt import *

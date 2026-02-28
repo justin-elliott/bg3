@@ -675,17 +675,44 @@ class TutorialSupplies(Mod):
             description="Contains a selection of weapons.",
             items=[
                 self._adamantine_katana,
+                self._adamantine_silver_sword,
             ],
         )
 
     @cached_property
     def _adamantine_katana(self) -> str:
         katana_template_id = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
-        return self._add_weapon(
+        return self._add_adamantine_weapon(
             "AdamantineKatana",
             parent_template_id=katana_template_id,
             display_name="Adamantine Katana",
             description="This slender blade swings effortlessly in your hand -- ready to take down a hundred enemies.",
+        )
+
+    @cached_property
+    def _adamantine_silver_sword(self) -> str:
+        voss_silver_sword_template_id = UUID("20c66f8d-f455-42fc-8e48-543512247e75")
+        return self._add_adamantine_weapon(
+            "AdamantineSilverSword",
+            parent_template_id=voss_silver_sword_template_id,
+            display_name="Adamantine Silver Sword",
+            description="""
+                This heavy silver sword swings effortlessly in your hand -- ready to take down a hundred enemies.
+            """,
+        )
+
+    def _add_adamantine_weapon(
+            self,
+            base_name: str,
+            *,
+            parent_template_id: UUID,
+            display_name: str,
+            description: str) -> str:
+        return self._add_weapon(
+            base_name,
+            parent_template_id=parent_template_id,
+            display_name=display_name,
+            description=description,
             bonus_damage="1d4",
             bonus_damage_type="Slashing",
             boosts_on_equip_main_hand=[
@@ -707,26 +734,26 @@ class TutorialSupplies(Mod):
         )
 
     def _add_weapon(
-                self,
-                base_name: str,
-                *,
-                parent_template_id: UUID,
-                display_name: str,
-                description: str,
-                bonus_damage: str | None = None,
-                bonus_damage_type: str | None = None,
-                using: str = "WPN_Longsword",
-                visual_template: str | None = None,
-                boosts_on_equip_main_hand: list[str] | None = None,
-                boosts_on_equip_off_hand: list[str] | None = None,
-                default_boosts: list[str] | None = None,
-                passives_on_equip: list[str] | None = None,
-                weapon_properties: list[str] | None = None,
-                status_on_equip: list[str] | None = None,
-                weapon_statuses: list[str] | None = None,
-                is_magic: bool = True,
-                is_progressive: bool = True,
-                is_unique: bool = True) -> None:
+            self,
+            base_name: str,
+            *,
+            parent_template_id: UUID,
+            display_name: str,
+            description: str,
+            bonus_damage: str | None = None,
+            bonus_damage_type: str | None = None,
+            using: str = "WPN_Longsword",
+            visual_template: str | None = None,
+            boosts_on_equip_main_hand: list[str] | None = None,
+            boosts_on_equip_off_hand: list[str] | None = None,
+            default_boosts: list[str] | None = None,
+            passives_on_equip: list[str] | None = None,
+            weapon_properties: list[str] | None = None,
+            status_on_equip: list[str] | None = None,
+            weapon_statuses: list[str] | None = None,
+            is_magic: bool = True,
+            is_progressive: bool = True,
+            is_unique: bool = True) -> None:
         """Add a custom weapon."""
         name = self.make_name(base_name)
         game_objects_uuid = self.make_uuid(name)

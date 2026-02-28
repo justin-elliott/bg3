@@ -9,7 +9,9 @@ from moddb import Bolster, Knowledge
 from modtools.gamedata import (
     Armor,
     ObjectData,
+    SpellData,
     StatusData,
+    Weapon,
 )
 from modtools.lsx.game import GameObjects
 from modtools.replacers import Mod
@@ -40,6 +42,7 @@ class TutorialSupplies(Mod):
             self._daisy,
             self._potions,
             self._dyes,
+            self._weapons,
         ])
 
     @cached_property
@@ -661,6 +664,128 @@ class TutorialSupplies(Mod):
             name,
             using="ARM_Underwear",
             RootTemplate="5a0ee632-9145-48b2-9b92-97c32c2ccbd9",
+        ))
+        return name
+
+    @cached_property
+    def _weapons(self) -> TreasureChest:
+        return self.TreasureChest(
+            name="Weapons",
+            display_name="Weapons",
+            description="Contains a selection of weapons.",
+            items=[
+                self._adamantine_katana,
+            ],
+        )
+
+    @cached_property
+    def _adamantine_katana(self) -> str:
+        katana_template_id = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+        return self._add_weapon(
+            "AdamantineKatana",
+            parent_template_id=katana_template_id,
+            display_name="Adamantine Katana",
+            description="This slender blade swings effortlessly in your hand -- ready to take down a hundred enemies.",
+            bonus_damage="1d4",
+            bonus_damage_type="Slashing",
+            boosts_on_equip_main_hand=[
+                "CannotBeDisarmed()",
+                "UnlockSpell(Target_OpeningAttack)",
+                "UnlockSpell(Target_Slash_New)",
+                "UnlockSpell(Rush_SpringAttack)",
+                f"UnlockSpell({self._cleave})",
+            ],
+            passives_on_equip=[
+                "UNI_Adamantine_CriticalVsItems_Passive",
+                "MAG_IgnoreSlashingResistance_Passive",
+            ],
+            weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
+            weapon_statuses=[
+                "MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL",
+                "MAG_DIAMONDSBANE_TECHNICAL",
+            ],
+        )
+
+    def _add_weapon(
+                self,
+                base_name: str,
+                *,
+                parent_template_id: UUID,
+                display_name: str,
+                description: str,
+                bonus_damage: str | None = None,
+                bonus_damage_type: str | None = None,
+                using: str = "WPN_Longsword",
+                visual_template: str | None = None,
+                boosts_on_equip_main_hand: list[str] | None = None,
+                boosts_on_equip_off_hand: list[str] | None = None,
+                default_boosts: list[str] | None = None,
+                passives_on_equip: list[str] | None = None,
+                weapon_properties: list[str] | None = None,
+                status_on_equip: list[str] | None = None,
+                weapon_statuses: list[str] | None = None,
+                is_magic: bool = True,
+                is_progressive: bool = True,
+                is_unique: bool = True) -> None:
+        """Add a custom weapon."""
+        name = self.make_name(base_name)
+        game_objects_uuid = self.make_uuid(name)
+
+        self.loca[f"{name}_DisplayName"] = display_name
+        self.loca[f"{name}_Description"] = description
+
+        self.add(GameObjects(
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            LevelName="",
+            MapKey=game_objects_uuid,
+            Name=name,
+            ParentTemplateId=parent_template_id,
+            Stats=name,
+            Type="item",
+            VisualTemplate=visual_template,
+            children=[
+                GameObjects.StatusList(
+                    children=[
+                        GameObjects.StatusList.Status(Object=status) for status in (weapon_statuses or [])
+                    ],
+                ),
+            ],
+        ))
+
+        self.add(Weapon(
+            name,
+            using=using,
+            BoostsOnEquipMainHand=boosts_on_equip_main_hand,
+            BoostsOnEquipOffHand=boosts_on_equip_off_hand,
+            DefaultBoosts=[
+                *(["WeaponProperty(Magical)"] if is_magic else []),
+                *(["IF(CharacterLevelGreaterThan(2) and not CharacterLevelGreaterThan(6)):WeaponEnchantment(1)",
+                   "IF(CharacterLevelGreaterThan(6) and not CharacterLevelGreaterThan(10)):WeaponEnchantment(2)",
+                   "IF(CharacterLevelGreaterThan(10)):WeaponEnchantment(3)"] if is_progressive else []),
+                *([f"WeaponDamage({bonus_damage},{bonus_damage_type})"] if bonus_damage and bonus_damage_type else []),
+                *(default_boosts if default_boosts else []),
+            ],
+            PassivesOnEquip=passives_on_equip,
+            Rarity="Legendary",
+            RootTemplate=game_objects_uuid,
+            StatusOnEquip=status_on_equip,
+            Unique="1" if is_unique else None,
+            Weapon_Properties=weapon_properties,
+        ))
+
+        return name
+    
+    @cached_property
+    def _cleave(self) -> str:
+        name = self.make_name("Cleave")
+        self.add(SpellData(
+            name,
+            using="Zone_Cleave",
+            SpellType="Zone",
+            Cooldown="None",
+            SpellSuccess=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)", "GROUND:ExecuteWeaponFunctors(MainHand)"],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
         ))
         return name
 

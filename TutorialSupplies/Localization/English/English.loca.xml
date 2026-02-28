@@ -25,6 +25,8 @@
     <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
     <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
+    <content contentuid="h8b73ee98g7429gecd9g623fgfd087e8a319e" version="1">Adamantine Katana</content>
+    <content contentuid="hf74a396bge2e3g63f1gb6degd02400d88eb4" version="1">This slender blade swings effortlessly in your hand -- ready to take down a hundred enemies.</content>
     <content contentuid="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1">Camp Clothing</content>
     <content contentuid="h41344494ga27bgf030g792bga39653da8335" version="1">Contains a selection of camp clothing.</content>
     <content contentuid="h5305950bg4edeg71e7g1e0dg789e0ac811de" version="1">Camp Shoes</content>
@@ -37,4 +39,6 @@
     <content contentuid="ha347558bg942ag9417ga958g405557168c3e" version="1">Contains a selection of potions.</content>
     <content contentuid="hbc153c27g0b20g8028g3dfega947822487c1" version="1">Dyes</content>
     <content contentuid="h68711c33g958bg2469gdc5ag941011ce8e81" version="1">Contains a selection of dyes.</content>
+    <content contentuid="hb3bfb113g0bc6g9b00gaeeeg26b51a81a7f9" version="1">Weapons</content>
+    <content contentuid="hfdaf126egaac0gc96fg4f39gcfb01954032d" version="1">Contains a selection of weapons.</content>
 </contentList>

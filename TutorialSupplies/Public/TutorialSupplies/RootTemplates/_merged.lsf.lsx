@@ -392,6 +392,28 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hf74a396bge2e3g63f1gb6degd02400d88eb4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h8b73ee98g7429gecd9g623fgfd087e8a319e" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="b3689b7b-8e17-0f28-4403-96af4d8e5084" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_AdamantineKatana" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_AdamantineKatana" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
+                                </node>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h41344494ga27bgf030g792bga39653da8335" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1" />
                     <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
@@ -506,6 +528,26 @@
                             <children>
                                 <node id="InventoryItem">
                                     <attribute id="Object" type="FixedString" value="TutorialSupplies_Dyes_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hfdaf126egaac0gc96fg4f39gcfb01954032d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hb3bfb113g0bc6g9b00gaeeeg26b51a81a7f9" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="e9915dd5-9803-ef05-d271-4474591d5b75" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_Weapons" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_Weapons" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="TutorialSupplies_Weapons_TreasureTable" />
                                 </node>
                             </children>
                         </node>

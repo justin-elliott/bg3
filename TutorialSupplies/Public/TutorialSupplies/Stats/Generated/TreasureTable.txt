@@ -14,6 +14,8 @@ new subtable "1,1"
 object category "I_TutorialSupplies_Potions",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_Dyes",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_Weapons",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_CampClothing_TreasureTable"
 CanMerge 1
@@ -408,3 +410,8 @@ new subtable "1,1"
 object category "I_DLC_OBJ_Dye_Larian",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_Dye_Remover",1,0,0,0,0,0,0,0
+
+new treasuretable "TutorialSupplies_Weapons_TreasureTable"
+CanMerge 1
+new subtable "1,1"
+object category "I_TutorialSupplies_AdamantineKatana",1,0,0,0,0,0,0,0

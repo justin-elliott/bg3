@@ -12,7 +12,7 @@ from moddb import (
     EmpoweredSpells,
     Movement,
 )
-from modtools.gamedata import PassiveData
+from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,
@@ -29,6 +29,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Script
 from typing import Final
 
 
@@ -326,6 +327,155 @@ class BonusFeatures(Replacer):
     def _empowered_spells(self) -> str:
         return EmpoweredSpells(self.mod).add_empowered_spells()
 
+    @staticmethod
+    def __strip_white(text: str) -> str:
+        return (
+            " "
+            .join(text.split())
+            .strip()
+            .replace("( ", "(")
+            .replace(" )", ")")
+            .replace("): ", "):")
+        )
+
+    @cached_property
+    def _extra_attacks(self) -> str:
+        extra_attacks = self.make_name("ExtraAttacks")
+        extra_attacks_status = self.make_name("EXTRA_ATTACKS")
+
+        extra_attack_1 = self.make_name("ExtraAttack_1")
+        extra_attack_2 = self.make_name("ExtraAttack_2")
+        extra_attack_3 = self.make_name("ExtraAttack_3")
+    
+        self.loca[f"{extra_attacks}_DisplayName"] = "Extra Attacks"
+        self.loca[f"{extra_attacks}_Description"] = """
+            Can make an additional free attack after making an unarmed or weapon attack. This increases to two
+            additional free attacks at level 11, and three additional free attacks at level 20.
+            
+            If you gain the Extra Attack feature from more than one class, they don't add together.
+        """
+
+        self.add(PassiveData(
+            extra_attacks,
+            DisplayName=self.loca[f"{extra_attacks}_DisplayName"],
+            Description=self.loca[f"{extra_attacks}_Description"],
+            Icon="PassiveFeature_ExtraAttack",
+            Properties=["Highlighted"],
+            StatsFunctorContext=["OnCreate", "OnLongRest"],
+            StatsFunctors=[f"ApplyStatus(SELF,{extra_attacks_status},100,-1)"],
+        ))
+
+        self.add(StatusData(
+            extra_attacks_status,
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{extra_attacks}_DisplayName"],
+            Description=self.loca[f"{extra_attacks}_Description"],
+            Icon="PassiveFeature_ExtraAttack",
+            Passives=[extra_attack_1, extra_attack_2, extra_attack_3],
+            StackId=extra_attacks_status,
+            StackType="Ignore",
+            StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
+        ))
+
+        def conditions(levels: range, passive: str, status: str) -> str:
+            return self.__strip_white(f"""
+                CharacterLevelGreaterThan({levels.start - 1})
+                and not CharacterLevelGreaterThan({levels.stop - 1})
+                and not HasPassive('{passive}')
+                and (
+                    (
+                        context.HasContextFlag(StatsFunctorContext.OnCast)
+                        and ExtraAttackSpellCheck()
+                        and HasUseCosts('ActionPoint',true)
+                        and not Tagged('EXTRA_ATTACK_BLOCKED',context.Source)
+                        and not HasStatus('SLAYER_PLAYER',context.Source)
+                        and not HasStatus('SLAYER_PLAYER_10',context.Source)
+                        and TurnBased(context.Source)
+                    ) or (
+                        context.HasContextFlag(StatsFunctorContext.OnStatusRemoved)
+                        and StatusId('INITIAL_ATTACK_TECHNICAL')
+                        and TurnBased()
+                    ) or (
+                        context.HasContextFlag(StatsFunctorContext.OnStatusApplied)
+                        and StatusId('{status}_Q')
+                    )
+                )
+            """)
+
+        def stats_functors(status: str) -> list[str]:
+            return [
+                self.__strip_white(f"""
+                    IF(context.HasContextFlag(StatsFunctorContext.OnCast)):
+                        ApplyStatus(SELF,{status}_Q,100,1)
+                """),
+                self.__strip_white(f"""
+                    IF(context.HasContextFlag(StatsFunctorContext.OnStatusRemoved)):
+                        ApplyStatus({status}_Q,100,1)
+                """),
+                self.__strip_white(f"""
+                    IF(
+                        context.HasContextFlag(StatsFunctorContext.OnStatusApplied)
+                        and not HasHigherPriorityExtraAttackQueued('{status}_Q')
+                        and not HasAnyExtraAttack()
+                    ):
+                        ApplyStatus({status},100,1)
+                """),
+            ]
+
+        self.add(PassiveData(
+            extra_attack_1,
+            using="ExtraAttack",
+            Properties=["IsHidden"],
+            StatsFunctorContext=["OnCast", "OnStatusRemoved", "OnStatusApplied"],
+            Conditions=conditions(range(5, 11), "ExtraAttack", "EXTRA_ATTACK"),
+            StatsFunctors=stats_functors("EXTRA_ATTACK"),
+        ))
+
+        self.add(PassiveData(
+            extra_attack_2,
+            using=extra_attack_1,
+            Conditions=conditions(range(11, 20), "ExtraAttack_2", "EXTRA_ATTACK_2"),
+            StatsFunctors=stats_functors("EXTRA_ATTACK_2"),
+        ))
+
+        self.add(PassiveData(
+            extra_attack_3,
+            using=extra_attack_1,
+            Conditions=conditions(range(20, 21), "ExtraAttack_3", "EXTRA_ATTACK_3"),
+            StatsFunctors=stats_functors("EXTRA_ATTACK_3"),
+        ))
+
+        self.add(Script("""
+            function HasHigherPriorityExtraAttackQueued(status, entity)
+                local entity = entity or context.Target
+                local eaQueuedStatuses = {
+                      'EXTRA_ATTACK_3_Q'
+                    , 'EXTRA_ATTACK_2_Q'
+                    , 'EXTRA_ATTACK_Q'
+                    , 'EXTRA_ATTACK_WAR_MAGIC_Q'
+                    , 'MAG_MARTIAL_EXERTION_Q'
+                    , 'WILDSTRIKE_EXTRA_ATTACK_Q'
+                    , 'STALKERS_FLURRY_Q'
+                    , 'EXTRA_ATTACK_THIRSTING_BLADE_Q'
+                    , 'COMMANDERS_STRIKE_Q_D10'
+                    , 'COMMANDERS_STRIKE_Q_D8'
+                    , 'WILDSTRIKE_2_EXTRA_ATTACK_Q'
+                    , 'EXTRA_ATTACK_WAR_PRIEST_Q'
+                }
+                for i,v in ipairs(eaQueuedStatuses) do
+                    if (v == status) then
+                        return ConditionResult(false)
+                    end
+                    if HasStatus(v, entity, context.Source, false).Result then
+                        return ConditionResult(true)
+                    end
+                end
+                return ConditionResult(false)
+            end
+        """))
+
+        return extra_attacks
+
     @cached_property
     def _resilience(self) -> str:
         name = self.make_name("Resilience")
@@ -521,7 +671,7 @@ class BonusFeatures(Replacer):
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
             ( 3, "Resilience",          self._resilience),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
-            ( 5, "Extra Attack",        "ExtraAttack"),
+            ( 5, "Extra Attack",        self._extra_attacks),
             ( 5, "Fire Walk",           self._fire_walk),
             ( 5, "Misty Step",          self._misty_step),
             ( 7, "Evasion",             "Evasion"),

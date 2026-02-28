@@ -83,6 +83,8 @@
     <content contentuid="hd1100b9cgf4dbg7cedg6535g1ea3bd2129c9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
     <content contentuid="hd6f689d7g6686ga18dg3892g4183ac26dd12" version="1">Resilience</content>
     <content contentuid="h4bea5f36gdeadg5aadgf237g9f4671afb5de" version="1">You shrug off attacks, taking [1] less damage from all sources.</content>
+    <content contentuid="h8a2847f5gfbe4g207agf393gd49e857e992e" version="1">Extra Attacks</content>
+    <content contentuid="hda2b42aagf589g53b6g7debg8e7e8fa8b406" version="1">Can make an additional free attack after making an unarmed or weapon attack. This increases to two additional free attacks at level 11, and three additional free attacks at level 20.&lt;br&gt;&lt;br&gt;If you gain the Extra Attack feature from more than one class, they don't add together.</content>
     <content contentuid="h6815fb2agedf3g3bcfg5479g62e94efe9c43" version="1">Fire Walk</content>
     <content contentuid="h6060ed13gbb3dgf5edgb9fcg60b582bd390a" version="1">You step through the hells, reappearing in another location.</content>
     <content contentuid="h815151f9g88ceg0a4bgafd4g88b303056687" version="1">Fire Walk</content>

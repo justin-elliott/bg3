@@ -377,11 +377,10 @@ class BonusFeatures(Replacer):
             StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
         ))
 
-        def conditions(levels: range, passive: str, status: str) -> str:
+        def conditions(levels: range, status: str) -> str:
             return self.__strip_white(f"""
                 CharacterLevelGreaterThan({levels.start - 1})
                 and not CharacterLevelGreaterThan({levels.stop - 1})
-                and not HasPassive('{passive}')
                 and (
                     (
                         context.HasContextFlag(StatsFunctorContext.OnCast)
@@ -427,21 +426,21 @@ class BonusFeatures(Replacer):
             using="ExtraAttack",
             Properties=["IsHidden"],
             StatsFunctorContext=["OnCast", "OnStatusRemoved", "OnStatusApplied"],
-            Conditions=conditions(range(5, 11), "ExtraAttack", "EXTRA_ATTACK"),
+            Conditions=conditions(range(5, 11), "EXTRA_ATTACK"),
             StatsFunctors=stats_functors("EXTRA_ATTACK"),
         ))
 
         self.add(PassiveData(
             extra_attack_2,
             using=extra_attack_1,
-            Conditions=conditions(range(11, 20), "ExtraAttack_2", "EXTRA_ATTACK_2"),
+            Conditions=conditions(range(11, 20), "EXTRA_ATTACK_2"),
             StatsFunctors=stats_functors("EXTRA_ATTACK_2"),
         ))
 
         self.add(PassiveData(
             extra_attack_3,
             using=extra_attack_1,
-            Conditions=conditions(range(20, 21), "ExtraAttack_3", "EXTRA_ATTACK_3"),
+            Conditions=conditions(range(20, 21), "EXTRA_ATTACK_3"),
             StatsFunctors=stats_functors("EXTRA_ATTACK_3"),
         ))
 

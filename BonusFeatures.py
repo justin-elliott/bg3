@@ -299,7 +299,8 @@ class BonusFeatures(Replacer):
         name = self.make_name("Armored")
         self.loca[f"{name}_DisplayName"] = "Armoured"
         self.loca[f"{name}_Description"] = """
-            You are proficient with all types of armour and shields.
+            You are proficient with all types of armour and shields. You gain a +1 bonus to
+            <LSTag Tooltip="ArmourClass">Armour Class</LSTag> while wearing armour.
             """
         self.add(PassiveData(
             name,
@@ -310,6 +311,7 @@ class BonusFeatures(Replacer):
                 "Proficiency(MediumArmor)",
                 "Proficiency(HeavyArmor)",
                 "Proficiency(Shields)",
+                "IF(WearingArmor(context.Source)):AC(1)",
             ],
             Icon="PassiveFeature_HeavilyArmored",
             Properties=["Highlighted"],
@@ -337,6 +339,37 @@ class BonusFeatures(Replacer):
                 "UnlockSpell(Shout_Disengage_CunningAction)",
             ],
             Properties=["IsHidden"],
+        ))
+        return name
+
+    @cached_property
+    def _duelist(self) -> str:
+        name = self.make_name("Duelist")
+
+        INITIATIVE_BONUS = "2"
+        DAMAGE_BONUS = "1d4"
+        AC_BONUS = "1"
+
+        self.loca[f"{name}_DisplayName"] = "Duelist"
+        self.loca[f"{name}_Description"] = """
+            When you are wielding a melee weapon that is not Two-Handed in one hand, and no weapon in the other, you
+            gain a +[1] bonus to Initiative Rolls, and deal an additional [2] damage with that weapon.
+            
+            Additionally, if you are not carrying a shield, you gain a +[3] bonus to your
+            <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[INITIATIVE_BONUS, DAMAGE_BONUS, AC_BONUS],
+            Boosts=[
+                f"IF(FightingStyle_Dueling(context.Source)):Initiative({INITIATIVE_BONUS})",
+                f"IF(FightingStyle_Dueling(context.Source)):CharacterWeaponDamage({DAMAGE_BONUS})",
+                f"IF(FightingStyle_Dueling(context.Source) and not HasShieldEquipped(context.Source)):AC({AC_BONUS})",
+            ],
+            Icon="PassiveFeature_FightingStyle_Duelling",
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -495,17 +528,16 @@ class BonusFeatures(Replacer):
     @cached_property
     def _resilience(self) -> str:
         name = self.make_name("Resilience")
-        BONUS = "ProficiencyBonus"
         self.loca[f"{name}_DisplayName"] = "Resilience"
         self.loca[f"{name}_Description"] = """
-            You shrug off attacks, taking [1] less damage from all sources.
+            You shrug off attacks, reducing damage from all sources by your
+            <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag>.
             """
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"{BONUS}"],
-            Boosts=[f"DamageReduction(All,Flat,{BONUS})"],
+            Boosts=[f"DamageReduction(All,Flat,ProficiencyBonus)"],
             Icon="PassiveFeature_UnarmoredDefense_Barbarian",
             Properties=["Highlighted"],
         ))
@@ -671,6 +703,7 @@ class BonusFeatures(Replacer):
             ( 1, "Armour of Shadows",   "ArmorOfShadows"),
             ( 1, "Armoured",            self._armored),
             ( 1, "Beast Speech",        "BeastSpeech"),
+            ( 1, "Duelist",             self._duelist),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
             ( 1, "Mask of Many Faces",  "MaskOfManyFaces"),

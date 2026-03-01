@@ -392,22 +392,19 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="hf74a396bge2e3g63f1gb6degd02400d88eb4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h8b73ee98g7429gecd9g623fgfd087e8a319e" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h0621b5d0g3195gafcdg89cfg729426174b18" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="b3689b7b-8e17-0f28-4403-96af4d8e5084" />
-                    <attribute id="Name" type="LSString" value="TutorialSupplies_AdamantineKatana" />
+                    <attribute id="MapKey" type="FixedString" value="7f65ba11-db34-1771-6bc8-25b45d2ce1ad" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_BladeOfTheBanshee" />
                     <attribute id="ParentTemplateId" type="FixedString" value="7050c02e-f0e1-46b8-9400-2514805ecd2e" />
-                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_AdamantineKatana" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_BladeOfTheBanshee" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
                         <node id="StatusList">
                             <children>
                                 <node id="Status">
                                     <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
-                                </node>
-                                <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
                                 </node>
                             </children>
                         </node>
@@ -427,9 +424,6 @@
                             <children>
                                 <node id="Status">
                                     <attribute id="Object" type="FixedString" value="MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL" />
-                                </node>
-                                <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="MAG_DIAMONDSBANE_TECHNICAL" />
                                 </node>
                             </children>
                         </node>

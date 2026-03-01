@@ -674,20 +674,26 @@ class TutorialSupplies(Mod):
             display_name="Weapons",
             description="Contains a selection of weapons.",
             items=[
-                self._adamantine_katana,
+                self._blade_of_the_banshee,
                 self._radiant_silver_sword,
             ],
         )
 
     @cached_property
-    def _adamantine_katana(self) -> str:
+    def _blade_of_the_banshee(self) -> str:
         katana_template_id = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
         return self._add_adamantine_weapon(
-            "AdamantineKatana",
+            "BladeOfTheBanshee",
             parent_template_id=katana_template_id,
-            display_name="Adamantine Katana",
-            description="This slender blade swings effortlessly in your hand -- ready to take down a hundred enemies.",
-            extra_boosts_on_equip_main_hand=[f"UnlockSpell({self._cleave})"],
+            display_name="Blade of the Banshee",
+            description="""
+                This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is
+                carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail
+                that chills the blood of any who hear it.
+            """,
+            bonus_damage_type="Psychic",
+            extra_passives_on_equip=["MAG_BansheeBless_Passive"],
+            weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
         )
 
     @cached_property
@@ -715,7 +721,10 @@ class TutorialSupplies(Mod):
             bonus_damage: str | None = None,
             bonus_damage_type: str | None = None,
             extra_boosts_on_equip_main_hand: list[str] | None = None,
-            extra_passives_on_equip: list[str] | None = None) -> str:
+            extra_passives_on_equip: list[str] | None = None,
+            ignore_slashing_resistance: bool = True,
+            critical_vs_items: bool = False,
+            weapon_functors: list[str] | None = None) -> str:
         return self._add_weapon(
             base_name,
             parent_template_id=parent_template_id,
@@ -731,14 +740,15 @@ class TutorialSupplies(Mod):
                 *(extra_boosts_on_equip_main_hand or []),
             ],
             passives_on_equip=[
-                "UNI_Adamantine_CriticalVsItems_Passive",
-                "MAG_IgnoreSlashingResistance_Passive",
+                *(["MAG_IgnoreSlashingResistance_Passive"] if ignore_slashing_resistance else []),
+                *(["UNI_Adamantine_CriticalVsItems_Passive"] if critical_vs_items else []),
                 *(extra_passives_on_equip or []),
             ],
+            weapon_functors=weapon_functors,
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
             weapon_statuses=[
-                "MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL",
-                "MAG_DIAMONDSBANE_TECHNICAL",
+                *(["MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"] if ignore_slashing_resistance else []),
+                *(["MAG_DIAMONDSBANE_TECHNICAL"] if critical_vs_items else []),
             ],
         )
 
@@ -759,6 +769,7 @@ class TutorialSupplies(Mod):
             passives_on_equip: list[str] | None = None,
             weapon_properties: list[str] | None = None,
             status_on_equip: list[str] | None = None,
+            weapon_functors: list[str] | None = None,
             weapon_statuses: list[str] | None = None,
             is_magic: bool = True,
             is_progressive: bool = True,
@@ -807,6 +818,7 @@ class TutorialSupplies(Mod):
             RootTemplate=game_objects_uuid,
             StatusOnEquip=status_on_equip,
             Unique="1" if is_unique else None,
+            WeaponFunctors=weapon_functors,
             Weapon_Properties=weapon_properties,
         ))
 

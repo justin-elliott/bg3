@@ -414,6 +414,6 @@ object category "I_OBJ_Dye_Remover",1,0,0,0,0,0,0,0
 new treasuretable "TutorialSupplies_Weapons_TreasureTable"
 CanMerge 1
 new subtable "1,1"
-object category "I_TutorialSupplies_AdamantineKatana",1,0,0,0,0,0,0,0
+object category "I_TutorialSupplies_BladeOfTheBanshee",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_RadiantSilverSword",1,0,0,0,0,0,0,0

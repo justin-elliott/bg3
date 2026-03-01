@@ -67,6 +67,8 @@
     <content contentuid="h7b34be89g740bg9ec1g3af5g847fbaa20d1b" version="1">You gain a +[1] bonus to &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Spell Save DC&lt;/LSTag&gt;, spell &lt;LSTag Tooltip="AttackRoll"&gt;attack rolls&lt;/LSTag&gt;, and spell damage.</content>
     <content contentuid="h7b44d93eg742dg1da7g7a87g7eb47f4636fd" version="1">Archer</content>
     <content contentuid="h2ada8c5ag7ce0gcbe5g45e4g0d23d9f37187" version="1">You are proficient with all bows, and gain a +[1] bonus to &lt;LSTag Tooltip="RangedWeaponAttack"&gt;ranged weapon attacks&lt;/LSTag&gt; and damage.</content>
+    <content contentuid="hf9a7317fgf694g5affgb62ag96e45b41c6d2" version="1">Armoured</content>
+    <content contentuid="he9a0bbeeg328cg4680g690fg1b3d8f4926b2" version="1">You are proficient with all types of armour and shields.</content>
     <content contentuid="hac8e2fc0gbad6gfa83gc083ge6e2b2ff218c" version="1">Light-Fingered</content>
     <content contentuid="h599b6d56gf1b2gf8f4g5698gc1427ee10ddf" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;.</content>
     <content contentuid="h067af7e3g3d32gb6bdg9683g2ec3c9404d02" version="1">Persuasive</content>
@@ -75,8 +77,6 @@
     <content contentuid="hb7b2b7acg08e9g1fc5g3317g208c2f73dbd0" version="1">You are proficient with all melee martial weapons, and gain a +[1] bonus to &lt;LSTag Tooltip="MeleeWeaponAttack"&gt;melee weapon attacks&lt;/LSTag&gt; and damage.</content>
     <content contentuid="h838c3265gd53egd906g507agfd7d319d8c42" version="1">Action Surge</content>
     <content contentuid="h1c2abea4gf2d5g85d4gfda8g213d5fb8ef50" version="1">Immediately gain an extra &lt;LSTag Tooltip="Action"&gt;action&lt;/LSTag&gt; to use this turn.</content>
-    <content contentuid="h8476ee02g6de8g801dg2d85ge405b856ce0b" version="1">Battle Magic</content>
-    <content contentuid="h3d7f50bdgc643g9c31gf884ge4329ca8b39c" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hecd23950g34d6g3dfegc01bg86e875fe1ffc" version="1">Cunning Actions</content>
     <content contentuid="h43fed24eg5456gf7b9gb4b7gd42ec2a1a7f0" version="1">They'll never see you coming, until it's too late. As a bonus action, you can use &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, or &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
     <content contentuid="h773b01c1g97c0g10b1g92d9g5552939915a9" version="1">Fleet of Foot</content>

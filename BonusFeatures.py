@@ -8,7 +8,6 @@ import os
 
 from collections.abc import Iterable
 from moddb import (
-    BattleMagic,
     EmpoweredSpells,
     Movement,
 )
@@ -296,8 +295,26 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
-    def _battle_magic(self) -> str:
-        return BattleMagic(self.mod).add_battle_magic()
+    def _armored(self) -> str:
+        name = self.make_name("Armored")
+        self.loca[f"{name}_DisplayName"] = "Armoured"
+        self.loca[f"{name}_Description"] = """
+            You are proficient with all types of armour and shields.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "Proficiency(LightArmor)",
+                "Proficiency(MediumArmor)",
+                "Proficiency(HeavyArmor)",
+                "Proficiency(Shields)",
+            ],
+            Icon="PassiveFeature_HeavilyArmored",
+            Properties=["Highlighted"],
+        ))
+        return name
 
     @cached_property
     def _cunning_actions(self) -> str:
@@ -652,6 +669,7 @@ class BonusFeatures(Replacer):
             ( 1, "Arcane Adept",        self._arcane_adept),
             ( 1, "Archer",              self._archer),
             ( 1, "Armour of Shadows",   "ArmorOfShadows"),
+            ( 1, "Armoured",            self._armored),
             ( 1, "Beast Speech",        "BeastSpeech"),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
@@ -662,7 +680,6 @@ class BonusFeatures(Replacer):
             ( 1, "Weaponmaster",        self._weaponmaster),
             ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
             ( 3, "Action Surge",        self._action_surge),
-            ( 3, "Battle Magic",        self._battle_magic),
             ( 3, "Cunning Actions",     self._cunning_actions),
             ( 3, "Fast Hands",          "FastHands"),
             ( 3, "Fleet of Foot",       self._fleet_of_foot),

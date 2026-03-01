@@ -675,7 +675,7 @@ class TutorialSupplies(Mod):
             description="Contains a selection of weapons.",
             items=[
                 self._adamantine_katana,
-                self._adamantine_silver_sword,
+                self._radiant_silver_sword,
             ],
         )
 
@@ -687,18 +687,22 @@ class TutorialSupplies(Mod):
             parent_template_id=katana_template_id,
             display_name="Adamantine Katana",
             description="This slender blade swings effortlessly in your hand -- ready to take down a hundred enemies.",
+            extra_boosts_on_equip_main_hand=[f"UnlockSpell({self._cleave})"],
         )
 
     @cached_property
-    def _adamantine_silver_sword(self) -> str:
+    def _radiant_silver_sword(self) -> str:
         voss_silver_sword_template_id = UUID("20c66f8d-f455-42fc-8e48-543512247e75")
         return self._add_adamantine_weapon(
-            "AdamantineSilverSword",
+            "RadiantSilverSword",
             parent_template_id=voss_silver_sword_template_id,
-            display_name="Adamantine Silver Sword",
+            display_name="Radiant Silver Sword",
             description="""
-                This heavy silver sword swings effortlessly in your hand -- ready to take down a hundred enemies.
+                This heavy silver sword pulses with a gentle light.
             """,
+            bonus_damage_type="Radiant",
+            extra_boosts_on_equip_main_hand=["UnlockSpell(Target_MAG_WeaponAction_FlashingDawn)"],
+            extra_passives_on_equip=["MAG_Radiant_RadiatingOrb_Melee_OnDamage_Passive"],
         )
 
     def _add_adamantine_weapon(
@@ -707,24 +711,29 @@ class TutorialSupplies(Mod):
             *,
             parent_template_id: UUID,
             display_name: str,
-            description: str) -> str:
+            description: str,
+            bonus_damage: str | None = None,
+            bonus_damage_type: str | None = None,
+            extra_boosts_on_equip_main_hand: list[str] | None = None,
+            extra_passives_on_equip: list[str] | None = None) -> str:
         return self._add_weapon(
             base_name,
             parent_template_id=parent_template_id,
             display_name=display_name,
             description=description,
-            bonus_damage="1d4",
-            bonus_damage_type="Slashing",
+            bonus_damage=bonus_damage or "1d4",
+            bonus_damage_type=bonus_damage_type or "Slashing",
             boosts_on_equip_main_hand=[
                 "CannotBeDisarmed()",
                 "UnlockSpell(Target_OpeningAttack)",
                 "UnlockSpell(Target_Slash_New)",
                 "UnlockSpell(Rush_SpringAttack)",
-                f"UnlockSpell({self._cleave})",
+                *(extra_boosts_on_equip_main_hand or []),
             ],
             passives_on_equip=[
                 "UNI_Adamantine_CriticalVsItems_Passive",
                 "MAG_IgnoreSlashingResistance_Passive",
+                *(extra_passives_on_equip or []),
             ],
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
             weapon_statuses=[

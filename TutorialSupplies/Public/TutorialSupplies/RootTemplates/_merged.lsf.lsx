@@ -414,13 +414,13 @@
                     </children>
                 </node>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="hcfd831dfgcef7ge435gacd2gbeb39ea50a19" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h81929e76g133ag66c9gb666g135ea5f4685a" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h83da98f9g89a1g1883gbd11gbacdd4ee75bb" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h2aac8cd5g3eeege8bdgfc88gbcee0939324a" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />
-                    <attribute id="MapKey" type="FixedString" value="059b710c-6f5f-197f-6fc1-47ef72aa04fd" />
-                    <attribute id="Name" type="LSString" value="TutorialSupplies_AdamantineSilverSword" />
+                    <attribute id="MapKey" type="FixedString" value="5f090ff7-5b4e-79c3-9c69-92391c70b9dc" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_RadiantSilverSword" />
                     <attribute id="ParentTemplateId" type="FixedString" value="20c66f8d-f455-42fc-8e48-543512247e75" />
-                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_AdamantineSilverSword" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_RadiantSilverSword" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
                         <node id="StatusList">

@@ -416,4 +416,4 @@ CanMerge 1
 new subtable "1,1"
 object category "I_TutorialSupplies_AdamantineKatana",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_TutorialSupplies_AdamantineSilverSword",1,0,0,0,0,0,0,0
+object category "I_TutorialSupplies_RadiantSilverSword",1,0,0,0,0,0,0,0

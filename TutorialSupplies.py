@@ -43,6 +43,7 @@ class TutorialSupplies(Mod):
             self._potions,
             self._dyes,
             self._weapons,
+            self._abazigals_goods,
         ])
 
     @cached_property
@@ -836,6 +837,25 @@ class TutorialSupplies(Mod):
             TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
         ))
         return name
+    
+    @cached_property
+    def _abazigals_goods(self) -> TreasureChest:
+        return self.TreasureChest(
+            "AbazigalsGoods",
+            "Abazigal's Goods",
+            description="Contains a selection of items sold by the Echo of Abazigal.",
+            items=[
+                "MAG_Bhaalist_Gloves",
+                "MAG_Bhaalist_Armor",
+                "MAG_Bhaalist_Hat",
+                "MAG_Critical_Force_Gloves",
+                "MAG_Vicious_Battleaxe",
+                "MAG_Vicious_Dagger",
+                "MAG_Zhentarim_SleeperDagger",
+                "MAG_LC_Fleshrend_Shortsword",
+                "MAG_Vicious_Shortbow",
+            ],
+        )
 
 
 if __name__ == "__main__":

@@ -16,6 +16,8 @@ new subtable "1,1"
 object category "I_TutorialSupplies_Dyes",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_Weapons",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_AbazigalsGoods",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_CampClothing_TreasureTable"
 CanMerge 1
@@ -417,3 +419,24 @@ new subtable "1,1"
 object category "I_TutorialSupplies_BladeOfTheBanshee",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_RadiantSilverSword",1,0,0,0,0,0,0,0
+
+new treasuretable "TutorialSupplies_AbazigalsGoods_TreasureTable"
+CanMerge 1
+new subtable "1,1"
+object category "I_MAG_Bhaalist_Gloves",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Bhaalist_Armor",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Bhaalist_Hat",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Critical_Force_Gloves",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Vicious_Battleaxe",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Vicious_Dagger",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Zhentarim_SleeperDagger",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_LC_Fleshrend_Shortsword",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_MAG_Vicious_Shortbow",1,0,0,0,0,0,0,0

@@ -347,13 +347,14 @@ class BonusFeatures(Replacer):
         name = self.make_name("Duelist")
 
         INITIATIVE_BONUS = "2"
-        DAMAGE_BONUS = "1d4"
+        DAMAGE_BONUS = "ProficiencyBonus"
         AC_BONUS = "1"
 
         self.loca[f"{name}_DisplayName"] = "Duelist"
         self.loca[f"{name}_Description"] = """
             When you are wielding a melee weapon that is not Two-Handed in one hand, and no weapon in the other, you
-            gain a +[1] bonus to Initiative Rolls, and deal an additional [2] damage with that weapon.
+            gain a +[1] bonus to Initiative Rolls, and deal additional damage equal to your
+            <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag>.
             
             Additionally, if you are not carrying a shield, you gain a +[3] bonus to your
             <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.

@@ -13,6 +13,11 @@ type "Object"
 using "TutorialSupplies_BasePotion"
 data "RootTemplate" "b2c74846-06d5-bac3-a3f5-aac38cd99bd1"
 
+new entry "TutorialSupplies_ElementalWeaponPotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "c041d88d-e518-e841-b872-72285acc0f07"
+
 new entry "TutorialSupplies_KnowledgePotion"
 type "Object"
 using "TutorialSupplies_BasePotion"

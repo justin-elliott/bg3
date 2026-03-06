@@ -8,6 +8,8 @@
     <content contentuid="hea03581bg5dbbg9b07ga594g6a8d4fdc26e1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h3967067cgfdb2g159cg4edagf63d65d95052" version="1">Elixir of Bolstering</content>
     <content contentuid="h839f3b71gdc84gd1d7g7339g471be1bb0fd0" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h7bae724cgf856g7c81g8c92gb7246e37f075" version="1">Elixir of Elemental Weaponry</content>
+    <content contentuid="hdb237db6g0491g5b30g157bgd2e858a22e8e" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="Target_MAG_ElementalWeapon"&gt;Elemental Weapon&lt;/LSTag&gt; spell.</content>
     <content contentuid="h59501b24g40cegff8fgd9ffgdba5143a5320" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
     <content contentuid="h1633bb7bg10a4g2e83g5670g61499ca44787" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
     <content contentuid="hc1fa73ccg5a57g9c59g5730g9f463245086d" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>

@@ -375,6 +375,24 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _elemental_weapon(self) -> str:
+        name = self.make_name("Elemental Weapon")
+        self.loca[f"{name}_DisplayName"] = "Elemental Weapon"
+        self.loca[f"{name}_Description"] = """
+            Imbue a weapon with elemental power. It receives a +1 bonus to
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, and deals an additional 1d4 damage of your choice.
+            """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=["UnlockSpell(Target_MAG_ElementalWeapon)"],
+            Icon="Spell_Transmutation_ElementalWeapon",
+            Properties=["Highlighted"],
+        ))
+        return name
+
+    @cached_property
     def _empowered_spells(self) -> str:
         return EmpoweredSpells(self.mod).add_empowered_spells()
 
@@ -724,6 +742,7 @@ class BonusFeatures(Replacer):
             ( 5, "Extra Attack",        self._extra_attacks),
             ( 5, "Fire Walk",           self._fire_walk),
             ( 5, "Misty Step",          self._misty_step),
+            ( 7, "Elemental Weapon",    self._elemental_weapon),
             ( 7, "Evasion",             "Evasion"),
             ( 7, "Wilderness Explorer", self._wilderness_explorer),
             ( 9, "Empowered Spells",    self._empowered_spells),

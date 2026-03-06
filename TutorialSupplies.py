@@ -235,6 +235,7 @@ class TutorialSupplies(Mod):
             description="Contains a selection of potions.",
             items=[
                 self._bolster_potion,
+                self._elemental_weapon_potion,
                 self._knowledge_potion,
                 self._flying_potion,
                 self._overpowering_potion,
@@ -329,6 +330,19 @@ class TutorialSupplies(Mod):
             """,
             icon="Item_CONS_Drink_Potion_B",
             boosts=[f"UnlockSpell({self._bolster})"],
+        )
+    
+    @cached_property
+    def _elemental_weapon_potion(self) -> str:
+        return self._add_potion(
+            "ElementalWeaponPotion",
+            display_name="Elixir of Elemental Weaponry",
+            description=f"""
+                Drinking this elixir grants the
+                <LSTag Type="Spell" Tooltip="Target_MAG_ElementalWeapon">Elemental Weapon</LSTag> spell.
+            """,
+            icon="Item_CONS_Potion_FireBreath_A",
+            boosts=[f"UnlockSpell(Target_MAG_ElementalWeapon)"],
         )
     
     @cached_property

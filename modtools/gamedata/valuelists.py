@@ -1722,6 +1722,7 @@ class StatusPropertyFlags(StrEnum):
     OVERHEADONTURN = "OverheadOnTurn"
     PEACEONLY = "PeaceOnly"
     PERFORMING = "Performing"
+    REMOVEONLONGREST = "RemoveOnLongRest"
     TICKINGWITHSOURCE = "TickingWithSource"
     TOGGLE = "Toggle"
     UNAVAILABLEINACTIVEROLL = "UnavailableInActiveRoll"

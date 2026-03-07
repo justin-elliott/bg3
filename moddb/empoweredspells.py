@@ -18,7 +18,7 @@ class EmpoweredSpells:
 
     def add_empowered_spells(self, ability: CharacterAbility = None) -> str:
         """Add the Empowered Spells passive, returning its name. The damage bonus comes from the given 'ability'."""
-        if ability is not None:
+        if ability:
             ability_name = ability.name.title()
             modifier_name = f"{ability_name}Modifier"
             modifier_description = f"""
@@ -26,13 +26,13 @@ class EmpoweredSpells:
                 <LSTag Tooltip="AbilityModifier">Modifier</LSTag>"
             """
         else:
-            ability_name = "Spellcasting Modifier"
-            modifier_name = "SpellcastingAbilityModifier"
+            ability_name = "SpellcastingAbility"
+            modifier_name = "SpellCastingAbilityModifier"
             modifier_description = """
-                <LSTag Tooltip="SpellcastingAbilityModifier">Spellcasting Modifier</LSTag>
+                <LSTag Tooltip="SpellCastingAbilityModifier">Spellcasting Modifier</LSTag>
             """
 
-        name = f"{self._mod.get_prefix()}_EmpoweredSpells_{modifier_name}"
+        name = f"{self._mod.get_prefix()}_EmpoweredSpells_{ability_name}Modifier"
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Empowered Spells"}

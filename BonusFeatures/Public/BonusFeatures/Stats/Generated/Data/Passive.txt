@@ -365,7 +365,7 @@ data "Properties" "Highlighted"
 
 new entry "BonusFeatures_EmpoweredSpells_SpellcastingAbilityModifier"
 type "PassiveData"
-data "Boosts" "IF(IsSpell()):DamageBonus(max(0,SpellcastingAbilityModifier))"
+data "Boosts" "IF(IsSpell()):DamageBonus(max(0,SpellCastingAbilityModifier))"
 data "Description" "h6c984b96gc0cege15cg6237g8f73ceb0c95a"
 data "DisplayName" "h88c9a9aeg1851gc942g94a1g64d7d0301c1d"
 data "Icon" "PassiveFeature_EmpoweredEvocation"

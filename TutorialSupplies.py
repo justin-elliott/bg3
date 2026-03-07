@@ -48,6 +48,7 @@ class TutorialSupplies(Mod):
         ])
 
         self._update_helmet_of_arcane_acuity()
+        self._update_sword_of_screams()
 
     @cached_property
     def _camp_clothing(self) -> TreasureChest:
@@ -892,6 +893,17 @@ class TutorialSupplies(Mod):
             using=passive_name,
             Description=self.loca[f"{passive_name}_Description"],
             Conditions=["IsAttack()"],
+        ))
+    
+    def _update_sword_of_screams(self) -> None:
+        name = "UND_Nere_Sword"
+        self.add(Weapon(
+            name,
+            using=name,
+            Boosts=["UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"],
+            PassivesOnEquip=["MAG_ArcaneEnchantment_Passive", "MAG_Legendary_Chromatic_Spellslot_Passive"],
+            StatusOnEquip=["MAG_THE_CHROMATIC_TECHNICAL"],
+            Proficiency_Group="",
         ))
 
 

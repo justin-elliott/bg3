@@ -47,4 +47,5 @@
     <content contentuid="hfdaf126egaac0gc96fg4f39gcfb01954032d" version="1">Contains a selection of weapons.</content>
     <content contentuid="hfd4699bbg9cddgee29g81b6ga1882e60ac7b" version="1">Abazigal's Goods</content>
     <content contentuid="h6c92d421g2afegd8c2gea25g66cab4a9ad99" version="1">Contains a selection of items sold by the Echo of Abazigal.</content>
+    <content contentuid="he56b3881g0c4cge978g0cacg08d1f4e63e92" version="1">Whenever you deal damage with an attack, you gain &lt;LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY"&gt;Arcane Acuity&lt;/LSTag&gt; for 2 turns.</content>
 </contentList>

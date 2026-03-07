@@ -9,6 +9,7 @@ from moddb import Bolster, Knowledge
 from modtools.gamedata import (
     Armor,
     ObjectData,
+    PassiveData,
     SpellData,
     StatusData,
     Weapon,
@@ -45,6 +46,8 @@ class TutorialSupplies(Mod):
             self._weapons,
             self._abazigals_goods,
         ])
+
+        self._update_helmet_of_arcane_acuity()
 
     @cached_property
     def _camp_clothing(self) -> TreasureChest:
@@ -870,6 +873,26 @@ class TutorialSupplies(Mod):
                 "MAG_Vicious_Shortbow",
             ],
         )
+    
+    def _update_helmet_of_arcane_acuity(self) -> None:
+        armor_name = "MAG_ElementalGish_ArcaneAcuity_Helmet"
+        self.add(Armor(
+            armor_name,
+            using=armor_name,
+            Proficiency_Group="",
+        ))
+
+        passive_name = "MAG_ElementalGish_ArcaneAcuity_Helmet_Passive"
+        self.loca[f"{passive_name}_Description"] = """
+            Whenever you deal damage with an attack, you gain
+            <LSTag Type="Status" Tooltip="MAG_GISH_ARCANE_ACUITY">Arcane Acuity</LSTag> for 2 turns.
+        """
+        self.add(PassiveData(
+            passive_name,
+            using=passive_name,
+            Description=self.loca[f"{passive_name}_Description"],
+            Conditions=["IsAttack()"],
+        ))
 
 
 if __name__ == "__main__":

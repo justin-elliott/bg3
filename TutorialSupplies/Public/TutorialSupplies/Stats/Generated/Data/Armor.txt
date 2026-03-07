@@ -19,3 +19,8 @@ new entry "TutorialSupplies_DaisyBoots"
 type "Armor"
 using "ARM_Camp_Shoes"
 data "RootTemplate" "216f0362-f77b-420c-84cb-d84853aa173d"
+
+new entry "MAG_ElementalGish_ArcaneAcuity_Helmet"
+type "Armor"
+using "MAG_ElementalGish_ArcaneAcuity_Helmet"
+data "Proficiency Group" ""

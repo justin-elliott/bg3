@@ -29,7 +29,7 @@ class EmpoweredSpells:
             ability_name = "SpellcastingAbility"
             modifier_name = "SpellCastingAbilityModifier"
             modifier_description = """
-                <LSTag Tooltip="SpellCastingAbilityModifier">Spellcasting Modifier</LSTag>
+                <LSTag Tooltip="SpellcastingAbilityModifier">Spellcasting Modifier</LSTag>
             """
 
         name = f"{self._mod.get_prefix()}_EmpoweredSpells_{ability_name}Modifier"

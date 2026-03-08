@@ -32,10 +32,12 @@ class Sorcery:
         spell_name = f"Shout_CreateSorceryPoints_{level}"
         status_name = f"SORCERYPOINT_{level}"
         boost = level * multiplier
+        self._mod.loca[spell_name] = f"Create Sorcery Points: {level}"
         self._mod.add(SpellData(
             spell_name,
             SpellType="Shout",
             using=spell_name,
+            DisplayName=self._mod.loca[spell_name],
             Description=self._create_sorcery_points_description,
             DescriptionParams=[level, boost],
         ))

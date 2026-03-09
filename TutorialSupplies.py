@@ -48,7 +48,6 @@ class TutorialSupplies(Mod):
         ])
 
         self._update_helmet_of_arcane_acuity()
-        self._update_sword_of_screams()
 
     @cached_property
     def _camp_clothing(self) -> TreasureChest:

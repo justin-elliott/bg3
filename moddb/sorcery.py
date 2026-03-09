@@ -18,7 +18,7 @@ class Sorcery:
     def increase_create_sorcery_points(self, multiplier: int) -> None:
         for level in range(1, 10):
             self._create_sorcery_points(level, multiplier)
-            self._create_spell_slot(level)
+            self._create_spell_slot(level, multiplier)
 
     @cached_property
     def _create_sorcery_points_description(self) -> str:
@@ -49,13 +49,14 @@ class Sorcery:
             Boosts=[f"ActionResource(SorceryPoint,{boost},0)"],
         ))
     
-    def _create_spell_slot(self, level: int) -> None:
+    def _create_spell_slot(self, level: int, multiplier: int) -> None:
         spell_name = f"Shout_CreateSpellSlot_{level}"
+        status_name = f"SPELLSLOT_{level}"
         if level < 6:
             self._create_spell_slot_1_to_5(spell_name, level)
         else:
-            status_name = f"SPELLSLOT_{level}"
             self._create_spell_slot_6_to_9(spell_name, status_name, level)
+        self._create_spell_slot_status(status_name, level, multiplier)
     
     def _create_spell_slot_1_to_5(self, spell_name: str, level: int) -> None:
         spell_name = f"Shout_CreateSpellSlot_{level}"
@@ -79,10 +80,13 @@ class Sorcery:
             SpellProperties=[f"ApplyStatus({status_name},100,-1)"],
             UseCosts=["BonusActionPoint:1", f"SorceryPoint:{level}"],
         ))
+    
+    def _create_spell_slot_status(self, status_name: str, level: int, multiplier: int) -> None:
         self._mod.add(StatusData(
             status_name,
             StatusType="BOOST",
             using="SPELLSLOT_1",
             DescriptionParams=[level],
-            Boosts=[f"ActionResource(SpellSlot,1,{level})"],
+            Boosts=[f"ActionResource(SpellSlot,{multiplier},{level})"],
         ))
+

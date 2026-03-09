@@ -241,6 +241,17 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _alacrity(self) -> str:
+        name = self.make_name("Alacrity")
+        self.loca[f"{name}_DisplayName"] = "Alacrity"
+        self.add(PassiveData(
+            name,
+            using="Assassinate_Resource",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+        ))
+        return name
+    
+    @cached_property
     def _arcane_adept(self) -> str:
         name = self.make_name("ArcaneAdept")
         BONUS = 2
@@ -443,6 +454,7 @@ class BonusFeatures(Replacer):
             Passives=[extra_attack_1, extra_attack_2, extra_attack_3],
             StackId=extra_attacks_status,
             StackType="Ignore",
+            StatusGroups=["SG_RemoveOnRespec"],
             StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
         ))
 
@@ -732,6 +744,7 @@ class BonusFeatures(Replacer):
             ( 1, "Weaponmaster",        self._weaponmaster),
             ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
             ( 3, "Action Surge",        self._action_surge),
+            ( 3, "Alacrity",            self._alacrity),
             ( 3, "Cunning Actions",     self._cunning_actions),
             ( 3, "Fast Hands",          "FastHands"),
             ( 3, "Fleet of Foot",       self._fleet_of_foot),

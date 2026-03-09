@@ -276,6 +276,11 @@ data "DisplayName" "h838c3265gd53egd906g507agfd7d319d8c42"
 data "Icon" "Skill_Fighter_ActionSurge"
 data "Properties" "IsHidden"
 
+new entry "BonusFeatures_Alacrity"
+type "PassiveData"
+using "Assassinate_Resource"
+data "DisplayName" "h8e2bd9d8g4d3fg13c1g042fgceb404054f8c"
+
 new entry "BonusFeatures_CunningActions"
 type "PassiveData"
 data "Boosts" "UnlockSpell(Shout_Dash_CunningAction);UnlockSpell(Shout_Hide_BonusAction);UnlockSpell(Shout_Disengage_CunningAction)"

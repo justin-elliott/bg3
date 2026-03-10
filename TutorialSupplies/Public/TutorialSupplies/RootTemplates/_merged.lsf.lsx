@@ -505,6 +505,25 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h6d8e8797ga36agf285ge031g586154442139" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6ba86692g842cg70b1g4131ge9170c750143" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="74249612-0a8c-2349-6637-b067c8424236" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_FrozenRapier" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="530a5c21-0f52-428f-bf41-ef33fd6c447b" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_FrozenRapier" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList">
+                            <children>
+                                <node id="Status">
+                                    <attribute id="Object" type="FixedString" value="MAG_FROST_FROST_WEAPON" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h83da98f9g89a1g1883gbd11gbacdd4ee75bb" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h2aac8cd5g3eeege8bdgfc88gbcee0939324a" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />

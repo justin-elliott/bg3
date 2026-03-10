@@ -693,6 +693,7 @@ class TutorialSupplies(Mod):
             description="Contains a selection of weapons.",
             items=[
                 self._blade_of_the_banshee,
+                self._frozen_rapier,
                 self._radiant_silver_sword,
             ],
         )
@@ -770,6 +771,54 @@ class TutorialSupplies(Mod):
             ],
         )
 
+    @cached_property
+    def _splinters_of_frost(self) -> str:
+        name = self.make_name("SplintersOfFrost")
+        self.loca[f"{name}_DisplayName"] = "Splinters of Frost"
+        self.loca[f"{name}_Description"] = """
+            Conjure [1] splinter(s) of ice.
+
+            Reduces the target's <LSTag Tooltip="MovementSpeed">movement speed</LSTag> by [2].
+        """
+        self.add(SpellData(
+            name,
+            SpellType="Projectile",
+            using="Projectile_RayOfFrost",
+            AmountOfTargets=["LevelMapValue(EldritchBlast)"],
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=["LevelMapValue(EldritchBlast)", "Distance(3)"],
+            SpellSuccess=[
+                "DealDamage(1d8,Cold,Magical)",
+                "ApplyStatus(RAY_OF_FROST,100,1)",
+            ],
+        ))
+        return name
+
+    @cached_property
+    def _frozen_rapier(self) -> str:
+        harmonic_dueller_id = UUID("530a5c21-0f52-428f-bf41-ef33fd6c447b")
+        return self._add_weapon(
+            base_name="FrozenRapier",
+            using="WPN_Rapier",
+            parent_template_id=harmonic_dueller_id,
+            display_name="Frozen Rapier",
+            description="""
+                Sculpted from a single shard of perpetually freezing glacial ice, this elegant rapier features a
+                needle-sharp blade that shimmers with frost and exhales a deadly chill.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Cold",
+            boosts=[f"UnlockSpell({self._splinters_of_frost})"],
+            passives_on_equip=[
+                "MAG_Cold_IncreaseColdDamageOnCast_Passive",
+                "MAG_Cold_ChilledOnSpellDamage_Passive",
+            ],
+            proficiency_group="",
+            status_on_equip=["MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_COLD"],
+            weapon_statuses=["MAG_FROST_FROST_WEAPON"],
+        )
+
     def _add_weapon(
             self,
             base_name: str,
@@ -781,10 +830,12 @@ class TutorialSupplies(Mod):
             bonus_damage_type: str | None = None,
             using: str = "WPN_Longsword",
             visual_template: str | None = None,
+            boosts: list[str] | None = None,
             boosts_on_equip_main_hand: list[str] | None = None,
             boosts_on_equip_off_hand: list[str] | None = None,
             default_boosts: list[str] | None = None,
             passives_on_equip: list[str] | None = None,
+            proficiency_group: str | None = None,
             weapon_properties: list[str] | None = None,
             status_on_equip: list[str] | None = None,
             weapon_functors: list[str] | None = None,
@@ -821,6 +872,7 @@ class TutorialSupplies(Mod):
         self.add(Weapon(
             name,
             using=using,
+            Boosts=boosts,
             BoostsOnEquipMainHand=boosts_on_equip_main_hand,
             BoostsOnEquipOffHand=boosts_on_equip_off_hand,
             DefaultBoosts=[
@@ -832,6 +884,7 @@ class TutorialSupplies(Mod):
                 *(default_boosts if default_boosts else []),
             ],
             PassivesOnEquip=passives_on_equip,
+            Proficiency_Group=proficiency_group,
             Rarity="Legendary",
             RootTemplate=game_objects_uuid,
             StatusOnEquip=status_on_equip,

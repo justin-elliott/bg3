@@ -420,6 +420,8 @@ CanMerge 1
 new subtable "1,1"
 object category "I_TutorialSupplies_BladeOfTheBanshee",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_TutorialSupplies_FrozenRapier",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_RadiantSilverSword",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_AbazigalsGoods_TreasureTable"

@@ -30,7 +30,7 @@
     <content contentuid="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1">Blade of the Banshee</content>
     <content contentuid="h0621b5d0g3195gafcdg89cfg729426174b18" version="1">This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail that chills the blood of any who hear it.</content>
     <content contentuid="hce4bee29gd256g167bgbcdcg2b379e89dcf3" version="1">Splinters of Frost</content>
-    <content contentuid="h8042a01dg53fag2037gfaf9g02e5729ae252" version="1">Conjure [1] splinter(s) of ice.&lt;br&gt;&lt;br&gt;Reduces the target's &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; by [2].</content>
+    <content contentuid="h8042a01dg53fag2037gfaf9g02e5729ae252" version="1">Conjure [1] splinter(s) of ice. Reduces the target's &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; by [2].</content>
     <content contentuid="h6ba86692g842cg70b1g4131ge9170c750143" version="1">Frozen Rapier</content>
     <content contentuid="h6d8e8797ga36agf285ge031g586154442139" version="1">Sculpted from a single shard of perpetually freezing glacial ice, this elegant rapier features a needle-sharp blade that shimmers with frost and exhales a deadly chill.</content>
     <content contentuid="h2aac8cd5g3eeege8bdgfc88gbcee0939324a" version="1">Radiant Silver Sword</content>

@@ -777,7 +777,6 @@ class TutorialSupplies(Mod):
         self.loca[f"{name}_DisplayName"] = "Splinters of Frost"
         self.loca[f"{name}_Description"] = """
             Conjure [1] splinter(s) of ice.
-
             Reduces the target's <LSTag Tooltip="MovementSpeed">movement speed</LSTag> by [2].
         """
         self.add(SpellData(

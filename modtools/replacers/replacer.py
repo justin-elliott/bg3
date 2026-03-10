@@ -20,6 +20,7 @@ from modtools.lsx.game import (
 )
 from modtools.localization import Localization
 from modtools.mod import Mod
+from modtools.replacers.lsxpaths import progression_lsx_paths
 from typing import Any, ClassVar, Final
 from uuid import UUID
 
@@ -42,6 +43,7 @@ class Replacer:
         rogue_feats: set[int] = None                   # Rogue feat improvement levels
         other_feats: set[int] = None                   # All other classes feat improvement levels
         included_classes: list[CharacterClass] = None  # The classes belonging together with the named classes
+        level_20: bool = False                         # Include level 20 mod dependency
 
     ACTION_RESOURCES: Final[set[ActionResource]] = frozenset([
         ActionResource.ARCANE_RECOVERY_CHARGES,
@@ -148,15 +150,6 @@ class Replacer:
                         version=kwds.get("version", (4, 1, 1, 1)),
                         cache_dir=kwds.get("cache_dir"))
 
-        self._mod.add(Dependencies.ShortModuleDesc(
-            Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-            MD5="f94d034502139cf8b65a1597554e7236",
-            Name="UnlockLevelCurve",
-            PublishHandle=4166963,
-            UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-            Version64=72057594037927960,
-        ))
-
     @staticmethod
     def _class_list(s: str) -> list[CharacterClass]:
         classes = [CharacterClass(cc) for cc in s.split(",")]
@@ -242,6 +235,8 @@ class Replacer:
                             help=f"Update spell slot progression to be a full caster")
         parser.add_argument("--include", type=str, action="append", default=include,
                             help="Include a third-party mod in the progression.")
+        parser.add_argument("--level-20", action="store_true",
+                            help="Include level 20 mod dependency.")
         self._args = Replacer.Args(**vars(parser.parse_args()))
 
         if self.args.name is None:
@@ -357,6 +352,19 @@ class Replacer:
 
     def build(self) -> None:
         """Build the mod."""
+        if self._args.level_20:
+            self._mod.add(Dependencies.ShortModuleDesc(
+                Folder="UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+                MD5="f94d034502139cf8b65a1597554e7236",
+                Name="UnlockLevelCurve",
+                PublishHandle=4166963,
+                UUID="a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+                Version64=72057594037927960,
+            ))
+            progression_lsx_paths.append(
+                "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
+                    "Progressions/Progressions.lsx")
+
         for builder, fns in self._builders.items():
             builder(self, fns)
         self._mod.build()

@@ -63,38 +63,6 @@
                     <attribute id="UUID" type="guid" value="64a39941-a6a6-fc17-e3ec-414cfd927998" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Dragonborn" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_DragonbornAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_DragonbornBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="a56bee67-50a7-fb99-0014-b261d610f87d" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Dragonborn" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_DragonbornAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_DragonbornBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="38c23286-302e-5662-2b93-6fbc9472c484" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Dragonborn" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_DragonbornAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_DragonbornBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="9ec8fa18-ccf7-d666-d875-0de0b9cb4b42" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Dragonborn" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_DragonbornAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_DragonbornBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="881354c6-cd7d-9485-0ac7-fd3d96ae22de" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0);ProficiencyBonus(Skill,Perception)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Drow" />
@@ -153,38 +121,6 @@
                     <attribute id="UUID" type="guid" value="cefd2e6d-f937-68e7-2d02-313a9b2c4b69" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Drow" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_DrowAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_DrowBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="UUID" type="guid" value="f0bc2727-3e38-69f1-06cd-bfa78570e338" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Drow" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_DrowAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_DrowBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="UUID" type="guid" value="7e459250-a02c-cb4c-ae8e-d35a0c595356" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Drow" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_DrowAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_DrowBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="UUID" type="guid" value="f5b1aa50-caea-4657-6639-fe95773f958f" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Drow" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_DrowAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_DrowBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
-                    <attribute id="UUID" type="guid" value="8db8b3b7-f1d0-740b-270c-ad91a9d4d1ea" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Dwarf" />
@@ -241,38 +177,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(a7569387-a165-e1b6-4de3-0f4624f6056e,1,BonusFeatures_DwarfAbilityImprovement_Level_11);SelectPassives(7c2dc3cd-d9aa-64cb-51c1-e5c50dcf5657,1,BonusFeatures_DwarfBonusFeatures_Level_11)" />
                     <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
                     <attribute id="UUID" type="guid" value="21dc4292-48c5-23c3-6d28-e03d32fd6b79" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Dwarf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_DwarfAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_DwarfBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="329983b9-d762-20e5-04a1-d0bc1ba00df1" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Dwarf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_DwarfAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_DwarfBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="5cdc5446-fa1d-0c9a-616c-bbcabeca1cf6" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Dwarf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_DwarfAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_DwarfBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="11e5e4b4-c8e2-d6e0-a9d4-6a53d85e810a" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Dwarf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_DwarfAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_DwarfBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="29164314-e369-fe5a-d8cc-714be358101e" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="false" />
@@ -334,38 +238,6 @@
                     <attribute id="UUID" type="guid" value="d1159f46-b3cb-c6d1-aad1-ad6f1753941c" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Elf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_ElfAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_ElfBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="UUID" type="guid" value="0a5dccf4-4d93-7b21-3c2c-ae799a7f9821" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Elf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_ElfAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_ElfBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="UUID" type="guid" value="83dcb262-26f0-4c5b-2e7b-c7444b691e07" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Elf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_ElfAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_ElfBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="UUID" type="guid" value="5287db65-8bd5-b00d-4a2d-f95f4ee59c69" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Elf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_ElfAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_ElfBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="UUID" type="guid" value="b084da50-c519-cddc-922b-834106012d9b" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Githyanki" />
@@ -422,38 +294,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(a7569387-a165-e1b6-4de3-0f4624f6056e,1,BonusFeatures_GithyankiAbilityImprovement_Level_11);SelectPassives(7c2dc3cd-d9aa-64cb-51c1-e5c50dcf5657,1,BonusFeatures_GithyankiBonusFeatures_Level_11)" />
                     <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
                     <attribute id="UUID" type="guid" value="4effa034-65dc-eff7-b3c2-2b8f266bb252" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Githyanki" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_GithyankiAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_GithyankiBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="3b81404d-dfd4-9a7e-fbba-e55032a50bed" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Githyanki" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_GithyankiAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_GithyankiBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="ef03964a-c84b-cfd0-9f75-09ffaa5c9f78" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Githyanki" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_GithyankiAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_GithyankiBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="b4f0e60d-d351-c59f-5927-39e362119a30" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Githyanki" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_GithyankiAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_GithyankiBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="2c91beff-739a-cc01-c7a7-af2a6e3682a9" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
@@ -514,38 +354,6 @@
                     <attribute id="UUID" type="guid" value="421e912d-4e5c-4242-5d8b-e2ce78dfaeaa" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Gnome" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_GnomeAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_GnomeBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="e9b45366-4b81-8b16-b0fa-4d9e2c82ce40" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Gnome" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_GnomeAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_GnomeBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="3cc4e91d-42e4-58eb-45c7-0e09c8f8a6f9" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Gnome" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_GnomeAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_GnomeBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="77174228-da8b-a1aa-ca93-ffd7c0407138" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Gnome" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_GnomeAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_GnomeBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="cc5d4085-d99c-08a3-0989-5239ff87a575" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Halfling" />
@@ -602,38 +410,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(a7569387-a165-e1b6-4de3-0f4624f6056e,1,BonusFeatures_HalflingAbilityImprovement_Level_11);SelectPassives(7c2dc3cd-d9aa-64cb-51c1-e5c50dcf5657,1,BonusFeatures_HalflingBonusFeatures_Level_11)" />
                     <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
                     <attribute id="UUID" type="guid" value="2aef9d76-8855-4038-c152-9317ea44dff1" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Halfling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_HalflingAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_HalflingBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="UUID" type="guid" value="d1d3c978-ffbf-e7f8-5057-23da65d0f4a9" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Halfling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_HalflingAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_HalflingBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="UUID" type="guid" value="7a3676db-61a5-a828-c0e8-7d07bebda0ac" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Halfling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_HalflingAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_HalflingBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="UUID" type="guid" value="605890c2-df2c-0259-cd96-efa54b8abff5" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Halfling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_HalflingAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_HalflingBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="UUID" type="guid" value="b6ca0bcb-26e7-2ed5-e976-39a00273b3e8" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
@@ -694,38 +470,6 @@
                     <attribute id="UUID" type="guid" value="d5c78479-a4e7-e05d-302d-8a831778d600" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="HalfElf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_HalfElfAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_HalfElfBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="UUID" type="guid" value="829b208d-2ef6-9a0a-939d-e572af15e168" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="HalfElf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_HalfElfAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_HalfElfBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="UUID" type="guid" value="df3b6b96-e61c-57e9-ac87-94b3303982dc" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="HalfElf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_HalfElfAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_HalfElfBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="UUID" type="guid" value="27f539d7-a41c-3a38-8a55-26d27ae44c9e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="HalfElf" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_HalfElfAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_HalfElfBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="UUID" type="guid" value="1dbc06fc-7562-f127-ac39-672e42f4c134" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0);ProficiencyBonus(Skill,Intimidation)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="HalfOrc" />
@@ -782,38 +526,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(a7569387-a165-e1b6-4de3-0f4624f6056e,1,BonusFeatures_HalfOrcAbilityImprovement_Level_11);SelectPassives(7c2dc3cd-d9aa-64cb-51c1-e5c50dcf5657,1,BonusFeatures_HalfOrcBonusFeatures_Level_11)" />
                     <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
                     <attribute id="UUID" type="guid" value="7ffe03c4-a20a-1f33-ac1b-1223b61f0ed0" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="HalfOrc" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_HalfOrcAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_HalfOrcBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
-                    <attribute id="UUID" type="guid" value="dd83ed4e-e10e-834f-80c1-a206483c3352" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="HalfOrc" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_HalfOrcAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_HalfOrcBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
-                    <attribute id="UUID" type="guid" value="e481e061-4402-ef3b-5656-7664cc9f9276" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="HalfOrc" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_HalfOrcAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_HalfOrcBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
-                    <attribute id="UUID" type="guid" value="a6442e56-ccf2-2a92-923d-0fa235e95e72" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="HalfOrc" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_HalfOrcAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_HalfOrcBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
-                    <attribute id="UUID" type="guid" value="7095541e-3929-0304-250b-5b907d2692c3" />
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="false" />
@@ -875,38 +587,6 @@
                     <attribute id="UUID" type="guid" value="e6e645a1-b799-0534-da6b-cb0663a6d0a5" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Human" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_HumanAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_HumanBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
-                    <attribute id="UUID" type="guid" value="73a24389-5813-4773-1a89-10ab1a401306" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Human" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_HumanAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_HumanBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
-                    <attribute id="UUID" type="guid" value="bb5c404f-4bf9-8ade-8e42-558a67331dfc" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Human" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_HumanAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_HumanBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
-                    <attribute id="UUID" type="guid" value="ba9d3732-9b90-9bec-2152-cd8dfa8c05bc" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Human" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_HumanAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_HumanBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
-                    <attribute id="UUID" type="guid" value="8bcddf10-23bb-a395-61b5-84adc7d7efd9" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Tiefling" />
@@ -963,38 +643,6 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(a7569387-a165-e1b6-4de3-0f4624f6056e,1,BonusFeatures_TieflingAbilityImprovement_Level_11);SelectPassives(7c2dc3cd-d9aa-64cb-51c1-e5c50dcf5657,1,BonusFeatures_TieflingBonusFeatures_Level_11)" />
                     <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
                     <attribute id="UUID" type="guid" value="df9e8d3a-d459-6d0a-ded3-af5a3415d152" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="13" />
-                    <attribute id="Name" type="LSString" value="Tiefling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(60c3c922-743e-0c3a-3774-ecd0792b478a,1,BonusFeatures_TieflingAbilityImprovement_Level_13);SelectPassives(a4ec2a56-bc15-e546-bc10-d3db75122218,1,BonusFeatures_TieflingBonusFeatures_Level_13)" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="a86c72be-7e60-cd36-27ed-1877605f80a1" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="15" />
-                    <attribute id="Name" type="LSString" value="Tiefling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(fc3ef64f-ba57-01be-aac7-822feac4029c,1,BonusFeatures_TieflingAbilityImprovement_Level_15);SelectPassives(07c55dbb-328d-7c9c-3e74-1b3554454841,1,BonusFeatures_TieflingBonusFeatures_Level_15)" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="ac607a52-5f8e-972c-717b-0d82afafaf4a" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="17" />
-                    <attribute id="Name" type="LSString" value="Tiefling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(11f8b585-e8e4-22e4-0112-85bef9dbbc15,1,BonusFeatures_TieflingAbilityImprovement_Level_17);SelectPassives(8d899180-e5ca-dca1-6bb4-d7511c8e14fe,1,BonusFeatures_TieflingBonusFeatures_Level_17)" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="592af603-0bb6-74d2-c4da-bf4503cab10e" />
-                </node>
-                <node id="Progression">
-                    <attribute id="Level" type="uint8" value="19" />
-                    <attribute id="Name" type="LSString" value="Tiefling" />
-                    <attribute id="ProgressionType" type="uint8" value="2" />
-                    <attribute id="Selectors" type="LSString" value="SelectPassives(2b118101-b651-6c59-0670-17c5c33bd06b,1,BonusFeatures_TieflingAbilityImprovement_Level_19);SelectPassives(685fb79e-4ee5-cab8-ea34-cda89e88a1ce,1,BonusFeatures_TieflingBonusFeatures_Level_19)" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="762f8862-4ef3-5f4b-f487-050d4e058701" />
                 </node>
             </children>
         </node>

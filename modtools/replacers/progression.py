@@ -9,6 +9,7 @@ from modtools.lsx.game import BASE_CHARACTER_CLASSES, CharacterClass, CharacterR
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression
 from modtools.mod import Mod
+from modtools.replacers.lsxpaths import progression_lsx_paths
 from modtools.replacers.replacer import Replacer
 
 
@@ -27,19 +28,6 @@ type NameLevelKey = tuple[str, int, bool]
 type MultiNameLevelKey = tuple[list[str], list[int], bool]
 type ProgressionBuilder = Callable[[Replacer, Progression], None]
 type ProgressionBuilderDict = dict[NameLevelKey, list[ProgressionBuilder]]
-
-
-_progression_lsx_paths = [
-    "Shared.pak/Public/Shared/Progressions/Progressions.lsx",
-    "Shared.pak/Public/SharedDev/Progressions/Progressions.lsx",
-    "GustavX.pak/Public/GustavX/Progressions/Progressions.lsx",
-    "unlocklevelcurve_a2ffd0e4-c407-4p40.pak/Public/UnlockLevelCurve_a2ffd0e4-c407-8642-2611-c934ea0b0a77/"
-    + "Progressions/Progressions.lsx"
-]
-
-
-def include_progression(progression_lsx_path: str) -> None:
-    _progression_lsx_paths.append(progression_lsx_path)
 
 
 def _by_uuid(progression: Progression) -> str:
@@ -62,8 +50,8 @@ def _progression_order(progression: Progression) -> tuple[str, int, bool]:
 
 def load_progressions(replacer_or_mod: Replacer | Mod) -> list[Progression]:
     """Load the game's Progressions from the .pak cache."""
-    progressions_lsx = Lsx.load(replacer_or_mod.get_cache_path(_progression_lsx_paths[0]))
-    additional_lsx_paths = _progression_lsx_paths[1:] + (replacer_or_mod.args.include or [])
+    progressions_lsx = Lsx.load(replacer_or_mod.get_cache_path(progression_lsx_paths[0]))
+    additional_lsx_paths = progression_lsx_paths[1:] + (replacer_or_mod.args.include or [])
     for lsx_path in additional_lsx_paths:
         lsx = Lsx.load(replacer_or_mod.get_cache_path(lsx_path))
         progressions_lsx.children.update(lsx.children, key=_by_uuid)
@@ -120,6 +108,8 @@ def _create_progressions(replacer: Replacer,
     """Create and build progressions for builders that did not match existing progressions."""
     for progression_key, builder_fns in builders.items():
         name, level, is_multiclass = progression_key
+        if level > 12 and not replacer.args.level_20:
+            continue
 
         if name in CharacterRace:
             progression_type_number = 2
@@ -192,7 +182,7 @@ class ProgressionDecorator:
 
     @staticmethod
     def include(pak_path: str) -> None:
-        _progression_lsx_paths.append(pak_path)
+        progression_lsx_paths.append(pak_path)
 
 
 progression = ProgressionDecorator()

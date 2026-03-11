@@ -33,6 +33,8 @@ from typing import Final
 
 
 class BonusFeatures(Replacer):
+    _ABILITY_BONUS: Final[int] = 2
+
     _SKILL_LIST: Final[list[str]] = [
         Skills.PERSUASION,
         Skills.SLEIGHT_OF_HAND,
@@ -56,6 +58,7 @@ class BonusFeatures(Replacer):
 
     _no_selection_ids: set[str]
     _passive_list_uuids: set[str]
+    _loca_handles: dict[str, str]
 
     def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
@@ -66,6 +69,7 @@ class BonusFeatures(Replacer):
         
         self._no_selection_ids = set()
         self._passive_list_uuids = set()
+        self._loca_handles = {}
 
         self._remove_asi_from_feats()
 
@@ -130,17 +134,26 @@ class BonusFeatures(Replacer):
         ability_name = ability.name.title() if ability is not None else "None"
         passive_name = self.make_name(f"AbilityImprovement_{ability_name}_{name}")
 
-        self.loca[f"{passive_name}_DisplayName"] = f"Ability Improvement: {ability_name}"
-        self.loca[f"{passive_name}_Description"] = (
-            f"Increase your {ability_name} by 1, to a maximum of 30."
-            if ability is not None else "No ability increase."
+        display_name = f"Ability Improvement: {ability_name}"
+        if (display_name_handle := self._loca_handles.get(display_name)) is None:
+            self.loca[f"{passive_name}_DisplayName"] = display_name
+            display_name_handle = self.loca[f"{passive_name}_DisplayName"]
+            self._loca_handles[display_name] = display_name_handle
+    
+        description = (
+            f"Increase your {ability_name} by {self._ABILITY_BONUS}, to a maximum of 30."
+            if ability else "No ability increase."
         )
+        if (description_handle := self._loca_handles.get(description)) is None:
+            self.loca[f"{passive_name}_Description"] = description
+            description_handle = self.loca[f"{passive_name}_Description"]
+            self._loca_handles[description] = description_handle
 
         self.add(PassiveData(
             passive_name,
-            DisplayName=self.loca[f"{passive_name}_DisplayName"],
-            Description=self.loca[f"{passive_name}_Description"],
-            Boosts=[f"Ability({ability_name},1,30)"] if ability is not None else None,
+            DisplayName=display_name_handle,
+            Description=description_handle,
+            Boosts=[f"Ability({ability_name},{self._ABILITY_BONUS},30)"] if ability is not None else None,
             Properties=["IsHidden"],
         ))
 
@@ -153,7 +166,9 @@ class BonusFeatures(Replacer):
 
     @cached_property
     def _ability_improvement_description(self) -> str:
-        self.loca["AbilityImprovement_Description"] = "Increase one of your abilities by 1, to a maximum of 30."
+        self.loca["AbilityImprovement_Description"] = f"""
+            Increase one of your abilities by {self._ABILITY_BONUS}, to a maximum of 30.
+        """
         return self.loca["AbilityImprovement_Description"]
 
     @cache
@@ -613,6 +628,29 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _martial_artist(self) -> str:
+        name = self.make_name("MartialArtist")
+        self.loca[f"{name}_DisplayName"] = "Martial Artist"
+        self.loca[f"{name}_Description"] = """
+            When you make melee unarmed attacks, your Dexterity <LSTag Tooltip="AbilityModifier">Modifier</LSTag> is
+            added twice to the damage and <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
+            Additionally, your damage dice are rolled twice and use the highest result.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "IF(IsMeleeUnarmedAttack()):RollBonus(Attack,DexterityModifier)",
+                "IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(DexterityModifier)",
+                "IF(IsMeleeUnarmedAttack()):Reroll(Damage,20,false)",
+            ],
+            Icon="Action_Monk_FlurryOfBlows",
+            Properties=["Highlighted"],
+        ))
+        return name
+
+    @cached_property
     def _misty_step(self) -> str:
         name = self.make_name("MistyStep")
         self.loca[f"{name}_DisplayName"] = "Misty Step"
@@ -737,6 +775,7 @@ class BonusFeatures(Replacer):
             ( 1, "Duelist",             self._duelist),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
+            ( 1, "Martial Artist",      self._martial_artist),
             ( 1, "Mask of Many Faces",  "MaskOfManyFaces"),
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
             ( 1, "Persuasive",          self._persuasive),
@@ -887,7 +926,7 @@ class BonusFeatures(Replacer):
     @progression(BASE_CHARACTER_RACES, 2)
     def level_2(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
-            "SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress)),
+            "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
 
     @progression(BASE_CHARACTER_RACES, range(3, 21, 2))

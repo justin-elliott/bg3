@@ -14,7 +14,7 @@ from modtools.gamedata import (
     StatusData,
     Weapon,
 )
-from modtools.lsx.game import GameObjects
+from modtools.lsx.game import CharacterAbility, GameObjects
 from modtools.replacers import Mod
 from modtools.text import ItemCombinations, TreasureTable
 
@@ -237,6 +237,8 @@ class TutorialSupplies(Mod):
             display_name="Potions",
             description="Contains a selection of potions.",
             items=[
+                self._augmentation_potion,
+                self._abatement_potion,
                 self._bolster_potion,
                 self._elemental_weapon_potion,
                 self._knowledge_potion,
@@ -319,6 +321,54 @@ class TutorialSupplies(Mod):
             items=[dye for dye, _ in base_dyes],
         )
 
+    @cached_property
+    def _augmentation_status(self) -> str:
+        name = self.make_name("AUGMENTATION")
+        self.loca[f"{name}_DisplayName"] = "Augmentation"
+        self.loca[f"{name}_Description"] = """
+            Increase all of your abilities, to a maximum of 30.
+        """
+        self.add(StatusData(
+            name,
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Icon="Spell_Transmutation_EnhanceAbility",
+            Boosts=[f"Ability({ability.name.title()},1,30)" for ability in CharacterAbility],
+            StackId=name,
+            StackType="Additive",
+            StatusPropertyFlags=["ApplyToDead", "FreezeDuration", "IgnoreResting", "MultiplyEffectsByDuration"],
+        ))
+        return name
+
+    @cached_property
+    def _augmentation_potion(self) -> str:
+        return self._add_potion(
+            "AugmentationPotion",
+            display_name="Elixir of Augmentation",
+            description=f"""
+                Drinking this elixir augments all of your abilities, increasing each time it is consumed.
+            """,
+            icon="Item_UNI_Poison_Brewer",
+            on_apply_functors=[f"ApplyStatus({self._augmentation_status},100,1)"],
+            status_duration=0,
+            tick_type="StartTurn",
+        )
+
+    @cached_property
+    def _abatement_potion(self) -> str:
+        return self._add_potion(
+            "AbatementPotion",
+            display_name="Elixir of Abatement",
+            description=f"""
+                Drinking this elixir removes the augmentation from your abilities.
+            """,
+            icon="Item_GRN_Poison_vial_A",
+            on_apply_functors=[f"RemoveStatus({self._augmentation_status})"],
+            status_duration=0,
+            tick_type="StartTurn",
+        )
+    
     @cached_property
     def _bolster(self) -> str:
         return Bolster(self).add_bolster()
@@ -485,9 +535,13 @@ class TutorialSupplies(Mod):
             icon: str,
             status_duration: int = -1,
             boosts: list[str] = None,
+            on_apply_functors: list[str] = None,
+            on_remove_functors: list[str] = None,
             passives: list[str] = None,
             stack_id: str = None,
-            status_property_flags: list[str] = None) -> str:
+            stack_type: str = None,
+            status_property_flags: list[str] = None,
+            tick_type: str = None) -> str:
         name = self.make_name(short_name)
         uuid = self.make_uuid(name)
 
@@ -604,9 +658,13 @@ class TutorialSupplies(Mod):
             Description=self.loca[f"{name}_Description"],
             Icon=icon,
             Boosts=boosts,
+            OnApplyFunctors=on_apply_functors,
+            OnRemoveFunctors=on_remove_functors,
             Passives=passives,
             StackId=name.upper() if stack_id is None else stack_id,
+            StackType=stack_type,
             StatusPropertyFlags=status_property_flags,
+            TickType=tick_type,
         ))
 
         return name
@@ -813,7 +871,6 @@ class TutorialSupplies(Mod):
                 "MAG_Cold_IncreaseColdDamageOnCast_Passive",
                 "MAG_Cold_ChilledOnSpellDamage_Passive",
             ],
-            proficiency_group="",
             status_on_equip=["MAG_LEGENDARY_CHROMATIC_ATTUNEMENT_COLD"],
             weapon_statuses=["MAG_FROST_FROST_WEAPON"],
         )

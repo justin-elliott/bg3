@@ -295,20 +295,6 @@
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_2" />
-                    <attribute id="UUID" type="guid" value="cc7c92ac-471c-55df-7f68-5732d908a7d8" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_2" />
-                    <attribute id="UUID" type="guid" value="7adfcfe3-d86f-e848-1d8c-71f5cd159c3b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
                     <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfOrcBonusFeatures_Level_2" />
                     <attribute id="UUID" type="guid" value="12c9bf33-fc78-1add-bc24-4dfa93dedcdd" />
@@ -323,9 +309,9 @@
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_2" />
-                    <attribute id="UUID" type="guid" value="5f7b5276-067c-df42-90f5-f9c47a1f0cea" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_2" />
+                    <attribute id="UUID" type="guid" value="cc7c92ac-471c-55df-7f68-5732d908a7d8" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
@@ -335,200 +321,18 @@
                     <attribute id="UUID" type="guid" value="2aa3453b-50c0-37b5-aca1-4c3174ef445a" />
                 </node>
                 <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="04c05aa6-8468-cb18-b105-a0939f32551c" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="7c4559df-0e31-c6e5-8b41-7d9517c8bf5b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="5b500a3d-d4f8-cb18-bc8d-74abbb76e23c" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="9298461a-a169-97a0-2655-dd9e07148b91" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="67a3bc34-53a5-64e7-4dc4-7ae5cad5c73b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="6651cb4f-456c-5a21-b908-ddb3eba28193" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="830034af-3803-8dc2-a128-6623cdcc5371" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="d4c5e927-c76a-25cd-ebc6-ebce0cbb468b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_3" />
-                    <attribute id="UUID" type="guid" value="4bcb345a-d8cf-8118-e648-68941dbc017b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_3" />
-                    <attribute id="UUID" type="guid" value="491e9587-bdae-7d73-3c0d-774ee0e9ad55" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="48e7fb50-e1a3-ca68-5c0c-232d89ae4530" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="305b16b6-e50e-b552-1df0-be817fa1b346" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="6a9d4790-88b9-24ea-7381-fb5b41587761" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="a272aae8-20b0-1692-5ede-5c9c3550baef" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="ab151c41-9764-8809-6eb5-344a5012fed5" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="bbf2ceb3-46e1-13db-aa9a-ff9ca2bd88f7" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="b8aad10e-2a82-6c5b-8d38-b33bb89e3d83" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="a4511bbd-1c8c-856b-226a-8fd3ffc7c944" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_3" />
-                    <attribute id="UUID" type="guid" value="69b446d0-02fc-3578-71ae-e5435c3a8a38" />
-                </node>
-                <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
                     <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_3" />
-                    <attribute id="UUID" type="guid" value="ab4dd263-f96a-c6da-f737-9473cf35274e" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="aeb29e64-5e4f-d007-8b10-e8a8cdfa08bf" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_2" />
+                    <attribute id="UUID" type="guid" value="7adfcfe3-d86f-e848-1d8c-71f5cd159c3b" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="3e6181f0-b34b-2836-b3a6-e57437950b2f" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="bfd5ae60-fd93-586c-bb28-183dd5b2a47b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="c5dea6fc-5d5b-2f15-ab3d-6d0af1efc78d" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="b440f79c-238e-1fd7-bc6f-00d131afa182" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="85360a70-62ba-5756-05ba-ba9c1d63d8b4" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="8f6ee246-3e73-1097-f346-274fbca35cb4" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="4da27164-b329-ba92-1d49-16dc28c442d9" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_2" />
+                    <attribute id="UUID" type="guid" value="5f7b5276-067c-df42-90f5-f9c47a1f0cea" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
@@ -673,72 +477,324 @@
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_3" />
-                    <attribute id="UUID" type="guid" value="f0e22cd6-a8f7-37db-46ac-6cee8c4a4e10" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_3" />
+                    <attribute id="UUID" type="guid" value="4bcb345a-d8cf-8118-e648-68941dbc017b" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_3" />
-                    <attribute id="UUID" type="guid" value="573d9c59-7802-f2e0-e8af-24a192be594a" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="491e9587-bdae-7d73-3c0d-774ee0e9ad55" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="4f29619f-1f86-529c-2d53-4e66400e0c49" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="48e7fb50-e1a3-ca68-5c0c-232d89ae4530" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="75a8e333-d5c5-4f19-bf81-abbc06c02772" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="305b16b6-e50e-b552-1df0-be817fa1b346" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="6a32ad76-5c82-0cd2-7d54-e602c8498765" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="6a9d4790-88b9-24ea-7381-fb5b41587761" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="90e35353-0a24-83cd-e738-b0ceaf5de353" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="a272aae8-20b0-1692-5ede-5c9c3550baef" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="29e60ef6-c78d-14e9-92a6-547de7cb15c1" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="ab151c41-9764-8809-6eb5-344a5012fed5" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="c82f4bca-faf3-b1ac-f76b-3e8af9c5e3d5" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="bbf2ceb3-46e1-13db-aa9a-ff9ca2bd88f7" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="aced2c52-3407-3cb2-c1b3-86ef114c1b27" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="b8aad10e-2a82-6c5b-8d38-b33bb89e3d83" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="ce078fb2-b0d6-be65-6712-750441ab00ce" />
+                    <attribute id="ProgressionTableId" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalflingBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="a4511bbd-1c8c-856b-226a-8fd3ffc7c944" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_3" />
+                    <attribute id="UUID" type="guid" value="7ad217e2-a9cf-a419-8379-aab41ab4654e" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="8d75b79b-793c-76e3-bc1a-7d6c4daf1b0b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="2980c890-68fd-2427-2cde-9e8ffdda6853" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="39e36fdb-549e-311f-f930-090cf9142c44" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="ad584e70-c5e1-ce22-93f9-b61c8a549226" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="d85e8759-c95e-4992-45ad-2cca97fbbeee" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="3f549dea-a441-9221-a9e1-f6b3494c4e87" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="af0338c3-7135-da97-7848-e39410bf5aeb" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="2797edd5-57c4-369b-e962-8d83fa619d4d" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="80c183c4-793e-b0f0-c457-001373350102" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_3" />
+                    <attribute id="UUID" type="guid" value="69b446d0-02fc-3578-71ae-e5435c3a8a38" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="ab4dd263-f96a-c6da-f737-9473cf35274e" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="aeb29e64-5e4f-d007-8b10-e8a8cdfa08bf" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="3e6181f0-b34b-2836-b3a6-e57437950b2f" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="bfd5ae60-fd93-586c-bb28-183dd5b2a47b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="c5dea6fc-5d5b-2f15-ab3d-6d0af1efc78d" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="b440f79c-238e-1fd7-bc6f-00d131afa182" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="85360a70-62ba-5756-05ba-ba9c1d63d8b4" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="8f6ee246-3e73-1097-f346-274fbca35cb4" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DragonbornBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="4da27164-b329-ba92-1d49-16dc28c442d9" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="04c05aa6-8468-cb18-b105-a0939f32551c" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="7c4559df-0e31-c6e5-8b41-7d9517c8bf5b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="5b500a3d-d4f8-cb18-bc8d-74abbb76e23c" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="9298461a-a169-97a0-2655-dd9e07148b91" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="67a3bc34-53a5-64e7-4dc4-7ae5cad5c73b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="6651cb4f-456c-5a21-b908-ddb3eba28193" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="830034af-3803-8dc2-a128-6623cdcc5371" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_ElfBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="d4c5e927-c76a-25cd-ebc6-ebce0cbb468b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="0e2e1bf1-f232-3722-51c1-00431e9d34e4" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="c3906da9-eb68-014e-e53c-8b4ad450edbd" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="0f231936-a715-9922-6618-416f8f840494" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="aaf21436-a4c0-c86b-b331-28d280ad74c5" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="b8714a00-72cd-1a85-d987-1e283885fd02" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="b651bf00-6724-84d7-4c9e-f0746c267e1b" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="248c450e-aa88-a6fb-941c-c8940fec8496" />
+                </node>
+                <node id="ProgressionDescription">
+                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
+                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="5035dedc-1e7c-7afe-6a3b-01b93c3a834f" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
@@ -883,128 +939,72 @@
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_3" />
-                    <attribute id="UUID" type="guid" value="7ad217e2-a9cf-a419-8379-aab41ab4654e" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_3" />
+                    <attribute id="UUID" type="guid" value="f0e22cd6-a8f7-37db-46ac-6cee8c4a4e10" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_3" />
-                    <attribute id="UUID" type="guid" value="8d75b79b-793c-76e3-bc1a-7d6c4daf1b0b" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_3" />
+                    <attribute id="UUID" type="guid" value="573d9c59-7802-f2e0-e8af-24a192be594a" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="2980c890-68fd-2427-2cde-9e8ffdda6853" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_5" />
+                    <attribute id="UUID" type="guid" value="4f29619f-1f86-529c-2d53-4e66400e0c49" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="39e36fdb-549e-311f-f930-090cf9142c44" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_5" />
+                    <attribute id="UUID" type="guid" value="75a8e333-d5c5-4f19-bf81-abbc06c02772" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="ad584e70-c5e1-ce22-93f9-b61c8a549226" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_7" />
+                    <attribute id="UUID" type="guid" value="6a32ad76-5c82-0cd2-7d54-e602c8498765" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="d85e8759-c95e-4992-45ad-2cca97fbbeee" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_7" />
+                    <attribute id="UUID" type="guid" value="90e35353-0a24-83cd-e738-b0ceaf5de353" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="3f549dea-a441-9221-a9e1-f6b3494c4e87" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_9" />
+                    <attribute id="UUID" type="guid" value="29e60ef6-c78d-14e9-92a6-547de7cb15c1" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="af0338c3-7135-da97-7848-e39410bf5aeb" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_9" />
+                    <attribute id="UUID" type="guid" value="c82f4bca-faf3-b1ac-f76b-3e8af9c5e3d5" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="2797edd5-57c4-369b-e962-8d83fa619d4d" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfAbilityImprovement_Level_11" />
+                    <attribute id="UUID" type="guid" value="aced2c52-3407-3cb2-c1b3-86ef114c1b27" />
                 </node>
                 <node id="ProgressionDescription">
                     <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_GnomeBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="80c183c4-793e-b0f0-c457-001373350102" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_5" />
-                    <attribute id="UUID" type="guid" value="0e2e1bf1-f232-3722-51c1-00431e9d34e4" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_5" />
-                    <attribute id="UUID" type="guid" value="c3906da9-eb68-014e-e53c-8b4ad450edbd" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_7" />
-                    <attribute id="UUID" type="guid" value="0f231936-a715-9922-6618-416f8f840494" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_7" />
-                    <attribute id="UUID" type="guid" value="aaf21436-a4c0-c86b-b331-28d280ad74c5" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_9" />
-                    <attribute id="UUID" type="guid" value="b8714a00-72cd-1a85-d987-1e283885fd02" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_9" />
-                    <attribute id="UUID" type="guid" value="b651bf00-6724-84d7-4c9e-f0746c267e1b" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfAbilityImprovement_Level_11" />
-                    <attribute id="UUID" type="guid" value="248c450e-aa88-a6fb-941c-c8940fec8496" />
-                </node>
-                <node id="ProgressionDescription">
-                    <attribute id="Description" type="TranslatedString" handle="hf057760cg2079g1b13g6131g15ef80b425b4" version="1" />
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1" />
-                    <attribute id="ProgressionTableId" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
-                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_HalfElfBonusFeatures_Level_11" />
-                    <attribute id="UUID" type="guid" value="5035dedc-1e7c-7afe-6a3b-01b93c3a834f" />
+                    <attribute id="ProgressionTableId" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="SelectorId" type="FixedString" value="BonusFeatures_DwarfBonusFeatures_Level_11" />
+                    <attribute id="UUID" type="guid" value="ce078fb2-b0d6-be65-6712-750441ab00ce" />
                 </node>
             </children>
         </node>

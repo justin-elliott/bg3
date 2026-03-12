@@ -8,6 +8,7 @@ import os
 
 from collections.abc import Iterable
 from moddb import (
+    ElementalWeapon,
     EmpoweredSpells,
     Movement,
 )
@@ -412,7 +413,7 @@ class BonusFeatures(Replacer):
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            Boosts=["UnlockSpell(Target_MAG_ElementalWeapon)"],
+            Boosts=[f"UnlockSpell({ElementalWeapon(self.mod).add_elemental_weapon()})"],
             Icon="Spell_Transmutation_ElementalWeapon",
             Properties=["Highlighted"],
         ))

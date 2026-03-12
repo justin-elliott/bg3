@@ -57,7 +57,7 @@ data "StatusPropertyFlags" "DisableOverhead;IgnoreResting;DisableCombatlog;Disab
 new entry "TUTORIALSUPPLIES_ELEMENTALWEAPONPOTION"
 type "StatusData"
 data "StatusType" "BOOST"
-data "Boosts" "UnlockSpell(Target_MAG_ElementalWeapon)"
+data "Boosts" "UnlockSpell(TutorialSupplies_ElementalWeapon)"
 data "Description" "hdb237db6g0491g5b30g157bgd2e858a22e8e"
 data "DisplayName" "h7bae724cgf856g7c81g8c92gb7246e37f075"
 data "Icon" "Item_CONS_Potion_FireBreath_A"

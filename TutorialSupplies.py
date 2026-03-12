@@ -5,7 +5,11 @@ from functools import cached_property
 from typing import Iterable
 from uuid import UUID
 
-from moddb import Bolster, Knowledge
+from moddb import (
+    Bolster,
+    ElementalWeapon,
+    Knowledge,
+)
 from modtools.gamedata import (
     Armor,
     ObjectData,
@@ -386,16 +390,20 @@ class TutorialSupplies(Mod):
         )
     
     @cached_property
+    def _elemental_weapon(self) -> str:
+        return ElementalWeapon(self).add_elemental_weapon()
+
+    @cached_property
     def _elemental_weapon_potion(self) -> str:
         return self._add_potion(
             "ElementalWeaponPotion",
             display_name="Elixir of Elemental Weaponry",
             description=f"""
                 Drinking this elixir grants the
-                <LSTag Type="Spell" Tooltip="Target_MAG_ElementalWeapon">Elemental Weapon</LSTag> spell.
+                <LSTag Type="Spell" Tooltip="{self._elemental_weapon}">Elemental Weapon</LSTag> spell.
             """,
             icon="Item_CONS_Potion_FireBreath_A",
-            boosts=[f"UnlockSpell(Target_MAG_ElementalWeapon)"],
+            boosts=[f"UnlockSpell({self._elemental_weapon})"],
         )
     
     @cached_property

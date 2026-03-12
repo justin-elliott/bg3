@@ -11,6 +11,7 @@ from .bolster import *
 from .boosts import *
 from .cunningactions import *
 from .defense import *
+from .elementalweapon import *
 from .empoweredspells import *
 from .guidance import *
 from .knowledge import *

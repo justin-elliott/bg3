@@ -13,6 +13,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
+from modtools.text import Script
 from typing import ClassVar
 from uuid import UUID
 
@@ -26,6 +27,8 @@ class FourElements(Replacer):
                          name="FourElements",
                          description="A class replacer for FourElements.",
                          **kwds)
+
+        self._add_is_basic_monk_unarmed_melee_attack()
 
     @cached_property
     def _awareness(self) -> str:
@@ -133,6 +136,17 @@ class FourElements(Replacer):
 
         return name
 
+    def _add_is_basic_monk_unarmed_melee_attack(self) -> str:
+        self.add(Script("""
+            -- Check for a non-elemental Monk unarmed melee attack.
+            function IsBasicMonkUnarmedMeleeAttack()
+                return (SpellId('Target_UnarmedAttack')
+                      | SpellId('Target_UnarmedStrike_Monk')
+                      | SpellId('Target_FlurryOfBlows')
+                      | SpellId('Target_StunningStrike_Unarmed'))
+            end
+        """))
+
     def _elemental_damage_status(self,
                                  element: str,
                                  *,
@@ -143,18 +157,21 @@ class FourElements(Replacer):
         name = self.make_name(f"{element.upper()}_DAMAGE")
 
         self.loca[f"{name}_DisplayName"] = display_name
-        self.loca[f"{name}_Description"] = f"{description} Its melee attacks deal an additional [1]."
+        self.loca[f"{name}_Description"] = description
 
         self.add(StatusData(
             name,
             using="FANGS_OF_THE_FIRE_SNAKE",
             StatusType="BOOST",
-            Boosts=[f"CharacterUnarmedDamage({self._elemental_damage},{element})"],
+            Boosts=[
+                f"UnlockSpellVariant(IsBasicMonkUnarmedMeleeAttack(),ModifyIconGlow(),ModifyTooltipDescription())",
+                f"IF(IsBasicMonkUnarmedMeleeAttack()):DamageBonus({self._elemental_damage},{element},false)",
+            ],
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"DealDamage({self._elemental_damage},{element})"],
             Icon=icon,
             StatusEffect=status_effect,
+            TooltipDamage=[f"DealDamage({self._elemental_damage},{element})"],
         ))
 
         return name

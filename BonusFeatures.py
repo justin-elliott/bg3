@@ -34,8 +34,6 @@ from typing import Final
 
 
 class BonusFeatures(Replacer):
-    _ABILITY_BONUS: Final[int] = 2
-
     _SKILL_LIST: Final[list[str]] = [
         Skills.PERSUASION,
         Skills.SLEIGHT_OF_HAND,
@@ -60,6 +58,7 @@ class BonusFeatures(Replacer):
     _no_selection_ids: set[str]
     _passive_list_uuids: set[str]
     _loca_handles: dict[str, str]
+    _ability_bonus: int
 
     def __init__(self, **kwds: str):
         super().__init__(os.path.dirname(__file__),
@@ -71,6 +70,7 @@ class BonusFeatures(Replacer):
         self._no_selection_ids = set()
         self._passive_list_uuids = set()
         self._loca_handles = {}
+        self._ability_bonus = 1 if self.args.level_20 else 2
 
         self._remove_asi_from_feats()
 
@@ -142,7 +142,7 @@ class BonusFeatures(Replacer):
             self._loca_handles[display_name] = display_name_handle
     
         description = (
-            f"Increase your {ability_name} by {self._ABILITY_BONUS}, to a maximum of 30."
+            f"Increase your {ability_name} by {self._ability_bonus}, to a maximum of 30."
             if ability else "No ability increase."
         )
         if (description_handle := self._loca_handles.get(description)) is None:
@@ -154,7 +154,7 @@ class BonusFeatures(Replacer):
             passive_name,
             DisplayName=display_name_handle,
             Description=description_handle,
-            Boosts=[f"Ability({ability_name},{self._ABILITY_BONUS},30)"] if ability is not None else None,
+            Boosts=[f"Ability({ability_name},{self._ability_bonus},30)"] if ability is not None else None,
             Properties=["IsHidden"],
         ))
 
@@ -168,7 +168,7 @@ class BonusFeatures(Replacer):
     @cached_property
     def _ability_improvement_description(self) -> str:
         self.loca["AbilityImprovement_Description"] = f"""
-            Increase one of your abilities by {self._ABILITY_BONUS}, to a maximum of 30.
+            Increase one of your abilities by {self._ability_bonus}, to a maximum of 30.
         """
         return self.loca["AbilityImprovement_Description"]
 
@@ -845,13 +845,13 @@ class BonusFeatures(Replacer):
         self.add(PassiveData(
             "Actor",
             using="Actor",
-            DescriptionParams=[self._ABILITY_BONUS, 30],
+            DescriptionParams=[self._ability_bonus, 30],
             Boosts=[
                 "ProficiencyBonus(Skill,Deception)",
                 "ExpertiseBonus(Deception)",
                 "ProficiencyBonus(Skill,Performance)",
                 "ExpertiseBonus(Performance)",
-                f"Ability(Charisma,{self._ABILITY_BONUS},30)",
+                f"Ability(Charisma,{self._ability_bonus},30)",
             ],
         ))
 
@@ -875,8 +875,8 @@ class BonusFeatures(Replacer):
             "Durable",
             using="Durable",
             Description=self.loca["Durable_Description"],
-            DescriptionParams=[self._ABILITY_BONUS, 30],
-            Boosts=[f"Ability(Constitution,{self._ABILITY_BONUS},30)"],
+            DescriptionParams=[self._ability_bonus, 30],
+            Boosts=[f"Ability(Constitution,{self._ability_bonus},30)"],
         ))
 
         self.loca["HeavilyArmored_Description"] = """
@@ -887,16 +887,16 @@ class BonusFeatures(Replacer):
             "HeavilyArmored",
             using="HeavilyArmored",
             Description=self.loca["HeavilyArmored_Description"],
-            DescriptionParams=[self._ABILITY_BONUS, 30],
-            Boosts=[f"Ability(Strength,{self._ABILITY_BONUS},30)", "Proficiency(HeavyArmor)"],
+            DescriptionParams=[self._ability_bonus, 30],
+            Boosts=[f"Ability(Strength,{self._ability_bonus},30)", "Proficiency(HeavyArmor)"],
         ))
 
         self.add(PassiveData(
             "HeavyArmorMaster",
             using="HeavyArmorMaster",
-            DescriptionParams=[self._ABILITY_BONUS, 30, 3],
+            DescriptionParams=[self._ability_bonus, 30, 3],
             Boosts=[
-                f"Ability(Strength,{self._ABILITY_BONUS},30)",
+                f"Ability(Strength,{self._ability_bonus},30)",
                 "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Slashing,Flat,3)",
                 "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Bludgeoning,Flat,3)",
                 "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Piercing,Flat,3)",
@@ -939,9 +939,9 @@ class BonusFeatures(Replacer):
             self.add(PassiveData(
                 resilient_passive,
                 using=resilient_passive,
-                DescriptionParams=[self._ABILITY_BONUS],
+                DescriptionParams=[self._ability_bonus],
                 Boosts=[
-                    f"Ability({ability_name},{self._ABILITY_BONUS},30)",
+                    f"Ability({ability_name},{self._ability_bonus},30)",
                     f"ProficiencyBonus(SavingThrow,{ability_name})",
                 ],
             ))
@@ -990,6 +990,10 @@ class BonusFeatures(Replacer):
     @progression(BASE_CHARACTER_RACES, 2)
     def level_2(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
+            *(
+                ["SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress))]
+                if self.args.level_20 else []
+            ),
             "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
 

@@ -9,7 +9,7 @@ from modtools.lsx import Lsx
 from modtools.lsx.children import LsxChildren
 from modtools.lsx.game import SpellList
 from modtools.replacers.replacer import Replacer
-from typing import Iterable
+from typing import Callable, Final, Iterable
 from uuid import UUID
 
 
@@ -299,6 +299,30 @@ def warlock_hexblade_level_4_spells(replacer: Replacer) -> SpellList:
 
 def warlock_hexblade_level_5_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("88fafaeb-8b59-4319-9841-b9e6043f4636"))
+
+
+__WARLOCK_SPELL_KEY: Final[dict[str, str]] = {
+    "Target_BlackTentacles": "EvardsBlackTentacles",
+    "Target_Smite_Branding_Container": "BrandingSmite",
+    "Target_HideousLaughter": "TashasHideousLaughter",
+    "Target_Invisibility_Greater": "GreaterInvisibility",
+    "Projectile_Smite_Banishing_Container": "BanishingSmite",
+    "Target_Smite_Wrathful": "WrathfulSmite",
+}
+
+def __warlock_spell_key(name: str) -> str:
+    if (key := __WARLOCK_SPELL_KEY.get(name)) is not None:
+        return key
+    else:
+        return name[name.find("_") + 1:]
+
+@cache
+def warlock_combined_spells(replacer: Replacer, level: int) -> list[str]:
+    combined_spells = []
+    for subclass in ["archfey", "fiend", "greatoldone", "hexblade"]:
+        spells_getter: Callable[[Replacer], SpellList] = globals()[f"warlock_{subclass}_level_{level}_spells"]
+        combined_spells += spells_getter(replacer).Spells
+    return sorted(set(combined_spells), key=__warlock_spell_key)
 
 
 # Wizard Spells

@@ -212,6 +212,7 @@ class Replacer:
         expertise = kwds.get("expertise")
         full_caster = kwds.get("full_caster", False)
         include = kwds.get("include", None)
+        level_20 = kwds.get("level_20", False)
 
         parser = argparse.ArgumentParser(description="A mod replacer.")
         parser.add_argument("-n", "--name", type=str, default=name,
@@ -235,7 +236,7 @@ class Replacer:
                             help=f"Update spell slot progression to be a full caster")
         parser.add_argument("--include", type=str, action="append", default=include,
                             help="Include a third-party mod in the progression.")
-        parser.add_argument("--level-20", action="store_true",
+        parser.add_argument("--level-20", action="store_true", default=level_20,
                             help="Include level 20 mod dependency.")
         self._args = Replacer.Args(**vars(parser.parse_args()))
 

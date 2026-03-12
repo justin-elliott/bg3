@@ -841,6 +841,19 @@ class BonusFeatures(Replacer):
         return (str(list_uuid), selector_id)
 
     def _remove_asi_from_feats(self) -> None:
+        self.add(PassiveData(
+            "Actor",
+            using="Actor",
+            DescriptionParams=[self._ABILITY_BONUS, 30],
+            Boosts=[
+                "ProficiencyBonus(Skill,Deception)",
+                "ExpertiseBonus(Deception)",
+                "ProficiencyBonus(Skill,Performance)",
+                "ExpertiseBonus(Performance)",
+                f"Ability(Charisma,{self._ABILITY_BONUS},30)",
+            ],
+        ))
+
         athlete_asi = self._ability_improvement_for_abilities(
             "Athlete",
             [CharacterAbility.STRENGTH, CharacterAbility.DEXTERITY]
@@ -850,6 +863,43 @@ class BonusFeatures(Replacer):
             PassivesAdded=["Athlete_StandUp"],
             Selectors=[f"SelectPassives({athlete_asi},1)"],
             UUID="d674aa33-8633-4b67-8623-b6788f0d5fc4",
+        ))
+
+        self.loca["Durable_Description"] = """
+            You regain full <LSTag Tooltip="HitPoints">hit points</LSTag> when you
+            <LSTag Tooltip="ShortRest">Short Rest</LSTag>. Your <LSTag Tooltip="Constitution">Constitution</LSTag> score
+            is increased by [1], to a maximum of [2].
+        """
+        self.add(PassiveData(
+            "Durable",
+            using="Durable",
+            Description=self.loca["Durable_Description"],
+            DescriptionParams=[self._ABILITY_BONUS, 30],
+            Boosts=[f"Ability(Constitution,{self._ABILITY_BONUS},30)"],
+        ))
+
+        self.loca["HeavilyArmored_Description"] = """
+            You have <LSTag Tooltip="ArmourProficiency">Armour Proficiency</LSTag> with Heavy Armour and your
+            <LSTag Tooltip="Strength">Strength</LSTag> increases by [1], to a maximum of [2].
+        """
+        self.add(PassiveData(
+            "HeavilyArmored",
+            using="HeavilyArmored",
+            Description=self.loca["HeavilyArmored_Description"],
+            DescriptionParams=[self._ABILITY_BONUS, 30],
+            Boosts=[f"Ability(Strength,{self._ABILITY_BONUS},30)", "Proficiency(HeavyArmor)"],
+        ))
+
+        self.add(PassiveData(
+            "HeavyArmorMaster",
+            using="HeavyArmorMaster",
+            DescriptionParams=[self._ABILITY_BONUS, 30, 3],
+            Boosts=[
+                f"Ability(Strength,{self._ABILITY_BONUS},30)",
+                "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Slashing,Flat,3)",
+                "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Bludgeoning,Flat,3)",
+                "IF(HasHeavyArmor() and not HasDamageEffectFlag(DamageFlags.Magical)):DamageReduction(Piercing,Flat,3)",
+            ],
         ))
 
         lightly_armored_asi = self._ability_improvement_for_abilities(
@@ -881,6 +931,19 @@ class BonusFeatures(Replacer):
             PassivesAdded=["Performer", performer_asi],
             UUID="60dfd716-3ba8-4611-90ee-018b59775b1d",
         ))
+
+        for ability in CharacterAbility:
+            ability_name = ability.name.title()
+            resilient_passive = f"Resilient_{ability_name}"
+            self.add(PassiveData(
+                resilient_passive,
+                using=resilient_passive,
+                DescriptionParams=[self._ABILITY_BONUS],
+                Boosts=[
+                    f"Ability({ability_name},{self._ABILITY_BONUS},30)",
+                    f"ProficiencyBonus(SavingThrow,{ability_name})",
+                ],
+            ))
 
         tavern_brawler_asi = self._ability_improvement_for_abilities(
             "TavernBrawler",

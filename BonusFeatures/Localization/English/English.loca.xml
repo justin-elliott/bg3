@@ -5,6 +5,8 @@
     <content contentuid="hc0596d22g6855g2569ge426g5f2b4dbfee16" version="1">Increase your Strength by 2, to a maximum of 30.</content>
     <content contentuid="h8ae47069g8837g97b4gafb1g071fd16766cd" version="1">Ability Improvement: Dexterity</content>
     <content contentuid="hc2aecd85gb7c7gfa6bg94b2g87978bf837cf" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
+    <content contentuid="h90802648g18a6g9b75g2b57g589338e880cd" version="1">You regain full &lt;LSTag Tooltip="HitPoints"&gt;hit points&lt;/LSTag&gt; when you &lt;LSTag Tooltip="ShortRest"&gt;Short Rest&lt;/LSTag&gt;. Your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; score is increased by [1], to a maximum of [2].</content>
+    <content contentuid="h676c08f8g2b27g85a0gdd72gda517145acd6" version="1">You have &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Heavy Armour and your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases by [1], to a maximum of [2].</content>
     <content contentuid="hc30cf638gd54eg451bg8535g0079a4bc345e" version="1">Ability Improvement: Charisma</content>
     <content contentuid="hb1325305g6651ga4bfge771gebca9d0c2140" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
     <content contentuid="hb7ae3a9ag1a21g2036gcbcag99e4cf28e6f6" version="1">Ability Improvement: Constitution</content>

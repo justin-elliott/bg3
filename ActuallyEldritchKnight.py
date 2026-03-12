@@ -17,18 +17,8 @@ from modtools.replacers import (
     warlock_cantrips,
     warlock_combined_spells,
 )
-from typing import Callable, Final
 
 class ActuallyEldritchKnight(Replacer):
-    __SPELL_KEY: Final[dict[str, str]] = {
-        "Target_BlackTentacles": "EvardsBlackTentacles",
-        "Target_Smite_Branding_Container": "BrandingSmite",
-        "Target_HideousLaughter": "TashasHideousLaughter",
-        "Target_Invisibility_Greater": "GreaterInvisibility",
-        "Projectile_Smite_Banishing_Container": "BanishingSmite",
-        "Target_Smite_Wrathful": "WrathfulSmite",
-    }
-
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
@@ -39,12 +29,6 @@ class ActuallyEldritchKnight(Replacer):
     @cached_property
     def __warlock_cantrips(self) -> str:
         return warlock_cantrips(self).UUID
-
-    def __spell_key(self, name: str) -> str:
-        if (key := self.__SPELL_KEY.get(name)) is not None:
-            return key
-        else:
-            return name[name.find("_") + 1:]
 
     @cache
     def __warlock_spells(self, level: int) -> str:

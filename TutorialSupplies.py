@@ -18,7 +18,7 @@ from modtools.gamedata import (
     StatusData,
     Weapon,
 )
-from modtools.lsx.game import CharacterAbility, GameObjects
+from modtools.lsx.game import GameObjects
 from modtools.replacers import Mod
 from modtools.text import ItemCombinations, TreasureTable
 
@@ -256,6 +256,7 @@ class TutorialSupplies(Mod):
                 self._knowledge_potion,
                 self._flying_potion,
                 self._overpowering_potion,
+                self._soap,
             ],
         )
 
@@ -422,8 +423,44 @@ class TutorialSupplies(Mod):
     )
 
     @cached_property
-    def _knowledge_of_the_ages(self) -> None:
+    def _knowledge_of_the_ages(self) -> str:
         return Knowledge(self).add_knowledge_of_the_ages()
+
+    @cached_property
+    def _soap(self) -> None:
+        name = self.make_name("Soap")
+        passive_name = self.make_name("AutoWash")
+        status_name = self.make_name("UNLOCK_AUTO_WASH")
+        self.add(ObjectData(
+            name,
+            using="OBJ_Generic_Light",
+            RootTemplate="d32a68ff-3b6a-4d83-b0c4-0a2c44b93ea9",
+            ValueOverride="99",
+            Rarity="VeryRare",
+            StatusInInventory=[status_name],
+        ))
+        self.loca[f"{passive_name}_DisplayName"] = "Wash"
+        self.loca[f"{passive_name}_Description"] = "Automatically wash after combat ends."
+        self.add(PassiveData(
+            passive_name,
+            DisplayName=self.loca[f"{passive_name}_DisplayName"],
+            Description=self.loca[f"{passive_name}_Description"],
+            Icon="Item_LOOT_Bathroom_Soap_A",
+            StatsFunctorContext=["OnCombatEnded"],
+            StatsFunctors=["ApplyStatus(SOAP_WASH,100,1)"],
+            Properties=["IsToggled", "ToggledDefaultAddToHotbar", "ToggledDefaultOn"],
+        ))
+        self.add(StatusData(
+            status_name,
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{passive_name}_DisplayName"],
+            Description=self.loca[f"{passive_name}_Description"],
+            Icon="Item_LOOT_Bathroom_Soap_A",
+            Passives=[passive_name],
+            StackId=status_name,
+            StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
+        ))
+        return name
 
     def _add_treasure_chests(self, chests: Iterable[TreasureChest]) -> None:
         """Add treasure chests to the tutorial chest."""

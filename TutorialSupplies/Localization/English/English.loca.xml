@@ -34,6 +34,8 @@
     <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
     <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
+    <content contentuid="haf898877ga4b1g9096gfa99g8a841508cd78" version="1">Wash</content>
+    <content contentuid="hbfb12921gefcfg0347g2e49g7ba7ea101550" version="1">Automatically wash after combat ends.</content>
     <content contentuid="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1">Blade of the Banshee</content>
     <content contentuid="h0621b5d0g3195gafcdg89cfg729426174b18" version="1">This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail that chills the blood of any who hear it.</content>
     <content contentuid="hce4bee29gd256g167bgbcdcg2b379e89dcf3" version="1">Splinters of Frost</content>

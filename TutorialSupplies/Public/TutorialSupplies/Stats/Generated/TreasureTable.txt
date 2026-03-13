@@ -327,6 +327,8 @@ new subtable "1,1"
 object category "I_TutorialSupplies_FlyingPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_OverpoweringPotion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_Soap",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_Dyes_TreasureTable"
 CanMerge 1

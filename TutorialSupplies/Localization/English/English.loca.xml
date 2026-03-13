@@ -3,12 +3,6 @@
 <contentList>
     <content contentuid="h23716a4fgb508g104fg29b2gf4980f17f7e6" version="1">Comfortable Boots</content>
     <content contentuid="h5eb8d588g8e09gd643g3c23g0fee5a00f8c1" version="1">Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.</content>
-    <content contentuid="h5164536dg7982gbee4g165bg8f4d73410abf" version="1">Augmentation</content>
-    <content contentuid="h2c91b984g13e0g0fbbg9afag657c55d42ac5" version="1">Increase all of your abilities, to a maximum of 30.</content>
-    <content contentuid="h52b8078bg7a37gb21bgf19agc155a4077ee3" version="1">Elixir of Augmentation</content>
-    <content contentuid="h33fd4b0ag7fabg9b71g69fcg88a1885b4ec8" version="1">Drinking this elixir augments all of your abilities, increasing each time it is consumed.</content>
-    <content contentuid="h3b9fc86dgf57bg7526g432bg76dae5376ce7" version="1">Elixir of Abatement</content>
-    <content contentuid="hf03fe348g3495g0ebeg1aabg79d786d1d388" version="1">Drinking this elixir removes the augmentation from your abilities.</content>
     <content contentuid="h6b3ee365g823agac20g3f9bg79f35608a04c" version="1">Bolster</content>
     <content contentuid="h07474179g9311g2cc6gb0ddg162abb033f10" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="hea03581bg5dbbg9b07ga594g6a8d4fdc26e1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>

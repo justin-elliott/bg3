@@ -53,13 +53,22 @@ class TutorialSupplies(Mod):
 
         self._update_helmet_of_arcane_acuity()
 
+    def _reduce_weight(self, armor: list[str]) -> list[str]:
+        for item in armor:
+            self.add(Armor(
+                item,
+                using=item,
+                Weight="0.1",
+            ))
+        return armor
+
     @cached_property
     def _camp_clothing(self) -> TreasureChest:
         return self.TreasureChest(
             name="CampClothing",
             display_name="Camp Clothing",
             description="Contains a selection of camp clothing.",
-            items=[
+            items=self._reduce_weight([
                 "ARM_Camp_Body_Astarion",
                 "ARM_Camp_Body_Gale",
                 "ARM_Camp_Body_Halsin",
@@ -143,7 +152,7 @@ class TutorialSupplies(Mod):
                 "ARM_Vanity_Body_Shirt_Red",
                 "ARM_Vanity_ElegantRobe",
                 "ARM_Vanity_Prison_Poor",
-            ],
+            ]),
         )
 
     @cached_property
@@ -152,7 +161,7 @@ class TutorialSupplies(Mod):
             name="CampShoes",
             display_name="Camp Shoes",
             description="Contains a selection of camp shoes.",
-            items=[
+            items=self._reduce_weight([
                 "ARM_Camp_Sandals_A1_Black",
                 "ARM_Camp_Sandals_A1",
                 "ARM_Camp_Sandals_B_Red",
@@ -177,6 +186,7 @@ class TutorialSupplies(Mod):
                 "ARM_Camp_Shoes_Wyll",
                 "ARM_Vanity_Deva_Shoes",
                 "ARM_Vanity_Shoes_Circus",
+            ]) + [
                 self._comfortable_boots,
             ],
         )
@@ -241,8 +251,6 @@ class TutorialSupplies(Mod):
             display_name="Potions",
             description="Contains a selection of potions.",
             items=[
-                self._augmentation_potion,
-                self._abatement_potion,
                 self._bolster_potion,
                 self._elemental_weapon_potion,
                 self._knowledge_potion,
@@ -325,54 +333,6 @@ class TutorialSupplies(Mod):
             items=[dye for dye, _ in base_dyes],
         )
 
-    @cached_property
-    def _augmentation_status(self) -> str:
-        name = self.make_name("AUGMENTATION")
-        self.loca[f"{name}_DisplayName"] = "Augmentation"
-        self.loca[f"{name}_Description"] = """
-            Increase all of your abilities, to a maximum of 30.
-        """
-        self.add(StatusData(
-            name,
-            StatusType="BOOST",
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            Icon="Spell_Transmutation_EnhanceAbility",
-            Boosts=[f"Ability({ability.name.title()},1,30)" for ability in CharacterAbility],
-            StackId=name,
-            StackType="Additive",
-            StatusPropertyFlags=["ApplyToDead", "FreezeDuration", "IgnoreResting", "MultiplyEffectsByDuration"],
-        ))
-        return name
-
-    @cached_property
-    def _augmentation_potion(self) -> str:
-        return self._add_potion(
-            "AugmentationPotion",
-            display_name="Elixir of Augmentation",
-            description=f"""
-                Drinking this elixir augments all of your abilities, increasing each time it is consumed.
-            """,
-            icon="Item_UNI_Poison_Brewer",
-            on_apply_functors=[f"ApplyStatus({self._augmentation_status},100,1)"],
-            status_duration=0,
-            tick_type="StartTurn",
-        )
-
-    @cached_property
-    def _abatement_potion(self) -> str:
-        return self._add_potion(
-            "AbatementPotion",
-            display_name="Elixir of Abatement",
-            description=f"""
-                Drinking this elixir removes the augmentation from your abilities.
-            """,
-            icon="Item_GRN_Poison_vial_A",
-            on_apply_functors=[f"RemoveStatus({self._augmentation_status})"],
-            status_duration=0,
-            tick_type="StartTurn",
-        )
-    
     @cached_property
     def _bolster(self) -> str:
         return Bolster(self).add_bolster()
@@ -717,6 +677,7 @@ class TutorialSupplies(Mod):
             name,
             using="ARM_Camp_Shoes",
             RootTemplate=uuid,
+            Weight="0.1",
         ))
 
         return name

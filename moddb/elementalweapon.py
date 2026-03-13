@@ -33,7 +33,7 @@ class ElementalWeapon:
             Description=self._mod.loca[f"{name}_Description"],
             SpellType="Target",
             ContainerSpells=[f"{name}_{element}" for element in self._ELEMENTS],
-            Cooldown="OncePerRestPerItem",
+            Cooldown="",
             UseCosts="ActionPoint:1",
             SpellFlags=["HasVerbalComponent", "HasSomaticComponent", "IsSpell", "IsMelee", "IsLinkedSpellContainer"],
         ))
@@ -59,9 +59,9 @@ class ElementalWeapon:
                 SpellType="Target",
                 SpellContainerID=name,
                 SpellProperties=[
-                    f"IF(Item()):ApplyStatus({status_name}_{element.upper()},100,-1)",
-                    f"IF(not Item()):ApplyEquipmentStatus(MainHand,{status_name}_{element.upper()},100,-1)",
-                    f"IF(not Item()):ApplyEquipmentStatus(OffHand,{status_name}_{element.upper()},100,-1)",
+                    f"IF(Item()):ApplyStatus({status_name}_{element.upper()}_MAIN,100,-1)",
+                    f"IF(not Item()):ApplyEquipmentStatus(MainHand,{status_name}_{element.upper()}_MAIN,100,-1)",
+                    f"IF(not Item()):ApplyEquipmentStatus(OffHand,{status_name}_{element.upper()}_OFF,100,-1)",
                 ],
                 Cooldown="OncePerRestPerItem",
                 UseCosts="ActionPoint:1",
@@ -69,16 +69,27 @@ class ElementalWeapon:
             ))
 
             self._mod.add(StatusData(
-                f"{status_name}_{element.upper()}",
+                f"{status_name}_{element.upper()}_MAIN",
                 using=f"ELEMENTAL_WEAPON_{element.upper()}",
                 StatusType="BOOST",
                 Description=self._mod.loca[f"{status_name}_Description"],
                 Boosts=[
+                    "WeaponProperty(Magical)",
                     "CannotBeDisarmed()",
                     "ItemReturnToOwner()",
+                    "Attribute(InventoryBound)",
                     "WeaponAttackRollBonus(1)",
                     f"WeaponDamage(1d4,{element})",
-                ]
+                ],
+                StackId=f"{status_name}_MAIN",
+                IsUnique="1",
+            ))
+
+            self._mod.add(StatusData(
+                f"{status_name}_{element.upper()}_OFF",
+                using=f"{status_name}_{element.upper()}_MAIN",
+                StatusType="BOOST",
+                StackId=f"{status_name}_OFF",
             ))
 
         return name

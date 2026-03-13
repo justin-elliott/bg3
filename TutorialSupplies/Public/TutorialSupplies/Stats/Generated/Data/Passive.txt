@@ -5,7 +5,7 @@ type "PassiveData"
 data "Description" "hbfb12921gefcfg0347g2e49g7ba7ea101550"
 data "DisplayName" "haf898877ga4b1g9096gfa99g8a841508cd78"
 data "Icon" "Item_LOOT_Bathroom_Soap_A"
-data "Properties" "IsToggled;ToggledDefaultAddToHotbar;ToggledDefaultOn"
+data "Properties" "Highlighted;IsToggled;ToggledDefaultAddToHotbar;ToggledDefaultOn"
 data "StatsFunctorContext" "OnCombatEnded"
 data "StatsFunctors" "ApplyStatus(SOAP_WASH,100,1)"
 

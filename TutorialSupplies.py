@@ -448,7 +448,7 @@ class TutorialSupplies(Mod):
             Icon="Item_LOOT_Bathroom_Soap_A",
             StatsFunctorContext=["OnCombatEnded"],
             StatsFunctors=["ApplyStatus(SOAP_WASH,100,1)"],
-            Properties=["IsToggled", "ToggledDefaultAddToHotbar", "ToggledDefaultOn"],
+            Properties=["Highlighted", "IsToggled", "ToggledDefaultAddToHotbar", "ToggledDefaultOn"],
         ))
         self.add(StatusData(
             status_name,

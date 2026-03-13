@@ -714,13 +714,13 @@ class BonusFeatures(Replacer):
             When you make an <LSTag Tooltip="AttackRoll">attack</LSTag> with your off-hand weapon, you can add your
             <LSTag Tooltip="AbilityModifier">Ability Modifier</LSTag> to the damage of the attack.
 
-            Your weapons deal an additional [1] while dual wielding.
+            While dual wielding, your weapons deal an additional [1] damage.
         """
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"DealDamage({BONUS})"],
+            DescriptionParams=[f"{BONUS}"],
             Icon="PassiveFeature_FightingStyle_TwoWeaponFighting",
             Properties=["Highlighted"],
             Boosts=[

@@ -68,7 +68,7 @@
     <content contentuid="h1a4ae6c6g5bebgfa29g5529g4360a9bba332" version="1">Weaponmaster</content>
     <content contentuid="hb7b2b7acg08e9g1fc5g3317g208c2f73dbd0" version="1">You are proficient with all melee martial weapons, and gain a +[1] bonus to &lt;LSTag Tooltip="MeleeWeaponAttack"&gt;melee weapon attacks&lt;/LSTag&gt; and damage.</content>
     <content contentuid="h1b1e60cdg3d1bg1d45g75eag31c6ac4d3b62" version="1">Two-Weapon Fighting</content>
-    <content contentuid="h472c6b46gfe43gf416g167dg19639cd6216d" version="1">When you make an &lt;LSTag Tooltip="AttackRoll"&gt;attack&lt;/LSTag&gt; with your off-hand weapon, you can add your &lt;LSTag Tooltip="AbilityModifier"&gt;Ability Modifier&lt;/LSTag&gt; to the damage of the attack.&lt;br&gt;&lt;br&gt;Your weapons deal an additional [1] while dual wielding.</content>
+    <content contentuid="h472c6b46gfe43gf416g167dg19639cd6216d" version="1">When you make an &lt;LSTag Tooltip="AttackRoll"&gt;attack&lt;/LSTag&gt; with your off-hand weapon, you can add your &lt;LSTag Tooltip="AbilityModifier"&gt;Ability Modifier&lt;/LSTag&gt; to the damage of the attack.&lt;br&gt;&lt;br&gt;While dual wielding, your weapons deal an additional [1] damage.</content>
     <content contentuid="h838c3265gd53egd906g507agfd7d319d8c42" version="1">Action Surge</content>
     <content contentuid="h1c2abea4gf2d5g85d4gfda8g213d5fb8ef50" version="1">Immediately gain an extra &lt;LSTag Tooltip="Action"&gt;action&lt;/LSTag&gt; to use this turn.</content>
     <content contentuid="h8e2bd9d8g4d3fg13c1g042fgceb404054f8c" version="1">Alacrity</content>

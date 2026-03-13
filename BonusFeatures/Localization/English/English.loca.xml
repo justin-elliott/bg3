@@ -72,8 +72,8 @@
     <content contentuid="h8e2bd9d8g4d3fg13c1g042fgceb404054f8c" version="1">Alacrity</content>
     <content contentuid="hecd23950g34d6g3dfegc01bg86e875fe1ffc" version="1">Cunning Actions</content>
     <content contentuid="h43fed24eg5456gf7b9gb4b7gd42ec2a1a7f0" version="1">They'll never see you coming, until it's too late. As a bonus action, you can use &lt;LSTag Type="Spell" Tooltip="Shout_Dash_CunningAction"&gt;Cunning Action: Dash&lt;/LSTag&gt;, &lt;LSTag Type="Spell" Tooltip="Shout_Hide_BonusAction"&gt;Cunning Action: Hide&lt;/LSTag&gt;, or &lt;LSTag Type="Spell" Tooltip="Shout_Disengage_CunningAction"&gt;Cunning Action: Disengage&lt;/LSTag&gt;.</content>
-    <content contentuid="h773b01c1g97c0g10b1g92d9g5552939915a9" version="1">Fleet of Foot</content>
-    <content contentuid="hd1100b9cgf4dbg7cedg6535g1ea3bd2129c9" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="h916c2c54g4df2gc6b2gb73fg0bfb62ed18b6" version="1">Remarkable Athlete</content>
+    <content contentuid="h654a6177g5995gc232gba5fg95a5d4a4a27c" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Jump no longer requires a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hd6f689d7g6686ga18dg3892g4183ac26dd12" version="1">Resilience</content>
     <content contentuid="h4bea5f36gdeadg5aadgf237g9f4671afb5de" version="1">You shrug off attacks, reducing damage from all sources by your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt;.</content>
     <content contentuid="h8a2847f5gfbe4g207agf393gd49e857e992e" version="1">Extra Attacks</content>
@@ -94,12 +94,12 @@
     <content contentuid="h01f8f5aagd28cg7c33ga1e6gcccefb81173d" version="1">Strike multiple foes at once. You gain &lt;LSTag Type="Spell" Tooltip="Target_Volley"&gt;Volley&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Shout_Whirlwind"&gt;Whirlwind&lt;/LSTag&gt;</content>
     <content contentuid="h5defa36eg6a9fg8537g2d59g2573dcd0091a" version="1">Bonus Features</content>
     <content contentuid="hf057760cg2079g1b13g6131g15ef80b425b4" version="1">Select a bonus feature.</content>
-    <content contentuid="hf768d7ccg0474g416cg8396g4d79286f9df2" version="1">Ability Improvement: None</content>
-    <content contentuid="h626a2262g58cdgf4a6g7607gc25dda6355ac" version="1">No ability increase.</content>
-    <content contentuid="h2b5e33fdg3a66gb751g8205g31aa58ea14e7" version="1">Ability Improvement: Intelligence</content>
-    <content contentuid="h83dc33f9g2fedg31bcg6e0bg1825ba4ce259" version="1">Increase your Intelligence by 2, to a maximum of 30.</content>
-    <content contentuid="h1dcf7e1dg5fabgb9a6g4777g3b77a6d73dc3" version="1">Ability Improvement: Wisdom</content>
-    <content contentuid="h75ae1dd8g0c7cg65d4gc60eg6cc759e5c492" version="1">Increase your Wisdom by 2, to a maximum of 30.</content>
+    <content contentuid="h18606ef4gb58cgc060g7cd9ged63ed8a196b" version="1">Ability Improvement: None</content>
+    <content contentuid="h1d4f5f92g0784gfe97g894eg5de88d879ee1" version="1">No ability increase.</content>
+    <content contentuid="h9f8519caga557g8a17g694eg670b956a3834" version="1">Ability Improvement: Intelligence</content>
+    <content contentuid="hee75baf1gb03eg6ef4g08a5gf14ed41559ff" version="1">Increase your Intelligence by 2, to a maximum of 30.</content>
+    <content contentuid="h52705a29g6a57g54f8gdfabg690e1033c518" version="1">Ability Improvement: Wisdom</content>
+    <content contentuid="ha5bde00cga65cgb802g10eag1ddf40b23581" version="1">Increase your Wisdom by 2, to a maximum of 30.</content>
     <content contentuid="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1">Ability Improvement</content>
     <content contentuid="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1">Increase one of your abilities by 2, to a maximum of 30.</content>
 </contentList>

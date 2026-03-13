@@ -606,11 +606,6 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
-    def _fleet_of_foot(self) -> str:
-        self.loca["FleetOfFoot"] = "Fleet of Foot"
-        return Movement(self.mod).add_fast_movement(3.0, self.loca["FleetOfFoot"])
-
-    @cached_property
     def _light_fingered(self) -> str:
         name = self.make_name("LightFingered")
         self.loca[f"{name}_DisplayName"] = "Light-Fingered"
@@ -681,6 +676,32 @@ class BonusFeatures(Replacer):
             Boosts=["ProficiencyBonus(Skill,Persuasion)", "ExpertiseBonus(Persuasion)"],
             Icon="Spell_Enchantment_Tasha'sHideousLaughter",
             Properties=["Highlighted"],
+        ))
+        return name
+
+    @cached_property
+    def _remarkable_athlete(self) -> str:
+        name = self.make_name("RemarkableAthlete")
+        movement_speed = 3.0
+        jump_distance = 1.5
+        self.loca[f"{name}_DisplayName"] = "Remarkable Athlete"
+        self.loca[f"{name}_Description"] = """
+            Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> increases by [1], and your jump distance by [2].
+            Jump no longer requires a <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"Distance({movement_speed})", f"Distance({jump_distance})"],
+            Icon="PassiveFeature_RemarkableAthlete_Proficiency",
+            Properties=["Highlighted"],
+            Boosts=[
+                f"ActionResource(Movement,{movement_speed},0)",
+                f"JumpMaxDistanceBonus({jump_distance})",
+                "UnlockSpellVariant(SpellId('Projectile_Jump'),"
+                + "ModifyUseCosts(Replace,BonusActionPoint,0,0,BonusActionPoint))",
+            ],
         ))
         return name
 
@@ -787,9 +808,9 @@ class BonusFeatures(Replacer):
             ( 3, "Alacrity",            self._alacrity),
             ( 3, "Cunning Actions",     self._cunning_actions),
             ( 3, "Fast Hands",          "FastHands"),
-            ( 3, "Fleet of Foot",       self._fleet_of_foot),
             ( 3, "Improved Critical",   "ImprovedCritical"),
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
+            ( 3, "Remarkable Athlete",  self._remarkable_athlete),
             ( 3, "Resilience",          self._resilience),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
             ( 5, "Extra Attack",        self._extra_attacks),
@@ -990,10 +1011,7 @@ class BonusFeatures(Replacer):
     @progression(BASE_CHARACTER_RACES, 2)
     def level_2(self, progress: Progression) -> None:
         progress.Selectors = (progress.Selectors or []) + [
-            *(
-                ["SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress))]
-                if self.args.level_20 else []
-            ),
+            "SelectPassives({},1,{})".format(*self._ability_improvement_passive_list(progress)),
             "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
 

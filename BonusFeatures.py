@@ -12,7 +12,7 @@ from moddb import (
     EmpoweredSpells,
     Movement,
 )
-from modtools.gamedata import PassiveData, SpellData, StatusData
+from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,

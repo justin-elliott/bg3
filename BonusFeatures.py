@@ -12,7 +12,7 @@ from moddb import (
     EmpoweredSpells,
     Movement,
 )
-from modtools.gamedata import PassiveData, StatusData
+from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,
@@ -706,6 +706,31 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _two_weapon_fighting(self) -> str:
+        name = self.make_name("TwoWeaponFighting")
+        BONUS = 2
+        self.loca[f"{name}_DisplayName"] = "Two-Weapon Fighting"
+        self.loca[f"{name}_Description"] = """
+            When you make an <LSTag Tooltip="AttackRoll">attack</LSTag> with your off-hand weapon, you can add your
+            <LSTag Tooltip="AbilityModifier">Ability Modifier</LSTag> to the damage of the attack.
+
+            Your weapons deal an additional [1] damage while dual wielding.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"{BONUS}"],
+            Icon="PassiveFeature_FightingStyle_TwoWeaponFighting",
+            Properties=["Highlighted"],
+            Boosts=[
+                "TwoWeaponFighting()",
+                f"IF(DualWielder(context.Source)):CharacterWeaponDamage({BONUS})",
+            ],
+        ))
+        return name
+
+    @cached_property
     def _volley(self) -> str:
         name = self.make_name("Volley")
         self.loca[f"{name}_DisplayName"] = "Volley"
@@ -803,7 +828,7 @@ class BonusFeatures(Replacer):
             ( 1, "Persuasive",          self._persuasive),
             ( 1, "Savage Attacks",      "SavageAttacks"),
             ( 1, "Weaponmaster",        self._weaponmaster),
-            ( 1, "Two-Weapon Fighting", "FightingStyle_TwoWeaponFighting"),
+            ( 1, "Two-Weapon Fighting", self._two_weapon_fighting),
             ( 3, "Action Surge",        self._action_surge),
             ( 3, "Alacrity",            self._alacrity),
             ( 3, "Cunning Actions",     self._cunning_actions),

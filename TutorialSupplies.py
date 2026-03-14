@@ -955,6 +955,7 @@ class TutorialSupplies(Mod):
             Unique="1" if is_unique else None,
             WeaponFunctors=weapon_functors,
             Weapon_Properties=weapon_properties,
+            ValueUUID="d24c441f-7ebe-4229-8522-cf34c257ff20",  # Legendary Weapon
         ))
 
         return name

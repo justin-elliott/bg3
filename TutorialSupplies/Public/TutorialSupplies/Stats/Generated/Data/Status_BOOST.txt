@@ -29,6 +29,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h6b0246b9g8522g508bg5aa1g2f50b945f5fe"
 data "IsUnique" "1"
 data "StackId" "TutorialSupplies_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "TutorialSupplies_ELEMENTAL_WEAPON_ACID_OFF"
 type "StatusData"
@@ -44,6 +45,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h6b0246b9g8522g508bg5aa1g2f50b945f5fe"
 data "IsUnique" "1"
 data "StackId" "TutorialSupplies_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "TutorialSupplies_ELEMENTAL_WEAPON_COLD_OFF"
 type "StatusData"
@@ -59,6 +61,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h6b0246b9g8522g508bg5aa1g2f50b945f5fe"
 data "IsUnique" "1"
 data "StackId" "TutorialSupplies_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "TutorialSupplies_ELEMENTAL_WEAPON_FIRE_OFF"
 type "StatusData"
@@ -74,6 +77,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h6b0246b9g8522g508bg5aa1g2f50b945f5fe"
 data "IsUnique" "1"
 data "StackId" "TutorialSupplies_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "TutorialSupplies_ELEMENTAL_WEAPON_LIGHTNING_OFF"
 type "StatusData"
@@ -89,6 +93,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h6b0246b9g8522g508bg5aa1g2f50b945f5fe"
 data "IsUnique" "1"
 data "StackId" "TutorialSupplies_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "TutorialSupplies_ELEMENTAL_WEAPON_THUNDER_OFF"
 type "StatusData"

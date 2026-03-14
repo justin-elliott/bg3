@@ -20,6 +20,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h2ba75113g23b0g5a13g923eg2bb71a423ec2"
 data "IsUnique" "1"
 data "StackId" "BonusFeatures_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "BonusFeatures_ELEMENTAL_WEAPON_ACID_OFF"
 type "StatusData"
@@ -35,6 +36,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h2ba75113g23b0g5a13g923eg2bb71a423ec2"
 data "IsUnique" "1"
 data "StackId" "BonusFeatures_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "BonusFeatures_ELEMENTAL_WEAPON_COLD_OFF"
 type "StatusData"
@@ -50,6 +52,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h2ba75113g23b0g5a13g923eg2bb71a423ec2"
 data "IsUnique" "1"
 data "StackId" "BonusFeatures_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "BonusFeatures_ELEMENTAL_WEAPON_FIRE_OFF"
 type "StatusData"
@@ -65,6 +68,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h2ba75113g23b0g5a13g923eg2bb71a423ec2"
 data "IsUnique" "1"
 data "StackId" "BonusFeatures_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "BonusFeatures_ELEMENTAL_WEAPON_LIGHTNING_OFF"
 type "StatusData"
@@ -80,6 +84,7 @@ data "Boosts" "WeaponProperty(Magical);CannotBeDisarmed();ItemReturnToOwner();At
 data "Description" "h2ba75113g23b0g5a13g923eg2bb71a423ec2"
 data "IsUnique" "1"
 data "StackId" "BonusFeatures_ELEMENTAL_WEAPON_MAIN"
+data "StatusPropertyFlags" "IgnoreResting"
 
 new entry "BonusFeatures_ELEMENTAL_WEAPON_THUNDER_OFF"
 type "StatusData"

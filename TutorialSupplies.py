@@ -492,6 +492,8 @@ class TutorialSupplies(Mod):
             f"""\
                 new treasuretable "TUT_Chest_Potions"
                 CanMerge 1
+                new subtable "10000,1"
+                object category "Gold",1,0,0,0,0,0,0,0
                 {"".join(tutorial_chest_entries)}
                 {"".join(treasure_tables)}
             """.splitlines())))

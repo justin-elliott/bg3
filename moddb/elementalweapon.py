@@ -79,6 +79,7 @@ class ElementalWeapon:
                     f"WeaponDamage(1d4,{element})",
                 ],
                 StackId=f"{status_name}_MAIN",
+                StatusPropertyFlags=["IgnoreResting"],
                 IsUnique="1",
             ))
 

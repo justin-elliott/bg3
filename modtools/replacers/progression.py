@@ -5,6 +5,7 @@ A decorator for class/race progression replacement.
 
 from collections.abc import Callable, Iterable
 from enum import IntEnum
+from modtools.lsx.document import LsxDocument
 from modtools.lsx.game import BASE_CHARACTER_CLASSES, CharacterClass, CharacterRace
 from modtools.lsx import Lsx
 from modtools.lsx.game import Progression
@@ -48,6 +49,13 @@ def _progression_order(progression: Progression) -> tuple[str, int, bool]:
     return (classification, name, progression.Level, progression.IsMulticlass or False)
 
 
+def _delete_invalid_progressions(progressions_lsx: LsxDocument) -> None:
+    # Shared::BattleMaster::level 3
+    progressions_lsx.children = [p for p in progressions_lsx.children if p.UUID not in [
+         "59505762-9251-463c-a81b-420e9a14c8cd",
+    ]]
+
+
 def load_progressions(replacer_or_mod: Replacer | Mod) -> list[Progression]:
     """Load the game's Progressions from the .pak cache."""
     progressions_lsx = Lsx.load(replacer_or_mod.get_cache_path(progression_lsx_paths[0]))
@@ -55,6 +63,7 @@ def load_progressions(replacer_or_mod: Replacer | Mod) -> list[Progression]:
     for lsx_path in additional_lsx_paths:
         lsx = Lsx.load(replacer_or_mod.get_cache_path(lsx_path))
         progressions_lsx.children.update(lsx.children, key=_by_uuid)
+    _delete_invalid_progressions(progressions_lsx)
     progressions_lsx.children.sort(key=_progression_order)
     return list(progressions_lsx.children)
 
@@ -149,8 +158,8 @@ def _progression_builder(replacer: Replacer, progression_builders: list[Progress
     tableUuid: dict[str, str] = dict()
 
     progressions = load_progressions(replacer)
-    updated_progressions: set[Progression] = set()
 
+    updated_progressions: set[Progression] = set()
     _update_progressions(replacer, progressions, builders, tableUuid, updated_progressions)
     _create_progressions(replacer, builders, tableUuid, updated_progressions)
 

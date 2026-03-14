@@ -2,6 +2,7 @@
 
 import os
 
+from moddb.scripts import is_battle_master_maneuver
 from modtools.gamedata import InterruptData, PassiveData, SpellData
 from modtools.lsx.game import Progression
 from modtools.replacers import (
@@ -39,6 +40,8 @@ class BattleMaster(Replacer):
             Boosts=[f"UnlockInterrupt({interrupt_name})"],
         ))
 
+        self.add(is_battle_master_maneuver)
+
         self.loca[f"{interrupt_name}_Description"] = """
             Add a <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag> to
             your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
@@ -56,6 +59,8 @@ class BattleMaster(Replacer):
                 + " and not Dead(context.Observer)"
                 + " and HasInterruptedAttack()"
                 + " and not AnyEntityIsItem()"
+                + " and (not IsBattleMasterManeuver()"
+                +       " or HasActionResource('SuperiorityDie',2,0,false,false,context.Source))"
                 + " and ((not CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(8,context.Source))"
                 +       " or (CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(10,context.Source)))",
             ],
@@ -79,7 +84,7 @@ class BattleMaster(Replacer):
         spell_name = "Zone_SweepingAttack"
 
         self.loca[f"{passive_name}_Description"] = """
-            Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once, dealing an additional [1].
+            Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once.
         """
         self.add(PassiveData(
             passive_name,
@@ -98,10 +103,10 @@ class BattleMaster(Replacer):
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
             ],
             SpellSuccess=[
-                "DealDamage(MainMeleeWeapon+LevelMapValue(SuperiorityDie),MainMeleeWeaponDamageType)",
+                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
                 "ExecuteWeaponFunctors(MainHand)",
             ],
-            TooltipDamageList=["DealDamage(MainMeleeWeapon+LevelMapValue(SuperiorityDie),MainMeleeWeaponDamageType)"],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
         ))
 
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 3)

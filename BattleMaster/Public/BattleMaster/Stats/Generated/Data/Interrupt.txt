@@ -2,7 +2,7 @@
 
 new entry "BattleMaster_Interrupt_PrecisionAttack"
 type "InterruptData"
-data "Conditions" "Self(context.Source,context.Observer) and not Dead(context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and ((not CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(8,context.Source)) or (CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(10,context.Source)))"
+data "Conditions" "Self(context.Source,context.Observer) and not Dead(context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and (not IsBattleMasterManeuver() or HasActionResource('SuperiorityDie',2,0,false,false,context.Source)) and ((not CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(8,context.Source)) or (CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(10,context.Source)))"
 data "Container" "YesNoDecision"
 data "Cost" "SuperiorityDie:1"
 data "Description" "h68ae1ee2g382bg93bfg85d5g4406fb2e96aa"

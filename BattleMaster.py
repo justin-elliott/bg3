@@ -2,6 +2,7 @@
 
 import os
 
+from functools import cached_property
 from moddb.scripts import is_battle_master_maneuver
 from modtools.gamedata import InterruptData, PassiveData, SpellData
 from modtools.lsx.game import Progression
@@ -108,6 +109,26 @@ class BattleMaster(Replacer):
             ],
             TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
         ))
+    
+    @cached_property
+    def _relentless(self) -> str:
+        name = self.make_name("Relentless")
+        self.loca[f"{name}_DisplayName"] = "Relentless"
+        self.loca[f"{name}_Description"] = """
+            At the start of your turn, you regain one
+            <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Icon="Action_BolsteringMagic_Boost",
+            Conditions=["Combat()"],
+            Properties=["Highlighted", "ForceShowInCC"],
+            StatsFunctorContext=["OnTurn"],
+            StatsFunctors=["RestoreResource(SuperiorityDie,1,0)"],
+        ))
+        return name
 
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 3)
     def battlemaster_level_3(self, progress: Progression) -> None:
@@ -151,6 +172,7 @@ class BattleMaster(Replacer):
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 12)
     def battlemaster_level_12(self, progress: Progression) -> None:
         progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+        progress.PassivesAdded = [self._relentless]
 
 
 def main() -> None:

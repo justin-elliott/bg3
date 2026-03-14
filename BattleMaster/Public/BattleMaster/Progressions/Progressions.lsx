@@ -6,13 +6,6 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Level" type="uint8" value="3" />
-                    <attribute id="Name" type="LSString" value="BattleMaster" />
-                    <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
-                    <attribute id="UUID" type="guid" value="59505762-9251-463c-a81b-420e9a14c8cd" />
-                </node>
-                <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,3,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
@@ -21,6 +14,13 @@
                     <attribute id="Selectors" type="LSString" value="SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="01115231-fa37-4cd2-b750-5f282c8ab667" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="3" />
+                    <attribute id="Name" type="LSString" value="BattleMaster" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
+                    <attribute id="UUID" type="guid" value="59505762-9251-463c-a81b-420e9a14c8cd" />
                 </node>
                 <node id="Progression">
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0)" />
@@ -94,6 +94,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0)" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="BattleMaster" />
+                    <attribute id="PassivesAdded" type="LSString" value="BattleMaster_Relentless" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="TableUUID" type="guid" value="69eb2e41-0317-46d7-a6b6-3593de1a5220" />
                     <attribute id="UUID" type="guid" value="edfba9ab-f53b-e67a-5ac9-a0846114b9af" />

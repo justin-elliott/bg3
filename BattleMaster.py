@@ -75,8 +75,22 @@ class BattleMaster(Replacer):
         ))
 
     def _update_sweeping_attack(self) -> None:
+        passive_name = "SweepingAttack"
+        spell_name = "Zone_SweepingAttack"
+
+        self.loca[f"{passive_name}_Description"] = """
+            Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once, dealing an additional [1].
+        """
+        self.add(PassiveData(
+            passive_name,
+            using=passive_name,
+            Description=self.loca[f"{passive_name}_Description"],
+            DescriptionParams=["LevelMapValue(SuperiorityDie)"],
+        ))
+
         self.add(SpellData(
-            "Zone_SweepingAttack",
+            spell_name,
+            using=spell_name,
             SpellType="Zone",
             SpellProperties=[
                 "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",

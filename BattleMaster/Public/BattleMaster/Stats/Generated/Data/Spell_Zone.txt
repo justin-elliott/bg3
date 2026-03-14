@@ -3,6 +3,7 @@
 new entry "Zone_SweepingAttack"
 type "SpellData"
 data "SpellType" "Zone"
+using "Zone_SweepingAttack"
 data "SpellProperties" "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);GROUND:ExecuteWeaponFunctors(MainHand);IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)"
 data "SpellSuccess" "DealDamage(MainMeleeWeapon+LevelMapValue(SuperiorityDie),MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand)"
 data "TooltipDamageList" "DealDamage(MainMeleeWeapon+LevelMapValue(SuperiorityDie),MainMeleeWeaponDamageType)"

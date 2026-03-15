@@ -256,7 +256,7 @@ class TutorialSupplies(Mod):
                 self._knowledge_potion,
                 self._flying_potion,
                 self._overpowering_potion,
-                self._soap,
+                self._restoration_potion,
             ],
         )
 
@@ -427,40 +427,96 @@ class TutorialSupplies(Mod):
         return Knowledge(self).add_knowledge_of_the_ages()
 
     @cached_property
-    def _soap(self) -> None:
-        name = self.make_name("Soap")
-        passive_name = self.make_name("AutoWash")
-        status_name = self.make_name("UNLOCK_AUTO_WASH")
-        self.add(ObjectData(
-            name,
-            using="OBJ_Generic_Light",
-            RootTemplate="d32a68ff-3b6a-4d83-b0c4-0a2c44b93ea9",
-            ValueOverride="99",
-            Rarity="VeryRare",
-            StatusInInventory=[status_name],
+    def _restoration_potion(self) -> str:
+        restoration = self.make_name("Restoration")
+        self.loca[f"{restoration}_DisplayName"] = "Restoration"
+        self.loca[f"{restoration}_Description"] = """
+            When combat ends, you are revitalised as though you would have taken a
+            <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+        """
+        self.add(StatusData(
+            restoration.upper(),
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{restoration}_DisplayName"],
+            Description=self.loca[f"{restoration}_Description"],
+            Icon="Action_RegainHP",
+            StackId=restoration.upper(),
+            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
+            ApplyEffect="4019eeae-d4e3-449b-ba4a-6d7422ec6807",
+            OnApplyFunctors=[
+                "RemoveStatus(SELF,DIRT_COVERED)",
+                "RemoveStatus(SELF,DIRT_COVERED_FULL)",
+                "RemoveStatus(SELF,DIRT_COVERED_SLIGHT)",
+                "RemoveStatus(SELF,BLOOD_COVERED)",
+                "RemoveStatus(SELF,BLOOD_COVERED_FULL)",
+                "RemoveStatus(SELF,BLOOD_COVERED_SLIGHT)",
+                "RemoveStatus(SELF,SMELLY)",
+                "RemoveStatus(SELF,STENCH)",
+                "RemoveStatus(SELF,STENCH_GHAST)",
+                "ResetCooldowns(UntilRest)",
+                "RegainHitPoints(Target.MaxHP)",
+                "RestoreResource(SpellSlot,100%,1)",
+                "RestoreResource(SpellSlot,100%,2)",
+                "RestoreResource(SpellSlot,100%,3)",
+                "RestoreResource(SpellSlot,100%,4)",
+                "RestoreResource(SpellSlot,100%,5)",
+                "RestoreResource(SpellSlot,100%,6)",
+                "RestoreResource(SpellSlot,100%,7)",
+                "RestoreResource(SpellSlot,100%,8)",
+                "RestoreResource(SpellSlot,100%,9)",
+                "RestoreResource(WarlockSpellSlot,100%,1)",
+                "RestoreResource(WarlockSpellSlot,100%,2)",
+                "RestoreResource(WarlockSpellSlot,100%,3)",
+                "RestoreResource(WarlockSpellSlot,100%,4)",
+                "RestoreResource(WarlockSpellSlot,100%,5)",
+                "RestoreResource(WarlockSpellSlot,100%,6)",
+                "RestoreResource(ShadowSpellSlot,100%,1)",
+                "RestoreResource(SorceryPoint,100%,0)",
+                "RestoreResource(ChannelDivinity,100%,0)",
+                "RestoreResource(SuperiorityDie,100%,0)",
+                "RestoreResource(KiPoint,100%,0)",
+                "RestoreResource(WildShape,100%,0)",
+                "RestoreResource(WeaponActionPoint,100%,0)",
+                "RestoreResource(TidesOfChaos,100%,0)",
+                "RestoreResource(ChannelOath,100%,0)",
+                "RestoreResource(Rage,100%,0)",
+                "RestoreResource(BardicInspiration,100%,0)",
+                "RestoreResource(HitDice,100%,0)",
+                "RestoreResource(ArcaneRecoveryPoint,100%,0)",
+                "RestoreResource(NaturalRecoveryPoint,100%,0)",
+                "RestoreResource(RitualPoint,100%,0)",
+                "RestoreResource(LayOnHandsCharge,100%,0)",
+                "RestoreResource(Interrupt_HellishRebukeTiefling_Charge,100%,0)",
+                "RestoreResource(Interrupt_HellishRebukeWarlockMI_Charge,100%,0)",
+                "RestoreResource(FungalInfestationCharge,100%,0)",
+                "RestoreResource(LuckPoint,100%,0)",
+                "RestoreResource(WarPriestActionPoint,100%,0)",
+                "RestoreResource(ArcaneShot,100%,0)",
+                "RestoreResource(StarMapPoint,100%,0)",
+                "RestoreResource(CosmicOmen,100%,0)",
+                "RestoreResource(WrithingTidePoint,100%,0)",
+                "RestoreResource(Bladesong,100%,0)",
+            ],
         ))
-        self.loca[f"{passive_name}_DisplayName"] = "Wash"
-        self.loca[f"{passive_name}_Description"] = "Automatically wash after combat ends."
         self.add(PassiveData(
-            passive_name,
-            DisplayName=self.loca[f"{passive_name}_DisplayName"],
-            Description=self.loca[f"{passive_name}_Description"],
-            Icon="Item_LOOT_Bathroom_Soap_A",
+            restoration,
+            DisplayName=self.loca[f"{restoration}_DisplayName"],
+            Description=self.loca[f"{restoration}_Description"],
+            Icon="Action_RegainHP",
             StatsFunctorContext=["OnCombatEnded"],
-            StatsFunctors=["ApplyStatus(SOAP_WASH,100,1)"],
+            StatsFunctors=[f"ApplyStatus({restoration.upper()},100,1)"],
+            ToggleOnFunctors=[f"ApplyStatus({restoration.upper()},100,1)"],
             Properties=["Highlighted", "IsToggled", "ToggledDefaultAddToHotbar", "ToggledDefaultOn"],
         ))
-        self.add(StatusData(
-            status_name,
-            StatusType="BOOST",
-            DisplayName=self.loca[f"{passive_name}_DisplayName"],
-            Description=self.loca[f"{passive_name}_Description"],
-            Icon="Item_LOOT_Bathroom_Soap_A",
-            Passives=[passive_name],
-            StackId=status_name,
-            StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
-        ))
-        return name
+        return self._add_potion(
+            "RestorationPotion",
+            display_name="Elixir of Restoration",
+            description=f"""
+                Drinking this elixir grants <LSTag Type="Passive" Tooltip="{restoration}">Restoration</LSTag>.
+            """,
+            icon="Item_CONS_Potion_Rare_A_Bronze",
+            passives=[restoration],
+        )
 
     def _add_treasure_chests(self, chests: Iterable[TreasureChest]) -> None:
         """Add treasure chests to the tutorial chest."""

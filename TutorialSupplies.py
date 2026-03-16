@@ -9,6 +9,7 @@ from moddb import (
     Bolster,
     ElementalWeapon,
     Knowledge,
+    storm_bolts,
 )
 from modtools.gamedata import (
     Armor,
@@ -258,6 +259,8 @@ class TutorialSupplies(Mod):
                 self._knowledge_potion,
                 self._flying_potion,
                 self._overpowering_potion,
+                self._splinters_of_frost_potion,
+                self._storm_bolts_potion,
             ],
         )
 
@@ -422,6 +425,33 @@ class TutorialSupplies(Mod):
         ],
         status_property_flags=[],
     )
+
+    @cached_property
+    def _splinters_of_frost_potion(self) -> str:
+        return self._add_potion(
+            "SplintersOfFrostPotion",
+            display_name="Potion of Splinters of Frost",
+            description=f"""
+                Drinking this elixir grants the
+                <LSTag Type="Spell" Tooltip="{self._splinters_of_frost}">Splinters of Frost</LSTag> cantrip.
+            """,
+            icon="Item_LOOT_Alchemy_Myconid_Grenade_Water",
+            boosts=[f"UnlockSpell({self._splinters_of_frost})"],
+        )
+
+    @cached_property
+    def _storm_bolts_potion(self) -> str:
+        storm_bolts_spell = storm_bolts(self)
+        return self._add_potion(
+            "StormBoltsPotion",
+            display_name="Potion of Storm Bolts",
+            description=f"""
+                Drinking this elixir grants the
+                <LSTag Type="Spell" Tooltip="{storm_bolts_spell}">Storm Bolts</LSTag> cantrip.
+            """,
+            icon="Item_ALCH_Solution_Grenade_Light_2",
+            boosts=[f"UnlockSpell({storm_bolts_spell})"],
+        )
 
     @cached_property
     def _knowledge_of_the_ages(self) -> str:
@@ -775,7 +805,6 @@ class TutorialSupplies(Mod):
                 Forged from gleaming silver, this elegant sword constantly pulses with jagged arcs of blue electricity
                 and hums with the low rumble of distant thunder.
             """,
-            boosts=[f"UnlockSpell({self._splinters_of_frost})"],
             extra_passives_on_equip=[
                 "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
                 self._weapon_enchantment,
@@ -851,6 +880,9 @@ class TutorialSupplies(Mod):
     @cached_property
     def _splinters_of_frost(self) -> str:
         name = self.make_name("SplintersOfFrost")
+        status_name = self.make_name("Splinters_of_Frost").upper()
+        icon = "Action_Monster_ElementalWater_WintersBreath"
+        
         self.loca[f"{name}_DisplayName"] = "Splinters of Frost"
         self.loca[f"{name}_Description"] = """
             Conjure [1] splinter(s) of ice.
@@ -864,11 +896,22 @@ class TutorialSupplies(Mod):
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
             DescriptionParams=["LevelMapValue(EldritchBlast)", "Distance(3)"],
+            Icon=icon,
             SpellSuccess=[
                 "DealDamage(1d8,Cold,Magical)",
-                "ApplyStatus(RAY_OF_FROST,100,1)",
+                f"ApplyStatus({status_name},100,1)",
             ],
+            TooltipStatusApply=[f"ApplyStatus({status_name},100,1)"],
         ))
+
+        self.add(StatusData(
+            status_name,
+            StatusType="BOOST",
+            using="RAY_OF_FROST",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Icon=icon,
+        ))
+
         return name
 
     @cached_property

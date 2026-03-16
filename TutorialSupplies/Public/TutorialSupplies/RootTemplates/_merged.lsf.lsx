@@ -486,6 +486,194 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h34fe0990gc654g720bgb9acg738578b4a612" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h8cffd259g12e2ga24agc438gb8e4fddd0ac5" version="1" />
+                    <attribute id="Flag_int32" type="int32" value="0" />
+                    <attribute id="Icon" type="FixedString" value="Item_LOOT_Alchemy_Myconid_Grenade_Water" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="e85b647b-3b6d-d5e9-04d8-53693f32daad" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_SplintersOfFrostPotion" />
+                    <attribute id="OnUseDescription" type="TranslatedString" handle="hc857245cg5f9dg4f90g88d4g604f596d85ca" version="1" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="8e660fd9-489d-42ff-a762-e4392e826666" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_SplintersOfFrostPotion" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="a93bcc13-e31b-f6a6-7076-e64fe7771d9e" />
+                    <children>
+                        <node id="Bounds">
+                            <children>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="1" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="2" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="0" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="InventoryList" />
+                        <node id="OnDestroyActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="26" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="ActivateSoundEvent" type="FixedString" value="3ea82655-5140-4287-9ab8-794559f182d3" />
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="PlayOnHUD" type="bool" value="false" />
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="5" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="ExplodeFX" type="FixedString" value="df744de3-fb7f-4808-6881-fd466107d27f" />
+                                            <attribute id="FadeOutDelay" type="float" value="0" />
+                                            <attribute id="FadeOutFX" type="FixedString" value="" />
+                                            <attribute id="SnapToGround" type="bool" value="true" />
+                                            <attribute id="TargetItemState" type="uint8" value="0" />
+                                            <attribute id="VisualWithDynamicPhysics" type="FixedString" value="" />
+                                            <attribute id="templateAfterDestruction" type="FixedString" value="" />
+                                            <attribute id="visualDestruction" type="FixedString" value="00000000-0000-0000-0000-000000000000" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="7" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="Consume" type="bool" value="false" />
+                                            <attribute id="IsHiddenStatus" type="bool" value="true" />
+                                            <attribute id="StatsId" type="FixedString" value="TUTORIALSUPPLIES_SPLINTERSOFFROSTPOTION" />
+                                            <attribute id="StatusDuration" type="int32" value="-1" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h1e888791g306bgd1b6g4bf8gfc28b4c1e623" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h26dd9429g659agef25g0d5bg58443a75a149" version="1" />
+                    <attribute id="Flag_int32" type="int32" value="0" />
+                    <attribute id="Icon" type="FixedString" value="Item_ALCH_Solution_Grenade_Light_2" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="f7095a88-ee8f-ead2-41ae-c5cece02f191" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_StormBoltsPotion" />
+                    <attribute id="OnUseDescription" type="TranslatedString" handle="hc857245cg5f9dg4f90g88d4g604f596d85ca" version="1" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="8e660fd9-489d-42ff-a762-e4392e826666" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_StormBoltsPotion" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="VisualTemplate" type="FixedString" value="a93bcc13-e31b-f6a6-7076-e64fe7771d9e" />
+                    <children>
+                        <node id="Bounds">
+                            <children>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="1" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="2" />
+                                </node>
+                                <node id="Bound">
+                                    <attribute id="Height" type="float" value="0.418184" />
+                                    <attribute id="Max" type="fvec3" value="0.21 0.62 0.2" />
+                                    <attribute id="Min" type="fvec3" value="-0.21 0 -0.2" />
+                                    <attribute id="Radius" type="float" value="0.114147" />
+                                    <attribute id="Shape" type="uint8" value="1" />
+                                    <attribute id="Type" type="uint8" value="0" />
+                                </node>
+                            </children>
+                        </node>
+                        <node id="InventoryList" />
+                        <node id="OnDestroyActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="26" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="ActivateSoundEvent" type="FixedString" value="3ea82655-5140-4287-9ab8-794559f182d3" />
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="PlayOnHUD" type="bool" value="false" />
+                                        </node>
+                                    </children>
+                                </node>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="5" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="ExplodeFX" type="FixedString" value="df744de3-fb7f-4808-6881-fd466107d27f" />
+                                            <attribute id="FadeOutDelay" type="float" value="0" />
+                                            <attribute id="FadeOutFX" type="FixedString" value="" />
+                                            <attribute id="SnapToGround" type="bool" value="true" />
+                                            <attribute id="TargetItemState" type="uint8" value="0" />
+                                            <attribute id="VisualWithDynamicPhysics" type="FixedString" value="" />
+                                            <attribute id="templateAfterDestruction" type="FixedString" value="" />
+                                            <attribute id="visualDestruction" type="FixedString" value="00000000-0000-0000-0000-000000000000" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="7" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="Consume" type="bool" value="false" />
+                                            <attribute id="IsHiddenStatus" type="bool" value="true" />
+                                            <attribute id="StatsId" type="FixedString" value="TUTORIALSUPPLIES_STORMBOLTSPOTION" />
+                                            <attribute id="StatusDuration" type="int32" value="-1" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h0621b5d0g3195gafcdg89cfg729426174b18" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1" />
                     <attribute id="LevelName" type="FixedString" value="" />

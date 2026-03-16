@@ -33,6 +33,16 @@ type "Object"
 using "TutorialSupplies_BasePotion"
 data "RootTemplate" "feb17425-a93b-ceb1-dd7a-7589e33a8986"
 
+new entry "TutorialSupplies_SplintersOfFrostPotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "e85b647b-3b6d-d5e9-04d8-53693f32daad"
+
+new entry "TutorialSupplies_StormBoltsPotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "f7095a88-ee8f-ead2-41ae-c5cece02f191"
+
 new entry "TutorialSupplies_CampClothing"
 type "Object"
 using "_Container"

@@ -76,6 +76,19 @@ class Script(Text):
         return LUA_PROLOGUE
 
 
+class SpellSet(Text):
+    def __init__(self, *, Name: str, Spells: list[str]) -> None:
+        text = (
+            f"new spellset {Name}\n"
+            + "".join(f"""add spell "{spell}"\n""" for spell in Spells)
+        )
+        super().__init__(text)
+
+    @property
+    def path(self) -> str:
+        return "Public/{folder}/Stats/Generated/SpellSet.txt"
+
+
 class TreasureTable(Text):
     @property
     def path(self) -> str:

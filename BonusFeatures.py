@@ -12,7 +12,7 @@ from moddb import (
     EmpoweredSpells,
     Movement,
 )
-from modtools.gamedata import PassiveData, StatusData
+from modtools.gamedata import PassiveData, StatusData, SpellData
 from modtools.lsx.game import (
     BASE_CHARACTER_RACES,
     CharacterAbility,
@@ -29,7 +29,7 @@ from modtools.replacers import (
     progression,
     Replacer,
 )
-from modtools.text import Script
+from modtools.text import Script, SpellSet
 from typing import Final
 
 
@@ -72,6 +72,7 @@ class BonusFeatures(Replacer):
         self._loca_handles = {}
         self._ability_bonus = 1 if self.args.level_20 else 2
 
+        self._add_restoration_to_common_player_actions()
         self._remove_asi_from_feats()
 
     @cache
@@ -816,9 +817,7 @@ class BonusFeatures(Replacer):
         return sorted([
             ( 1, "Arcane Adept",        self._arcane_adept),
             ( 1, "Archer",              self._archer),
-            ( 1, "Armour of Shadows",   "ArmorOfShadows"),
             ( 1, "Armoured",            self._armored),
-            ( 1, "Beast Speech",        "BeastSpeech"),
             ( 1, "Duelist",             self._duelist),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),
@@ -829,12 +828,12 @@ class BonusFeatures(Replacer):
             ( 1, "Savage Attacks",      "SavageAttacks"),
             ( 1, "Weaponmaster",        self._weaponmaster),
             ( 1, "Two-Weapon Fighting", self._two_weapon_fighting),
-            ( 3, "Action Surge",        self._action_surge),
-            ( 3, "Alacrity",            self._alacrity),
-            ( 3, "Cunning Actions",     self._cunning_actions),
-            ( 3, "Fast Hands",          "FastHands"),
+            ( 2, "Action Surge",        self._action_surge),
+            ( 2, "Alacrity",            self._alacrity),
+            ( 2, "Cunning Actions",     self._cunning_actions),
             ( 3, "Improved Critical",   "ImprovedCritical"),
             ( 3, "Jack of All Trades",  "JackOfAllTrades"),
+            ( 3, "Fast Hands",          "FastHands"),
             ( 3, "Remarkable Athlete",  self._remarkable_athlete),
             ( 3, "Resilience",          self._resilience),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
@@ -1017,9 +1016,174 @@ class BonusFeatures(Replacer):
             UUID="b153e75c-27a2-4412-95cd-60b477121679",
         ))
 
+    @cached_property
+    def _restoration_display_name(self) -> str:
+        name = self.make_name("Restoration")
+        self.loca[f"{name}_DisplayName"] = "Restoration"
+        return self.loca[f"{name}_DisplayName"]
+
+    @cached_property
+    def _restoration_description(self) -> str:
+        name = self.make_name("Restoration")
+        self.loca[f"{name}_Description"] = """
+            You and nearby allies are revitalised as though you would have taken a
+            <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+        """
+        return self.loca[f"{name}_Description"]
+
+    @cached_property
+    def _restoration_description_after_combat(self) -> str:
+        name = self.make_name("RestorationAfterCombat")
+        self.loca[f"{name}_Description"] = """
+            When combat ends, you are revitalised as though you would have taken a
+            <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+        """
+        return self.loca[f"{name}_Description"]
+
+    @cached_property
+    def _restoration_status(self) -> str:
+        name = self.make_name("Restoration").upper()
+        self.add(StatusData(
+            name,
+            StatusType="BOOST",
+            DisplayName=self._restoration_display_name,
+            Description=self._restoration_description,
+            Icon="Action_RegainHP",
+            StackId=name,
+            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
+            ApplyEffect="4019eeae-d4e3-449b-ba4a-6d7422ec6807",
+            OnApplyFunctors=[
+                "RemoveStatus(SELF,DIRT_COVERED)",
+                "RemoveStatus(SELF,DIRT_COVERED_FULL)",
+                "RemoveStatus(SELF,DIRT_COVERED_SLIGHT)",
+                "RemoveStatus(SELF,BLOOD_COVERED)",
+                "RemoveStatus(SELF,BLOOD_COVERED_FULL)",
+                "RemoveStatus(SELF,BLOOD_COVERED_SLIGHT)",
+                "RemoveStatus(SELF,SMELLY)",
+                "RemoveStatus(SELF,STENCH)",
+                "RemoveStatus(SELF,STENCH_GHAST)",
+                "ResetCooldowns(UntilRest)",
+                "RegainHitPoints(Target.MaxHP)",
+                "RestoreResource(SpellSlot,100%,1)",
+                "RestoreResource(SpellSlot,100%,2)",
+                "RestoreResource(SpellSlot,100%,3)",
+                "RestoreResource(SpellSlot,100%,4)",
+                "RestoreResource(SpellSlot,100%,5)",
+                "RestoreResource(SpellSlot,100%,6)",
+                "RestoreResource(SpellSlot,100%,7)",
+                "RestoreResource(SpellSlot,100%,8)",
+                "RestoreResource(SpellSlot,100%,9)",
+                "RestoreResource(WarlockSpellSlot,100%,1)",
+                "RestoreResource(WarlockSpellSlot,100%,2)",
+                "RestoreResource(WarlockSpellSlot,100%,3)",
+                "RestoreResource(WarlockSpellSlot,100%,4)",
+                "RestoreResource(WarlockSpellSlot,100%,5)",
+                "RestoreResource(WarlockSpellSlot,100%,6)",
+                "RestoreResource(ShadowSpellSlot,100%,1)",
+                "RestoreResource(SorceryPoint,100%,0)",
+                "RestoreResource(ChannelDivinity,100%,0)",
+                "RestoreResource(SuperiorityDie,100%,0)",
+                "RestoreResource(KiPoint,100%,0)",
+                "RestoreResource(WildShape,100%,0)",
+                "RestoreResource(WeaponActionPoint,100%,0)",
+                "RestoreResource(TidesOfChaos,100%,0)",
+                "RestoreResource(ChannelOath,100%,0)",
+                "RestoreResource(Rage,100%,0)",
+                "RestoreResource(BardicInspiration,100%,0)",
+                "RestoreResource(HitDice,100%,0)",
+                "RestoreResource(ArcaneRecoveryPoint,100%,0)",
+                "RestoreResource(NaturalRecoveryPoint,100%,0)",
+                "RestoreResource(RitualPoint,100%,0)",
+                "RestoreResource(LayOnHandsCharge,100%,0)",
+                "RestoreResource(Interrupt_HellishRebukeTiefling_Charge,100%,0)",
+                "RestoreResource(Interrupt_HellishRebukeWarlockMI_Charge,100%,0)",
+                "RestoreResource(FungalInfestationCharge,100%,0)",
+                "RestoreResource(LuckPoint,100%,0)",
+                "RestoreResource(WarPriestActionPoint,100%,0)",
+                "RestoreResource(ArcaneShot,100%,0)",
+                "RestoreResource(StarMapPoint,100%,0)",
+                "RestoreResource(CosmicOmen,100%,0)",
+                "RestoreResource(WrithingTidePoint,100%,0)",
+                "RestoreResource(Bladesong,100%,0)",
+            ],
+        ))
+        return name
+
+    @cached_property
+    def _restoration(self) -> str:
+        name = self.make_name("Restoration")
+        self.add(SpellData(
+            name,
+            SpellType="Shout",
+            DisplayName=self._restoration_display_name,
+            Description=self._restoration_description,
+            Icon="Action_RegainHP",
+            SpellProperties=[f"ApplyStatus({self._restoration_status},100,1)"],
+            AIFlags=["CanNotUse"],
+            AreaRadius=36,
+            TargetConditions=["Ally() and not Dead()"],
+            CastSound="Action_Cast_RegainHP",
+            TargetSound="Action_Impact_RegainHP",
+            CastTextEvent="Cast",
+            PreviewCursor="Cast",
+            UseCosts="ActionPoint:1",
+            SpellAnimation=[
+                "414bbf02-2918-4f01-83fb-1ddc7a588d88,,",
+                ",,",
+                "7abe77ed-9c77-4eac-872c-5b8caed070b6,,",
+                "cb171bda-f065-4520-b470-e447f678ba1f,,",
+                "0c5dcc83-fa78-41da-b6a5-440b5ea30936,,",
+                ",,",
+                "bea988a0-2ec5-40d8-a67e-ffbd7454bc53,,",
+                ",,",
+                ",,",
+            ],
+            VerbalIntent="Healing",
+            SpellFlags=["Invisible", "Stealth"],
+            HitAnimationType="None",
+            Requirements=["!Combat"],
+            PrepareEffect="96a51ac8-2e7e-4718-bb62-dcfd18964a02",
+            CastEffect="9396e4e3-2af9-465e-adba-5714d97ce66f",
+        ))
+        return name
+
+    @cached_property
+    def _restoration_after_combat(self) -> str:
+        name = self.make_name("RestorationAfterCombat")
+        self.add(PassiveData(
+            name,
+            DisplayName=self._restoration_display_name,
+            Description=self._restoration_description_after_combat,
+            Icon="Action_RegainHP",
+            StatsFunctorContext=["OnCombatEnded"],
+            StatsFunctors=[f"ApplyStatus(SELF,{self._restoration_status},100,1)"],
+            Properties=["IsToggled", "ToggledDefaultAddToHotbar", "ToggleForParty"],
+        ))
+        return name
+
+    def _add_restoration_to_common_player_actions(self) -> str:
+        self.add(SpellSet(
+            Name="CommonPlayerActions",
+            Spells=[
+                "Projectile_Jump",
+                "Target_Dip",
+                "Shout_Hide",
+                "Target_Shove",
+                "Throw_Throw",
+                "Throw_ImprovisedWeapon",
+                "Shout_Dash",
+                "Target_Help",
+                "Shout_Disengage",
+                self._restoration,
+            ],
+        ))
+
     @progression(BASE_CHARACTER_RACES, 1)
     def level_1(self, progress: Progression) -> None:
         bonus_skills = 4 if progress.Name != "Human" else 6
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [
+            self._restoration_after_combat,
+        ]
         progress.Selectors = [s for s in (progress.Selectors or []) if not s.startswith("SelectSkills(")] + [
             f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{bonus_skills},{self.mod.get_name()})",
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),

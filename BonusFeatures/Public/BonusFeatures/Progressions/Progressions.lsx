@@ -9,6 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Dragonborn" />
+                    <attribute id="PassivesAdded" type="LSString" value="BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_DragonbornAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_DragonbornBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
@@ -66,7 +67,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0);ProficiencyBonus(Skill,Perception)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Drow" />
-                    <attribute id="PassivesAdded" type="LSString" value="Drow_DrowWeaponTraining;SuperiorDarkvision;FeyAncestry" />
+                    <attribute id="PassivesAdded" type="LSString" value="Drow_DrowWeaponTraining;SuperiorDarkvision;FeyAncestry;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(d707ec70-da8a-457b-9b69-7cf5205eef0e,,Charisma,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_DrowAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_DrowBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
@@ -124,7 +125,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Dwarf" />
-                    <attribute id="PassivesAdded" type="LSString" value="Dwarf_DwarvenCombatTraining;Darkvision;Dwarf_DwarvenResilience" />
+                    <attribute id="PassivesAdded" type="LSString" value="Dwarf_DwarvenCombatTraining;Darkvision;Dwarf_DwarvenResilience;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_DwarfAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_DwarfBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
@@ -183,7 +184,7 @@
                     <attribute id="Boosts" type="LSString" value="ProficiencyBonus(Skill,Perception);ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Elf" />
-                    <attribute id="PassivesAdded" type="LSString" value="Elf_WeaponTraining;Darkvision;FeyAncestry" />
+                    <attribute id="PassivesAdded" type="LSString" value="Elf_WeaponTraining;Darkvision;FeyAncestry;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_ElfAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_ElfBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
@@ -241,7 +242,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Githyanki" />
-                    <attribute id="PassivesAdded" type="LSString" value="Gith_MartialProdigy" />
+                    <attribute id="PassivesAdded" type="LSString" value="Gith_MartialProdigy;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(5216169f-6b32-4860-8664-61348d970e48);AddSpells(4d7bfb6c-5001-4a83-8728-94e3711516d3,,Intelligence,,AlwaysPrepared);SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_GithyankiAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_GithyankiBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
@@ -299,7 +300,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Gnome" />
-                    <attribute id="PassivesAdded" type="LSString" value="Gnome_Cunning" />
+                    <attribute id="PassivesAdded" type="LSString" value="Gnome_Cunning;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_GnomeAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_GnomeBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
@@ -357,7 +358,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,7.5,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Halfling" />
-                    <attribute id="PassivesAdded" type="LSString" value="Halfling_Lucky;Halfling_Brave" />
+                    <attribute id="PassivesAdded" type="LSString" value="Halfling_Lucky;Halfling_Brave;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HalflingAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HalflingBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
@@ -415,7 +416,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="HalfElf" />
-                    <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;Darkvision;FeyAncestry" />
+                    <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;Darkvision;FeyAncestry;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HalfElfAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HalfElfBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
@@ -473,7 +474,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0);ProficiencyBonus(Skill,Intimidation)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="HalfOrc" />
-                    <attribute id="PassivesAdded" type="LSString" value="Darkvision;RelentlessEndurance;SavageAttacks" />
+                    <attribute id="PassivesAdded" type="LSString" value="Darkvision;RelentlessEndurance;SavageAttacks;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HalfOrcAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HalfOrcBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
@@ -532,7 +533,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Human" />
-                    <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;HumanVersatility" />
+                    <attribute id="PassivesAdded" type="LSString" value="HumanMilitia;HumanVersatility;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,6,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_HumanAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_HumanBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
@@ -590,7 +591,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(Movement,9,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Tiefling" />
-                    <attribute id="PassivesAdded" type="LSString" value="Darkvision;Tiefling_HellishResistance" />
+                    <attribute id="PassivesAdded" type="LSString" value="Darkvision;Tiefling_HellishResistance;BonusFeatures_RestorationAfterCombat" />
                     <attribute id="ProgressionType" type="uint8" value="2" />
                     <attribute id="Selectors" type="LSString" value="SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,4,BonusFeatures);SelectPassives(89b8a75d-3ce2-899d-6096-7c154128aedf,1,BonusFeatures_TieflingAbilitiesBonus);SelectPassives(bed6d0b3-93d9-6499-5270-e623efbbe8f8,1,BonusFeatures_TieflingBonusFeatures_Level_1)" />
                     <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />

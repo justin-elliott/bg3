@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Iterable
+from typing import ClassVar, Iterable
 from uuid import UUID
 
 from moddb import (
@@ -26,6 +26,8 @@ import os
 
 
 class TutorialSupplies(Mod):
+    __KATANA_TEMPLATE_ID: ClassVar[UUID] = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
+
     @dataclass
     class TreasureChest:
         name: str
@@ -256,7 +258,6 @@ class TutorialSupplies(Mod):
                 self._knowledge_potion,
                 self._flying_potion,
                 self._overpowering_potion,
-                self._restoration_potion,
             ],
         )
 
@@ -425,98 +426,6 @@ class TutorialSupplies(Mod):
     @cached_property
     def _knowledge_of_the_ages(self) -> str:
         return Knowledge(self).add_knowledge_of_the_ages()
-
-    @cached_property
-    def _restoration_potion(self) -> str:
-        restoration = self.make_name("Restoration")
-        self.loca[f"{restoration}_DisplayName"] = "Restoration"
-        self.loca[f"{restoration}_Description"] = """
-            When combat ends, you are revitalised as though you would have taken a
-            <LSTag Tooltip="LongRest">Long Rest</LSTag>.
-        """
-        self.add(StatusData(
-            restoration.upper(),
-            StatusType="BOOST",
-            DisplayName=self.loca[f"{restoration}_DisplayName"],
-            Description=self.loca[f"{restoration}_Description"],
-            Icon="Action_RegainHP",
-            StackId=restoration.upper(),
-            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
-            ApplyEffect="4019eeae-d4e3-449b-ba4a-6d7422ec6807",
-            OnApplyFunctors=[
-                "RemoveStatus(SELF,DIRT_COVERED)",
-                "RemoveStatus(SELF,DIRT_COVERED_FULL)",
-                "RemoveStatus(SELF,DIRT_COVERED_SLIGHT)",
-                "RemoveStatus(SELF,BLOOD_COVERED)",
-                "RemoveStatus(SELF,BLOOD_COVERED_FULL)",
-                "RemoveStatus(SELF,BLOOD_COVERED_SLIGHT)",
-                "RemoveStatus(SELF,SMELLY)",
-                "RemoveStatus(SELF,STENCH)",
-                "RemoveStatus(SELF,STENCH_GHAST)",
-                "ResetCooldowns(UntilRest)",
-                "RegainHitPoints(Target.MaxHP)",
-                "RestoreResource(SpellSlot,100%,1)",
-                "RestoreResource(SpellSlot,100%,2)",
-                "RestoreResource(SpellSlot,100%,3)",
-                "RestoreResource(SpellSlot,100%,4)",
-                "RestoreResource(SpellSlot,100%,5)",
-                "RestoreResource(SpellSlot,100%,6)",
-                "RestoreResource(SpellSlot,100%,7)",
-                "RestoreResource(SpellSlot,100%,8)",
-                "RestoreResource(SpellSlot,100%,9)",
-                "RestoreResource(WarlockSpellSlot,100%,1)",
-                "RestoreResource(WarlockSpellSlot,100%,2)",
-                "RestoreResource(WarlockSpellSlot,100%,3)",
-                "RestoreResource(WarlockSpellSlot,100%,4)",
-                "RestoreResource(WarlockSpellSlot,100%,5)",
-                "RestoreResource(WarlockSpellSlot,100%,6)",
-                "RestoreResource(ShadowSpellSlot,100%,1)",
-                "RestoreResource(SorceryPoint,100%,0)",
-                "RestoreResource(ChannelDivinity,100%,0)",
-                "RestoreResource(SuperiorityDie,100%,0)",
-                "RestoreResource(KiPoint,100%,0)",
-                "RestoreResource(WildShape,100%,0)",
-                "RestoreResource(WeaponActionPoint,100%,0)",
-                "RestoreResource(TidesOfChaos,100%,0)",
-                "RestoreResource(ChannelOath,100%,0)",
-                "RestoreResource(Rage,100%,0)",
-                "RestoreResource(BardicInspiration,100%,0)",
-                "RestoreResource(HitDice,100%,0)",
-                "RestoreResource(ArcaneRecoveryPoint,100%,0)",
-                "RestoreResource(NaturalRecoveryPoint,100%,0)",
-                "RestoreResource(RitualPoint,100%,0)",
-                "RestoreResource(LayOnHandsCharge,100%,0)",
-                "RestoreResource(Interrupt_HellishRebukeTiefling_Charge,100%,0)",
-                "RestoreResource(Interrupt_HellishRebukeWarlockMI_Charge,100%,0)",
-                "RestoreResource(FungalInfestationCharge,100%,0)",
-                "RestoreResource(LuckPoint,100%,0)",
-                "RestoreResource(WarPriestActionPoint,100%,0)",
-                "RestoreResource(ArcaneShot,100%,0)",
-                "RestoreResource(StarMapPoint,100%,0)",
-                "RestoreResource(CosmicOmen,100%,0)",
-                "RestoreResource(WrithingTidePoint,100%,0)",
-                "RestoreResource(Bladesong,100%,0)",
-            ],
-        ))
-        self.add(PassiveData(
-            restoration,
-            DisplayName=self.loca[f"{restoration}_DisplayName"],
-            Description=self.loca[f"{restoration}_Description"],
-            Icon="Action_RegainHP",
-            StatsFunctorContext=["OnCombatEnded"],
-            StatsFunctors=[f"ApplyStatus({restoration.upper()},100,1)"],
-            ToggleOnFunctors=[f"ApplyStatus({restoration.upper()},100,1)"],
-            Properties=["Highlighted", "IsToggled", "ToggledDefaultAddToHotbar", "ToggledDefaultOn"],
-        ))
-        return self._add_potion(
-            "RestorationPotion",
-            display_name="Elixir of Restoration",
-            description=f"""
-                Drinking this elixir grants <LSTag Type="Passive" Tooltip="{restoration}">Restoration</LSTag>.
-            """,
-            icon="Item_CONS_Potion_Rare_A_Bronze",
-            passives=[restoration],
-        )
 
     def _add_treasure_chests(self, chests: Iterable[TreasureChest]) -> None:
         """Add treasure chests to the tutorial chest."""
@@ -817,15 +726,15 @@ class TutorialSupplies(Mod):
                 self._blade_of_the_banshee,
                 self._frozen_rapier,
                 self._radiant_silver_sword,
+                self._sword_of_storms,
             ],
         )
 
     @cached_property
     def _blade_of_the_banshee(self) -> str:
-        katana_template_id = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
         return self._add_adamantine_weapon(
             "BladeOfTheBanshee",
-            parent_template_id=katana_template_id,
+            parent_template_id=self.__KATANA_TEMPLATE_ID,
             display_name="Blade of the Banshee",
             description="""
                 This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is
@@ -835,6 +744,46 @@ class TutorialSupplies(Mod):
             bonus_damage_type="Psychic",
             extra_passives_on_equip=["MAG_BansheeBless_Passive"],
             weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
+        )
+
+    @cached_property
+    def _lightning_weapon(self) -> str:
+        name = self.make_name("Lightning_Weapon").upper()
+        self.loca[f"{name}_DisplayName"] = "Lightning Weapon"
+        self.loca[f"{name}_Description"] = "Lightning arcs along the length of the weapon"
+        self.add(StatusData(
+            name,
+            StatusType="BOOST",
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Icon="statIcons_LightningCharge",
+            Boosts=["WeaponDamage(1d4,Lightning)"],
+            StackId=name,
+            StackPriority=10,
+            StatusEffectOverrideForItems="7905bb82-0284-46b8-855b-24f17560fe4a",
+            StatusPropertyFlags=["DisableOverhead", "IgnoreResting", "DisableCombatlog", "DisablePortraitIndicator"],
+        ))
+        return name
+
+    @cached_property
+    def _sword_of_storms(self) -> str:
+        return self._add_adamantine_weapon(
+            "SwordOfStorms",
+            parent_template_id=self.__KATANA_TEMPLATE_ID,
+            display_name="Sword of Storms",
+            description="""
+                Forged from gleaming silver, this elegant sword constantly pulses with jagged arcs of blue electricity
+                and hums with the low rumble of distant thunder.
+            """,
+            boosts=[f"UnlockSpell({self._splinters_of_frost})"],
+            extra_passives_on_equip=[
+                "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
+                self._weapon_enchantment,
+                self._weapon_kereskas_favour,
+            ],
+            extra_weapon_statuses=[self._lightning_weapon],
+            ignore_slashing_resistance=False,
+            proficiency_group="",
         )
 
     @cached_property
@@ -861,18 +810,22 @@ class TutorialSupplies(Mod):
             description: str,
             bonus_damage: str | None = None,
             bonus_damage_type: str | None = None,
+            boosts: list[str] | None = None,
             extra_boosts_on_equip_main_hand: list[str] | None = None,
             extra_passives_on_equip: list[str] | None = None,
+            extra_weapon_statuses: list[str] | None = None,
             ignore_slashing_resistance: bool = True,
             critical_vs_items: bool = False,
+            proficiency_group: str | None = None,
             weapon_functors: list[str] | None = None) -> str:
         return self._add_weapon(
             base_name,
             parent_template_id=parent_template_id,
             display_name=display_name,
             description=description,
-            bonus_damage=bonus_damage or "1d4",
-            bonus_damage_type=bonus_damage_type or "Slashing",
+            bonus_damage=bonus_damage or ("1d4" if bonus_damage_type else None),
+            bonus_damage_type=bonus_damage_type,
+            boosts=boosts,
             boosts_on_equip_main_hand=[
                 "CannotBeDisarmed()",
                 "UnlockSpell(Target_OpeningAttack)",
@@ -885,11 +838,13 @@ class TutorialSupplies(Mod):
                 *(["UNI_Adamantine_CriticalVsItems_Passive"] if critical_vs_items else []),
                 *(extra_passives_on_equip or []),
             ],
+            proficiency_group=proficiency_group,
             weapon_functors=weapon_functors,
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
             weapon_statuses=[
                 *(["MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"] if ignore_slashing_resistance else []),
                 *(["MAG_DIAMONDSBANE_TECHNICAL"] if critical_vs_items else []),
+                *(extra_weapon_statuses or []),
             ],
         )
 
@@ -1016,6 +971,76 @@ class TutorialSupplies(Mod):
 
         return name
     
+    @cached_property
+    def _weapon_enchantment(self) -> str:
+        name = self.make_name("WeaponEnchantment")
+        self.loca[f"{name}_DisplayName"] = "Enchanted Blade"
+        self.loca[f"{name}_Description"] = """
+            Gain +1 to <LSTag Tooltip="AttackRoll">Spell Attack</LSTag>, Damage, and
+            <LSTag Tooltip="SpellDifficultyClass">Save DC</LSTag> rolls.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "SpellSaveDC(1)",
+                "RollBonus(MeleeSpellAttack,1)",
+                "RollBonus(RangedSpellAttack,1)",
+                "IF(IsSpell()):DamageBonus(1)",
+            ],
+        ))
+        return name
+
+    @cached_property
+    def _weapon_enchantment_progression(self) -> str:
+        name = self.make_name("WeaponEnchantmentProgression")
+        self.loca[f"{name}_DisplayName"] = "Enchanted Blade"
+        self.loca[f"{name}_Description"] = """
+            Gain +1 to <LSTag Tooltip="AttackRoll">Spell Attack</LSTag>, Damage, and
+            <LSTag Tooltip="SpellDifficultyClass">Save DC</LSTag> rolls. This increases to +2 at
+            <LSTag>Level 5</LSTag>, and +3 at <LSTag>Level 9</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "IF(not CharacterLevelGreaterThan(4)):SpellSaveDC(1)",
+                "IF(not CharacterLevelGreaterThan(4)):RollBonus(MeleeSpellAttack,1)",
+                "IF(not CharacterLevelGreaterThan(4)):RollBonus(RangedSpellAttack,1)",
+                "IF(not CharacterLevelGreaterThan(4) and IsSpell()):DamageBonus(1)",
+                "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):SpellSaveDC(2)",
+                "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):RollBonus(MeleeSpellAttack,2)",
+                "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):RollBonus(RangedSpellAttack,2)",
+                "IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8) and IsSpell()):DamageBonus(2)",
+                "IF(CharacterLevelGreaterThan(8)):SpellSaveDC(3)",
+                "IF(CharacterLevelGreaterThan(8)):RollBonus(MeleeSpellAttack,3)",
+                "IF(CharacterLevelGreaterThan(8)):RollBonus(RangedSpellAttack,3)",
+                "IF(CharacterLevelGreaterThan(8) and IsSpell()):DamageBonus(3)",
+            ],
+        ))
+        return name
+
+    @cached_property
+    def _weapon_kereskas_favour(self) -> str:
+        name = self.make_name("WeaponKereskasFavour")
+        self.loca[f"{name}_DisplayName"] = "Kereska's Favour"
+        self.loca[f"{name}_Description"] = """
+            At <LSTag>Level 9</LSTag> you gain
+            <LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement">Kereska's Favour</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
+                "IF(CharacterLevelGreaterThan(8)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
+            ],
+        ))
+        return name
+
     @cached_property
     def _cleave(self) -> str:
         name = self.make_name("Cleave")

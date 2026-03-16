@@ -34,10 +34,6 @@
     <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>
     <content contentuid="h65c21cfbgfb1cgdfb6g45c6g00e5521026b8" version="1">Temporarily gain a significant boost to your strength, health, armor class, attack rolls, damage rolls, and saving throws.</content>
-    <content contentuid="h1d74465fgb9d1ge5afgd551g86ab535a2c2c" version="1">Restoration</content>
-    <content contentuid="h72fa40ebg8975g812fgb948g6b02c260d6ec" version="1">When combat ends, you are revitalised as though you would have taken a &lt;LSTag Tooltip="LongRest"&gt;Long Rest&lt;/LSTag&gt;.</content>
-    <content contentuid="hf8c444b6g8c95g2b68gf871g0a913117e5c6" version="1">Elixir of Restoration</content>
-    <content contentuid="h334a7a67g4bfcg3d26g7379g57ff65b11899" version="1">Drinking this elixir grants &lt;LSTag Type="Passive" Tooltip="TutorialSupplies_Restoration"&gt;Restoration&lt;/LSTag&gt;.</content>
     <content contentuid="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1">Blade of the Banshee</content>
     <content contentuid="h0621b5d0g3195gafcdg89cfg729426174b18" version="1">This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail that chills the blood of any who hear it.</content>
     <content contentuid="hce4bee29gd256g167bgbcdcg2b379e89dcf3" version="1">Splinters of Frost</content>
@@ -46,6 +42,14 @@
     <content contentuid="h6d8e8797ga36agf285ge031g586154442139" version="1">Sculpted from a single shard of perpetually freezing glacial ice, this elegant rapier features a needle-sharp blade that shimmers with frost and exhales a deadly chill.</content>
     <content contentuid="h2aac8cd5g3eeege8bdgfc88gbcee0939324a" version="1">Radiant Silver Sword</content>
     <content contentuid="h83da98f9g89a1g1883gbd11gbacdd4ee75bb" version="1">This heavy silver sword pulses with a gentle light.</content>
+    <content contentuid="h72de638agc00ag2277ga489g09454ddbd598" version="1">Enchanted Blade</content>
+    <content contentuid="h049e2270ga929g218fgcf3cg66e6d973e6f7" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls.</content>
+    <content contentuid="hb8307cfbg1e48g8698g2a71gcd162a3a314c" version="1">Kereska's Favour</content>
+    <content contentuid="hee671c3fg9bd4g6ffbg9b73gc32391651618" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
+    <content contentuid="h92b6eddegabfdga666gfebfgc78c14dc39eb" version="1">Lightning Weapon</content>
+    <content contentuid="ha4fe325egd2b1gb275gca6egfbc0f2cf91f3" version="1">Lightning arcs along the length of the weapon</content>
+    <content contentuid="hebbde917g1134g98f7g4f19g15eca71f27ee" version="1">Sword of Storms</content>
+    <content contentuid="h66170c9agab11g7bdfg4a68gc2e3f55ad19a" version="1">Forged from gleaming silver, this elegant sword constantly pulses with jagged arcs of blue electricity and hums with the low rumble of distant thunder.</content>
     <content contentuid="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1">Camp Clothing</content>
     <content contentuid="h41344494ga27bgf030g792bga39653da8335" version="1">Contains a selection of camp clothing.</content>
     <content contentuid="h5305950bg4edeg71e7g1e0dg789e0ac811de" version="1">Camp Shoes</content>

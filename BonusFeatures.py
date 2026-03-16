@@ -1121,7 +1121,7 @@ class BonusFeatures(Replacer):
             SpellProperties=[f"ApplyStatus({self._restoration_status},100,1)"],
             AIFlags=["CanNotUse"],
             AreaRadius=36,
-            TargetConditions=["Ally() and not Dead()"],
+            TargetConditions=["Party() and not Dead()"],
             CastSound="Action_Cast_RegainHP",
             TargetSound="Action_Impact_RegainHP",
             CastTextEvent="Cast",

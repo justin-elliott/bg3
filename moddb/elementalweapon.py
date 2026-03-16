@@ -29,6 +29,7 @@ class ElementalWeapon:
         self._mod.add(SpellData(
             name,
             using="Target_ElementalWeapon",
+            Level="",
             Description=self._mod.loca[f"{name}_Description"],
             SpellType="Target",
             ContainerSpells=[f"{name}_{element}" for element in self._ELEMENTS],
@@ -51,6 +52,7 @@ class ElementalWeapon:
             self._mod.add(SpellData(
                 f"{name}_{element}",
                 using=f"Target_ElementalWeapon_{element}",
+                Level="",
                 Description=self._mod.loca[f"{name}_{element}_Description"],
                 DescriptionParams=["1", f"DealDamage(1d4,{element})"],
                 SpellType="Target",

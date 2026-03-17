@@ -68,6 +68,8 @@
     <content contentuid="h349af716gd876g5eccgae75g1a2b2deaaac5" version="1">When you make melee unarmed attacks, your Dexterity &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;. Additionally, your damage dice are rolled twice and use the highest result.</content>
     <content contentuid="h067af7e3g3d32gb6bdg9683g2ec3c9404d02" version="1">Persuasive</content>
     <content contentuid="h28b0de37gdfd2g7fdbge0dfgaf9ac3f2b895" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="Persuasion"&gt;Persuasion&lt;/LSTag&gt;.</content>
+    <content contentuid="h2a8abff1g372agae84g801agd267e50a3eb0" version="1">Sturdy</content>
+    <content contentuid="hdae4c0b9g9d8bg669dgf625g8f80fe232a5a" version="1">Gain &lt;LSTag Tooltip="Proficiency"&gt;Proficiency&lt;/LSTag&gt; in Constitution &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throws&lt;/LSTag&gt;.</content>
     <content contentuid="h1a4ae6c6g5bebgfa29g5529g4360a9bba332" version="1">Weaponmaster</content>
     <content contentuid="hb7b2b7acg08e9g1fc5g3317g208c2f73dbd0" version="1">You are proficient with all melee martial weapons, and gain a +[1] bonus to &lt;LSTag Tooltip="MeleeWeaponAttack"&gt;melee weapon attacks&lt;/LSTag&gt; and damage.</content>
     <content contentuid="h1b1e60cdg3d1bg1d45g75eag31c6ac4d3b62" version="1">Two-Weapon Fighting</content>

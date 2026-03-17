@@ -707,6 +707,22 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _sturdy(self) -> str:
+        name = self.make_name("Sturdy")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Sturdy"),
+            Description=self.loca(f"{name}_Description", """
+                Gain <LSTag Tooltip="Proficiency">Proficiency</LSTag> in Constitution
+                <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
+            """),
+            Icon="PassiveFeature_Resilient",
+            Properties=["Highlighted"],
+            Boosts=["ProficiencyBonus(SavingThrow,Constitution)"],
+        ))
+        return name
+
+    @cached_property
     def _two_weapon_fighting(self) -> str:
         name = self.make_name("TwoWeaponFighting")
         BONUS = 2
@@ -842,6 +858,7 @@ class BonusFeatures(Replacer):
             ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
             ( 1, "Persuasive",          self._persuasive),
             ( 1, "Savage Attacks",      "SavageAttacks"),
+            ( 1, "Sturdy",              self._sturdy),
             ( 1, "Weaponmaster",        self._weaponmaster),
             ( 1, "Two-Weapon Fighting", self._two_weapon_fighting),
             ( 2, "Action Surge",        self._action_surge),

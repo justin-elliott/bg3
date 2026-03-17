@@ -753,8 +753,8 @@ class TutorialSupplies(Mod):
             display_name="Weapons",
             description="Contains a selection of weapons.",
             items=[
+                self._arcane_rapier,
                 self._blade_of_the_banshee,
-                self._frozen_rapier,
                 self._radiant_silver_sword,
                 self._sword_of_storms,
             ],
@@ -811,6 +811,7 @@ class TutorialSupplies(Mod):
                 self._weapon_kereskas_favour,
             ],
             extra_weapon_statuses=[self._lightning_weapon],
+            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
             ignore_slashing_resistance=False,
             proficiency_group="",
         )
@@ -837,21 +838,26 @@ class TutorialSupplies(Mod):
             parent_template_id: UUID,
             display_name: str,
             description: str,
+            using: str | None = None,
             bonus_damage: str | None = None,
             bonus_damage_type: str | None = None,
             boosts: list[str] | None = None,
             extra_boosts_on_equip_main_hand: list[str] | None = None,
             extra_passives_on_equip: list[str] | None = None,
             extra_weapon_statuses: list[str] | None = None,
+            ignore_bludgeoning_resistance: bool = False,
+            ignore_piercing_resistance: bool = False,
             ignore_slashing_resistance: bool = True,
             critical_vs_items: bool = False,
             proficiency_group: str | None = None,
+            status_on_equip: list[str] | None = None,
             weapon_functors: list[str] | None = None) -> str:
         return self._add_weapon(
             base_name,
             parent_template_id=parent_template_id,
             display_name=display_name,
             description=description,
+            using=using,
             bonus_damage=bonus_damage or ("1d4" if bonus_damage_type else None),
             bonus_damage_type=bonus_damage_type,
             boosts=boosts,
@@ -863,18 +869,45 @@ class TutorialSupplies(Mod):
                 *(extra_boosts_on_equip_main_hand or []),
             ],
             passives_on_equip=[
+                *(["MAG_IgnoreBludgeoningResistance_Passive"] if ignore_bludgeoning_resistance else []),
+                *(["MAG_IgnorePiercingResistance_Passive"] if ignore_piercing_resistance else []),
                 *(["MAG_IgnoreSlashingResistance_Passive"] if ignore_slashing_resistance else []),
                 *(["UNI_Adamantine_CriticalVsItems_Passive"] if critical_vs_items else []),
                 *(extra_passives_on_equip or []),
             ],
             proficiency_group=proficiency_group,
+            status_on_equip=status_on_equip,
             weapon_functors=weapon_functors,
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
             weapon_statuses=[
+                *(["MAG_BYPASS_BLUDGEONING_RESISTANCE_TECHNICAL"] if ignore_bludgeoning_resistance else []),
+                *(["MAG_BYPASS_PIERCING_RESISTANCE_TECHNICAL"] if ignore_piercing_resistance else []),
                 *(["MAG_BYPASS_SLASHING_RESISTANCE_TECHNICAL"] if ignore_slashing_resistance else []),
                 *(["MAG_DIAMONDSBANE_TECHNICAL"] if critical_vs_items else []),
                 *(extra_weapon_statuses or []),
             ],
+        )
+
+    @cached_property
+    def _arcane_rapier(self) -> str:
+        und_nere_sword = UUID("df6698d2-b690-4aea-be83-956d3b2ea97e")
+        return self._add_weapon(
+            base_name="ArcaneRapier",
+            using="WPN_Rapier",
+            parent_template_id=und_nere_sword,
+            display_name="Arcane Rapier",
+            description="""
+                This slender, elegant rapier features intricate runes etched along its shimmering blade and an ornate
+                basket hilt designed to channel and focus raw magical energy.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Force",
+            passives_on_equip=[
+                "MAG_Critical_Force_Critical_Passive",
+                self._weapon_enchantment_progression,
+                self._weapon_kereskas_favour,
+            ],
+            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
         )
 
     @cached_property
@@ -946,7 +979,7 @@ class TutorialSupplies(Mod):
             description: str,
             bonus_damage: str | None = None,
             bonus_damage_type: str | None = None,
-            using: str = "WPN_Longsword",
+            using: str | None = None,
             visual_template: str | None = None,
             boosts: list[str] | None = None,
             boosts_on_equip_main_hand: list[str] | None = None,
@@ -965,12 +998,9 @@ class TutorialSupplies(Mod):
         name = self.make_name(base_name)
         game_objects_uuid = self.make_uuid(name)
 
-        self.loca[f"{name}_DisplayName"] = display_name
-        self.loca[f"{name}_Description"] = description
-
         self.add(GameObjects(
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
+            DisplayName=self.loca(f"{name}_DisplayName", display_name),
+            Description=self.loca(f"{name}_Description", description),
             LevelName="",
             MapKey=game_objects_uuid,
             Name=name,
@@ -989,7 +1019,7 @@ class TutorialSupplies(Mod):
 
         self.add(Weapon(
             name,
-            using=using,
+            using=using or "WPN_Longsword",
             Boosts=boosts,
             BoostsOnEquipMainHand=boosts_on_equip_main_hand,
             BoostsOnEquipOffHand=boosts_on_equip_off_hand,
@@ -1134,17 +1164,6 @@ class TutorialSupplies(Mod):
             using=passive_name,
             Description=self.loca[f"{passive_name}_Description"],
             Conditions=["IsAttack()"],
-        ))
-    
-    def _update_sword_of_screams(self) -> None:
-        name = "UND_Nere_Sword"
-        self.add(Weapon(
-            name,
-            using=name,
-            Boosts=["UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"],
-            PassivesOnEquip=["MAG_ArcaneEnchantment_Passive", "MAG_Legendary_Chromatic_Spellslot_Passive"],
-            StatusOnEquip=["MAG_THE_CHROMATIC_TECHNICAL"],
-            Proficiency_Group="",
         ))
 
 

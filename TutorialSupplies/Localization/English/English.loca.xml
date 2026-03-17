@@ -42,16 +42,18 @@
     <content contentuid="h34e24a53gf840ge605g241eg6071e0dabccc" version="1">Project [1] bolt(s) of lightning.</content>
     <content contentuid="h26dd9429g659agef25g0d5bg58443a75a149" version="1">Potion of Storm Bolts</content>
     <content contentuid="h1e888791g306bgd1b6g4bf8gfc28b4c1e623" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_StormBolts"&gt;Storm Bolts&lt;/LSTag&gt; cantrip.</content>
+    <content contentuid="h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b" version="1">Enchanted Blade</content>
+    <content contentuid="h2ea4b7f2g0829g547cg5727gb13a68884b84" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls. This increases to +2 at &lt;LSTag&gt;Level 5&lt;/LSTag&gt;, and +3 at &lt;LSTag&gt;Level 9&lt;/LSTag&gt;.</content>
+    <content contentuid="hb8307cfbg1e48g8698g2a71gcd162a3a314c" version="1">Kereska's Favour</content>
+    <content contentuid="hee671c3fg9bd4g6ffbg9b73gc32391651618" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
+    <content contentuid="h3cf5df70ga5e7g7832gbfdegab2be44cac90" version="1">Arcane Rapier</content>
+    <content contentuid="h3e7b0249gef69gf9d5g1ea8g69fa32f61e73" version="1">This slender, elegant rapier features intricate runes etched along its shimmering blade and an ornate basket hilt designed to channel and focus raw magical energy.</content>
     <content contentuid="hf7f302e5gdf4bgb877g60a9g5d78f5c8af3f" version="1">Blade of the Banshee</content>
     <content contentuid="h0621b5d0g3195gafcdg89cfg729426174b18" version="1">This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail that chills the blood of any who hear it.</content>
-    <content contentuid="h6ba86692g842cg70b1g4131ge9170c750143" version="1">Frozen Rapier</content>
-    <content contentuid="h6d8e8797ga36agf285ge031g586154442139" version="1">Sculpted from a single shard of perpetually freezing glacial ice, this elegant rapier features a needle-sharp blade that shimmers with frost and exhales a deadly chill.</content>
     <content contentuid="h2aac8cd5g3eeege8bdgfc88gbcee0939324a" version="1">Radiant Silver Sword</content>
     <content contentuid="h83da98f9g89a1g1883gbd11gbacdd4ee75bb" version="1">This heavy silver sword pulses with a gentle light.</content>
     <content contentuid="h72de638agc00ag2277ga489g09454ddbd598" version="1">Enchanted Blade</content>
     <content contentuid="h049e2270ga929g218fgcf3cg66e6d973e6f7" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls.</content>
-    <content contentuid="hb8307cfbg1e48g8698g2a71gcd162a3a314c" version="1">Kereska's Favour</content>
-    <content contentuid="hee671c3fg9bd4g6ffbg9b73gc32391651618" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
     <content contentuid="h92b6eddegabfdga666gfebfgc78c14dc39eb" version="1">Lightning Weapon</content>
     <content contentuid="ha4fe325egd2b1gb275gca6egfbc0f2cf91f3" version="1">Lightning arcs along the length of the weapon</content>
     <content contentuid="hebbde917g1134g98f7g4f19g15eca71f27ee" version="1">Sword of Storms</content>

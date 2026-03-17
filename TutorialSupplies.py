@@ -902,11 +902,13 @@ class TutorialSupplies(Mod):
             """,
             bonus_damage="1d4",
             bonus_damage_type="Force",
+            boosts=[self._weapon_kerekas_favour_boost],
             passives_on_equip=[
                 "MAG_Critical_Force_Critical_Passive",
                 self._weapon_enchantment_progression,
                 self._weapon_kereskas_favour,
             ],
+            proficiency_group="",
             status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
         )
 
@@ -1108,11 +1110,14 @@ class TutorialSupplies(Mod):
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
             Boosts=[
-                "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
                 "IF(CharacterLevelGreaterThan(8)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)",
             ],
         ))
         return name
+    
+    @cached_property
+    def _weapon_kerekas_favour_boost(self) -> str:
+        return "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
 
     @cached_property
     def _cleave(self) -> str:

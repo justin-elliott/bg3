@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="Savant(Divination)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Displacement" />
+                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Displacement;Chronomage_Twinned" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />

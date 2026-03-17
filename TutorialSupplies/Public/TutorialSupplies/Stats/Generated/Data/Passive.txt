@@ -8,7 +8,7 @@ data "DisplayName" "h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b"
 
 new entry "TutorialSupplies_WeaponKereskasFavour"
 type "PassiveData"
-data "Boosts" "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement);IF(CharacterLevelGreaterThan(8)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
+data "Boosts" "IF(CharacterLevelGreaterThan(8)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
 data "Description" "hee671c3fg9bd4g6ffbg9b73gc32391651618"
 data "DisplayName" "hb8307cfbg1e48g8698g2a71gcd162a3a314c"
 

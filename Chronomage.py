@@ -87,6 +87,26 @@ class Chronomage(Replacer):
                 +   "ModifySpellFlags(Concentration,0)"
                 + ")",
             ],
+            EnabledConditions=[],
+        ))
+        return name
+    
+    @cached_property
+    def _twinned(self) -> str:
+        name = self.make_name("Twinned")
+        self.add(PassiveData(
+            name,
+            using="Metamagic_Twinned",
+            DisplayName=self.loca("Twinned_DisplayName", "Twinned Spell"),
+            Description=self.loca("Twinned_Description", """
+                Spells that only target 1 creature can target an additional creature.
+            """),
+            Boosts=[
+                "UnlockSpellVariant(TwinnedProjectileSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+                "UnlockSpellVariant(TwinnedTargetSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+                "UnlockSpellVariant(TwinnedTargetTouchSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
+            ],
+            EnabledConditions=[],
         ))
         return name
 
@@ -114,7 +134,7 @@ class Chronomage(Replacer):
 
     @progression(CharacterClass.WIZARD_DIVINATION, 2)
     def divinationschool_level_2(self, progress: Progression) -> None:
-        progress.PassivesAdded += [self._displacement]
+        progress.PassivesAdded += [self._displacement, self._twinned]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 3)
     def divinationschool_level_3(self, progress: Progression) -> None:

@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Chronomage Level 3 Spells" />
-                    <attribute id="Spells" type="LSString" value="None" />
+                    <attribute id="Spells" type="LSString" value="Chronomage_MistyStep" />
                     <attribute id="UUID" type="guid" value="48980984-bf43-a886-d6af-35b3d4430a48" />
                 </node>
                 <node id="SpellList">

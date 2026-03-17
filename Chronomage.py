@@ -65,7 +65,7 @@ class Chronomage(Replacer):
 
     @cached_property
     def _misty_step(self) -> str:
-        Movement(self.mod).add_misty_step("Movement:Distance*0.5")
+        return Movement(self.mod).add_misty_step("Movement:Distance*0.5")
 
     @cached_property
     def _quickened(self) -> str:

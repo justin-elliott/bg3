@@ -78,6 +78,10 @@ class Localization:
 
         self.__translations[key] = Translation(handle, translations)
 
+    def __call__(self, key: str, translations: str | dict[str, str]) -> str:
+        self.__setitem__(key, translations)
+        return self.__getitem__(key)
+
     def build(self, mod_dir: str) -> None:
         """Build the localization files in the given mod_dir."""
         for short_lang_name, full_lang_name in self.__languages.items():

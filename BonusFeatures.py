@@ -750,6 +750,22 @@ class BonusFeatures(Replacer):
         return name
 
     @cached_property
+    def _weapon_bond(self) -> str:
+        name = self.make_name("Weapon Bond")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Weapon Bond"),
+            Description=self.loca(f"{name}_Description", """
+                Ritually bind the weapon in your main hand. The weapon can't be knocked out of your hand, and it
+                automatically returns to you when <LSTag Type="Spell" Tooltip="Throw_Throw">Thrown</LSTag>.
+            """),
+            Boosts=["UnlockSpell(Shout_WeaponBond)"],
+            Icon="Action_Cast_Fighter_WeaponBond",
+            Properties=["IsHidden"],
+        ))
+        return name
+
+    @cached_property
     def _weaponmaster(self) -> str:
         name = self.make_name("Weaponmaster")
         BONUS = 2
@@ -836,6 +852,7 @@ class BonusFeatures(Replacer):
             ( 3, "Fast Hands",          "FastHands"),
             ( 3, "Remarkable Athlete",  self._remarkable_athlete),
             ( 3, "Resilience",          self._resilience),
+            ( 3, "Weapon Bond",         self._weapon_bond),
             ( 5, "Uncanny Dodge",       "UncannyDodge"),
             ( 5, "Extra Attack",        self._extra_attacks),
             ( 5, "Fire Walk",           self._fire_walk),

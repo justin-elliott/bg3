@@ -31,6 +31,8 @@ class Chronomage(Replacer):
         return self.loca("Displacement_Description", """
                 Attackers have <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on
                 <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> against you.
+                Your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> is added to your Initiative rolls,
+                and you can't be <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
             """)
 
     @cached_property
@@ -41,7 +43,14 @@ class Chronomage(Replacer):
             DisplayName=self._displacement_display_name,
             Description=self._displacement_description,
             Icon="Spell_Illusion_Blur",
-            Boosts=["Disadvantage(AttackTarget)"],
+            Boosts=[
+                "Disadvantage(AttackTarget)",
+                "Initiative(2)",
+                "StatusImmunity(SURPRISED)",
+                "IF(CharacterLevelGreaterThan(4)):Initiative(1)",
+                "IF(CharacterLevelGreaterThan(8)):Initiative(1)",
+                "IF(CharacterLevelGreaterThan(11)):Initiative(1)"
+            ],
             Properties=["Highlighted"],
             StatsFunctorContext=["OnCombatStarted"],
             StatsFunctors=[f"ApplyStatus(SELF,{self._displacement_status},100,-1)"],

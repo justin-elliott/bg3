@@ -2,7 +2,7 @@
 
 new entry "Chronomage_Displacement"
 type "PassiveData"
-data "Boosts" "Disadvantage(AttackTarget)"
+data "Boosts" "Disadvantage(AttackTarget);Initiative(2);StatusImmunity(SURPRISED);IF(CharacterLevelGreaterThan(4)):Initiative(1);IF(CharacterLevelGreaterThan(8)):Initiative(1);IF(CharacterLevelGreaterThan(11)):Initiative(1)"
 data "Description" "h2baf0727g7b81g8581g2813gedc12975ea34"
 data "DisplayName" "h69773354g4b39gf16dg6e11g6e47317d513e"
 data "Icon" "Spell_Illusion_Blur"

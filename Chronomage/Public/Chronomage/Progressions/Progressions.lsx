@@ -6,19 +6,19 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Savant(Divination)" />
+                    <attribute id="Boosts" type="LSString" value="Savant(Divination);ProficiencyBonus(SavingThrow,Constitution);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Displacement;Chronomage_Twinned" />
+                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Awareness;MAG_ClosQuarterRangedSpell_Passive;Chronomage_Displacement;Chronomage_Enduring;JackOfAllTrades" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
                     <attribute id="UUID" type="guid" value="79b9e743-a551-4798-970c-60615e503b1d" />
                 </node>
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="Chronomage_Quickened" />
+                    <attribute id="PassivesAdded" type="LSString" value="Chronomage_Quickened;Chronomage_Twinned" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(80c6b070-c3a6-4864-84ca-e78626784eb4,2,0);AddSpells(48980984-bf43-a886-d6af-35b3d4430a48,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
@@ -27,11 +27,30 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="Chronomage_AlterTime" />
+                    <attribute id="PassivesAdded" type="LSString" value="Chronomage_AlterTime;ExtraAttack" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0);AddSpells(2b50ef78-ad50-cbe9-d413-12817e0e6b3f,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
                     <attribute id="UUID" type="guid" value="8ee72b2d-d2c0-43c3-a3e5-8e5db4628b19" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="DivinationSchool" />
+                    <attribute id="PassivesAdded" type="LSString" value="ReliableTalent" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(f781a25e-d288-43b4-bf5d-3d8d98846687,2,0)" />
+                    <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
+                    <attribute id="UUID" type="guid" value="5fc5eb5c-0fa9-4e1c-867a-758af621aa0d" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Level" type="uint8" value="11" />
+                    <attribute id="Name" type="LSString" value="DivinationSchool" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_2" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(bc917f22-7f71-4a25-9a77-7d2f91a96a65,2,0)" />
+                    <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
+                    <attribute id="UUID" type="guid" value="a8aaf912-9f7d-4c53-8bda-398866d8a194" />
                 </node>
             </children>
         </node>

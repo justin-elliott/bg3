@@ -90,26 +90,19 @@ class Movement:
     def add_shadow_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Shadow Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_ShadowStep"
-
-        loca = self._mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Shadow Step"}
-        loca[f"{name}_Description"] = {"en": """
-            Step through the shadows, teleporting to an unoccupied space you can see.
-            """}
-
         self._mod.add(SpellData(
             name,
             using="Target_MAG_Shadow_Shadowstep",
             SpellType="Target",
             Cooldown="",
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
+            DisplayName=self._mod.loca(f"{name}_DisplayName", "Shadow Step"),
+            Description=self._mod.loca(f"{name}_Description", """
+                Step through the shadows, teleporting to an unoccupied space you can see.
+            """),
             Level="",
-            SpellProperties=["GROUND:TeleportSource()"],
-            TargetConditions="",
+            TargetConditions="CanStand('') and not Character() and not Self()",
             UseCosts=use_costs,
         ))
-
         return name
 
     def add_shadow_step_monk(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
@@ -123,7 +116,7 @@ class Movement:
             SpellProperties="GROUND:TeleportSource()",
             RequirementConditions="",
             RequirementEvents="",
-            TargetConditions="",
+            TargetConditions="CanStand('') and not Character() and not Self()",
             TooltipStatusApply="",
             UseCosts=use_costs,
         ))

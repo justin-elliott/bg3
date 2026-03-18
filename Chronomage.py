@@ -3,12 +3,11 @@
 import os
 
 from functools import cached_property
-from moddb import Movement
+from moddb import Awareness, Movement
 from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
-    DontIncludeProgression,
     progression,
     Replacer,
 )
@@ -23,17 +22,19 @@ class Chronomage(Replacer):
                          **kwds)
 
     @cached_property
+    def _awareness(self) -> str:
+        return Awareness(self.mod).add_awareness()
+
+    @cached_property
     def _displacement_display_name(self) -> str:
         return self.loca("Displacement_DisplayName", "Displacement")
 
     @cached_property
     def _displacement_description(self) -> str:
         return self.loca("Displacement_Description", """
-                Attackers have <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on
-                <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> against you.
-                Your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> is added to your Initiative rolls,
-                and you can't be <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
-            """)
+            Attackers have <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> against you.
+        """)
 
     @cached_property
     def _displacement(self) -> str:
@@ -43,14 +44,7 @@ class Chronomage(Replacer):
             DisplayName=self._displacement_display_name,
             Description=self._displacement_description,
             Icon="Spell_Illusion_Blur",
-            Boosts=[
-                "Disadvantage(AttackTarget)",
-                "Initiative(2)",
-                "StatusImmunity(SURPRISED)",
-                "IF(CharacterLevelGreaterThan(4)):Initiative(1)",
-                "IF(CharacterLevelGreaterThan(8)):Initiative(1)",
-                "IF(CharacterLevelGreaterThan(11)):Initiative(1)"
-            ],
+            Boosts=["Disadvantage(AttackTarget)"],
             Properties=["Highlighted"],
             StatsFunctorContext=["OnCombatStarted"],
             StatsFunctors=[f"ApplyStatus(SELF,{self._displacement_status},100,-1)"],
@@ -133,6 +127,16 @@ class Chronomage(Replacer):
             Properties=["Highlighted"],
         ))
         return name
+    
+    @cached_property
+    def _enduring(self) -> str:
+        name = self.make_name("Enduring")
+        self.add(PassiveData(
+            name,
+            using="Tough",
+            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
+        ))
+        return name
 
     @cached_property
     def _level_3_spelllist(self) -> str:
@@ -158,17 +162,42 @@ class Chronomage(Replacer):
 
     @progression(CharacterClass.WIZARD_DIVINATION, 2)
     def divinationschool_level_2(self, progress: Progression) -> None:
-        progress.PassivesAdded += [self._displacement, self._twinned]
+        progress.Boosts += [
+            "ProficiencyBonus(SavingThrow,Constitution)",
+            "Proficiency(LightArmor)",
+            "Proficiency(MediumArmor)",
+            "Proficiency(HeavyArmor)",
+            "Proficiency(Shields)",
+            "Proficiency(SimpleWeapons)",
+            "Proficiency(MartialWeapons)",
+        ]
+        progress.PassivesAdded += [
+            self._awareness,
+            "MAG_ClosQuarterRangedSpell_Passive",
+            self._displacement,
+            self._enduring,
+            "JackOfAllTrades",
+        ]
+        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 3)
     def divinationschool_level_3(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._quickened]
+        progress.PassivesAdded = [self._quickened, self._twinned]
         progress.Selectors += [f"AddSpells({self._level_3_spelllist},,,,AlwaysPrepared)"]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 5)
     def divinationschool_level_5(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._alter_time]
+        progress.PassivesAdded = [self._alter_time, "ExtraAttack"]
         progress.Selectors += [f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 9)
+    def divinationschool_level_9(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["ReliableTalent"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 11)
+    def divinationschool_level_11(self, progress: Progression) -> None:
+        progress.PassivesAdded = ["ExtraAttack_2"]
+        progress.PassivesRemoved = ["ExtraAttack"]
 
 
 def main() -> None:

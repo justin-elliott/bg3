@@ -85,8 +85,8 @@
     <content contentuid="h654a6177g5995gc232gba5fg95a5d4a4a27c" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Jump no longer requires a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hd6f689d7g6686ga18dg3892g4183ac26dd12" version="1">Resilience</content>
     <content contentuid="h4bea5f36gdeadg5aadgf237g9f4671afb5de" version="1">You shrug off attacks, reducing damage from all sources by your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt;.</content>
-    <content contentuid="h4ac19458ga5efg00f6ga4f2g804c4c2a0a80" version="1">Weapon Bond</content>
-    <content contentuid="h6e4ebe98g63adgadb7g2a52gf0f834649134" version="1">Ritually bind the weapon in your main hand. The weapon can't be knocked out of your hand, and it automatically returns to you when &lt;LSTag Type="Spell" Tooltip="Throw_Throw"&gt;Thrown&lt;/LSTag&gt;.</content>
+    <content contentuid="ha8bb6451ge200g45b0g49b3ga1cc5b805664" version="1">Weapon Bond</content>
+    <content contentuid="hc0a10c33g62c4gbdaegad85ga3aa03819478" version="1">Ritually bind the weapon in your main hand. The weapon can't be knocked out of your hand, and it automatically returns to you when &lt;LSTag Type="Spell" Tooltip="Throw_Throw"&gt;Thrown&lt;/LSTag&gt;.</content>
     <content contentuid="h8a2847f5gfbe4g207agf393gd49e857e992e" version="1">Extra Attacks</content>
     <content contentuid="hda2b42aagf589g53b6g7debg8e7e8fa8b406" version="1">Can make an additional free attack after making an unarmed or weapon attack. This increases to two additional free attacks at level 11, and three additional free attacks at level 20.&lt;br&gt;&lt;br&gt;If you gain the Extra Attack feature from more than one class, they don't add together.</content>
     <content contentuid="h6815fb2agedf3g3bcfg5479g62e94efe9c43" version="1">Fire Walk</content>

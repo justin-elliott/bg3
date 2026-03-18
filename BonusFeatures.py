@@ -772,7 +772,7 @@ class BonusFeatures(Replacer):
 
     @cached_property
     def _weapon_bond(self) -> str:
-        name = self.make_name("Weapon Bond")
+        name = self.make_name("WeaponBond")
         self.add(PassiveData(
             name,
             DisplayName=self.loca(f"{name}_DisplayName", "Weapon Bond"),

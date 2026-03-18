@@ -6,6 +6,11 @@
         <node id="root">
             <children>
                 <node id="SpellList">
+                    <attribute id="Name" type="LSString" value="Chronomage Level 2 Spells" />
+                    <attribute id="Spells" type="LSString" value="Shout_WeaponBond" />
+                    <attribute id="UUID" type="guid" value="32624c8a-7cb1-49d7-12e4-4ccc2d069ba2" />
+                </node>
+                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Chronomage Level 3 Spells" />
                     <attribute id="Spells" type="LSString" value="Chronomage_MistyStep" />
                     <attribute id="UUID" type="guid" value="48980984-bf43-a886-d6af-35b3d4430a48" />

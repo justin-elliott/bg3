@@ -71,6 +71,22 @@ class Chronomage(Replacer):
         return Movement(self.mod).add_misty_step("Movement:Distance*0.5")
 
     @cached_property
+    def _prescient(self) -> str:
+        name = self.make_name("Prescient")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Prescient"),
+            Description=self.loca(f"{name}_Description", """
+                Your Intelligence <LSTag Tooltip="AbilityModifier">Modifier</LSTag> is added to
+                <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
+            """),
+            Icon="Action_Barbarian_MagicAwareness",
+            Properties=["Highlighted"],
+            Boosts=["RollBonus(Attack,IntelligenceModifier)"],
+        ))
+        return name
+
+    @cached_property
     def _quickened(self) -> str:
         name = self.make_name("Quickened")
         self.add(PassiveData(
@@ -139,6 +155,17 @@ class Chronomage(Replacer):
         return name
 
     @cached_property
+    def _level_2_spelllist(self) -> str:
+        name = "Chronomage Level 2 Spells"
+        uuid = self.make_uuid(name)
+        self.add(SpellList(
+            Name=name,
+            Spells=["Shout_WeaponBond"],
+            UUID=uuid,
+        ))
+        return uuid
+
+    @cached_property
     def _level_3_spelllist(self) -> str:
         name = "Chronomage Level 3 Spells"
         uuid = self.make_uuid(name)
@@ -177,8 +204,12 @@ class Chronomage(Replacer):
             self._displacement,
             self._enduring,
             "JackOfAllTrades",
+            self._prescient,
         ]
-        progress.Selectors += ["SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)"]
+        progress.Selectors += [
+            f"AddSpells({self._level_2_spelllist},,,,AlwaysPrepared)",
+            "SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)",
+        ]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 3)
     def divinationschool_level_3(self, progress: Progression) -> None:

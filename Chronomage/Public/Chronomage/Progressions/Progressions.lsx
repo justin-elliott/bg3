@@ -9,9 +9,9 @@
                     <attribute id="Boosts" type="LSString" value="Savant(Divination);ProficiencyBonus(SavingThrow,Constitution);Proficiency(LightArmor);Proficiency(MediumArmor);Proficiency(HeavyArmor);Proficiency(Shields);Proficiency(SimpleWeapons);Proficiency(MartialWeapons)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
-                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Awareness;MAG_ClosQuarterRangedSpell_Passive;Chronomage_Displacement;Chronomage_Enduring;JackOfAllTrades" />
+                    <attribute id="PassivesAdded" type="LSString" value="Portent;Chronomage_Awareness;MAG_ClosQuarterRangedSpell_Passive;Chronomage_Displacement;Chronomage_Enduring;JackOfAllTrades;Chronomage_Prescient" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(11f331b0-e8b7-473b-9d1f-19e8e4178d7d,2,0);AddSpells(32624c8a-7cb1-49d7-12e4-4ccc2d069ba2,,,,AlwaysPrepared);SelectSkillsExpertise(f974ebd6-3725-4b90-bb5c-2b647d41615d,2)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />
                     <attribute id="UUID" type="guid" value="79b9e743-a551-4798-970c-60615e503b1d" />
                 </node>

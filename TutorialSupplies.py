@@ -352,7 +352,7 @@ class TutorialSupplies(Mod):
             description=f"""
                 Drinking this elixir grants <LSTag Type="Passive" Tooltip="{self._awareness}">Awareness</LSTag>.
             """,
-            icon="ALCH_Solution_Potion_FeatherFall",
+            icon="Item_ALCH_Solution_Potion_FeatherFall",
             passives=[self._awareness],
         )
 

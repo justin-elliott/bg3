@@ -8,6 +8,11 @@ data "Rarity" "Legendary"
 data "ValueOverride" "3"
 data "ValueUUID" "4c5217d8-0232-4592-9e32-2fd729123f53"
 
+new entry "TutorialSupplies_AwarenessPotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "44ee0784-d19b-a667-e293-1e3d092e2b05"
+
 new entry "TutorialSupplies_BolsterPotion"
 type "Object"
 using "TutorialSupplies_BasePotion"

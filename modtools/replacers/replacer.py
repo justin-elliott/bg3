@@ -148,7 +148,8 @@ class Replacer:
                         description=kwds.get("description", ""),
                         folder=kwds.get("folder"),
                         version=kwds.get("version", (4, 1, 1, 1)),
-                        cache_dir=kwds.get("cache_dir"))
+                        cache_dir=kwds.get("cache_dir"),
+                        level_20=self.args.level_20)
 
     @staticmethod
     def _class_list(s: str) -> list[CharacterClass]:

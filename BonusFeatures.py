@@ -8,6 +8,7 @@ import os
 
 from collections.abc import Iterable
 from moddb import (
+    Awareness,
     ElementalWeapon,
     EmpoweredSpells,
     Movement,
@@ -345,6 +346,10 @@ class BonusFeatures(Replacer):
             Properties=["Highlighted"],
         ))
         return name
+
+    @cached_property
+    def _awareness(self) -> str:
+        return Awareness(self.mod).add_awareness()
 
     @cached_property
     def _cunning_actions(self) -> str:
@@ -850,6 +855,7 @@ class BonusFeatures(Replacer):
             ( 1, "Arcane Adept",        self._arcane_adept),
             ( 1, "Archer",              self._archer),
             ( 1, "Armoured",            self._armored),
+            ( 1, "Awareness",           self._awareness),
             ( 1, "Duelist",             self._duelist),
             ( 1, "Devil's Sight",       "DevilsSight"),
             ( 1, "Light-Fingered",      self._light_fingered),

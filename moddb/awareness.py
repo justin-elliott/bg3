@@ -15,29 +15,37 @@ class Awareness:
         """Initialize."""
         self._mod = mod
 
-    def add_awareness(self, initiative: int = 3, *, icon: str = "Action_Barbarian_MagicAwareness") -> str:
+    def add_awareness(self, initiative: int = 0, *, icon: str = "PassiveFeature_Generic_Threat") -> str:
         """The Awareness passive, a variant of Alert."""
-        name = f"{self._mod.get_prefix()}_Awareness"
+        name = self._mod.make_name("Awareness")
 
-        loca = self._mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Awareness"}
-        loca[f"{name}_Description"] = {"en": """
-            You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be
-            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>, and attackers can't land
-            <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
-            """}
+        if initiative > 0:
+            description = """
+                You gain a +[1] bonus to Initiative and can't be 
+                <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
+            """
+            initiative_boosts = [f"Initiative({initiative})"]
+        else:
+            description = """
+                Your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> is added to your Initiative rolls,
+                and you can't be <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
+            """
+            levels = [5, 9, 12] if not self._mod.level_20 else [5, 9, 13, 17]  # ensure parity with Alert if not L20
+            initiative_boosts = [
+                "Initiative(2)",
+                *[f"IF(CharacterLevelGreaterThan({level - 1})):Initiative(1)" for level in levels],
+            ]
 
         self._mod.add(PassiveData(
             name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
-            DescriptionParams=[str(initiative)],
+            DisplayName=self._mod.loca(f"{name}_DisplayName", "Awareness"),
+            Description=self._mod.loca(f"{name}_Description", description),
+            DescriptionParams=[initiative] if initiative > 0 else None,
             Icon=icon,
             Properties=["ForceShowInCC", "Highlighted"],
             Boosts=[
-                f"Initiative({initiative})",
+                *initiative_boosts,
                 "StatusImmunity(SURPRISED)",
-                "CriticalHit(AttackTarget,Success,Never)",
             ],
         ))
 

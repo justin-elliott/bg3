@@ -6,6 +6,7 @@ from typing import ClassVar, Iterable
 from uuid import UUID
 
 from moddb import (
+    Awareness,
     Bolster,
     ElementalWeapon,
     Knowledge,
@@ -254,6 +255,7 @@ class TutorialSupplies(Mod):
             display_name="Potions",
             description="Contains a selection of potions.",
             items=[
+                self._awareness_potion,
                 self._bolster_potion,
                 self._elemental_weapon_potion,
                 self._knowledge_potion,
@@ -336,6 +338,22 @@ class TutorialSupplies(Mod):
             display_name="Dyes",
             description="Contains a selection of dyes.",
             items=[dye for dye, _ in base_dyes],
+        )
+
+    @cached_property
+    def _awareness(self) -> str:
+        return Awareness(self).add_awareness()
+
+    @cached_property
+    def _awareness_potion(self) -> str:
+        return self._add_potion(
+            "AwarenessPotion",
+            display_name="Elixir of Awareness",
+            description=f"""
+                Drinking this elixir grants <LSTag Type="Passive" Tooltip="{self._awareness}">Awareness</LSTag>.
+            """,
+            icon="ALCH_Solution_Potion_FeatherFall",
+            passives=[self._awareness],
         )
 
     @cached_property
@@ -913,6 +931,30 @@ class TutorialSupplies(Mod):
         )
 
     @cached_property
+    def _blade_of_the_banshee(self) -> str:
+        return self._add_weapon(
+            "BladeOfTheBanshee",
+            parent_template_id=self.__KATANA_TEMPLATE_ID,
+            display_name="Blade of the Banshee",
+            description="""
+                This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is
+                carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail
+                that chills the blood of any who hear it.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Psychic",
+            boosts=[self._weapon_kerekas_favour_boost],
+            passives_on_equip=[
+                "MAG_BansheeBless_Passive",
+                self._weapon_enchantment_progression,
+                self._weapon_kereskas_favour,
+                self._life_stealing,
+            ],
+            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
+            weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
+        )
+
+    @cached_property
     def _splinters_of_frost(self) -> str:
         name = self.make_name("SplintersOfFrost")
         status_name = self.make_name("Splinters_of_Frost").upper()
@@ -1131,7 +1173,17 @@ class TutorialSupplies(Mod):
             TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
         ))
         return name
-    
+
+    @cached_property
+    def _life_stealing(self) -> str:
+        name = self.make_name("LifeStealing")
+        self.add(PassiveData(
+            name,
+            using="MAG_Sarevok_OfChaos_Greatsword_Leeching_Passive",
+            Description=self.loca(f"{name}_Description", "Life Stealing"),
+        ))
+        return name
+
     @cached_property
     def _abazigals_goods(self) -> TreasureChest:
         return self.TreasureChest(

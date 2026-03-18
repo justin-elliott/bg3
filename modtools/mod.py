@@ -30,6 +30,7 @@ class Mod:
     _folder: str
     _uuid: UUID
     _version: Tuple[int, int, int, int]
+    _level_20: bool
 
     _unpak: Unpak
 
@@ -49,7 +50,8 @@ class Mod:
                  description: str = "",
                  folder: str = None,
                  version: Tuple[int, int, int, int] = (4, 1, 1, 1),
-                 cache_dir: os.PathLike | None = None):
+                 cache_dir: os.PathLike | None = None,
+                 level_20: bool = False):
         """Define a mod.
 
         base_dir -- the base directory of the mod
@@ -66,6 +68,7 @@ class Mod:
         self._description = description
         self._folder = folder or name
         self._version = version
+        self._level_20 = level_20
 
         if mod_uuid:
             self._uuid = mod_uuid
@@ -124,6 +127,10 @@ class Mod:
     def get_cache_path(self, lsx_path: os.PathLike) -> os.PathLike:
         """Get the path of a file in the unpak cache."""
         return self._unpak.get_path(lsx_path)
+
+    @property
+    def level_20(self) -> bool:
+        return self._level_20
 
     @property
     def loca(self) -> Localization:

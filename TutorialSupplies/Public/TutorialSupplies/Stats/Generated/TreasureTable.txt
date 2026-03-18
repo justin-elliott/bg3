@@ -320,6 +320,8 @@ object category "I_UNI_Daisy_Gloves",1,0,0,0,0,0,0,0
 new treasuretable "TutorialSupplies_Potions_TreasureTable"
 CanMerge 1
 new subtable "1,1"
+object category "I_TutorialSupplies_AwarenessPotion",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_BolsterPotion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_ElementalWeaponPotion",1,0,0,0,0,0,0,0

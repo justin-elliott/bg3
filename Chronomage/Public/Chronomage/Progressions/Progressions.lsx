@@ -27,6 +27,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="DivinationSchool" />
+                    <attribute id="PassivesAdded" type="LSString" value="Chronomage_AlterTime" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(22755771-ca11-49f4-b772-13d8b8fecd93,2,0);AddSpells(2b50ef78-ad50-cbe9-d413-12817e0e6b3f,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="62f7418b-aeca-46e8-8dc8-dd4d4aa632c6" />

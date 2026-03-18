@@ -6,5 +6,7 @@
     <content contentuid="h18062a49g2d44gcdf4g3825g4aa998a0d0f9" version="1">Twinned Spell</content>
     <content contentuid="h653d4904gc27bgee1cg24c8g73fe0a5dd6fd" version="1">Spells that only target 1 creature can target an additional creature.</content>
     <content contentuid="ha806e90fgcc10g9780gebc4gb1a656c5253d" version="1">Quickened Spell</content>
-    <content contentuid="h646ec178g4a32geeacg63a8g846028d1e202" version="1">Spells that cost an action cost a bonus action instead. When quickened, &lt;LSTag Type="Spell" Tooltip="Target_Haste"&gt;Haste&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Target_Slow"&gt;Slow&lt;/LSTag&gt; no longer require &lt;LSTag Tooltip="Concentration"&gt;concentration&lt;/LSTag&gt;.</content>
+    <content contentuid="h646ec178g4a32geeacg63a8g846028d1e202" version="1">Spells that cost an action cost a bonus action instead.</content>
+    <content contentuid="h5f604cceg160cg6da7gff60ge1060e903628" version="1">Alter Time</content>
+    <content contentuid="h39e1a3a8g6fb6g8942g2f1ag542cc29f5044" version="1">Your &lt;LSTag Type="Spell" Tooltip="Target_Haste"&gt;Haste&lt;/LSTag&gt; and &lt;LSTag Type="Spell" Tooltip="Target_Slow"&gt;Slow&lt;/LSTag&gt; spells do not require &lt;LSTag Tooltip="Concentration"&gt;concentration&lt;/LSTag&gt;.</content>
 </contentList>

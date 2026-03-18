@@ -85,16 +85,9 @@ class Chronomage(Replacer):
             DisplayName=self.loca("Quickened_DisplayName", "Quickened Spell"),
             Description=self.loca("Quickened_Description", """
                 Spells that cost an action cost a bonus action instead.
-                When quickened, <LSTag Type="Spell" Tooltip="Target_Haste">Haste</LSTag> and
-                <LSTag Type="Spell" Tooltip="Target_Slow">Slow</LSTag> no longer require
-                <LSTag Tooltip="Concentration">concentration</LSTag>.
             """),
             Boosts=[
                 "UnlockSpellVariant(QuickenedSpellCheck(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))",
-                "UnlockSpellVariant("
-                +   "SpellId('Target_Haste') or SpellId('Target_Slow'),"
-                +   "ModifySpellFlags(Concentration,0)"
-                + ")",
             ],
             EnabledConditions=[],
         ))
@@ -116,6 +109,28 @@ class Chronomage(Replacer):
                 "UnlockSpellVariant(TwinnedTargetTouchSpellCheck(),ModifyNumberOfTargets(AdditiveBase,1,false))",
             ],
             EnabledConditions=[],
+        ))
+        return name
+
+    @cached_property
+    def _alter_time(self) -> str:
+        name = self.make_name("AlterTime")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca("AlterTime_DisplayName", "Alter Time"),
+            Description=self.loca("AlterTime_Description", """
+                Your <LSTag Type="Spell" Tooltip="Target_Haste">Haste</LSTag> and
+                <LSTag Type="Spell" Tooltip="Target_Slow">Slow</LSTag> spells do not require
+                <LSTag Tooltip="Concentration">concentration</LSTag>.
+            """),
+            Icon="Spell_Transmutation_Slow",
+            Boosts=[
+                "UnlockSpellVariant("
+                +   "SpellId('Target_Haste') or SpellId('Target_Slow'),"
+                +   "ModifySpellFlags(Concentration,0)"
+                + ")",
+            ],
+            Properties=["Highlighted"],
         ))
         return name
 
@@ -152,6 +167,7 @@ class Chronomage(Replacer):
 
     @progression(CharacterClass.WIZARD_DIVINATION, 5)
     def divinationschool_level_5(self, progress: Progression) -> None:
+        progress.PassivesAdded = [self._alter_time]
         progress.Selectors += [f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)"]
 
 

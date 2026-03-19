@@ -5,7 +5,7 @@ import os
 from functools import cached_property
 from moddb import Awareness, Movement
 from modtools.gamedata import PassiveData, StatusData
-from modtools.lsx.game import Progression, SpellList
+from modtools.lsx.game import Progression, ProgressionDescription, SpellList
 from modtools.replacers import (
     CharacterClass,
     progression,
@@ -63,6 +63,26 @@ class Chronomage(Replacer):
             RemoveEvents=["OnCombatEnded"],
             StatusEffect="d37fab67-6932-44c4-995e-f051d7027fc5",
             StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
+        ))
+        return name
+
+    @cached_property
+    def _enduring(self) -> str:
+        name = self.make_name("Enduring")
+        self.add(PassiveData(
+            name,
+            using="Tough",
+            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
+        ))
+        self.add(ProgressionDescription(
+            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
+            Description=self.loca(f"{name}_Description", """
+                Your hit point maximum is increased by 2 for every level you have gained.
+            """),
+            ExactMatch="IncreaseMaxHP(Level*2)",
+            Hidden=False,
+            PassivePrototype=name,
+            UUID=self.make_uuid(name),
         ))
         return name
 
@@ -144,16 +164,6 @@ class Chronomage(Replacer):
         ))
         return name
     
-    @cached_property
-    def _enduring(self) -> str:
-        name = self.make_name("Enduring")
-        self.add(PassiveData(
-            name,
-            using="Tough",
-            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
-        ))
-        return name
-
     @cached_property
     def _level_2_spelllist(self) -> str:
         name = "Chronomage Level 2 Spells"

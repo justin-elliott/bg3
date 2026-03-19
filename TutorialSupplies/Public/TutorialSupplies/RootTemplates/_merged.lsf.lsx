@@ -19,7 +19,7 @@
                     <attribute id="Description" type="TranslatedString" handle="h7c6140f8ga9a4g73d4g882egc7169930d1ca" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hbe0fca97g9140gc370g2bd0g7297d3007c61" version="1" />
                     <attribute id="Flag_int32" type="int32" value="0" />
-                    <attribute id="Icon" type="FixedString" value="ALCH_Solution_Potion_FeatherFall" />
+                    <attribute id="Icon" type="FixedString" value="Item_ALCH_Solution_Potion_FeatherFall" />
                     <attribute id="LevelName" type="FixedString" value="" />
                     <attribute id="MapKey" type="FixedString" value="44ee0784-d19b-a667-e293-1e3d092e2b05" />
                     <attribute id="Name" type="LSString" value="TutorialSupplies_AwarenessPotion" />

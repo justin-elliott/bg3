@@ -3,9 +3,14 @@
 import os
 
 from functools import cached_property
-from moddb import Awareness, Defense, Movement
+from moddb import (
+    Awareness,
+    Defense,
+    Maneuvers,
+    Movement,
+)
 from modtools.gamedata import PassiveData, StatusData
-from modtools.lsx.game import Progression, ProgressionDescription, SpellList
+from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     progression,
@@ -14,12 +19,16 @@ from modtools.replacers import (
 
 
 class Chronomage(Replacer):
+    _maneuvers: Maneuvers
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
                          name="Chronomage",
                          description="A class replacer for DivinationSchool.",
                          **kwds)
+
+        self._maneuvers = Maneuvers(self.mod)
 
     @cached_property
     def _awareness(self) -> str:
@@ -207,22 +216,57 @@ class Chronomage(Replacer):
 
     @progression(CharacterClass.WIZARD_DIVINATION, 3)
     def divinationschool_level_3(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,3,0)"]
         progress.PassivesAdded = [self._quickened, self._twinned]
-        progress.Selectors += [f"AddSpells({self._level_3_spelllist},,,,AlwaysPrepared)"]
+        progress.Selectors += [
+            f"AddSpells({self._level_3_spelllist},,,,AlwaysPrepared)",
+            "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)",
+        ]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 4)
+    def divinationschool_level_4(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 5)
     def divinationschool_level_5(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
         progress.PassivesAdded = [self._alter_time, "ExtraAttack"]
         progress.Selectors += [f"AddSpells({self._level_5_spelllist},,,,AlwaysPrepared)"]
 
+    @progression(CharacterClass.WIZARD_DIVINATION, 6)
+    def divinationschool_level_6(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 7)
+    def divinationschool_level_7(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+        progress.Selectors += ["SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,2,Maneuvers)"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 8)
+    def divinationschool_level_8(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+
     @progression(CharacterClass.WIZARD_DIVINATION, 9)
     def divinationschool_level_9(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
         progress.PassivesAdded = ["ReliableTalent"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 10)
+    def divinationschool_level_10(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+        progress.PassivesAdded = ["ImprovedCombatSuperiority"]
+        progress.Selectors += ["SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,2,Maneuvers)"]
 
     @progression(CharacterClass.WIZARD_DIVINATION, 11)
     def divinationschool_level_11(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
         progress.PassivesAdded = ["ExtraAttack_2"]
         progress.PassivesRemoved = ["ExtraAttack"]
+
+    @progression(CharacterClass.WIZARD_DIVINATION, 12)
+    def divinationschool_level_12(self, progress: Progression) -> None:
+        progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
+        progress.PassivesAdded = [self._maneuvers.relentless]
 
 
 def main() -> None:

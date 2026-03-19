@@ -11,7 +11,6 @@ new entry "SweepingAttack"
 type "PassiveData"
 using "SweepingAttack"
 data "Description" "hcba4ea8cgc523g4fd8g7b09gcff9a3f551a2"
-data "DescriptionParams" "LevelMapValue(SuperiorityDie)"
 
 new entry "BattleMaster_Relentless"
 type "PassiveData"

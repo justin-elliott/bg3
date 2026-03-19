@@ -84,7 +84,6 @@ class Maneuvers:
             Description=self._mod.loca(f"{passive_name}_Description", """
                 Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once.
             """),
-            DescriptionParams=["LevelMapValue(SuperiorityDie)"],
         ))
 
         self._mod.add(SpellData(

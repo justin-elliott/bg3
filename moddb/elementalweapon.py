@@ -24,7 +24,6 @@ class ElementalWeapon:
         self._mod.loca[f"{name}_Description"] = """
             Imbue a weapon with elemental power. It receives a +[1] bonus to
             <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, and deals an additional 1d4 damage of your choice.
-            The weapon can't be knocked out of the wielder's hand.
         """
         self._mod.add(SpellData(
             name,
@@ -40,14 +39,12 @@ class ElementalWeapon:
 
         self._mod.loca[f"{status_name}_Description"] = """
             Has a +[1] bonus to <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> and deals an additional [2].
-            Can't be knocked out of the wielder's hand.
         """
 
         for element in self._ELEMENTS:
             self._mod.loca[f"{name}_{element}_Description"] = """
                 Imbue a weapon with elemental power. It receives a +[1] bonus to
                 <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>, and deals an additional [2].
-                The weapon can't be knocked out of the wielder's hand.
             """
             self._mod.add(SpellData(
                 f"{name}_{element}",
@@ -73,7 +70,6 @@ class ElementalWeapon:
                 StatusType="BOOST",
                 Description=self._mod.loca[f"{status_name}_Description"],
                 StackId=f"{status_name}_MAIN",
-                StatusPropertyFlags=["IgnoreResting"],
                 IsUnique="1",
             ))
 

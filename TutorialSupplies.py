@@ -798,22 +798,6 @@ class TutorialSupplies(Mod):
         )
 
     @cached_property
-    def _blade_of_the_banshee(self) -> str:
-        return self._add_adamantine_weapon(
-            "BladeOfTheBanshee",
-            parent_template_id=self.__KATANA_TEMPLATE_ID,
-            display_name="Blade of the Banshee",
-            description="""
-                This slender katana possesses a blade that seems to emit a faint, ghostly chill when drawn. Its tsuba is
-                carved in the likeness of a weeping woman, and when swung through the air, it emits a low, mournful wail
-                that chills the blood of any who hear it.
-            """,
-            bonus_damage_type="Psychic",
-            extra_passives_on_equip=["MAG_BansheeBless_Passive"],
-            weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
-        )
-
-    @cached_property
     def _lightning_weapon(self) -> str:
         name = self.make_name("Lightning_Weapon").upper()
         self.loca[f"{name}_DisplayName"] = "Lightning Weapon"
@@ -953,6 +937,7 @@ class TutorialSupplies(Mod):
     def _blade_of_the_banshee(self) -> str:
         return self._add_weapon(
             "BladeOfTheBanshee",
+            using="WPN_Katana",
             parent_template_id=self.__KATANA_TEMPLATE_ID,
             display_name="Blade of the Banshee",
             description="""
@@ -971,6 +956,7 @@ class TutorialSupplies(Mod):
             ],
             status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
             weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
+            weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
         )
 
     @cached_property

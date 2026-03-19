@@ -23,7 +23,7 @@ data "DisplayName" "hb8307cfbg1e48g8698g2a71gcd162a3a314c"
 new entry "TutorialSupplies_LifeStealing"
 type "PassiveData"
 using "MAG_Sarevok_OfChaos_Greatsword_Leeching_Passive"
-data "Description" "hdf8b9671gcf8fg9067g79e0ga5cc8ca9faac"
+data "DisplayName" "h9d1eb74bg588fgc7f3ga44bg90e4d6c9a8ac"
 
 new entry "TutorialSupplies_WeaponEnchantment"
 type "PassiveData"

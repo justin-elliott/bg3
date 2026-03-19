@@ -1180,7 +1180,7 @@ class TutorialSupplies(Mod):
         self.add(PassiveData(
             name,
             using="MAG_Sarevok_OfChaos_Greatsword_Leeching_Passive",
-            Description=self.loca(f"{name}_Description", "Life Stealing"),
+            DisplayName=self.loca(f"{name}_DisplayName", "Life Stealing"),
         ))
         return name
 

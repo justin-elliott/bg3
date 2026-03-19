@@ -59,7 +59,7 @@ class ElementalWeapon:
                     f"IF(not Item()):ApplyEquipmentStatus(MainHand,{status_name}_{element.upper()}_MAIN,100,-1)",
                     f"IF(not Item()):ApplyEquipmentStatus(OffHand,{status_name}_{element.upper()}_OFF,100,-1)",
                 ],
-                Cooldown="OncePerRestPerItem",
+                Cooldown="",
                 UseCosts="ActionPoint:1",
                 SpellFlags=["HasVerbalComponent", "HasSomaticComponent", "IsSpell", "IsMelee"],
             ))

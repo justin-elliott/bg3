@@ -61,11 +61,11 @@ class TutorialSupplies(Mod):
     def _reduce_weight(self, armor: list[str]) -> list[str]:
         for item in armor:
             self.add(Armor(
-                item,
+                self.make_name(item),
                 using=item,
                 Weight="0.1",
             ))
-        return armor
+        return [self.make_name(item) for item in armor]
 
     @cached_property
     def _camp_clothing(self) -> TreasureChest:
@@ -773,13 +773,8 @@ class TutorialSupplies(Mod):
             description="Contains a selection of armor",
             items=self._reduce_weight([
                 "ARM_Robe_FlamingFist",
-                "ARM_Leather_FlamingFist",
-                "ARM_ScaleMail_FlamingFist",
-                "ARM_HalfPlate_FlamingFist",
                 "ARM_StuddedLeather_Body",
-                "ARM_HalfPlate_Body",
                 "ARM_ScaleMail_Body_Paladin_Crown",
-                "ARM_Splint_Body",
             ]),
         )
 

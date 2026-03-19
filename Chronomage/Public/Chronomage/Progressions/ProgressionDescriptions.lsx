@@ -11,7 +11,7 @@
                     <attribute id="ExactMatch" type="FixedString" value="IncreaseMaxHP(Level*2)" />
                     <attribute id="Hidden" type="bool" value="false" />
                     <attribute id="PassivePrototype" type="FixedString" value="Chronomage_Enduring" />
-                    <attribute id="UUID" type="guid" value="8f7f637f-e2df-8d2b-06b3-ada076634fa2" />
+                    <attribute id="UUID" type="guid" value="9a9010aa-3373-0cdb-f92f-794b6869d3bc" />
                 </node>
             </children>
         </node>

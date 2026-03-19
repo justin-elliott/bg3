@@ -4,7 +4,7 @@ Defense-related functionality for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.lsx.game import CharacterAbility, SpellList
+from modtools.lsx.game import CharacterAbility, ProgressionDescription, SpellList
 from modtools.gamedata import InterruptData, PassiveData, SpellData
 from modtools.mod import Mod
 
@@ -109,6 +109,27 @@ class Defense:
             UUID=spell_list,
         ))
         return spell_list
+
+    def add_enduring(self, hp_per_level: int = 2) -> str:
+        name = self._mod.make_name("Enduring")
+        self._mod.add(PassiveData(
+            name,
+            using="Tough",
+            DisplayName=self._mod.loca(f"{name}_DisplayName", "Enduring"),
+            DescriptionParams=[f"Level*{hp_per_level}"],
+            Boosts=[f"IncreaseMaxHP(Level*{hp_per_level})"],
+        ))
+        self._mod.add(ProgressionDescription(
+            DisplayName=self._mod.loca(f"{name}_DisplayName", "Enduring"),
+            Description=self._mod.loca(f"{name}_Description", f"""
+                Your hit point maximum is increased by {hp_per_level} for every level you have gained.
+            """),
+            ExactMatch=f"IncreaseMaxHP(Level*{hp_per_level})",
+            Hidden=False,
+            PassivePrototype=name,
+            UUID=self._mod.make_uuid(name),
+        ))
+        return name
 
     def add_unarmored_defense(self, ability: CharacterAbility, *, icon: str = "PassiveFeature_UnarmoredDefense") -> str:
         ability_name = ability.name.title()

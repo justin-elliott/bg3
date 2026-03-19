@@ -3,7 +3,7 @@
 import os
 
 from functools import cached_property
-from moddb import Awareness, Movement
+from moddb import Awareness, Defense, Movement
 from modtools.gamedata import PassiveData, StatusData
 from modtools.lsx.game import Progression, ProgressionDescription, SpellList
 from modtools.replacers import (
@@ -68,23 +68,7 @@ class Chronomage(Replacer):
 
     @cached_property
     def _enduring(self) -> str:
-        name = self.make_name("Enduring")
-        self.add(PassiveData(
-            name,
-            using="Tough",
-            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
-        ))
-        self.add(ProgressionDescription(
-            DisplayName=self.loca(f"{name}_DisplayName", "Enduring"),
-            Description=self.loca(f"{name}_Description", """
-                Your hit point maximum is increased by 2 for every level you have gained.
-            """),
-            ExactMatch="IncreaseMaxHP(Level*2)",
-            Hidden=False,
-            PassivePrototype=name,
-            UUID=self.make_uuid(name),
-        ))
-        return name
+        return Defense(self.mod).add_enduring()
 
     @cached_property
     def _misty_step(self) -> str:

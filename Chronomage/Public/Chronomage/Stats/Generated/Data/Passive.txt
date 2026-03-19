@@ -21,6 +21,8 @@ data "StatsFunctors" "ApplyStatus(SELF,CHRONOMAGE_DISPLACEMENT,100,-1)"
 new entry "Chronomage_Enduring"
 type "PassiveData"
 using "Tough"
+data "Boosts" "IncreaseMaxHP(Level*2)"
+data "DescriptionParams" "Level*2"
 data "DisplayName" "hdab777b7g8a75ge535ga02dg121ff29da296"
 
 new entry "Chronomage_Prescient"

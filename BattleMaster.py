@@ -3,7 +3,7 @@
 import os
 
 from functools import cached_property
-from moddb.scripts import is_battle_master_maneuver
+from moddb import Maneuvers
 from modtools.gamedata import InterruptData, PassiveData, SpellData
 from modtools.lsx.game import Progression
 from modtools.replacers import (
@@ -14,122 +14,17 @@ from modtools.replacers import (
 
 
 class BattleMaster(Replacer):
+    _maneuvers: Maneuvers
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
                          name="BattleMaster",
                          description="A class replacer for BattleMaster.",
                          **kwds)
+
+        self._maneuvers = Maneuvers(self.mod)
         
-        self._update_precision_attack()
-        self._update_sweeping_attack()
-
-    def _update_precision_attack(self) -> None:
-        passive_name = "PrecisionAttack"
-        interrupt_name = self.make_name("Interrupt_PrecisionAttack")
-
-        self.loca[f"{passive_name}_DisplayName"] = "Precision Attack"
-        self.loca[f"{passive_name}_Description"] = """
-            On a miss, you can spend a <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag> to
-            add it to the result of the <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>, possibly making it hit.
-        """
-        self.add(PassiveData(
-            passive_name,
-            DisplayName=self.loca[f"{passive_name}_DisplayName"],
-            Description=self.loca[f"{passive_name}_Description"],
-            Icon="Action_PrecisionAttack",
-            Boosts=[f"UnlockInterrupt({interrupt_name})"],
-        ))
-
-        self.add(is_battle_master_maneuver)
-
-        self.loca[f"{interrupt_name}_Description"] = """
-            Add a <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag> to
-            your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
-        """
-        self.add(InterruptData(
-            interrupt_name,
-            DisplayName=self.loca[f"{passive_name}_DisplayName"],
-            Description=self.loca[f"{interrupt_name}_Description"],
-            Icon="Action_PrecisionAttack",
-            InterruptContext="OnPostRoll",
-            InterruptContextScope="Self",
-            Container="YesNoDecision",
-            Conditions=[
-                "Self(context.Source,context.Observer)"
-                + " and not Dead(context.Observer)"
-                + " and HasInterruptedAttack()"
-                + " and not AnyEntityIsItem()"
-                + " and (not IsBattleMasterManeuver()"
-                +       " or HasActionResource('SuperiorityDie',2,0,false,false,context.Source))"
-                + " and ((not CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(8,context.Source))"
-                +       " or (CharacterLevelGreaterThan(9) and IsFlatValueInterruptInteresting(10,context.Source)))",
-            ],
-            Properties=["AdjustRoll(OBSERVER_OBSERVER,LevelMapValue(SuperiorityDie))"],
-            Cost="SuperiorityDie:1",
-            InterruptDefaultValue=["Ask", "Enabled"],
-            EnableCondition=[
-                "not HasStatus('SG_Polymorph')"
-                + " or HasAnyStatus({"
-                +       "'SG_Disguise',"
-                +       "'WILDSHAPE_STARRY_ARCHER_PLAYER',"
-                +       "'WILDSHAPE_STARRY_CHALICE_PLAYER',"
-                +       "'WILDSHAPE_STARRY_DRAGON_PLAYER'"
-                +       "})",
-            ],
-            EnableContext=["OnStatusApplied", "OnStatusRemoved"],
-        ))
-
-    def _update_sweeping_attack(self) -> None:
-        passive_name = "SweepingAttack"
-        spell_name = "Zone_SweepingAttack"
-
-        self.loca[f"{passive_name}_Description"] = """
-            Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once.
-        """
-        self.add(PassiveData(
-            passive_name,
-            using=passive_name,
-            Description=self.loca[f"{passive_name}_Description"],
-            DescriptionParams=["LevelMapValue(SuperiorityDie)"],
-        ))
-
-        self.add(SpellData(
-            spell_name,
-            using=spell_name,
-            SpellType="Zone",
-            SpellProperties=[
-                "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "GROUND:ExecuteWeaponFunctors(MainHand)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-            ],
-            SpellSuccess=[
-                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "ExecuteWeaponFunctors(MainHand)",
-            ],
-            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
-        ))
-    
-    @cached_property
-    def _relentless(self) -> str:
-        name = self.make_name("Relentless")
-        self.loca[f"{name}_DisplayName"] = "Relentless"
-        self.loca[f"{name}_Description"] = """
-            At the start of your turn, you regain one
-            <LSTag Type="ActionResource" Tooltip="SuperiorityDie">Superiority Die</LSTag>.
-        """
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            Icon="Action_BolsteringMagic_Boost",
-            Conditions=["Combat()"],
-            Properties=["Highlighted", "ForceShowInCC"],
-            StatsFunctorContext=["OnTurn"],
-            StatsFunctors=["RestoreResource(SuperiorityDie,1,0)"],
-        ))
-        return name
-
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 3)
     def battlemaster_level_3(self, progress: Progression) -> None:
         progress.Boosts = ["ActionResource(SuperiorityDie,3,0)"]
@@ -172,7 +67,7 @@ class BattleMaster(Replacer):
     @progression(CharacterClass.FIGHTER_BATTLEMASTER, 12)
     def battlemaster_level_12(self, progress: Progression) -> None:
         progress.Boosts = ["ActionResource(SuperiorityDie,1,0)"]
-        progress.PassivesAdded = [self._relentless]
+        progress.PassivesAdded = [self._maneuvers.relentless]
 
 
 def main() -> None:

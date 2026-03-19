@@ -16,6 +16,7 @@ from .empoweredspells import *
 from .guidance import *
 from .knowledge import *
 from .level_map_ranges import *
+from .maneuvers import *
 from .movement import *
 from .pack_mule import *
 from .progression import *

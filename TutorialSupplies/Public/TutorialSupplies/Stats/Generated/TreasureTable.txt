@@ -17,6 +17,8 @@ object category "I_TutorialSupplies_Potions",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_Dyes",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_TutorialSupplies_Armor",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_Weapons",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_AbazigalsGoods",1,0,0,0,0,0,0,0
@@ -422,6 +424,25 @@ new subtable "1,1"
 object category "I_DLC_OBJ_Dye_Larian",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_OBJ_Dye_Remover",1,0,0,0,0,0,0,0
+
+new treasuretable "TutorialSupplies_Armor_TreasureTable"
+CanMerge 1
+new subtable "1,1"
+object category "I_ARM_Robe_FlamingFist",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_Leather_FlamingFist",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_ScaleMail_FlamingFist",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_HalfPlate_FlamingFist",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_StuddedLeather_Body",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_HalfPlate_Body",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_ScaleMail_Body_Paladin_Crown",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_ARM_Splint_Body",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_Weapons_TreasureTable"
 CanMerge 1

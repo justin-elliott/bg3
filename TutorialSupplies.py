@@ -51,6 +51,7 @@ class TutorialSupplies(Mod):
             self._daisy,
             self._potions,
             self._dyes,
+            self._armor,
             self._weapons,
             self._abazigals_goods,
         ])
@@ -763,6 +764,24 @@ class TutorialSupplies(Mod):
             RootTemplate="5a0ee632-9145-48b2-9b92-97c32c2ccbd9",
         ))
         return name
+
+    @cached_property
+    def _armor(self) -> TreasureChest:
+        return self.TreasureChest(
+            name="Armor",
+            display_name="Armour",
+            description="Contains a selection of armor",
+            items=self._reduce_weight([
+                "ARM_Robe_FlamingFist",
+                "ARM_Leather_FlamingFist",
+                "ARM_ScaleMail_FlamingFist",
+                "ARM_HalfPlate_FlamingFist",
+                "ARM_StuddedLeather_Body",
+                "ARM_HalfPlate_Body",
+                "ARM_ScaleMail_Body_Paladin_Crown",
+                "ARM_Splint_Body",
+            ]),
+        )
 
     @cached_property
     def _weapons(self) -> TreasureChest:

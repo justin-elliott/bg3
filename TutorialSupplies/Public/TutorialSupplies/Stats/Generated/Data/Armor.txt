@@ -556,6 +556,46 @@ type "Armor"
 using "ARM_Camp_Shoes"
 data "RootTemplate" "216f0362-f77b-420c-84cb-d84853aa173d"
 
+new entry "ARM_Robe_FlamingFist"
+type "Armor"
+using "ARM_Robe_FlamingFist"
+data "Weight" "0.1"
+
+new entry "ARM_Leather_FlamingFist"
+type "Armor"
+using "ARM_Leather_FlamingFist"
+data "Weight" "0.1"
+
+new entry "ARM_ScaleMail_FlamingFist"
+type "Armor"
+using "ARM_ScaleMail_FlamingFist"
+data "Weight" "0.1"
+
+new entry "ARM_HalfPlate_FlamingFist"
+type "Armor"
+using "ARM_HalfPlate_FlamingFist"
+data "Weight" "0.1"
+
+new entry "ARM_StuddedLeather_Body"
+type "Armor"
+using "ARM_StuddedLeather_Body"
+data "Weight" "0.1"
+
+new entry "ARM_HalfPlate_Body"
+type "Armor"
+using "ARM_HalfPlate_Body"
+data "Weight" "0.1"
+
+new entry "ARM_ScaleMail_Body_Paladin_Crown"
+type "Armor"
+using "ARM_ScaleMail_Body_Paladin_Crown"
+data "Weight" "0.1"
+
+new entry "ARM_Splint_Body"
+type "Armor"
+using "ARM_Splint_Body"
+data "Weight" "0.1"
+
 new entry "MAG_ElementalGish_ArcaneAcuity_Helmet"
 type "Armor"
 using "MAG_ElementalGish_ArcaneAcuity_Helmet"

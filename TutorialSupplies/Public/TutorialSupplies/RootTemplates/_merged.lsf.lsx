@@ -952,6 +952,26 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="hcc503af7g1b36g420cge81ag7c80e4f921d1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h229a1213gf783gfa6fgf0ffgb09ab6c07a7f" version="1" />
+                    <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="dc046c8e-9ada-8cff-ac48-7bac69c92221" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_Armor" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="47805d79-88f1-4933-86eb-f78f67cbc33f" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_Armor" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="InventoryList">
+                            <children>
+                                <node id="InventoryItem">
+                                    <attribute id="Object" type="FixedString" value="TutorialSupplies_Armor_TreasureTable" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="hfdaf126egaac0gc96fg4f39gcfb01954032d" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="hb3bfb113g0bc6g9b00gaeeeg26b51a81a7f9" version="1" />
                     <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />

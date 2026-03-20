@@ -187,7 +187,6 @@ class DaughterOfDarkness(Replacer):
             f"AddSpells({self._eldritch_blast_spelllist},,,,AlwaysPrepared)",
             f"AddSpells({self._wizard_spelllist(1)})",
             "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)",
-            f"SelectSpells({spelllist.wizard_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 2)
@@ -214,9 +213,6 @@ class DaughterOfDarkness(Replacer):
         progress.Boosts = (progress.Boosts or []) + [
             "ActionResource(ChannelDivinity,1,0)",
             "ActionResource(SuperiorityDie,1,0)",
-        ]
-        progress.Selectors = (progress.Selectors or []) + [
-            f"SelectSpells({spelllist.wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 5)
@@ -273,9 +269,6 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(SuperiorityDie,1,0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ImprovedCombatSuperiority"]
-        progress.Selectors = (progress.Selectors or []) + [
-            f"SelectSpells({spelllist.wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
-        ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 11)
     def trickerydomain_level_11(self, progress: Progression) -> None:

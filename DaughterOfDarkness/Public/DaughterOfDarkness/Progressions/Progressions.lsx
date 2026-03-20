@@ -11,7 +11,7 @@
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_Awareness;DevilsSight;DaughterOfDarkness_AgonizingBlast;RepellingBlast" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(fd1a47fc-a815-0303-04f3-b34d74ac82fb,,,,AlwaysPrepared);AddSpells(38c6480c-501a-fccc-8f77-e0f79902d996);SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(fd1a47fc-a815-0303-04f3-b34d74ac82fb,,,,AlwaysPrepared);AddSpells(38c6480c-501a-fccc-8f77-e0f79902d996);SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="97ba481e-13d2-4a8c-8503-e1b146c21b7b" />
                 </node>
@@ -39,7 +39,6 @@
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="33627eb3-f6a0-4ddb-8f7c-0681d0d8cb71" />
                 </node>
@@ -97,7 +96,6 @@
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="ImprovedCombatSuperiority" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,1,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="62fc57a8-b542-8113-a44c-9a04bd14809e" />
                 </node>

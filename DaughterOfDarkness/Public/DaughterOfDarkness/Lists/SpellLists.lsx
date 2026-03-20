@@ -6,11 +6,6 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Trickery Domain Eldritch Blast" />
-                    <attribute id="Spells" type="LSString" value="Projectile_EldritchBlast" />
-                    <attribute id="UUID" type="guid" value="fd1a47fc-a815-0303-04f3-b34d74ac82fb" />
-                </node>
-                <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Trickery Domain Level 1 Wizard Spells" />
                     <attribute id="Spells" type="LSString" value="Zone_BurningHands;Projectile_ChromaticOrb;Zone_ColorSpray;Shout_ExpeditiousRetreat;Shout_FalseLife;Shout_FeatherFall;Target_FindFamiliar;Target_FogCloud;Target_Grease;Projectile_IceKnife;Target_Jump;Target_Longstrider;Target_MageArmor;Projectile_MagicMissile;Projectile_RayOfSickness;Shout_Shield_Wizard;Target_Sleep;Target_HideousLaughter;Zone_Thunderwave;Projectile_WitchBolt" />
                     <attribute id="UUID" type="guid" value="38c6480c-501a-fccc-8f77-e0f79902d996" />

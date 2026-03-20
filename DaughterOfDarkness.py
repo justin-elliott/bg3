@@ -50,22 +50,6 @@ class DaughterOfDarkness(Replacer):
         ))
 
     @cached_property
-    def _agonizing_blast(self) -> str:
-        name = self.make_name("AgonizingBlast")
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca(f"{name}_DisplayName", "Agonizing Blast"),
-            Description=self.loca(f"{name}_Description", """
-                When you cast a damaging cantrip, add your <LSTag Tooltip="Wisdom">Wisdom</LSTag>
-                <LSTag Tooltip="AbilityModifier">Modifier</LSTag> to the damage it deals.
-            """),
-            Icon="PassiveFeature_AgonizingBlast",
-            Boosts=["IF(IsCantrip()):DamageBonus(max(0,WisdomModifier))"],
-            Properties=["Highlighted", "DisplayBoostInTooltip"],
-        ))
-        return name
-
-    @cached_property
     def _awareness(self) -> str:
         return Awareness(self.mod).add_awareness()
 
@@ -141,17 +125,6 @@ class DaughterOfDarkness(Replacer):
         return uuid
 
     @cached_property
-    def _eldritch_blast_spelllist(self) -> str:
-        name = "Trickery Domain Eldritch Blast"
-        uuid = self.make_uuid(name)
-        self.add(SpellList(
-            Name=name,
-            Spells=["Projectile_EldritchBlast"],
-            UUID=uuid,
-        ))
-        return uuid
-
-    @cached_property
     def _shadow_step_spelllist(self) -> str:
         name = "Trickery Domain Shadow Step"
         uuid = self.make_uuid(name)
@@ -180,11 +153,8 @@ class DaughterOfDarkness(Replacer):
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
             self._awareness,
             "DevilsSight",
-            self._agonizing_blast,
-            "RepellingBlast",
         ]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({self._eldritch_blast_spelllist},,,,AlwaysPrepared)",
             f"AddSpells({self._wizard_spelllist(1)})",
             "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)",
         ]

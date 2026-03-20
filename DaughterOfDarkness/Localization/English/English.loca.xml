@@ -7,8 +7,6 @@
     <content contentuid="h1bde8805g5d76g8ce2gf7c7g69c53bfa12fb" version="1">Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once.</content>
     <content contentuid="h5a439ef9g4f48gdfa9ga987gf7f2c2a3d153" version="1">Awareness</content>
     <content contentuid="he129e209g0f67g4bdfgf3dcga3fcafd3d51d" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
-    <content contentuid="hcc72ff57g1f28g99c4gdafcg5b394e1eabbe" version="1">Agonizing Blast</content>
-    <content contentuid="hcb8451ecg6ae8gff00g32e7gbf078bb36918" version="1">When you cast a damaging cantrip, add your &lt;LSTag Tooltip="Wisdom"&gt;Wisdom&lt;/LSTag&gt; &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; to the damage it deals.</content>
     <content contentuid="he1e1726cg2b62ge454g6bceg5b3340be9f28" version="1">Quickened Spell</content>
     <content contentuid="h1fa1e016g90f4gbe6egebd2ga1ee7a46daf6" version="1">Spells that cost an action cost a bonus action instead.</content>
     <content contentuid="hdaa354bcga524g8068g0e04gb9d1de35c716" version="1">Twinned Spell</content>

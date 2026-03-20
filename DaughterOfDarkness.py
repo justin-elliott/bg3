@@ -4,14 +4,9 @@ import os
 
 from functools import cache, cached_property
 from moddb import Awareness, Maneuvers, Movement
-from modtools.gamedata import Armor, PassiveData, StatusData
+from modtools.gamedata import Armor, PassiveData, SpellData, StatusData
 from modtools.lsx.game import Progression, SpellList
-from modtools.replacers import (
-    CharacterClass,
-    progression,
-    Replacer,
-    spelllist,
-)
+from modtools.replacers import CharacterClass, progression, Replacer, spelllist
 
 class DaughterOfDarkness(Replacer):
     _maneuvers: Maneuvers
@@ -25,8 +20,9 @@ class DaughterOfDarkness(Replacer):
 
         self._maneuvers = Maneuvers(self.mod)
         self._update_shadowheart_chain_shirt()
+        self._update_cloak_of_shadows()
 
-    def _update_shadowheart_chain_shirt(self) -> str:
+    def _update_shadowheart_chain_shirt(self) -> None:
         name = "ARM_ChainShirt_Body_Shar"
 
         persistence_passive = self.make_name("Persistence")
@@ -72,6 +68,19 @@ class DaughterOfDarkness(Replacer):
                 "MAG_END_GAME_RESISTANCE",
                 guidance_status,
             ],
+        ))
+
+    def _update_cloak_of_shadows(self) -> None:
+        name = "Shout_CloakOfShadows"
+        self.add(SpellData(
+            name,
+            using=name,
+            SpellType="Shout",
+            Description=self.loca(f"{name}_Description", """
+                Wrap yourself in shadows to become <LSTag Type="Status" Tooltip="CLOAK_OF_SHADOWS">Invisible</LSTag>.
+            """),
+            SpellProperties=["ApplyStatus(CLOAK_OF_SHADOWS,100,-1)"],
+            TooltipStatusApply=["ApplyStatus(CLOAK_OF_SHADOWS,100,-1)"],
         ))
 
     @cached_property

@@ -5,6 +5,8 @@
     <content contentuid="hb40f279dg3ffcga17bgf25dgbcf6803b9585" version="1">On a miss, you can spend a &lt;LSTag Type="ActionResource" Tooltip="SuperiorityDie"&gt;Superiority Die&lt;/LSTag&gt; to add it to the result of the &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, possibly making it hit.</content>
     <content contentuid="h5b87f9e1ga013g77b2gbafcg45bc1a4f854e" version="1">Add a &lt;LSTag Type="ActionResource" Tooltip="SuperiorityDie"&gt;Superiority Die&lt;/LSTag&gt; to your &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;.</content>
     <content contentuid="h1bde8805g5d76g8ce2gf7c7g69c53bfa12fb" version="1">Swing your weapon in a rapid, sweeping arc to attack multiple enemies at once.</content>
+    <content contentuid="h6f5ebc4bg655dgd55bg24a0gdc748695b29f" version="1">Persistence</content>
+    <content contentuid="hdf63e4b4g88a6gb453g1b38g4981e9dbcc1c" version="1">You gain &lt;LSTag Type="Status" Tooltip="BLADE_WARD"&gt;Blade Ward&lt;/LSTag&gt;, &lt;LSTag Type="Status" Tooltip="RESISTANCE"&gt;Resistance&lt;/LSTag&gt;, and &lt;LSTag Type="Status" Tooltip="GUIDANCE"&gt;Guidance&lt;/LSTag&gt;.</content>
     <content contentuid="h5a439ef9g4f48gdfa9ga987gf7f2c2a3d153" version="1">Awareness</content>
     <content contentuid="he129e209g0f67g4bdfgf3dcga3fcafd3d51d" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
     <content contentuid="he1e1726cg2b62ge454g6bceg5b3340be9f28" version="1">Quickened Spell</content>

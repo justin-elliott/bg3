@@ -4,7 +4,7 @@ import os
 
 from functools import cache, cached_property
 from moddb import Awareness, Maneuvers, Movement
-from modtools.gamedata import Armor, PassiveData
+from modtools.gamedata import Armor, PassiveData, StatusData
 from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
@@ -28,6 +28,31 @@ class DaughterOfDarkness(Replacer):
 
     def _update_shadowheart_chain_shirt(self) -> str:
         name = "ARM_ChainShirt_Body_Shar"
+
+        persistence_passive = self.make_name("Persistence")
+        self.add(PassiveData(
+            persistence_passive,
+            DisplayName=self.loca(f"{persistence_passive}_DisplayName", "Persistence"),
+            Description=self.loca(f"{persistence_passive}_Description", """
+                You gain <LSTag Type="Status" Tooltip="BLADE_WARD">Blade Ward</LSTag>,
+                <LSTag Type="Status" Tooltip="RESISTANCE">Resistance</LSTag>, and
+                <LSTag Type="Status" Tooltip="GUIDANCE">Guidance</LSTag>.
+            """),
+        ))
+
+        guidance_status = self.make_name("Guidance")
+        self.add(StatusData(
+            guidance_status,
+            StatusType="BOOST",
+            using="GUIDANCE",
+            StackPriority=10,
+            StackType="Ignore",
+            StatusPropertyFlags=["IgnoreResting", "ApplyToDead"],
+            StatusEffect="",
+            ManagedStatusEffectType="",
+            ManagedStatusEffectGroup="",
+        ))
+
         self.add(Armor(
             name,
             using=name,
@@ -35,17 +60,17 @@ class DaughterOfDarkness(Replacer):
             ArmorClass=17,
             Boosts=[
                 "CriticalHit(AttackTarget,Success,Never)",
-                "RollBonus(SavingThrow,2)",
             ],
             PassivesOnEquip=[
                 "MAG_ExoticMaterial_MediumArmor_Passive",
-                "MAG_MAG_EndGame_Plate_Armor_Passive",
+                persistence_passive,
             ],
             Rarity="Legendary",
             StatusOnEquip=[
                 "MAG_EXOTIC_MATERIAL_ARMOR_TECHNICAL",
                 "MAG_BLADE_WARD",
                 "MAG_END_GAME_RESISTANCE",
+                guidance_status,
             ],
         ))
 

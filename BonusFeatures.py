@@ -1146,6 +1146,9 @@ class BonusFeatures(Replacer):
                 "RestoreResource(WrithingTidePoint,100%,0)",
                 "RestoreResource(Bladesong,100%,0)",
             ],
+            SplatterDirtAmount=-2,
+            SplatterBloodAmount=-2,
+            SplatterSweatAmount=-2,
         ))
         return name
 

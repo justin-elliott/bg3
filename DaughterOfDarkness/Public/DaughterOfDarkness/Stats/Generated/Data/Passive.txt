@@ -12,6 +12,11 @@ type "PassiveData"
 using "SweepingAttack"
 data "Description" "h1bde8805g5d76g8ce2gf7c7g69c53bfa12fb"
 
+new entry "DaughterOfDarkness_Persistence"
+type "PassiveData"
+data "Description" "hdf63e4b4g88a6gb453g1b38g4981e9dbcc1c"
+data "DisplayName" "h6f5ebc4bg655dgd55bg24a0gdc748695b29f"
+
 new entry "DaughterOfDarkness_Awareness"
 type "PassiveData"
 data "Boosts" "Initiative(2);IF(CharacterLevelGreaterThan(4)):Initiative(1);IF(CharacterLevelGreaterThan(8)):Initiative(1);IF(CharacterLevelGreaterThan(11)):Initiative(1);StatusImmunity(SURPRISED)"

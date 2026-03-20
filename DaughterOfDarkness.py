@@ -113,7 +113,10 @@ class DaughterOfDarkness(Replacer):
     def _wizard_spelllist(self, level: int) -> str:
         name = f"Trickery Domain Level {level} Wizard Spells"
         uuid = self.make_uuid(name)
-        wizard_spells = spelllist.wizard_spells(self, level).Spells
+        previous_wizard_spells = set([] if level == 1 else spelllist.wizard_spells(self, level - 1).Spells)
+        wizard_spells = [
+            spell for spell in spelllist.wizard_spells(self, level).Spells if spell not in previous_wizard_spells
+        ]
         cleric_spells = (set(spelllist.cleric_spells(self, level).Spells) |
                          set(spelllist.trickery_domain_spells(self, level).Spells))
         unique_spells = [spell for spell in wizard_spells if spell not in cleric_spells]

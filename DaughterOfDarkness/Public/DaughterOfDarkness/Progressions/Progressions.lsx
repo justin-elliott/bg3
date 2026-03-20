@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(Skill,SleightOfHand);ExpertiseBonus(SleightOfHand);Advantage(Skill,SleightOfHand);ProficiencyBonus(Skill,Stealth);ExpertiseBonus(Stealth);Advantage(Skill,Stealth)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
-                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_Awareness;DevilsSight;JackOfAllTrades;DaughterOfDarkness_AgonizingBlast;RepellingBlast" />
+                    <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_Awareness;DevilsSight;DaughterOfDarkness_AgonizingBlast;RepellingBlast" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(98ef625f-d127-4fc3-8e37-37a4b27e6393,ClericTrickeryDomainSpells,,,AlwaysPrepared);AddSpells(fd1a47fc-a815-0303-04f3-b34d74ac82fb,,,,AlwaysPrepared);AddSpells(38c6480c-501a-fccc-8f77-e0f79902d996);SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers);SelectSpells(3cae2e56-9871-4cef-bba6-96845ea765fa,3,0,,,,AlwaysPrepared)" />
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />

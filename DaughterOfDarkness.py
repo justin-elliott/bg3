@@ -178,7 +178,6 @@ class DaughterOfDarkness(Replacer):
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
             self._awareness,
             "DevilsSight",
-            "JackOfAllTrades",
             self._agonizing_blast,
             "RepellingBlast",
         ]

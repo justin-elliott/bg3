@@ -153,6 +153,40 @@ def cleric_level_6_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("f8ba7b05-1237-4eaa-97fa-1d3623d5862b"))
 
 
+@cache
+def cleric_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"cleric_level_{level}_spells"](replacer)
+
+
+def trickery_domain_level_1_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("98ef625f-d127-4fc3-8e37-37a4b27e6393"))
+
+
+def trickery_domain_level_2_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("9f603ac8-2e51-4ce9-b924-c8093148bdf5"))
+
+
+def trickery_domain_level_3_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("8a9faf7a-aacf-43f4-a0dd-5ea7e72449f3"))
+
+
+def trickery_domain_level_4_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("18e97e4a-d97b-4595-af80-8eb43766386e"))
+
+
+def trickery_domain_level_5_spells(replacer: Replacer) -> SpellList:
+    return _find_by_uuid(replacer, UUID("154b461e-23c2-4147-97fd-b7892f031a50"))
+
+
+def trickery_domain_level_6_spells(_: Replacer) -> SpellList:
+    return SpellList(Name="", Spells=[], UUID="")
+
+
+@cache
+def trickery_domain_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"trickery_domain_level_{level}_spells"](replacer)
+
+
 # Druid Spells
 
 
@@ -184,6 +218,11 @@ def druid_level_6_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("6a4e2167-55f3-4ba8-900f-14666b293e93"))
 
 
+@cache
+def druid_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"druid_level_{level}_spells"](replacer)
+
+
 # Druid Spells
 
 
@@ -199,6 +238,11 @@ def eldritch_knight_level_2_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("4a86443c-6a21-4b8d-b1bf-55a99e021354"))
 
 
+@cache
+def eldritch_knight_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"eldritch_knight_level_{level}_spells"](replacer)
+
+
 # Ranger Spells
 
 
@@ -212,6 +256,11 @@ def ranger_level_2_spells(replacer: Replacer) -> SpellList:
 
 def ranger_level_3_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("9a60f649-7f82-4152-90b1-0499c5c9f3e2"))
+
+
+@cache
+def ranger_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"ranger_level_{level}_spells"](replacer)
 
 
 # Warlock Spells
@@ -310,11 +359,13 @@ __WARLOCK_SPELL_KEY: Final[dict[str, str]] = {
     "Target_Smite_Wrathful": "WrathfulSmite",
 }
 
+
 def __warlock_spell_key(name: str) -> str:
     if (key := __WARLOCK_SPELL_KEY.get(name)) is not None:
         return key
     else:
         return name[name.find("_") + 1:]
+
 
 @cache
 def warlock_combined_spells(replacer: Replacer, level: int) -> list[str]:
@@ -354,3 +405,8 @@ def wizard_level_5_spells(replacer: Replacer) -> SpellList:
 
 def wizard_level_6_spells(replacer: Replacer) -> SpellList:
     return _find_by_uuid(replacer, UUID("bc917f22-7f71-4a25-9a77-7d2f91a96a65"))
+
+
+@cache
+def wizard_spells(replacer: Replacer, level: int) -> SpellList:
+    return globals()[f"wizard_level_{level}_spells"](replacer)

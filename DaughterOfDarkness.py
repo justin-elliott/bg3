@@ -2,8 +2,8 @@
 
 import os
 
-from functools import cached_property
-from moddb import Awareness, Movement
+from functools import cache, cached_property
+from moddb import Awareness, Maneuvers, Movement
 from modtools.gamedata import Armor, PassiveData
 from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
@@ -14,6 +14,8 @@ from modtools.replacers import (
 )
 
 class DaughterOfDarkness(Replacer):
+    _maneuvers: Maneuvers
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
@@ -21,6 +23,7 @@ class DaughterOfDarkness(Replacer):
                          description="A class replacer for TrickeryDomain.",
                          **kwds)
 
+        self._maneuvers = Maneuvers(self.mod)
         self._update_shadowheart_chain_shirt()
 
     def _update_shadowheart_chain_shirt(self) -> str:
@@ -122,9 +125,24 @@ class DaughterOfDarkness(Replacer):
     def _shadow_step(self) -> str:
         return Movement(self.mod).add_shadow_step("Movement:Distance*0.5")
 
+    @cache
+    def _wizard_spelllist(self, level: int) -> str:
+        name = f"Trickery Domain Level {level} Wizard Spells"
+        uuid = self.make_uuid(name)
+        wizard_spells = spelllist.wizard_spells(self, level).Spells
+        cleric_spells = (set(spelllist.cleric_spells(self, level).Spells) |
+                         set(spelllist.trickery_domain_spells(self, level).Spells))
+        unique_spells = [spell for spell in wizard_spells if spell not in cleric_spells]
+        self.add(SpellList(
+            Name=name,
+            Spells=unique_spells,
+            UUID=uuid,
+        ))
+        return uuid
+
     @cached_property
-    def _level_1_spelllist(self) -> str:
-        name = "Trickery Domain Level 1 Spells"
+    def _eldritch_blast_spelllist(self) -> str:
+        name = "Trickery Domain Eldritch Blast"
         uuid = self.make_uuid(name)
         self.add(SpellList(
             Name=name,
@@ -134,8 +152,8 @@ class DaughterOfDarkness(Replacer):
         return uuid
 
     @cached_property
-    def _level_3_spelllist(self) -> str:
-        name = "Trickery Domain Level 3 Spells"
+    def _shadow_step_spelllist(self) -> str:
+        name = "Trickery Domain Shadow Step"
         uuid = self.make_uuid(name)
         self.add(SpellList(
             Name=name,
@@ -165,8 +183,8 @@ class DaughterOfDarkness(Replacer):
             "RepellingBlast",
         ]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({self._level_1_spelllist},,,,AlwaysPrepared)",
-            f"AddSpells({spelllist.wizard_level_1_spells(self).UUID})",
+            f"AddSpells({self._eldritch_blast_spelllist},,,,AlwaysPrepared)",
+            f"AddSpells({self._wizard_spelllist(1)})",
             "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,3,Maneuvers)",
             f"SelectSpells({spelllist.wizard_cantrips(self).UUID},3,0,,,,AlwaysPrepared)",
         ]
@@ -186,8 +204,8 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(SuperiorityDie,1,0)",
         ]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({spelllist.wizard_level_2_spells(self).UUID})",
-            f"AddSpells({self._level_3_spelllist},,,,AlwaysPrepared)",
+            f"AddSpells({self._wizard_spelllist(2)})",
+            f"AddSpells({self._shadow_step_spelllist},,,,AlwaysPrepared)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 4)
@@ -208,7 +226,7 @@ class DaughterOfDarkness(Replacer):
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack"]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({spelllist.wizard_level_3_spells(self).UUID})",
+            f"AddSpells({self._wizard_spelllist(3)})",
             "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,2,Maneuvers)",
         ]
 
@@ -225,7 +243,7 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(SuperiorityDie,1,0)",
         ]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({spelllist.wizard_level_4_spells(self).UUID})",
+            f"AddSpells({self._wizard_spelllist(4)})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 8)
@@ -243,7 +261,7 @@ class DaughterOfDarkness(Replacer):
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ReliableTalent"]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({spelllist.wizard_level_5_spells(self).UUID})",
+            f"AddSpells({self._wizard_spelllist(5)})",
             "SelectPassives(e51a2ef5-3663-43f9-8e74-5e28520323f1,2,Maneuvers)",
         ]
 
@@ -253,6 +271,7 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(ChannelDivinity,1,0)",
             "ActionResource(SuperiorityDie,1,0)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ImprovedCombatSuperiority"]
         progress.Selectors = (progress.Selectors or []) + [
             f"SelectSpells({spelllist.wizard_cantrips(self).UUID},1,0,,,,AlwaysPrepared)",
         ]
@@ -266,7 +285,7 @@ class DaughterOfDarkness(Replacer):
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_2"]
         progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack"]
         progress.Selectors = (progress.Selectors or []) + [
-            f"AddSpells({spelllist.wizard_level_6_spells(self).UUID})",
+            f"AddSpells({self._wizard_spelllist(6)})",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 12)
@@ -275,6 +294,7 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(ChannelDivinity,1,0)",
             "ActionResource(SuperiorityDie,1,0)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + [self._maneuvers.relentless]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 13)
     def trickerydomain_level_13(self, progress: Progression) -> None:

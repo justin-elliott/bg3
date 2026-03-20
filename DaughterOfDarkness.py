@@ -104,7 +104,7 @@ class DaughterOfDarkness(Replacer):
                 +   "ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint)"
                 + ")",
             ],
-            EnabledConditions=[],
+            EnabledConditions=["HasActionResource('ChannelDivinity',1,0,false,false,context.Source)"],
         ))
         return name
     
@@ -135,7 +135,7 @@ class DaughterOfDarkness(Replacer):
                 +   "ModifyNumberOfTargets(AdditiveBase,1,false)"
                 + ")",
             ],
-            EnabledConditions=[],
+            EnabledConditions=["HasActionResource('ChannelDivinity',1,0,false,false,context.Source)"],
         ))
         return name
     

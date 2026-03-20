@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(Skill,SleightOfHand);ExpertiseBonus(SleightOfHand);Advantage(Skill,SleightOfHand);ProficiencyBonus(Skill,Stealth);ExpertiseBonus(Stealth);Advantage(Skill,Stealth)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SuperiorityDie,1,0);Proficiency(HeavyArmor);Proficiency(MartialWeapons);ProficiencyBonus(Skill,SleightOfHand);ExpertiseBonus(SleightOfHand);Advantage(Skill,SleightOfHand);ProficiencyBonus(Skill,Stealth);ExpertiseBonus(Stealth);Advantage(Skill,Stealth);ProficiencyBonus(Skill,Deception);ProficiencyBonus(Skill,Performance)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="TrickeryDomain" />
                     <attribute id="PassivesAdded" type="LSString" value="DaughterOfDarkness_Awareness;DevilsSight;DaughterOfDarkness_AgonizingBlast;RepellingBlast" />

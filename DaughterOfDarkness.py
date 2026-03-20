@@ -174,6 +174,8 @@ class DaughterOfDarkness(Replacer):
             "ProficiencyBonus(Skill,Stealth)",
             "ExpertiseBonus(Stealth)",
             "Advantage(Skill,Stealth)",
+            "ProficiencyBonus(Skill,Deception)",
+            "ProficiencyBonus(Skill,Performance)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
             self._awareness,

@@ -14,6 +14,13 @@ data "SplatterSweatAmount" "-2"
 data "StackId" "BONUSFEATURES_RESTORATION"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
+new entry "WEAPON_BOND"
+type "StatusData"
+data "StatusType" "BOOST"
+using "WEAPON_BOND"
+data "Boosts" "CannotBeDisarmed();ItemReturnToOwner();WeaponProperty(Magical)"
+data "StatusPropertyFlags" "IgnoreResting"
+
 new entry "BonusFeatures_EXTRA_ATTACKS"
 type "StatusData"
 data "StatusType" "BOOST"

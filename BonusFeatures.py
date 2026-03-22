@@ -784,6 +784,13 @@ class BonusFeatures(Replacer):
             Icon="Action_Cast_Fighter_WeaponBond",
             Properties=["IsHidden"],
         ))
+        self.add(StatusData(
+            "WEAPON_BOND",
+            StatusType="BOOST",
+            using="WEAPON_BOND",
+            Boosts=["CannotBeDisarmed()", "ItemReturnToOwner()", "WeaponProperty(Magical)"],
+            StatusPropertyFlags=["IgnoreResting"],
+        ))
         return name
 
     @cached_property

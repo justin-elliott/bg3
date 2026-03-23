@@ -771,12 +771,71 @@ class TutorialSupplies(Mod):
             name="Armor",
             display_name="Armour",
             description="Contains a selection of armor",
-            items=self._reduce_weight([
+            items=[
+                self._armor_of_endurance,
+            ] + self._reduce_weight([
                 "ARM_Robe_FlamingFist",
                 "ARM_StuddedLeather_Body",
                 "ARM_ScaleMail_Body_Paladin_Crown",
             ]),
         )
+
+    @cached_property
+    def _armor_of_endurance(self) -> None:
+        name = self.make_name("ArmorOfEndurance")
+        template_id = self.make_uuid(name)
+        shadeclinger_armor = UUID("2077fe9a-991d-4763-9b1a-fff843efd705")
+
+        endurance_passive = self.make_name("Endurance")
+        self.add(PassiveData(
+            endurance_passive,
+            DisplayName=self.loca(f"{endurance_passive}_DisplayName", "Endurance"),
+            Description=self.loca(f"{endurance_passive}_Description", """
+                You gain <LSTag Type="Status" Tooltip="BLADE_WARD">Blade Ward</LSTag>,
+                <LSTag Type="Status" Tooltip="RESISTANCE">Resistance</LSTag>, and
+                <LSTag Type="Status" Tooltip="GUIDANCE">Guidance</LSTag>.
+            """),
+        ))
+
+        guidance_status = self.make_name("Guidance")
+        self.add(StatusData(
+            guidance_status,
+            StatusType="BOOST",
+            using="GUIDANCE",
+            StackPriority=10,
+            StackType="Ignore",
+            StatusPropertyFlags=["IgnoreResting", "ApplyToDead"],
+            StatusEffect="",
+            ManagedStatusEffectType="",
+            ManagedStatusEffectGroup="",
+        ))
+
+        self.add(GameObjects(
+            DisplayName=self.loca(f"{name}_DisplayName", "Armour of Endurance"),
+            Description=self.loca(f"{name}_Description", """
+                Crafted from layered, magically-hardened hides, this supple leather armor pulses with a constant
+                protective ward that blunts incoming strikes, and repels magical attacks.
+            """),
+            MapKey=template_id,
+            Name=name,
+            ParentTemplateId=shadeclinger_armor,
+            Stats=name,
+            Type="item",
+        ))
+
+        self.add(Armor(
+            name,
+            using="ARM_Leather_Body",
+            ArmorClass=17,
+            Boosts=["CriticalHit(AttackTarget,Success,Never)"],
+            PassivesOnEquip=["ARM_Ambusher_2_Passive", endurance_passive],
+            Rarity="Legendary",
+            RootTemplate=template_id,
+            StatusOnEquip=["MAG_BLADE_WARD", "MAG_END_GAME_RESISTANCE", guidance_status],
+            Weight=0.1,
+        ))
+
+        return name
 
     @cached_property
     def _weapons(self) -> TreasureChest:

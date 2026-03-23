@@ -121,3 +121,25 @@ class Movement:
             UseCosts=use_costs,
         ))
         return name
+
+    def add_wilderness_explorer(self, *, display_name: str | None = None, description: str | None = None) -> str:
+        name = self._mod.make_name("WildernessExplorer")
+        display_name = display_name or "Wilderness Explorer"
+        description = description or """
+            You have become an expert at moving through the wilderness.
+            <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down, and
+            you can't slip on grease or ice.
+            """
+        self._mod.add(PassiveData(
+            name,
+            DisplayName=self._mod.loca(f"{name}_DisplayName", display_name),
+            Description=self._mod.loca(f"{name}_Description", description),
+            Boosts=[
+                "StatusImmunity(SG_DifficultTerrain)",
+                "StatusImmunity(PRONE_GREASE)",
+                "StatusImmunity(PRONE_ICE)",
+            ],
+            Icon="PassiveFeature_LandsStride_DifficultTerrain",
+            Properties=["Highlighted", "ForceShowInCC"],
+        ))
+        return name

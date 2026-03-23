@@ -330,20 +330,6 @@
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
                     <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="7cbe4a3e-c0a4-5e97-a523-3273687d148c" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="09f07129-309b-042e-37e2-a73a00ba0080" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_HalfOrcAbilityImprovement_Level_2" />
                     <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
                     <attribute id="UUID" type="guid" value="bdf39957-ecdf-846b-0e48-bad446298f61" />
@@ -354,34 +340,6 @@
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_HalfOrcBonusFeatures_Level_2" />
                     <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
                     <attribute id="UUID" type="guid" value="d686f20b-2651-c377-4532-343ddef80c57" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="fa85c37e-7d7f-8cfa-220e-3e6b397286ed" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="0148f621-901f-d4cc-95ae-555feffb9f70" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="3a6dc47b-2f60-6236-0dd4-6b4a557639ae" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
-                    <attribute id="Level" type="int32" value="2" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_2" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="7aff8d60-b80c-de91-2961-9e3ade24308c" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
@@ -400,6 +358,34 @@
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
                     <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="7cbe4a3e-c0a4-5e97-a523-3273687d148c" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="09f07129-309b-042e-37e2-a73a00ba0080" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="fa85c37e-7d7f-8cfa-220e-3e6b397286ed" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="0148f621-901f-d4cc-95ae-555feffb9f70" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_2" />
                     <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
                     <attribute id="UUID" type="guid" value="09806dd6-da46-e857-fc20-15a038660f7a" />
@@ -412,74 +398,18 @@
                     <attribute id="UUID" type="guid" value="c4d7b0aa-4138-095c-659e-841a2c96f59c" />
                 </node>
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="74bb8e79-8220-c118-fafa-8cd15cc4c62e" />
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="3a6dc47b-2f60-6236-0dd4-6b4a557639ae" />
                 </node>
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="4cccbd63-604d-1dd5-97f2-03e7f12aad5b" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="94dd0923-7ec8-2181-e6a0-33013c7e283b" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="c19c8247-c3a4-09ed-3290-c18084faf4c9" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="440c312a-ee74-1cbb-dd67-438f7ee75974" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="16866740-1ab4-692f-c306-646d77ede971" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="4f994eb0-c8a7-7aa9-3beb-1687d77d2f82" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="7af518be-b3be-7ccf-23e2-89d1236ed6f9" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="de1d8b6e-4f6f-424c-fa83-663881aaa950" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
-                    <attribute id="UUID" type="guid" value="bc8ad41d-20a5-4a46-8cf8-ac0ae54a268d" />
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_2" />
+                    <attribute id="Level" type="int32" value="2" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_2" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="7aff8d60-b80c-de91-2961-9e3ade24308c" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
@@ -608,76 +538,6 @@
                     <attribute id="UUID" type="guid" value="09625772-b1c7-e151-1cf9-9daff8112568" />
                 </node>
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="9bdb1f2f-91f7-66f6-0d47-1965fcf08271" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="23f8534d-be48-f625-db93-c199aad6b91f" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="0c9c0aa9-3d27-5764-be69-83057e65cade" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="aea678e3-9460-4f5a-747d-a66476758bcb" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="2ac04937-1ab3-51cd-64a9-09033ecb5465" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="9c7b8997-c660-9e39-5867-b0169429120e" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="568e5d1d-73ec-7e42-e1e6-49e76145296e" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="400debac-49d8-a07a-d206-ca17d6ded276" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="0fd50336-0e5e-b11f-0936-b01cfdbc3187" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
-                    <attribute id="UUID" type="guid" value="cea25758-6fa7-9059-90dc-139e853db149" />
-                </node>
-                <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
                     <attribute id="Level" type="int32" value="5" />
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_HumanAbilityImprovement_Level_5" />
@@ -732,118 +592,6 @@
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_HumanBonusFeatures_Level_11" />
                     <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
                     <attribute id="UUID" type="guid" value="4be6e101-659c-4ee2-e39d-a39de3793e8d" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="afeeccb9-5c5a-e710-16f5-049d9a2e6f84" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="03ca3164-5e75-b666-169b-d6ae2aea1d68" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="34bfd9c2-1a8b-5627-1e55-45cf9e9fd3ac" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="a532915b-615c-a601-1dc3-d1e032e00d9b" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="7e01eb93-69e5-68bb-f0fd-d033badf7eaa" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="24daba23-0f67-3598-8466-17691d246590" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="824ae690-c124-e8e3-5ce4-44430f3f9c8c" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="14eb6cb3-c08c-4355-1bf0-c33a13b7bc55" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="f2fc6fab-3f2f-f622-8347-65902867622b" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
-                    <attribute id="UUID" type="guid" value="7f57d53d-ae24-1338-75d0-22b33ab0551e" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="a857f606-7f58-cd37-6196-d0b8beec286f" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
-                    <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="c1ce311b-9f2f-f0e5-e1e9-f9b7143f20c3" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="489cbe5b-ce59-9c0d-33ea-0a357ff09c16" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
-                    <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="3b2441d5-a95e-5724-289e-e1b2e5fc31e7" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="cc4bf738-2ba8-4854-46c4-d13f3fbd7267" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
-                    <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
-                    <attribute id="UUID" type="guid" value="6dc1eab1-84f1-5fab-06ca-0062bd92bf6e" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
@@ -916,74 +664,46 @@
                     <attribute id="UUID" type="guid" value="088b27df-11e8-1642-4da5-f4e719358955" />
                 </node>
                 <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="2fe9bc94-0c8a-913d-b964-63693e68713b" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
-                    <attribute id="Level" type="int32" value="3" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_3" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="2ae46802-0611-d689-4ddf-fb60b6d3f2fa" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="eee07c65-8cca-0dce-5f7a-295576253805" />
-                </node>
-                <node id="DefaultValue">
-                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
-                    <attribute id="Level" type="int32" value="5" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_5" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="6157083d-cadd-aa60-e937-2642cb9c67b5" />
-                </node>
-                <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
                     <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="b36c1896-36cb-22c6-7b65-992026e3b9a7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="a857f606-7f58-cd37-6196-d0b8beec286f" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
                     <attribute id="Level" type="int32" value="7" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_7" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="bb17ff18-4347-93f4-1dc3-515c0a82eae1" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="c1ce311b-9f2f-f0e5-e1e9-f9b7143f20c3" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
                     <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="95b8b9ab-5c7c-f66f-7b30-ea51f9cd18d0" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="489cbe5b-ce59-9c0d-33ea-0a357ff09c16" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
                     <attribute id="Level" type="int32" value="9" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_9" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="660a3732-650f-2ea1-8623-d8295afaf032" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="3b2441d5-a95e-5724-289e-e1b2e5fc31e7" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
                     <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="5d575b2b-3e13-74b5-4160-5ba888177c35" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiAbilityImprovement_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="cc4bf738-2ba8-4854-46c4-d13f3fbd7267" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
                     <attribute id="Level" type="int32" value="11" />
-                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_11" />
-                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
-                    <attribute id="UUID" type="guid" value="1402b147-822d-8670-32c8-2b3ec1a39037" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GithyankiBonusFeatures_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+                    <attribute id="UUID" type="guid" value="6dc1eab1-84f1-5fab-06ca-0062bd92bf6e" />
                 </node>
                 <node id="DefaultValue">
                     <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
@@ -1082,6 +802,286 @@
                     <attribute id="SelectorId" type="LSString" value="BonusFeatures_DrowBonusFeatures_Level_11" />
                     <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
                     <attribute id="UUID" type="guid" value="024ddd25-a49f-5887-42bd-81dc313d02d6" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="74bb8e79-8220-c118-fafa-8cd15cc4c62e" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="4cccbd63-604d-1dd5-97f2-03e7f12aad5b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="94dd0923-7ec8-2181-e6a0-33013c7e283b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="c19c8247-c3a4-09ed-3290-c18084faf4c9" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="440c312a-ee74-1cbb-dd67-438f7ee75974" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="16866740-1ab4-692f-c306-646d77ede971" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="4f994eb0-c8a7-7aa9-3beb-1687d77d2f82" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="7af518be-b3be-7ccf-23e2-89d1236ed6f9" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornAbilityImprovement_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="de1d8b6e-4f6f-424c-fa83-663881aaa950" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DragonbornBonusFeatures_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="e2472b4f-682a-4ac8-b11c-723f921fd7a1" />
+                    <attribute id="UUID" type="guid" value="bc8ad41d-20a5-4a46-8cf8-ac0ae54a268d" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="9bdb1f2f-91f7-66f6-0d47-1965fcf08271" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="23f8534d-be48-f625-db93-c199aad6b91f" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="0c9c0aa9-3d27-5764-be69-83057e65cade" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="aea678e3-9460-4f5a-747d-a66476758bcb" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="2ac04937-1ab3-51cd-64a9-09033ecb5465" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="9c7b8997-c660-9e39-5867-b0169429120e" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="568e5d1d-73ec-7e42-e1e6-49e76145296e" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="400debac-49d8-a07a-d206-ca17d6ded276" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfAbilityImprovement_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="0fd50336-0e5e-b11f-0936-b01cfdbc3187" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_DwarfBonusFeatures_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+                    <attribute id="UUID" type="guid" value="cea25758-6fa7-9059-90dc-139e853db149" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="2fe9bc94-0c8a-913d-b964-63693e68713b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="2ae46802-0611-d689-4ddf-fb60b6d3f2fa" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="eee07c65-8cca-0dce-5f7a-295576253805" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="6157083d-cadd-aa60-e937-2642cb9c67b5" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="b36c1896-36cb-22c6-7b65-992026e3b9a7" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="bb17ff18-4347-93f4-1dc3-515c0a82eae1" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="95b8b9ab-5c7c-f66f-7b30-ea51f9cd18d0" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="660a3732-650f-2ea1-8623-d8295afaf032" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeAbilityImprovement_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="5d575b2b-3e13-74b5-4160-5ba888177c35" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_GnomeBonusFeatures_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+                    <attribute id="UUID" type="guid" value="1402b147-822d-8670-32c8-2b3ec1a39037" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="afeeccb9-5c5a-e710-16f5-049d9a2e6f84" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_3" />
+                    <attribute id="Level" type="int32" value="3" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_3" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="03ca3164-5e75-b666-169b-d6ae2aea1d68" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="34bfd9c2-1a8b-5627-1e55-45cf9e9fd3ac" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_5" />
+                    <attribute id="Level" type="int32" value="5" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_5" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="a532915b-615c-a601-1dc3-d1e032e00d9b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="7e01eb93-69e5-68bb-f0fd-d033badf7eaa" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_7" />
+                    <attribute id="Level" type="int32" value="7" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_7" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="24daba23-0f67-3598-8466-17691d246590" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="824ae690-c124-e8e3-5ce4-44430f3f9c8c" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_9" />
+                    <attribute id="Level" type="int32" value="9" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_9" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="14eb6cb3-c08c-4355-1bf0-c33a13b7bc55" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_AbilityImprovement_None_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingAbilityImprovement_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="f2fc6fab-3f2f-f622-8347-65902867622b" />
+                </node>
+                <node id="DefaultValue">
+                    <attribute id="Add" type="LSString" value="BonusFeatures_NoSelection_Level_11" />
+                    <attribute id="Level" type="int32" value="11" />
+                    <attribute id="SelectorId" type="LSString" value="BonusFeatures_TieflingBonusFeatures_Level_11" />
+                    <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+                    <attribute id="UUID" type="guid" value="7f57d53d-ae24-1338-75d0-22b33ab0551e" />
                 </node>
             </children>
         </node>

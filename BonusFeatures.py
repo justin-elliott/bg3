@@ -9,6 +9,7 @@ import os
 from collections.abc import Iterable
 from moddb import (
     Awareness,
+    Bolster,
     ElementalWeapon,
     EmpoweredSpells,
     Movement,
@@ -73,7 +74,7 @@ class BonusFeatures(Replacer):
         self._loca_handles = {}
         self._ability_bonus = 1 if self.args.level_20 else 2
 
-        self._add_restoration_to_common_player_actions()
+        self._add_bonus_spells_to_common_player_actions()
         self._remove_asi_from_feats()
 
     @cache
@@ -835,26 +836,7 @@ class BonusFeatures(Replacer):
 
     @cached_property
     def _wilderness_explorer(self) -> str:
-        name = self.make_name("WildernessExplorer")
-        self.loca[f"{name}_DisplayName"] = "Wilderness Explorer"
-        self.loca[f"{name}_Description"] = """
-            You have become an expert at moving through the wilderness.
-            <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down, and
-            you can't slip on grease or ice.
-            """
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            Boosts=[
-                "StatusImmunity(SG_DifficultTerrain)",
-                "StatusImmunity(PRONE_GREASE)",
-                "StatusImmunity(PRONE_ICE)",
-            ],
-            Icon="PassiveFeature_LandsStride_DifficultTerrain",
-            Properties=["Highlighted"],
-        ))
-        return name
+        return Movement(self.mod).add_wilderness_explorer()
 
     @cached_property
     def _bonus_passives(self) -> list[tuple[int, str, str]]:
@@ -1064,6 +1046,10 @@ class BonusFeatures(Replacer):
         ))
 
     @cached_property
+    def _bolster(self) -> str:
+        return Bolster(self.mod).add_bolster()
+
+    @cached_property
     def _restoration_display_name(self) -> str:
         name = self.make_name("Restoration")
         self.loca[f"{name}_DisplayName"] = "Restoration"
@@ -1211,7 +1197,7 @@ class BonusFeatures(Replacer):
         ))
         return name
 
-    def _add_restoration_to_common_player_actions(self) -> str:
+    def _add_bonus_spells_to_common_player_actions(self) -> str:
         self.add(SpellSet(
             Name="CommonPlayerActions",
             Spells=[
@@ -1225,6 +1211,7 @@ class BonusFeatures(Replacer):
                 "Target_Help",
                 "Shout_Disengage",
                 self._restoration,
+                self._bolster,
             ],
         ))
 

@@ -3,6 +3,9 @@
 <contentList>
     <content contentuid="h1b332449g5eb7g804eg19c2gd23110b17895" version="1">Restoration</content>
     <content contentuid="he2c58f92gf04dg5c25gf16bg4c79724afa79" version="1">You and nearby allies are revitalised as though you would have taken a &lt;LSTag Tooltip="LongRest"&gt;Long Rest&lt;/LSTag&gt;.</content>
+    <content contentuid="he79ec03egd0e6g0f44g8f6dg855b74c041cd" version="1">Bolster</content>
+    <content contentuid="hcd6a9271g7244gb7fcg1c9agf238e69f207d" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="had7042ccgbda1gf99fgfe97g878561b3d8d7" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hf0cecb1fg4203gdf2bg54edgebea9d5a6228" version="1">Ability Improvement: Strength</content>
     <content contentuid="hc0596d22g6855g2569ge426g5f2b4dbfee16" version="1">Increase your Strength by 2, to a maximum of 30.</content>
     <content contentuid="h8ae47069g8837g97b4gafb1g071fd16766cd" version="1">Ability Improvement: Dexterity</content>

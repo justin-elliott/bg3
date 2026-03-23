@@ -8,6 +8,11 @@ data "DisplayName" "h0e7602cfg39ecgecd4g4904g878eae09addb"
 data "Icon" "PassiveFeature_Generic_Threat"
 data "Properties" "ForceShowInCC;Highlighted"
 
+new entry "TutorialSupplies_Endurance"
+type "PassiveData"
+data "Description" "h7b1ffa79g4ce4g36c4g228cgb266551fa76c"
+data "DisplayName" "h1f3377d5g6b92g484eg98bbgd20cdca76290"
+
 new entry "TutorialSupplies_WeaponEnchantmentProgression"
 type "PassiveData"
 data "Boosts" "IF(not CharacterLevelGreaterThan(4)):SpellSaveDC(1);IF(not CharacterLevelGreaterThan(4)):RollBonus(MeleeSpellAttack,1);IF(not CharacterLevelGreaterThan(4)):RollBonus(RangedSpellAttack,1);IF(not CharacterLevelGreaterThan(4) and IsSpell()):DamageBonus(1);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):SpellSaveDC(2);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):RollBonus(MeleeSpellAttack,2);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):RollBonus(RangedSpellAttack,2);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8) and IsSpell()):DamageBonus(2);IF(CharacterLevelGreaterThan(8)):SpellSaveDC(3);IF(CharacterLevelGreaterThan(8)):RollBonus(MeleeSpellAttack,3);IF(CharacterLevelGreaterThan(8)):RollBonus(RangedSpellAttack,3);IF(CharacterLevelGreaterThan(8) and IsSpell()):DamageBonus(3)"

@@ -428,6 +428,8 @@ object category "I_OBJ_Dye_Remover",1,0,0,0,0,0,0,0
 new treasuretable "TutorialSupplies_Armor_TreasureTable"
 CanMerge 1
 new subtable "1,1"
+object category "I_TutorialSupplies_ArmorOfEndurance",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_ARM_Robe_FlamingFist",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_ARM_StuddedLeather_Body",1,0,0,0,0,0,0,0

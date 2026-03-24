@@ -15,12 +15,16 @@ from modtools.replacers import (
 
 
 class Assassin(Replacer):
+    _movement: Movement
+
     def __init__(self, **kwds: str):
         super().__init__(os.path.join(os.path.dirname(__file__)),
                          author="justin-elliott",
                          name="Assassin",
                          description="A class replacer for Assassin.",
                          **kwds)
+
+        self._movement = Movement(self.mod)
 
     @cached_property
     def _awareness(self) -> str:
@@ -88,20 +92,29 @@ class Assassin(Replacer):
         return name
 
     @cached_property
-    def _fast_movement_1(self) -> str:
-        return Movement(self.mod).add_fast_movement(3.0)
+    def _fast_movement_30(self) -> str:
+        return self._movement.add_remarkable_athlete(display_name="Fast Movement",
+                                                     passive_name="FastMovement_30",
+                                                     movement_speed=3.0,
+                                                     jump_distance=1.5)
 
     @cached_property
-    def _fast_movement_2(self) -> str:
-        return Movement(self.mod).add_fast_movement(4.5)
+    def _fast_movement_45(self) -> str:
+        return self._movement.add_remarkable_athlete(display_name="Fast Movement",
+                                                     passive_name="FastMovement_45",
+                                                     movement_speed=4.5,
+                                                     jump_distance=3.0)
 
     @cached_property
-    def _fast_movement_3(self) -> str:
-        return Movement(self.mod).add_fast_movement(6.0)
+    def _fast_movement_60(self) -> str:
+        return self._movement.add_remarkable_athlete(display_name="Fast Movement",
+                                                     passive_name="FastMovement_60",
+                                                     movement_speed=6.0,
+                                                     jump_distance=4.5)
 
     @cached_property
     def _sure_footed(self) -> str:
-        return Movement(self.mod).add_wilderness_explorer(
+        return self._movement.add_wilderness_explorer(
             display_name="Sure-Footed",
             description="""
                 You have become an expert at navigating hazards.
@@ -232,7 +245,7 @@ class Assassin(Replacer):
         progress.PassivesAdded += [
             self._awareness,
             self._blindsight,
-            self._fast_movement_1,
+            self._fast_movement_30,
             self._riposte_unlock,
         ]
         progress.Selectors = [f"AddSpells({self._maneuvers})"]
@@ -255,8 +268,8 @@ class Assassin(Replacer):
 
     @progression(CharacterClass.ROGUE_ASSASSIN, 8)
     def assassin_level_8(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._fast_movement_2, self._sure_footed]
-        progress.PassivesRemoved = [self._fast_movement_1]
+        progress.PassivesAdded = [self._fast_movement_45, self._sure_footed]
+        progress.PassivesRemoved = [self._fast_movement_30]
 
     @progression(CharacterClass.ROGUE_ASSASSIN, 9)
     def assassin_level_9(self, _: Progression) -> None:
@@ -273,8 +286,8 @@ class Assassin(Replacer):
 
     @progression(CharacterClass.ROGUE_ASSASSIN, 12)
     def assassin_level_12(self, progress: Progression) -> None:
-        progress.PassivesAdded = [self._fast_movement_3]
-        progress.PassivesRemoved = [self._fast_movement_2]
+        progress.PassivesAdded = [self._fast_movement_60]
+        progress.PassivesRemoved = [self._fast_movement_45]
 
 
 def main() -> None:

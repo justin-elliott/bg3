@@ -3,11 +3,17 @@
 <contentList>
     <content contentuid="h77f87e62g32abg0486gb0eag149b32eec70b" version="1">Awareness</content>
     <content contentuid="hd3b2b31dg43d3g74b3g90ecg09962a1e7895" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
-    <content contentuid="h5e8e62deg71a5gdf33ga0ebg6ebcdf5fc8f6" version="1">Fast Movement</content>
-    <content contentuid="h2bc512a8ga11agafb0gd1ebg080bf465c149" version="1">&lt;LSTag Tooltip="MovementSpeed"&gt;Movement speed&lt;/LSTag&gt; increased by [1].</content>
+    <content contentuid="hb59ee4cbgef69g0d40g6c9fge7b4df16e08e" version="1">Fast Movement</content>
+    <content contentuid="h4e79bc92ga163gbd02gba64gea0df5396801" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Once per turn, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="ha8b4cb23g19f9gd941ga6d0g8078079493e4" version="1">Free Jump</content>
+    <content contentuid="h6bfb03d2g3d5cgb7fdgc496g652fbc316d9f" version="1">You can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hd8dd7b73gde21gd885gb224gd5e0eb3dc2ff" version="1">When a creature misses you with a melee attack, you can retaliate with your own strike if you are wielding a melee weapon.</content>
     <content contentuid="h9326ce14ge86dg0fadg64b4g7d900ec54ce5" version="1">Wrap yourself in shadows to become &lt;LSTag Type="Status" Tooltip="ASSASSIN_CLOAKOFSHADOWS"&gt;Invisible&lt;/LSTag&gt;.</content>
     <content contentuid="h2fb4aacegc1d0gc905g77a2g21d357632ccb" version="1">Cloak of Shadows Remove</content>
+    <content contentuid="h9590262bg41b3g0e72gd74ag2870ee70253f" version="1">Fast Movement</content>
+    <content contentuid="h07c87831gd575g1a85gcb28g240f1e36899f" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Once per turn, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h4a1aeec9g959eg160bg6ba9gfbf98b9a8cda" version="1">Sure-Footed</content>
     <content contentuid="h91b9a258gcb29g2b96gecc1g37fb3d5a3cde" version="1">You have become an expert at navigating hazards. &lt;LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN"&gt;Difficult Terrain&lt;/LSTag&gt; no longer slows you down, and you can't slip on grease or ice.</content>
+    <content contentuid="h50cf7df0g7a77gf2aag98f4gd8ba6d95ef4c" version="1">Fast Movement</content>
+    <content contentuid="h23ec5108g631ag1152g61abg363237c00e24" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Once per turn, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
 </contentList>

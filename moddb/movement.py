@@ -94,8 +94,6 @@ class Movement:
                                movement_speed: float = 3.0,
                                jump_distance: float = 1.5) -> str:
         name = self._mod.make_name(passive_name or "RemarkableAthlete")
-        status_name = self._mod.make_name("Remarkable_Athlete_Free_Jump").upper()  # Fixed name
-
         self._mod.add(PassiveData(
             name,
             DisplayName=self._mod.loca(f"{name}_DisplayName", display_name or "Remarkable Athlete"),
@@ -113,22 +111,27 @@ class Movement:
             ],
             StatsFunctorContext=["OnTurn"],
             Conditions=["TurnBased()"],
-            StatsFunctors=[f"ApplyStatus({status_name},100,1)"],
+            StatsFunctors=[f"ApplyStatus({self._free_jump},100,1)"],
         ))
+        return name
+    
+    @cached_property
+    def _free_jump(self) -> str:
+        name = "REMARKABLE_ATHLETE_FREE_JUMP"  # Fixed name so that multiple mods apply the same status
         self._mod.add(StatusData(
-            status_name,
+            name,
             StatusType="BOOST",
-            DisplayName=self._mod.loca(f"{status_name}_DisplayName", "Free Jump"),
-            Description=self._mod.loca(f"{status_name}_Description", """
+            DisplayName=self._mod.loca(f"{name}_DisplayName", "Free Jump"),
+            Description=self._mod.loca(f"{name}_Description", """
                 You can <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> without using a
                 <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
             """),
-            Icon="PassiveFeature_RemarkableAthlete_Proficiency",
+            Icon="Action_AoEDamageOnJump",
             Boosts=[
                 "UnlockSpellVariant(SpellId('Projectile_Jump'),"
                 + "ModifyUseCosts(Replace,BonusActionPoint,0,0,BonusActionPoint))",
             ],
-            StackId=status_name,
+            StackId=name,
             StackType="Overwrite",
             StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
             RemoveEvents=["OnSpellCast"],

@@ -403,7 +403,7 @@ data "DisplayName" "h916c2c54g4df2gc6b2gb73fg0bfb62ed18b6"
 data "Icon" "PassiveFeature_RemarkableAthlete_Proficiency"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnTurn"
-data "StatsFunctors" "ApplyStatus(BONUSFEATURES_REMARKABLE_ATHLETE_FREE_JUMP,100,1)"
+data "StatsFunctors" "ApplyStatus(REMARKABLE_ATHLETE_FREE_JUMP,100,1)"
 
 new entry "BonusFeatures_Resilience"
 type "PassiveData"

@@ -688,29 +688,7 @@ class BonusFeatures(Replacer):
 
     @cached_property
     def _remarkable_athlete(self) -> str:
-        name = self.make_name("RemarkableAthlete")
-        movement_speed = 3.0
-        jump_distance = 1.5
-        self.loca[f"{name}_DisplayName"] = "Remarkable Athlete"
-        self.loca[f"{name}_Description"] = """
-            Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> increases by [1], and your jump distance by [2].
-            Jump no longer requires a <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
-        """
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"Distance({movement_speed})", f"Distance({jump_distance})"],
-            Icon="PassiveFeature_RemarkableAthlete_Proficiency",
-            Properties=["Highlighted"],
-            Boosts=[
-                f"ActionResource(Movement,{movement_speed},0)",
-                f"JumpMaxDistanceBonus({jump_distance})",
-                "UnlockSpellVariant(SpellId('Projectile_Jump'),"
-                + "ModifyUseCosts(Replace,BonusActionPoint,0,0,BonusActionPoint))",
-            ],
-        ))
-        return name
+        return Movement(self.mod).add_remarkable_athlete()
 
     @cached_property
     def _sturdy(self) -> str:

@@ -4,7 +4,7 @@ Movement-related spells and passives for Baldur's Gate 3 mods.
 """
 
 from functools import cached_property
-from modtools.gamedata import PassiveData, SpellData
+from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.mod import Mod
 from typing import Optional
 
@@ -84,6 +84,55 @@ class Movement:
             Level="",
             SpellStyleGroup="Class",
             UseCosts=use_costs,
+        ))
+        return name
+
+    def add_remarkable_athlete(self,
+                               *,
+                               display_name: str | None = None,
+                               passive_name: str | None = None,
+                               movement_speed: float = 3.0,
+                               jump_distance: float = 1.5) -> str:
+        name = self._mod.make_name(passive_name or "RemarkableAthlete")
+        status_name = self._mod.make_name("Remarkable_Athlete_Free_Jump").upper()  # Fixed name
+
+        self._mod.add(PassiveData(
+            name,
+            DisplayName=self._mod.loca(f"{name}_DisplayName", display_name or "Remarkable Athlete"),
+            Description=self._mod.loca(f"{name}_Description", """
+                Your <LSTag Tooltip="MovementSpeed">movement speed</LSTag> increases by [1], and your jump distance by
+                [2]. Once per turn, you can <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> without using a
+                <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
+            """),
+            DescriptionParams=[f"Distance({movement_speed})", f"Distance({jump_distance})"],
+            Icon="PassiveFeature_RemarkableAthlete_Proficiency",
+            Properties=["Highlighted"],
+            Boosts=[
+                f"ActionResource(Movement,{movement_speed},0)",
+                f"JumpMaxDistanceBonus({jump_distance})",
+            ],
+            StatsFunctorContext=["OnTurn"],
+            Conditions=["TurnBased()"],
+            StatsFunctors=[f"ApplyStatus({status_name},100,1)"],
+        ))
+        self._mod.add(StatusData(
+            status_name,
+            StatusType="BOOST",
+            DisplayName=self._mod.loca(f"{status_name}_DisplayName", "Free Jump"),
+            Description=self._mod.loca(f"{status_name}_Description", """
+                You can <LSTag Type="Spell" Tooltip="Projectile_Jump">Jump</LSTag> without using a
+                <LSTag Type="ActionResource" Tooltip="BonusActionPoint">bonus action</LSTag>.
+            """),
+            Icon="PassiveFeature_RemarkableAthlete_Proficiency",
+            Boosts=[
+                "UnlockSpellVariant(SpellId('Projectile_Jump'),"
+                + "ModifyUseCosts(Replace,BonusActionPoint,0,0,BonusActionPoint))",
+            ],
+            StackId=status_name,
+            StackType="Overwrite",
+            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
+            RemoveEvents=["OnSpellCast"],
+            RemoveConditions=["SpellId('Projectile_Jump')"],
         ))
         return name
 

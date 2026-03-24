@@ -1002,11 +1002,9 @@ class TutorialSupplies(Mod):
             boosts=[self._weapon_kerekas_favour_boost],
             passives_on_equip=[
                 "MAG_BansheeBless_Passive",
-                self._weapon_enchantment_progression,
-                self._weapon_kereskas_favour,
                 self._life_stealing,
+                "MAG_InitiativeWeapon_Passive",
             ],
-            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
             weapon_functors=["ApplyStatus(FRIGHTENED,100,2,,,,not SavingThrow(Ability.Wisdom,12))"],
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
         )

@@ -9,7 +9,7 @@
                     <attribute id="Boosts" type="LSString" value="Advantage(Ability,Dexterity)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Assassin" />
-                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Initiative;Assassinate_Ambush;Assassinate_Resource;Assassin_Awareness;Assassin_Blindsight;Assassin_FastMovement_30;Assassin_RiposteUnlock;Assassin_Vanish" />
+                    <attribute id="PassivesAdded" type="LSString" value="Assassinate_Initiative;Assassinate_Ambush;Assassinate_Resource;Assassin_Awareness;Assassin_Blindsight;Assassin_FastMovement_30;Assassin_RiposteUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(8b5a1652-cd10-1f36-5d1c-975bd462196a)" />
                     <attribute id="TableUUID" type="guid" value="43c75b78-757b-4875-9932-427bc95278a0" />

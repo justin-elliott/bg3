@@ -24,7 +24,7 @@ class Assassin(Replacer):
 
     @cached_property
     def _awareness(self) -> str:
-        return Awareness(self.mod).add_awareness()
+        return Awareness(self.mod).add_awareness(icon="Action_Barbarian_MagicAwareness")
 
     @cached_property
     def _blindsight(self) -> str:
@@ -33,6 +33,57 @@ class Assassin(Replacer):
             name,
             using="Blindsight",
             Boosts=["Tag(BLINDSIGHT)", "StatusImmunity(SG_Blinded)", "IgnoreSurfaceCover(SurfaceDarknessCloud)"],
+        ))
+        return name
+
+    @cached_property
+    def _cloak_of_shadows(self) -> None:
+        name = self.make_name("CloakOfShadows")
+        status_name = name.upper()
+        status_remove_name = f"{status_name}_REMOVE"
+        self.add(SpellData(
+            name,
+            using="Shout_CloakOfShadows_Monk",
+            SpellType="Shout",
+            Description=self.loca(f"{name}_Description", f"""
+                Wrap yourself in shadows to become <LSTag Type="Status" Tooltip="{status_name}">Invisible</LSTag>.
+            """),
+            RequirementConditions=[],
+            RequirementEvents=[],
+            AIFlags=["CanNotUse"],
+            Autocast="Yes",
+            SpellFlags=[
+                "Stealth",
+                "ImmediateCast",
+                "AllowMoveAndCast",
+                "Invisible",
+                "UnavailableInDialogs",
+                "CombatLogSetSingleLineRoll",
+            ],
+            SpellProperties=[
+                f"IF(HasStatus('{status_name}')):ApplyStatus({status_remove_name},100,1)",
+                f"IF(not HasStatus('{status_name}')):ApplyStatus({status_name},100,-1)",
+                f"IF(HasStatus('{status_remove_name}')):RemoveStatus({status_name})",
+                f"RemoveStatus({status_remove_name})",
+            ],
+            TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
+            UseCosts=["BonusActionPoint:1"],
+        ))
+        self.add(StatusData(
+            status_name,
+            using="CLOAK_OF_SHADOWS_MONK",
+            StatusType="INVISIBLE",
+            RemoveEvents=["OnAttack", "OnDamage"],
+            RemoveConditions=[
+                "(IsStatusEvent(StatusEvent.OnAttack) and not HasSpellFlag(SpellFlags.Stealth,context.Source)) "
+                + "or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0))",
+            ],
+        ))
+        self.add(StatusData(
+            status_remove_name,
+            StatusType="BOOST",
+            DisplayName=self.loca(f"{status_remove_name}_DisplayName", "Cloak of Shadows Remove"),
+            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
         ))
         return name
 
@@ -57,37 +108,6 @@ class Assassin(Replacer):
                 <LSTag Type="Status" Tooltip="DIFFICULT_TERRAIN">Difficult Terrain</LSTag> no longer slows you down, and
                 you can't slip on grease or ice.
             """)
-
-    @cached_property
-    def _vanish(self) -> str:
-        name = self.make_name("Vanish")
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca(f"{name}_DisplayName", "Vanish"),
-            Description=self.loca(f"{name}_Description", f"""
-                You are a master of stealth. While hidden, you are
-                <LSTag Type="Status" Tooltip="{name.upper()}">Invisible</LSTag>.
-            """),
-            Icon="Action_Hide",
-            Properties=["ForceShowInCC", "Highlighted"],
-            StatsFunctorContext="OnCast",
-            Conditions=["IsHideSpell()"],
-            StatsFunctors=[
-                f"IF(HasStatus('SNEAKING',context.Source)):ApplyStatus(SELF,{name.upper()},100,-1)",
-            ],
-        ))
-        self.add(StatusData(
-            name.upper(),
-            using="INVISIBILITY",
-            StatusType="INVISIBLE",
-            RemoveEvents=["OnAttack", "OnDamage", "OnStatusRemoved"],
-            RemoveConditions=[
-                "(IsStatusEvent(StatusEvent.OnAttack) and not HasSpellFlag(SpellFlags.Stealth,context.Source)) "
-                + "or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0)) "
-                + "or not HasStatus('SNEAKING',context.Source)",
-            ],
-        ))
-        return name
 
     @cached_property
     def _disarming_attack(self) -> str:
@@ -197,6 +217,7 @@ class Assassin(Replacer):
         self.add(SpellList(
             Name=name,
             Spells=[
+                self._cloak_of_shadows,
                 self._disarming_attack,
                 self._trip_attack,
                 self._sweeping_attack,
@@ -213,7 +234,6 @@ class Assassin(Replacer):
             self._blindsight,
             self._fast_movement_1,
             self._riposte_unlock,
-            self._vanish,
         ]
         progress.Selectors = [f"AddSpells({self._maneuvers})"]
 

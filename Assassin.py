@@ -80,6 +80,26 @@ class Assassin(Replacer):
         return name
 
     @cached_property
+    def _pommel_strike(self) -> str:
+        name = self.make_name("PommelStrike")
+        self.add(SpellData(
+            name,
+            using="Target_PommelStrike",
+            SpellType="Target",
+            Description=self.loca(f"{name}_Description", """
+                Make an attack against an enemy and possibly <LSTag Type="Status" Tooltip="DAZED">Daze</LSTag> them.
+            """),
+            Cooldown="",
+            SpellSuccess=[
+                "IF(Character() and not SavingThrow(Ability.Constitution,ManeuverSaveDC()+2)):ApplyStatus(DAZED,100,2)",
+                "DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)",
+            ],
+            TargetConditions=["(Character() or Item()) and not Self() and not Dead()"],
+            TooltipDamageList=["DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)"],
+        ))
+        return name
+
+    @cached_property
     def _riposte_attack(self) -> str:
         name = self.make_name("RiposteAttack")
         self.add(SpellData(
@@ -232,6 +252,7 @@ class Assassin(Replacer):
             Name=name,
             Spells=[
                 self._disarming_attack,
+                self._pommel_strike,
                 self._trip_attack,
                 self._sweeping_attack,
             ],

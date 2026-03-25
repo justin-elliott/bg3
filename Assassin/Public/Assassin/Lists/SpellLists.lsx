@@ -7,7 +7,7 @@
             <children>
                 <node id="SpellList">
                     <attribute id="Name" type="LSString" value="Assassin Maneuvers" />
-                    <attribute id="Spells" type="LSString" value="Assassin_DisarmingAttack;Assassin_TripAttack;Assassin_SweepingAttack" />
+                    <attribute id="Spells" type="LSString" value="Assassin_DisarmingAttack;Assassin_PommelStrike;Assassin_TripAttack;Assassin_SweepingAttack" />
                     <attribute id="UUID" type="guid" value="8b5a1652-cd10-1f36-5d1c-975bd462196a" />
                 </node>
             </children>

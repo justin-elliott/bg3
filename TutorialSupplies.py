@@ -999,7 +999,6 @@ class TutorialSupplies(Mod):
             """,
             bonus_damage="1d4",
             bonus_damage_type="Psychic",
-            boosts=[self._weapon_kerekas_favour_boost],
             passives_on_equip=[
                 "MAG_BansheeBless_Passive",
                 self._life_stealing,

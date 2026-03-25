@@ -31,67 +31,6 @@ class Assassin(Replacer):
         return Awareness(self.mod).add_awareness(icon="Action_Barbarian_MagicAwareness")
 
     @cached_property
-    def _blindsight(self) -> str:
-        name = self.make_name("Blindsight")
-        self.add(PassiveData(
-            name,
-            using="Blindsight",
-            Boosts=["Tag(BLINDSIGHT)", "StatusImmunity(SG_Blinded)", "IgnoreSurfaceCover(SurfaceDarknessCloud)"],
-        ))
-        return name
-
-    @cached_property
-    def _cloak_of_shadows(self) -> None:
-        name = self.make_name("CloakOfShadows")
-        status_name = name.upper()
-        status_remove_name = f"{status_name}_REMOVE"
-        self.add(SpellData(
-            name,
-            using="Shout_CloakOfShadows_Monk",
-            SpellType="Shout",
-            Description=self.loca(f"{name}_Description", f"""
-                Wrap yourself in shadows to become <LSTag Type="Status" Tooltip="{status_name}">Invisible</LSTag>.
-            """),
-            RequirementConditions=[],
-            RequirementEvents=[],
-            AIFlags=["CanNotUse"],
-            Autocast="Yes",
-            SpellFlags=[
-                "Stealth",
-                "ImmediateCast",
-                "AllowMoveAndCast",
-                "Invisible",
-                "UnavailableInDialogs",
-                "CombatLogSetSingleLineRoll",
-            ],
-            SpellProperties=[
-                f"IF(HasStatus('{status_name}')):ApplyStatus({status_remove_name},100,1)",
-                f"IF(not HasStatus('{status_name}')):ApplyStatus({status_name},100,-1)",
-                f"IF(HasStatus('{status_remove_name}')):RemoveStatus({status_name})",
-                f"RemoveStatus({status_remove_name})",
-            ],
-            TooltipStatusApply=[f"ApplyStatus({status_name},100,-1)"],
-            UseCosts=["BonusActionPoint:1"],
-        ))
-        self.add(StatusData(
-            status_name,
-            using="CLOAK_OF_SHADOWS_MONK",
-            StatusType="INVISIBLE",
-            RemoveEvents=["OnAttack", "OnDamage"],
-            RemoveConditions=[
-                "(IsStatusEvent(StatusEvent.OnAttack) and not HasSpellFlag(SpellFlags.Stealth,context.Source)) "
-                + "or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0))",
-            ],
-        ))
-        self.add(StatusData(
-            status_remove_name,
-            StatusType="BOOST",
-            DisplayName=self.loca(f"{status_remove_name}_DisplayName", "Cloak of Shadows Remove"),
-            StatusPropertyFlags=["DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator"],
-        ))
-        return name
-
-    @cached_property
     def _fast_movement_30(self) -> str:
         return self._movement.add_remarkable_athlete(display_name="Fast Movement",
                                                      passive_name="FastMovement_30",
@@ -224,13 +163,74 @@ class Assassin(Replacer):
         return name
 
     @cached_property
+    def _sneak_attack_interrupt(self) -> str:
+        name = self.make_name("SneakAttackInterrupt")
+        self.add(InterruptData(
+            name,
+            using="Interrupt_SneakAttack_Rakish",
+            DisplayName=self.loca(f"{name}_DisplayName", "Sneak Attack"),
+            Icon="Action_SneakAttack_Melee",
+        ))
+        return name
+
+    @cached_property
+    def _sneak_attack_interrupt_critical(self) -> str:
+        name = self.make_name("SneakAttackInterruptCritical")
+        self.add(InterruptData(
+            name,
+            using="Interrupt_SneakAttack_Rakish_Critical",
+            DisplayName=self.loca(f"{name}_DisplayName", "Sneak Attack (Critical Hit)"),
+            Icon="Action_SneakAttack_Melee",
+        ))
+        return name
+
+    @cached_property
+    def _sneak_attack_melee(self) -> str:
+        name = self.make_name("SneakAttackMelee")
+        self.add(SpellData(
+            name,
+            using="Target_SneakAttack_Rakish",
+            SpellType="Target",
+            DisplayName=self.loca(f"{name}_DisplayName", "Sneak Attack (Melee)"),
+            Icon="Action_SneakAttack_Melee",
+        ))
+        return name
+
+    @cached_property
+    def _sneak_attack_ranged(self) -> str:
+        name = self.make_name("SneakAttackRanged")
+        self.add(SpellData(
+            name,
+            using="Projectile_SneakAttack_Rakish",
+            SpellType="Projectile",
+            DisplayName=self.loca(f"{name}_DisplayName", "Sneak Attack (Ranged)"),
+            Icon="Action_SneakAttack_Ranged",
+        ))
+        return name
+
+    @cached_property
+    def _sneak_attack_unlock(self) -> str:
+        name = self.make_name("SneakAttackUnlock")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Sneak Attack Unlock"),
+            Properties=["IsHidden"],
+            Boosts=[
+                f"UnlockInterrupt({self._sneak_attack_interrupt})",
+                f"UnlockInterrupt({self._sneak_attack_interrupt_critical})",
+                f"UnlockSpell({self._sneak_attack_melee})",
+                f"UnlockSpell({self._sneak_attack_ranged})",
+            ],
+        ))
+        return name
+
+    @cached_property
     def _maneuvers(self) -> str:
         name = "Assassin Maneuvers"
         uuid = self.make_uuid(name)
         self.add(SpellList(
             Name=name,
             Spells=[
-                self._cloak_of_shadows,
                 self._disarming_attack,
                 self._trip_attack,
                 self._sweeping_attack,
@@ -244,10 +244,12 @@ class Assassin(Replacer):
         progress.Boosts = ["Advantage(Ability,Dexterity)"]
         progress.PassivesAdded += [
             self._awareness,
-            self._blindsight,
+            "LOW_HouseOfGrief_Cultists_Sight",
             self._fast_movement_30,
             self._riposte_unlock,
+            self._sneak_attack_unlock,
         ]
+        progress.PassivesRemoved = ["SneakAttack_Unlock"]
         progress.Selectors = [f"AddSpells({self._maneuvers})"]
 
     @progression(CharacterClass.ROGUE_ASSASSIN, 4)

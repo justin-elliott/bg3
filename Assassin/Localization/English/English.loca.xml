@@ -8,8 +8,11 @@
     <content contentuid="ha8b4cb23g19f9gd941ga6d0g8078079493e4" version="1">Free Jump</content>
     <content contentuid="h6bfb03d2g3d5cgb7fdgc496g652fbc316d9f" version="1">You can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="hd8dd7b73gde21gd885gb224gd5e0eb3dc2ff" version="1">When a creature misses you with a melee attack, you can retaliate with your own strike if you are wielding a melee weapon.</content>
-    <content contentuid="h9326ce14ge86dg0fadg64b4g7d900ec54ce5" version="1">Wrap yourself in shadows to become &lt;LSTag Type="Status" Tooltip="ASSASSIN_CLOAKOFSHADOWS"&gt;Invisible&lt;/LSTag&gt;.</content>
-    <content contentuid="h2fb4aacegc1d0gc905g77a2g21d357632ccb" version="1">Cloak of Shadows Remove</content>
+    <content contentuid="hd276eef0ge977ge11cg3aebgbf366ac4d413" version="1">Sneak Attack Unlock</content>
+    <content contentuid="h9b15bc23g1335g41aeg5154g997b17d552ba" version="1">Sneak Attack</content>
+    <content contentuid="h48da0d82gcc22ge420g9abdgd9facf6265d0" version="1">Sneak Attack (Critical Hit)</content>
+    <content contentuid="h9913aaecg09abgab95g187bga215ead7dafc" version="1">Sneak Attack (Melee)</content>
+    <content contentuid="h5ab876ddgc767g0a6eg0156g48c6a25e01e3" version="1">Sneak Attack (Ranged)</content>
     <content contentuid="h9590262bg41b3g0e72gd74ag2870ee70253f" version="1">Fast Movement</content>
     <content contentuid="h07c87831gd575g1a85gcb28g240f1e36899f" version="1">Your &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; increases by [1], and your jump distance by [2]. Once per turn, you can &lt;LSTag Type="Spell" Tooltip="Projectile_Jump"&gt;Jump&lt;/LSTag&gt; without using a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h4a1aeec9g959eg160bg6ba9gfbf98b9a8cda" version="1">Sure-Footed</content>

@@ -7,6 +7,13 @@ using "Target_Riposte"
 data "SpellSuccess" "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType);ExecuteWeaponFunctors(MainHand)"
 data "TooltipDamageList" "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"
 
+new entry "Assassin_SneakAttackMelee"
+type "SpellData"
+data "SpellType" "Target"
+using "Target_SneakAttack_Rakish"
+data "DisplayName" "h9913aaecg09abgab95g187bga215ead7dafc"
+data "Icon" "Action_SneakAttack_Melee"
+
 new entry "Assassin_DisarmingAttack"
 type "SpellData"
 data "SpellType" "Target"

@@ -91,8 +91,9 @@ class Assassin(Replacer):
             """),
             Cooldown="",
             SpellSuccess=[
-                "IF(Character() and not SavingThrow(Ability.Constitution,ManeuverSaveDC()+2)):ApplyStatus(DAZED,100,2)",
-                "DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)",
+                "IF(Character() and not SavingThrow(Ability.Constitution,ManeuverSaveDC())):ApplyStatus(DAZED,100,2)",
+                "DealDamage(ImprovisedWeapon+max(DexterityModifier,StrengthModifier),Bludgeoning)",
+                "ExecuteWeaponFunctors(MainHand)",
             ],
             TargetConditions=["(Character() or Item()) and not Self() and not Dead()"],
             TooltipDamageList=["DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)"],

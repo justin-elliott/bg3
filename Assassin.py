@@ -97,6 +97,7 @@ class Assassin(Replacer):
             ],
             TargetConditions=["(Character() or Item()) and not Self() and not Dead()"],
             TooltipDamageList=["DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)"],
+            UseCosts=["ActionPoint:1"],
         ))
         return name
 

@@ -32,6 +32,7 @@ data "Description" "ha6a38c99g7ca5ga661g730ag6679858dd7bf"
 data "SpellSuccess" "IF(Character() and not SavingThrow(Ability.Constitution,ManeuverSaveDC())):ApplyStatus(DAZED,100,2);DealDamage(ImprovisedWeapon+max(DexterityModifier,StrengthModifier),Bludgeoning);ExecuteWeaponFunctors(MainHand)"
 data "TargetConditions" "(Character() or Item()) and not Self() and not Dead()"
 data "TooltipDamageList" "DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)"
+data "UseCosts" "ActionPoint:1"
 
 new entry "Assassin_TripAttack"
 type "SpellData"

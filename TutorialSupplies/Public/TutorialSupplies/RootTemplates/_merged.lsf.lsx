@@ -841,6 +841,32 @@
                     </children>
                 </node>
                 <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="heab5d892gd368ge92fg1b75g6fad9ac7bff1" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h04a758bdg8f60gc7cdg44b6g68986afc3069" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="14dcb8d9-c3e7-556a-5fb5-6551a03db044" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_TimeLostStiletto" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="d3e121fb-09c0-4478-84f1-f4f3e28cd50f" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_TimeLostStiletto" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList" />
+                    </children>
+                </node>
+                <node id="GameObjects">
+                    <attribute id="Description" type="TranslatedString" handle="h2e79617age9f7g9fecgfe77g8c8d93b4ec59" version="1" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcbb75683g0d69ge8f0g50c7g02e2743343be" version="1" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="MapKey" type="FixedString" value="16c8c7e1-0167-a674-0297-0b899e7fe5f1" />
+                    <attribute id="Name" type="LSString" value="TutorialSupplies_BorrowedTime" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="d3e121fb-09c0-4478-84f1-f4f3e28cd50f" />
+                    <attribute id="Stats" type="FixedString" value="TutorialSupplies_BorrowedTime" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <children>
+                        <node id="StatusList" />
+                    </children>
+                </node>
+                <node id="GameObjects">
                     <attribute id="Description" type="TranslatedString" handle="h41344494ga27bgf030g792bga39653da8335" version="1" />
                     <attribute id="DisplayName" type="TranslatedString" handle="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1" />
                     <attribute id="Icon" type="FixedString" value="Item_CONT_GEN_Chest_Travel_A_Small_A" />

@@ -28,6 +28,7 @@ import os
 
 
 class TutorialSupplies(Mod):
+    __DOLOR_AMARUS_ID: ClassVar[UUID] = UUID("d3e121fb-09c0-4478-84f1-f4f3e28cd50f")
     __KATANA_TEMPLATE_ID: ClassVar[UUID] = UUID("7050c02e-f0e1-46b8-9400-2514805ecd2e")
 
     @dataclass
@@ -846,6 +847,8 @@ class TutorialSupplies(Mod):
                 self._blade_of_the_banshee,
                 self._radiant_silver_sword,
                 self._sword_of_storms,
+                self._time_lost_stiletto,
+                self._borrowed_time,
             ],
         )
 
@@ -983,6 +986,48 @@ class TutorialSupplies(Mod):
             ],
             proficiency_group="",
             status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
+        )
+
+    @cached_property
+    def _time_lost_stiletto(self) -> str:
+        return self._add_weapon(
+            base_name="TimeLostStiletto",
+            using="WPN_Dagger",
+            parent_template_id=self.__DOLOR_AMARUS_ID,
+            display_name="Time-Lost Stiletto",
+            description="""
+                This needle-sharp stiletto features a blade that seems to flicker slightly out of focus, its ancient,
+                pristine metal moving a fraction of a second ahead of the present to slip past enemy defenses.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Force",
+            boosts=[self._weapon_kerekas_favour_boost],
+            passives_on_equip=[
+                "MAG_Critical_Force_Critical_Passive",
+                self._weapon_enchantment_progression,
+                self._weapon_kereskas_favour,
+            ],
+            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
+        )
+
+    @cached_property
+    def _borrowed_time(self) -> str:
+        return self._add_weapon(
+            base_name="BorrowedTime",
+            using="WPN_Dagger",
+            parent_template_id=self.__DOLOR_AMARUS_ID,
+            display_name="Borrowed Time",
+            description="""
+                Forged from polished silver that shimmers with a faint chronal haze, this dagger allows its wielder to
+                steal precious seconds from the future to strike with impossible speed.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Force",
+            boosts=[self._weapon_celestial_haste_boost],
+            passives_on_equip=[
+                self._weapon_enchantment_progression,
+                self._weapon_celestial_haste,
+            ],
         )
 
     @cached_property
@@ -1192,6 +1237,28 @@ class TutorialSupplies(Mod):
             ],
         ))
         return name
+
+    @cached_property
+    def _weapon_celestial_haste(self) -> str:
+        name = self.make_name("WeaponCelestialHaste")
+        self.loca[f"{name}_DisplayName"] = "Celestial Haste"
+        self.loca[f"{name}_Description"] = """
+            At <LSTag>Level 7</LSTag> you gain
+            <LSTag Type="Spell" Tooltip="Shout_MAG_Victory_Longbow_Haste">Celestial Haste</LSTag>.
+        """
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca[f"{name}_DisplayName"],
+            Description=self.loca[f"{name}_Description"],
+            Boosts=[
+                "IF(CharacterLevelGreaterThan(6)):UnlockSpell(Shout_MAG_Victory_Longbow_Haste)",
+            ],
+        ))
+        return name
+        
+    @cached_property
+    def _weapon_celestial_haste_boost(self) -> str:
+        return "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_Victory_Longbow_Haste)"
 
     @cached_property
     def _weapon_kereskas_favour(self) -> str:

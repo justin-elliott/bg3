@@ -444,6 +444,10 @@ new subtable "1,1"
 object category "I_TutorialSupplies_RadiantSilverSword",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_SwordOfStorms",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_TimeLostStiletto",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_TutorialSupplies_BorrowedTime",1,0,0,0,0,0,0,0
 
 new treasuretable "TutorialSupplies_AbazigalsGoods_TreasureTable"
 CanMerge 1

@@ -74,7 +74,12 @@ class Movement:
 
         return name
 
-    def add_misty_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
+    def add_misty_step(self,
+                       use_costs: str | list[str] | None = None,
+                       *,
+                       display_name: str | None = None,
+                       description: str | None = None,
+                       icon: str | None = None) -> str:
         """Add the Misty Step cantrip, returning its name."""
         name = f"{self._mod.get_prefix()}_MistyStep"
         self._mod.add(SpellData(
@@ -82,8 +87,11 @@ class Movement:
             using="Target_MistyStep",
             SpellType="Target",
             Level="",
+            DisplayName=self._mod.loca(f"{name}_DisplayName", display_name) if display_name else None,
+            Description=self._mod.loca(f"{name}_Description", description) if description else None,
+            Icon=icon,
             SpellStyleGroup="Class",
-            UseCosts=use_costs,
+            UseCosts=["BonusActionPoint:1"] if use_costs is None else use_costs,
         ))
         return name
 

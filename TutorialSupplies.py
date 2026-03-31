@@ -14,6 +14,7 @@ from moddb import (
 )
 from modtools.gamedata import (
     Armor,
+    InterruptData,
     ObjectData,
     PassiveData,
     SpellData,
@@ -843,6 +844,7 @@ class TutorialSupplies(Mod):
             display_name="Weapons",
             description="Contains a selection of weapons.",
             items=[
+                self._arcane_katana,
                 self._arcane_rapier,
                 self._blade_of_the_banshee,
                 self._radiant_silver_sword,
@@ -1113,6 +1115,39 @@ class TutorialSupplies(Mod):
             weapon_statuses=["MAG_FROST_FROST_WEAPON"],
         )
 
+    @cached_property
+    def _arcane_katana(self) -> str:
+        return self._add_weapon(
+            "ArcaneKatana",
+            using="WPN_Katana",
+            parent_template_id=self.__KATANA_TEMPLATE_ID,
+            display_name="Arcane Katana",
+            description="""
+                Etched with glowing, shifting runes along its slender, curved blade, this elegant katana acts as both a
+                deadly weapon and a powerful arcane focus for its wielder's magic.
+            """,
+            bonus_damage="1d4",
+            bonus_damage_type="Force",
+            boosts=[
+                self._weapon_celestial_haste_boost,
+                self._weapon_kerekas_favour_boost,
+            ],
+            boosts_on_equip_main_hand=[
+                f"UnlockSpell({self._sweeping_attack})",
+                f"UnlockSpell({self._pommel_strike})",
+                f"UnlockInterrupt({self._riposte_interrupt})",
+            ],
+            passives_on_equip=[
+                "MAG_InitiativeWeapon_Passive",
+                self._weapon_enchantment_progression,
+                self._weapon_celestial_haste,
+                self._weapon_kereskas_favour,
+            ],
+            proficiency_group="",
+            status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
+            weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
+        )
+
     def _add_weapon(
             self,
             base_name: str,
@@ -1283,15 +1318,80 @@ class TutorialSupplies(Mod):
         return "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
 
     @cached_property
-    def _cleave(self) -> str:
-        name = self.make_name("Cleave")
+    def _sweeping_attack(self) -> str:
+        name = self.make_name("SweepingAttack")
         self.add(SpellData(
             name,
-            using="Zone_Cleave",
+            using="Zone_SweepingAttack",
             SpellType="Zone",
-            Cooldown="None",
-            SpellSuccess=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)", "GROUND:ExecuteWeaponFunctors(MainHand)"],
-            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainWeaponDamageType)"],
+            Range=3,
+            SpellProperties=[
+                "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "GROUND:ExecuteWeaponFunctors(MainHand)",
+                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
+            ],
+            SpellSuccess=[
+                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "ExecuteWeaponFunctors(MainHand)",
+            ],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
+            UseCosts=["ActionPoint:1"],
+        ))
+        return name
+
+    @cached_property
+    def _pommel_strike(self) -> str:
+        name = self.make_name("PommelStrike")
+        self.add(SpellData(
+            name,
+            using="Target_PommelStrike",
+            SpellType="Target",
+            Description=self.loca(f"{name}_Description", """
+                Make an attack against an enemy and possibly <LSTag Type="Status" Tooltip="DAZED">Daze</LSTag> them.
+            """),
+            Cooldown="",
+            SpellSuccess=[
+                "IF(Character() and not SavingThrow(Ability.Constitution,ManeuverSaveDC())):ApplyStatus(DAZED,100,2)",
+                "DealDamage(ImprovisedWeapon+max(DexterityModifier,StrengthModifier),Bludgeoning)",
+                "ExecuteWeaponFunctors(MainHand)",
+            ],
+            TargetConditions=["(Character() or Item()) and not Self() and not Dead()"],
+            TooltipDamageList=["DealDamage(1d4+max(DexterityModifier,StrengthModifier),Bludgeoning)"],
+            UseCosts=["ActionPoint:1"],
+        ))
+        return name
+
+    @cached_property
+    def _riposte_attack(self) -> str:
+        name = self.make_name("RiposteAttack")
+        self.add(SpellData(
+            name,
+            using="Target_Riposte",
+            SpellType="Target",
+            SpellSuccess=[
+                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
+                "ExecuteWeaponFunctors(MainHand)",
+            ],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
+        ))
+        return name
+
+    @cached_property
+    def _riposte_interrupt(self) -> str:
+        name = self.make_name("RiposteInterrupt")
+        self.add(InterruptData(
+            name,
+            using="Interrupt_Riposte",
+            Description=self.loca(f"{name}_Description", """
+                When a creature misses you with a melee attack, you can retaliate with your own strike if you are
+                wielding a melee weapon.
+            """),
+            InterruptDefaultValue=["Ask", "Enabled"],
+            Properties=[
+                f"UseSpell(SWAP,{self._riposte_attack},true,true,true)",
+                "ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)",
+            ],
+            Cost=["ReactionActionPoint:1"],
         ))
         return name
 

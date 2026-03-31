@@ -437,6 +437,8 @@ object category "I_TutorialSupplies_ARM_ScaleMail_Body_Paladin_Crown",1,0,0,0,0,
 new treasuretable "TutorialSupplies_Weapons_TreasureTable"
 CanMerge 1
 new subtable "1,1"
+object category "I_TutorialSupplies_ArcaneKatana",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_TutorialSupplies_ArcaneRapier",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_TutorialSupplies_BladeOfTheBanshee",1,0,0,0,0,0,0,0

@@ -19,6 +19,12 @@ data "Boosts" "IF(not CharacterLevelGreaterThan(4)):SpellSaveDC(1);IF(not Charac
 data "Description" "h2ea4b7f2g0829g547cg5727gb13a68884b84"
 data "DisplayName" "h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b"
 
+new entry "TutorialSupplies_WeaponCelestialHaste"
+type "PassiveData"
+data "Boosts" "IF(CharacterLevelGreaterThan(6)):UnlockSpell(Shout_MAG_Victory_Longbow_Haste)"
+data "Description" "h483083abgcee0g2f60g99e1g3207c60494fa"
+data "DisplayName" "h6cdfaa40g2f02gebc9g99f3g9aebff6777a1"
+
 new entry "TutorialSupplies_WeaponKereskasFavour"
 type "PassiveData"
 data "Boosts" "IF(CharacterLevelGreaterThan(8)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
@@ -35,12 +41,6 @@ type "PassiveData"
 data "Boosts" "SpellSaveDC(1);RollBonus(MeleeSpellAttack,1);RollBonus(RangedSpellAttack,1);IF(IsSpell()):DamageBonus(1)"
 data "Description" "h049e2270ga929g218fgcf3cg66e6d973e6f7"
 data "DisplayName" "h72de638agc00ag2277ga489g09454ddbd598"
-
-new entry "TutorialSupplies_WeaponCelestialHaste"
-type "PassiveData"
-data "Boosts" "IF(CharacterLevelGreaterThan(6)):UnlockSpell(Shout_MAG_Victory_Longbow_Haste)"
-data "Description" "h483083abgcee0g2f60g99e1g3207c60494fa"
-data "DisplayName" "h6cdfaa40g2f02gebc9g99f3g9aebff6777a1"
 
 new entry "MAG_ElementalGish_ArcaneAcuity_Helmet_Passive"
 type "PassiveData"

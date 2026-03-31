@@ -50,10 +50,16 @@
     <content contentuid="h7b1ffa79g4ce4g36c4g228cgb266551fa76c" version="1">You gain &lt;LSTag Type="Status" Tooltip="BLADE_WARD"&gt;Blade Ward&lt;/LSTag&gt;, &lt;LSTag Type="Status" Tooltip="RESISTANCE"&gt;Resistance&lt;/LSTag&gt;, and &lt;LSTag Type="Status" Tooltip="GUIDANCE"&gt;Guidance&lt;/LSTag&gt;.</content>
     <content contentuid="hfeed5f01gea59gafc9gb9b5gd5fde57c5a2f" version="1">Armour of Endurance</content>
     <content contentuid="hbc088086gbbaeg6434g0631g71aa46cb6833" version="1">Crafted from layered, magically-hardened hides, this supple leather armor pulses with a constant protective ward that blunts incoming strikes, and repels magical attacks.</content>
+    <content contentuid="h2f450439gec31gd0d0g2a64g78ad13d0961f" version="1">Make an attack against an enemy and possibly &lt;LSTag Type="Status" Tooltip="DAZED"&gt;Daze&lt;/LSTag&gt; them.</content>
+    <content contentuid="h3bd4d079g390agd38ag8501g679f92380418" version="1">When a creature misses you with a melee attack, you can retaliate with your own strike if you are wielding a melee weapon.</content>
     <content contentuid="h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b" version="1">Enchanted Blade</content>
     <content contentuid="h2ea4b7f2g0829g547cg5727gb13a68884b84" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls. This increases to +2 at &lt;LSTag&gt;Level 5&lt;/LSTag&gt;, and +3 at &lt;LSTag&gt;Level 9&lt;/LSTag&gt;.</content>
+    <content contentuid="h6cdfaa40g2f02gebc9g99f3g9aebff6777a1" version="1">Celestial Haste</content>
+    <content contentuid="h483083abgcee0g2f60g99e1g3207c60494fa" version="1">At &lt;LSTag&gt;Level 7&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_Victory_Longbow_Haste"&gt;Celestial Haste&lt;/LSTag&gt;.</content>
     <content contentuid="hb8307cfbg1e48g8698g2a71gcd162a3a314c" version="1">Kereska's Favour</content>
     <content contentuid="hee671c3fg9bd4g6ffbg9b73gc32391651618" version="1">At &lt;LSTag&gt;Level 9&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_TheChromatic_ChromaticAttunement"&gt;Kereska's Favour&lt;/LSTag&gt;.</content>
+    <content contentuid="h20fbfe4agb014g32feg1301g56234faa9a29" version="1">Arcane Katana</content>
+    <content contentuid="h26694abcg7f77gecb0g7f94g71d5aa77aba3" version="1">Etched with glowing, shifting runes along its slender, curved blade, this elegant katana acts as both a deadly weapon and a powerful arcane focus for its wielder's magic.</content>
     <content contentuid="h3cf5df70ga5e7g7832gbfdegab2be44cac90" version="1">Arcane Rapier</content>
     <content contentuid="h3e7b0249gef69gf9d5g1ea8g69fa32f61e73" version="1">This slender, elegant rapier features intricate runes etched along its shimmering blade and an ornate basket hilt designed to channel and focus raw magical energy.</content>
     <content contentuid="h9d1eb74bg588fgc7f3ga44bg90e4d6c9a8ac" version="1">Life Stealing</content>
@@ -69,8 +75,6 @@
     <content contentuid="h66170c9agab11g7bdfg4a68gc2e3f55ad19a" version="1">Forged from gleaming silver, this elegant sword constantly pulses with jagged arcs of blue electricity and hums with the low rumble of distant thunder.</content>
     <content contentuid="h04a758bdg8f60gc7cdg44b6g68986afc3069" version="1">Time-Lost Stiletto</content>
     <content contentuid="heab5d892gd368ge92fg1b75g6fad9ac7bff1" version="1">This needle-sharp stiletto features a blade that seems to flicker slightly out of focus, its ancient, pristine metal moving a fraction of a second ahead of the present to slip past enemy defenses.</content>
-    <content contentuid="h6cdfaa40g2f02gebc9g99f3g9aebff6777a1" version="1">Celestial Haste</content>
-    <content contentuid="h483083abgcee0g2f60g99e1g3207c60494fa" version="1">At &lt;LSTag&gt;Level 7&lt;/LSTag&gt; you gain &lt;LSTag Type="Spell" Tooltip="Shout_MAG_Victory_Longbow_Haste"&gt;Celestial Haste&lt;/LSTag&gt;.</content>
     <content contentuid="hcbb75683g0d69ge8f0g50c7g02e2743343be" version="1">Borrowed Time</content>
     <content contentuid="h2e79617age9f7g9fecgfe77g8c8d93b4ec59" version="1">Forged from polished silver that shimmers with a faint chronal haze, this dagger allows its wielder to steal precious seconds from the future to strike with impossible speed.</content>
     <content contentuid="h8a5b6196g7696g1dd9g7befgc131e9363860" version="1">Camp Clothing</content>

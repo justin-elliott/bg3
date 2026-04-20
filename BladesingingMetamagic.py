@@ -5,7 +5,6 @@ import os
 from modtools.lsx.game import Progression
 from modtools.replacers import (
     CharacterClass,
-    DontIncludeProgression,
     progression,
     Replacer,
 )
@@ -59,7 +58,8 @@ def main() -> None:
     bladesinging_metamagic = BladesingingMetamagic(
         classes=[CharacterClass.WIZARD_BLADESINGING],
         spells=2,
-        actions=2,
+        actions=4,
+        level_20=True,
     )
     bladesinging_metamagic.build()
 

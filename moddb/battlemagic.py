@@ -15,7 +15,7 @@ class BattleMagic:
         """Initialize."""
         self._mod = mod
 
-    def add_battle_magic(self) -> str:
+    def add_battle_magic(self, *, icon: str = "PassiveFeature_WarMagic") -> str:
         """Add the Battle Magic passive, returning its name."""
         name = f"{self._mod.get_prefix()}_BattleMagic"
 
@@ -30,7 +30,7 @@ class BattleMagic:
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            Icon="PassiveFeature_WarMagic",
+            Icon=icon,
             Properties=["Highlighted", "OncePerTurn"],
             StatsFunctorContext="OnAttack",
             Conditions="IsWeaponAttack() or IsUnarmedAttack()",

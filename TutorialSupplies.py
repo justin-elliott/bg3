@@ -7,6 +7,7 @@ from uuid import UUID
 
 from moddb import (
     Awareness,
+    BattleMagic,
     Bolster,
     ElementalWeapon,
     Knowledge,
@@ -1131,6 +1132,7 @@ class TutorialSupplies(Mod):
             boosts=[
                 self._weapon_celestial_haste_boost,
                 self._weapon_kerekas_favour_boost,
+                "Proficiency(Longswords)",
             ],
             boosts_on_equip_main_hand=[
                 f"UnlockSpell({self._sweeping_attack})",
@@ -1139,11 +1141,11 @@ class TutorialSupplies(Mod):
             ],
             passives_on_equip=[
                 "MAG_InitiativeWeapon_Passive",
+                self._battle_magic,
                 self._weapon_enchantment_progression,
                 self._weapon_celestial_haste,
                 self._weapon_kereskas_favour,
             ],
-            proficiency_group="",
             status_on_equip=["MAG_THE_CHROMATIC_TECHNICAL"],
             weapon_properties=["Dippable", "Finesse", "Magical", "Melee", "Versatile"],
         )
@@ -1318,6 +1320,10 @@ class TutorialSupplies(Mod):
         return "IF(not CharacterLevelGreaterThan(0)):UnlockSpell(Shout_MAG_TheChromatic_ChromaticAttunement)"
 
     @cached_property
+    def _battle_magic(self) -> str:
+        return BattleMagic(self).add_battle_magic(icon=None)
+
+    @cached_property
     def _sweeping_attack(self) -> str:
         name = self.make_name("SweepingAttack")
         self.add(SpellData(
@@ -1334,6 +1340,7 @@ class TutorialSupplies(Mod):
                 "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
                 "ExecuteWeaponFunctors(MainHand)",
             ],
+            SpellFlags=["IsMelee", "IsHarmful", "IsDefaultWeaponAction"],
             TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
             UseCosts=["ActionPoint:1"],
         ))

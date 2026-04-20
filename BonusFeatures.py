@@ -353,6 +353,35 @@ class BonusFeatures(Replacer):
         return Awareness(self.mod).add_awareness()
 
     @cached_property
+    def _born_leader(self) -> str:
+        name = self.make_name("BornLeader")
+        skills = [
+            (Skills.SLEIGHT_OF_HAND, "Sleight of Hand"),
+            (Skills.PERCEPTION,      Skills.PERCEPTION),
+            (Skills.SURVIVAL,        Skills.SURVIVAL),
+            (Skills.DECEPTION,       Skills.DECEPTION),
+            (Skills.INTIMIDATION,    Skills.INTIMIDATION),
+            (Skills.PERFORMANCE,     Skills.PERFORMANCE),
+            (Skills.PERSUASION,      Skills.PERSUASION),
+        ]
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Born Leader"),
+            Description=self.loca(f"{name}_Description", f"""
+                You are an <LSTag Tooltip="Expertise">Expert</LSTag> in
+                {", ".join(f"""<LSTag Tooltip="{skill}">{name}</LSTag>""" for skill, name in skills[:-1])}{
+                    f""", and <LSTag Tooltip="{skills[-1][0]}">{skills[-1][1]}</LSTag>"""}
+            """),
+            Icon="Action_CommandersStrike",
+            Boosts=[
+                *[f"ProficiencyBonus(Skill,{skill})" for skill, _ in skills],
+                *[f"ExpertiseBonus({skill})" for skill, _ in skills],
+            ],
+            Properties=["Highlighted"],
+        ))
+        return name
+
+    @cached_property
     def _cunning_actions(self) -> str:
         name = self.make_name("CunningActions")
         self.loca[f"{name}_DisplayName"] = "Cunning Actions"
@@ -819,41 +848,42 @@ class BonusFeatures(Replacer):
     @cached_property
     def _bonus_passives(self) -> list[tuple[int, str, str]]:
         return sorted([
-            ( 1, "Arcane Adept",        self._arcane_adept),
-            ( 1, "Archer",              self._archer),
-            ( 1, "Armoured",            self._armored),
-            ( 1, "Awareness",           self._awareness),
-            ( 1, "Duelist",             self._duelist),
-            ( 1, "Devil's Sight",       "DevilsSight"),
-            ( 1, "Light-Fingered",      self._light_fingered),
-            ( 1, "Martial Artist",      self._martial_artist),
-            ( 1, "Mask of Many Faces",  "MaskOfManyFaces"),
-            ( 1, "Naturally Stealthy",  "Halfling_LightfootStealth"),
-            ( 1, "Persuasive",          self._persuasive),
-            ( 1, "Savage Attacks",      "SavageAttacks"),
-            ( 1, "Sturdy",              self._sturdy),
-            ( 1, "Weaponmaster",        self._weaponmaster),
-            ( 1, "Two-Weapon Fighting", self._two_weapon_fighting),
-            ( 2, "Action Surge",        self._action_surge),
-            ( 2, "Alacrity",            self._alacrity),
-            ( 2, "Cunning Actions",     self._cunning_actions),
-            ( 3, "Improved Critical",   "ImprovedCritical"),
-            ( 3, "Jack of All Trades",  "JackOfAllTrades"),
-            ( 3, "Fast Hands",          "FastHands"),
-            ( 3, "Remarkable Athlete",  self._remarkable_athlete),
-            ( 3, "Resilience",          self._resilience),
-            ( 3, "Weapon Bond",         self._weapon_bond),
-            ( 5, "Uncanny Dodge",       "UncannyDodge"),
-            ( 5, "Extra Attack",        self._extra_attacks),
-            ( 5, "Fire Walk",           self._fire_walk),
-            ( 5, "Misty Step",          self._misty_step),
-            ( 7, "Elemental Weapon",    self._elemental_weapon),
-            ( 7, "Evasion",             "Evasion"),
-            ( 7, "Wilderness Explorer", self._wilderness_explorer),
-            ( 9, "Empowered Spells",    self._empowered_spells),
-            ( 9, "Volley",              self._volley),
-            (11, "Reliable Talent",     "ReliableTalent"),
-        ], key=lambda item: item[1])
+            ( 1, 20, "Arcane Adept",        self._arcane_adept),
+            ( 1, 20, "Archer",              self._archer),
+            ( 1, 20, "Armoured",            self._armored),
+            ( 1, 20, "Awareness",           self._awareness),
+            ( 1,  1, "Born Leader",         self._born_leader),
+            ( 1, 20, "Duelist",             self._duelist),
+            ( 1, 20, "Devil's Sight",       "DevilsSight"),
+            ( 1, 20, "Light-Fingered",      self._light_fingered),
+            ( 1, 20, "Martial Artist",      self._martial_artist),
+            ( 1, 20, "Mask of Many Faces",  "MaskOfManyFaces"),
+            ( 1, 20, "Naturally Stealthy",  "Halfling_LightfootStealth"),
+            ( 1, 20, "Persuasive",          self._persuasive),
+            ( 1, 20, "Savage Attacks",      "SavageAttacks"),
+            ( 1, 20, "Sturdy",              self._sturdy),
+            ( 1, 20, "Weaponmaster",        self._weaponmaster),
+            ( 1, 20, "Two-Weapon Fighting", self._two_weapon_fighting),
+            ( 2, 20, "Action Surge",        self._action_surge),
+            ( 2, 20, "Alacrity",            self._alacrity),
+            ( 2, 20, "Cunning Actions",     self._cunning_actions),
+            ( 3, 20, "Improved Critical",   "ImprovedCritical"),
+            ( 3, 20, "Jack of All Trades",  "JackOfAllTrades"),
+            ( 3, 20, "Fast Hands",          "FastHands"),
+            ( 3, 20, "Remarkable Athlete",  self._remarkable_athlete),
+            ( 3, 20, "Resilience",          self._resilience),
+            ( 3, 20, "Weapon Bond",         self._weapon_bond),
+            ( 5, 20, "Uncanny Dodge",       "UncannyDodge"),
+            ( 5, 20, "Extra Attack",        self._extra_attacks),
+            ( 5, 20, "Fire Walk",           self._fire_walk),
+            ( 5, 20, "Misty Step",          self._misty_step),
+            ( 7, 20, "Elemental Weapon",    self._elemental_weapon),
+            ( 7, 20, "Evasion",             "Evasion"),
+            ( 7, 20, "Wilderness Explorer", self._wilderness_explorer),
+            ( 9, 20, "Empowered Spells",    self._empowered_spells),
+            ( 9, 20, "Volley",              self._volley),
+            (11, 20, "Reliable Talent",     "ReliableTalent"),
+        ], key=lambda item: item[2])
 
     @cache
     def _bonus_passive_list(self, progress: Progression) -> tuple[str, str]:
@@ -866,7 +896,10 @@ class BonusFeatures(Replacer):
                 Name=list_name,
                 Passives=[
                     self._no_selection(progress),
-                    *[passive for level, _, passive in self._bonus_passives if progress.Level >= level],
+                    *[
+                        passive for level, max_level, _, passive in self._bonus_passives
+                        if max_level >= progress.Level >= level
+                    ],
                 ],
                 UUID=list_uuid,
             ))

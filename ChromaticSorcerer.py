@@ -147,84 +147,8 @@ class ChromaticSorcerer(Replacer):
                 StatusGroups="SG_RemoveOnRespec",
             ))
 
-    @progression(CharacterClass.SORCERER_DRACONIC, 1)
-    def draconicbloodline_level_1(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 2)
-    def draconicbloodline_level_2(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 3)
-    def draconicbloodline_level_3(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 4)
-    def draconicbloodline_level_4(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 5)
-    def draconicbloodline_level_5(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 6)
-    def draconicbloodline_level_6(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 7)
-    def draconicbloodline_level_7(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 8)
-    def draconicbloodline_level_8(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 9)
-    def draconicbloodline_level_9(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 10)
-    def draconicbloodline_level_10(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 11)
-    def draconicbloodline_level_11(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 12)
-    def draconicbloodline_level_12(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 13)
-    def draconicbloodline_level_13(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 14)
-    def draconicbloodline_level_14(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 15)
-    def draconicbloodline_level_15(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 16)
-    def draconicbloodline_level_16(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 17)
-    def draconicbloodline_level_17(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 18)
-    def draconicbloodline_level_18(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 19)
-    def draconicbloodline_level_19(self, _: Progression) -> None:
-        raise DontIncludeProgression()
-
-    @progression(CharacterClass.SORCERER_DRACONIC, 20)
-    def draconicbloodline_level_20(self, _: Progression) -> None:
+    @progression(CharacterClass.SORCERER_DRACONIC, range(1, 21))
+    def draconicbloodline_levels(self, _: Progression) -> None:
         raise DontIncludeProgression()
 
 
@@ -233,10 +157,10 @@ def main() -> None:
         classes=[CharacterClass.SORCERER_DRACONIC],
         feats=2,
         spells=2,
-        warlock_spells=1,
-        actions=2,
-        skills=None,
-        expertise=None,
+        warlock_spells=2,
+        actions=4,
+        skills=4,
+        expertise=2,
         full_caster=False,
     )
     chromatic_sorcerer.build()

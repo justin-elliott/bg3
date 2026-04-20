@@ -7,15 +7,15 @@
     <content contentuid="hcd6a9271g7244gb7fcg1c9agf238e69f207d" version="1">Bolster your allies against the dangers that lie ahead.</content>
     <content contentuid="had7042ccgbda1gf99fgfe97g878561b3d8d7" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="hf0cecb1fg4203gdf2bg54edgebea9d5a6228" version="1">Ability Improvement: Strength</content>
-    <content contentuid="hc0596d22g6855g2569ge426g5f2b4dbfee16" version="1">Increase your Strength by 2, to a maximum of 30.</content>
+    <content contentuid="hc0596d22g6855g2569ge426g5f2b4dbfee16" version="1">Increase your Strength by 1, to a maximum of 30.</content>
     <content contentuid="h8ae47069g8837g97b4gafb1g071fd16766cd" version="1">Ability Improvement: Dexterity</content>
-    <content contentuid="hc2aecd85gb7c7gfa6bg94b2g87978bf837cf" version="1">Increase your Dexterity by 2, to a maximum of 30.</content>
+    <content contentuid="hc2aecd85gb7c7gfa6bg94b2g87978bf837cf" version="1">Increase your Dexterity by 1, to a maximum of 30.</content>
     <content contentuid="h90802648g18a6g9b75g2b57g589338e880cd" version="1">You regain full &lt;LSTag Tooltip="HitPoints"&gt;hit points&lt;/LSTag&gt; when you &lt;LSTag Tooltip="ShortRest"&gt;Short Rest&lt;/LSTag&gt;. Your &lt;LSTag Tooltip="Constitution"&gt;Constitution&lt;/LSTag&gt; score is increased by [1], to a maximum of [2].</content>
     <content contentuid="h676c08f8g2b27g85a0gdd72gda517145acd6" version="1">You have &lt;LSTag Tooltip="ArmourProficiency"&gt;Armour Proficiency&lt;/LSTag&gt; with Heavy Armour and your &lt;LSTag Tooltip="Strength"&gt;Strength&lt;/LSTag&gt; increases by [1], to a maximum of [2].</content>
     <content contentuid="hc30cf638gd54eg451bg8535g0079a4bc345e" version="1">Ability Improvement: Charisma</content>
-    <content contentuid="hb1325305g6651ga4bfge771gebca9d0c2140" version="1">Increase your Charisma by 2, to a maximum of 30.</content>
+    <content contentuid="hb1325305g6651ga4bfge771gebca9d0c2140" version="1">Increase your Charisma by 1, to a maximum of 30.</content>
     <content contentuid="hb7ae3a9ag1a21g2036gcbcag99e4cf28e6f6" version="1">Ability Improvement: Constitution</content>
-    <content contentuid="h69d7f949g0fd1g9b6cgbf7agec24399aef6f" version="1">Increase your Constitution by 2, to a maximum of 30.</content>
+    <content contentuid="h69d7f949g0fd1g9b6cgbf7agec24399aef6f" version="1">Increase your Constitution by 1, to a maximum of 30.</content>
     <content contentuid="h61d45b7ag802bg9775g1c8bg1dfd70361ed2" version="1">When combat ends, you are revitalised as though you would have taken a &lt;LSTag Tooltip="LongRest"&gt;Long Rest&lt;/LSTag&gt;.</content>
     <content contentuid="hbbe85754gad5fg9e4ag14e5gdc6f1097a64c" version="1">Abilities +0</content>
     <content contentuid="hd323be4cg1357g85c6g063bg1ff778b22a39" version="1">Increase all of your abilities by 0, to a maximum of 30.</content>
@@ -65,6 +65,8 @@
     <content contentuid="he9a0bbeeg328cg4680g690fg1b3d8f4926b2" version="1">You are proficient with all types of armour and shields. You gain a +1 bonus to &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt; while wearing armour.</content>
     <content contentuid="hb8b4882bg312egaf56g87efg8dbe0fc8704a" version="1">Awareness</content>
     <content contentuid="hddd087f2g9948g57d1g3cd2g13a9f1acf999" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
+    <content contentuid="hfb17d2f2g99e6g78b6g46e3gd5721032c640" version="1">Born Leader</content>
+    <content contentuid="h2302dc52gb293g2517gab48gb23bbacc90f1" version="1">You are an &lt;LSTag Tooltip="Expertise"&gt;Expert&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;, &lt;LSTag Tooltip="Perception"&gt;Perception&lt;/LSTag&gt;, &lt;LSTag Tooltip="Survival"&gt;Survival&lt;/LSTag&gt;, &lt;LSTag Tooltip="Deception"&gt;Deception&lt;/LSTag&gt;, &lt;LSTag Tooltip="Intimidation"&gt;Intimidation&lt;/LSTag&gt;, &lt;LSTag Tooltip="Performance"&gt;Performance&lt;/LSTag&gt;, and &lt;LSTag Tooltip="Persuasion"&gt;Persuasion&lt;/LSTag&gt;</content>
     <content contentuid="h375c909dg4791g28ccg7d2ega327e1435ae6" version="1">Duelist</content>
     <content contentuid="h0f3155d3gddddgbb2ag114dg91c39ca94e5e" version="1">When you are wielding a melee weapon that is not Two-Handed in one hand, and no weapon in the other, you gain a +[1] bonus to Initiative Rolls, and deal additional damage equal to your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt;.&lt;br&gt;&lt;br&gt;Additionally, if you are not carrying a shield, you gain a +[3] bonus to your &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt;.</content>
     <content contentuid="hac8e2fc0gbad6gfa83gc083ge6e2b2ff218c" version="1">Light-Fingered</content>
@@ -120,9 +122,9 @@
     <content contentuid="h18606ef4gb58cgc060g7cd9ged63ed8a196b" version="1">Ability Improvement: None</content>
     <content contentuid="h1d4f5f92g0784gfe97g894eg5de88d879ee1" version="1">No ability increase.</content>
     <content contentuid="h9f8519caga557g8a17g694eg670b956a3834" version="1">Ability Improvement: Intelligence</content>
-    <content contentuid="hee75baf1gb03eg6ef4g08a5gf14ed41559ff" version="1">Increase your Intelligence by 2, to a maximum of 30.</content>
+    <content contentuid="hee75baf1gb03eg6ef4g08a5gf14ed41559ff" version="1">Increase your Intelligence by 1, to a maximum of 30.</content>
     <content contentuid="h52705a29g6a57g54f8gdfabg690e1033c518" version="1">Ability Improvement: Wisdom</content>
-    <content contentuid="ha5bde00cga65cgb802g10eag1ddf40b23581" version="1">Increase your Wisdom by 2, to a maximum of 30.</content>
+    <content contentuid="ha5bde00cga65cgb802g10eag1ddf40b23581" version="1">Increase your Wisdom by 1, to a maximum of 30.</content>
     <content contentuid="h01b015d6gc27dg6e96gc40fgb7a161fac74c" version="1">Ability Improvement</content>
-    <content contentuid="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1">Increase one of your abilities by 2, to a maximum of 30.</content>
+    <content contentuid="h3ebc2ba0gc5ebg598dgbd2dg1bec5672080d" version="1">Increase one of your abilities by 1, to a maximum of 30.</content>
 </contentList>

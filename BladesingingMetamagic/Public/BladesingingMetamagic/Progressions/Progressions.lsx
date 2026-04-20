@@ -6,7 +6,7 @@
         <node id="root">
             <children>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Intelligence);ProficiencyBonus(SavingThrow,Wisdom);Proficiency(Daggers);Proficiency(Quarterstaffs);Proficiency(LightCrossbows);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,1);ProficiencyBonus(SavingThrow,Intelligence);ProficiencyBonus(SavingThrow,Wisdom);Proficiency(Daggers);Proficiency(Quarterstaffs);Proficiency(LightCrossbows);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel1" />
@@ -16,7 +16,7 @@
                     <attribute id="UUID" type="guid" value="c201c736-3717-4c3c-9e36-2ae7387597a3" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="IsMulticlass" type="bool" value="true" />
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Wizard" />
@@ -68,7 +68,7 @@
                     </children>
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,1);ActionResource(SpellSlot,4,2);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel2" />
@@ -86,7 +86,7 @@
                     <attribute id="UUID" type="guid" value="ba8743c7-bc11-46ad-8512-be6fee2c8534" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,4,3);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="PassivesAdded" type="LSString" value="UnlockedSpellSlotLevel3" />
@@ -103,7 +103,7 @@
                     <attribute id="UUID" type="guid" value="27465c53-f521-49e0-871a-2a45b9f557bf" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -120,7 +120,7 @@
                     <attribute id="UUID" type="guid" value="c7f6df40-9d4f-4039-8a29-9bcd5efb3b6a" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,4);ActionResource(SpellSlot,2,5);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -136,7 +136,7 @@
                     <attribute id="UUID" type="guid" value="8268be8b-fe73-4dc6-82a3-beeab3ebed49" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -144,7 +144,7 @@
                     <attribute id="UUID" type="guid" value="6550e503-45ac-4e9a-b453-88e8e845ff6e" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,7);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="13" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -152,7 +152,7 @@
                     <attribute id="UUID" type="guid" value="41df73d4-2a51-46ea-868b-622db5899859" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,8);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,8);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="15" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -160,7 +160,7 @@
                     <attribute id="UUID" type="guid" value="442822fc-eb70-4617-9d9e-3129b3018550" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,9);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,9);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="17" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -177,7 +177,7 @@
                 </node>
                 <node id="Progression">
                     <attribute id="AllowImprovement" type="bool" value="true" />
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(ArcaneRecoveryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SpellSlot,2,6);ActionResource(ArcaneRecoveryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="19" />
                     <attribute id="Name" type="LSString" value="Wizard" />
                     <attribute id="ProgressionType" type="uint8" value="0" />
@@ -194,7 +194,7 @@
                     <attribute id="UUID" type="guid" value="9fe27693-866f-4fb6-8604-d7bc81f83916" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);Proficiency(Daggers);Proficiency(Sickles);Proficiency(Shortswords);Proficiency(Rapiers);Proficiency(Scimitars);Proficiency(Longswords);ProficiencyBonus(Skill,Performance);ActionResource(Bladesong,4,0);ActionResource(SorceryPoint,4,0);Tag(SORCERER_METAMAGIC)" />
+                    <attribute id="Boosts" type="LSString" value="Proficiency(LightArmor);Proficiency(Daggers);Proficiency(Sickles);Proficiency(Shortswords);Proficiency(Rapiers);Proficiency(Scimitars);Proficiency(Longswords);ProficiencyBonus(Skill,Performance);ActionResource(Bladesong,8,0);ActionResource(SorceryPoint,8,0);Tag(SORCERER_METAMAGIC)" />
                     <attribute id="Level" type="uint8" value="2" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="TraininginWarandSong;Bladesong_Armor_Message;Bladesong_Weapon_Message;Bladesong_Shield_Message;Bladesong_Weapon;Bladesong_Shield;Bladesong_Unarmed" />
@@ -204,7 +204,7 @@
                     <attribute id="UUID" type="guid" value="fb80a80b-d512-4ff5-89d8-b4fa6c29f96e" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="3" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -213,7 +213,7 @@
                     <attribute id="UUID" type="guid" value="ca3998ec-99fc-4058-ae08-587adeb9d8ec" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="4" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -222,7 +222,7 @@
                     <attribute id="UUID" type="guid" value="8c21951a-3922-417f-96d7-0d293206ac1d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(Bladesong,2,0);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(Bladesong,4,0);ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="5" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -231,7 +231,7 @@
                     <attribute id="UUID" type="guid" value="2765d077-93a1-4ada-9e11-977a878f429a" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="6" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="ExtraAttack" />
@@ -241,7 +241,7 @@
                     <attribute id="UUID" type="guid" value="ed500d02-ae15-434a-944e-65b845b62d74" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="7" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -250,7 +250,7 @@
                     <attribute id="UUID" type="guid" value="da7c97d3-6826-4ae1-ab53-67767575b7f2" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="8" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -259,7 +259,7 @@
                     <attribute id="UUID" type="guid" value="8c63cb2d-feba-4a08-9764-e4c07a302a46" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(Bladesong,2,0);ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(Bladesong,4,0);ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="9" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -268,7 +268,7 @@
                     <attribute id="UUID" type="guid" value="26a8f68a-cdaa-4fe0-93a6-75166992f129" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="10" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="SongOfDefense" />
@@ -278,7 +278,7 @@
                     <attribute id="UUID" type="guid" value="b05b29d0-8509-4bec-8953-4feeee0f6d85" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="11" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="PassivesAdded" type="LSString" value="SongOfDefense_6" />
@@ -288,7 +288,7 @@
                     <attribute id="UUID" type="guid" value="7038732a-6324-4af6-bb39-48086729f4fe" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="12" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -297,7 +297,7 @@
                     <attribute id="UUID" type="guid" value="ba41e719-10fb-43f3-8ec9-8eead0df33ee" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="13" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -306,7 +306,7 @@
                     <attribute id="UUID" type="guid" value="d35c743e-3f20-4786-8f41-93535ee7379d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="14" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -315,7 +315,7 @@
                     <attribute id="UUID" type="guid" value="3475f712-4125-42fd-ac30-06ba06f02a81" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="15" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -324,7 +324,7 @@
                     <attribute id="UUID" type="guid" value="310d06cd-ff78-4383-bd1b-3b34b5d4e62b" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="16" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -333,7 +333,7 @@
                     <attribute id="UUID" type="guid" value="1434e489-3eaf-4d63-91cb-9b7ac1f8145d" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="17" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -342,7 +342,7 @@
                     <attribute id="UUID" type="guid" value="bb2b7020-ad6e-466b-9cbb-fbc2d6c24fe4" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="18" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -351,7 +351,7 @@
                     <attribute id="UUID" type="guid" value="07a35582-54c9-4f12-8705-bc588764ca90" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="19" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
@@ -360,7 +360,7 @@
                     <attribute id="UUID" type="guid" value="5319d56c-0f07-4d69-894d-daa0cd063ec4" />
                 </node>
                 <node id="Progression">
-                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,2,0)" />
+                    <attribute id="Boosts" type="LSString" value="ActionResource(SorceryPoint,4,0)" />
                     <attribute id="Level" type="uint8" value="20" />
                     <attribute id="Name" type="LSString" value="BladesingingSchool" />
                     <attribute id="ProgressionType" type="uint8" value="1" />

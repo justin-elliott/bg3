@@ -52,6 +52,8 @@
     <content contentuid="hbc088086gbbaeg6434g0631g71aa46cb6833" version="1">Crafted from layered, magically-hardened hides, this supple leather armor pulses with a constant protective ward that blunts incoming strikes, and repels magical attacks.</content>
     <content contentuid="h2f450439gec31gd0d0g2a64g78ad13d0961f" version="1">Make an attack against an enemy and possibly &lt;LSTag Type="Status" Tooltip="DAZED"&gt;Daze&lt;/LSTag&gt; them.</content>
     <content contentuid="h3bd4d079g390agd38ag8501g679f92380418" version="1">When a creature misses you with a melee attack, you can retaliate with your own strike if you are wielding a melee weapon.</content>
+    <content contentuid="hfc953d87g142fg64fbg21f0g8417fe9ca6e2" version="1">Battle Magic</content>
+    <content contentuid="hf2b3b79bg6798gc3d0g97ccgb0460e396360" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b" version="1">Enchanted Blade</content>
     <content contentuid="h2ea4b7f2g0829g547cg5727gb13a68884b84" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls. This increases to +2 at &lt;LSTag&gt;Level 5&lt;/LSTag&gt;, and +3 at &lt;LSTag&gt;Level 9&lt;/LSTag&gt;.</content>
     <content contentuid="h6cdfaa40g2f02gebc9g99f3g9aebff6777a1" version="1">Celestial Haste</content>

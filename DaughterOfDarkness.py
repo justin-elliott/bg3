@@ -175,7 +175,7 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 1)
     def trickerydomain_level_1(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
             "Proficiency(HeavyArmor)",
             "Proficiency(MartialWeapons)",
             "ProficiencyBonus(Skill,SleightOfHand)",
@@ -200,15 +200,15 @@ class DaughterOfDarkness(Replacer):
     def trickerydomain_level_2(self, progress: Progression) -> None:
         progress.PassivesAdded = [self._quickened_spell, self._twinned_spell]
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions * 2},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 3)
     def trickerydomain_level_3(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.Selectors = (progress.Selectors or []) + [
             f"AddSpells({self._wizard_spelllist(2)})",
@@ -218,15 +218,15 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 4)
     def trickerydomain_level_4(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 5)
     def trickerydomain_level_5(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack"]
         progress.Selectors = (progress.Selectors or []) + [
@@ -237,14 +237,14 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 6)
     def trickerydomain_level_6(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 7)
     def trickerydomain_level_7(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.Selectors = (progress.Selectors or []) + [
             f"AddSpells({self._wizard_spelllist(4)})",
@@ -253,15 +253,15 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 8)
     def trickerydomain_level_8(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 9)
     def trickerydomain_level_9(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ReliableTalent"]
         progress.Selectors = (progress.Selectors or []) + [
@@ -272,16 +272,16 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 10)
     def trickerydomain_level_10(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ImprovedCombatSuperiority"]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 11)
     def trickerydomain_level_11(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_2"]
         progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack"]
@@ -292,65 +292,65 @@ class DaughterOfDarkness(Replacer):
     @progression(CharacterClass.CLERIC_TRICKERY, 12)
     def trickerydomain_level_12(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + [self._maneuvers.relentless]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 13)
     def trickerydomain_level_13(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 14)
     def trickerydomain_level_14(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 15)
     def trickerydomain_level_15(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 16)
     def trickerydomain_level_16(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 17)
     def trickerydomain_level_17(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 18)
     def trickerydomain_level_18(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 19)
     def trickerydomain_level_19(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
 
     @progression(CharacterClass.CLERIC_TRICKERY, 20)
     def trickerydomain_level_20(self, progress: Progression) -> None:
         progress.Boosts = (progress.Boosts or []) + [
-            "ActionResource(ChannelDivinity,1,0)",
-            "ActionResource(SuperiorityDie,1,0)",
+            f"ActionResource(ChannelDivinity,{self.args.actions},0)",
+            f"ActionResource(SuperiorityDie,{self.args.actions},0)",
         ]
         progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_3"]
         progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack_2"]
@@ -359,6 +359,7 @@ class DaughterOfDarkness(Replacer):
 def main() -> None:
     daughter_of_darkness = DaughterOfDarkness(
         classes=[CharacterClass.CLERIC_TRICKERY],
+        spells=2,
         level_20=True,
     )
     daughter_of_darkness.build()

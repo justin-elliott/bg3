@@ -1,7 +1,7 @@
 import os
 
 from functools import cached_property
-from moddb import level_map_ranges_format
+from moddb import Awareness, level_map_ranges_format
 from modtools.gamedata import PassiveData, SpellData, StatusData
 from modtools.lsx.game import (
     LevelMapSeries,
@@ -33,42 +33,7 @@ class FourElements(Replacer):
     @cached_property
     def _awareness(self) -> str:
         """The Awareness passive, a variant of Alert."""
-        name = self.make_name("Awareness")
-        awareness_level_map = f"{name}_LevelMap"
-
-        self.loca[f"{name}_DisplayName"] = "Awareness"
-        self.loca[f"{name}_Description"] = """
-            You have honed your senses to the utmost degree. You gain a +[1] bonus to Initiative, can't be
-            <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>, and attackers can't land
-            <LSTag Tooltip="CriticalHit">Critical Hits</LSTag> against you.
-            """
-
-        level_map = LevelMapSeries(
-            Level1=1,
-            Level5=2,
-            Level7=3,
-            Level9=4,
-            Level11=5,
-            Name=awareness_level_map,
-            UUID=self.make_uuid(awareness_level_map),
-        )
-        self.add(level_map)
-
-        self.add(PassiveData(
-            name,
-            DisplayName=self.loca[f"{name}_DisplayName"],
-            Description=self.loca[f"{name}_Description"],
-            DescriptionParams=[f"LevelMapValue({awareness_level_map})"],
-            Icon="Action_Barbarian_MagicAwareness",
-            Properties=["ForceShowInCC", "Highlighted"],
-            Boosts=[
-                *level_map_ranges_format(self, level_map, "Initiative({})"),
-                "StatusImmunity(SURPRISED)",
-                "CriticalHit(AttackTarget,Success,Never)",
-            ],
-        ))
-
-        return name
+        return Awareness(self.mod).add_awareness()
 
     def _spell_list(self, level: int, spells: list[str]) -> UUID:
         name = f"Way of the Four Elements level {level} spells"
@@ -253,6 +218,7 @@ class FourElements(Replacer):
         self.loca[f"{name}_Description"] = f"{description} Your next melee attacks deal an additional [1]."
 
         status = self._element_to_status(element)
+        turns = 1
 
         self.add(SpellData(
             name,
@@ -274,7 +240,7 @@ class FourElements(Replacer):
                 *spell_properties,
                 "ApplyStatus(SELF,MARTIAL_ARTS_BONUS_UNARMED_STRIKE,100,1)",
                 "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-                f"ApplyStatus(SELF,{status},100,1)",
+                f"ApplyStatus(SELF,{status},100,{turns})",
             ],
             SpellRoll="Attack(AttackType.MeleeUnarmedAttack)",
             SpellSuccess=[
@@ -287,7 +253,7 @@ class FourElements(Replacer):
                 "DealDamage(MartialArtsUnarmedDamage,Bludgeoning)",
                 f"DealDamage({self._elemental_damage},{element})",
             ],
-            TooltipStatusApply=[f"ApplyStatus({status},100,1)"],
+            TooltipStatusApply=[f"ApplyStatus({status},100,{turns})"],
             UseCosts=["ActionPoint:1"],
             HitCosts=[f"KiPoint:{ki_points}"],
             Range=zone_range,
@@ -556,7 +522,7 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 9)
     def fourelements_level_9(self, progress: Progression) -> None:
-        progress.PassivesAdded = []
+        progress.PassivesAdded = ["ReliableTalent"]
         progress.Selectors = [
             f"AddSpells({self._level_9_spell_list})",
         ]
@@ -567,7 +533,7 @@ class FourElements(Replacer):
 
     @progression(CharacterClass.MONK_FOURELEMENTS, 11)
     def fourelements_level_11(self, progress: Progression) -> None:
-        progress.PassivesAdded = ["ExtraAttack_2", "ReliableTalent"]
+        progress.PassivesAdded = ["ExtraAttack_2"]
         progress.PassivesRemoved = ["ExtraAttack"]
         progress.Selectors = [
             f"AddSpells({self._level_11_spell_list})",
@@ -616,6 +582,7 @@ def main() -> None:
     four_elements = FourElements(
         classes=[CharacterClass.MONK_FOURELEMENTS],
         actions=2,
+        level_20=True,
     )
     four_elements.build()
 

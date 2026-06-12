@@ -6,15 +6,6 @@
         <node id="root">
             <children>
                 <node id="LevelMapSeries">
-                    <attribute id="Level1" type="LSString" value="1" />
-                    <attribute id="Level5" type="LSString" value="2" />
-                    <attribute id="Level7" type="LSString" value="3" />
-                    <attribute id="Level9" type="LSString" value="4" />
-                    <attribute id="Level11" type="LSString" value="5" />
-                    <attribute id="Name" type="FixedString" value="FourElements_Awareness_LevelMap" />
-                    <attribute id="UUID" type="guid" value="8a3fbe44-89fc-9d1c-6af9-bd5dafacd159" />
-                </node>
-                <node id="LevelMapSeries">
                     <attribute id="Level1" type="LSString" value="0" />
                     <attribute id="Level3" type="LSString" value="1d6" />
                     <attribute id="Level5" type="LSString" value="2d6" />

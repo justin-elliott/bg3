@@ -7,9 +7,3 @@ function IsBasicMonkUnarmedMeleeAttack()
           | SpellId('Target_FlurryOfBlows')
           | SpellId('Target_StunningStrike_Unarmed'))
 end
-
--- Test that the character's level is in the closed interval [firstLevel, lastLevel].
-function CharacterLevelRange(firstLevel, lastLevel, entity)
-    entity = entity or context.Source
-    return ConditionResult(entity.Level >= firstLevel and entity.Level <= lastLevel)
-end

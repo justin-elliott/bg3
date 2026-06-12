@@ -352,11 +352,14 @@ class DaughterOfDarkness(Replacer):
             "ActionResource(ChannelDivinity,1,0)",
             "ActionResource(SuperiorityDie,1,0)",
         ]
+        progress.PassivesAdded = (progress.PassivesAdded or []) + ["ExtraAttack_3"]
+        progress.PassivesRemoved = (progress.PassivesRemoved or []) + ["ExtraAttack_2"]
 
 
 def main() -> None:
     daughter_of_darkness = DaughterOfDarkness(
         classes=[CharacterClass.CLERIC_TRICKERY],
+        level_20=True,
     )
     daughter_of_darkness.build()
 

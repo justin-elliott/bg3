@@ -119,6 +119,72 @@
                     <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
                     <attribute id="UUID" type="guid" value="69ae95e5-c379-f0a7-843c-0f1af65cea57" />
                 </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="13" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="a62c45ce-5631-fb7f-1688-aaf9f241e2d0" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="14" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="614f0a63-8ffb-5bf0-3ec4-5c56c4e9ea15" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="15" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="3a032ca2-4b54-d683-8ea7-af9150fe2ac1" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="16" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="200c780e-e8d5-2319-913a-247daa08bed1" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="17" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="0277408e-045f-8015-a9b3-cacc2934e983" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="18" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="66e2e570-dbef-fa51-5e1e-2fe4a7d96766" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="19" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="eb57f1d6-f49c-faa1-64b5-52e65fed79df" />
+                </node>
+                <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(ChannelDivinity,1,0);ActionResource(SuperiorityDie,1,0)" />
+                    <attribute id="Level" type="uint8" value="20" />
+                    <attribute id="Name" type="LSString" value="TrickeryDomain" />
+                    <attribute id="PassivesAdded" type="LSString" value="ExtraAttack_3" />
+                    <attribute id="PassivesRemoved" type="LSString" value="ExtraAttack_2" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="TableUUID" type="guid" value="044e4e07-6980-479f-80e5-3c4a84e691d1" />
+                    <attribute id="UUID" type="guid" value="20a90478-0b8a-f093-92e7-1207152dce12" />
+                </node>
             </children>
         </node>
     </region>

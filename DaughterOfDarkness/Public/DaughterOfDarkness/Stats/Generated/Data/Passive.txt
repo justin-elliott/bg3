@@ -19,7 +19,7 @@ data "DisplayName" "h6f5ebc4bg655dgd55bg24a0gdc748695b29f"
 
 new entry "DaughterOfDarkness_Awareness"
 type "PassiveData"
-data "Boosts" "Initiative(2);IF(CharacterLevelGreaterThan(4)):Initiative(1);IF(CharacterLevelGreaterThan(8)):Initiative(1);IF(CharacterLevelGreaterThan(11)):Initiative(1);StatusImmunity(SURPRISED)"
+data "Boosts" "Initiative(2);IF(CharacterLevelGreaterThan(4)):Initiative(1);IF(CharacterLevelGreaterThan(8)):Initiative(1);IF(CharacterLevelGreaterThan(12)):Initiative(1);IF(CharacterLevelGreaterThan(16)):Initiative(1);StatusImmunity(SURPRISED)"
 data "Description" "he129e209g0f67g4bdfgf3dcga3fcafd3d51d"
 data "DisplayName" "h5a439ef9g4f48gdfa9ga987gf7f2c2a3d153"
 data "Icon" "PassiveFeature_Generic_Threat"

@@ -264,6 +264,7 @@ class TutorialSupplies(Mod):
                 self._elemental_weapon_potion,
                 self._knowledge_potion,
                 self._flying_potion,
+                self._haste_potion,
                 self._overpowering_potion,
                 self._splinters_of_frost_potion,
                 self._storm_bolts_potion,
@@ -404,6 +405,37 @@ class TutorialSupplies(Mod):
             icon="Item_ALCH_Solution_Potion_Flying",
             boosts=["UnlockSpell(Projectile_Fly)"],
         )
+
+    @cached_property
+    def _haste_potion(self) -> str:
+        return self._add_potion(
+            "HastePotion",
+            display_name="Elixir of Haste",
+            description=f"""
+                Drinking this elixir grants <LSTag Type="Passive" Tooltip="{self._haste}">Haste</LSTag>.
+            """,
+            icon="Item_CONS_Potion_Speed",
+            passives=[self._haste],
+        )
+
+    @cached_property
+    def _haste(self) -> str:
+        haste = self.make_name("Haste")
+        self.add(PassiveData(
+            haste,
+            DisplayName=self.loca(f"{haste}_DisplayName", "Haste"),
+            Description=self.loca(f"{haste}_Description", """
+                You gain an additional action at levels 5, 11, and 20.
+            """),
+            Boosts=[
+                "IF(CharacterLevelGreaterThan(4)):ActionResource(ActionPoint,1,0)",
+                "IF(CharacterLevelGreaterThan(10)):ActionResource(ActionPoint,1,0)",
+                "IF(CharacterLevelGreaterThan(19)):ActionResource(ActionPoint,1,0)",
+            ],
+            Icon="Item_CONS_Potion_Speed",
+            Properties=["Highlighted"],
+        ))
+        return haste
 
     @cached_property
     def _knowledge_potion(self) -> str:
@@ -1025,9 +1057,10 @@ class TutorialSupplies(Mod):
                 steal precious seconds from the future to strike with impossible speed.
             """,
             bonus_damage="1d4",
-            bonus_damage_type="Force",
+            bonus_damage_type="Lightning",
             boosts=[self._weapon_celestial_haste_boost],
             passives_on_equip=[
+                "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
                 self._weapon_enchantment_progression,
                 self._weapon_celestial_haste,
             ],

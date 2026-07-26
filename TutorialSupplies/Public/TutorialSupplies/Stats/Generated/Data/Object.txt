@@ -33,6 +33,11 @@ type "Object"
 using "TutorialSupplies_BasePotion"
 data "RootTemplate" "430f7fdd-6b56-2499-9e56-5ee103f61b4c"
 
+new entry "TutorialSupplies_HastePotion"
+type "Object"
+using "TutorialSupplies_BasePotion"
+data "RootTemplate" "961e33bd-dde0-e2b0-9646-8431cb1debb0"
+
 new entry "TutorialSupplies_OverpoweringPotion"
 type "Object"
 using "TutorialSupplies_BasePotion"

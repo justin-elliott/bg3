@@ -10,10 +10,10 @@ data "Properties" "ForceShowInCC;Highlighted"
 
 new entry "TutorialSupplies_Haste"
 type "PassiveData"
-data "Boosts" "IF(CharacterLevelGreaterThan(4)):ActionResource(ActionPoint,1,0);IF(CharacterLevelGreaterThan(10)):ActionResource(ActionPoint,1,0);IF(CharacterLevelGreaterThan(19)):ActionResource(ActionPoint,1,0)"
+data "Boosts" "IF(CharacterLevelGreaterThan(2)):ActionResource(BonusActionPoint,1,0);IF(CharacterLevelGreaterThan(4)):ActionResource(ActionPoint,1,0);IF(CharacterLevelGreaterThan(7)):ActionResource(BonusActionPoint,1,0);IF(CharacterLevelGreaterThan(10)):ActionResource(ActionPoint,1,0);IF(CharacterLevelGreaterThan(13)):ActionResource(BonusActionPoint,1,0);IF(CharacterLevelGreaterThan(18)):ActionResource(BonusActionPoint,1,0);IF(CharacterLevelGreaterThan(19)):ActionResource(ActionPoint,1,0)"
 data "Description" "h8a8abd70g98e1g7395g0924gc75a14b4dba3"
 data "DisplayName" "hc6e5e793g8f6bg926dg3c49g137035a4c9cb"
-data "Icon" "Item_CONS_Potion_Speed"
+data "Icon" "Spell_Transmutation_Haste"
 data "Properties" "Highlighted"
 
 new entry "TutorialSupplies_Endurance"

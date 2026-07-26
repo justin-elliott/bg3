@@ -37,7 +37,7 @@
     <content contentuid="h33394154g0aadg8d05g145dgdc41b84d59bb" version="1">Elixir of Flying</content>
     <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc6e5e793g8f6bg926dg3c49g137035a4c9cb" version="1">Haste</content>
-    <content contentuid="h8a8abd70g98e1g7395g0924gc75a14b4dba3" version="1">You gain an additional action at levels 5, 11, and 20.</content>
+    <content contentuid="h8a8abd70g98e1g7395g0924gc75a14b4dba3" version="1">You gain additional bonus actions at levels 3, 8, 14, and 19, and additional actions at levels 5, 11, and 20.</content>
     <content contentuid="h99170a80g01a4g8430g3259g0c43e46ca025" version="1">Elixir of Haste</content>
     <content contentuid="h7b5d3d82gc370g4966g3a42g8a124bc0dc32" version="1">Drinking this elixir grants &lt;LSTag Type="Passive" Tooltip="TutorialSupplies_Haste"&gt;Haste&lt;/LSTag&gt;.</content>
     <content contentuid="hc004add3g69f6ge023g8728g4a149a022421" version="1">Potion of Overpowering</content>

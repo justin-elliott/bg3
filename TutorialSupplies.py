@@ -425,14 +425,19 @@ class TutorialSupplies(Mod):
             haste,
             DisplayName=self.loca(f"{haste}_DisplayName", "Haste"),
             Description=self.loca(f"{haste}_Description", """
-                You gain an additional action at levels 5, 11, and 20.
+                You gain additional bonus actions at levels 3, 8, 14, and 19, and additional actions at levels 5, 11,
+                and 20.
             """),
             Boosts=[
+                "IF(CharacterLevelGreaterThan(2)):ActionResource(BonusActionPoint,1,0)",
                 "IF(CharacterLevelGreaterThan(4)):ActionResource(ActionPoint,1,0)",
+                "IF(CharacterLevelGreaterThan(7)):ActionResource(BonusActionPoint,1,0)",
                 "IF(CharacterLevelGreaterThan(10)):ActionResource(ActionPoint,1,0)",
+                "IF(CharacterLevelGreaterThan(13)):ActionResource(BonusActionPoint,1,0)",
+                "IF(CharacterLevelGreaterThan(18)):ActionResource(BonusActionPoint,1,0)",
                 "IF(CharacterLevelGreaterThan(19)):ActionResource(ActionPoint,1,0)",
             ],
-            Icon="Item_CONS_Potion_Speed",
+            Icon="Spell_Transmutation_Haste",
             Properties=["Highlighted"],
         ))
         return haste

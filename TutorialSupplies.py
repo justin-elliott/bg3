@@ -1085,6 +1085,11 @@ class TutorialSupplies(Mod):
             """,
             bonus_damage="1d4",
             bonus_damage_type="Psychic",
+            boosts_on_equip_main_hand=[
+                f"UnlockSpell({self._sweeping_attack})",
+                f"UnlockSpell({self._pommel_strike})",
+                f"UnlockInterrupt({self._riposte_interrupt})",
+            ],
             passives_on_equip=[
                 "MAG_BansheeBless_Passive",
                 self._life_stealing,

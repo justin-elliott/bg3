@@ -6,9 +6,9 @@
         <node id="root">
             <children>
                 <node id="SpellList">
-                    <attribute id="Name" type="LSString" value="Bolster spell list" />
-                    <attribute id="Spells" type="LSString" value="OpenHand_Bolster" />
-                    <attribute id="UUID" type="guid" value="c6a9be9e-cd33-2878-4651-5fd30870da3d" />
+                    <attribute id="Name" type="LSString" value="Way of the Open Hand Monk Level 3 Spells" />
+                    <attribute id="Spells" type="LSString" value="OpenHand_Zone_FlurryOfBlows_Topple;OpenHand_Zone_FlurryOfBlows_Stagger;OpenHand_Zone_FlurryOfBlows_Push" />
+                    <attribute id="UUID" type="guid" value="fb074239-236b-e090-1083-6692f11880cd" />
                 </node>
             </children>
         </node>

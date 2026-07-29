@@ -180,8 +180,7 @@ class OpenHand(Replacer):
                 str(KI_PER_TURN),
             ],
             Icon="Action_Monk_WholenessOfBody",
-            Properties=["Highlighted", "OncePerTurn"],
-            Boosts=["ActionResource(BonusActionPoint,1,0)"],
+            Properties=["ForceShowInCC", "Highlighted", "OncePerTurn"],
             StatsFunctorContext=["OnTurn"],
             Conditions=["not HasStatus('DOWNED') and not Dead() and Combat()"],
             StatsFunctors=[

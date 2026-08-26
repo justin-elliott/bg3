@@ -720,6 +720,21 @@ class BonusFeatures(Replacer):
         return Movement(self.mod).add_remarkable_athlete()
 
     @cached_property
+    def _shadow_step(self) -> str:
+        name = self.make_name("ShadowStepUnlock")
+        self.add(PassiveData(
+            name,
+            DisplayName=self.loca(f"{name}_DisplayName", "Shadow Step"),
+            Description=self.loca(f"{name}_Description", """
+                Step through the shadows, teleporting to an unoccupied space you can see.
+            """),
+            Boosts=[f"UnlockSpell({Movement(self.mod).add_shadow_step()},Singular,,OncePerTurnNoRealtime)"],
+            Icon="Action_Monk_ShadowStep",
+            Properties=["IsHidden"],
+        ))
+        return name
+
+    @cached_property
     def _sturdy(self) -> str:
         name = self.make_name("Sturdy")
         self.add(PassiveData(
@@ -877,6 +892,7 @@ class BonusFeatures(Replacer):
             ( 5, 20, "Extra Attack",        self._extra_attacks),
             ( 5, 20, "Fire Walk",           self._fire_walk),
             ( 5, 20, "Misty Step",          self._misty_step),
+            ( 5, 20, "Shadow Step",         self._shadow_step),
             ( 7, 20, "Elemental Weapon",    self._elemental_weapon),
             ( 7, 20, "Evasion",             "Evasion"),
             ( 7, 20, "Wilderness Explorer", self._wilderness_explorer),

@@ -11,7 +11,7 @@
                     <attribute id="PassivesAdded" type="LSString" value="RageFrenzyUnlock;Berserker_DashBonusAction;FastHands;ImprovedCritical" />
                     <attribute id="PassivesRemoved" type="LSString" value="RageUnlock" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
-                    <attribute id="Selectors" type="LSString" value="AddSpells(17803035-4762-4143-8f2f-1143d47e4f40)" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(17803035-4762-4143-8f2f-1143d47e4f40);AddSpells(afe6b18c-47a7-4c5f-aed5-49dfe07e5234)" />
                     <attribute id="TableUUID" type="guid" value="b2a03b63-809f-4df9-a179-bf5b899082ef" />
                     <attribute id="UUID" type="guid" value="5ce67263-04f2-4ede-b30a-2eb962d828f2" />
                 </node>

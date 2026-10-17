@@ -72,6 +72,9 @@ class Berserker(Replacer):
             "FastHands",
             "ImprovedCritical",
         ]
+        progress.Selectors = (progress.Selectors or []) + [
+            "AddSpells(afe6b18c-47a7-4c5f-aed5-49dfe07e5234)", # Thaumaturgy
+        ]
 
     @progression(CharacterClass.BARBARIAN_BERSERKER, 4)
     def berserkerpath_level_4(self, _: Progression) -> None:

@@ -5,7 +5,7 @@ import os
 from functools import cached_property
 from moddb import CunningActions
 from modtools.gamedata import PassiveData, StatusData
-from modtools.lsx.game import Progression
+from modtools.lsx.game import Progression, SpellList
 from modtools.replacers import (
     CharacterClass,
     DontIncludeProgression,
@@ -65,14 +65,27 @@ class Berserker(Replacer):
     def _dash_bonus_action(self) -> None:
         return CunningActions(self.mod).add_dash_bonus_action()
 
+    @cached_property
+    def _level_3_spells(self) -> SpellList:
+        spells = SpellList(
+            Name="Berserker level 3 spells",
+            Spells=[
+                "Shout_ActionSurge",
+                self._dash_bonus_action,
+            ],
+            UUID=self.make_uuid("level_3_spells"),
+        )
+        self.mod.add(spells)
+        return spells
+
     @progression(CharacterClass.BARBARIAN_BERSERKER, 3)
     def berserkerpath_level_3(self, progress: Progression) -> None:
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
-            self._dash_bonus_action,
             "FastHands",
             "ImprovedCritical",
         ]
         progress.Selectors = (progress.Selectors or []) + [
+            f"AddSpells({self._level_3_spells.UUID})",
             "AddSpells(afe6b18c-47a7-4c5f-aed5-49dfe07e5234)", # Thaumaturgy
         ]
 

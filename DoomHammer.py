@@ -52,8 +52,7 @@ class DoomHammer(Mod):
             f"{shockwave}_Explosion",
             SpellType="Projectile",
             using="Projectile_UND_DuergarRaft_Hammer_Explosion",
-            SpellSuccess=["ApplyStatus(PRONE,100,2)", "DealDamage(1d4,Bludgeoning,Magical)"],
-            SpellFail=["DealDamage(1d4,Bludgeoning,Magical)"],
+            SpellProperties=["DealDamage(1d4,Bludgeoning)", "ExecuteWeaponFunctors(MainHand)"],
         ))
 
         self.add(Weapon(

@@ -628,7 +628,7 @@ class BonusFeatures(Replacer):
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
-            Boosts=[f"DamageReduction(All,Flat,ProficiencyBonus)"],
+            Boosts=["DamageReduction(All,Flat,ProficiencyBonus)"],
             Icon="PassiveFeature_UnarmoredDefense_Barbarian",
             Properties=["Highlighted"],
         ))
@@ -670,19 +670,21 @@ class BonusFeatures(Replacer):
     @cached_property
     def _martial_artist(self) -> str:
         name = self.make_name("MartialArtist")
+        BONUS = 2
         self.loca[f"{name}_DisplayName"] = "Martial Artist"
         self.loca[f"{name}_Description"] = """
-            When you make melee unarmed attacks, your Dexterity <LSTag Tooltip="AbilityModifier">Modifier</LSTag> is
-            added twice to the damage and <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
+            When you make melee unarmed attacks, you gain +[1] on damage and
+            <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag>.
             Additionally, your damage dice are rolled twice and use the highest result.
         """
         self.add(PassiveData(
             name,
             DisplayName=self.loca[f"{name}_DisplayName"],
             Description=self.loca[f"{name}_Description"],
+            DescriptionParams=[f"{BONUS}"],
             Boosts=[
-                "IF(IsMeleeUnarmedAttack()):RollBonus(Attack,DexterityModifier)",
-                "IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage(DexterityModifier)",
+                f"IF(IsMeleeUnarmedAttack()):RollBonus(Attack,{BONUS})",
+                f"IF(IsMeleeUnarmedAttack()):CharacterUnarmedDamage({BONUS})",
                 "IF(IsMeleeUnarmedAttack()):Reroll(Damage,20,false)",
             ],
             Icon="Action_Monk_FlurryOfBlows",

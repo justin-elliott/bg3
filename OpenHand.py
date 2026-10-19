@@ -159,33 +159,22 @@ class OpenHand(Replacer):
         """The Wholeness of Body subclass feature as a passive."""
         name = self.make_name("WholenessOfBody")
 
-        HEALTH_PER_TURN = "1d4"
-        KI_PER_TURN = "1"
-
         loca = self.mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Wholeness of Body"}
         loca[f"{name}_Description"] = {"en": """
-            Gain an additional bonus action.
-
-            While in combat, you heal [1] every turn, and restore [2]
-            <LSTag Type="ActionResource" Tooltip="KiPoint">Ki Point(s)</LSTag>.
+            You shrug off attacks, gaining Resistance to physical damage.
             """}
 
         self.mod.add(PassiveData(
             name,
             DisplayName=loca[f"{name}_DisplayName"],
             Description=loca[f"{name}_Description"],
-            DescriptionParams=[
-                f"RegainHitPoints({HEALTH_PER_TURN})",
-                str(KI_PER_TURN),
-            ],
             Icon="Action_Monk_WholenessOfBody",
-            Properties=["ForceShowInCC", "Highlighted", "OncePerTurn"],
-            StatsFunctorContext=["OnTurn"],
-            Conditions=["not HasStatus('DOWNED') and not Dead() and Combat()"],
-            StatsFunctors=[
-                f"RegainHitPoints({HEALTH_PER_TURN})",
-                f"RestoreResource(KiPoint,{KI_PER_TURN},0)",
+            Properties=["ForceShowInCC", "Highlighted"],
+            Boosts=[
+                "Resistance(Slashing,Resistant)",
+                "Resistance(Piercing,Resistant)",
+                "Resistance(Bludgeoning,Resistant)",
             ],
         ))
 

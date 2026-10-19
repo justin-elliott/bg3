@@ -72,7 +72,7 @@
     <content contentuid="hac8e2fc0gbad6gfa83gc083ge6e2b2ff218c" version="1">Light-Fingered</content>
     <content contentuid="h599b6d56gf1b2gf8f4g5698gc1427ee10ddf" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="SleightOfHand"&gt;Sleight of Hand&lt;/LSTag&gt;.</content>
     <content contentuid="h261f0cdeg5a49gb7ecg8d97g3e33c4af16df" version="1">Martial Artist</content>
-    <content contentuid="h349af716gd876g5eccgae75g1a2b2deaaac5" version="1">When you make melee unarmed attacks, your Dexterity &lt;LSTag Tooltip="AbilityModifier"&gt;Modifier&lt;/LSTag&gt; is added twice to the damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;. Additionally, your damage dice are rolled twice and use the highest result.</content>
+    <content contentuid="h349af716gd876g5eccgae75g1a2b2deaaac5" version="1">When you make melee unarmed attacks, you gain +[1] on damage and &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;. Additionally, your damage dice are rolled twice and use the highest result.</content>
     <content contentuid="h067af7e3g3d32gb6bdg9683g2ec3c9404d02" version="1">Persuasive</content>
     <content contentuid="h28b0de37gdfd2g7fdbge0dfgaf9ac3f2b895" version="1">You gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in &lt;LSTag Tooltip="Persuasion"&gt;Persuasion&lt;/LSTag&gt;.</content>
     <content contentuid="h2a8abff1g372agae84g801agd267e50a3eb0" version="1">Sturdy</content>

@@ -14,5 +14,5 @@
     <content contentuid="h65119590gc4b2gb9d0g14b8gea7b9aa9ecd9" version="1">Flurry of Blows: Push</content>
     <content contentuid="hcfdabde9g5061g8b87g6885gef9e6844c3ed" version="1">Strike a flurry of blows against all enemies in front of you, possibly pushing them [1] away.</content>
     <content contentuid="h2879c76ag6c83g7f2fg27ccgb869cde13bfb" version="1">Wholeness of Body</content>
-    <content contentuid="hd63ce49bg41deg8b17g0e90gc4eba44a4220" version="1">Gain an additional bonus action.&lt;br&gt;&lt;br&gt;While in combat, you heal [1] every turn, and restore [2] &lt;LSTag Type="ActionResource" Tooltip="KiPoint"&gt;Ki Point(s)&lt;/LSTag&gt;.</content>
+    <content contentuid="hd63ce49bg41deg8b17g0e90gc4eba44a4220" version="1">You shrug off attacks, gaining Resistance to physical damage.</content>
 </contentList>

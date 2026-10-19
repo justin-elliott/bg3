@@ -21,6 +21,25 @@ class OpenHand(Replacer):
                          description="A class replacer for OpenHand.",
                          **kwds)
 
+        self._ki_empowered_strikes()
+
+    def _ki_empowered_strikes(self) -> None:
+        """Ki Empowered Strikes, ignoring Bludgeoning resistance."""
+        name = "KiEmpoweredStrikes"
+        self.add(PassiveData(
+            name,
+            using=name,
+            Description=self.loca(f"{name}_Description", """
+                Your unarmed attacks ignore resistance to Bludgeoning damage, and count as magical for the purpose of
+                overcoming enemies' <LSTag Tooltip="Resistant">Resistance</LSTag> and
+                <LSTag Tooltip="Immune">Immunity</LSTag> to non-magical damage.
+            """),
+            Boosts=[
+                "UnarmedMagicalProperty()",
+                "IgnoreResistance(Bludgeoning,Resistant)",
+            ],
+        ))
+
     @cached_property
     def _awareness(self) -> str:
         return Awareness(self.mod).add_awareness()

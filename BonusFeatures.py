@@ -355,6 +355,9 @@ class BonusFeatures(Replacer):
     @cached_property
     def _born_leader(self) -> str:
         name = self.make_name("BornLeader")
+
+        INITIATIVE_BONUS = "2"
+
         skills = [
             (Skills.SLEIGHT_OF_HAND, "Sleight of Hand"),
             (Skills.PERCEPTION,      Skills.PERCEPTION),
@@ -364,18 +367,23 @@ class BonusFeatures(Replacer):
             (Skills.PERFORMANCE,     Skills.PERFORMANCE),
             (Skills.PERSUASION,      Skills.PERSUASION),
         ]
+
         self.add(PassiveData(
             name,
             DisplayName=self.loca(f"{name}_DisplayName", "Born Leader"),
             Description=self.loca(f"{name}_Description", f"""
                 You are an <LSTag Tooltip="Expertise">Expert</LSTag> in
                 {", ".join(f"""<LSTag Tooltip="{skill}">{name}</LSTag>""" for skill, name in skills[:-1])}{
-                    f""", and <LSTag Tooltip="{skills[-1][0]}">{skills[-1][1]}</LSTag>"""}
+                    f""", and <LSTag Tooltip="{skills[-1][0]}">{skills[-1][1]}</LSTag>"""}.
+                
+                You gain a +[1] bonus to Initiative Rolls.
             """),
+            DescriptionParams=[INITIATIVE_BONUS],
             Icon="Action_CommandersStrike",
             Boosts=[
                 *[f"ProficiencyBonus(Skill,{skill})" for skill, _ in skills],
                 *[f"ExpertiseBonus({skill})" for skill, _ in skills],
+                f"Initiative({INITIATIVE_BONUS})",
             ],
             Properties=["Highlighted"],
         ))

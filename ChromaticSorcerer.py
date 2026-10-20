@@ -1,15 +1,12 @@
 
 import os
 
-from moddb import (
-    Bolster,
-    Movement,
-    PackMule,
-)
+from moddb import spells_always_prepared
 from modtools.gamedata import PassiveData, StatusData
-from modtools.lsx.game import Progression
+from modtools.lsx.game import ClassDescription, Progression
 from modtools.replacers import (
     CharacterClass,
+    class_description,
     DontIncludeProgression,
     progression,
     Replacer,
@@ -30,16 +27,12 @@ class ChromaticSorcerer(Replacer):
     def _draconic_ancestry(self):
         name = "DraconicAncestry_Gold"
 
-        loca = self.mod.get_localization()
-        loca[f"{name}_DisplayName"] = {"en": "Draconic Ancestry: Chromatic"}
-        loca[f"{name}_Description"] = {"en": """
-            At Level 6, your spells are more powerful, and you are resistant to all damage.
-            """}
-
         self.mod.add(PassiveData(
             name,
-            DisplayName=loca[f"{name}_DisplayName"],
-            Description=loca[f"{name}_Description"],
+            DisplayName=self.loca(f"{name}_DisplayName", "Draconic Ancestry: Chromatic"),
+            Description=self.loca(f"{name}_Description", """
+                At Level 6, your spells are more powerful, and you are resistant to all damage.
+            """),
             Icon="PassiveFeature_DraconicAncestry_Gold",
             Properties="Highlighted",
             Boosts=[
@@ -49,8 +42,6 @@ class ChromaticSorcerer(Replacer):
         ))
 
     def _elemental_affinity(self):
-        loca = self.mod.get_localization()
-
         damage_types = [
             "Acid",
             "Bludgeoning",
@@ -97,14 +88,12 @@ class ChromaticSorcerer(Replacer):
             StatsFunctors=damage_stats_functors,
         ))
 
-        loca["ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL"] = {"en": """
-            Elemental Affinity: Additional Spell Damage
-            """}
-
         self.mod.add(StatusData(
             "ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL",
             StatusType="BOOST",
-            DisplayName=loca["ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL"],
+            DisplayName=self.loca("ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL", """
+                Elemental Affinity: Additional Spell Damage
+            """),
             Icon="PassiveFeature_ElementalAffinity_ExtraDamage",
             StackId="ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL",
             Boosts="IF(IsSpell()):DamageBonus(max(0,CharismaModifier))",
@@ -114,15 +103,13 @@ class ChromaticSorcerer(Replacer):
             StatusGroups="SG_RemoveOnRespec",
         ))
 
-        loca["ElementalAffinity_Resistance_Check_Description"] = {"en": """
-            You are <LSTag Tooltip="Resistant">Resistant</LSTag> to the damage type associated with your draconic
-            ancestry.
-            """}
-
         self.mod.add(PassiveData(
             "ElementalAffinity_Resistance_Check",
             DisplayName="h6948c0efg778bg41d3g88e4g9f4c658120a4;2",
-            Description=loca["ElementalAffinity_Resistance_Check_Description"],
+            Description=self.loca("ElementalAffinity_Resistance_Check_Description", """
+                You are <LSTag Tooltip="Resistant">Resistant</LSTag> to the damage type(s) associated with your draconic
+                ancestry.
+            """),
             Icon="Skill_Sorcerer_Passive_ElementalAffinity_Resistance",
             Properties="Highlighted",
             StatsFunctorContext="OnCreate",
@@ -130,14 +117,12 @@ class ChromaticSorcerer(Replacer):
         ))
 
         for _, affinity, resistance in affinities:
-            loca[f"ELEMENTALAFFINITY_{affinity}_RESISTANCE_TECHNICAL"] = {"en": f"""
-                Elemental Affinity: {affinity.title()} Resistance
-                """}
-
             self.mod.add(StatusData(
                 f"ELEMENTALAFFINITY_{affinity}_RESISTANCE_TECHNICAL",
                 StatusType="BOOST",
-                DisplayName=loca[f"ELEMENTALAFFINITY_{affinity}_RESISTANCE_TECHNICAL"],
+                DisplayName=self.loca(f"ELEMENTALAFFINITY_{affinity}_RESISTANCE_TECHNICAL", f"""
+                    Elemental Affinity: {affinity.title()} Resistance
+                """),
                 Icon="PassiveFeature_ElementalAffinity_ExtraDamage",
                 StackId="ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL",
                 Boosts=resistance,
@@ -147,21 +132,32 @@ class ChromaticSorcerer(Replacer):
                 StatusGroups="SG_RemoveOnRespec",
             ))
 
+    @class_description(CharacterClass.SORCERER)
+    @class_description(CharacterClass.SORCERER_DRACONIC)
+    @class_description(CharacterClass.SORCERER_SHADOWMAGIC)
+    @class_description(CharacterClass.SORCERER_STORM)
+    @class_description(CharacterClass.SORCERER_WILDMAGIC)
+    def sorcerer_can_learn_spells(self, description: ClassDescription) -> None:
+        description.CanLearnSpells = True
+        description.MustPrepareSpells = True
+
+    @progression(CharacterClass.SORCERER, range(1, 21))
+    @progression(CharacterClass.SORCERER, 1, is_multiclass=True)
     @progression(CharacterClass.SORCERER_DRACONIC, range(1, 21))
-    def draconicbloodline_levels(self, _: Progression) -> None:
-        raise DontIncludeProgression()
+    @progression(CharacterClass.SORCERER_SHADOWMAGIC, range(1, 21))
+    @progression(CharacterClass.SORCERER_STORM, range(1, 21))
+    @progression(CharacterClass.SORCERER_WILDMAGIC, range(1, 21))
+    def sorcerer_spells_always_prepared(self, progress: Progression) -> None:
+        if not spells_always_prepared(progress):
+            raise DontIncludeProgression()
 
 
 def main() -> None:
     chromatic_sorcerer = ChromaticSorcerer(
         classes=[CharacterClass.SORCERER_DRACONIC],
-        feats=2,
         spells=2,
-        warlock_spells=2,
         actions=4,
-        skills=4,
-        expertise=2,
-        full_caster=False,
+        level_20=True,
     )
     chromatic_sorcerer.build()
 

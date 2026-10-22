@@ -124,7 +124,7 @@ class ChromaticSorcerer(Replacer):
                     Elemental Affinity: {affinity.title()} Resistance
                 """),
                 Icon="PassiveFeature_ElementalAffinity_ExtraDamage",
-                StackId="ELEMENTALAFFINITY_CHROMATIC_EXTRA_DAMAGE_TECHNICAL",
+                StackId=f"ELEMENTALAFFINITY_{affinity}_RESISTANCE_TECHNICAL",
                 Boosts=resistance,
                 StatusPropertyFlags=[
                     "DisableOverhead", "DisableCombatlog", "DisablePortraitIndicator", "ApplyToDead", "IgnoreResting"

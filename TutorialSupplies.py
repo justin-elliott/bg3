@@ -60,6 +60,7 @@ class TutorialSupplies(Mod):
         ])
 
         self._update_helmet_of_arcane_acuity()
+        self._update_luminous_armor()
 
     def _reduce_weight(self, armor: list[str]) -> list[str]:
         for item in armor:
@@ -1492,6 +1493,20 @@ class TutorialSupplies(Mod):
             using=passive_name,
             Description=self.loca[f"{passive_name}_Description"],
             Conditions=["IsAttack()"],
+        ))
+
+    def _update_luminous_armor(self) -> None:
+        armor_name = "MAG_Radiant_RadiatingOrb_Armor"
+        self.add(Armor(
+            armor_name,
+            using=armor_name,
+            Boosts=["RollBonus(SavingThrow,2)"],
+            PassivesOnEquip=[
+                "MAG_Radiant_RadiatingOrb_Armor_Passive",
+                "MAG_ExoticMaterial_MediumArmor_Passive",
+            ],
+            StatusOnEquip=["MAG_EXOTIC_MATERIAL_ARMOR_TECHNICAL"],
+            Ability_Modifier_Cap=[],
         ))
 
 

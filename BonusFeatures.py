@@ -9,6 +9,7 @@ import os
 from collections.abc import Iterable
 from moddb import (
     Awareness,
+    BattleMagic,
     Bolster,
     ElementalWeapon,
     EmpoweredSpells,
@@ -25,38 +26,15 @@ from modtools.lsx.game import (
     Progression,
     ProgressionDescription,
     Skills,
-    SkillsDefaultValue,
 )
 from modtools.replacers import (
     progression,
     Replacer,
 )
 from modtools.text import Script, SpellSet
-from typing import Final
 
 
 class BonusFeatures(Replacer):
-    _SKILL_LIST: Final[list[str]] = [
-        Skills.PERSUASION,
-        Skills.SLEIGHT_OF_HAND,
-        Skills.ATHLETICS,
-        Skills.PERCEPTION,
-        Skills.INSIGHT,
-        Skills.INTIMIDATION,
-        Skills.DECEPTION,
-        Skills.STEALTH,
-        Skills.ARCANA,
-        Skills.HISTORY,
-        Skills.INVESTIGATION,
-        Skills.NATURE,
-        Skills.RELIGION,
-        Skills.ANIMAL_HANDLING,
-        Skills.MEDICINE,
-        Skills.SURVIVAL,
-        Skills.PERFORMANCE,
-        Skills.ACROBATICS,
-    ]
-
     _no_selection_ids: set[str]
     _passive_list_uuids: set[str]
     _loca_handles: dict[str, str]
@@ -351,6 +329,10 @@ class BonusFeatures(Replacer):
     @cached_property
     def _awareness(self) -> str:
         return Awareness(self.mod).add_awareness()
+
+    @cached_property
+    def _battle_magic(self) -> str:
+        return BattleMagic(self.mod).add_battle_magic()
 
     @cached_property
     def _born_leader(self) -> str:
@@ -877,6 +859,7 @@ class BonusFeatures(Replacer):
             ( 1, 20, "Archer",              self._archer),
             ( 1, 20, "Armoured",            self._armored),
             ( 1, 20, "Awareness",           self._awareness),
+            ( 1, 20, "Battle Magic",        self._battle_magic),
             ( 1,  1, "Born Leader",         self._born_leader),
             ( 1, 20, "Duelist",             self._duelist),
             ( 1, 20, "Devil's Sight",       "DevilsSight"),
@@ -1254,22 +1237,13 @@ class BonusFeatures(Replacer):
 
     @progression(BASE_CHARACTER_RACES, 1)
     def level_1(self, progress: Progression) -> None:
-        bonus_skills = 4 if progress.Name != "Human" else 6
         progress.PassivesAdded = (progress.PassivesAdded or []) + [
             self._restoration_after_combat,
         ]
-        progress.Selectors = [s for s in (progress.Selectors or []) if not s.startswith("SelectSkills(")] + [
-            f"SelectSkills(f974ebd6-3725-4b90-bb5c-2b647d41615d,{bonus_skills},{self.mod.get_name()})",
+        progress.Selectors = (progress.Selectors or []) + [
             "SelectPassives({},1,{})".format(*self._abilities_bonus_passive_list(progress)),
             "SelectPassives({},1,{})".format(*self._bonus_passive_list(progress)),
         ]
-        self.add(SkillsDefaultValue(
-            Add=self._SKILL_LIST,
-            Level=1,
-            SelectorId=self.mod.get_name(),
-            TableUUID=progress.TableUUID,
-            UUID=self.make_uuid(f"{progress.Name}_SkillsDefaultValue"),
-        ))
 
     @progression(BASE_CHARACTER_RACES, 2)
     def level_2(self, progress: Progression) -> None:
@@ -1288,5 +1262,6 @@ class BonusFeatures(Replacer):
 if __name__ == "__main__":
     bonus_features = BonusFeatures(
         classes=[CharacterClass.ROGUE],  # Ignored, but prevents multiclass slots from being updated
+        level_20=True,
     )
     bonus_features.build()

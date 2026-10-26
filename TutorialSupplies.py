@@ -1071,6 +1071,7 @@ class TutorialSupplies(Mod):
                 "MAG_Light_FarlinDagger_Passive",
             ],
             passives_off_hand=["MAG_WYRM_Farlin_Dagger_Passive"],
+            weapon_statuses=["MAG_FARLIN_DAGGER_LIGHT_TECHNICAL"],
         )
 
     @cached_property

@@ -37,7 +37,6 @@ class ChromaticSorcerer(Replacer):
             Properties="Highlighted",
             Boosts=[
                 "UnlockSpell(Target_Command_Container,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,Charisma)",
-                "UnlockSpell(Projectile_EldritchBlast,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,Charisma)",
             ],
         ))
 
@@ -131,25 +130,6 @@ class ChromaticSorcerer(Replacer):
                 ],
                 StatusGroups="SG_RemoveOnRespec",
             ))
-
-    @class_description(CharacterClass.SORCERER)
-    @class_description(CharacterClass.SORCERER_DRACONIC)
-    @class_description(CharacterClass.SORCERER_SHADOWMAGIC)
-    @class_description(CharacterClass.SORCERER_STORM)
-    @class_description(CharacterClass.SORCERER_WILDMAGIC)
-    def sorcerer_can_learn_spells(self, description: ClassDescription) -> None:
-        description.CanLearnSpells = True
-        description.MustPrepareSpells = True
-
-    @progression(CharacterClass.SORCERER, range(1, 21))
-    @progression(CharacterClass.SORCERER, 1, is_multiclass=True)
-    @progression(CharacterClass.SORCERER_DRACONIC, range(1, 21))
-    @progression(CharacterClass.SORCERER_SHADOWMAGIC, range(1, 21))
-    @progression(CharacterClass.SORCERER_STORM, range(1, 21))
-    @progression(CharacterClass.SORCERER_WILDMAGIC, range(1, 21))
-    def sorcerer_spells_always_prepared(self, progress: Progression) -> None:
-        if not spells_always_prepared(progress):
-            raise DontIncludeProgression()
 
 
 def main() -> None:

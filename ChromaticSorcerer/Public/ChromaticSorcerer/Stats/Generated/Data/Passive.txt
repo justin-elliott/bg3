@@ -2,7 +2,7 @@
 
 new entry "DraconicAncestry_Gold"
 type "PassiveData"
-data "Boosts" "UnlockSpell(Target_Command_Container,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,Charisma);UnlockSpell(Projectile_EldritchBlast,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,Charisma)"
+data "Boosts" "UnlockSpell(Target_Command_Container,AddChildren,d136c5d9-0ff0-43da-acce-a74a07f8d6bf,,Charisma)"
 data "Description" "hbca8fdaeg0241g3871g3219g1eb015496aa3"
 data "DisplayName" "h8cac16a9g3dbcg7cc1g60eage618edd520d0"
 data "Icon" "PassiveFeature_DraconicAncestry_Gold"

@@ -87,8 +87,8 @@ class Mod:
         self._lsx = Lsx()
         self._text = TextCollection()
 
-    def make_name(self, suffix: str) -> str:
-        return f"{self.get_prefix()}_{suffix}"
+    def make_name(self, suffix: str, *, key: str = "name") -> str:
+        return f"{self.get_prefix(key=key)}_{suffix}"
 
     def make_uuid(self, key: str) -> UUID:
         m = hashlib.sha256()
@@ -105,9 +105,9 @@ class Mod:
     def get_name(self) -> str:
         return self._name
 
-    def get_prefix(self) -> str:
+    def get_prefix(self, *, key: str = "name") -> str:
         """Get the module name with all non-alphanumeric, non-underscore characters removed."""
-        return re.sub(r"\W+", "", self._name)
+        return re.sub(r"\W+", "", getattr(self, f"_{key}"))
 
     def get_description(self) -> str:
         return self._description

@@ -10,7 +10,7 @@ from modtools.mod import Mod
 
 def storm_bolt(mod: Mod) -> str:
     """Add the Storm Bolt cantrip, returning its name."""
-    name = f"{mod.get_prefix()}_StormBolt"
+    name = mod.make_name("StormBolt", key="author")
 
     loca = mod.get_localization()
     loca[f"{name}_DisplayName"] = {"en": "Storm Bolt"}
@@ -47,7 +47,7 @@ def storm_bolt(mod: Mod) -> str:
 
 def storm_bolts(mod: Mod) -> str:
     """Add the Storm Bolts cantrip, returning its name."""
-    name = mod.make_name("StormBolts")
+    name = mod.make_name("StormBolts", key="author")
 
     mod.loca[f"{name}_DisplayName"] = "Storm Bolts"
     mod.loca[f"{name}_Description"] = "Project [1] bolt(s) of lightning."

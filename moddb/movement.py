@@ -20,7 +20,7 @@ class Movement:
     @cached_property
     def _fast_movement_display_name(self):
         """Get the localization handle for the Fast Movement display name."""
-        display_name = f"{self._mod.get_prefix()}_FastMovement_DisplayName"
+        display_name = self._mod.make_name("FastMovement_DisplayName", key="author")
         loca = self._mod.get_localization()
         loca[display_name] = {"en": "Fast Movement"}
         return loca[display_name]
@@ -28,7 +28,7 @@ class Movement:
     @cached_property
     def _fast_movement_description(self):
         """Get the localization handle for the Fast Movement description."""
-        description = f"{self._mod.get_prefix()}_FastMovement_Description"
+        description = self._mod.make_name("FastMovement_Description", key="author")
         loca = self._mod.get_localization()
         loca[description] = {"en": """
             <LSTag Tooltip="MovementSpeed">Movement speed</LSTag> increased by [1].
@@ -37,7 +37,7 @@ class Movement:
 
     def add_fast_movement(self, meters_per_round: float, display_name: Optional[str] = None) -> str:
         """Add a fast movement passive, returning its name."""
-        name = f"{self._mod.get_prefix()}_FastMovement_{int(meters_per_round*10)}"
+        name = self._mod.make_name(f"FastMovement_{int(meters_per_round*10)}", key="name") # stack with other mods
         self._mod.add(PassiveData(
             name,
             DisplayName=display_name or self._fast_movement_display_name,
@@ -52,7 +52,7 @@ class Movement:
 
     def add_fire_walk(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Fire Walk spell, returning its name."""
-        name = f"{self._mod.get_prefix()}_FireWalk"
+        name = self._mod.make_name("FireWalk", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Fire Walk"}
@@ -81,7 +81,7 @@ class Movement:
                        description: str | None = None,
                        icon: str | None = None) -> str:
         """Add the Misty Step cantrip, returning its name."""
-        name = f"{self._mod.get_prefix()}_MistyStep"
+        name = self._mod.make_name("MistyStep", key="author")
         self._mod.add(SpellData(
             name,
             using="Target_MistyStep",
@@ -101,7 +101,7 @@ class Movement:
                                passive_name: str | None = None,
                                movement_speed: float = 3.0,
                                jump_distance: float = 1.5) -> str:
-        name = self._mod.make_name(passive_name or "RemarkableAthlete")
+        name = self._mod.make_name(passive_name or "RemarkableAthlete", key="author")
         self._mod.add(PassiveData(
             name,
             DisplayName=self._mod.loca(f"{name}_DisplayName", display_name or "Remarkable Athlete"),
@@ -149,7 +149,7 @@ class Movement:
 
     def add_shadow_step(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Shadow Step cantrip, returning its name."""
-        name = f"{self._mod.get_prefix()}_ShadowStep"
+        name = self._mod.make_name("ShadowStep", key="author")
         self._mod.add(SpellData(
             name,
             using="Target_MAG_Shadow_Shadowstep",
@@ -167,7 +167,7 @@ class Movement:
 
     def add_shadow_step_monk(self, use_costs: str | list[str] = "BonusActionPoint:1") -> str:
         """Add the Shadow Step cantrip, returning its name. This variant is only suitable for the Monk class."""
-        name = f"{self._mod.get_prefix()}_ShadowStepMonk"
+        name = self._mod.make_name("ShadowStepMonk", key="author")
         self._mod.add(SpellData(
             name,
             using="Target_ShadowStep",
@@ -183,7 +183,7 @@ class Movement:
         return name
 
     def add_wilderness_explorer(self, *, display_name: str | None = None, description: str | None = None) -> str:
-        name = self._mod.make_name("WildernessExplorer")
+        name = self._mod.make_name("WildernessExplorer", key="author")
         display_name = display_name or "Wilderness Explorer"
         description = description or """
             You have become an expert at moving through the wilderness.

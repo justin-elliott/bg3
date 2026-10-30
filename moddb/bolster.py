@@ -20,7 +20,7 @@ class Bolster:
     @cache
     def add_bolster(self) -> str:
         """Add the Bolster spell, returning its name."""
-        name = f"{self._mod.get_prefix()}_Bolster"
+        name = self._mod.make_name("Bolster", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Bolster"}

@@ -32,7 +32,7 @@ class EmpoweredSpells:
                 <LSTag Tooltip="SpellcastingAbilityModifier">Spellcasting Modifier</LSTag>
             """
 
-        name = f"{self._mod.get_prefix()}_EmpoweredSpells_{ability_name}Modifier"
+        name = self._mod.make_name(f"EmpoweredSpells_{ability_name}Modifier", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Empowered Spells"}

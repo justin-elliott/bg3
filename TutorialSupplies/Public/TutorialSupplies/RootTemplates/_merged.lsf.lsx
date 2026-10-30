@@ -970,13 +970,7 @@
                     <attribute id="Stats" type="FixedString" value="TutorialSupplies_BorrowedTime" />
                     <attribute id="Type" type="FixedString" value="item" />
                     <children>
-                        <node id="StatusList">
-                            <children>
-                                <node id="Status">
-                                    <attribute id="Object" type="FixedString" value="MAG_FARLIN_DAGGER_LIGHT_TECHNICAL" />
-                                </node>
-                            </children>
-                        </node>
+                        <node id="StatusList" />
                     </children>
                 </node>
                 <node id="GameObjects">

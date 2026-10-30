@@ -338,10 +338,17 @@ class BonusFeatures(Replacer):
     def _born_leader(self) -> str:
         name = self.make_name("BornLeader")
 
-        INITIATIVE_BONUS = "2"
+        levels = [5, 9, 12] if not self.args.level_20 else [5, 9, 13, 17]  # ensure parity with Alert if not L20
+        initiative_boosts = [
+            "Initiative(2)",
+            *[f"IF(CharacterLevelGreaterThan({level - 1})):Initiative(1)" for level in levels],
+        ]
 
         skills = [
+            (Skills.ATHLETICS,       Skills.ATHLETICS),
             (Skills.SLEIGHT_OF_HAND, "Sleight of Hand"),
+            (Skills.STEALTH,         Skills.STEALTH),
+            (Skills.INSIGHT,         Skills.INSIGHT),
             (Skills.PERCEPTION,      Skills.PERCEPTION),
             (Skills.SURVIVAL,        Skills.SURVIVAL),
             (Skills.DECEPTION,       Skills.DECEPTION),
@@ -358,14 +365,15 @@ class BonusFeatures(Replacer):
                 {", ".join(f"""<LSTag Tooltip="{skill}">{name}</LSTag>""" for skill, name in skills[:-1])}{
                     f""", and <LSTag Tooltip="{skills[-1][0]}">{skills[-1][1]}</LSTag>"""}.
                 
-                You gain a +[1] bonus to Initiative Rolls.
+                Your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> is added to your Initiative rolls,
+                and you can't be <LSTag Type="Status" Tooltip="SURPRISED">Surprised</LSTag>.
             """),
-            DescriptionParams=[INITIATIVE_BONUS],
             Icon="Action_CommandersStrike",
             Boosts=[
                 *[f"ProficiencyBonus(Skill,{skill})" for skill, _ in skills],
                 *[f"ExpertiseBonus({skill})" for skill, _ in skills],
-                f"Initiative({INITIATIVE_BONUS})",
+                *initiative_boosts,
+                "StatusImmunity(SURPRISED)",
             ],
             Properties=["Highlighted"],
         ))

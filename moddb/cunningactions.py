@@ -20,7 +20,7 @@ class CunningActions:
 
     def add_dash_bonus_action(self) -> str:
         """Add Dash: Bonus Action."""
-        name = f"{self._mod.get_prefix()}_DashBonusAction"
+        name = self._mod.make_name("DashBonusAction", key="author")
         self._mod.add(SpellData(
             name,
             using="Shout_Dash_BonusAction",
@@ -31,7 +31,7 @@ class CunningActions:
 
     def add_running_jump(self) -> str:
         """Add the Running Jump passive, returning its name."""
-        running_jump = f"{self._mod.get_prefix()}_RunningJump"
+        running_jump = self._mod.make_name("RunningJump", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{running_jump}_DisplayName"] = {"en": "Running Jump"}

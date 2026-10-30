@@ -17,7 +17,7 @@ class Awareness:
 
     def add_awareness(self, initiative: int = 0, *, icon: str = "PassiveFeature_Generic_Threat") -> str:
         """The Awareness passive, a variant of Alert."""
-        name = self._mod.make_name("Awareness")
+        name = self._mod.make_name("Awareness", key="author")
 
         if initiative > 0:
             description = """

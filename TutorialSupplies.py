@@ -1066,12 +1066,11 @@ class TutorialSupplies(Mod):
             bonus_damage_type="Lightning",
             boosts=[self._weapon_celestial_haste_boost],
             passives_on_equip=[
+                "MAG_ChargedLightning_Charge_OnSpellDamage_Passive",
                 self._weapon_enchantment_progression,
                 self._weapon_celestial_haste,
-                "MAG_Light_FarlinDagger_Passive",
             ],
             passives_off_hand=["MAG_WYRM_Farlin_Dagger_Passive"],
-            weapon_statuses=["MAG_FARLIN_DAGGER_LIGHT_TECHNICAL"],
         )
 
     @cached_property

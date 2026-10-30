@@ -3,37 +3,37 @@
 <contentList>
     <content contentuid="h23716a4fgb508g104fg29b2gf4980f17f7e6" version="1">Comfortable Boots</content>
     <content contentuid="h5eb8d588g8e09gd643g3c23g0fee5a00f8c1" version="1">Made of soft, sheepskin-lined leather, these are the perfect boots to wear around the campfire on a chilly night.</content>
-    <content contentuid="h0e7602cfg39ecgecd4g4904g878eae09addb" version="1">Awareness</content>
-    <content contentuid="he2d9b29dg9fbag1320ge783g0e3c3473cdcb" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
+    <content contentuid="he56b06ffg0968ge4b8ga86age731b0361863" version="1">Awareness</content>
+    <content contentuid="hee3b0097g2bd2g0f05g9bafg419df9a5e8b0" version="1">Your &lt;LSTag Tooltip="ProficiencyBonus"&gt;Proficiency Bonus&lt;/LSTag&gt; is added to your Initiative rolls, and you can't be &lt;LSTag Type="Status" Tooltip="SURPRISED"&gt;Surprised&lt;/LSTag&gt;.</content>
     <content contentuid="hbe0fca97g9140gc370g2bd0g7297d3007c61" version="1">Elixir of Awareness</content>
-    <content contentuid="h7c6140f8ga9a4g73d4g882egc7169930d1ca" version="1">Drinking this elixir grants &lt;LSTag Type="Passive" Tooltip="TutorialSupplies_Awareness"&gt;Awareness&lt;/LSTag&gt;.</content>
-    <content contentuid="h6b3ee365g823agac20g3f9bg79f35608a04c" version="1">Bolster</content>
-    <content contentuid="h07474179g9311g2cc6gb0ddg162abb033f10" version="1">Bolster your allies against the dangers that lie ahead.</content>
-    <content contentuid="hea03581bg5dbbg9b07ga594g6a8d4fdc26e1" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
+    <content contentuid="h7c6140f8ga9a4g73d4g882egc7169930d1ca" version="1">Drinking this elixir grants &lt;LSTag Type="Passive" Tooltip="justinelliott_Awareness"&gt;Awareness&lt;/LSTag&gt;.</content>
+    <content contentuid="hb0765ffbgb0e7g055eg510bg004502bc75c8" version="1">Bolster</content>
+    <content contentuid="h160ade1cgb278g12f5ga7a3g87ac00e104d4" version="1">Bolster your allies against the dangers that lie ahead.</content>
+    <content contentuid="h5e7f42bfg3772g2413gccbbg542aa71329ac" version="1">Hit point maximum increased by [1].&lt;br&gt;&lt;br&gt;When you roll a 1 on an &lt;LSTag Tooltip="AttackRoll"&gt;Attack Roll&lt;/LSTag&gt;, &lt;LSTag Tooltip="AbilityCheck"&gt;Ability Check&lt;/LSTag&gt;, or &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt;, you can reroll the die and must use the new roll.&lt;br&gt;&lt;br&gt;You can see in the dark up to [2].</content>
     <content contentuid="h3967067cgfdb2g159cg4edagf63d65d95052" version="1">Elixir of Bolstering</content>
-    <content contentuid="h839f3b71gdc84gd1d7g7339g471be1bb0fd0" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
-    <content contentuid="h328a1897g6227ge675g7324gbdbe79856d80" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional 1d4 damage of your choice.</content>
-    <content contentuid="h6b0246b9g8522g508bg5aa1g2f50b945f5fe" version="1">Has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals an additional [2].</content>
-    <content contentuid="h4e275b1egbdd7g6f97gaf68gb4917cb8ea7b" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hcdf7857dgd06bg0487g0393g62769ed32885" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hf72ad7bdg035cgc8b9g0477g35e8a9b13b3b" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="hd0576e14gf474g67c4gdb1ag7bad8f22f253" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
-    <content contentuid="h61a0e89dg108eg955fg1d5eg12109ba6f397" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
+    <content contentuid="h839f3b71gdc84gd1d7g7339g471be1bb0fd0" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="justinelliott_Bolster"&gt;Bolster&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h4669fd54ge95eg0255g2c2cg05e640aae8d4" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional 1d4 damage of your choice.</content>
+    <content contentuid="h78ef33c8gf9cag35beg5fddg1f3a616a845f" version="1">Has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals an additional [2].</content>
+    <content contentuid="hc473bbe3gfeeag8ab1gc021gd57e4d5e501c" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
+    <content contentuid="h94a619c5g2787g8e13gcb86gec5549f8e54b" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
+    <content contentuid="hb7078a46g6727g69abgf76bg00fe5d4c4b61" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
+    <content contentuid="hdedc3ea7g3746g3fbfgb2bage18467dd3229" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
+    <content contentuid="ha58f9c58geb30g9947g65a2gb8f5b5248082" version="1">Imbue a weapon with elemental power. It receives a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, and deals an additional [2].</content>
     <content contentuid="h7bae724cgf856g7c81g8c92gb7246e37f075" version="1">Elixir of Elemental Weaponry</content>
-    <content contentuid="hdb237db6g0491g5b30g157bgd2e858a22e8e" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_ElementalWeapon"&gt;Elemental Weapon&lt;/LSTag&gt; spell.</content>
-    <content contentuid="h59501b24g40cegff8fgd9ffgdba5143a5320" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
-    <content contentuid="h1633bb7bg10a4g2e83g5670g61499ca44787" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
-    <content contentuid="hc1fa73ccg5a57g9c59g5730g9f463245086d" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
-    <content contentuid="hda73153ag1da3g863fgfe7egba43996eed8c" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
-    <content contentuid="h39c84436g8c02g4552g9f89gb3ba2775fdbf" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
-    <content contentuid="hc68b3e7egd1ebg76adgb114g28d2b950c135" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
-    <content contentuid="h4666f467ga775g154bg3bc5g6f4c26622085" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
-    <content contentuid="haf3cc0acga63cg29b7gf3e6gefc88f4cc360" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
-    <content contentuid="h16d2b146ge3a3gf71dg8bbeg60c601578221" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
-    <content contentuid="h1759d50bgd5cdg61bdgd316g81744416d0fb" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
-    <content contentuid="h325e3399gf282ge8fegc63cgb12e2f17b079" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of a chosen &lt;LSTag Tooltip="Abilities"&gt;Ability&lt;/LSTag&gt;.</content>
+    <content contentuid="hdb237db6g0491g5b30g157bgd2e858a22e8e" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="justinelliott_ElementalWeapon"&gt;Elemental Weapon&lt;/LSTag&gt; spell.</content>
+    <content contentuid="h01b7c9ecg9ea8g8e46g37a3g53338d7f7414" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
+    <content contentuid="hd5389149g44cag602cg668eg1f1ff1d7ac42" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Deception, Intimidation, Performance, and Persuasion.</content>
+    <content contentuid="h75ccc9a0g69bfg91e9g076cg33c618685922" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
+    <content contentuid="h2a2bdfcdgd678g2bb5g57fdgc8a00ad321eb" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Acrobatics, Sleight of Hand, and Stealth.</content>
+    <content contentuid="h2f11249dg7107g0017gbc25g0614ae09e237" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
+    <content contentuid="h0491f032g1f7eg6e45gba04gd489c8d4a793" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Arcana, History, Investigation, Nature, and Religion.</content>
+    <content contentuid="h78966c04g3ec8gb9e3gbb28g96d46a7e61c4" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
+    <content contentuid="haa14ffa1ge500g2b95ga9ddg9c111e543d1a" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Athletics.</content>
+    <content contentuid="h81b78cecga425ga121g9abbg3d56dfcb2e5b" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
+    <content contentuid="h22afa686gd10cg5722ge1a0g97d9e221d902" version="1">Has &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in Animal Handling, Insight, Medicine, Perception, and Survival.</content>
+    <content contentuid="h140d7b10ga969g470bgbc22g52b12b5ecfa7" version="1">Gain &lt;LSTag Tooltip="Expertise"&gt;Expertise&lt;/LSTag&gt; in all &lt;LSTag Tooltip="Skill"&gt;Skills&lt;/LSTag&gt; of a chosen &lt;LSTag Tooltip="Abilities"&gt;Ability&lt;/LSTag&gt;.</content>
     <content contentuid="hb8769852g0917g5600g5135gac767f813d0f" version="1">Elixir of Knowledge</content>
-    <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
+    <content contentuid="h203966cdgbce3g9ebeg4f8cg687e8e210e5f" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="justinelliott_KnowledgeOfTheAges"&gt;Knowledge of the Ages&lt;/LSTag&gt;, and &lt;LSTag Type="Passive" Tooltip="JackOfAllTrades"&gt;Jack of All Trades&lt;/LSTag&gt;.</content>
     <content contentuid="h33394154g0aadg8d05g145dgdc41b84d59bb" version="1">Elixir of Flying</content>
     <content contentuid="h6c7d93a3g6af3g272eg8cbege0ee87b3e93c" version="1">Drinking this elixir grants &lt;LSTag Type="Spell" Tooltip="Projectile_Fly"&gt;Fly&lt;/LSTag&gt;.</content>
     <content contentuid="hc6e5e793g8f6bg926dg3c49g137035a4c9cb" version="1">Haste</content>
@@ -46,18 +46,18 @@
     <content contentuid="h8042a01dg53fag2037gfaf9g02e5729ae252" version="1">Conjure [1] splinter(s) of ice. Reduces the target's &lt;LSTag Tooltip="MovementSpeed"&gt;movement speed&lt;/LSTag&gt; by [2].</content>
     <content contentuid="h8cffd259g12e2ga24agc438gb8e4fddd0ac5" version="1">Potion of Splinters of Frost</content>
     <content contentuid="h34fe0990gc654g720bgb9acg738578b4a612" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_SplintersOfFrost"&gt;Splinters of Frost&lt;/LSTag&gt; cantrip.</content>
-    <content contentuid="hfe30e801g716cg67a4g871eg00c7bb4a8063" version="1">Storm Bolts</content>
-    <content contentuid="h34e24a53gf840ge605g241eg6071e0dabccc" version="1">Project [1] bolt(s) of lightning.</content>
+    <content contentuid="h712556bbg5a8bgc5e4gb1a2g925d81d464a3" version="1">Storm Bolts</content>
+    <content contentuid="hd03297fcg9d27g96a6gb80fgd3edf83f64cb" version="1">Project [1] bolt(s) of lightning.</content>
     <content contentuid="h26dd9429g659agef25g0d5bg58443a75a149" version="1">Potion of Storm Bolts</content>
-    <content contentuid="h1e888791g306bgd1b6g4bf8gfc28b4c1e623" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="TutorialSupplies_StormBolts"&gt;Storm Bolts&lt;/LSTag&gt; cantrip.</content>
+    <content contentuid="h1e888791g306bgd1b6g4bf8gfc28b4c1e623" version="1">Drinking this elixir grants the &lt;LSTag Type="Spell" Tooltip="justinelliott_StormBolts"&gt;Storm Bolts&lt;/LSTag&gt; cantrip.</content>
     <content contentuid="h1f3377d5g6b92g484eg98bbgd20cdca76290" version="1">Endurance</content>
     <content contentuid="h7b1ffa79g4ce4g36c4g228cgb266551fa76c" version="1">You gain &lt;LSTag Type="Status" Tooltip="BLADE_WARD"&gt;Blade Ward&lt;/LSTag&gt;, &lt;LSTag Type="Status" Tooltip="RESISTANCE"&gt;Resistance&lt;/LSTag&gt;, and &lt;LSTag Type="Status" Tooltip="GUIDANCE"&gt;Guidance&lt;/LSTag&gt;.</content>
     <content contentuid="hfeed5f01gea59gafc9gb9b5gd5fde57c5a2f" version="1">Armour of Endurance</content>
     <content contentuid="hbc088086gbbaeg6434g0631g71aa46cb6833" version="1">Crafted from layered, magically-hardened hides, this supple leather armor pulses with a constant protective ward that blunts incoming strikes, and repels magical attacks.</content>
     <content contentuid="h2f450439gec31gd0d0g2a64g78ad13d0961f" version="1">Make an attack against an enemy and possibly &lt;LSTag Type="Status" Tooltip="DAZED"&gt;Daze&lt;/LSTag&gt; them.</content>
     <content contentuid="h3bd4d079g390agd38ag8501g679f92380418" version="1">When a creature misses you with a melee attack, you can retaliate with your own strike if you are wielding a melee weapon.</content>
-    <content contentuid="hfc953d87g142fg64fbg21f0g8417fe9ca6e2" version="1">Battle Magic</content>
-    <content contentuid="hf2b3b79bg6798gc3d0g97ccgb0460e396360" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
+    <content contentuid="hd50ae398g0a5egabbdgd1f3g1f95d3343976" version="1">Battle Magic</content>
+    <content contentuid="h15f88c56g5f85gb2abg6eb9g7a6f994ddd9f" version="1">After making a weapon or unarmed attack, you can cast a spell as a &lt;LSTag Type="ActionResource" Tooltip="BonusActionPoint"&gt;bonus action&lt;/LSTag&gt;.</content>
     <content contentuid="h920c154cg08a6g5ccdg7c2dg0a1a6448ea0b" version="1">Enchanted Blade</content>
     <content contentuid="h2ea4b7f2g0829g547cg5727gb13a68884b84" version="1">Gain +1 to &lt;LSTag Tooltip="AttackRoll"&gt;Spell Attack&lt;/LSTag&gt;, Damage, and &lt;LSTag Tooltip="SpellDifficultyClass"&gt;Save DC&lt;/LSTag&gt; rolls. This increases to +2 at &lt;LSTag&gt;Level 5&lt;/LSTag&gt;, and +3 at &lt;LSTag&gt;Level 9&lt;/LSTag&gt;.</content>
     <content contentuid="h6cdfaa40g2f02gebc9g99f3g9aebff6777a1" version="1">Celestial Haste</content>

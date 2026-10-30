@@ -18,8 +18,8 @@ class ElementalWeapon:
         self._mod = mod
 
     def add_elemental_weapon(self) -> str:
-        name = self._mod.make_name("ElementalWeapon")
-        status_name = self._mod.make_name("ELEMENTAL_WEAPON")
+        name = self._mod.make_name("ElementalWeapon", key="author")
+        status_name = self._mod.make_name("ELEMENTAL_WEAPON", key="author")
 
         self._mod.loca[f"{name}_Description"] = """
             Imbue a weapon with elemental power. It receives a +[1] bonus to

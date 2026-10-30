@@ -19,7 +19,7 @@ class Attack:
     @cached_property
     def _brutal_cleave_display_name(self):
         """Get the localization handle for the Brutal Cleave display name."""
-        display_name = f"{self._mod.get_prefix()}_BrutalCleave_DisplayName"
+        display_name = self._mod.make_name("BrutalCleave_DisplayName", key="author")
         loca = self._mod.get_localization()
         loca[display_name] = {"en": "Brutal Cleave"}
         return loca[display_name]
@@ -27,7 +27,7 @@ class Attack:
     @cached_property
     def _brutal_cleave_description(self):
         """Get the localization handle for the Brutal Cleave description."""
-        description = f"{self._mod.get_prefix()}_BrutalCleave_Description"
+        description = self._mod.make_name("BrutalCleave_Description", key="author")
         loca = self._mod.get_localization()
         loca[description] = {"en": """
             Swing your weapon in a large arc to attack up to [1] enemies at once.
@@ -39,7 +39,7 @@ class Attack:
                           description_handle: str = None,
                           icon: str = "Action_Cleave_New") -> str:
         """Add the Brutal Cleave attack, returning its name."""
-        name = f"{self._mod.get_prefix()}_BrutalCleave"
+        name = self._mod.make_name("BrutalCleave", key="author")
 
         if not display_name_handle:
             display_name_handle = self._brutal_cleave_display_name
@@ -69,7 +69,7 @@ class Attack:
                                   description_handle: str = None,
                                   icon: str = "Action_Cleave_New") -> str:
         """Add a passive to unlock Brutal Cleave, returning its name."""
-        name = f"{self._mod.get_prefix()}_BrutalCleaveUnlock"
+        name = self._mod.make_name("BrutalCleaveUnlock", key="author")
         brutal_cleave = self.add_brutal_cleave(display_name_handle=display_name_handle,
                                                description_handle=description_handle,
                                                icon=icon)

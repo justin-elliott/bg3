@@ -22,7 +22,7 @@ class Maneuvers:
 
     def _update_precision_attack(self) -> None:
         passive_name = "PrecisionAttack"
-        interrupt_name = self._mod.make_name("Interrupt_PrecisionAttack")
+        interrupt_name = self._mod.make_name("Interrupt_PrecisionAttack", key="author")
 
         self._mod.loca[f"{passive_name}_DisplayName"] = "Precision Attack"
 
@@ -90,21 +90,13 @@ class Maneuvers:
             spell_name,
             using=spell_name,
             SpellType="Zone",
-            SpellProperties=[
-                "GROUND:DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "GROUND:ExecuteWeaponFunctors(MainHand)",
-                "IF(not Player(context.Source)):ApplyStatus(SELF,AI_HELPER_EXTRAATTACK,100,1)",
-            ],
-            SpellSuccess=[
-                "DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)",
-                "ExecuteWeaponFunctors(MainHand)",
-            ],
-            TooltipDamageList=["DealDamage(MainMeleeWeapon,MainMeleeWeaponDamageType)"],
+            SpellSuccess=["DealDamage(MainMeleeWeapon/2,MainMeleeWeaponDamageType)"],
+            TooltipDamageList=["DealDamage(MainMeleeWeapon/2,MainMeleeWeaponDamageType)"],
         ))
     
     @cached_property
     def relentless(self) -> str:
-        name = self._mod.make_name("Relentless")
+        name = self._mod.make_name("Relentless", key="author")
         self._mod.loca[f"{name}_DisplayName"] = "Relentless"
         self._mod.loca[f"{name}_Description"] = """
             At the start of your turn, you regain one

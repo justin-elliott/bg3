@@ -20,7 +20,7 @@ class Defense:
     @cached_property
     def _counterspell_display_name(self):
         """Get the localization handle for the Counterspell display name."""
-        display_name = f"{self._mod.get_prefix()}_Counterspell_DisplayName"
+        display_name = self._mod.make_name("Counterspell_DisplayName", key="author")
         loca = self._mod.get_localization()
         loca[display_name] = {"en": "Counterspell"}
         return loca[display_name]
@@ -28,7 +28,7 @@ class Defense:
     @cached_property
     def _counterspell_description(self):
         """Get the localization handle for the Counterspell description."""
-        description = f"{self._mod.get_prefix()}_Counterspell_Description"
+        description = self._mod.make_name("Counterspell_Description", key="author")
         loca = self._mod.get_localization()
         loca[description] = {"en": """
             Try to stop a spell being cast.
@@ -38,7 +38,7 @@ class Defense:
     @cached_property
     def _warding_display_name(self):
         """Get the localization handle for the Warding display name."""
-        display_name = f"{self._mod.get_prefix()}_Warding_DisplayName"
+        display_name = self._mod.make_name("Warding_DisplayName", key="author")
         loca = self._mod.get_localization()
         loca[display_name] = {"en": "Warding"}
         return loca[display_name]
@@ -46,7 +46,7 @@ class Defense:
     @cached_property
     def _warding_description(self):
         """Get the localization handle for the Warding description."""
-        description = f"{self._mod.get_prefix()}_Warding_Description"
+        description = self._mod.make_name("Warding_Description", key="author")
         loca = self._mod.get_localization()
         loca[description] = {"en": """
             A magical barrier protects you from harm, making you resistant to all forms of damage.
@@ -58,7 +58,7 @@ class Defense:
                          display_name_handle: str = None,
                          description_handle: str = None) -> None:
         """Add Counterspell, returning its name."""
-        name = f"{self._mod.get_prefix()}_Counterspell"
+        name = self._mod.make_name("Counterspell", key="author")
 
         if not display_name_handle:
             display_name_handle = self._counterspell_display_name
@@ -111,7 +111,7 @@ class Defense:
         return spell_list
 
     def add_enduring(self, hp_per_level: int = 2) -> str:
-        name = self._mod.make_name("Enduring")
+        name = self._mod.make_name("Enduring", key="author")
         self._mod.add(PassiveData(
             name,
             using="Tough",
@@ -134,7 +134,7 @@ class Defense:
     def add_unarmored_defense(self, ability: CharacterAbility, *, icon: str = "PassiveFeature_UnarmoredDefense") -> str:
         ability_name = ability.name.title()
 
-        name = f"{self._mod.get_prefix()}_UnarmoredDefense_{ability_name}"
+        name = self._mod.make_name(f"UnarmoredDefense_{ability_name}", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Unarmored Defense"}
@@ -164,7 +164,7 @@ class Defense:
                     description_handle: str = None,
                     icon: str = "PassiveFeature_ArcaneWard") -> None:
         """Add the Warding passive, returning its name."""
-        name = f"{self._mod.get_prefix()}_Warding"
+        name = self._mod.make_name("Warding", key="author")
 
         if not display_name_handle:
             display_name_handle = self._warding_display_name

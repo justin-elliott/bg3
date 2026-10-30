@@ -11,6 +11,7 @@ from modtools.lsx.game import Progression
 from modtools.mod import Mod
 from modtools.replacers.lsxpaths import progression_lsx_paths
 from modtools.replacers.replacer import Replacer
+from typing import Final
 
 
 class DontIncludeProgression(BaseException):
@@ -29,6 +30,10 @@ type MultiNameLevelKey = tuple[list[str], list[int], bool]
 type ProgressionBuilder = Callable[[Replacer, Progression], None]
 type ProgressionBuilderDict = dict[NameLevelKey, list[ProgressionBuilder]]
 
+
+__EXCLUDED_UUIDS: Final[list[str]] = [
+    "59505762-9251-463c-a81b-420e9a14c8cd", # BattleMaster level 3 in Shared/Progressions.
+]
 
 def _progression_order(progression: Progression) -> tuple[_Classification, str, int, bool]:
     """Return a key ordering by classification, name, level, and multiclass."""
@@ -55,6 +60,7 @@ def load_progressions(replacer_or_mod: Replacer | Mod, *, deduplicate: bool = Tr
         else:
             progressions_lsx.children.extend(lsx.children)
     progressions_lsx.children.sort(key=_progression_order)
+    progressions_lsx.children = [child for child in progressions_lsx.children if child.UUID not in __EXCLUDED_UUIDS]
     return list(progressions_lsx.children)
 
 

@@ -17,7 +17,7 @@ class BattleMagic:
 
     def add_battle_magic(self, *, icon: str = "PassiveFeature_WarMagic") -> str:
         """Add the Battle Magic passive, returning its name."""
-        name = f"{self._mod.get_prefix()}_BattleMagic"
+        name = self._mod.make_name("BattleMagic", key="author")
 
         loca = self._mod.get_localization()
         loca[f"{name}_DisplayName"] = {"en": "Battle Magic"}

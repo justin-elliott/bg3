@@ -19,7 +19,7 @@ class PackMule:
     @cached_property
     def _pack_mule_display_name(self):
         """Get the localization handle for the Pack Mule display name."""
-        display_name = f"{self._mod.get_prefix()}_PackMule_DisplayName"
+        display_name = self._mod.make_name("PackMule_DisplayName", key="author")
         loca = self._mod.get_localization()
         loca[display_name] = {"en": "Pack Mule"}
         return loca[display_name]
@@ -27,7 +27,7 @@ class PackMule:
     @cached_property
     def _pack_mule_description(self):
         """Get the localization handle for the Pack Mule description."""
-        description = f"{self._mod.get_prefix()}_PackMule_Description"
+        description = self._mod.make_name("PackMule_Description", key="author")
         loca = self._mod.get_localization()
         loca[description] = {"en": """
             Your carrying capacity is increased by [1]%.
@@ -38,7 +38,7 @@ class PackMule:
         """Add the Pack Mule passive, returning its name."""
         assert multiplier >= 1.0
         percent_increase = int((multiplier - 1.0) * 100.0)
-        name = f"{self._mod.get_prefix()}_PackMule_{percent_increase}"
+        name = self._mod.make_name(f"PackMule_{percent_increase}", key="author")
         self._mod.add(PassiveData(
             name,
             DisplayName=self._pack_mule_display_name,

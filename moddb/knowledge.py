@@ -20,7 +20,7 @@ class Knowledge:
     @cache
     def add_knowledge_of_the_ages(self) -> None:
         """Add the Knowledge of the Ages spell, returning its name."""
-        name = self._mod.make_name("KnowledgeOfTheAges")
+        name = self._mod.make_name("KnowledgeOfTheAges", key="author")
 
         ability_skills: OrderedDict[str, list[str]] = OrderedDict([
             ("Charisma", ["Deception", "Intimidation", "Performance", "Persuasion"]),
